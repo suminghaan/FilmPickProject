@@ -52,9 +52,24 @@
       user-select: none;
     }
 
+    .search_bar {
+      width: 400px;
+    }
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
+      }
+    }
+    @media (max-width: 990px) {
+      #header {
+        height: 250px;
+      }
+      .content_wrap {
+        padding-top: 250px;
+      }
+      .search_bar {
+        width: 600px;
       }
     }
 
