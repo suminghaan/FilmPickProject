@@ -291,7 +291,7 @@
           </form>
 
           <!-- 로그인 전에 보여질 내용 -->
-          <div class="text-end">
+          <div class="text-end" style="width: 200px">
             <button type="button" class="btn btn-outline-light me-2">Login</button>
             <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
               --bs-btn-color: RGB(247, 39, 140);
@@ -300,7 +300,7 @@
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>
           <!-- 로그인 시 보여질 내용
-          <div class="dropdown text-end">
+          <div class="dropdown text-end" style="width: 200px">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
