@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-  <script src="../resources/assets/js/color-modes.js"></script>
+  <script src="../../resources/assets/js/color-modes.js"></script>
   <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
 
   <meta charset="utf-8">
@@ -18,22 +18,27 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-  <link href="../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     #header {
       height: 100px;
       position: fixed;
+      z-index: 100;
       top: 0;
       left: 0;
       right: 0;
     }
 
-    .content {
-      margin-top: 100px;
-      margin:auto;
-      min-height: 1500px;
+    .content_wrap {
+      padding-top: 100px;
+      margin: auto;
+      height: 1500px;
       width: 1500px;
+    }
+
+    .content {
+      height: 100%;
     }
 
     #footer {
@@ -130,7 +135,7 @@
       display: none;
     }
 
-    .menu_buttons:hover + .menu_buttons_co {
+    .menu_buttons:hover+.menu_buttons_co {
       display: block;
     }
 
@@ -145,11 +150,91 @@
       right: 0;
     }
 
+    /* 추가 내용 */
+
+    .search_info {
+      height: 2%;
+      background-color: rgb(63, 63, 63);
+      padding-left: 50px;
+    }
+
+    .mp_bar {
+      padding-left: 50px;
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 30px;
+      height: 5%;
+      color: white;
+    }
+
+    .movie_info {
+      height: 67%;
+      background-color: rgb(15, 15, 15);
+    }
+
+    .person_info {
+      height: 23%;
+      margin-top: 2%;
+      background-color: gray;
+    }
+
+    .board_list {
+      padding: 0px 80px;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .thumbnail {
+      /* width: 20%; */
+      height: 42%;
+      margin: 10px 25px 25px 5px;
+      /* border: 1px solid lightgray; */
+      padding: 5px;
+      cursor: pointer;
+      display: flex;
+      padding-bottom: 10px;
+      justify-content: center;
+      /* 위치를 표시할 기준이 되는 부모 요소에 relative */
+      position: relative;
+    }
+
+    /* .thumbnail:hover>img,
+    .thumbnail_etc {
+      opacity: 0.95;
+    } */
+
+    .thumbnail_img {
+      width: 240px;
+    }
+
+    .thumbnail:hover>.thumbnail_title{
+      display: block;
+    }
+
+    .thumbnail_title {
+      width: 240px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.2);
+      font-size: 10px;
+      color: white;
+      text-align: left;
+      /* 위치를 이동시킬 요소에 absolute. top. left, right 등으로 위치 조절 */
+      position: absolute;
+      bottom: 10px;
+      /* 요소가 겹쳐있을 때 무엇을 더 위에 표현할지. z-index 값이 클수록 위에 옴 */
+      z-index: 10;
+      display: none;
+    }
+
+    .thumbnail_etc {
+      display: flex;
+      justify-content: space-between;
+    }
   </style>
-
-
   <!-- Custom styles for this template -->
-  <link href="../resources/css/headers.css" rel="stylesheet">
+  <link href="../../resources/css/headers.css" rel="stylesheet">
 </head>
 
 <body>
@@ -196,7 +281,7 @@
       </li>
       <li>
         <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-          aria-pressed="false">
+          aria-pressed="true">
           <svg class="bi me-2 opacity-50" width="1em" height="1em">
             <use href="#moon-stars-fill"></use>
           </svg>
@@ -208,7 +293,7 @@
       </li>
       <li>
         <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-          aria-pressed="true">
+          aria-pressed="false">
           <svg class="bi me-2 opacity-50" width="1em" height="1em">
             <use href="#circle-half"></use>
           </svg>
@@ -259,22 +344,26 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img style="height: 65px;" src="../resources/img/logo.png" alt="">
+            <img style="height: 65px;" src="../../resources/img/logo.png" alt="">
           </a>
 
-          <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <ul style="display: flex; align-items: center;"
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-headphones fa-2x"></i></i></a></li>
             <li class="menu_buttons_co">고객센터</li>
           </ul>
 
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
             <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="영화, 인물"
-              aria-label="Search" >
+              aria-label="Search" style="width: 400px;">
             <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
             --bs-btn-color:RGB(247, 39, 140);
             --bs-btn-hover-color: #000;
@@ -283,7 +372,7 @@
           </form>
 
           <!-- 로그인 전에 보여질 내용 -->
-          <div class="text-end">
+          <div class="text-end" style="width: 200px">
             <button type="button" class="btn btn-outline-light me-2">Login</button>
             <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
               --bs-btn-color: RGB(247, 39, 140);
@@ -292,7 +381,7 @@
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>
           <!-- 로그인 시 보여질 내용
-          <div class="dropdown text-end">
+          <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
@@ -305,17 +394,91 @@
               </ul>
           </div> -->
 
-      
+
         </div>
       </div>
     </header>
 
-    <div style="background-color: black;">
+    <div class="content_wrap" style="background-color: black;">
       <div class="content">
-        <div class="search-info"></div>
-        <div class="mp-bar"></div>
-        <div class="movie-info"></div>
-        <div class="person-info"></div>
+        <div class="search_info">
+          사용자 검색 결과
+        </div>
+        <div class="mp_bar">
+          영화 / 인물
+        </div>
+        <div class="movie_info">
+          <div style="padding: 10px 0px 0px 100px; color: white;"><h3>영화</h3></div>
+          <div class="board_list">
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+            <div class="thumbnail">
+              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="person_info">
+
+        </div>
       </div>
     </div>
 
@@ -346,7 +509,7 @@
 
 
   </main>
-  <script src="../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
