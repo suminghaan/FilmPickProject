@@ -32,7 +32,7 @@
     .content_wrap {
       padding-top: 100px;
       margin:auto;
-      min-height: 1500px;
+      height: 1500px;
       width: 1500px;
     }
 
