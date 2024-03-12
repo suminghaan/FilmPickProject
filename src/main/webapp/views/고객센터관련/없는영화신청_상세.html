@@ -34,14 +34,17 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+    }
+
+    .content_wrap {
+      padding-top: 100px;
+      margin:auto;
+      height: 1500px;
+      width: 1500px;
     }
 
     .content {
-      margin-top: 100px;
-      margin:auto;
-      min-height: 800px;
-      width: 1500px;
+      height: 100%;
     }
 
     #footer {
@@ -311,7 +314,7 @@
   </svg>
 
   <main>
-    <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
+    <header style="background-color: black!important; z-index: 1000;" id="header" class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -370,7 +373,7 @@
       <div class="content">
 
         <!-- Section start -->
-<section class="content_wrap">
+<section class="content_wrap" style="padding-top: 0px;">
     <!-- Begin Page Content -->
     <div class="background">
         <div class="background2">
