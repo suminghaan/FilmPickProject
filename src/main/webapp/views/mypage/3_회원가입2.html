@@ -174,10 +174,30 @@
     }
 
 
-    div.joinform{
-          border: 1px solid lightgrey;
-          width: 350px;
-        }
+    .joinform {
+      background-color: white;
+      width: 400px;
+      height: 650px;
+    }
+    div.joinform-detail{
+      border: 1px solid lightgrey;
+      width: 350px;
+    }
+    #text{
+      border: lightgray 3px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
   </style>
 
@@ -348,86 +368,90 @@
       <div class="content">
 
 
+        <div class="joinform">
+          <div class="joinform-detail" style="background-color: white;">
+      
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="* 아이디" style="background: transparent;" required>
+                  <div class="id-duplicationcheck">
+                      <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
+                      --bs-btn-color:RGB(247, 39, 140);
+                      --bs-btn-hover-color: #ffffff;
+                      --bs-btn-hover-bg: RGB(247, 39, 140);
+                      --bs-btn-hover-border-color: #ffffff;">중복확인</button> 
+                  </div>
+              </div>
+          
+              <input type="text" class="form-control" placeholder="* 비밀번호" style="background: transparent;" required>
+          
+              <input type="text" class="form-control"placeholder="* 비밀번호 확인" style="background: transparent;" required>
+          
+              <input type="text" class="form-control" placeholder="* 이메일주소(비밀번호 찾기 등 본인 확인용)" style="background: transparent;" required>
+          
+          
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="* 닉네임" style="background: transparent;" required>
+                  <div class="nickname-duplicationcheck">
+                      <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
+                      --bs-btn-color:RGB(247, 39, 140);
+                      --bs-btn-hover-color: #ffffff;
+                      --bs-btn-hover-bg: RGB(247, 39, 140);
+                      --bs-btn-hover-border-color: #ffffff;">중복확인</button>     
+                  </div>
+              </div>
+          
+              <input type="text" class="form-control" placeholder="여백용인데여기에채워야함" required>
+          
+              <input type="text" class="form-control"placeholder="* 이름" style="background: transparent;" required>
+          
+              <input type="text" class="form-control"placeholder="* 생년월일(ex.010101)" style="background: transparent;" required>
+          
+              <input type="text" class="form-control"placeholder="* 성별" style="background: transparent;" required>
+          
+              <input type="text" class="form-control" placeholder="여백용인데여기에채워야함" style="background: transparent;" required>
+          
+          
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="* 휴대전화번호" style="background: transparent;" required>
+                  <div class="input-phonenum">
+                    <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
+                                        --bs-btn-color:RGB(247, 39, 140);
+                                        --bs-btn-hover-color: #ffffff;
+                                        --bs-btn-hover-bg: RGB(247, 39, 140);
+                                        --bs-btn-hover-border-color: #ffffff;">인증번호요청</button>     
+                  </div>
+              </div>
+          
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="인증번호6자리를 입력하세요" style="background: transparent;" required>
+                  <div class="check-certification-number">
+                    <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
+                                        --bs-btn-color:RGB(247, 39, 140);
+                                        --bs-btn-hover-color: #ffffff;
+                                        --bs-btn-hover-bg: RGB(247, 39, 140);
+                                        --bs-btn-hover-border-color: #ffffff;">인증하기</button>   
+                  </div>
+              </div>
+          
+              <input type="text" class="form-control" placeholder="여백용인데여기에채워야함" style="background: transparent;" required>
+          
+              <input type="dropdown" class="form-control" placeholder="선호장르(택1)" style="background: transparent;" >
+            
 
-        <div class="joinform" style="background-color: white;">
-    
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="* 아이디" required>
-                <div class="id-duplicationcheck">
-                    <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-                    --bs-btn-color:RGB(247, 39, 140);
-                    --bs-btn-hover-color: #ffffff;
-                    --bs-btn-hover-bg: RGB(247, 39, 140);
-                    --bs-btn-hover-border-color: #ffffff;">중복확인</button> 
-                </div>
-            </div>
-        
-            <input type="text" class="form-control" placeholder="* 비밀번호" required>
-        
-            <input type="text" class="form-control"placeholder="* 비밀번호 확인" required>
-        
-            <input type="text" class="form-control" placeholder="* 이메일주소(비밀번호 찾기 등 본인 확인용)" required>
-        
-        
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="* 닉네임" required>
-                <div class="nickname-duplicationcheck">
-                    <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-                    --bs-btn-color:RGB(247, 39, 140);
-                    --bs-btn-hover-color: #ffffff;
-                    --bs-btn-hover-bg: RGB(247, 39, 140);
-                    --bs-btn-hover-border-color: #ffffff;">중복확인</button>     
-                </div>
-            </div>
-        
-            <input type="text" class="form-control" placeholder="여백용인데여기에채워야함" required>
-        
-            <input type="text" class="form-control"placeholder="* 이름" required>
-        
-            <input type="text" class="form-control"placeholder="* 생년월일(ex.010101)" required>
-        
-            <input type="text" class="form-control"placeholder="* 성별" required>
-        
-            <input type="text" class="form-control" placeholder="여백용인데여기에채워야함" required>
-        
-        
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="* 휴대전화번호" required>
-                <div class="input-phonenum">
-                  <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-                                      --bs-btn-color:RGB(247, 39, 140);
-                                      --bs-btn-hover-color: #ffffff;
-                                      --bs-btn-hover-bg: RGB(247, 39, 140);
-                                      --bs-btn-hover-border-color: #ffffff;">인증번호요청</button>     
-                </div>
-            </div>
-        
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="인증번호6자리를 입력하세요" required>
-                <div class="check-certification-number">
-                  <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-                                      --bs-btn-color:RGB(247, 39, 140);
-                                      --bs-btn-hover-color: #ffffff;
-                                      --bs-btn-hover-bg: RGB(247, 39, 140);
-                                      --bs-btn-hover-border-color: #ffffff;">인증하기</button>   
-                </div>
-            </div>
-        
-            <input type="text" class="form-control" placeholder="여백용인데여기에채워야함" required>
-        
-            <input type="text" class="form-control" placeholder="선호장르(택1)">
-        
-            <!--<button class="btn btn-light" type="submit">가입하기</button> -->
-            <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-                                      --bs-btn-color:RGB(247, 39, 140);
-                                      --bs-btn-hover-color: #ffffff;
-                                      --bs-btn-hover-bg: RGB(247, 39, 140);
-                                      --bs-btn-hover-border-color: #ffffff;">로그인</button>  
-        
+
+          </div>
+              <!--<button class="btn btn-light" type="submit">가입하기</button> -->
+              <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
+                                        --bs-btn-color:RGB(247, 39, 140);
+                                        --bs-btn-hover-color: #ffffff;
+                                        --bs-btn-hover-bg: RGB(247, 39, 140);
+                                        --bs-btn-hover-border-color: #ffffff;">가입하기</button>  
+          
         </div>
-
+      </div>
       </div>
     </div>
+  </div>
 
     <div id="footer" class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
