@@ -109,8 +109,8 @@
 
             <select class="btn" style="background-color: whitesmoke; color: black;">
                 <option value="Y" style="color: black;">장르별</option>
-                <option value="N">SF</option>
-                <option value="N">스릴러</option>
+                <option value="SF">SF</option>
+                <option value="스릴러">스릴러</option>
                 <option value="N">로맨스</option>
                 <option value="N">액션</option>
                 <option value="N">판타지</option>
