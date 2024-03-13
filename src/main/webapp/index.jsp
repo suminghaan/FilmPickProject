@@ -96,8 +96,8 @@
       </div>
         <div>
             <form class="search">
-            <button class="btn btn-outline-success" type="submit">검색</button>
             <input class="text-box form-control me-2" type="search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">검색</button>
             </form>
         </div>
     <br>
