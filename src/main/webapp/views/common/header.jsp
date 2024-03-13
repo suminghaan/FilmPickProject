@@ -50,7 +50,7 @@
     .content_wrap {
       padding-top: 100px;
       margin:auto;
-      height: 1500px;
+      min-height: 1500px;
       width: 1500px;
     }
 
