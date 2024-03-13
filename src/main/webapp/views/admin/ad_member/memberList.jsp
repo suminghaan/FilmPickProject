@@ -261,7 +261,7 @@ table{
    
    <script>
    		function viewMemberPostsPage(){
-   			location.href = "";
+   			location.href = "memberBoardPostView.jsp";
    		};
    </script>
 </body>
