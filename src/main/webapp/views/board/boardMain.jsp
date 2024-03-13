@@ -10,7 +10,6 @@
         box-sizing: border-box;
         color: white;
     }
-
     #wrap{
         border: 1px solid black;
         background-color: black;
@@ -49,8 +48,6 @@
     .title_date{
         font-size: 30px;
     }
-
-
     .topPage{
         position: fixed;
         bottom: 50px;
@@ -84,7 +81,6 @@
         margin: 10px;
         width: 100%;
         height: 100%;
-        
     }
     .post:hover{
         filter: brightness(1.03);
@@ -145,7 +141,6 @@
 	
 </header>
 <section>
-
 	
 	    <div id="wrap">
 	        <div id="main">
