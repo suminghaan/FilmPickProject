@@ -1,8 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-	String contextPath = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +27,8 @@
 
   <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
   <style>
-  
-  	body{
-  		background-color:black;
-  	}
-  
     #header {
       height: 100px;
       position: fixed;
@@ -50,7 +41,7 @@
     .content_wrap {
       padding-top: 100px;
       margin:auto;
-      height: 1500px;
+      min-height: 1500px;
       width: 1500px;
     }
 
@@ -188,6 +179,90 @@
       background-color: gray;
     }
 
+    /*컨텐츠부분*/
+    /* .content_wrap {
+    background: black;
+    } */
+
+    .background{
+        margin: 50px;
+        margin-bottom: 0px;
+        background-color: rgb(39, 39, 39);
+        display: flex;
+        flex-direction: column;
+        min-height: 600px;
+    }
+
+    .content_name{
+        border: 1px solid white;
+        width: 80%;
+        height: 100px;
+        margin: auto;
+        border-left: none;
+        border-right: none;
+        margin-top: 60px;
+        margin-bottom: 0px;
+    }
+
+    .question_title{
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    .content_first{
+        color: white;
+        margin-bottom: 15px;
+
+    }
+
+    .content_second{
+        color: rgb(158, 158, 158);
+    }
+
+    .question_q{
+        color: white;
+        margin-left: 140px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .btnback{
+        width: 10%;
+        margin-bottom: 50px;
+        margin-top: 30px;
+        margin-left: 1110px;
+    }
+
+    .question_que{
+        color: white;
+        border-bottom: 1px solid rgb(158, 158, 158);
+        width: 80%;
+        min-height: 200px;
+        margin: auto;
+        font-size: 25px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .question_a{
+        color: white;
+        margin-left: 140px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .question_ans{
+        color: white;
+        border-bottom: 1px solid rgb(158, 158, 158);
+        width: 80%;
+        min-height: 200px;
+        margin: auto;
+        font-size: 25px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
   </style>
 
   <!-- Custom styles for this template -->
@@ -299,13 +374,13 @@
     <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="<%= contextPath %>/views/board/boardMain.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <img style="height: 65px;" src="../..//resources/img/logo.png" alt="">
           </a>
 
           <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="<%= contextPath %>/views/search/searchExplo.jsp" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
             <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
@@ -338,14 +413,11 @@
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
-                <li><a class="dropdown-item" href="#">별점 남긴 영화</a></li>
-                <li><a class="dropdown-item" href="#">찜한 영화 목록</a></li>
-                <li><a class="dropdown-item" href="#">작성글 조회</a></li>
-                <li><a class="dropdown-item" href="#">고객센터</a></li>
-                <li><a class="dropdown-item" href="#">메시지함</a></li>
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
               </ul>
           </div> -->
 
@@ -353,7 +425,61 @@
       </div>
     </header>
 
+    <!-- 컨텐츠 부분 시작 -->
+    <section class="content_wrap" style="background: black; min-height: 1000px;">
+
+        <div class="background">
+
+            <div class="content_name">
+                <div class="content_first">
+                    <div class="question_title">내 문의사항 제목2</div>
+                </div>
+                <div class="content_second">
+                    <div class="upload_date">2024/02/20 문의</div>
+                </div>
+            </div>
+            <span class="question_q">Q</span>
+            <div class="question_que">내 문의사항 내용 ~~~~~~~~~~~~~~~~~~~~~~</div>
+            
+            <span class="question_a">A</span>
+            <!-- 답변이 없을 경우 -->
+            <!-- <div class="question_ans">아직 답변이 없습니다.</div> -->
+
+            <div class="question_ans">문의사항답변~~~~~~~~~~~~~~~~~~~~~~</div>
+
+            <button type="button" class="btn btn-secondary btnback" onclick="history.back();">뒤로가기</button>
+        
+        </div><br><br><br>
+    </section>
+    <!-- 컨텐츠 부분 종료 -->
+
+    <div id="footer" class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24">
+                <use xlink:href="#bootstrap" />
+              </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
+          </div>
+  
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
+                  <use xlink:href="#twitter" />
+                </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
+                  <use xlink:href="#instagram" />
+                </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
+                  <use xlink:href="#facebook" />
+                </svg></a></li>
+          </ul>
+        </footer>
+      </div>
+
   </main>
+  <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

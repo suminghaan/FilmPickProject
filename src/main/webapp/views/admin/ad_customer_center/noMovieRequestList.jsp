@@ -1,234 +1,235 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-  <script src="../../resources/assets/js/color-modes.js"></script>
-  <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
+<title>없는영화 신청 확인 </title>
+<style>
+ /* 헤더부분 */
+#header {
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.122.0">
-  <title>FILM PICK</title>
+.content_wrap {
+  padding-top: 100px;
+  margin:auto;
+  height: 1500px;
+  width: 1500px;
+}
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+.content {
+  height: 100%;
+}
 
-  <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+#footer {
+  height: 100px;
+}
 
-<!-- 부트스트랩 기능을 위한 CDN 방식 연결 -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- ----------------------------------- -->
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
+.search_bar {
+  width: 400px;
+}
 
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 990px) {
+  #header {
+    height: 250px;
+  }
+  .content_wrap {
+    padding-top: 250px;
+  }
+  .search_bar {
+    width: 600px;
+  }
+}
 
-  <style>
-    /* 헤더부분 */
-    #header {
-      height: 100px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-    }
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
 
-    .content_wrap {
-      padding-top: 100px;
-      margin:auto;
-      height: 1500px;
-      width: 1500px;
-    }
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
 
-    .content {
-      height: 100%;
-    }
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
 
-    #footer {
-      height: 100px;
-    }
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
 
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
 
-    .search_bar {
-      width: 400px;
-    }
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-    @media (max-width: 990px) {
-      #header {
-        height: 250px;
-      }
-      .content_wrap {
-        padding-top: 250px;
-      }
-      .search_bar {
-        width: 600px;
-      }
-    }
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
 
-    .b-example-divider {
-      width: 100%;
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
+.bd-mode-toggle {
+  z-index: 1500;
+}
 
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
 
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
+.menu_buttons {
+  margin-left: 20px;
+}
 
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
+.menu_buttons:hover {
+  transform: scale(1.3);
+}
 
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
+.menu_buttons_co {
+  margin-left: 10px;
+  display: none;
+}
 
-    .btn-bd-primary {
-      --bd-violet-bg: #712cf9;
-      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+.menu_buttons:hover + .menu_buttons_co {
+  display: block;
+}
 
-      --bs-btn-font-weight: 600;
-      --bs-btn-color: var(--bs-white);
-      --bs-btn-bg: var(--bd-violet-bg);
-      --bs-btn-border-color: var(--bd-violet-bg);
-      --bs-btn-hover-color: var(--bs-white);
-      --bs-btn-hover-bg: #6528e0;
-      --bs-btn-hover-border-color: #6528e0;
-      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-      --bs-btn-active-color: var(--bs-btn-hover-color);
-      --bs-btn-active-bg: #5a23c8;
-      --bs-btn-active-border-color: #5a23c8;
-    }
+.search {
+  position: relative;
+}
 
-    .bd-mode-toggle {
-      z-index: 1500;
-    }
+.searchBtn {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+}
 
-    .bd-mode-toggle .dropdown-menu .active .bi {
-      display: block !important;
-    }
+.search-info {
+  margin-top: 200px;
+  height: 5%;
+  background-color: gray;
+}
 
-    .menu_buttons {
-      margin-left: 20px;
-    }
+/*컨텐츠부분*/
+/* .content_wrap {
+    min-height: 500px;
+    background: black;
+} */
 
-    .menu_buttons:hover {
-      transform: scale(1.3);
-    }
+.background{
+    min-height: 500px;
+    margin: 50px;
+    background-color: rgb(39, 39, 39);
+    display: flex;
+    flex-direction: column;
+}
 
-    .menu_buttons_co {
-      margin-left: 10px;
-      display: none;
-    }
+.modal-body {
+    position: relative;
+}
 
-    .menu_buttons:hover + .menu_buttons_co {
-      display: block;
-    }
+.psModal{
+    position: absolute;
+    top: 19px;
+    right: 19px;
+}
 
-    .search {
-      position: relative;
-    }
+.psButton-body{
+    position: relative;
+}
 
-    .searchBtn {
-      position: absolute;
-      margin: auto;
-      top: 0;
-      right: 0;
-    }
+.psButton{
+    position: absolute;
+    top: 27.5px;
+    right: 3px;
+}
 
-    .search-info {
-      margin-top: 200px;
-      height: 5%;
-      background-color: gray;
-    }
+.background2{
+    background: white;
+}
 
-    /*컨텐츠부분*/
-    /* .content_wrap {
-        min-height: 500px;
-        background: black;
-    } */
+#select-user-title{
+    margin-top: 50px;
+}
+table{
+    margin-top: 20px;
+}
+.title>h1{
+    font-weight: bold;
+}
 
-    .background{
-        min-height: 500px;
-        margin: 50px;
-        background-color: rgb(39, 39, 39);
-        display: flex;
-        flex-direction: column;
-    }
+.modal-text{
+    margin-right: 10px;
+    font-weight: bold;
+}
 
-    .modal-body {
-        position: relative;
-    }
+label{
+	margin-right: 15px;
+}
 
-    .psModal{
-        position: absolute;
-        top: 19px;
-        right: 19px;
-    }
+input[type="radio"]{
+	margin-right: 5px;
+}
 
-    .psButton-body{
-        position: relative;
-    }
-
-    .psButton{
-        position: absolute;
-        top: 27.5px;
-        right: 3px;
-    }
-
-    .background2{
-        background: white;
-        margin: 30px;
-    }
-    
-
-    
-
-  </style>
-
-
-  <!-- Custom styles for this template -->
+/* input[type="file"]{
+	width: 100px;
+} */
+</style>
+</head>
+<body>
+<%@ include file="/views/admin/common/header.jsp" %>
+    <div class="container-fluid">
+    	<!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
 </head>
 <body>
-
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -330,81 +331,31 @@
   </svg>
 
   <main>
-    <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img style="height: 65px;" src="../..//resources/img/logo.png" alt="">
-          </a>
 
-          <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
-            <li class="menu_buttons_co">영화탐색</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
-            <li class="menu_buttons_co">커뮤니티</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
-            <li class="menu_buttons_co">고객센터</li>
-          </ul>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
-            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="영화, 인물"
-              aria-label="Search" style="width: 400px;">
-            <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-            --bs-btn-color:RGB(247, 39, 140);
-            --bs-btn-hover-color: #000;
-            --bs-btn-hover-bg: RGB(247, 39, 140);
-            --bs-btn-hover-border-color: #000;">Search</button>
-          </form>
-
-          <!-- 로그인 전에 보여질 내용 -->
-          <div class="text-end" style="width: 200px">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
-              --bs-btn-color: RGB(247, 39, 140);
-              --bs-btn-hover-color: #000;
-              --bs-btn-hover-bg: RGB(247, 39, 140);
-              --bs-btn-hover-border-color: #000;">Sign-up</button>
-          </div>
-          <!-- 로그인 시 보여질 내용
-          <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
-              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-          </div> -->
-
-        </div>
-      </div>
-    </header>
-
-    <div style="background-color: black;">
       <div class="content">
 
         <!-- Section start -->
         <section class="content_wrap" style="padding-top: 0px;">
           <!-- Begin Page Content -->
-          <div class="background">
-              <div class="background2">
-                      <div class="container-fluid"><br>
-                          <h1>없는영화신청</h1> <br>
+                      <div class="container-fluid">
+					                      
+					    <div class="container">
+					        <div id="title" class="title">
+					        <h1 id="select-user-title">없는영화 신청글 확인</h1>
+					        <hr>
+					    </div>
                           <form action="" method="">
                               <div class="form-group">
                                   <label for="exampleFormControlInput1">영화제목</label> <br>
-                                  <input type="email" class="form-control" id="exampleFormControlInput1" name="">
+                                  <input type="email" class="form-control" id="exampleFormControlInput1" name="" placeholder="귀멸의 칼날">
                               </div>
 
                               <br>
 
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1">영화관람등급</label>
-                                  <select class="form-control" id="exampleFormControlSelect1" name="">
+                                  <select class="form-control" id="exampleFormControlSelect1" name="" style="width: 400px;">
                                       <option value="전체">전체관람</option>
                                       <option value="12세">12</option>
                                       <option value="15세">15</option>
@@ -416,7 +367,7 @@
 
                               <div class="form-group">
                                   <label for="exampleFormControlTextarea1">영화줄거리</label> <br>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name=""></textarea>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="" placeholder="‘탄지로’와 상현 4 ‘한텐구’의 목숨을 건 혈투와, ‘무잔’과의 최종 국면을 앞둔 귀살대원들의 마지막 훈련을 그린 영화"></textarea>
                               </div>
                               
 
@@ -424,13 +375,13 @@
 
                               <div class="form-group">
                                   개봉일
-                                  <input type="date" name="dateIn" class="form-control">
+                                  <input type="date" name="dateIn" class="form-control" value="2024-03-13">
                               </div>
                               <br>
 
                               <div class="form-group">
                                   러닝타임
-                                  <input type="text" name="runningTime" class="form-control">
+                                  <input type="text" name="runningTime" class="form-control" placeholder="120분">
                               </div>
                               <br>
 
@@ -444,9 +395,9 @@
 
                               <div class="form-group">
                               영화 장르 선택
-                              <br>
+                              <br><br>
 
-                                  <!-- <div class="form-check form-check-inline"> -->
+                                  <div class="form-check form-check-inline"> 
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
                                       <label class="form-check-label" for="inlineCheckbox1">SF</label>
@@ -480,7 +431,7 @@
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="느와르" name="category">
                                       <label class="form-check-label" for="inlineCheckbox10">느와르</label>
-                                  <!-- </div> -->
+                                  </div> 
                               </div>
                               <br>
 
@@ -488,7 +439,7 @@
                               <div class="form-group">
                               국가
                               <br>
-                                  <div class="form-check form-check-inline">
+                                  <div class="form-check form-check-inline" style="margin-top: 10px;">
                                       <input type="radio" id="radio1" name="nation" value="1" checked> 
                                       <label for="radio1">국내</label>
 
@@ -535,13 +486,7 @@
                                   <textarea name="" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
                               </div>
 
-                              <div>
-                                  <input type="checkbox" id="idCheck" value="동의" name="" style="margin-left: 1000px;">
-                                  <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
-                                  
-                                  <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">업로드</button> <br>
-                                  <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
-                              </div>
+                             
                                       <!-- 영화등록 Modal -->
                                       <div class="modal" id="submitModal">
                                           <div class="modal-dialog">
@@ -571,9 +516,6 @@
                           </form>
 
                       </div>
-
-                  </div>
-              </div>
           <!-- /.container-fluid -->
 
               <!-- 인물검색 Modal -->
@@ -610,36 +552,63 @@
     <!-- Section end -->  
 
       </div>
-    </div>
-
-    <div id="footer" class="container">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="col-md-4 d-flex align-items-center">
-          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-            <svg class="bi" width="30" height="24">
-              <use xlink:href="#bootstrap" />
-            </svg>
-          </a>
-          <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
-        </div>
-
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
-                <use xlink:href="#twitter" />
-              </svg></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
-                <use xlink:href="#instagram" />
-              </svg></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
-                <use xlink:href="#facebook" />
-              </svg></a></li>
-        </ul>
-      </footer>
-    </div>
 
   </main>
   <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+    	
+    </div>
+    
+    <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
+        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
+    </div>
+
+        <!-- Modal -->
+    <div class="modal fade" id="refuseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">거절사유 입력</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
+                    <span class="modal-text">거절사유</span>
+                    <span><textarea rows="5" style="resize:none;" placeholder="내용을 입력해주세요" class="form-control"></textarea></span>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center ">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="alert('거절사유 작성이 완료되었습니다.')">작성</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="recognizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">수정사항 확인</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="margin-top: 20px; margin-bottom: 10px;">
+                    <span class="modal-text">개봉일</span>
+                    <span>2024-01-11</span>
+                </div>
+                <div class="container" style="margin-top: 30px; margin-bottom: 10px;">
+                    <span class="modal-text">영화장르</span>
+                    <span>스릴러</span>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">확인</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
 </body>
-
 </html>
