@@ -86,6 +86,28 @@
     .post:hover{
         filter: brightness(1.03);
     }
+    .post:hover>div{
+        display: block;
+    }
+    .box_context{
+    	margin: 10px;
+        width: 100%;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.2);
+        font-size: 10px;
+        display: none;
+        position: absolute;
+        top: 250px;
+        padding: 5px;
+        z-index:10;
+    }
+    .post_context{
+        width: 210px;
+        color: white;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
     .commu{
        // margin-top: 10px;
        // margin-bottom: 10px;
@@ -160,22 +182,82 @@
 	                    <a href="">현재 상영중인 영화</a>
 	                </div>
 	                <div class="box_post">
-	                    <a class="post" href=""><img class="post" src="../../resources/img/듄2.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/가여운것들.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/건국전쟁.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/웡카.jpeg" alt=""></a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/듄2.jpeg" alt="">
+                            <div class="box_context">
+                                <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+                        </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">파묘</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/가여운것들.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">가여운것들</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/건국전쟁.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">건국전쟁</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/웡카.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">웡카</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
 	                </div>
 	                <br><br>
 	                <div class="box_font">
 	                    <a href="">영화 인기작</a>
 	                </div>
 	                <div class="box_post">
-	                    <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/듄2.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/건국전쟁.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/웡카.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/가여운것들.jpeg" alt=""></a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/듄2.jpeg" alt="">
+                            <div class="box_context">
+                                <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+                        </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">파묘</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/가여운것들.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">가여운것들</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/건국전쟁.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">건국전쟁</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/웡카.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">웡카</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
 	                </div>
 	            </div>
 	            <div class="commu box">
@@ -229,11 +311,41 @@
 	                    <a href="">사용자영화 최신순</a>
 	                </div>
 	                <div class="box_post">
-	                    <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/듄2.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/건국전쟁.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/웡카.jpeg" alt=""></a>
-	                    <a class="post" href=""><img class="post" src="../../resources/img/가여운것들.jpeg" alt=""></a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/듄2.jpeg" alt="">
+                            <div class="box_context">
+                                <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+                        </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">파묘</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/가여운것들.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">가여운것들</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/건국전쟁.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">건국전쟁</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
+	                    <a class="post" href=""><img class="post" src="../../resources/img/웡카.jpeg" alt="">
+	                    	<div class="box_context">
+                                <div class="post_context">웡카</div>
+                                <div class="post_context">별점</div>
+                                <div class="post_context">개봉연도,국가</div>  
+                            </div>
+	                    </a>
 	                </div>
 	            </div>
 	            <div class="topPage">
