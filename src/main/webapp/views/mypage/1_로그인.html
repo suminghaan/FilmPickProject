@@ -37,7 +37,7 @@
 
     .content_wrap {
       padding-top: 100px;
-      margin:auto;
+      margin: auto;
       height: 1500px;
       width: 1500px;
     }
@@ -45,13 +45,14 @@
     .content {
       height: 100%;
     }
+
     /* main{
       background-color: black;
     } */
 
     #footer {
       height: 100px;
-      
+
     }
 
     .bd-placeholder-img {
@@ -71,13 +72,16 @@
         font-size: 3.5rem;
       }
     }
+
     @media (max-width: 990px) {
       #header {
         height: 250px;
       }
+
       .content_wrap {
         padding-top: 250px;
       }
+
       .search_bar {
         width: 600px;
       }
@@ -159,7 +163,7 @@
       display: none;
     }
 
-    .menu_buttons:hover + .menu_buttons_co {
+    .menu_buttons:hover+.menu_buttons_co {
       display: block;
     }
 
@@ -174,27 +178,31 @@
       right: 0;
     }
 
-    div.login{
-            border: 1px solid lightgrey;
-            width: 500px;
-            height: 350px;
-            border-radius: 0.3em;
-        }
-    .btn-login{
-        background-color: rgb(247, 39, 152);
-        color: white;
-        border: white;
-        border-radius: 0.3em;
-        width: 200px;
-        height: 38px;
-    }
-    .btn-search-pass, .btn-search-id, .btn-join{
-        background-color: white;
-         
-        width: 150px;
-        height: 38px;
+    div.login {
+      border: 1px solid lightgrey;
+      width: 500px;
+      height: 350px;
+      border-radius: 0.3em;
     }
 
+    .btn-login {
+      background-color: rgb(247, 39, 152);
+      color: white;
+      border: white;
+      border-radius: 0.3em;
+      width: 200px;
+      height: 38px;
+      justify-content: center;
+    }
+
+    .btn-search-pass,
+    .btn-search-id,
+    .btn-join {
+      background-color: white;
+
+      width: 150px;
+      height: 38px;
+    }
   </style>
 
 
@@ -223,7 +231,7 @@
     </symbol>
   </svg>
 
-   <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -312,13 +320,17 @@
             <img style="height: 65px;" src="../../resources/img/logo.png" alt="">
           </a>
 
-          <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <ul style="display: flex; align-items: center;"
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-headphones fa-2x"></i></i></a></li>
             <li class="menu_buttons_co">고객센터</li>
           </ul>
 
@@ -341,21 +353,24 @@
               --bs-btn-hover-bg: RGB(247, 39, 140);
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>-->
-          <!-- 로그인 시 보여질 내용--> 
+          <!-- 로그인 시 보여질 내용-->
           <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
-              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small" >
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-          </div> 
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
 
-      
+
         </div>
       </div>
     </header>
@@ -365,42 +380,41 @@
         <div class="login" style="background-color: white;">
           <div class="container">
             <form action="/action_page.php">
-                <img src= "../../resources/img/logo.png" width="100px" height="50px" id="logo">
-                
-                <div class="form-group">
-                  <!--<label for="email">아이디</label>-->
-                  <input type="email" class="form-control" id="email" placeholder="아이디를 입력하세요" name="email">
-                </div>
-    
-                <div class="form-group">
-                  <!--<label for="pwd">비밀번호</label>-->
-                  <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="pwd">
-                </div>
-    
-                <div class="form-group form-check">
-                  <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" name="remember"> 로그인 상태 유지
-                  </label>
+              <img src="../../resources/img/logo.png" width="150px" height="50px" id="logo">
 
-                  <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
-                                      --bs-btn-color:RGB(247, 39, 140);
-                                      --bs-btn-hover-color: #ffffff;
-                                      --bs-btn-hover-bg: RGB(247, 39, 140);
-                                      --bs-btn-hover-border-color: #ffffff;">로그인</button>  
-                </div>
-            
-                
-                <br>
-                <br>
-                <br>
-    
-                <!-- border 추가하기 -->
-                <a href="" class="btn btn-search-pass">비밀번호찾기</a>
-                <a href="" class="btn btn-search-id">아이디찾기</>
-                <a href="" class="btn btn-join">회원가입</a>
-                <br>
-                <br>
-                <br>
+              <div class="form-group">
+                <!--<label for="email">아이디</label>-->
+                <input type="email" class="form-control" id="email" placeholder="아이디를 입력하세요" name="email" style="background-color:transparent;">
+              </div>
+
+              <div class="form-group">
+                <!--<label for="pwd">비밀번호</label>-->
+                <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="pwd" style="background-color:transparent;">
+              </div>
+
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="remember"> 로그인 상태 유지
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
+                                                                         --bs-btn-color:RGB(247, 39, 140);
+                                                                         --bs-btn-hover-color: #ffffff;
+                                                                         --bs-btn-hover-bg: RGB(247, 39, 140);
+                                                                         --bs-btn-hover-border-color: #ffffff;">로그인</button>
+
+              <br>
+              <br>
+              <br>
+
+              <!-- border 추가하기 -->
+              <a href="" class="btn btn-search-pass">비밀번호찾기</a>|
+              <a href="" class="btn btn-search-id">아이디찾기</a>|
+              <a href="" class="btn btn-join">회원가입</a>
+              <br>
+              <br>
+              <br>
             </form>
           </div>
         </div>
