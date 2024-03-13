@@ -103,7 +103,7 @@ background-color: black!important;
                         <a class="collapse-item" href="../ad_member/cancelMemberList.jsp">탈퇴회원조회</a>
                         <a class="collapse-item" href="../ad_member/reportMemberList.jsp">신고회원관리</a>
                         <a class="collapse-item" href="../ad_member/restrictedMemberList.jsp">이용제한회원조회</a>
-                        <a class="collapse-item" href="../ad_member/memberPostsView.jsp">회원활동내역조회</a>
+                        <a class="collapse-item" href="../ad_member/memberBoardPostsView.jsp">회원활동내역조회</a>
                     </div>
                 </div>
             </li>
