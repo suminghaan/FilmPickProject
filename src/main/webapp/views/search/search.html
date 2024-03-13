@@ -24,10 +24,10 @@
     #header {
       height: 100px;
       position: fixed;
-      z-index: 100;
       top: 0;
       left: 0;
       right: 0;
+      z-index: 100;
     }
 
     .content_wrap {
@@ -196,14 +196,21 @@
     }
 
     .person_info {
-      height: 23%;
-      margin-top: 2%;
+      height: 25%;
+      margin-top: 1%;
       background-color: rgb(12, 12, 12);
       border-radius: 10px;
     }
 
     .movie_list {
       padding: 0px 80px;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .person_list {
       height: 100%;
       display: flex;
       flex-wrap: wrap;
@@ -224,6 +231,16 @@
       position: relative;
     }
 
+    .person_wrap {
+      height: 70%;
+      margin: 0px 120px 25px 80px;
+      /* border: 1px solid lightgray; */
+      padding: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
     /* .thumbnail:hover>img,
     .thumbnail_etc {
       opacity: 0.95;
@@ -231,6 +248,18 @@
 
     .thumbnail_img {
       width: 240px;
+      border-radius: 10px;
+    }
+
+    .person_img {
+      width: 150px;
+      border-radius: 20px;
+    }
+
+    .information {
+      font-size: 15px;
+      padding-left: 20px;
+      margin: auto;
     }
 
     .thumbnail:hover>.thumbnail_title {
@@ -259,6 +288,7 @@
   </style>
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -433,76 +463,268 @@
         </div>
         <div class="movie_info">
           <div style="padding: 10px 0px 0px 100px; color: white;">
-            <h3>영화</h3>
+            <h4>영화</h4>
           </div>
-          <div class="movie_list">
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
+          <div id="carouselMovie" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="movie_list">
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="movie_list">
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>영화별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
-            <div class="thumbnail">
-              <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-              <div class="thumbnail_title">
-                <span>영화제목</span><br>
-                <span>영화별점</span><br>
-                <span>개봉연도, 국가</span>
-              </div>
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMovie" data-bs-slide="prev">
+              <span><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMovie" data-bs-slide="next">
+              <span><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
         <div class="person_info">
+          <div style="padding: 10px 0px 0px 100px; color: white;">
+            <h4>인물</h4>
+          </div>
+          <div id="carouselPerson" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="person_list" >
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/공유.jpg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/공유.jpg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/공유.jpg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="person_list" >
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/공효진.jpeg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/공효진.jpeg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/공효진.jpeg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="person_list" >
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/고경표.jpeg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/고경표.jpeg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                  <div class="person_wrap">
+                    <img class="person_img" src="../../resources/img/고경표.jpeg" alt="">
+                    <div class="information">
+                      <span>이름 :</span><br>
+                      <span>출생연도 : </span><br>
+                      <span>국적 : </span><br>
+                      <span>직업 : </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPerson" data-bs-slide="prev">
+              <span><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselPerson" data-bs-slide="next">
+              <span><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+
         </div>
       </div>
     </div>
