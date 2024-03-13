@@ -5,7 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>movieEnrollForm</title>
+<title>신규영화등록</title>
+
+<!-- 부트스트랩 기능을 위한 CDN 방식 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--  -------------------------------------  -->
+
 <style>
 
 /* 헤더부분 */
@@ -245,7 +253,7 @@
 		
       <div class="content">
 
-        <!-- Section start -->
+        
         <section class="content_wrap" style="padding-top: 0px;">
 
         <div class="container">
