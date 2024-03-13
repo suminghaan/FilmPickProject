@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -296,13 +299,13 @@
     <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/film/views/board/boardMain.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <a href="<%= contextPath %>/views/board/boardMain.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <img style="height: 65px;" src="../..//resources/img/logo.png" alt="">
           </a>
 
           <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="/film/views/board/boardExplo.jsp" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="<%= contextPath %>/views/board/boardExplo.jsp" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
             <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
