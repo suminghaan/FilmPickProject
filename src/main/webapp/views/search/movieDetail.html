@@ -205,7 +205,19 @@
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            background-color: white;
+            background-color: rgb(80, 55, 55);
+            border-radius: 10px;
+        }
+
+        .movie_review {
+            height: 20%;
+            background-color: rgb(80, 55, 55);
+            border-radius: 10px;
+        }
+
+        .movie_relate {
+            height: 24%;
+            background-color: rgb(80, 55, 55);
             border-radius: 10px;
         }
 
@@ -318,12 +330,17 @@
             background-color: aqua;
         }
 
+        /*  */
+
 
     </style>
 
 
     <!-- Custom styles for this template -->
     <link href="../../resources/css/headers.css" rel="stylesheet">
+
+    <!-- starRating css -->
+    <link rel="stylesheet" href="../../resources/css/starRating.css">
 </head>
 
 <body>
@@ -569,7 +586,50 @@
                 <div class="movie_like_people">
                     <div class="movie_like">
                         <div class="review_info">
-
+                            <div class="star-wrap">
+                                <div class="rating">
+                                    <label class="rating__label rating__label--half" for="starhalf">
+                                        <input type="radio" id="starhalf" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--full" for="star1">
+                                        <input type="radio" id="star1" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--half" for="star1half">
+                                        <input type="radio" id="star1half" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--full" for="star2">
+                                        <input type="radio" id="star2" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--half" for="star2half">
+                                        <input type="radio" id="star2half" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--full" for="star3">
+                                        <input type="radio" id="star3" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--half" for="star3half">
+                                        <input type="radio" id="star3half" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--full" for="star4">
+                                        <input type="radio" id="star4" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--half" for="star4half">
+                                        <input type="radio" id="star4half" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                    <label class="rating__label rating__label--full" for="star5">
+                                        <input type="radio" id="star5" class="rating__input" name="rating" value="">
+                                        <span class="star-icon"></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="like_review_btn">
 
@@ -584,8 +644,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="movie_review"></div>
-                <div class="movie_relate"></div>
+                <div class="movie_review">
+
+                </div>
+                <div class="movie_relate">
+
+                </div>
             </div>
         </div>
 
@@ -617,7 +681,7 @@
 
     </main>
     <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="../../resources/assets/js/starRating.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,42 @@
+.rating {
+    float: none;
+    width: 200px;
+    display: flex;
+}
+
+.rating__input {
+    display: none;
+}
+
+.rating__label {
+    width: 24px;
+    cursor: pointer;
+}
+
+.star-icon {
+    width: 24px;
+    height: 50px;
+    display: block;
+    position: relative;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: 50px;
+    background: url('../img/빈별.png');
+}
+
+.filled {
+    background: url('../img/별.png');
+}
+
+.rating__label--full .star-icon {
+    background-position: right;
+}
+
+.rating__label--half .star-icon {
+    background-position: left;
+}
+
+.rating__label .readonly .star-icon {
+    opacity: 0.7;
+    cursor: default;
+}
