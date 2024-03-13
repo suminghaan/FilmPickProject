@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
-
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
   <script src="../../resources/assets/js/color-modes.js"></script>
   <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
 
@@ -32,6 +33,7 @@
       top: 0;
       left: 0;
       right: 0;
+      z-index: 100;
     }
 
     .content_wrap {
@@ -57,9 +59,24 @@
       user-select: none;
     }
 
+    .search_bar {
+      width: 400px;
+    }
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
+      }
+    }
+    @media (max-width: 990px) {
+      #header {
+        height: 250px;
+      }
+      .content_wrap {
+        padding-top: 250px;
+      }
+      .search_bar {
+        width: 600px;
       }
     }
 
@@ -154,11 +171,17 @@
       right: 0;
     }
 
+    .search-info {
+      margin-top: 200px;
+      height: 5%;
+      background-color: gray;
+    }
+
     /*컨텐츠부분*/
-    .content_wrap {
+    /* .content_wrap {
         min-height: 500px;
         background: black;
-    }
+    } */
 
     .background{
         min-height: 500px;
@@ -238,8 +261,8 @@
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
 </head>
-
 <body>
+
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -260,7 +283,7 @@
     </symbol>
   </svg>
 
-  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -306,8 +329,7 @@
         </button>
       </li>
     </ul>
-  </div>
-
+  </div> -->
 
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="bootstrap" viewBox="0 0 118 94">
@@ -369,31 +391,29 @@
             --bs-btn-hover-border-color: #000;">Search</button>
           </form>
 
-          <!-- 로그인 전에 보여질 내용
-          <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">Login</button>
-              <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
-                --bs-btn-color: RGB(247, 39, 140);
-                --bs-btn-hover-color: #000;
-                --bs-btn-hover-bg: RGB(247, 39, 140);
-                --bs-btn-hover-border-color: #000;">Sign-up</button>
+          <!-- 로그인 전에 보여질 내용 -->
+          <div class="text-end" style="width: 200px">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
+              --bs-btn-color: RGB(247, 39, 140);
+              --bs-btn-hover-color: #000;
+              --bs-btn-hover-bg: RGB(247, 39, 140);
+              --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>
-          -->
-          <!-- 로그인 시 보여질 내용 -->
-          <div class="dropdown text-end">
+          <!-- 로그인 시 보여질 내용
+          <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
               </ul>
-          </div>
+          </div> -->
 
-      
         </div>
       </div>
     </header>
@@ -427,33 +447,32 @@
     </div>
 
     <div id="footer" class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-          <div class="col-md-4 d-flex align-items-center">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-              <svg class="bi" width="30" height="24">
-                <use xlink:href="#bootstrap" />
-              </svg>
-            </a>
-            <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
-          </div>
-  
-          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
-                  <use xlink:href="#twitter" />
-                </svg></a></li>
-            <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
-                  <use xlink:href="#instagram" />
-                </svg></a></li>
-            <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
-                  <use xlink:href="#facebook" />
-                </svg></a></li>
-          </ul>
-        </footer>
-      </div>
-  
-  
-    </main>
-    <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
+                <use xlink:href="#twitter" />
+              </svg></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
+                <use xlink:href="#instagram" />
+              </svg></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
+                <use xlink:href="#facebook" />
+              </svg></a></li>
+        </ul>
+      </footer>
+    </div>
+
+  </main>
+  <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
-
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
   <script src="../../resources/assets/js/color-modes.js"></script>
   <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
 
@@ -34,6 +35,7 @@
       top: 0;
       left: 0;
       right: 0;
+      z-index: 100;
     }
 
     .content_wrap {
@@ -59,9 +61,24 @@
       user-select: none;
     }
 
+    .search_bar {
+      width: 400px;
+    }
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
+      }
+    }
+    @media (max-width: 990px) {
+      #header {
+        height: 250px;
+      }
+      .content_wrap {
+        padding-top: 250px;
+      }
+      .search_bar {
+        width: 600px;
       }
     }
 
@@ -156,11 +173,17 @@
       right: 0;
     }
 
+    .search-info {
+      margin-top: 200px;
+      height: 5%;
+      background-color: gray;
+    }
+
     /*컨텐츠부분*/
-    .content_wrap {
+    /* .content_wrap {
         min-height: 500px;
         background: black;
-    }
+    } */
 
     .background{
         min-height: 500px;
@@ -201,11 +224,11 @@
   </style>
 
 
-   <!-- Custom styles for this template -->
-   <link href="../../resources/css/headers.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../../resources/css/headers.css" rel="stylesheet">
 </head>
-
 <body>
+
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -226,7 +249,7 @@
     </symbol>
   </svg>
 
-  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -272,8 +295,7 @@
         </button>
       </li>
     </ul>
-  </div>
-
+  </div> -->
 
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="bootstrap" viewBox="0 0 118 94">
@@ -308,7 +330,7 @@
   </svg>
 
   <main>
-    <header style="background-color: black!important; z-index: 1000;" id="header" class="p-3 text-bg-dark">
+    <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -327,7 +349,7 @@
 
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
             <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="영화, 인물"
-              aria-label="Search" >
+              aria-label="Search" style="width: 400px;">
             <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
             --bs-btn-color:RGB(247, 39, 140);
             --bs-btn-hover-color: #000;
@@ -335,31 +357,29 @@
             --bs-btn-hover-border-color: #000;">Search</button>
           </form>
 
-          <!-- 로그인 전에 보여질 내용 
-          <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">Login</button>
-              <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
-                --bs-btn-color: RGB(247, 39, 140);
-                --bs-btn-hover-color: #000;
-                --bs-btn-hover-bg: RGB(247, 39, 140);
-                --bs-btn-hover-border-color: #000;">Sign-up</button>
+          <!-- 로그인 전에 보여질 내용 -->
+          <div class="text-end" style="width: 200px">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
+              --bs-btn-color: RGB(247, 39, 140);
+              --bs-btn-hover-color: #000;
+              --bs-btn-hover-bg: RGB(247, 39, 140);
+              --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>
-          -->
-          <!-- 로그인 시 보여질 내용 -->
-          <div class="dropdown text-end">
+          <!-- 로그인 시 보여질 내용
+          <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
-                  <li><a class="dropdown-item" href="#">New project...</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
               </ul>
-          </div> 
+          </div> -->
 
-      
         </div>
       </div>
     </header>
@@ -368,226 +388,226 @@
       <div class="content">
 
         <!-- Section start -->
-<section class="content_wrap" style="padding-top: 0px;">
-    <!-- Begin Page Content -->
-    <div class="background">
-        <div class="background2">
-                <div class="container-fluid"><br>
-                    <h1>없는영화신청</h1> <br>
-                    <form action="" method="">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">영화제목</label> <br>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" name="">
-                        </div>
+        <section class="content_wrap" style="padding-top: 0px;">
+          <!-- Begin Page Content -->
+          <div class="background">
+              <div class="background2">
+                      <div class="container-fluid"><br>
+                          <h1>없는영화신청</h1> <br>
+                          <form action="" method="">
+                              <div class="form-group">
+                                  <label for="exampleFormControlInput1">영화제목</label> <br>
+                                  <input type="email" class="form-control" id="exampleFormControlInput1" name="">
+                              </div>
 
-                        <br>
+                              <br>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">영화관람등급</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="">
-                                <option value="전체">전체관람</option>
-                                <option value="12세">12</option>
-                                <option value="15세">15</option>
-                                <option value="청불">청소년관람불가</option>
-                            </select>
-                        </div>
+                              <div class="form-group">
+                                  <label for="exampleFormControlSelect1">영화관람등급</label>
+                                  <select class="form-control" id="exampleFormControlSelect1" name="">
+                                      <option value="전체">전체관람</option>
+                                      <option value="12세">12</option>
+                                      <option value="15세">15</option>
+                                      <option value="청불">청소년관람불가</option>
+                                  </select>
+                              </div>
 
-                        <br>
+                              <br>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">영화줄거리</label> <br>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name=""></textarea>
-                        </div>
-                        
+                              <div class="form-group">
+                                  <label for="exampleFormControlTextarea1">영화줄거리</label> <br>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name=""></textarea>
+                              </div>
+                              
 
-                        <br>
+                              <br>
 
-                        <div class="form-group">
-                            개봉일
-                            <input type="date" name="dateIn" class="form-control">
-                        </div>
-                        <br>
+                              <div class="form-group">
+                                  개봉일
+                                  <input type="date" name="dateIn" class="form-control">
+                              </div>
+                              <br>
 
-                        <div class="form-group">
-                            러닝타임
-                            <input type="text" name="runningTime" class="form-control">
-                        </div>
-                        <br>
+                              <div class="form-group">
+                                  러닝타임
+                                  <input type="text" name="runningTime" class="form-control">
+                              </div>
+                              <br>
 
-                        <div class="form-group psButton-body">
-                            출연/제작
-                            <input type="text" name="" class="form-control">
-                            <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
-                        </div>
-                        <br>
-
-
-                        <div class="form-group">
-                        영화 장르 선택
-                        <br>
-
-                            <!-- <div class="form-check form-check-inline"> -->
-
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
-                                <label class="form-check-label" for="inlineCheckbox1">SF</label>
-                            
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="스릴러" name="category">
-                                <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
-                               
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="로맨스" name="category">
-                                <label class="form-check-label" for="inlineCheckbox3">로맨스</label>
-                                
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="액션" name="category">
-                                <label class="form-check-label" for="inlineCheckbox4">액션</label>
-
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="판타지" name="category">
-                                <label class="form-check-label" for="inlineCheckbox5">판타지</label>
-
-                            <!-- </div> -->
-
-                            <!-- <div class="form-check form-check-inline"> -->
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="코미디" name="category">
-                                <label class="form-check-label" for="inlineCheckbox6">코미디</label>
-
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="에로" name="category">
-                                <label class="form-check-label" for="inlineCheckbox7">에로</label>
-
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="범죄" name="category">
-                                <label class="form-check-label" for="inlineCheckbox8">범죄</label>
-
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="애니메이션" name="category">
-                                <label class="form-check-label" for="inlineCheckbox9">애니메이션</label>
-
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="느와르" name="category">
-                                <label class="form-check-label" for="inlineCheckbox10">느와르</label>
-                            <!-- </div> -->
-                        </div>
-                        <br>
+                              <div class="form-group psButton-body">
+                                  출연/제작
+                                  <input type="text" name="" class="form-control">
+                                  <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
+                              </div>
+                              <br>
 
 
-                        <div class="form-group">
-                        국가
-                        <br>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" id="radio1" name="nation" value="1" checked> 
-                                <label for="radio1">국내</label>
+                              <div class="form-group">
+                              영화 장르 선택
+                              <br>
 
-                                <input type="radio" id="radio2" name="nation" value="2">
-                                <label for="radio2">해외</label>
-                            </div>
-                        </div>
-                        <br>
+                                  <!-- <div class="form-check form-check-inline"> -->
+
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox1">SF</label>
+                                  
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="스릴러" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
+                                      
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="로맨스" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox3">로맨스</label>
+                                      
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="액션" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox4">액션</label>
+
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="판타지" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox5">판타지</label>
+
+                                  <!-- </div> -->
+
+                                  <!-- <div class="form-check form-check-inline"> -->
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="코미디" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox6">코미디</label>
+
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="에로" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox7">에로</label>
+
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="범죄" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox8">범죄</label>
+
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="애니메이션" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox9">애니메이션</label>
+
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="느와르" name="category">
+                                      <label class="form-check-label" for="inlineCheckbox10">느와르</label>
+                                  <!-- </div> -->
+                              </div>
+                              <br>
 
 
-                        영화포스터
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile1" name="">
-                            <label class="custom-file-label" for="customFile1">파일추가</label>
-                            <img src="" alt="미리보기이미지">
-                        </div>
+                              <div class="form-group">
+                              국가
+                              <br>
+                                  <div class="form-check form-check-inline">
+                                      <input type="radio" id="radio1" name="nation" value="1" checked> 
+                                      <label for="radio1">국내</label>
 
-                        <br>
-
-                        예고편영상
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile2" name="">
-                            <label class="custom-file-label" for="customFile2">파일추가</label>
-                            <img src="" alt="미리보기이미지">
-                        </div>
-
-                        <br>
+                                      <input type="radio" id="radio2" name="nation" value="2">
+                                      <label for="radio2">해외</label>
+                                  </div>
+                              </div>
+                              <br>
 
 
-                        <div class="form-group">
-                        기타 추가 희망 이미지 또는 동영상
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile3" name="">
-                                <label class="custom-file-label" for="customFile3">파일추가</label>
-                                <img src="" alt="미리보기이미지">
-                            </div>
-                        </div>
+                              영화포스터
+                              <div class="custom-file">
+                                  <input type="file" class="custom-file-input" id="customFile1" name="">
+                                  <label class="custom-file-label" for="customFile1">파일추가</label>
+                                  <img src="" alt="미리보기이미지">
+                              </div>
+
+                              <br>
+
+                              예고편영상
+                              <div class="custom-file">
+                                  <input type="file" class="custom-file-input" id="customFile2" name="">
+                                  <label class="custom-file-label" for="customFile2">파일추가</label>
+                                  <img src="" alt="미리보기이미지">
+                              </div>
+
+                              <br>
 
 
-                        <br>
+                              <div class="form-group">
+                              기타 추가 희망 이미지 또는 동영상
+                                  <div class="custom-file">
+                                      <input type="file" class="custom-file-input" id="customFile3" name="">
+                                      <label class="custom-file-label" for="customFile3">파일추가</label>
+                                      <img src="" alt="미리보기이미지">
+                                  </div>
+                              </div>
 
-                        <div class="form-group">
-                            <h4>사용자 요청사항(선택)</h4>
-                            <textarea name="" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
-                        </div>
 
-                        <div>
-                            <input type="checkbox" id="idCheck" value="동의" name="" style="margin-left: 1000px;">
-                            <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
-                            
-                            <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">업로드</button> <br>
-                            <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
-                        </div>
-                                <!-- 영화등록 Modal -->
-                                <div class="modal" id="submitModal">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                    
-                                            <!-- Modal Header -->
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">영화등록</h4>
-                                                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                                            </div>
-                                    
-                                            <!-- Modal body -->
-                                            <div class="modal-body">
-                                                신청하시겠습니까?
-                                            </div>
-                                    
-                                            <!-- Modal footer -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">취소</button>
-                                                <button type="submit" class="btn btn-outline-secondary" style="float: right;">OK</button>
-                                            </div>
-                                    
-                                        </div>
-                                    </div>
-                                </div>
+                              <br>
 
-                    </form>
+                              <div class="form-group">
+                                  <h4>사용자 요청사항(선택)</h4>
+                                  <textarea name="" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
+                              </div>
 
-                </div>
+                              <div>
+                                  <input type="checkbox" id="idCheck" value="동의" name="" style="margin-left: 1000px;">
+                                  <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
+                                  
+                                  <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">업로드</button> <br>
+                                  <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
+                              </div>
+                                      <!-- 영화등록 Modal -->
+                                      <div class="modal" id="submitModal">
+                                          <div class="modal-dialog">
+                                              <div class="modal-content">
+                                          
+                                                  <!-- Modal Header -->
+                                                  <div class="modal-header">
+                                                      <h4 class="modal-title">영화등록</h4>
+                                                      <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                                  </div>
+                                          
+                                                  <!-- Modal body -->
+                                                  <div class="modal-body">
+                                                      신청하시겠습니까?
+                                                  </div>
+                                          
+                                                  <!-- Modal footer -->
+                                                  <div class="modal-footer">
+                                                      <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">취소</button>
+                                                      <button type="submit" class="btn btn-outline-secondary" style="float: right;">OK</button>
+                                                  </div>
+                                          
+                                              </div>
+                                          </div>
+                                      </div>
 
-            </div>
-        </div>
-    <!-- /.container-fluid -->
+                          </form>
 
-        <!-- 인물검색 Modal -->
-        <div class="modal" id="searchModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-            
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">배우 검색</h4>
-                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                    </div>
-            
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <input type="text" name="runningTime" class="form-control">
-                        <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
-                        <hr>
-                        <div>
-                            검색된 인물 나오는 공간
-                        </div>
-                    </div>
-            
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
-                    </div>
-            
-                </div>
-            </div>
-        </div>
+                      </div>
 
-</section>
-<!-- Section end -->  
+                  </div>
+              </div>
+          <!-- /.container-fluid -->
+
+              <!-- 인물검색 Modal -->
+              <div class="modal" id="searchModal">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                  
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                              <h4 class="modal-title">배우 검색</h4>
+                              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                          </div>
+                  
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                              <input type="text" name="runningTime" class="form-control">
+                              <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
+                              <hr>
+                              <div>
+                                  검색된 인물 나오는 공간
+                              </div>
+                          </div>
+                  
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
+                          </div>
+                  
+                      </div>
+                  </div>
+              </div>
+
+        </section>
+    <!-- Section end -->  
 
       </div>
     </div>
@@ -616,10 +636,9 @@
         </ul>
       </footer>
     </div>
-  
-  
-    </main>
-    <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  </main>
+  <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
