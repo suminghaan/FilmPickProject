@@ -30,6 +30,11 @@
   <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+  
+  	body{
+  		background-color:black;
+  	}
+  
     #header {
       height: 100px;
       position: fixed;
