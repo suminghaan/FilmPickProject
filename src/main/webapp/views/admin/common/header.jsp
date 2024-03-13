@@ -58,7 +58,7 @@ background-color: black!important;
     height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
 }
 
-.container-fluid{
+.container-fluid, .table{
 	color: black!important;
 }
 </style>
