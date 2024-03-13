@@ -15,7 +15,7 @@
   <meta name="generator" content="Hugo 0.122.0">
   <title>FILM PICK</title>
 <!-- 부트스트랩 기능을 위한 CDN 방식 연결 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">  -->
     <!-- jQuery library -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- Popper JS -->
