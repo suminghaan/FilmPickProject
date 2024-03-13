@@ -99,10 +99,10 @@ background-color: black!important;
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">회원조회</a>
-                        <a class="collapse-item" href="cards.html">탈퇴회원조회</a>
-                        <a class="collapse-item" href="cards.html">신고회원관리</a>
-                        <a class="collapse-item" href="cards.html">이용제한회원조회</a>
+                        <a class="collapse-item" href="../ad_member/memberList.jsp">회원조회</a>
+                        <a class="collapse-item" href="../ad_member/cancelMemberList.jsp">탈퇴회원조회</a>
+                        <a class="collapse-item" href="../ad_member/reportMemberList.jsp">신고회원관리</a>
+                        <a class="collapse-item" href="../ad_member/restrictedMemberList.jsp">이용제한회원조회</a>
                     </div>
                 </div>
             </li>
@@ -149,8 +149,8 @@ background-color: black!important;
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="login.html">1대1문의 확인</a>
-                    <a class="collapse-item" href="register.html">없는 영화 신청 확인</a>
+                    <a class="collapse-item" href="../ad_customer_center/inquiryList.jsp">1대1문의 확인</a>
+                    <a class="collapse-item" href="../ad_customer_center/unavailableMovieRequestList.jsp">없는 영화 신청 확인</a>
                     <div class="collapse-divider"></div>
                 </div>
             </div>
