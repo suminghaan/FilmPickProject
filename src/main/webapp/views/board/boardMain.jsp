@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
+
 <style>
     #wrap, #wrap *{
         box-sizing: border-box;
@@ -49,12 +50,12 @@
         font-size: 30px;
     }
     .topPage{
-        position: fixed;
-        bottom: 50px;
+        position: sticky;
         right: 350px;
-    }
-    .topPage>a{
-        color: white;
+        bottom: 50px;
+        display: flex;
+        justify-content: flex-end;
+        opacity: 0;
     }
     .box{
         background-color: rgb(46, 46, 46);
@@ -238,9 +239,26 @@
 	            <div class="topPage">
 	                <a href="#wrap"><img src="../../resources/img/up_icon.png" alt="up_icon" style="width: 50px;"></a>
 	            </div>
+
+                <script>
+                $(document).ready(function() {
+                    $(window).scroll(function() {
+                        $('.topPage').each(function() {
+                            var top_of_window = $(window).scrollTop();
+
+                            if (top_of_window <= 0) {
+                                $(this).stop().animate({'opacity':'0'}, 50);
+                            } else {
+                                $(this).stop().animate({'opacity':'1'}, 200);
+                            }
+                        });
+                    });
+                });
+
+                </script>
 	        </div>
 	    </div>
-
+        
 </section>
 <footer>
 	
