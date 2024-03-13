@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +74,7 @@
     <div id="wrap">
     <div id="header">
         <div class="logo">
-            <a href="/film/views/board/boardMain.jsp"><img src="resources/img/logo.png" alt="" style="width:200px"></a>
+            <a href="<%= contextPath %>/views/board/boardMain.jsp"><img src="resources/img/logo.png" alt="" style="width:200px"></a>
         </div>
     </div>
     <div class="content">
@@ -99,7 +102,7 @@
         </div>
     <br>
     <div class="moving" align="center" style="margin-top: -5px;">
-        <a href="/film/views/board/boardMain.jsp">메인페이지로 이동 ></a>
+        <a href="<%= contextPath %>/views/board/boardMain.jsp">메인페이지로 이동 ></a>
     </div>
 
 </div>
