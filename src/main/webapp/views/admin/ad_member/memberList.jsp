@@ -15,6 +15,9 @@ table{
 .title>h1{
     font-weight: bold;
 }
+.userId:hover{
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -59,7 +62,7 @@ table{
                 <tbody>
                     <tr>
                         <td>999</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                         <select class="form-control">
                             <option value="1">Level 1</option>
@@ -76,7 +79,7 @@ table{
                     </tr>
                     <tr>
                         <td>998</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -93,7 +96,7 @@ table{
                     </tr>
                     <tr>
                         <td>997</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -110,7 +113,7 @@ table{
                     </tr>
                     <tr>
                         <td>996</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -127,7 +130,7 @@ table{
                     </tr>
                     <tr>
                         <td>995</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -144,7 +147,7 @@ table{
                     </tr>
                     <tr>
                         <td>994</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -161,7 +164,7 @@ table{
                     </tr>
                     <tr>
                         <td>993</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -178,7 +181,7 @@ table{
                     </tr>
                     <tr>
                         <td>992</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -195,7 +198,7 @@ table{
                     </tr>
                     <tr>
                         <td>991</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -212,7 +215,7 @@ table{
                     </tr>
                     <tr>
                         <td>990</td>
-                        <td>user999</td>
+                        <td class="userId" onclick="viewMemberPostsPage();">user999</td>
                         <td>
                             <select class="form-control">
                                 <option value="1">Level 1</option>
@@ -255,5 +258,11 @@ table{
         </div>
     </div>
    </div>
+   
+   <script>
+   		function viewMemberPostsPage(){
+   			location.href = "";
+   		};
+   </script>
 </body>
 </html>
