@@ -330,11 +330,14 @@
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
+                <li><a class="dropdown-item" href="#">별점 남긴 영화</a></li>
+                <li><a class="dropdown-item" href="#">찜한 영화 목록</a></li>
+                <li><a class="dropdown-item" href="#">작성글 조회</a></li>
+                <li><a class="dropdown-item" href="#">고객센터</a></li>
+                <li><a class="dropdown-item" href="#">메시지함</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="#">로그아웃</a></li>
               </ul>
           </div> -->
 
