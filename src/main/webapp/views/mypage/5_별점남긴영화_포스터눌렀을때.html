@@ -77,7 +77,6 @@
         width: 600px;
       }
     }
-
     .b-example-divider {
       width: 100%;
       height: 3rem;
@@ -170,29 +169,59 @@
     }
 
 
-    .container{
-        display: flex;          /* 여기 4줄 : div 안 내용물 정렬 */
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-    .movie-poster-area{
-        position: relative;
-        background-color: white;
-        padding: 10px;
-        margin: 10px;
-        width: 170px;
-        height: 300px;
-        border-radius: 0.3em;
-    }
-    #heart{
-        position: absolute;
-        top: 10px;
-        right: 10px;           
-    }
 
+    .movie-container{
+            float: left;
+            height: 700px;
+            width: 1000px;
+            border: 1px solid black;
+            background-color: white;
+            border-radius: 0.5em;
+            
+        }
+        
+        .movie-explanation{
+            float: left;
+            height: 650px;
+            width: 450px;
+            border-radius: 0.5em;
+            border: 1px solid black;
+            background-color: rgb(247, 244, 244);
+            margin-top: 25px;
+            margin-left: 25px;
+            
+        }
+        #poster1{
+            position: absolute;
+            padding: 10px;
+            margin: 20px;
+        }
 
-
+        .movie-review-area1{
+            float: right;
+            height: 700px;
+            width: 495px;
+            border: 1px solid black;
+            background-color: lightblue;
+            
+        }
+        .movie-review-area2{
+            float: right;
+            height: 400px;
+            width: 400px;
+            border: 1px solid black;
+            background-color: rgb(247, 244, 244);
+            border-radius: 0.5em;
+            margin-top: 250px;
+            margin-right: 50px;
+        }
+        .movie-review{
+            height: 300px;
+            width: 300px;
+            background-color: white;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
   </style>
 
 
@@ -362,116 +391,27 @@
       <div class="content">
 
 
-        <div class="container">
-            
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster1">
-                <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                <a href="">
-                <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                </a>
+        <!--<div class="container">-->
+
+            <div class="movie-container">
+
+                <div class="movie-explanation">
+                    <img src="../../resources/img/듄2.jpeg" width="200px" height="270px" id="poster1">
+    
+                    <button id="btn-ditail">자세히</button>
                 </div>
-                듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-            </div>
     
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster2">
+                <div class="movie-review-area1">
+                    <div class="movie-review-area2">
     
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
+                        <div class="movie-review">리뷰남기는곳 리뷰리뷰!!</div>
+                        <button id="btn-edit">수정하기</button>
+                        
                     </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-            </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster3">
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-            </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster4">
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-            </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster5">
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-            </div>
-
+                </div>
         </div>
+        <!--</div>-->
 
-
-        <div class="container">
-            
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster6">
-              <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-              <a href="">
-              <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-              </div>
-              듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster7">
-  
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster8">
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster9">
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster10">
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-      </div>
 
       </div>
     </div>
