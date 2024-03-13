@@ -58,6 +58,9 @@ background-color: black!important;
     height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
 }
 
+.container-fluid{
+	color: black!important;
+}
 </style>
 </head>
 <body>
@@ -333,6 +336,13 @@ background-color: black!important;
 
                 </nav>
                 <!-- End of Topbar -->
+                
+                
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                </div>
+                <!-- /.container-fluid -->
                 
                 <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
