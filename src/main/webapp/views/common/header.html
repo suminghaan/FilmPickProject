@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
-
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
   <script src="../../resources/assets/js/color-modes.js"></script>
   <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
 
@@ -24,13 +25,18 @@
       top: 0;
       left: 0;
       right: 0;
+      z-index: 100;
+    }
+
+    .content_wrap {
+      padding-top: 100px;
+      margin:auto;
+      height: 1500px;
+      width: 1500px;
     }
 
     .content {
-      padding-top: 100px;
-      margin:auto;
-      min-height: 1500px;
-      width: 1500px;
+      height: 100%;
     }
 
     #footer {
@@ -45,9 +51,24 @@
       user-select: none;
     }
 
+    .search_bar {
+      width: 400px;
+    }
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
+      }
+    }
+    @media (max-width: 990px) {
+      #header {
+        height: 250px;
+      }
+      .content_wrap {
+        padding-top: 250px;
+      }
+      .search_bar {
+        width: 600px;
       }
     }
 
@@ -148,14 +169,13 @@
       background-color: gray;
     }
 
-
   </style>
 
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
 </head>
-
 <body>
+
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -176,7 +196,7 @@
     </symbol>
   </svg>
 
-  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -222,8 +242,7 @@
         </button>
       </li>
     </ul>
-  </div>
-
+  </div> -->
 
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="bootstrap" viewBox="0 0 118 94">
@@ -286,7 +305,7 @@
           </form>
 
           <!-- 로그인 전에 보여질 내용 -->
-          <div class="text-end">
+          <div class="text-end" style="width: 200px">
             <button type="button" class="btn btn-outline-light me-2">Login</button>
             <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
               --bs-btn-color: RGB(247, 39, 140);
@@ -295,7 +314,7 @@
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>
           <!-- 로그인 시 보여질 내용
-          <div class="dropdown text-end">
+          <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
@@ -308,7 +327,6 @@
               </ul>
           </div> -->
 
-      
         </div>
       </div>
     </header>
@@ -316,5 +334,4 @@
   </main>
 
 </body>
-
 </html>
