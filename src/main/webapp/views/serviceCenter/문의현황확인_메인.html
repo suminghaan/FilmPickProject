@@ -12,21 +12,22 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.122.0">
   <title>FILM PICK</title>
+<!-- 부트스트랩 기능을 위한 CDN 방식 연결 -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">  -->
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ----------------------- -->
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
   <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- 부트스트랩 기능을 위한 CDN 방식 연결 -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- ----------------------------------- -->
-
   <style>
-    /* 헤더부분 */
     #header {
       height: 100px;
       position: fixed;
@@ -39,7 +40,7 @@
     .content_wrap {
       padding-top: 100px;
       margin:auto;
-      height: 1500px;
+      min-height: 1500px;
       width: 1500px;
     }
 
@@ -178,85 +179,58 @@
     }
 
     /*컨텐츠부분*/
-    /* .content_wrap {
-        min-height: 500px;
-        background: black;
-    } */
 
     .background{
-        min-height: 500px;
-        margin: 100px;
+        margin: 50px;
         background-color: rgb(39, 39, 39);
-        display: flex;
-        flex-direction: column;
+        min-height: 200px;
     }
 
-    .list{
-        color: white;
-        font-size: 17px;
+    .content_link{
         display: flex;
-        padding-top: 30px;
+        padding-top: 50px;
         padding-left: 120px;
-        margin-bottom: 10px;
     }
 
-    .content_name{
-        border: 1px solid white;
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        height: 100px;
-        margin: auto;
-        border-left: none;
-        border-right: none;
+    .content_link>a{
+        text-decoration: none;
+        letter-spacing: 5px;
     }
 
     .division{
-        padding-right: 10px;
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 15px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
-    .notice_title{
-        font-weight: bold;
-        font-size: 30px;
-        margin-top: 10px;
-    }
-
-    .content_first{
-        display: flex;
-        color: white;
-        margin-bottom: 15px;
-
-    }
-
-    .content_second{
-        color: rgb(158, 158, 158);
-    }
-
-    .notice_content{
-        color: white;
-        margin: auto;
+    .tableback{
+        background: white;
         width: 80%;
-        height: 400px;
-        margin-top: 15px;
-        margin-bottom: 60px;
-        font-size: 20px;
+        margin: auto;
     }
 
-    .backbtn{
-        width: 10%;
-        margin-bottom: 50px;
-        margin-top: 30px;
-        margin-left: 1000px;
-    }
+    th{background-color:rgb(240, 234, 234);}
     
+    tbody{text-align: center;}
 
-    
+    .notice_search{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .notice_title>th {width: 33%;}
+
+    tbody>tr{cursor: pointer;}
+
+    #head{cursor: pointer;}
+
+    #head>th{border: 1px solid gray}
+
+    .pagination{
+        margin-top: 500px;
+    }
 
   </style>
-
 
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
@@ -417,63 +391,112 @@
         </div>
       </div>
     </header>
+    <!-- 컨텐츠부분 시작 -->
+        <section class="content_wrap" style="background: black; min-height: 1250px;">
+            <div class="background">
+                <div class="content_link"">
+                    <a href="http://www.naver.com" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
+                    <a href="http://www.naver.com" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
+                </div>
+                <br>
+                <table class="tableback table table-hover" id="question_list">
+                    <thead>
+                        <tr class="notice_title" align="center" id="head">
+                            <th onclick="question_list();">문의현황확인</th>
+                            <th style="color: rgb(158, 158, 158);" onclick="nomv();">없는영화신청</th>
+                            <th style="color: rgb(158, 158, 158);" onclick="mantoman();">1대1 문의</th>
+                        </tr>
+                        <tr align="center">
+                            <th style="background: white;">제목</th>
+                            <th style="background: white;">작성일</th>
+                            <th style="background: white;">답변여부</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>내 문의사항제목 2</td>
+                            <td>2024/02/22</td>
+                            <td>N</td>
+                        </tr>
+                        <tr>
+                            <td>내 문의사항제목 1</td>
+                            <td>2024/02/20</td>
+                            <td>Y</td>
+                        </tr>
+                    </tbody>
+                </table>
+ 
+                <br><br><br><br>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
 
-    <div style="background-color: black;">
-      <div class="content">
-                <!-- Section start -->
-                <section class="content_wrap" style="padding-top: 0px; height: 800px;">
+                <div class="notice_search">
+                    <form action="" method="">
+                        <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;">
+                        <button type="image" class="notice_search_btn" alt="검색">검색</button>
+                    </form>
+                </div>
 
-                    <div class="background">
-        
-                        <span class="list">전체 2</span>
-        
-                        <div class="content_name">
-                            <div class="content_first">
-                                <div class="division">[일반]</div>
-                                <div class="notice_title">공지사항제목</div>
-                            </div>
-                            <div class="content_second">
-                                <div class="upload_date">2024/02/20 조회수 36</div>
-                            </div>
-                        </div>
-                        <div class="notice_content">공지사항내용</div>
-                        
-                        <button type="button" class="btn btn-secondary backbtn" onclick="history.back();">뒤로가기</button>
-                    
-                    </div>
-                </section>
-                <!-- Section end -->
-      </div>
-    </div>
+            </div><br><br><br>
+        </section>
+        <!-- Section end -->
+
+        <script>
+            $(function(){
+                $("#question_list>tbody>tr").click(function(){
+                    location.href="http://www.naver.com";
+                })
+            })
+
+            function question_list(){
+                location.href="http://www.naver.com";
+            }
+            
+            function nomv(){
+                location.href="http://www.naver.com";
+            }
+
+            function mantoman(){
+                location.href="http://www.naver.com";
+            }
+            
+        </script>
+    <!-- 컨텐츠부분 끝 -->
 
     <div id="footer" class="container">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="col-md-4 d-flex align-items-center">
-          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-            <svg class="bi" width="30" height="24">
-              <use xlink:href="#bootstrap" />
-            </svg>
-          </a>
-          <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
-        </div>
-
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
-                <use xlink:href="#twitter" />
-              </svg></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
-                <use xlink:href="#instagram" />
-              </svg></a></li>
-          <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
-                <use xlink:href="#facebook" />
-              </svg></a></li>
-        </ul>
-      </footer>
-    </div>
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24">
+                <use xlink:href="#bootstrap" />
+              </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
+          </div>
+  
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
+                  <use xlink:href="#twitter" />
+                </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
+                  <use xlink:href="#instagram" />
+                </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
+                  <use xlink:href="#facebook" />
+                </svg></a></li>
+          </ul>
+        </footer>
+      </div>
 
   </main>
   <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
