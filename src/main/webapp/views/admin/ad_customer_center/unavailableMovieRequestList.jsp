@@ -24,6 +24,7 @@ table{
     display: flex;
     flex-direction: column;
     padding: 17px;
+    cursor: pointer;
 }
 
 .title{
