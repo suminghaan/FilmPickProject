@@ -316,7 +316,7 @@ background-color: black!important;
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div>
                                 <img class="img-profile rounded-circle"
-                                    src="../img/icon_person_white.svg">
+                                    src="../ad_resources/img/icon_person_white.svg">
                                 </div><br><br>
                                     <div>관리자</div>
                             </a>
