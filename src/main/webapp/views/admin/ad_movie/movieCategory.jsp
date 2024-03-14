@@ -21,6 +21,7 @@
 	    width: 1100px;
 	    align-items: center;
 	    margin: 0 auto;
+	    position: relative;
 	}
 	
 	h1{
@@ -28,8 +29,8 @@
 		color: black;
 	}
 
-    .up{
-        margin-right: 15px;
+    .genre{
+        margin-left: 20px;
     }
 
     .genre_box{
@@ -37,6 +38,11 @@
         flex-direction: column;
     }
 
+	.allBtn{
+		position: absolute;
+		right:0;
+		padding: 20px;
+	}
 </style>
 
 </head>
@@ -64,113 +70,75 @@
         <br><br>
         
         
-        <div class="btn-group btn-group-lg">
-            <button type="button" class="btn btn-outline-dark"><h3>장르</h3></button>
-            <button type="button" class="btn btn-outline-dark"><h3>국가</h3></button>
-        </div>
-        
-            
-            
-        <div>
-            <br>
-            <h5>현재 노출 중</h5>
-            <br>
+		<table class="table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="4"><h3>현재 노출중인 장르</h3></th>
+                </tr>               
+            </thead>
 
-        <!-- 장르 선택시 보여지는곳  -->
-
-            <div class="genre_box">
-                <div class="form-check form-check-inline">
-                    <div class="checkInput">
+            <tbody>
+                <tr>
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox1" value="option1">
                         <label class="form-check-label" for="inlineCheckbox1">SF</label>
-                        <label class="up">△</label>
-                        <!-- <div class="order">
-                            <img src="../img/위로버튼.PNG" alt="">
-                            <img src="../img/아래로버튼.PNG" alt="">
-                        </div> -->
-                    </div>
-                    
-                    <div class="checkInput">
+                    </td>
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
-                        <label class="up">△</label>
-                    </div>
-
-                    <div class="checkInput">
+                    </td>
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">로맨스</label>
-                        <label class="up">△</label>
-                    </div>
-
-                    <div class="checkInput">
+                    </td>
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">액션</label>
-                        <label class="up">△</label>
-                    </div>
-
-                    <div class="checkInput">
+                    </td>
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">판타지</label>
-                        <label class="up">△</label>
-                    </div>
-
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <div class="checkInput">
+                    </td>
+				</tr>
+				
+				<tr>
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">코미디</label>
-                        <label class="up">△</label>
-                    </div>
+                    </td>
 
-                    <div class="checkInput">
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">에로</label>
-                        <label class="up">△</label>
-                    </div>
+                    </td>
 
-                    <div class="checkInput">
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">범죄</label>
-                        <label class="up">△</label>
-                    </div>
+                    </td>
 
-                    <div class="checkInput">
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">애니메이션</label>
-                        <label class="up">△</label>
-                    </div>
+                    </td>
 
-                    <div class="checkInput">
+                    <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">느와르</label>
-                        <label class="up">△</label>
-                    </div>
-                </div>
-            </div>
+                    </td>
+                </tr>
+            </tbody>
+        
 
+        </table>
 
-            <!-- 국가 선택시 보여지는것 -->
-
-            <div class="nation_box">
-                <div class="checkInput">
-                    <input class="nation"  type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">국내</label>
-                    <label class="up">△</label>
-                
-
-                    <input class="nation" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">해외</label>
-                    <label class="up">△</label>
-                </div>
-            </div>
-
-
-            <button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#addModal">추가</button>
-            <button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#changeModal">수정</button>
-            <button type="button" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</button>
+		<div class="allBtn">
+        	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#addModal">추가</button>
+        	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#changeModal">수정</button>
+        	<button type="button" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</button>
         </div>
     </div>
+    
 
     <!-- 추가 Modal -->
     <div class="modal" id="addModal">

@@ -32,7 +32,7 @@
 
     .content_wrap {
       padding-top: 100px;
-      margin:auto;
+      margin: auto;
       height: 1500px;
       width: 1500px;
     }
@@ -40,13 +40,14 @@
     .content {
       height: 100%;
     }
+
     /* main{
       background-color: black;
     } */
 
     #footer {
       height: 100px;
-      
+
     }
 
     .bd-placeholder-img {
@@ -66,13 +67,16 @@
         font-size: 3.5rem;
       }
     }
+
     @media (max-width: 990px) {
       #header {
         height: 250px;
       }
+
       .content_wrap {
         padding-top: 250px;
       }
+
       .search_bar {
         width: 600px;
       }
@@ -154,7 +158,7 @@
       display: none;
     }
 
-    .menu_buttons:hover + .menu_buttons_co {
+    .menu_buttons:hover+.menu_buttons_co {
       display: block;
     }
 
@@ -170,32 +174,30 @@
     }
 
 
-    .container{
-        display: flex;          /* 여기 4줄 : div 안 내용물 정렬 */
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-    .movie-poster-area{
-        position: relative;
-        background-color: white;
-        padding: 10px;
-        margin: 10px;
-        width: 170px;
-        height: 300px;
-        border-radius: 0.3em;
-    }
-    #heart{
-        position: absolute;
-        top: 10px;
-        right: 10px;           
+    .container {
+      display: flex;
+      /* 여기 4줄 : div 안 내용물 정렬 */
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
 
+    .movie-poster-area {
+      position: relative;
+      background-color: white;
+      padding: 10px;
+      margin: 10px;
+      width: 170px;
+      height: 300px;
+      border-radius: 0.3em;
+    }
 
-
+    #heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   </style>
-
-
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
 </head>
@@ -221,7 +223,7 @@
     </symbol>
   </svg>
 
-   <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -310,13 +312,17 @@
             <img style="height: 65px;" src="../../resources/img/logo.png" alt="">
           </a>
 
-          <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <ul style="display: flex; align-items: center;"
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-headphones fa-2x"></i></i></a></li>
             <li class="menu_buttons_co">고객센터</li>
           </ul>
 
@@ -339,139 +345,136 @@
               --bs-btn-hover-bg: RGB(247, 39, 140);
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>-->
-          <!-- 로그인 시 보여질 내용--> 
+          <!-- 로그인 시 보여질 내용-->
           <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
-              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small" >
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-          </div> 
-
-      
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
 
     <div class="content_wrap" style="background-color: black;">
       <div class="content">
-
-
         <div class="container">
-            
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster1">
-                <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                <a href="">
-                <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                </a>
-                </div>
-                듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster1">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
             </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster2">
-    
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster2">
+
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
             </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster3">
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster3">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
             </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster4">
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster4">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
             </div>
-    
-            <div class="movie-poster-area">
-                <div class="movie-poster" id="poster5">
-                    <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                    <a href="">
-                    <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                    </a>
-                    </div>
-                    듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster5">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
             </div>
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
 
         </div>
 
 
         <div class="container">
-            
+
           <div class="movie-poster-area">
-              <div class="movie-poster" id="poster6">
-              <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
+            <div class="movie-poster" id="poster6">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
               <a href="">
-              <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
               </a>
-              </div>
-              듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster7">
-  
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster8">
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster9">
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-  
-          <div class="movie-poster-area">
-              <div class="movie-poster" id="poster10">
-                  <img src="../resources/img/heart2.png" width="20px" height="20px" id="heart">
-                  <a href="">
-                  <img src="../resources/img/듄.jpeg" width="150px" height="213px" id="poster1">
-                  </a>
-                  </div>
-                  듄<img src="../resources/img/review2_icon.png" width="20px" height="20px">
+            </div>
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
           </div>
 
-      </div>
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster7">
+
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
+            </div>
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster8">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
+            </div>
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster9">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
+            </div>
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+          <div class="movie-poster-area">
+            <div class="movie-poster" id="poster10">
+              <img src="../../resources/img/heart2.png" width="20px" height="20px" id="heart">
+              <a href="">
+                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
+              </a>
+            </div>
+            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          </div>
+
+        </div>
 
       </div>
     </div>
