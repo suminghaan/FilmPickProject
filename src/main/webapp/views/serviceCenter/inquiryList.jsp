@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    /*컨텐츠부분*/
-
+   /*컨텐츠부분*/
     .background{
         margin: 50px;
         background-color: rgb(39, 39, 39);
@@ -57,19 +56,19 @@
     .pagination{
         margin-top: 500px;
     }
-
 </style>
 </head>
 <body>
 
-	<%@ include file="/views/common/header.jsp" %>
+	<%@ include file="/views/common/header.jsp"%>
 	
 	<!-- 컨텐츠부분 시작 -->
         <section class="content_wrap" style="background: black; min-height: 1250px;">
             <div class="background">
                 <div class="content_link"">
-                    <a href="http://www.naver.com" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
-                    <a href="http://www.naver.com" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
+                	<!-- 추후 링크 수정 @@@@@@@@@@ -->
+                    <a href="../notice/noticeList.jsp" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
+                    <a href="inquiryList.jsp" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
                 </div>
                 <br>
                 <table class="tableback table table-hover" id="question_list">
@@ -143,7 +142,7 @@
         </script>
     <!-- 컨텐츠부분 끝 -->
 	
-	<%@ include file="/views/common/footer.jsp" %>
+	<%@ include file="/views/common/footer.jsp"%>
 
 </body>
 </html>
