@@ -92,7 +92,7 @@ h1{
                         <td>제목3</td>
                         <td>감독명3</td>
                         <td>장르</td>
-                        <td><button type="button" class="btn btn-outline-secondary">관리</button></td>
+                        <td><button type="button" class="btn btn-outline-secondary" onclick="movieListDetail();">관리</button></td>
                     </tr>
 
                     <tr>
@@ -148,6 +148,12 @@ h1{
              
         </div>
     </div>  
+    
+    <script>
+   		function movieListDetail(){
+   			location.href = "../ad_movie/movieListDetail.jsp";
+   		}
+   </script>
 	
 	<!-- section end -->
 
