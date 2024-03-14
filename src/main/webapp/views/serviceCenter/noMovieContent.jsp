@@ -40,6 +40,11 @@
         background: white;
         margin: 30px;
     }
+    
+    .backbtn{
+	      width: 100px;
+	      margin-left: 1250px;
+    }
 </style>
 </head>
 <body>
@@ -202,6 +207,7 @@
                                   <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
                                   
                                   <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">업로드</button> <br>
+                                  
                                   <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
                               </div>
                                       <!-- 영화등록 Modal -->
@@ -235,7 +241,10 @@
                       </div>
 
                   </div>
-              </div> <br><br>
+                  <button type="button" class="btn btn-secondary backbtn" onclick="history.back();">뒤로가기</button> <br>
+              </div> 
+              
+              <br><br>
           <!-- /.container-fluid -->
 
               <!-- 인물검색 Modal -->

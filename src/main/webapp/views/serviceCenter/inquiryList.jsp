@@ -123,20 +123,20 @@
         <script>
             $(function(){
                 $("#question_list>tbody>tr").click(function(){
-                    location.href="http://www.naver.com";
+                    location.href="inquiryContent.jsp";
                 })
             })
 
             function question_list(){
-                location.href="http://www.naver.com";
+                location.href="inquiryList.jsp"; // 추후수정
             }
             
             function nomv(){
-                location.href="http://www.naver.com";
+                location.href="noMovieList.jsp"; // 추후수정
             }
 
             function mantoman(){
-                location.href="http://www.naver.com";
+                location.href="inquiryWrite.jsp"; // 추후수정
             }
             
         </script>
