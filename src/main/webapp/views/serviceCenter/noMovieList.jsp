@@ -74,8 +74,9 @@
         <section class="content_wrap" style="min-height: 800px;">
             <div class="background">
                 <div class="content_link"">
-                    <a href="http://www.naver.com" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
-                    <a href="http://www.naver.com" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
+                	<!-- 추후 링크 수정 @@@@@@@@@@ -->
+                    <a href="../notice/noticeList.jsp" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
+                    <a href="inquiryList.jsp" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
                 </div>
                 <br>
                 <table class="tableback table" id="question_list">
@@ -129,7 +130,8 @@
                     </tbody>
                 </table>
                 <br>
-                <a href="http://www.naver.com" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
+                <!-- 추후 수정 -->
+                <a href="noMovieContent.jsp" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
 
             </div> <br><br>
         </section>
@@ -145,15 +147,15 @@
             */
 
             function question_list(){
-                location.href="http://www.naver.com";
+                location.href="inquiryList.jsp"; // 추후 수정
             }
             
             function nomv(){
-                location.href="http://www.naver.com";
+                location.href="noMovieList.jsp"; // 추후 수정
             }
 
             function mantoman(){
-                location.href="http://www.naver.com";
+                location.href="inquiryWrite.jsp"; // 추후 수정
             }
 
     

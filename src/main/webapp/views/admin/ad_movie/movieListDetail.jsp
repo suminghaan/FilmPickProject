@@ -4,244 +4,129 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>없는영화 신청 확인 </title>
+<title>영화 상세 조회</title>
+
+<!-- 부트스트랩 기능을 위한 CDN 방식 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--  -------------------------------------  -->
+
+
 <style>
-#header {
-  height: 100px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
+	/*컨텐츠부분*/
 
-.content_wrap {
-  padding-top: 100px;
-  margin:auto;
-  height: 1500px;
-  width: 1500px;
-}
+   .all{
+       padding: 5px 5px 5px 5px;
+       width: 1100px;
+       align-items: center;
+       margin: 0 auto;
+   }
 
-.content {
-  height: 100%;
-}
+   .modal-body {
+       position: relative;
+   }
 
-#footer {
-  height: 100px;
-}
+   .psModal{
+       position: absolute;
+       top: 19px;
+       right: 19px;
+   }
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
+   .psButton-body{
+       position: relative;
+   }
 
-.search_bar {
-  width: 400px;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-@media (max-width: 990px) {
-  #header {
-    height: 250px;
-  }
-  .content_wrap {
-    padding-top: 250px;
-  }
-  .search_bar {
-    width: 600px;
-  }
-}
-
-.b-example-divider {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-}
-
-.bi {
-  vertical-align: -.125em;
-  fill: currentColor;
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
-}
-
-.bd-mode-toggle {
-  z-index: 1500;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-  display: block !important;
-}
-
-.menu_buttons {
-  margin-left: 20px;
-}
-
-.menu_buttons:hover {
-  transform: scale(1.3);
-}
-
-.menu_buttons_co {
-  margin-left: 10px;
-  display: none;
-}
-
-.menu_buttons:hover + .menu_buttons_co {
-  display: block;
-}
-
-.search {
-  position: relative;
-}
-
-.searchBtn {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-}
-
-.search-info {
-  margin-top: 200px;
-  height: 5%;
-  background-color: gray;
-}
-
-/*컨텐츠부분*/
-
- .all{
-     padding: 5px 5px 5px 5px;
-     width: 1100px;
-     align-items: center;
-     margin: 0 auto;
- }
-
- .modal-body {
-     position: relative;
- }
-
- .psModal{
-     position: absolute;
-     top: 19px;
-     right: 19px;
- }
-
- .psButton-body{
-     position: relative;
- }
-
- .psButton{
-     position: absolute;
-     top: 27.5px;
-     left: 300px;
- }
-  
-
-#title{
-    margin-top: 50px;
-}
-
-h1{
-    font-weight: bold !important;
-    color: black;
-}
-
-.dr{
-	display: flex;
-}
-
-.dr *{
-	margin-right : 20px;
-}
-
-.modal-text{
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-label{
-	margin-right: 15px;
-}
-
-input[type="radio"]{
-	margin-right: 5px;
-}
-
-label
-{
-    color: black;
-}
+   .psButton{
+       position: absolute;
+       top: 27.5px;
+       left: 300px;
+   }
    
-   
-  /*모달 스타일*/
-  
-.modal-header{
-		color: black;
-		font-weight: bold !important;
-}
 	
+	#title{
+	    margin-top: 50px;
+	}
+
+	h1{
+	    font-weight: bold !important;
+	    color: black;
+	}
+	
+	.dr{
+		display: flex;
+	}
+	
+	.dr *{
+		margin-right : 20px;
+	}
+	
+	.modal-text{
+	    margin-right: 10px;
+	    font-weight: bold;
+	}
+	
+	label{
+		margin-right: 15px;
+	}
+	
+	input[type="radio"]{
+		margin-right: 5px;
+	}
+	
+	label{
+            color: black;
+    }
+    
+    
+   /*모달 스타일*/
+   
+   .modal-header{
+   		color: black;
+   		font-weight: bold !important;
+   }
+   
+   /*content style */
+   
+   .castingList{
+   		display:flex;
+   		width:400px;
+   }
+   
+   .person{
+   		display:flex;
+   		flex-direction:column;
+   }
+   
+   img{
+   		width:80px;
+   		height:80px;
+   }
+   
+   .inputUser{
+   		display:flex;
+   }
+
 </style>
+	
 </head>
 <body>
-<%@ include file="/views/admin/common/header.jsp" %>
-    <div class="container-fluid">
-    	<div class="content">
+
+	<%-- Header start --%>
+	<%@ include file="/views/admin/common/header.jsp" %>
+	<%-- Header end --%>
+	
+	<%-- section start --%>	
+	
+	<div class="content">
 
         
         <section class="content_wrap" style="padding-top: 0px;">
 
         <div class="container">
             <div id="title" class="title"></div>
-            <h1>없는영화 신청글 확인</h1>
+            <h1>영화 상세 조회</h1>
             <hr>
         </div>
         
@@ -258,7 +143,7 @@ label
                     <label for="mGrade">영화관람등급</label>
                     <select class="form-control" id="mGrade" name="" style="width: 400px;">
                         <option value="1">전체관람</option>
-                        <option value="2">12세 관람가</option>
+                        <option selected value="2">12세 관람가</option>
                         <option value="3">15세 관람가</option>
                         <option value="4">청소년관람불가</option>
                     </select>
@@ -294,6 +179,26 @@ label
                     <label>출연/제작</label>
                     <input type="text" name="casting" class="form-control" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
+                
+                	<div class="castingList">
+                		<div class="person">
+	                    <img src="../img/최동훈감독.PNG" alt=""> 최동훈 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    </div>
+	                    <div class="person">
+	                    <img src="../img/김우빈.PNG" alt=""> 김우빈 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    </div>
+	                    <div class="person">
+	                    <img src="../img/김태리.PNG" alt=""> 김태리 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    </div>
+	                    <div class="person">
+	                    <img src="../img/류준열.PNG" alt=""> 류준열 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+						</div>
+					</div>
+                	
                 </div>
                 <br>
 
@@ -390,19 +295,30 @@ label
 
                     <input type="radio" id="radioM" name="gender" value="M">
                     <label for="radioM">첫페이지 노출</label>
-
-                    <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('신규영화 등록이 완료되었습니다.')">업로드</button>
                 	
                 </div>
+                
+                <div class="form-group">
+                    <label>사용자 요청사항</label>
+                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">사용자가 입력한 요청사항</textarea>       
+                </div>
+                <br>
+                
+                <!-- 사용자가 등록한 영화일 경우 -->
+                <div class="form-group inputUser">
+                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
+                    <div class="userInfo">
+                        <p><label>등록한 사용자 ID : </label>user01</p>
+                        <p><label>등록한 영화 갯수 : </label>13번</p>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('내용이 수정되었습니다.')">수정하기</button>
+                
             </div>
         </form>
     </div>
-        <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
-        <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
-    	</div>
-  </div>
+
     
 
     <!-- 인물검색 Modal -->
@@ -434,51 +350,9 @@ label
             </div>
         </div>
     </div>
-    
+	
+	
+	
 
-     <div class="modal fade" id="refuseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">거절사유 입력</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
-                    <span class="modal-text">거절사유</span>
-                    <span><textarea rows="5" style="resize:none;" placeholder="내용을 입력해주세요" class="form-control"></textarea></span>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center ">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="alert('거절사유 작성이 완료되었습니다.')">작성</button>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="recognizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">수정사항 확인</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container" style="margin-top: 20px; margin-bottom: 10px;">
-                    <span class="modal-text">개봉일</span>
-                    <span>2024-01-11</span>
-                </div>
-                <div class="container" style="margin-top: 30px; margin-bottom: 10px;">
-                    <span class="modal-text">영화장르</span>
-                    <span>스릴러</span>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">확인</button>
-            </div>
-        </div>
-        </div>
-    </div>
 </body>
 </html>

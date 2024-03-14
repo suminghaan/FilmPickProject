@@ -87,6 +87,9 @@
         white-space: nowrap;
         overflow: hidden;
     }
+    .btnw{
+    	width: 200px;
+    }
     
 </style>
 </head>
@@ -102,57 +105,58 @@
     <div id="wrap">
         <div id="category">
             
-            <select class="btn" style="background-color: whitesmoke; color: black;">
-                <option value="Y">현재상영중인영화</option>
-                <option value="N">개봉예정영화</option>
+            <select class="btn btnw" name="currentScreen" style="background-color: whitesmoke; color: black;">
+                <option value="mvall">전체영화</option>
+                <option value="curr">현재상영중인영화</option>
+                <option value="new">개봉예정영화</option>
             </select>
-
-            <select class="btn" style="background-color: whitesmoke; color: black;">
-                <option value="Y" style="color: black;">장르별</option>
+			
+            <select class="btn btnw" name="category" style="background-color: whitesmoke; color: black;">
+            	<option value="">장르</option> 
                 <option value="SF">SF</option>
                 <option value="스릴러">스릴러</option>
-                <option value="N">로맨스</option>
-                <option value="N">액션</option>
-                <option value="N">판타지</option>
-                <option value="N">코미디</option>
-                <option value="N">에로</option>
-                <option value="N">범죄</option>
-                <option value="N">애니메이션</option>
-                <option value="N">느와르</option>
+                <option value="로맨스">로맨스</option>
+                <option value="액션">액션</option>
+                <option value="판타지">판타지</option>
+                <option value="코미디">코미디</option>
+                <option value="에로">에로</option>
+                <option value="범죄">범죄</option>
+                <option value="애니메이션">애니메이션</option>
+                <option value="느와르">느와르</option>
             </select>
 
-            <select class="btn" style="background-color: whitesmoke; color: black;">
-                <option value="Y">등급별</option>
-                <option value="N">전체관람가</option>
-                <option value="N">12세 이상</option>
-                <option value="N">15세 이상</option>
-                <option value="N">청소년 관람불가</option>
+            <select class="btn btnw" name="viewRating"  style="background-color: whitesmoke; color: black;">
+                <option value="">등급</option>
+                <option value="overall">전체관람가</option>
+                <option value="12old">12세 이상</option>
+                <option value="15old">15세 이상</option>
+                <option value="adult">청소년 관람불가</option>
             </select>
 
-            <select class="btn" style="background-color: whitesmoke; color: black;">
-                <option value="Y">연대별</option>
-                <option value="N">올해개봉작</option>
-                <option value="N">2020년대</option>
-                <option value="N">2010년대</option>
-                <option value="N">2000년대</option>
-                <option value="N">1990년대</option>
-                <option value="N">1980년대이전</option>
+            <select class="btn btnw" name="yesrs" style="background-color: whitesmoke; color: black;">
+                <option value="">연대</option>
+                <option value="newyear">올해개봉작</option>
+                <option value="2020s">2020년대</option>
+                <option value="2010s">2010년대</option>
+                <option value="2000s">2000년대</option>
+                <option value="1990s">1990년대</option>
+                <option value="1980s">1980년대이전</option>
             </select>
 
-            <select class="btn" style="background-color: whitesmoke; color: black;">
-                <option value="Y">국가별</option>
-                <option value="N">국내영화</option>
-                <option value="N">해외영화</option>
+            <select class="btn btnw" name="nation" style="background-color: whitesmoke; color: black;">
+                <option value="">국가</option>
+                <option value="ko">국내영화</option>
+                <option value="nko">해외영화</option>
             </select>
 
         </div>
         <div id="content">
             <div id="filter">
-                <select class="btn btn-outline" style="color: #b4b4b4;">
-                    <option value="Y">인기순</option>
-                    <option value="N">최신순</option>
-                    <option value="N">가나다순</option>
-                    <option value="N">리뷰순</option>
+                <select class="btn btn-outline" name="filter" style="color: #b4b4b4;">
+                    <option value="popular">인기순</option>
+                    <option value="lately">최신순</option>
+                    <option value="korean">가나다순</option>
+                    <option value="reviews">리뷰순</option>
                 </select>
             </div>
             <div class="movie">
