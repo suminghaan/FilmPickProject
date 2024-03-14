@@ -18,7 +18,6 @@
 .content_wrap {
   padding-top: 100px;
   margin:auto;
-  height: 1500px;
   width: 1500px;
 }
 
@@ -228,7 +227,26 @@ label
 		color: black;
 		font-weight: bold !important;
 }
-	
+
+.castingList{
+		display:flex;
+		width:400px;
+}
+
+.person{
+		display:flex;
+		flex-direction:column;
+}
+
+img{
+		width:80px;
+		height:80px;
+}
+
+.inputUser{
+		display:flex;
+}
+
 </style>
 </head>
 <body>
@@ -249,7 +267,7 @@ label
             <div class="all">                
                 <div class="form-group">
                     <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="" placeholder="제목입력" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="" placeholder="파묘" style="width: 500px;">
                 </div>
 
                 <br>
@@ -258,7 +276,7 @@ label
                     <label for="mGrade">영화관람등급</label>
                     <select class="form-control" id="mGrade" name="" style="width: 400px;">
                         <option value="1">전체관람</option>
-                        <option value="2">12세 관람가</option>
+                        <option value="2" selected>12세 관람가</option>
                         <option value="3">15세 관람가</option>
                         <option value="4">청소년관람불가</option>
                     </select>
@@ -268,7 +286,8 @@ label
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;"></textarea>                
+                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.
+                    </textarea>                
                 </div>
                 
 
@@ -278,11 +297,11 @@ label
                 
                 	<div>
                     	<label>개봉일</label>
-                    	<input type="date" name="dateIn" class="form-control" style="width: 300px;">
+                    	<input type="date" name="dateIn" class="form-control" style="width: 300px;" value="2024-01-11">
                     </div>
                     <div>
                     	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" class="form-control" style="width: 300px;">
+                    	<input type="text" name="runningTime" class="form-control" style="width: 300px;" value="122분">
                 	</div>
                 </div>
                 <br>
@@ -294,6 +313,26 @@ label
                     <label>출연/제작</label>
                     <input type="text" name="casting" class="form-control" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
+                
+                	<div class="castingList">
+                		<div class="person">
+	                    <img src="../img/최동훈감독.PNG" alt=""> 최동훈 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    </div>
+	                    <div class="person">
+	                    <img src="../img/김우빈.PNG" alt=""> 김우빈 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    </div>
+	                    <div class="person">
+	                    <img src="../img/김태리.PNG" alt=""> 김태리 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    </div>
+	                    <div class="person">
+	                    <img src="../img/류준열.PNG" alt=""> 류준열 <br>
+	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+						</div>
+					</div>
+                	
                 </div>
                 <br>
 
@@ -303,7 +342,7 @@ label
                     <br>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbox1" name="category" value="SF">
+                        <input class="form-check-input" type="checkbox" id="cbox1" name="category" value="SF" checked>
                         <label class="form-check-label" for="cbox1">SF</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox2" name="category" value="스릴러">
@@ -312,7 +351,7 @@ label
                         <input class="form-check-input" type="checkbox" id="cbox3" name="category" value="로맨스">
                         <label class="form-check-label" for="cbox3">로맨스</label>
 
-                        <input class="form-check-input" type="checkbox" id="cbox4" name="category" value="액션">
+                        <input class="form-check-input" type="checkbox" id="cbox4" name="category" value="액션" checked>
                         <label class="form-check-label" for="cbox4">액션</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox5" name="category" value="판타지">
@@ -392,7 +431,20 @@ label
                     <label for="radioM">첫페이지 노출</label>
 
                     <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('신규영화 등록이 완료되었습니다.')">업로드</button>
-                	
+                </div>
+		     <div class="form-group">
+                    <label>사용자 요청사항</label>
+                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">사용자가 입력한 요청사항</textarea>       
+                </div>
+                <br>
+                
+                <!-- 사용자가 등록한 영화일 경우 -->
+                <div class="form-group inputUser">
+                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
+                    <div class="userInfo">
+                        <p><label>등록한 사용자 ID : </label>user01</p>
+                        <p><label>등록한 영화 갯수 : </label>13번</p>
+                    </div>
                 </div>
             </div>
         </form>
