@@ -4,7 +4,11 @@
     padding: 0;
 }
 
-body{
+body {
+    --c: RGB(247, 39, 152);
+}
+
+.heart{
     /*100% 창 높이*/
     height: 100vh;
     /*배치 center*/
@@ -12,10 +16,10 @@ body{
     justify-content: center;
     align-items: center;
     /*사용자정의: var 함수로 핸들링*/
-    --c: #ff6b81;
+    /* --c: #ff6b81; */
 }
 
-svg{
+.icon{
     width: 50px;
     /*상대포지션*/
     position: relative;
@@ -41,7 +45,7 @@ svg{
     
 }
 
-span{
+.heart_span{
     display: block;
     width: 24px;
     height: 24px;
@@ -70,18 +74,18 @@ span{
     animation: drawHeart 1s linear forwards;
 }
 
-#checkbox:checked ~ span{
-    /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
+/* #checkbox:checked ~ .heart_span{
+    //애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임
     animation: blink 0.5s ease-in-out forwards;
-    /*애니메이션 딜레이*/
+    //애니메이션 딜레이
     animation-delay: 0.8s ;
-}
+} */
 
 #checkbox:checked + svg{
      /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
     animation: beat 1s linear forwards;;
 }
-label{
+.heart_label{
     /*마우스 heart로 이동시 마우스 커서변동*/
     cursor: pointer;
 }
