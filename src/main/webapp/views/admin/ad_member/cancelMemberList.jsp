@@ -38,12 +38,12 @@ table{
                         <td>
                             <input type="date">  -  <input type="date">&nbsp;&nbsp;&nbsp;
                             <div class="btn-group">
-                                <button type="button" class="btn btn-outline-primary">오늘</button>
-                                <button type="button" class="btn btn-outline-primary">일주일</button>
-                                <button type="button" class="btn btn-outline-primary">한달</button>
-                                <button type="button" class="btn btn-outline-primary">3개월</button>
-                                <button type="button" class="btn btn-outline-primary">전체</button>
-                                </div>
+                                <button type="button" class="btn btn-outline-dark date">오늘</button>
+                                <button type="button" class="btn btn-outline-dark date">일주일</button>
+                                <button type="button" class="btn btn-outline-dark date">한달</button>
+                                <button type="button" class="btn btn-outline-dark date">3개월</button>
+                                <button type="button" class="btn btn-outline-dark date">전체</button>
+                            </div>
                         </td>
                     </tbody>
             </table>
@@ -147,5 +147,13 @@ table{
         </div>
     </div>
     </div>
+    <script>
+    	$(function(){
+    		$('.date').click(function(){
+    			 $(this).removeClass('btn-outline-dark').addClass('btn-dark');
+    	         $('.date').not($(this)).removeClass('btn-dark').addClass('btn-outline-dark');
+    		});
+    	});
+    </script>
 </body>
 </html>
