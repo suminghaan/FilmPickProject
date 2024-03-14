@@ -1,0 +1,28 @@
+.like,
+.dislike {
+    height: 25px;
+    width: 25px;
+    position: relative;
+}
+
+.filled_wrap,
+.empty_wrap {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.like_dislike_img {
+    height: 25px;
+}
+
+.like_dislike_btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.like_filled,
+.dislike_filled {
+    display: none;
+}

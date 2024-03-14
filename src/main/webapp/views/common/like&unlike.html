@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+    <title>like&unlike</title>
+    <style>
+        .like,
+        .dislike {
+            height: 50px;
+            width: 50px;
+            position: relative;
+        }
+
+        .filled_wrap,
+        .empty_wrap {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        .like_dislike_img {
+            height: 50px;
+        }
+
+        .like_dislike_btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .like_filled,
+        .dislike_filled {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="like_dislike_wrap">
+        <div class="like">
+            <div class="like_filled filled_wrap">
+                <button type="button" class="like_dislike_btn like_btn"><img class="like_filled_img like_dislike_img"
+                        src="../../resources/img/좋아요.png" alt=""></button>
+            </div>
+            <div class="like_empty empty_wrap">
+                <button type="button" class="like_dislike_btn like_btn"><img class="like_empty_img like_dislike_img"
+                        src="../../resources/img/빈좋아요.png" alt=""></button>
+            </div>
+        </div>
+
+        <div class="dislike">
+            <div class="dislike_filled filled_wrap">
+                <button type="button" class="like_dislike_btn dislike_btn"><img class="dislike_filled_img like_dislike_img"
+                        src="../../resources/img/싫어요.png" alt=""></button>
+            </div>
+            <div class="dislike_empty empty_wrap">
+                <button type="button" class="like_dislike_btn dislike_btn"><img class="dislike_empty_img like_dislike_img"
+                        src="../../resources/img/빈싫어요.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    if(!($(".like_btn").is("disabled"))) {
+        $(".like_filled").click(function () {
+        $(".like_filled").css('display', "none")
+        $(".like_filled").css('z-index', "0")
+        $(".dislike_btn").removeClass("disabled");
+    })
+    $(".like_empty").click(function () {
+        if ($(".dislike_filled").css("display") == "none") {
+            $(".like_filled").css('display', "block")
+            $(".like_filled").css('z-index', "10")
+            $(".dislike_btn").addClass("disabled");
+        }
+    })
+    }
+
+    if(!($(".dislike_btn").is("disabled"))) {
+        $(".dislike_filled").click(function () {
+        $(".dislike_filled").css('display', "none")
+        $(".dislike_filled").css('z-index', "0")
+        $(".like_btn").removeClass("disabled");
+    })
+    $(".dislike_empty").click(function () {
+        if ($(".like_filled").css("display") == "none") {
+            $(".dislike_filled").css('display', "block")
+            $(".dislike_filled").css('z-index', "10")
+            $(".like_btn").addClass("disabled");
+        }
+    })
+    }
+
+</script>
+
+</html>
