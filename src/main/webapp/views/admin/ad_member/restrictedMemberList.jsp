@@ -160,7 +160,7 @@ table{
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center ">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">변경</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="changeStatus();">변경</button>
                     </div>
                 </div>
             </div>
@@ -188,5 +188,10 @@ table{
         </div>
     </div>
  </div>
+ <script>
+ 	function changeStatus(){
+ 		alert('변경이 완료되었습니다.');
+ 	}
+ </script>
 </body>
 </html>
