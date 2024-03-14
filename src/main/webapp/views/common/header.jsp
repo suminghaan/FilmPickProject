@@ -310,7 +310,7 @@
             <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
             <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
-            <li class="menu_buttons_co">고객센터</li>
+            <li class="menu_buttons_co">공지사항/고객센터</li>
           </ul>
 
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
