@@ -172,7 +172,7 @@
       right: 0;
     }
 
-    div.search-id{
+    div.search-pwd{
             border: 1px solid lightgrey;
             width: 500px;
             height: 350px;
@@ -348,7 +348,7 @@
     <div class="content_wrap" style="background-color: black;">
       <div class="content">
         
-        <div class="search-id" style="background-color: white;">
+        <div class="search-pwd" style="background-color: white;">
             <div class="container">
             <h2>로고</h2>
             <p>변경할 비밀번호를 입력하세요</p>
@@ -358,8 +358,8 @@
             <form action="/action_page.php">
                 <div class="form-group">
                 <!--<label for="email">아이디</label>-->
-                    <input type="text" class="form-control" id="pwd" placeholder="변경할 비밀번호" name="name" style="background-color:transparent;" required>
-                    <input type="text" class="form-control" id="pwd-check" placeholder="변경할 비밀번호 확인" style="background-color:transparent;" required>
+                    <input type="password" class="form-control" id="pwd" placeholder="변경할 비밀번호" name="name" style="background-color:transparent;" required>
+                    <input type="password" class="form-control" id="pwd-check" placeholder="변경할 비밀번호 확인" style="background-color:transparent;" required>
                     <input type="text" class="form-control" id="pwd-check" placeholder="비밀번호관련 알림띄우는 부분 ex) 8~15 특수문자포함" style="background-color:transparent;" required>
                     <!-- 저장하기 누르면 저장완료됐다고 alert창 띄우고 로그인화면으로 가기 -->
                 </div>
@@ -371,11 +371,12 @@
                 <br>
     
             <!-- 클래스명 다시 생각해보기 -->
-                <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
-                                                                           --bs-btn-color:RGB(247, 39, 140);
-                                                                           --bs-btn-hover-color: #ffffff;
-                                                                           --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                           --bs-btn-hover-border-color: #ffffff;">비밀번호저장하기</button>
+                <center><button type="submit" class="btn btn-outline-light" style="width: 300px;
+                                                                                    --bs-btn-border-color: RGB(247, 39, 140);
+                                                                                    --bs-btn-color:RGB(247, 39, 140);
+                                                                                    --bs-btn-hover-color: #ffffff;
+                                                                                    --bs-btn-hover-bg: RGB(247, 39, 140);
+                                                                                    --bs-btn-hover-border-color: #ffffff;">비밀번호저장하기</button></center>
                 <br>
                 <br>
                 <br>

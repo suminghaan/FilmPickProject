@@ -22,6 +22,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <style>
     #header {
@@ -182,7 +183,33 @@
       height: 350px;
       border-radius: 0.3em;
     }
+
+    .certify{
+      border: 1px solid lightgray;
+      width: 300px;
+      height: 30px;
+      border-radius: 0.3em;
+      cursor: pointer;
+    }
+
+    .form-group{
+      border: 1px solid lightgray;
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      margin-top: 5px;
+      padding: 10px;
+      box-sizing: border-box;
+      display: none;
+    }
+
+
+
+
+
+
   </style>
+
 
 
   <!-- Custom styles for this template -->
@@ -357,102 +384,92 @@
     <div class="content_wrap" style="background-color: black;">
       <div class="content">
 
-        <div class="search-id" style="background-color: white;">
+        <div class="search-id" style="background-color: white; color: black;">
           <div class="container">
-            <p>비밀번호 찾는 방법을 선택해주세요</p>
+            <h7>비밀번호 찾는 방법을 선택해주세요</h7>
             <br>
-            <div>
-              <input type="radio" id="radio-phone" name="certify" value="certifyphone" data-toggle="collapse"
-                data-target="#use-phonenum">
-              <label for="radio-phone">본인 명의 휴대전화 번호로 인증</label>
+            
+            <div class="certify" name="certifyphone">
+              본인 명의 휴대전화 번호로 인증
+            </div>
 
-              <form action="/action_page.php" id="use-phonenum" class="collapse">
-                <div class="form-group">
-                  <!--<label for="email">아이디</label>-->
-                  <input type="text" class="form-control" id="id" placeholder="아이디" name="id"
+              <div class="form-group usephonenum" style="color: black;">
+                <!--<label for="email">아이디</label>-->
+                <input type="text" class="form-control" id="id" placeholder="아이디" name="id"
+                  style="background-color:transparent;" required>
+                <input type="text" class="form-control" id="name" placeholder="이름" name="name"
+                  style="background-color:transparent;" required>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="phonenum" placeholder="휴대전화번호" name="phonenum"
                     style="background-color:transparent;" required>
-                  <input type="text" class="form-control" id="name" placeholder="이름" name="name"
+                  <div class="phone-certification">
+                    <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
+                  --bs-btn-color:RGB(247, 39, 140);
+                  --bs-btn-hover-color: #ffffff;
+                  --bs-btn-hover-bg: RGB(247, 39, 140);
+                  --bs-btn-hover-border-color: #ffffff;">인증</button>
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="certification-num" placeholder="인증번호 숫자 6자리"
+                  name="certification-num" style="background-color:transparent;" required>
+              </div>
+
+
+
+            <!--/////////////////////////////////////////////////-->
+
+
+
+
+            <div class="certify" name="certifyemail">
+              본인 확인 이메일로 인증
+            </div>
+              <div class="form-group"  style="color: black;">
+                <!--<label for="email">아이디</label>-->
+                <input type="text" class="form-control" id="id" placeholder="아이디" name="id"
+                  style="background-color:transparent;" required>
+                <input type="text" class="form-control" id="name" placeholder="이름" name="name"
+                  style="background-color:transparent;" required>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="email" placeholder="이메일주소" name="email"
                     style="background-color:transparent;" required>
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="phonenum" placeholder="휴대전화번호" name="phonenum"
-                      style="background-color:transparent;" required>
-                    <div class="phone-certification">
-                      <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
+                  <div class="phone-certification">
+                    <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
                     --bs-btn-color:RGB(247, 39, 140);
                     --bs-btn-hover-color: #ffffff;
                     --bs-btn-hover-bg: RGB(247, 39, 140);
                     --bs-btn-hover-border-color: #ffffff;">인증</button>
-                    </div>
                   </div>
-                  <input type="text" class="form-control" id="certification-num" placeholder="인증번호 숫자 6자리"
-                    name="certification-num" style="background-color:transparent;" required>
                 </div>
-              </form>
-            </div>
-            <br>
-
-            <div>
-              <input type="radio" id="radio-email" name="certify" value="certifyemail" data-toggle="collapse"
-                data-target="#use-email">
-              <label for="radio-phone">본인확인 이메일로 인증</label>
+                <input type="text" class="form-control" id="certification-num" placeholder="인증번호 숫자 6자리"
+                  name="certification-num" style="background-color:transparent;" required>
+              </div>
 
 
-              <form action="/action_page.php" id="use-email" class="collapse">
-                <div class="form-group">
-                  <!--<label for="email">아이디</label>-->
-                  <input type="text" class="form-control" id="id" placeholder="아이디" name="id"
-                    style="background-color:transparent;" required>
-                  <input type="text" class="form-control" id="name" placeholder="이름" name="name"
-                    style="background-color:transparent;" required>
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="email" placeholder="이메일주소" name="email"
-                      style="background-color:transparent;" required>
-                    <div class="phone-certification">
-                      <button type="submit" class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
-                      --bs-btn-color:RGB(247, 39, 140);
-                      --bs-btn-hover-color: #ffffff;
-                      --bs-btn-hover-bg: RGB(247, 39, 140);
-                      --bs-btn-hover-border-color: #ffffff;">인증</button>
-                    </div>
-                  </div>
-                  <input type="text" class="form-control" id="certification-num" placeholder="인증번호 숫자 6자리"
-                    name="certification-num" style="background-color:transparent;" required>
-                </div>
-              </form>
-
-              <script>
-                const radioBtn = document.querySelectorAll("input[type=radio]");
-
-                $("input[type=radio]").click(function () {
-
-                  if (radioBtn[0].checked == true) {
-                    $("input[type=radio]").eq(0).removeClass("collapsed");
-                    $("input[type=radio]").eq(0).attr("aria-expended", true);
-                    $("#use-phonenum").addClass("show");
-                  } else {
-                    $("input[type=radio]").eq(0).addClass("collapsed");
-                    $("input[type=radio]").eq(0).attr("aria-expended", false);
-                    $("#use-phonenum").removeClass("show");
-                  }
-
-                  if (radioBtn[1].checked == true) {
-                    $("input[type=radio]").eq(1).removeClass("collapsed");
-                    $("input[type=radio]").eq(1).attr("aria-expended", true);
-                    $("#use-phonenum").addClass("show");
-                  } else {
-                    $("input[type=radio]").eq(1).addClass("collapsed");
-                    $("input[type=radio]").eq(1).attr("aria-expended", false);
-                    $("#use-phonenum").removeClass("show");
-                  }
-
-                  console.log("첫번째 버튼 값", radioBtn[0].checked);
-                  console.log("두번째 버튼 값", radioBtn[1].checked);
-                })
+            <!--/////////////////////////////////////////////////-->
 
 
-              </script>
+            <script>
 
-            </div>
+
+            $(function(){
+              $("div.certify").click(function(){
+                const $p = $(this).next(); 
+
+                if($p.css("display") == "none"){
+                    $(this).siblings("div.form-group").slideUp();
+                    $p.slideDown();
+
+                }else{ 
+                    $p.slideUp();
+                }
+                
+              })
+            })
+
+            </script>
+
+
             <br>
 
             <!-- 클래스명 다시 생각해보기 -->
