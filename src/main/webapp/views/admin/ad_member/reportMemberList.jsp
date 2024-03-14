@@ -20,7 +20,7 @@ table{
     margin-right: 10px;
     font-weight: bold;
 }
-.modal-content{
+.report-modal-content{
 	height: 500px;
 }
 </style>
@@ -199,7 +199,7 @@ table{
 
     <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content report-modal-content">
             <div class="modal-header">
             <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">신고내역 확인</h4>
             </div>
