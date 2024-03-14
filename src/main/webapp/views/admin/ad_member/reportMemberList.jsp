@@ -20,7 +20,9 @@ table{
     margin-right: 10px;
     font-weight: bold;
 }
-
+.report-modal-content{
+	height: 500px;
+}
 </style>
 </head>
 <body>
@@ -62,7 +64,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -72,7 +74,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -82,7 +84,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -92,7 +94,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -102,7 +104,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -112,7 +114,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -122,7 +124,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -132,7 +134,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -142,7 +144,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
@@ -152,7 +154,7 @@ table{
                 <td>2024-01-11</td>
                 <td>22</td>
                 <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#kickModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
             </tbody>
         </table>
@@ -195,13 +197,58 @@ table{
         </div>
     </div>
 
-    <div class="modal fade" id="kickModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content report-modal-content">
             <div class="modal-header">
             <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">신고내역 확인</h4>
             </div>
             <div class="modal-body">
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">닉네임</span>
+                    <span>익명원</span>
+                </div>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">신고사유</span>
+                    <span>욕설</span>
+                </div>
+                <hr>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">닉네임</span>
+                    <span>익명원</span>
+                </div>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">신고사유</span>
+                    <span>욕설</span>
+                </div>
+                <hr>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">닉네임</span>
+                    <span>익명원</span>
+                </div>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">신고사유</span>
+                    <span>욕설</span>
+                </div>
+                <hr>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">닉네임</span>
+                    <span>익명원</span>
+                </div>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">신고사유</span>
+                    <span>욕설</span>
+                </div>
+                <hr>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">닉네임</span>
+                    <span>익명원</span>
+                </div>
+                <div class="container" style="margin-bottom: 10px;">
+                    <span class="modal-text">신고사유</span>
+                    <span>욕설</span>
+                </div>
+                <hr>
                 <div class="container" style="margin-bottom: 10px;">
                     <span class="modal-text">닉네임</span>
                     <span>익명원</span>

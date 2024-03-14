@@ -13,13 +13,14 @@ public class Movie {
 	private String mPageExposed;
 	private String mvPoster;
 	private String mvPreview;
+	private String mvStatus;
 	
 	public Movie() {
 	}
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
-			String mvPreview) {
+			String mvPreview, String mvStatus) {
 		super();
 		this.mvNo = mvNo;
 		this.mvName = mvName;
@@ -33,6 +34,7 @@ public class Movie {
 		this.mPageExposed = mPageExposed;
 		this.mvPoster = mvPoster;
 		this.mvPreview = mvPreview;
+		this.mvStatus = mvStatus;
 	}
 
 	public int getMvNo() {
@@ -131,13 +133,23 @@ public class Movie {
 		this.mvPreview = mvPreview;
 	}
 
+	public String getMvStatus() {
+		return mvStatus;
+	}
+
+	public void setMvStatus(String mvStatus) {
+		this.mvStatus = mvStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [mvNo=" + mvNo + ", mvName=" + mvName + ", mvOpenDate=" + mvOpenDate + ", mvNation=" + mvNation
 				+ ", mvRTime=" + mvRTime + ", mvStory=" + mvStory + ", fPageExposed=" + fPageExposed + ", viewRating="
 				+ viewRating + ", currentScreening=" + currentScreening + ", mPageExposed=" + mPageExposed
-				+ ", mvPoster=" + mvPoster + ", mvPreview=" + mvPreview + "]";
+				+ ", mvPoster=" + mvPoster + ", mvPreview=" + mvPreview + ", mvStatus=" + mvStatus + "]";
 	}
+
+	
 	
 	
 }

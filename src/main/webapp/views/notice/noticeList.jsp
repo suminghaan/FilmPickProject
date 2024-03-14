@@ -4,7 +4,7 @@
 <%@ page import="com.fp.notice.model.vo.Notice" %>
 <%@ page import="java.util.List" %>
 <%
-	// NoticeListController Servlet에서 담아 보낸것들을 jsp에서 꺼내는 구문
+	// NoticeListController Servlet에서 setAttribute로 담아 보낸것들을 jsp에서 꺼내는 구문
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	List<Notice> list = (List<Notice>)request.getAttribute("list");
 	// db완성되기 전까지는 jsp의 컨텐츠부분 안건들일 예쩡

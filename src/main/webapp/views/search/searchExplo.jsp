@@ -354,7 +354,7 @@
             </div>
         </div>
     </div>
-    
+    <a class="page-link" href="<%= contextPath %>/movie.mo?page="></a>
 </section>
 <footer>
 	

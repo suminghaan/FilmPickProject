@@ -92,7 +92,10 @@ h1{
                         <td>제목3</td>
                         <td>감독명3</td>
                         <td>장르</td>
-                        <td><button type="button" class="btn btn-outline-secondary" onclick="movieListDetail();">관리</button></td>
+                        <td>
+                        	<button type="button" class="btn btn-outline-secondary" onclick="movieListDetail();">관리</button>
+                        	<button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -102,7 +105,10 @@ h1{
                         <td>제목2</td>
                         <td>감독명2</td>
                         <td>장르</td>
-                        <td><button type="button" class="btn btn-outline-secondary">관리</button></td>
+                        <td>
+                        	<button type="button" class="btn btn-outline-secondary" onclick="movieListDetail();">관리</button>
+                        	<button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
+                        </td>
                     </tr>
 
                 </tbody>
@@ -150,9 +156,22 @@ h1{
     </div>  
     
     <script>
+
+    	function deleted(){
+    		let d = prompt("등록된 영화를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
+    		
+    		if(d=="삭제"){
+                alert("영화가 삭제되었습니다.")
+            }else{
+                alert("잘못입력하셨습니다. 다시 확인해주세요")
+            }
+    	}
+    
    		function movieListDetail(){
    			location.href = "../ad_movie/movieListDetail.jsp";
    		}
+   		
+   		
    </script>
 	
 	<!-- section end -->

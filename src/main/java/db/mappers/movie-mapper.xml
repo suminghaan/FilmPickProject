@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectListCount">
+		SELECT COUNT(*) "COUNT"
+		FROM MOVIE
+		WHERE MV_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectExploList">
+		SELECT  MV_NO
+				, MV_POSTER
+				, MV_NAME
+				, ROUND(AVG(LIKE_POINT), 1) "LIKE_PONT"
+				, MV_OPENDATE
+				, MV_NATION
+		FROM MOVIE
+		JOIN MOVIE_CATEGORY USING (MV_NO)
+		WHERE MV_STATUS = 'Y'
+	</entry>
+	
+</properties>

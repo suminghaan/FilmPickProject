@@ -223,9 +223,43 @@
       width: 100px;
       margin-left: 1250px;
     }
-    
 
+    /* 뒤늦게 추가함*/
+    .dr{
+      display: flex;
+    }
     
+    .dr *{
+      margin-right: 20px;
+    }
+
+    .form-category *{
+      margin-right: 5px
+    }
+
+    .person-table{
+      border: 1px solid black;
+      margin: 5px;
+    }
+
+    .person-table *{
+      border: 1px solid black;
+    }
+
+    .person-div{
+      display: flex;
+      border: 1px solid red;
+      width: 800px;
+      flex-wrap:wrap
+    }
+
+    .person-div img{
+      width: 80px;
+      height: 80px;
+    }
+
+
+
 
   </style>
 
@@ -403,14 +437,14 @@
                           <form action="" method="">
                               <div class="form-group">
                                   <label for="exampleFormControlInput1">영화제목</label> <br>
-                                  <input type="email" class="form-control" id="exampleFormControlInput1" name="">
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" name="" style="width: 600px;">
                               </div>
 
                               <br>
 
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1">영화관람등급</label>
-                                  <select class="form-control" id="exampleFormControlSelect1" name="">
+                                  <select class="form-control" id="exampleFormControlSelect1" name="" style="width: 600px;">
                                       <option value="전체">전체관람</option>
                                       <option value="12세">12</option>
                                       <option value="15세">15</option>
@@ -422,38 +456,134 @@
 
                               <div class="form-group">
                                   <label for="exampleFormControlTextarea1">영화줄거리</label> <br>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name=""></textarea>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="" style="width: 600px;"></textarea>
                               </div>
                               
 
                               <br>
+                              <div class="form-group dr">
+                                <div class="form-group">
+                                    개봉일
+                                    <input type="date" name="dateIn" class="form-control" style="width: 300px;">
+                                </div><br><br><br><br>
+                                
 
-                              <div class="form-group">
-                                  개봉일
-                                  <input type="date" name="dateIn" class="form-control">
+                                <div class="form-group">
+                                    러닝타임
+                                    <input type="text" name="runningTime" class="form-control" style="width: 300px;">
+                                </div><br>
                               </div>
-                              <br>
-
-                              <div class="form-group">
-                                  러닝타임
-                                  <input type="text" name="runningTime" class="form-control">
-                              </div>
-                              <br>
+                              
 
                               <div class="form-group psButton-body">
                                   출연/제작
-                                  <input type="text" name="" class="form-control">
-                                  <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
+                                  <input type="text" name="" class="form-control" style="width: 600px;">
+                                  <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
+                              </div><br>
+
+                              <div class="person-div">
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
+
+                                <table class="person-table">
+                                  <tr>
+                                    <td><img src="../../resources/img/고경표.jpeg"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>고경표</td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
+                                  </tr>
+                                </table>
                               </div>
-                              <br>
+                              
 
-
-                              <div class="form-group">
-                              영화 장르 선택
-                              <br>
-
-                                  <!-- <div class="form-check form-check-inline"> -->
-
+                              <br><br>
+                              <div class="form-group form-category">
+                              영화 장르 선택 <br>
+                              
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
                                       <label class="form-check-label" for="inlineCheckbox1">SF</label>
                                   
@@ -469,9 +599,7 @@
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="판타지" name="category">
                                       <label class="form-check-label" for="inlineCheckbox5">판타지</label>
 
-                                  <!-- </div> -->
-
-                                  <!-- <div class="form-check form-check-inline"> -->
+                                  
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="코미디" name="category">
                                       <label class="form-check-label" for="inlineCheckbox6">코미디</label>
 
@@ -486,9 +614,8 @@
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="느와르" name="category">
                                       <label class="form-check-label" for="inlineCheckbox10">느와르</label>
-                                  <!-- </div> -->
                               </div>
-                              <br>
+                              <br><br>
 
 
                               <div class="form-group">
@@ -609,7 +736,7 @@
                   
                           <!-- Modal footer -->
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
+                              <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal" id="personBtn">추가</button>
                           </div>
                   
                       </div>
@@ -617,6 +744,34 @@
               </div>
 
         </section>
+
+        <script>
+          // 이게 아닌감..
+          $(function(){
+
+            let count = 1;
+            let result = "";
+            result += "<table class='person-table'>";
+                    +   "<tr>";
+                    +     "<td><img src='../../resources/img/고경표.jsp'></td>";
+                    +   "</tr>";
+                    +   "<tr>";
+                    +     "<td>고경표</td>";
+                    +   "</tr>";
+                    +   "<tr>";
+                    +     '<td><input type="text" placeholder="해당영화역활" name="movieJob"></td>';
+                    +   "</tr>";
+                    + "</table>";
+
+            $("#personBtn").click(function(){
+
+              $(".person-div").append(result);
+
+            })
+
+          })
+
+        </script>
     <!-- Section end -->  
 
       </div>
