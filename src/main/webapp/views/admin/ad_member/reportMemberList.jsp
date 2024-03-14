@@ -235,7 +235,7 @@ table{
         </div>
         </div>
     </div>
-<!-- 0 -->
+
     <div class="d-flex justify-content-center container">
         <nav aria-label="Page navigation example">
                 <ul class="pagination">
