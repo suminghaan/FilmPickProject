@@ -81,9 +81,12 @@
             .box_font>a {
                 text-decoration: none;
             }
-            .carousel-item.active {
-                display: flex !important;
+            .posi{
+            	display: flex;
             }
+            /*.carousel-item.active {
+                display: flex !important;
+            } */
             
             .box_post {
                 display: flex;
@@ -200,29 +203,33 @@
                         <!-- The slideshow -->
                         <div class="carousel-inner">
                             <div class="carousel-item active main_item">
-                                <div id="main_video">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rjW9E1BR_30?si=tmWSvmdDWIBUaMH3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <div id="main_content">
-                                    <div class="title_font">파묘</div>
-                                    <div class="title_date">2024.02.22</div>
-                                    <div class="title_content">미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는
-                                        집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사
-                                        ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘.
-                                        ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.</div>
+                                <div class="posi">
+	                                <div id="main_video">
+	                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rjW9E1BR_30?si=tmWSvmdDWIBUaMH3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	                                </div>
+	                                <div id="main_content">
+	                                    <div class="title_font">파묘</div>
+	                                    <div class="title_date">2024.02.22</div>
+	                                    <div class="title_content">미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는
+	                                        집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사
+	                                        ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘.
+	                                        ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.</div>
+	                                </div>
                                 </div>
                             </div>
                             <div class="carousel-item main_item">
-                                <div id="main_video">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/81JOj5-xNGc?si=Cpdu4fFLjHGq67a1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                </div>
-                                <div id="main_content">
-                                    <div class="title_font">듄: 파트2</div>
-                                    <div class="title_date">2024.02.28</div>
-                                    <div class="title_content">황제의 모략으로 멸문한 가문의 유일한 후계자 폴.(티모시 샬라메) 어머니 레이디 제시카(레베카 퍼거슨)와 
-                                    간신히 목숨만 부지한 채 사막으로 도망친다. 그곳에서 만난 반란군들과 숨어 지내다 그들과 함께 황제의 모든 것을 파괴할 전투를 준비한다. 
-                                    한편 반란군들의 기세가 높아질수록 불안해진 황제와 귀족 가문은 잔혹한 암살자 페이드 로타(오스틴 버틀러)를 보내 
-                                    반란군을 몰살하려 하는데… 운명의 반격이 시작된다!</div>
+                            	<div class="posi">
+	                                <div id="main_video">
+	                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/81JOj5-xNGc?si=Cpdu4fFLjHGq67a1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	                                </div>
+	                                <div id="main_content">
+	                                    <div class="title_font">듄: 파트2</div>
+	                                    <div class="title_date">2024.02.28</div>
+	                                    <div class="title_content">황제의 모략으로 멸문한 가문의 유일한 후계자 폴.(티모시 샬라메) 어머니 레이디 제시카(레베카 퍼거슨)와 
+	                                    간신히 목숨만 부지한 채 사막으로 도망친다. 그곳에서 만난 반란군들과 숨어 지내다 그들과 함께 황제의 모든 것을 파괴할 전투를 준비한다. 
+	                                    한편 반란군들의 기세가 높아질수록 불안해진 황제와 귀족 가문은 잔혹한 암살자 페이드 로타(오스틴 버틀러)를 보내 
+	                                    반란군을 몰살하려 하는데… 운명의 반격이 시작된다!</div>
+	                                </div>
                                 </div>
                             </div>
                         </div>
@@ -370,25 +377,29 @@
                             
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <div class="review_content">
-                                        div로 만들어야하나...
-                                    </div>
-                                    <div class="review_content">
-                                        리뷰를 어케할까
-                                    </div>
-                                    <div class="review_content">
-                                        리뷰를 어케할까
+                                    <div class="posi">
+	                                    <div class="review_content">
+	                                        div로 만들어야하나...
+	                                    </div>
+	                                    <div class="review_content">
+	                                        리뷰를 어케할까
+	                                    </div>
+	                                    <div class="review_content">
+	                                        리뷰를 어케할까
+	                                    </div>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <div class="review_content">
-                                        기웅이가 만든거 긁어올껀데 div로 만들려나...?
-                                    </div>
-                                    <div class="review_content">
-                                        리뷰를 어케할까
-                                    </div>
-                                    <div class="review_content">
-                                        리뷰를 어케할까
+                               		<div class="posi">
+	                                    <div class="review_content">
+	                                        기웅이가 만든거 긁어올껀데 div로 만들려나...?
+	                                    </div>
+	                                    <div class="review_content">
+	                                        리뷰를 어케할까
+	                                    </div>
+	                                    <div class="review_content">
+	                                        리뷰를 어케할까
+	                                    </div>
                                     </div>
                                 </div>
                             </div>
