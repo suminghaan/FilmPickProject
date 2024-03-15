@@ -240,16 +240,19 @@
     .person-table{
       border: 1px solid black;
       margin: 5px;
+      border-collapse: separate;
+      border-radius: 10px;
     }
 
     .person-table *{
-      border: 1px solid black;
+      border-collapse: separate;
+      border-radius: 10px;
     }
 
     .person-div{
       display: flex;
-      border: 1px solid red;
-      width: 800px;
+      /* border: 1px solid red; */
+      width: 900px;
       flex-wrap:wrap
     }
 
@@ -423,11 +426,12 @@
         </div>
       </div>
     </header>
-
+	
+	<!-- 컨텐츠부분 시작 -->
     <div style="background-color: black;">
       <div class="content">
 
-        <!-- Section start -->
+        
         <section class="content_wrap">
           <!-- Begin Page Content -->
           <div class="background">
@@ -482,101 +486,9 @@
                               </div><br>
 
                               <div class="person-div">
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
 
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
+                                <!--테이블이 생성될 공간-->
 
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
-
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
-
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
-
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
-
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
-
-                                <table class="person-table">
-                                  <tr>
-                                    <td><img src="../../resources/img/고경표.jpeg"></td>
-                                  </tr>
-                                  <tr>
-                                    <td>고경표</td>
-                                  </tr>
-                                  <tr>
-                                    <td><input type="text" placeholder="해당영화역활" name="movieJob"></td>
-                                  </tr>
-                                </table>
                               </div>
                               
 
@@ -736,7 +648,9 @@
                   
                           <!-- Modal footer -->
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal" id="personBtn">추가</button>
+                              <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
+                              <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtn">제거</button>
+                              <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">닫기</button>
                           </div>
                   
                       </div>
@@ -746,36 +660,45 @@
         </section>
 
         <script>
-          // 이게 아닌감..
-          $(function(){
+ 
+              var count = 0; //최대 8명만 추가할 수 있는 조건
+              
+              $("#personBtn").click(function(){              
+                if(count < 8){
 
-            let count = 1;
-            let result = "";
-            result += "<table class='person-table'>";
-                    +   "<tr>";
-                    +     "<td><img src='../../resources/img/고경표.jsp'></td>";
-                    +   "</tr>";
-                    +   "<tr>";
-                    +     "<td>고경표</td>";
-                    +   "</tr>";
-                    +   "<tr>";
-                    +     '<td><input type="text" placeholder="해당영화역활" name="movieJob"></td>';
-                    +   "</tr>";
-                    + "</table>";
+                let result = "";
+                  result += "<table class='person-table'>"
+                          +   "<tr>"
+                          +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
+                          +   "</tr>"
+                          +   "<tr>"
+                          +     "<td>고경표</td>"
+                          +   "</tr>"
+                          +   "<tr>"
+                          +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
+                          +   "</tr>"
+                          +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
+                          + "</table>";
 
-            $("#personBtn").click(function(){
+                    $(".person-div").append(result);
+                    count++;
+                }else{
+                  alert("8명이상 추가할 수 없습니다.");
+                }
+              });
 
-              $(".person-div").append(result);
-
-            })
-
-          })
+              $("#personRemoveBtn").click(function(){
+                $(".person-div").find("table").last().remove();
+                  if(count > 0){
+                    count--;
+                  }
+              });
 
         </script>
-    <!-- Section end -->  
-
+    
       </div>
     </div>
+    <!-- 컨텐츠부분 종료 -->
 
     <div id="footer" class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
