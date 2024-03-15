@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <script src="../../resources/assets/js/color-modes.js"></script>
+  <script src="<%= contextPath %>/resources/assets/js/color-modes.js"></script>
   <script src="https://kit.fontawesome.com/12ec987af7.js" crossorigin="anonymous"></script>
 
   <meta charset="utf-8">
@@ -30,7 +30,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-  <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<%= contextPath %>/resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
   
@@ -191,7 +191,7 @@
   </style>
 
   <!-- Custom styles for this template -->
-  <link href="../../resources/css/headers.css" rel="stylesheet">
+  <link href="<%= contextPath %>/resources/css/headers.css" rel="stylesheet">
 </head>
 <body>
 
