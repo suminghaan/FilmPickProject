@@ -1,4 +1,4 @@
-package com.fp.admin.model.vo;
+package com.fp.member.model.vo;
 
 public class Member {
 	private int memNo; // 회원번호
