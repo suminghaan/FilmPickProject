@@ -135,7 +135,7 @@ background-color: black!important;
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="../ad_community/commuNoticeList.jsp">공지사항 작성</a>
                     <a class="collapse-item" href="../ad_community/commuBlindList.jsp">블라인드 게시글 관리</a>
-                    <a class="collapse-item" href="forgot-password.html">신고글 관리</a>
+                    <a class="collapse-item" href="../ad_community/commuReportBoardList.jsp">신고글 관리</a>
                     <div class="collapse-divider"></div>
                 </div>
             </div>
