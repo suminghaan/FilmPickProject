@@ -28,6 +28,7 @@
 		font-weight: bold !important;
 		color: black;
 	}
+	
 
 </style>
 
