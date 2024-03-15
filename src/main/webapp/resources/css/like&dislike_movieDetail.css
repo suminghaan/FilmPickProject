@@ -1,7 +1,7 @@
-.like,
-.dislike {
-    height: 25px;
-    width: 25px;
+.ag,
+.disag {
+    height: 30px;
+    width: 30px;
     position: relative;
 }
 
@@ -12,17 +12,17 @@
     position: absolute;
 }
 
-.like_dislike_img {
+.ag_disag_img {
     height: 25px;
 }
 
-.like_dislike_btn {
+.ag_disag_btn {
     cursor: pointer;
     background: none;
     border: none;
 }
 
-.like_filled,
-.dislike_filled {
+.ag_filled,
+.disag_filled {
     display: none;
 }
