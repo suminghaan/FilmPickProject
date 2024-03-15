@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.SearchFilter;
 
 /**
  * Servlet implementation class MovieExploController
@@ -33,6 +34,19 @@ public class MovieExploController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String currScreen = request.getParameter("currentScreen"); // 상영중인영화조회
+		String category = request.getParameter("category"); // 카테고리조회
+		String viewRating = request.getParameter("viewRating"); // 등급조회
+		String yesrs = request.getParameter("yesrs"); // 연도조회
+		String nation = request.getParameter("nation"); // 국가조회
+		String filter = request.getParameter("filter"); // 필터조회
+		
+		SearchFilter f = new SearchFilter();
+		
+		번호, 포스터, 제목, 별점, 개봉일 국가
+		Movie m = new Movie();
+		
+		
 		int listCount; // 현재 게시글 총 갯수
 		int currentPage; // 현재 페이지 (사용자가 요청한 페이지)
 		int pageLimit; // 페이징바의 페이지 최대갯수 (몇개 단위씩)
@@ -59,6 +73,14 @@ public class MovieExploController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		List<Movie> list = new MovieService().selectList(pi);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("/views/search/searchExplo.jsp").forward(request, response);
+		
+		
+		
 	}
 
 	/**

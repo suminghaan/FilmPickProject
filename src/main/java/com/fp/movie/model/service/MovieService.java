@@ -13,6 +13,7 @@ public class MovieService {
 	
 	private MovieDao mDao = new MovieDao();
 	
+	// 페이징 하기위해 리스트 갯수 조회 구문 [용훈]
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = mDao.selectListCount(conn);
@@ -21,6 +22,7 @@ public class MovieService {
 		return listCount;
 	}
 	
+	// 탐색페이지 페이징 구문 [용훈]
 	public List<Movie> selectList(PageInfo pi) {
 		Connection conn = getConnection();
 		List<Movie> list = mDao.selectList(conn, pi);
@@ -28,6 +30,7 @@ public class MovieService {
 		return list;
 	}
 	
+	// 탐색페이지 필터 활용 구문 [용훈]
 	public List<Movie> selectExploList(){
 		
 		Connection conn = getConnection();

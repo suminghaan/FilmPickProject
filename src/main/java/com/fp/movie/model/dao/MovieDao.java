@@ -17,6 +17,7 @@ public class MovieDao {
 	
 	private Properties prop = new Properties();
 	
+	// 페이징 하기위해 리스트 갯수 조회 구문 [용훈]
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		PreparedStatement pstmt = null;
@@ -39,11 +40,16 @@ public class MovieDao {
 		return listCount;
 	}
 	
+	// 탐색페이지 페이징 구문 [용훈]
 	public List<Movie> selectList(Connection conn, PageInfo pi) {
+		List<Movie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
 		return null;
 	}
 	
+	// 탐색페이지 필터 활용 구문 [용훈]
 	public List<Movie> selectExploList(Connection conn) {
 		List<Movie> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
