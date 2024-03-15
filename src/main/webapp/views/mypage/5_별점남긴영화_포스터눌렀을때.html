@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
   <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
   <style>
     #header {
@@ -169,14 +170,14 @@
     }
 
 
-
+    /* 영화 포스터 눌렀을때 나오는 페이지 스타일 */
     .movie-container{
       float: left;
       height: 700px;
       width: 1000px;
       border: 1px solid black;
       background-color: white;
-      border-radius: 0.5em;
+      border-radius: 0.7em;
       margin-top: 200px;
       margin-left: 300px; 
             
@@ -252,6 +253,36 @@
       top: 10px;
       left:160px
     }
+
+    /* 좋아요 */
+    .ag,
+        .disag {
+            height: 65px;
+            width: 65px;
+            position: relative;
+        }
+
+        .filled_wrap,
+        .empty_wrap {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        .ag_disag_img {
+            height: 50px;
+        }
+
+        .ag_disag_btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .ag_filled,
+        .disag_filled {
+            display: none;
+        }
       
   </style>
 
@@ -259,6 +290,7 @@
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
   <link href="../../resources/css/starRating.css" rel="stylesheet">
+  <link href="../../resources/css/like&dislike_movieReviewDetail.css" rel="stylesheet">
 </head>
 
 <body>
@@ -431,13 +463,12 @@
                     <img src="../../resources/img/듄2.jpeg" width="200px" height="270px" id="poster1">
                     <a href="" class="btn-detail" id="btn-detail">자세히</a>
                 </div>
-    
                 <div class="movie-review-area1">
-                  <a href="" class="btn-close" id="btn-close"></a> 
+                  <!--<a href="" class="btn-close" id="btn-close"  onclick="history.back();"  ></a> -->
 
-
-                  <!-- 별점 -->
+                  <button type="button" class="btn-close" aria-label="Close" onclick="history.back();" ></button>
                   
+                  <!-- 별점 -->
                   <div class="wrap" style="margin-top: 150px; margin-left: 130px;">
                     <div class="rating">
                         <label class="rating__label rating__label--half" for="starhalf">
@@ -481,23 +512,138 @@
                             <span class="star-icon"></span>
                         </label>
                     </div>
-                </div>
+                  </div>
              
                   <!-- 별점 -->
 
+
+
+                  <!-- 공감/비공감 -->
+
+                  <div>
+                    <div class="thumb_btn">
+                      <!-- 공감 -->
+                      <div class="thumb_up">
+                          <div class="ag_disag_wrap">
+                              <div class="ag">
+                                  <div class="ag_filled filled_wrap">
+                                      <button type="button" class="ag_disag_btn ag_filled_btn"><img class="ag_filled_img ag_disag_img"
+                                              src="../../resources/img/좋아요.png" alt=""></button>
+                                  </div>
+                                  <div class="ag_empty empty_wrap">
+                                      <button type="button" class="ag_disag_btn ag_empty_btn"><img class="ag_empty_img ag_disag_img"
+                                              src="../../resources/img/빈좋아요.png" alt=""></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="thumb_count">
+                          <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+                      </div>
+                      <!-- 공감 -->
                     
+                      <!-- 비공감 -->
+                      <div class="thumb_down">
+                          <div class="ag_disag_wrap">
+                              <div class="disag">
+                                  <div class="disag_filled filled_wrap">
+                                      <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                              class="ag_filled_img ag_disag_img" src="../../resources/img/싫어요.png" alt=""></button>
+                                  </div>
+                                  <div class="disag_empty empty_wrap">
+                                      <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                              class="ag_empty_img ag_disag_img" src="../../resources/img/빈싫어요.png" alt=""></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="thumb_count">
+                          <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
+                      </div>
+                      <!-- 비공감 -->
+                    </div>
+                  </div>
+            </body>
+            <script>
+                $(".ag_empty_btn").each(function (index, el) {
+                    $(el).click(function () {
+                        // 누른 버튼 display none으로
+                        $(el).parent().css("display", "none");
+                        // 숨겨진 버튼 display block
+                        $(el).parent().prev().css("display", "block");
+            
+                        // 빈 좋아요 버튼을 눌러서 좋아요 표시를 하면 싫어요 버튼을 비활성화로
+                        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+                            $(e).addClass("disabled");
+                            $(e).css("pointer-events", "none")
+                        })
+                    })
+                })
+            
+                $(".ag_filled_btn").each(function (index, el) {
+                    console.log($(el));
+                    $(el).click(function () {
+                        // 누른 버튼 display none으로
+                        $(el).parent().css("display", "none");
+                        // 숨겨진 버튼 display block
+                        $(el).parent().next().css("display", "block");
+            
+                        // 꽉찬 좋아요 버튼을 눌러서 좋아요 표시를 제거하면 싫어요 버튼을 활성화로
+                        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+                            $(e).removeClass("disabled");
+                            $(e).css("pointer-events", "auto")
+                        })
+                    })
+                })
+            
+                $(".disag_empty_btn").each(function (index, el) {
+                    $(el).click(function () {
+                        // 누른 버튼 display none으로
+                        $(el).parent().css("display", "none");
+                        // 숨겨진 버튼 display block
+                        $(el).parent().prev().css("display", "block");
+            
+                        // 빈 싫어요 버튼을 눌러서 싫어요 표시를 하면 좋아요 버튼을 비활성화로
+                        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+                            $(e).addClass("disabled");
+                            $(e).css("pointer-events", "none")
+                        })
+                    })
+                })
+            
+                
+                $(".disag_filled_btn").each(function (index, el) {
+                    $(el).click(function () {
+                        // 누른 버튼 display none으로
+                        $(el).parent().css("display", "none");
+                        // 숨겨진 버튼 display block
+                        $(el).parent().next().css("display", "block");
+            
+                        // 꽉찬 싫어요 버튼을 눌러서 싫어요 표시를 제거하면 좋아요 버튼을 활성화로
+                        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+                            $(e).removeClass("disabled");
+                            $(e).css("pointer-events", "auto")
+                        })
+                    })
+                })
+            
+            
+            </script>
+            </div>
+                  <!-- 리뷰 좋아요 -->  
+
+
+
+
+
+                  <!-- 리뷰 작성 -->
                     <div class="movie-review-area2">
                         <div class="movie-review">리뷰남기는곳 리뷰리뷰!!</div>
                         <button class="btn-edit" id="btn-edit">수정하기</button>  
                     </div>
                    
                 </div>
-            </div>
-            
-
-
-        <!--</div>-->
-
+              </div>
 
       </div>
     </div>

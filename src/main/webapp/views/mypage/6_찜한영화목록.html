@@ -21,7 +21,6 @@
 
   <link href="../../resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../resources/css/heart_movielike.css">
   
   <style>
     #header {
@@ -201,9 +200,129 @@
       right: 10px;
     }
 
+    /* 좋아요 누른 영화 페이지 */
+
+    .search_info {
+      height: 2%;
+      background-color: rgb(48, 48, 48);
+      padding-top: 2px;
+      padding-left: 50px;
+      border-radius: 10px;
+    }
+
+    .mp_bar {
+      padding-left: 50px;
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 30px;
+      height: 5%;
+      color: white;
+    }
+
+    .movie_info {
+      height: 67%;
+      background-color: rgb(12, 12, 12);
+      border-radius: 10px;
+    }
+
+    .person_info {
+      height: 25%;
+      margin-top: 1%;
+      background-color: rgb(12, 12, 12);
+      border-radius: 10px;
+    }
+
+    .movie_list {
+      padding: 0px 80px;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .person_list {
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .thumbnail {
+      /* width: 20%; */
+      height: 42%;
+      margin: 10px 25px 25px 5px;
+      /* border: 1px solid lightgray; */
+      padding: 5px;
+      cursor: pointer;
+      display: flex;
+      padding-bottom: 10px;
+      flex-direction: column;
+      justify-content: center;
+      /* 위치를 표시할 기준이 되는 부모 요소에 relative */
+      position: relative;
+      align-items: center;
+    }
+
+    .person_wrap {
+      height: 70%;
+      margin: 0px 120px 25px 80px;
+      /* border: 1px solid lightgray; */
+      padding: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    /* .thumbnail:hover>img,
+    .thumbnail_etc {
+      opacity: 0.95;
+    } */
+
+    .thumbnail_img {
+      width: 240px;
+      height: 330px;
+      border-radius: 10px;
+    }
+
+    .information {
+      font-size: 15px;
+      padding-left: 20px;
+      margin: auto;
+    }
+
+    .thumbnail:hover>.thumbnail_title {
+      display: block;
+    }
+
+    .thumbnail_title {
+      width: 240px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.2);
+      font-size: 10px;
+      color: white;
+      text-align: left;
+      /* 위치를 이동시킬 요소에 absolute. top. left, right 등으로 위치 조절 */
+      position: absolute;
+      bottom: 50px;
+      /* 요소가 겹쳐있을 때 무엇을 더 위에 표현할지. z-index 값이 클수록 위에 옴 */
+      z-index: 10;
+      display: none;
+    }
+
+    .thumbnail_etc {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .heart{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   </style>
   <!-- Custom styles for this template -->
   <link href="../../resources/css/headers.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../resources/css/heart_movielike.css">
 </head>
 
 <body>
@@ -372,234 +491,251 @@
     <div class="content_wrap" style="background-color: black;">
       <div class="content">
 
-        <div class="container">
-
-          <div class="movie-poster-area">
-
-            <div class="movie-poster" id="poster1">
-              <div class="heart" id="heart1">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
+          <div class="mp_bar">
+            좋아요 누른 영화
           </div>
+          <br><br>
+          <div id="carouselMovie" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="movie_list">
+  
+                  <div class="thumbnail">
+                    <div>
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    </div>  
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re1" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
 
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster2">
-
-              <div class="heart"  id="heart2">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster3">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster4">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster5">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-        </div>
-
-
-        <div class="container">
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster6">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster7">
-
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster8">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster9">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
-                    <span class="heart_span"></span>
-                </label>
-              </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
-            </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
-          </div>
-
-          <div class="movie-poster-area">
-            <div class="movie-poster" id="poster10">
-              <div class="heart"  id="heart">
-                <label class="heart_label" for="checkbox">
-                    <input type="checkbox" id="checkbox" hidden>
-                    <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        p-id="2271">
-                        <path
-                            d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                            fill="#231F20" p-id="2272" id="heart"></path>
-                    </svg>
+                    <div class="heart">
+                      <label class="heart_label" for="cb1">
+                          <input type="checkbox" class="checkbox" id="cb1" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+                  </div>
 
 
 
-                    <span class="heart_span"> </span>
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re2" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb2">
+                          <input type="checkbox" class="checkbox" id="cb2" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+                  </div>
+                  
+
+
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re3" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb3">
+                          <input type="checkbox" class="checkbox" id="cb3" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+                  
+                  </div>
+
+
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re4" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb4">
+                          <input type="checkbox" class="checkbox" id="cb4" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+
                     
-                </label>
+                   
+                  
+                  </div>
+
+
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re5" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb5">
+                          <input type="checkbox" class="checkbox" id="cb5" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+                  </div>
+
+
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re6" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb6">
+                          <input type="checkbox" class="checkbox" id="cb6" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+
+                  </div>
+
+
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re7" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb7">
+                          <input type="checkbox" class="checkbox" id="cb7" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  
+                  <div class="thumbnail">
+                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                    <div class="thumbnail_title">
+                      <span>영화제목</span><br>
+                      <span>평균별점</span><br>
+                      <span>개봉연도, 국가</span>
+                    </div>
+                    <div class="review_btn">
+                      <button class="btn-reviewEdit" id="re8" style="background: none; border: none;">
+                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
+                    </div>
+
+                    <div class="heart">
+                      <label class="heart_label" for="cb8">
+                          <input type="checkbox" class="checkbox" id="cb8" hidden>
+                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                              p-id="2271">
+                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                  fill="#231F20" p-id="2272" id="heart"></path>
+                          </svg>
+                          <span class="haert_span" ></span>
+                      </label>
+                    </div>
+                  </div>
+  
+                </div>
               </div>
-              <a href="">
-                <img src="../../resources/img/듄2.jpeg" width="150px" height="213px" id="poster1">
-              </a>
             </div>
-            듄<img src="../../resources/img/review2_icon.png" width="20px" height="20px">
           </div>
 
-        </div>
+
+
+
+
+
+
+
+
+
 
       </div>
+
+
+
     </div>
 
     <div id="footer" class="container">
@@ -630,54 +766,8 @@
 
   </main>
   <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../resources/assets/js/reviewBtnHover.js""></script>
 
 </body>
-
-<script>
-  $(function(){
-    $(":icon").click(function(){
-        $(this).addClass("heart_span")
-
-    })
-    $(":icon").click(function(){
-        $(this).removeClass("heart_span");
-
-    })
-
-
-
-    
-  })
-</script>
-
-<script>
-  $(function(){
-    $("").click(function(){
-        // $(this).css("backgroundColor","pink");
-        // document.~~~().className="bg";  // 자바스크립트 방식의 클래스를 변경
-        $(this).addClass("")
-    })
-    $("").click(function(){
-        // $(this).css("backgroundColor","");
-        $(this).removeClass("");
-    })
-  })
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>

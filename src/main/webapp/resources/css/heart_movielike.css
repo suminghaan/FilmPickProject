@@ -69,19 +69,18 @@ body {
 }
 
 /*checkbox를 클릭할 경우 애니메이션 실행*/
-#checkbox:checked + svg #heart{
+.checkbox:checked + svg #heart{
     /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
     animation: drawHeart 1s linear forwards;
 }
 
-/* #checkbox:checked ~ .heart_span{
-    //애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임
+.checkbox:checked ~ .heart_span{
+    /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
     animation: blink 0.5s ease-in-out forwards;
-    //애니메이션 딜레이
+    /*애니메이션 딜레이*/
     animation-delay: 0.8s ;
-} */
-
-#checkbox:checked + svg{
+}
+.checkbox:checked + svg{
      /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
     animation: beat 0.7s linear forwards;;
 }
