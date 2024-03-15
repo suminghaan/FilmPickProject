@@ -1,29 +1,61 @@
-if(!($(".like_btn").is("disabled"))) {
-    $(".like_filled").click(function () {
-    $(".like_filled").css('display', "none")
-    $(".like_filled").css('z-index', "0")
-    $(".dislike_btn").removeClass("disabled");
-})
-$(".like_empty").click(function () {
-    if ($(".dislike_filled").css("display") == "none") {
-        $(".like_filled").css('display', "block")
-        $(".like_filled").css('z-index', "10")
-        $(".dislike_btn").addClass("disabled");
-    }
-})
-}
+$(".ag_empty_btn").each(function (index, el) {
+    $(el).click(function () {
+        // 누른 버튼 display none으로
+        $(el).parent().css("display", "none");
+        // 숨겨진 버튼 display block
+        $(el).parent().prev().css("display", "block");
 
-if(!($(".dislike_btn").is("disabled"))) {
-    $(".dislike_filled").click(function () {
-    $(".dislike_filled").css('display', "none")
-    $(".dislike_filled").css('z-index', "0")
-    $(".like_btn").removeClass("disabled");
+        // 빈 좋아요 버튼을 눌러서 좋아요 표시를 하면 싫어요 버튼을 비활성화로
+        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+            $(e).addClass("disabled");
+            $(e).css("pointer-events", "none")
+        })
+    })
 })
-$(".dislike_empty").click(function () {
-    if ($(".like_filled").css("display") == "none") {
-        $(".dislike_filled").css('display', "block")
-        $(".dislike_filled").css('z-index', "10")
-        $(".like_btn").addClass("disabled");
-    }
+
+$(".ag_filled_btn").each(function (index, el) {
+    console.log($(el));
+    $(el).click(function () {
+        // 누른 버튼 display none으로
+        $(el).parent().css("display", "none");
+        // 숨겨진 버튼 display block
+        $(el).parent().next().css("display", "block");
+
+        // 꽉찬 좋아요 버튼을 눌러서 좋아요 표시를 제거하면 싫어요 버튼을 활성화로
+        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+            $(e).removeClass("disabled");
+            $(e).css("pointer-events", "auto")
+        })
+    })
 })
-}
+
+$(".disag_empty_btn").each(function (index, el) {
+    $(el).click(function () {
+        // 누른 버튼 display none으로
+        $(el).parent().css("display", "none");
+        // 숨겨진 버튼 display block
+        $(el).parent().prev().css("display", "block");
+
+        // 빈 싫어요 버튼을 눌러서 싫어요 표시를 하면 좋아요 버튼을 비활성화로
+        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+            $(e).addClass("disabled");
+            $(e).css("pointer-events", "none")
+        })
+    })
+})
+
+
+$(".disag_filled_btn").each(function (index, el) {
+    $(el).click(function () {
+        // 누른 버튼 display none으로
+        $(el).parent().css("display", "none");
+        // 숨겨진 버튼 display block
+        $(el).parent().next().css("display", "block");
+
+        // 꽉찬 싫어요 버튼을 눌러서 싫어요 표시를 제거하면 좋아요 버튼을 활성화로
+        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+            $(e).removeClass("disabled");
+            $(e).css("pointer-events", "auto")
+        })
+    })
+})

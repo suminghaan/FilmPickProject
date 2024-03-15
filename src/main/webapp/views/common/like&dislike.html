@@ -8,10 +8,10 @@
 
     <title>like&unlike</title>
     <style>
-        .like,
-        .dislike {
-            height: 50px;
-            width: 50px;
+        .ag,
+        .disag {
+            height: 65px;
+            width: 65px;
             position: relative;
         }
 
@@ -22,79 +22,124 @@
             position: absolute;
         }
 
-        .like_dislike_img {
+        .ag_disag_img {
             height: 50px;
         }
 
-        .like_dislike_btn {
+        .ag_disag_btn {
             cursor: pointer;
             background: none;
             border: none;
         }
 
-        .like_filled,
-        .dislike_filled {
+        .ag_filled,
+        .disag_filled {
             display: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="like_dislike_wrap">
-        <div class="like">
-            <div class="like_filled filled_wrap">
-                <button type="button" class="like_dislike_btn like_btn"><img class="like_filled_img like_dislike_img"
-                        src="../../resources/img/좋아요.png" alt=""></button>
-            </div>
-            <div class="like_empty empty_wrap">
-                <button type="button" class="like_dislike_btn like_btn"><img class="like_empty_img like_dislike_img"
-                        src="../../resources/img/빈좋아요.png" alt=""></button>
+    <div class="thumb_btn">
+        <div class="thumb_up">
+            <div class="ag_disag_wrap">
+                <div class="ag">
+                    <div class="ag_filled filled_wrap">
+                        <button type="button" class="ag_disag_btn ag_filled_btn"><img class="ag_filled_img ag_disag_img"
+                                src="../../resources/img/좋아요.png" alt=""></button>
+                    </div>
+                    <div class="ag_empty empty_wrap">
+                        <button type="button" class="ag_disag_btn ag_empty_btn"><img class="ag_empty_img ag_disag_img"
+                                src="../../resources/img/빈좋아요.png" alt=""></button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="dislike">
-            <div class="dislike_filled filled_wrap">
-                <button type="button" class="like_dislike_btn dislike_btn"><img class="dislike_filled_img like_dislike_img"
-                        src="../../resources/img/싫어요.png" alt=""></button>
+        <div class="thumb_count">
+            <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+        </div>
+        <div class="thumb_down">
+            <div class="ag_disag_wrap">
+                <div class="disag">
+                    <div class="disag_filled filled_wrap">
+                        <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                class="ag_filled_img ag_disag_img" src="../../resources/img/싫어요.png" alt=""></button>
+                    </div>
+                    <div class="disag_empty empty_wrap">
+                        <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                class="ag_empty_img ag_disag_img" src="../../resources/img/빈싫어요.png" alt=""></button>
+                    </div>
+                </div>
             </div>
-            <div class="dislike_empty empty_wrap">
-                <button type="button" class="like_dislike_btn dislike_btn"><img class="dislike_empty_img like_dislike_img"
-                        src="../../resources/img/빈싫어요.png" alt=""></button>
-            </div>
+        </div>
+        <div class="thumb_count">
+            <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
         </div>
     </div>
 </body>
 <script>
+    $(".ag_empty_btn").each(function (index, el) {
+        $(el).click(function () {
+            // 누른 버튼 display none으로
+            $(el).parent().css("display", "none");
+            // 숨겨진 버튼 display block
+            $(el).parent().prev().css("display", "block");
 
-    if(!($(".like_btn").is("disabled"))) {
-        $(".like_filled").click(function () {
-        $(".like_filled").css('display', "none")
-        $(".like_filled").css('z-index', "0")
-        $(".dislike_btn").removeClass("disabled");
+            // 빈 좋아요 버튼을 눌러서 좋아요 표시를 하면 싫어요 버튼을 비활성화로
+            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+                $(e).addClass("disabled");
+                $(e).css("pointer-events", "none")
+            })
+        })
     })
-    $(".like_empty").click(function () {
-        if ($(".dislike_filled").css("display") == "none") {
-            $(".like_filled").css('display', "block")
-            $(".like_filled").css('z-index', "10")
-            $(".dislike_btn").addClass("disabled");
-        }
-    })
-    }
 
-    if(!($(".dislike_btn").is("disabled"))) {
-        $(".dislike_filled").click(function () {
-        $(".dislike_filled").css('display', "none")
-        $(".dislike_filled").css('z-index', "0")
-        $(".like_btn").removeClass("disabled");
+    $(".ag_filled_btn").each(function (index, el) {
+        console.log($(el));
+        $(el).click(function () {
+            // 누른 버튼 display none으로
+            $(el).parent().css("display", "none");
+            // 숨겨진 버튼 display block
+            $(el).parent().next().css("display", "block");
+
+            // 꽉찬 좋아요 버튼을 눌러서 좋아요 표시를 제거하면 싫어요 버튼을 활성화로
+            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+                $(e).removeClass("disabled");
+                $(e).css("pointer-events", "auto")
+            })
+        })
     })
-    $(".dislike_empty").click(function () {
-        if ($(".like_filled").css("display") == "none") {
-            $(".dislike_filled").css('display', "block")
-            $(".dislike_filled").css('z-index', "10")
-            $(".like_btn").addClass("disabled");
-        }
+
+    $(".disag_empty_btn").each(function (index, el) {
+        $(el).click(function () {
+            // 누른 버튼 display none으로
+            $(el).parent().css("display", "none");
+            // 숨겨진 버튼 display block
+            $(el).parent().prev().css("display", "block");
+
+            // 빈 싫어요 버튼을 눌러서 싫어요 표시를 하면 좋아요 버튼을 비활성화로
+            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+                $(e).addClass("disabled");
+                $(e).css("pointer-events", "none")
+            })
+        })
     })
-    }
+
+    
+    $(".disag_filled_btn").each(function (index, el) {
+        $(el).click(function () {
+            // 누른 버튼 display none으로
+            $(el).parent().css("display", "none");
+            // 숨겨진 버튼 display block
+            $(el).parent().next().css("display", "block");
+
+            // 꽉찬 싫어요 버튼을 눌러서 싫어요 표시를 제거하면 좋아요 버튼을 활성화로
+            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+                $(e).removeClass("disabled");
+                $(e).css("pointer-events", "auto")
+            })
+        })
+    })
+
 
 </script>
 
