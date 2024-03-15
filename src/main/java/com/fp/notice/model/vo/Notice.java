@@ -10,13 +10,13 @@ public class Notice {
 	private String noticeContent; // 내용
 	private Date noticeDate; // 작성일
 	private int noticeReadCount; // 조회수
-	private int adminNo; // 관리자번호
+	private String noticeWriter; // 관리자아이디 | 관리자번호
 	private String noticeStatus; // 공지사항상태 (Y|N)
 	
 	public Notice() {}
-	
+
 	public Notice(int noticeNo, String category, String noticeTitle, String noticeContent, Date noticeDate,
-			int noticeReadCount, int adminNo, String noticeStatus) {
+			int noticeReadCount, String noticeWriter, String noticeStatus) {
 		super();
 		this.noticeNo = noticeNo;
 		this.category = category;
@@ -24,7 +24,7 @@ public class Notice {
 		this.noticeContent = noticeContent;
 		this.noticeDate = noticeDate;
 		this.noticeReadCount = noticeReadCount;
-		this.adminNo = adminNo;
+		this.noticeWriter = noticeWriter;
 		this.noticeStatus = noticeStatus;
 	}
 
@@ -76,12 +76,12 @@ public class Notice {
 		this.noticeReadCount = noticeReadCount;
 	}
 
-	public int getAdminNo() {
-		return adminNo;
+	public String getNoticeWriter() {
+		return noticeWriter;
 	}
 
-	public void setAdminNo(int adminNo) {
-		this.adminNo = adminNo;
+	public void setNoticeWriter(String noticeWriter) {
+		this.noticeWriter = noticeWriter;
 	}
 
 	public String getNoticeStatus() {
@@ -96,8 +96,10 @@ public class Notice {
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", category=" + category + ", noticeTitle=" + noticeTitle
 				+ ", noticeContent=" + noticeContent + ", noticeDate=" + noticeDate + ", noticeReadCount="
-				+ noticeReadCount + ", adminNo=" + adminNo + ", noticeStatus=" + noticeStatus + "]";
+				+ noticeReadCount + ", noticeWriter=" + noticeWriter + ", noticeStatus=" + noticeStatus + "]";
 	}
+	
+	
 	
 	
 	
