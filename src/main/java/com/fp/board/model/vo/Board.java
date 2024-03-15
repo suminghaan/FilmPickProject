@@ -1,40 +1,37 @@
 package com.fp.board.model.vo;
 
-import java.sql.Date;
+import oracle.sql.DATE;
 
 public class Board {
 
 	private int bNo; // 게시글번호
-	private String bTitle; // 게시글제목
-	private String bContent; // 게시글내용
-	private Date bRegistDate; // 작성일
+	private String bTitle; // 게시글 제목
+	private String bConment; // 게시글내용
+	private DATE bRegistDate; // 작성일
 	private int bReadCount; // 조회수
 	private int bRecommendCount; // 추천수
 	private String bCategory; // 카테고리 1|2 (영화|잡담)
-	private String bPublicStatus; // 인기글여부 Y|N 필드 추가했음
-	private String bBanStatus; // 블라인드 여부 Y|N
-	private String bDeleteStatus; // 글삭제여부 Y|N
-	private String boardWriter; // 작성자회원번호 | 작성자아이디
-	private String titleImgURL; // 대표이미지 경로 보관할 필드(게시판 리스트에 조회될사진??)
+	private String bStatus; // 블라인드 여부 Y
+	private String dSatus; // 글 삭제여부
+	private String memNo; // 회원번호 | 작성자아이디
+	private String titleImgUrl; // 대표이미지 경로 보관할 필드(게시글에 미리보는 이미지에 표시) 
 	
 	public Board() {}
 
-	public Board(int bNo, String bTitle, String bContent, Date bRegistDate, int bReadCount, int bRecommendCount,
-			String bCategory, String bPublicStatus, String bBanStatus, String bDeleteStatus, String boardWriter,
-			String titleImgURL) {
+	public Board(int bNo, String bTitle, String bConment, DATE bRegistDate, int bReadCount, int bRecommendCount,
+			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
-		this.bContent = bContent;
+		this.bConment = bConment;
 		this.bRegistDate = bRegistDate;
 		this.bReadCount = bReadCount;
 		this.bRecommendCount = bRecommendCount;
 		this.bCategory = bCategory;
-		this.bPublicStatus = bPublicStatus;
-		this.bBanStatus = bBanStatus;
-		this.bDeleteStatus = bDeleteStatus;
-		this.boardWriter = boardWriter;
-		this.titleImgURL = titleImgURL;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
+		this.memNo = memNo;
+		this.titleImgUrl = titleImgUrl;
 	}
 
 	public int getbNo() {
@@ -53,19 +50,19 @@ public class Board {
 		this.bTitle = bTitle;
 	}
 
-	public String getbContent() {
-		return bContent;
+	public String getbConment() {
+		return bConment;
 	}
 
-	public void setbContent(String bContent) {
-		this.bContent = bContent;
+	public void setbConment(String bConment) {
+		this.bConment = bConment;
 	}
 
-	public Date getbRegistDate() {
+	public DATE getbRegistDate() {
 		return bRegistDate;
 	}
 
-	public void setbRegistDate(Date bRegistDate) {
+	public void setbRegistDate(DATE bRegistDate) {
 		this.bRegistDate = bRegistDate;
 	}
 
@@ -93,54 +90,46 @@ public class Board {
 		this.bCategory = bCategory;
 	}
 
-	public String getbPublicStatus() {
-		return bPublicStatus;
+	public String getbStatus() {
+		return bStatus;
 	}
 
-	public void setbPublicStatus(String bPublicStatus) {
-		this.bPublicStatus = bPublicStatus;
+	public void setbStatus(String bStatus) {
+		this.bStatus = bStatus;
 	}
 
-	public String getbBanStatus() {
-		return bBanStatus;
+	public String getdSatus() {
+		return dSatus;
 	}
 
-	public void setbBanStatus(String bBanStatus) {
-		this.bBanStatus = bBanStatus;
+	public void setdSatus(String dSatus) {
+		this.dSatus = dSatus;
 	}
 
-	public String getbDeleteStatus() {
-		return bDeleteStatus;
+	public String getMemNo() {
+		return memNo;
 	}
 
-	public void setbDeleteStatus(String bDeleteStatus) {
-		this.bDeleteStatus = bDeleteStatus;
+	public void setMemNo(String memNo) {
+		this.memNo = memNo;
 	}
 
-	public String getBoardWriter() {
-		return boardWriter;
+	public String getTitleImgUrl() {
+		return titleImgUrl;
 	}
 
-	public void setBoardWriter(String boardWriter) {
-		this.boardWriter = boardWriter;
-	}
-
-	public String getTitleImgURL() {
-		return titleImgURL;
-	}
-
-	public void setTitleImgURL(String titleImgURL) {
-		this.titleImgURL = titleImgURL;
+	public void setTitleImgUrl(String titleImgUrl) {
+		this.titleImgUrl = titleImgUrl;
 	}
 
 	@Override
 	public String toString() {
-		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bRegistDate=" + bRegistDate
+		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bConment=" + bConment + ", bRegistDate=" + bRegistDate
 				+ ", bReadCount=" + bReadCount + ", bRecommendCount=" + bRecommendCount + ", bCategory=" + bCategory
-				+ ", bPublicStatus=" + bPublicStatus + ", bBanStatus=" + bBanStatus + ", bDeleteStatus=" + bDeleteStatus
-				+ ", boardWriter=" + boardWriter + ", titleImgURL=" + titleImgURL + "]";
+				+ ", bStatus=" + bStatus + ", dSatus=" + dSatus + ", memNo=" + memNo + ", titleImgUrl=" + titleImgUrl
+				+ "]";
 	}
 	
 	
-	
+
 }

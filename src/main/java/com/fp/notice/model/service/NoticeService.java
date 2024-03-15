@@ -14,7 +14,11 @@ public class NoticeService {
 
 	private NoticeDao nDao = new NoticeDao();
 
-	// 공지사항 및 게시글 페이지의 게시글들을 보여주며, 페이징바에 필요한 메소드
+
+	/**
+	 * @param 호용
+	 * @return 총 공지사항 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = nDao.selectListCount(conn);
@@ -22,7 +26,10 @@ public class NoticeService {
 		return listCount;
 	}
 	
-	// 페이징바 구현을 위한 메소드
+	/**
+	 * @param 호용
+	 * @return 공지사항 메인페이지에 보여질 값을 담고, 페이징바 구현을 위한 메소드
+	 */
 	public List<Notice> selectList(PageInfo pi){
 		Connection conn = getConnection();
 		List<Notice> list = nDao.selectList(conn, pi);
