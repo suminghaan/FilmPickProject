@@ -1,3 +1,4 @@
+// 별점 수정 안되도록 수정
 const rateWrap_small = document.querySelectorAll('.rating_small'),
     label_small = document.querySelectorAll('.rating_small .rating__label_small'),
     input_small = document.querySelectorAll('.rating_small .rating__input_small'),
@@ -66,7 +67,7 @@ function checkedRate_small() {
     let checkedRadio = document.querySelectorAll('.rating_small input[type="radio"]:checked');
 
 
-    initStars_small();
+    // initStars_small();
     checkedRadio.forEach(radio => {
         let previousSiblings = prevAll(radio);
 

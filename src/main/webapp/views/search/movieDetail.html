@@ -177,7 +177,7 @@
         /* movieDetail에 추가 */
         .search_info {
             height: 1.5%;
-            background-color: RGB(48, 48, 48);
+            background-color: RGB(20, 20, 20);
             padding-top: 6px;
             padding-left: 50px;
             border-radius: 10px;
@@ -202,6 +202,8 @@
 
         .movie_like_people {
             height: 20%;
+            background-color: rgb(20, 20, 20);
+            border-radius: 10px;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -210,7 +212,6 @@
 
         .movie_review {
             height: 20%;
-            background-color: rgb(80, 55, 55);
             border-radius: 10px;
             display: flex;
             flex-direction: column;
@@ -219,8 +220,11 @@
 
         .movie_relate {
             height: 24%;
-            background-color: rgb(80, 55, 55);
+            background-color: rgb(20, 20, 20);
             border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
 
         /* =============영화 포스터, 예고편 스타일================ */
@@ -351,7 +355,7 @@
 
         .movie_summary {
             height: 25%;
-            background-color: rgb(20, 20, 20);
+            background-color: rgb(15, 15, 15);
             border-radius: 10px;
             margin: 20px;
             padding: 20px;
@@ -445,7 +449,6 @@
             padding-top: 10px;
             width: 100%;
             height: 10%;
-            background-color: #6528e0;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -453,7 +456,6 @@
 
         .movie_review_info {
             height: 80%;
-            background-color: #F72798;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -462,24 +464,17 @@
         .movie_review_el {
             height: 90%;
             width: 20%;
-            background-color: aqua;
-            position: relative
+            position: relative;
+            background-color: rgb(20, 20, 20);
+            border-radius: 15px;
         }
 
         .movie_review_part {
             width: 100%;
             height: 100%;
             position: absolute;
-            background-color: rgb(46, 86, 173);
             display: flex;
             flex-direction: column;
-        }
-
-        .movie_review_whole {
-            width: 100%;
-            height: 150%;
-            position: absolute;
-            display: none;
         }
 
         .thumb_btn {
@@ -500,12 +495,27 @@
             height: 10%;
             display: flex;
             justify-content: space-around;
-            background-color: yellow;
         }
 
         .review_content {
             height: 65%;
-            background-color: green;
+            position: relative;
+            margin-left: 10px;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+
+        .review_content_long {
+            width: 100%;
+            height: 110%;
+            position: absolute;
+            padding-left: 10px;
+            top: 121px;
+            font-size: 15px;
+            background-color: rgb(20, 20, 20);
+            border-radius: 15px;
+            z-index: 20;
+            display: none;
         }
 
         /* 공감 비공감 버튼 */
@@ -555,6 +565,7 @@
             border-radius: 50%;
             justify-content: center;
             align-items: center;
+            margin-left: 10px;
             border: 2px solid #F72798;
         }
 
@@ -564,19 +575,108 @@
             font-size: 12px;
             width: 60%;
             margin-left: 15px;
-            background-color: lightseagreen;
         }
 
         /* 리뷰 별점, 등록일 */
         .user_review_star {
             width: 50%;
-            background-color: red;
         }
 
         .user_review_date {
             width: 30%;
-            background-color: orange;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
         }
+
+        .more_info {
+            position: absolute;
+            height: 5%;
+            width: 15%;
+            right: 0;
+            bottom: 20px;
+        }
+
+        .more_info_long {
+            width: 15%;
+            margin-left: 85%;
+        }
+
+        .more_info_btn,
+        .more_info_btn_long {
+            font-size: 13px;
+            border-bottom: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .movie_relate_title {
+            height: 5%;
+            padding-left: 50px;
+        }
+
+        .movie_relate_els {
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .movie_relate_els_top {
+            height: 45%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .movie_relate_els_bottom {
+            height: 45%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        /* 영화 포스터 스타일 시작 */
+        .thumbnail {
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            padding-bottom: 10px;
+            justify-content: center;
+            /* 위치를 표시할 기준이 되는 부모 요소에 relative */
+            position: relative;
+        }
+
+        .thumbnail_img {
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .thumbnail_title {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 10px;
+            color: white;
+            text-align: left;
+            /* 위치를 이동시킬 요소에 absolute. top. left, right 등으로 위치 조절 */
+            position: absolute;
+            bottom: 10px;
+            /* 요소가 겹쳐있을 때 무엇을 더 위에 표현할지. z-index 값이 클수록 위에 옴 */
+            z-index: 10;
+            display: none;
+        }
+
+        .thumbnail:hover>.thumbnail_title {
+            display: block;
+        }
+
+        .thumbnail:hover> .thumbnail_img {
+            opacity: 0.8;
+        }
+
+        /* 영화 포스터 스타일 끝 */
     </style>
 
     <div class="thumb_btn"></div>
@@ -590,7 +690,7 @@
     <link rel="stylesheet" href="../../resources/css/starRating.css">
     <link rel="stylesheet" href="../../resources/css/heart_movieDetail.css">
     <link rel="stylesheet" href="../../resources/css/starRating_forReviewTap.css">
-    <link rel="stylesheet" href="../../resources/css/like&unlike_movieDetail.css">
+    <link rel="stylesheet" href="../../resources/css/like&dislike_movieDetail.css">
 </head>
 
 <body>
@@ -849,44 +949,54 @@
                             </div>
                             <div class="star-wrap">
                                 <div class="rating">
-                                    <label class="rating__label rating__label--half" for="starhalf">
-                                        <input type="radio" id="starhalf" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--half" for="starhalf_main">
+                                        <input type="radio" id="starhalf_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--full" for="star1">
-                                        <input type="radio" id="star1" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--full" for="star1_main">
+                                        <input type="radio" id="star1_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--half" for="star1half">
-                                        <input type="radio" id="star1half" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--half" for="star1half_main">
+                                        <input type="radio" id="star1half_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--full" for="star2">
-                                        <input type="radio" id="star2" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--full" for="star2_main">
+                                        <input type="radio" id="star2_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--half" for="star2half">
-                                        <input type="radio" id="star2half" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--half" for="star2half_main">
+                                        <input type="radio" id="star2half_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--full" for="star3">
-                                        <input type="radio" id="star3" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--full" for="star3_main">
+                                        <input type="radio" id="star3_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--half" for="star3half">
-                                        <input type="radio" id="star3half" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--half" for="star3half_main">
+                                        <input type="radio" id="star3half_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--full" for="star4">
-                                        <input type="radio" id="star4" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--full" for="star4_main">
+                                        <input type="radio" id="star4_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--half" for="star4half">
-                                        <input type="radio" id="star4half" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--half" for="star4half_main">
+                                        <input type="radio" id="star4half_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
-                                    <label class="rating__label rating__label--full" for="star5">
-                                        <input type="radio" id="star5" class="rating__input" name="rating" value="">
+                                    <label class="rating__label rating__label--full" for="star5_main">
+                                        <input type="radio" id="star5_main" class="rating__input" name="rating"
+                                            value="">
                                         <span class="star-icon"></span>
                                     </label>
                                 </div>
@@ -1025,20 +1135,24 @@
                 <div class="movie_review">
                     <div class="movie_review_title">
                         <h4 style="margin-left: 50px;">리뷰</h4>
-                        <a href="">더보기</a>
+                        <a style="border: none; color: white;" href="">더보기</a>
                     </div>
                     <div class="movie_review_info">
                         <div class="movie_review_el">
                             <div class="movie_review_part">
                                 <div class="thumb_btn">
                                     <div class="thumb_up">
-                                        <div class="like_dislike_wrap">
-                                            <div class="like">
-                                                <div class="like_filled filled_wrap">
-                                                    <button type="button" class="like_dislike_btn"><img class="like_filled_img like_dislike_img" src="../../resources/img/좋아요.png" alt=""></button>
+                                        <div class="ag_disag_wrap">
+                                            <div class="ag">
+                                                <div class="ag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/좋아요.png" alt=""></button>
                                                 </div>
-                                                <div class="like_empty empty_wrap">
-                                                    <button type="button" class="like_dislike_btn"><img class="like_filled_img like_dislike_img" src="../../resources/img/빈좋아요.png" alt=""></button>
+                                                <div class="ag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈좋아요.png" alt=""></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1047,13 +1161,17 @@
                                         <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
                                     </div>
                                     <div class="thumb_down">
-                                        <div class="like_dislike_wrap">
-                                            <div class="dislike">
-                                                <div class="dislike_filled filled_wrap">
-                                                    <button type="button" class="like_dislike_btn"><img class="like_filled_img like_dislike_img" src="../../resources/img/싫어요.png" alt=""></button>
+                                        <div class="ag_disag_wrap">
+                                            <div class="disag">
+                                                <div class="disag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/싫어요.png" alt=""></button>
                                                 </div>
-                                                <div class="dislike_empty empty_wrap">
-                                                    <button type="button" class="like_dislike_btn"><img class="like_filled_img like_dislike_img" src="../../resources/img/빈싫어요.png" alt=""></button>
+                                                <div class="disag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈싫어요.png" alt=""></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1063,7 +1181,8 @@
                                     </div>
                                 </div>
                                 <div class="user_img_info">
-                                    <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i></div>
+                                    <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                    </div>
                                     <div class="user_info">
                                         <span>LV. 사용자 등급</span>
                                         <span style="margin-left: 10px;"> 사용자 닉네임</span>
@@ -1074,50 +1193,62 @@
                                         <div class="star-wrap">
                                             <div class="rating_small">
                                                 <label class="rating__label_small rating__label--half" for="starhalf">
-                                                    <input type="radio" id="starhalf" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="starhalf" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--full" for="star1">
-                                                    <input type="radio" id="star1" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--half" for="star1half">
-                                                    <input type="radio" id="star1half" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star1half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--full" for="star2">
-                                                    <input type="radio" id="star2" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star2" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--half" for="star2half">
-                                                    <input type="radio" id="star2half" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star2half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--full" for="star3">
-                                                    <input type="radio" id="star3" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star3" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--half" for="star3half">
-                                                    <input type="radio" id="star3half" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star3half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--full" for="star4">
-                                                    <input type="radio" id="star4" class="rating__input_small" name="rating" checked value="">
+                                                    <input type="radio" id="star4" class="rating__input_small"
+                                                        name="rating" checked value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__labe_smalll rating__label--half" for="star4half">
-                                                    <input type="radio" id="star4half" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star4half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                                 <label class="rating__label_small rating__label--full" for="star5">
-                                                    <input type="radio" id="star5" class="rating__input_small" name="rating" value="">
+                                                    <input type="radio" id="star5" class="rating__input_small"
+                                                        name="rating" value="" disabled>
                                                     <span class="star-icon_small"></span>
                                                 </label>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="user_review_date"></div>
+                                    <div class="user_review_date">
+                                        <span>2024-03-15</span>
+                                    </div>
                                 </div>
                                 <div class="review_content">
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
@@ -1125,31 +1256,520 @@
                                     alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
                                     aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
                                     aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    <div class="more_info">
+                                        <a class="more_info_btn">더보기</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="movie_review_whole">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos. Excepturi
-                                alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
-                                aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                <div class="review_content_long">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
+                                    nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    alidasfasdfsdafsdafsadasds
+                                    <div class="more_info_long">
+                                        <a class="more_info_btn_long">접기</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="movie_review_el">
+                            <div class="movie_review_part">
+                                <div class="thumb_btn">
+                                    <div class="thumb_up">
+                                        <div class="ag_disag_wrap">
+                                            <div class="ag">
+                                                <div class="ag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/좋아요.png" alt=""></button>
+                                                </div>
+                                                <div class="ag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈좋아요.png" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thumb_count">
+                                        <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+                                    </div>
+                                    <div class="thumb_down">
+                                        <div class="ag_disag_wrap">
+                                            <div class="disag">
+                                                <div class="disag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/싫어요.png" alt=""></button>
+                                                </div>
+                                                <div class="disag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈싫어요.png" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thumb_count">
+                                        <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
+                                    </div>
+                                </div>
+                                <div class="user_img_info">
+                                    <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                    </div>
+                                    <div class="user_info">
+                                        <span>LV. 사용자 등급</span>
+                                        <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                    </div>
+                                </div>
+                                <div class="user_review_info">
+                                    <div class="user_review_star">
+                                        <div class="star-wrap">
+                                            <div class="rating_small">
+                                                <label class="rating__label_small rating__label--half" for="starhalf_1">
+                                                    <input type="radio" id="starhalf_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star1_1">
+                                                    <input type="radio" id="star1_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half"
+                                                    for="star1half_1">
+                                                    <input type="radio" id="star1half_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star2_1">
+                                                    <input type="radio" id="star2_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half"
+                                                    for="star2half_1">
+                                                    <input type="radio" id="star2half_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star3_1">
+                                                    <input type="radio" id="star3_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half"
+                                                    for="star3half_1">
+                                                    <input type="radio" id="star3half_1" class="rating__input_small"
+                                                        name="rating" value="" checked disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star4" _1>
+                                                    <input type="radio" id="star4_1" class="rating__input_small"
+                                                        name="rating" checked value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__labe_smalll rating__label--half"
+                                                    for="star4half_1">
+                                                    <input type="radio" id="star4half_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star5_1">
+                                                    <input type="radio" id="star5_1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="user_review_date">
+                                        <span>2024-03-15</span>
+                                    </div>
+                                </div>
+                                <div class="review_content">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    <div class="more_info">
+                                        <a class="more_info_btn">더보기</a>
+                                    </div>
+                                </div>
+                                <div class="review_content_long">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
+                                    nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    alidasfasdfsdafsdafsadasds
+                                    <div class="more_info_long">
+                                        <a class="more_info_btn_long">접기</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="movie_review_el"></div>
-                        <div class="movie_review_el"></div>
+                        <div class="movie_review_el">
+                            <div class="movie_review_part">
+                                <div class="thumb_btn">
+                                    <div class="thumb_up">
+                                        <div class="ag_disag_wrap">
+                                            <div class="ag">
+                                                <div class="ag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/좋아요.png" alt=""></button>
+                                                </div>
+                                                <div class="ag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈좋아요.png" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thumb_count">
+                                        <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+                                    </div>
+                                    <div class="thumb_down">
+                                        <div class="ag_disag_wrap">
+                                            <div class="disag">
+                                                <div class="disag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/싫어요.png" alt=""></button>
+                                                </div>
+                                                <div class="disag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈싫어요.png" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thumb_count">
+                                        <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
+                                    </div>
+                                </div>
+                                <div class="user_img_info">
+                                    <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                    </div>
+                                    <div class="user_info">
+                                        <span>LV. 사용자 등급</span>
+                                        <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                    </div>
+                                </div>
+                                <div class="user_review_info">
+                                    <div class="user_review_star">
+                                        <div class="star-wrap">
+                                            <div class="rating_small">
+                                                <label class="rating__label_small rating__label--half" for="starhalf_2">
+                                                    <input type="radio" id="starhalf" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star1">
+                                                    <input type="radio" id="star1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half" for="star1half">
+                                                    <input type="radio" id="star1half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star2">
+                                                    <input type="radio" id="star2" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half" for="star2half">
+                                                    <input type="radio" id="star2half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star3">
+                                                    <input type="radio" id="star3" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half" for="star3half">
+                                                    <input type="radio" id="star3half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star4">
+                                                    <input type="radio" id="star4" class="rating__input_small"
+                                                        name="rating" checked value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__labe_smalll rating__label--half" for="star4half">
+                                                    <input type="radio" id="star4half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star5">
+                                                    <input type="radio" id="star5" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="user_review_date">
+                                        <span>2024-03-15</span>
+                                    </div>
+                                </div>
+                                <div class="review_content">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    <div class="more_info">
+                                        <a class="more_info_btn">더보기</a>
+                                    </div>
+                                </div>
+                                <div class="review_content_long">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
+                                    nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    alidasfasdfsdafsdafsadasds
+                                    <div class="more_info_long">
+                                        <a class="more_info_btn_long">접기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie_review_el">
+                            <div class="movie_review_part">
+                                <div class="thumb_btn">
+                                    <div class="thumb_up">
+                                        <div class="ag_disag_wrap">
+                                            <div class="ag">
+                                                <div class="ag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/좋아요.png" alt=""></button>
+                                                </div>
+                                                <div class="ag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn ag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈좋아요.png" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thumb_count">
+                                        <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+                                    </div>
+                                    <div class="thumb_down">
+                                        <div class="ag_disag_wrap">
+                                            <div class="disag">
+                                                <div class="disag_filled filled_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                                            class="ag_filled_img ag_disag_img"
+                                                            src="../../resources/img/싫어요.png" alt=""></button>
+                                                </div>
+                                                <div class="disag_empty empty_wrap">
+                                                    <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                                            class="ag_empty_img ag_disag_img"
+                                                            src="../../resources/img/빈싫어요.png" alt=""></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="thumb_count">
+                                        <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
+                                    </div>
+                                </div>
+                                <div class="user_img_info">
+                                    <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                    </div>
+                                    <div class="user_info">
+                                        <span>LV. 사용자 등급</span>
+                                        <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                    </div>
+                                </div>
+                                <div class="user_review_info">
+                                    <div class="user_review_star">
+                                        <div class="star-wrap">
+                                            <div class="rating_small">
+                                                <label class="rating__label_small rating__label--half" for="starhalf">
+                                                    <input type="radio" id="starhalf" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star1">
+                                                    <input type="radio" id="star1" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half" for="star1half">
+                                                    <input type="radio" id="star1half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star2">
+                                                    <input type="radio" id="star2" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half" for="star2half">
+                                                    <input type="radio" id="star2half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star3">
+                                                    <input type="radio" id="star3" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--half" for="star3half">
+                                                    <input type="radio" id="star3half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star4">
+                                                    <input type="radio" id="star4" class="rating__input_small"
+                                                        name="rating" checked value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__labe_smalll rating__label--half" for="star4half">
+                                                    <input type="radio" id="star4half" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                                <label class="rating__label_small rating__label--full" for="star5">
+                                                    <input type="radio" id="star5" class="rating__input_small"
+                                                        name="rating" value="" disabled>
+                                                    <span class="star-icon_small"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="user_review_date">
+                                        <span>2024-03-15</span>
+                                    </div>
+                                </div>
+                                <div class="review_content">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    <div class="more_info">
+                                        <a class="more_info_btn">더보기</a>
+                                    </div>
+                                </div>
+                                <div class="review_content_long">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
+                                    nesciunt
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
+                                    aliquam nobis illum dolorem molestiae incidunt cumque blandit
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
+                                    Excepturi
+                                    alias temporibus sequi similique, obcaecati inventore est cum perspiciatis nesciunt
+                                    alidasfasdfsdafsdafsadasds
+                                    <div class="more_info_long">
+                                        <a class="more_info_btn_long">접기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <script>
-                    $(".thumb_up>.thumbBtn").click(function () {
-                        $(".thumb_up>.thumbBtn").toggleClass("btn_active")
-                    })
-                    $(".thumb_down>.thumbBtn").click(function () {
-                        $(".thumb_down>.thumbBtn").toggleClass("btn_active")
-                    })
-                </script>
                 <div class="movie_relate">
-
+                    <div class="movie_relate_title">
+                        <h4>관련 영화</h4>
+                    </div>
+                    <div class="movie_relate_els">
+                        <div class="movie_relate_els_top">
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie_relate_els_bottom">
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <div class="thumbnail_title">
+                                    <span>영화제목</span><br>
+                                    <span>영화별점</span><br>
+                                    <span>개봉연도, 국가</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1185,30 +1805,22 @@
     <script src="../../resources/assets/js/starRating.js"></script>
     <script src="../../resources/assets/js/starRating_forReviewTap.js"></script>
     <script src="../../resources/assets/js/like&dislike.js"></script>
+    <script src="../../resources/assets/js/reviewBtnHover.js"></script>
     <script>
-        const reviewBtn = document.querySelector(".review_btn>button");
-        const reviewBtnIcon = document.querySelector(".review_btn>button>i");
-
-        reviewBtn.addEventListener("mouseenter", function () {
-            reviewBtnIcon.className += " fa-bounce";
+        $(".more_info_btn").each(function (index, el) {
+            $(this).click(function () {
+                $(el).parent().parent(".review_content").next().css("display", "block");
+                $(el).parent().parent(".review_content").css("display", "none");
+            })
         })
 
-        reviewBtn.addEventListener("mouseout", function () {
-            reviewBtnIcon.classList.remove("fa-bounce");
+        $(".more_info_btn_long").each(function (index, el) {
+            $(this).click(function () {
+                $(el).parent().parent(".review_content_long").prev().css("display", "block");
+                $(el).parent().parent(".review_content_long").css("display", "none");
+            })
         })
 
-        reviewBtnIcon.addEventListener("mouseenter", function () {
-            reviewBtnIcon.className += " fa-bounce";
-        })
-
-        reviewBtnIcon.addEventListener("mouseout", function () {
-            reviewBtnIcon.classList.remove("fa-bounce");
-        })
-
-        // $(".review_btn>button").hover(function() {
-        //     $(".review_btn>button>i").addClass("fa-bounce");
-        //     console.log("bounce");
-        // })
     </script>
 </body>
 
