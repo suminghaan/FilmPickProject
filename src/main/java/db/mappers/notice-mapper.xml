@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
+	<!-- 공지사항 메인페이지에 보여질 값을 담고, 페이징바 구현을 위한 sql문 -->
+	<entry key="selectList">
+	 SELECT *
+	   FROM (
+		    SELECT ROWNUM RNUM, A.*
+			  FROM (
+					SELECT 
+						   NOTICE_NO
+						 , NOTICE_CATEGORY
+						 , NOTICE_TITLE
+						 , NOTICE_READ_COUNT
+						 , TO_CHAR(NOTICE_DATE, 'YYYY/MM/DD') NOTICE_DATE
+					  FROM NOTICE
+					 WHERE NOTICE_STATUS = 'Y'
+					 ORDER
+					    BY NOTICE_NO DESC
+					) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 총 공지사항 갯수를 구하기 위한 sql문, 페이징바에 활용됨 -->
+	<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM NOTICE
+		 WHERE NOTICE_STATUS = 'Y'
+	</entry>
+
 </properties>

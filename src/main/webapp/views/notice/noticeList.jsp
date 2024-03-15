@@ -85,20 +85,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                <% if(list.isEmpty()){ %>
                     <tr>
-                        <td>2</td>
-                        <td>일반</td>
-                        <td>공지사항제목</td>
-                        <td>2024/02/22</td>
-                        <td>21</td>
+                        <td colspan="5" style="text-align: center;">작성된 공지사항이 없습니다.</td>
                     </tr>
+                <% } else{%>
+                	<% for(Notice n : list){ %>
                     <tr>
-                        <td>1</td>
-                        <td>일반</td>
-                        <td>공지사항제목</td>
-                        <td>2024/02/20</td>
-                        <td>36</td>
+                        <td><%= n.getNoticeNo() %></td>
+                        <td><%= n.getCategory() %></td>
+                        <td><%= n.getNoticeTitle() %></td>
+                        <td><%= n.getNoticeDate() %></td>
+                        <td><%= n.getNoticeReadCount() %></td>
                     </tr>
+                    <% } %>
+                <%} %>
                 </tbody>
             </table>
 

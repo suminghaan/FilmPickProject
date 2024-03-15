@@ -28,7 +28,11 @@ public class NoticeDao {
 		}
 	}
 	
-	// 공지사항 및 게시글 페이지의 게시글들을 보여주며, 페이징바에 필요한 메소드
+	/**
+	 * 
+	 * @param 호용
+	 * @return 총 공지사항 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
 	public int selectListCount(Connection conn) {
 		// select문 (조회문) 무조건 한행이며 한개의 숫자 => int
 		int listCount = 0;
@@ -45,15 +49,20 @@ public class NoticeDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//close(rset); 주석은 나중에 db연동되면 풀 계획
-			//close(pstmt); 주석은 나중에 db연동되면 풀 계획
+			close(rset);
+			close(pstmt);
 		}
 		
 		return listCount;
 		
 	}
 	
-	// 페이징바 구현을 위한 메소드
+
+	/**
+	 * 
+	 * @param 호용
+	 * @return 공지사항 메인페이지에 보여질 값을 담고, 페이징바 구현을 위한 메소드
+	 */
 	public List<Notice> selectList(Connection conn, PageInfo pi){
 		// selcet => 여러행 => 리스트에 담기
 		List<Notice> list = new ArrayList<>();
@@ -80,13 +89,12 @@ public class NoticeDao {
 			
 			// rset에 담겨 있는 sql문 내용을 list 객체에 담아주는 구문
 			while(rset.next()) {
-//				list.add(new Notice(rset.getInt("BOARD_NO")		=> 나중에 객체만들고 필드 만들면 주석 풀기
-//								 , rset.getString("CATEGORY_NAME")
-//								 , rset.getString("BOARD_TITLE")
-//								 , rset.getString("USER_ID")
-//								 , rset.getInt("READ_COUNT")
-//								 , rset.getString("REGIST_DATE")
-//								 ));
+				list.add(new Notice(rset.getInt("NOTICE_NO")
+								 , rset.getString("NOTICE_CATEGORY")
+								 , rset.getString("NOTICE_TITLE")
+								 , rset.getInt("NOTICE_READ_COUNT")
+								 , rset.getString("NOTICE_DATE")
+								 ));
 			}
 			
 		} catch (SQLException e) {

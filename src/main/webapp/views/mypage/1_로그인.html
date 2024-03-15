@@ -185,6 +185,7 @@
       width: 500px;
       height: 350px;
       border-radius: 0.7em;
+      color: black;
     }
 
     .btn-login {
@@ -205,6 +206,13 @@
       width: 150px;
       height: 38px;
     }
+    #id, #pwd{
+      background-color: white;
+      border-color: lightgray;
+      color: gray;
+    }
+
+
   </style>
 
 
@@ -386,7 +394,7 @@
 
               <div class="form-group">
                 <!--<label for="email">아이디</label>-->
-                <input type="email" class="form-control" id="email" placeholder="아이디를 입력하세요" name="email" style="background-color:transparent;">
+                <input type="email" class="form-control" id="id" placeholder="아이디를 입력하세요" name="email" style="background-color:transparent;">
               </div>
 
               <div class="form-group">
@@ -395,25 +403,25 @@
               </div>
               <div class="form-group form-check" style="float: right;">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" name="remember"> 로그인 상태 유지
+                  <input class="form-check-input" type="checkbox" name="remember" style="background-color: white;"> 로그인 상태 유지
                 </label>
               </div>
               <br><br>
-              <center><button type="submit" class="btn btn-outline-light" style="width: 300px;
+              <center><a href="../common/mainPage.jsp" type="button" class="btn btn-outline-light" style="width: 300px;
                                                                                 --bs-btn-border-color: RGB(247, 39, 140);
                                                                                 --bs-btn-color:RGB(247, 39, 140);
                                                                                 --bs-btn-hover-color: #ffffff;
                                                                                 --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                --bs-btn-hover-border-color: #ffffff;">로그인</button></center>
+                                                                                --bs-btn-hover-border-color: #ffffff;">로그인</a></center>
 
               
               <br>
               
 
               <!-- border 추가하기 -->
-              <a href="" class="btn btn-search-pass">비밀번호찾기</a>|
-              <a href="" class="btn btn-search-id">아이디찾기</a>|
-              <a href="" class="btn btn-join">회원가입</a>
+              <a href="2_비밀번호찾기.html" class="btn btn-search-pass">비밀번호찾기</a>|
+              <a href="2_아이디찾기.html" class="btn btn-search-id">아이디찾기</a>|
+              <a href="3_회원가입1.html" class="btn btn-join">회원가입</a>
               <br>
               <br>
               <br>
