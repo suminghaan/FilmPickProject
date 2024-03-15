@@ -40,7 +40,7 @@
 
     .reportList:hover{
         background-color: lightcoral;
-        
+
     }
 
     .reportDetail{
@@ -144,6 +144,12 @@
                                         <p>신고자 아이디 : 아이디보여지는공간</p>
                                         <p>신고 내용 : </p>                                          
                                     </div>                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="alert('블라인드 게시글로 처리되었습니다.')">블라인드처리</button>
                                 </td>
                             </tr>
                         </table>
