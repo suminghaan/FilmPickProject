@@ -47,6 +47,7 @@ table{
             </select>
         </div>
         <div class="container">
+        <form action="<%=contextPath%>/update">
             <table class="table table-bordered">
                 <thead>
                     <tr class="table-active">
@@ -234,7 +235,8 @@ table{
             </table>
         </div>
         <div class="d-flex justify-content-end container">
-            <button type="button" class="btn btn-secondary btn-sm" style="margin-bottom: 10px;" onclick="alert('user999의 회원등급 수정이 완료되었습니다.')">수정</button>
+            <button type="submit" class="btn btn-secondary btn-sm" style="margin-bottom: 10px;" onclick="alert('user999의 회원등급 수정이 완료되었습니다.')">수정</button>
+            </form>
         </div>
         <div class="d-flex justify-content-center container">
             <nav aria-label="Page navigation example">
