@@ -70,7 +70,7 @@
     <br>
     
     <div class="list">
-        <button class="btn btn-outline-secondary listBtn" onclick="noticeEnroll();">신규등록</button>
+        <a href="<%= contextPath %>/enrollForm.co" class="btn btn-outline-secondary listBtn" onclick="noticeEnroll();">신규등록</a>
     </div>
     
     <br><br>
