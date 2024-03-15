@@ -119,7 +119,9 @@ tr[class^='inquiry']:hover{
                         <div class="container" style="margin-top: 25px;">
                             <p>
                                 분명히 회원가입을 했는데 로그인이 되지 않습니다.<br><br>
-                                확인 후 답변 부탁드리겠습니다.
+                                확인 후 답변 부탁드리겠습니다.<br><br>
+                                <img src="../img/board_content_img.png"><br>
+                                <u>첨부파일명.jpg</u>
                             </p>
                         </div>
                     </td>
@@ -150,7 +152,9 @@ tr[class^='inquiry']:hover{
                         <div class="container" style="margin-top: 25px;">
                             <p>
                                 분명히 회원가입을 했는데 로그인이 되지 않습니다.<br><br>
-                                확인 후 답변 부탁드리겠습니다.
+                                확인 후 답변 부탁드리겠습니다.<br><br>
+                                <img src="../img/board_content_img.png"><br>
+                                <u>첨부파일명.jpg</u>
                             </p>
                         </div>
                     </td>
