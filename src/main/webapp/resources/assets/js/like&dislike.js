@@ -14,7 +14,6 @@ $(".ag_empty_btn").each(function (index, el) {
 })
 
 $(".ag_filled_btn").each(function (index, el) {
-    console.log($(el));
     $(el).click(function () {
         // 누른 버튼 display none으로
         $(el).parent().css("display", "none");
