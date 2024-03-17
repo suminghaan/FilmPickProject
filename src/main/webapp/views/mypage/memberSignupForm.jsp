@@ -5,6 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.signup_content{
+      border: 1px solid lightgray;
+      background-color: white;
+      width: 580px;
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      min-height: 400px;
+      padding: 5px;
+      border-radius: 0.7em;
+    }
+    .signup_content th, .signup_content td{
+      vertical-align: middle;
+    }
+    .form-control{
+      width: 400px;
+    }
+</style>
 </head>
 <body>
 
