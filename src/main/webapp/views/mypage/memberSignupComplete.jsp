@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	div.joincomplete{
+      border: 1px solid lightgrey;
+      width: 500px;
+      height: 300px;
+      border-radius: 0.7em;
+    }
+</style>
 </head>
 <body>
 
