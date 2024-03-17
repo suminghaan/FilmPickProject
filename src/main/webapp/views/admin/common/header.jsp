@@ -3,6 +3,9 @@
     
 <%
 	String contextPath = request.getContextPath();
+
+	String alertMsg = (String) session.getAttribute("alertMsg");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -68,8 +71,15 @@ background-color: black!important;
 </style>
 </head>
 <body>
+	<% if(alertMsg != null){ // alert 시킬만한 알람문구가 존재할 경우 %>
+		<script>
+			alert('<%= alertMsg %>'); 
+		</script>
+	<% 
+			session.removeAttribute("alertMsg"); 
+		} 
+	%>
 	<body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -161,7 +171,7 @@ background-color: black!important;
             </div>
         </li>
 
-
+		
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -373,7 +383,6 @@ background-color: black!important;
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="../ad_resources/vendor/jquery/jquery.min.js"></script>
     <script src="../ad_resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
