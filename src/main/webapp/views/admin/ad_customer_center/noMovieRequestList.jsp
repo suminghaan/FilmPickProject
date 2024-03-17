@@ -316,19 +316,19 @@ img{
                 
                 	<div class="castingList">
                 		<div class="person">
-	                    <img src="../img/최동훈감독.PNG" alt=""> 최동훈 <br>
+	                    <img src="../ad_resources/img/최동훈감독.PNG" alt=""> 최동훈 <br>
 	                    <input type="text" name="person_role" placeholder="해당영화 역할">
 	                    </div>
 	                    <div class="person">
-	                    <img src="../img/김우빈.PNG" alt=""> 김우빈 <br>
+	                    <img src="../ad_resources/img/김우빈.PNG" alt=""> 김우빈 <br>
 	                    <input type="text" name="person_role" placeholder="해당영화 역할">
 	                    </div>
 	                    <div class="person">
-	                    <img src="../img/김태리.PNG" alt=""> 김태리 <br>
+	                    <img src="../ad_resources/img/김태리.PNG" alt=""> 김태리 <br>
 	                    <input type="text" name="person_role" placeholder="해당영화 역할">
 	                    </div>
 	                    <div class="person">
-	                    <img src="../img/류준열.PNG" alt=""> 류준열 <br>
+	                    <img src="../ad_resources/img/류준열.PNG" alt=""> 류준열 <br>
 	                    <input type="text" name="person_role" placeholder="해당영화 역할">
 						</div>
 					</div>
