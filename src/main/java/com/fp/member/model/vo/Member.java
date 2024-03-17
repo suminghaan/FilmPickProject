@@ -12,7 +12,7 @@ public class Member {
 	private String prefGenre; // 선호장르
 	private String nickname; // 닉네임
 	private String memStatus; // 회원상태
-	private String modifyDate; // 회원정보수정일
+	private String signInDate; // 회원정보수정일
 	private int memLevel; // 회원등급
 	private String memColor; // 회원정보 색깔
 	private String memImgPath; // 프로필 이미지 경로
@@ -23,7 +23,7 @@ public class Member {
 	}
 
 	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
-			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String modifyDate,
+			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String signInDate,
 			int memLevel, String memColor, String memImgPath, int memFile) {
 		super();
 		this.memNo = memNo;
@@ -37,7 +37,7 @@ public class Member {
 		this.prefGenre = prefGenre;
 		this.nickname = nickname;
 		this.memStatus = memStatus;
-		this.modifyDate = modifyDate;
+		this.signInDate = signInDate;
 		this.memLevel = memLevel;
 		this.memColor = memColor;
 		this.memImgPath = memImgPath;
@@ -132,12 +132,12 @@ public class Member {
 		this.memStatus = memStatus;
 	}
 
-	public String getModifyDate() {
-		return modifyDate;
+	public String getSignInDate() {
+		return signInDate;
 	}
 
-	public void setModifyDate(String modifyDate) {
-		this.modifyDate = modifyDate;
+	public void setSignInDate(String signInDate) {
+		this.signInDate = signInDate;
 	}
 
 	public int getMemLevel() {
@@ -177,7 +177,7 @@ public class Member {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
 				+ ", memBirth=" + memBirth + ", memGender=" + memGender + ", memEmail=" + memEmail + ", memPhone="
 				+ memPhone + ", prefGenre=" + prefGenre + ", nickname=" + nickname + ", memStatus=" + memStatus
-				+ ", modifyDate=" + modifyDate + ", memLevel=" + memLevel + ", memColor=" + memColor + ", memImgPath="
+				+ ", signInDate=" + signInDate + ", memLevel=" + memLevel + ", memColor=" + memColor + ", memImgPath="
 				+ memImgPath + ", memFile=" + memFile + "]";
 	}
 
