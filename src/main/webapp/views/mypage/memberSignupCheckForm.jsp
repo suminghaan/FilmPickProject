@@ -5,6 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.signup_content{
+      background-color: white;
+      width: 600px;
+      height: 500px;
+      border-radius: 0.7em;
+    }
+    .btn-next{
+      background-color: gray;
+      color: white;
+      border: white;
+      border-radius: 0.3em;
+      width: 200px;
+      height: 38px;
+    }
+</style>
 </head>
 <body>
 
