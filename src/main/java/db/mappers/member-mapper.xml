@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	
+	<entry key="updateUserLevel"> <!-- 회원조회 페이지에서 회원등급을 수정하는 쿼리 (Update) -->
+		UPDATE 
+			   	MEMBER
+		SET MEM_LEVEL = ?
+		WHERE USER_ID = ?
+	</entry>
 </properties>
