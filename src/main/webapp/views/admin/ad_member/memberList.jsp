@@ -46,8 +46,8 @@ table{
                 <option>Level 5</option>
             </select>
         </div>
+     <form action="<%=contextPath%>/updateLevel.me">
         <div class="container">
-        <form action="<%=contextPath%>/update">
             <table class="table table-bordered">
                 <thead>
                     <tr class="table-active">
@@ -236,8 +236,8 @@ table{
         </div>
         <div class="d-flex justify-content-end container">
             <button type="submit" class="btn btn-secondary btn-sm" style="margin-bottom: 10px;" onclick="alert('user999의 회원등급 수정이 완료되었습니다.')">수정</button>
-            </form>
         </div>
+        </form>
         <div class="d-flex justify-content-center container">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
