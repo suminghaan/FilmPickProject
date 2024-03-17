@@ -5,6 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+    .message-box{
+      border: 1px solid white;
+      background-color: white;
+      width: 600px;
+      height: 1350px;
+      border-radius: 0.7em;
+    }
+</style>
 </head>
 <body>
 	
