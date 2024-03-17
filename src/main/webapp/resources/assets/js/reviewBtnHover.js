@@ -1,18 +1,17 @@
-const reviewBtn = document.querySelector(".review_btn>button");
-const reviewBtnIcon = document.querySelector(".review_btn>button>i");
+// $(".review_btn>button").each(function(idx, el) {
+//     $(el).mouseenter(function() {
+//         $(el).children().addClass("fa-bounce");
+//     })
+//     $(el).mouseout(function() {
+//         $(el).children().removeClass("fa-bounce");
+//     })
+// })
 
-reviewBtn.addEventListener("mouseenter", function () {
-    reviewBtnIcon.className += " fa-bounce";
-})
-
-reviewBtn.addEventListener("mouseout", function () {
-    reviewBtnIcon.classList.remove("fa-bounce");
-})
-
-reviewBtnIcon.addEventListener("mouseenter", function () {
-    reviewBtnIcon.className += " fa-bounce";
-})
-
-reviewBtnIcon.addEventListener("mouseout", function () {
-    reviewBtnIcon.classList.remove("fa-bounce");
+$(".review_btn>button>i").each(function(idx, el) {
+    $(el).mouseenter(function() {
+        $(el).addClass("fa-bounce");
+    })
+    $(el).mouseout(function() {
+        $(el).removeClass("fa-bounce");
+    })
 })
