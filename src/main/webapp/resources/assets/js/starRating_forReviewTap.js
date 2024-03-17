@@ -18,14 +18,14 @@ rateWrap_small.forEach(wrap => {
             starIcon.addEventListener('mouseenter', () => {
                 if (wrap.classList.contains('readonly') == false) {
                     initStars_small(); // 기선택된 별점 무시하고 초기화
-                    filledRate_small(idx, labelLength);  // hover target만큼 별점 active
+                    filledRate_small(idx, labelLength_small);  // hover target만큼 별점 active
 
-                    // hover 시 active된 별점의 opacity 조정
-                    for (let i = 0; i < stars.length; i++) {
-                        if (stars[i].classList.contains('filled_small')) {
-                            stars[i].style.opacity = opacityHover_small;
-                        }
-                    }
+                    // // hover 시 active된 별점의 opacity 조정
+                    // for (let i = 0; i < stars.length; i++) {
+                    //     if (stars[i].classList.contains('filled_small')) {
+                    //         stars[i].style.opacity = opacityHover_small;
+                    //     }
+                    // }
                 }
             });
 
