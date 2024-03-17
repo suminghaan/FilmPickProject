@@ -66,7 +66,7 @@ table{
     	<div class="container">
         <div class="container user-info">
             <div class="userprofile1">
-                <img src="../img/profile_person.png" style="width: 70%;">
+                <img src="../ad_resources/img/profile_person.png" style="width: 70%;">
             </div>
             <div class="userprofile2">
                 <div class="container user-profile-nickname">

@@ -64,7 +64,7 @@ table{
     	<div class="container">
         <div class="container user-info">
             <div class="userprofile1">
-                <img src="../img/profile_person.png" style="width: 70%;">
+                <img src="../ad_resources/img/profile_person.png" style="width: 70%;">
             </div>
             <div class="userprofile2">
                 <div class="container user-profile-nickname">
@@ -95,7 +95,7 @@ table{
                         <td>999</td>
                         <td>
                             넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="container" style="margin-top: 10px;"><img src="../img/board_content_img.png">
+                            <div class="container" style="margin-top: 10px;"><img src="../ad_resources/img/board_content_img.png">
                                 <span class="board-content">장르는 스릴러로 추천 부탁드릴게요</span>
                             </div>
                         </td>
@@ -107,7 +107,7 @@ table{
                         <td>552</td>
                         <td>
                             넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="container" style="margin-top: 10px;"><img src="../img/board_content_img.png">
+                            <div class="container" style="margin-top: 10px;"><img src="../ad_resources/img/board_content_img.png">
                                 <span class="board-content">장르는 스릴러로 추천 부탁드릴게요</span>
                             </div>
                         </td>

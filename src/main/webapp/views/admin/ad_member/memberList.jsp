@@ -32,7 +32,7 @@ table{
             <span>아이디</span>&nbsp;&nbsp;&nbsp;
             <input type="text" placeholder="아이디를 입력해주세요">
             <button type="button">
-                <img src="../img/icon_search.png">
+                <img src="../ad_resources/img/icon_search.png">
             </button>          
         </div>
         <div class="d-flex justify-content-end container" style="margin: 20px;">

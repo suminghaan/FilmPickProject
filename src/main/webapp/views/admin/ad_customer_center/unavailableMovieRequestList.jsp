@@ -97,7 +97,7 @@ table{
         </div>
         <hr>
         <div class="d-flex justify-content-end container" style="margin: 20px;">
-            <img src="../img/icon_filter.png" style="margin-right: 10px;">
+            <img src="../ad_resources/img/icon_filter.png" style="margin-right: 10px;">
             <select class="form-control" style="width: 100px">
                 <option>승인</option>
                 <option>거절</option>
@@ -109,7 +109,7 @@ table{
                 <div class="no-movie-list all-list" onclick="moveWrite();">
                     <div clss="container item1">
                         <h4 class="title">귀멸의 칼날</h4>
-                        <img src="../img/poster-guikal.png" class="img-fluid" style="width: 130px;">
+                        <img src="../ad_resources/img/poster-guikal.png" class="img-fluid" style="width: 130px;">
                     </div>
                     <div class="container item2">
                         <div class="regist-date">
@@ -131,7 +131,7 @@ table{
                 <div class="no-movie-list all-list" onclick="moveWrite();">
                     <div clss="container item1">
                         <h4 class="title">파묘</h4>
-                        <img src="../img/poster-pamou.png" class="img-fluid" style="width: 130px;">
+                        <img src="../ad_resources/img/poster-pamou.png" class="img-fluid" style="width: 130px;">
                     </div>
                     <div class="container item2">
                         <div class="regist-date">
@@ -151,7 +151,7 @@ table{
                 <div class="no-movie-list all-list" onclick="moveWrite();">
                     <div clss="container item1">
                         <h4 class="title">검은 사제들</h4>
-                        <img src="../img/poster-geomsa.png" class="img-fluid" style="width: 130px;">
+                        <img src="../ad_resources/img/poster-geomsa.png" class="img-fluid" style="width: 130px;">
                     </div>
                     <div class="container item2">
                         <div class="regist-date">
