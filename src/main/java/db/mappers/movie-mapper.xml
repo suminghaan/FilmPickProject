@@ -10,15 +10,22 @@
 	
 	<!--  탐색페이지 필터 활용 구문 [용훈] -->
 	<entry key="selectExploList">
-		SELECT  MV_NO
+		SELECT  M.MV_NO
 				, MV_POSTER
 				, MV_NAME
-				, ROUND(AVG(LIKE_POINT), 1) "LIKE_PONT"
+				, ROUND(AVG(LIKE_POINT), 1) "LIKE_POINT"
 				, MV_OPENDATE
 				, MV_NATION
-		FROM MOVIE
-		JOIN MOVIE_CATEGORY USING (MV_NO)
+                , (SELECT COUNT(*) FROM MOVIE_LIKE WHERE  MV_NO = M.MV_NO) "LIKECOUNT"
+                , (SELECT COUNT(*) FROM REVIEW WHERE MV_REVIEW_NO = M.MV_NO) "REVIEWS"
+		FROM MOVIE M
+		JOIN MOVIE_CATEGORY C ON (M.MV_NO = C.MV_NO)
+		JOIN REVIEW R ON (M.MV_NO = R.MV_NO)
 		WHERE MV_STATUS = 'Y'
+		
+		  
 	</entry>
+	
+
 	
 </properties>
