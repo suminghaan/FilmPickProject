@@ -14,8 +14,12 @@ public class Movie {
 	private String mvPoster;
 	private String mvPreview;
 	private String mvStatus;
+	
+//	평균별점 추가
 	private String starRatingAvg;
 	
+//	파일 저장 경로 추가
+	private String filePath;
 	
 	public Movie() {
 	}
@@ -23,7 +27,7 @@ public class Movie {
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
-			String mvPreview, String mvStatus, String starRatingAvg) {
+			String mvPreview, String mvStatus, String starRatingAvg, String filePath) {
 		super();
 		this.mvNo = mvNo;
 		this.mvName = mvName;
@@ -39,9 +43,11 @@ public class Movie {
 		this.mvPreview = mvPreview;
 		this.mvStatus = mvStatus;
 		this.starRatingAvg = starRatingAvg;
+		this.filePath = filePath;
 	}
 
-	
+
+
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvPoster, String starRatingAvg) {
 		super();
 		this.mvNo = mvNo;
@@ -51,6 +57,14 @@ public class Movie {
 		this.starRatingAvg = starRatingAvg;
 	}
 
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	
 	public int getMvNo() {
 		return mvNo;
