@@ -5,7 +5,7 @@
 		UPDATE 
 			   	MEMBER
 		SET MEM_LEVEL = ?
-		WHERE USER_ID = ?
+		WHERE MEM_ID = ?
 	</entry>
 	
 	<entry key="selectMemberList"> <!-- 전체 회원조회 쿼리 (Select) -->
