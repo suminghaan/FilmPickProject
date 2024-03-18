@@ -517,7 +517,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '닥터 두리틀_31.jpeg',
-    '20240314153026_57162.JPEG',
+    '20240314153026_17162.JPEG',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -688,7 +688,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '남산의 부장들_65.jpeg',
-    '20240317125152_22751.JPEG',
+    '20240317125152_22750.JPEG',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -730,7 +730,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '다만 악에서 구하소서_68.mp4',
-    '20240317125150_84312.mp4',
+    '20240317125150_84313.mp4',
     SYSDATE,
     2,
     'resources/upfiles/',
