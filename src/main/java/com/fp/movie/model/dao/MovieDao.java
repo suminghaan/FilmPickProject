@@ -117,6 +117,41 @@ public class MovieDao {
 		return mlist;
 	}
 
+	// 영화 정보와 평균별점, 포스터 파일경로를 조회하는 메소드 [기웅]
+	public ArrayList<Movie> selectMovieList(Connection conn, String searchKeyword) {
+		String movieInfoStarRatingAvgQuery = prop.getProperty("selectMovieStarRatingAvg");
+		String moviePosterPathQuery = prop.getProperty("selectMoviePosterPath");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Movie> movieList = new ArrayList<>();
+		
+		searchKeyword = '%' + searchKeyword + '%';
+		
+		try {
+			
+			// 영화 정보와 평균 별점 조회
+			pstmt = conn.prepareStatement(movieInfoStarRatingAvgQuery);
+			pstmt.setString(1, searchKeyword);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("M.MV_NO"));
+				m.setMvName(rset.getString("MV_NAME"));
+				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
+				m.setStarRatingAvg(rset.getString("AVG_LIKE_POINT"));
+			}
+			
+			pstmt = conn.prepareStatement(moviePosterPathQuery);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 	
 
 

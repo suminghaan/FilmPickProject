@@ -3,6 +3,7 @@ package com.fp.movie.model.service;
 import static com.fp.common.template.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fp.common.model.vo.PageInfo;
@@ -39,6 +40,14 @@ public class MovieService {
 		
 		close(conn);
 		return mlist;
+	}
+
+	// 검색페이지에서 검색 키워드에 따라 영화 리스트를 조회하는 메소드 [기웅]
+	public ArrayList<Movie> selectMovieList(String searchKeyword) {
+		Connection conn = getConnection();
+		ArrayList<Movie> movieList = mDao.selectMovieList(conn, searchKeyword);
+		close(conn);
+		return movieList;
 	}
 
 
