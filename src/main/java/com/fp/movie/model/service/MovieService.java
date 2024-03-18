@@ -8,6 +8,7 @@ import java.util.List;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.dao.MovieDao;
 import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.SearchFilter;
 
 public class MovieService {
 	
@@ -31,13 +32,13 @@ public class MovieService {
 	}
 	
 	// 탐색페이지 필터 활용 구문 [용훈]
-	public List<Movie> selectExploList(){
+	public List<Movie> selectExploList(SearchFilter f){
 		
 		Connection conn = getConnection();
-		List<Movie> list = mDao.selectExploList(conn);
+		List<Movie> mlist = mDao.selectExploList(conn, f);
 		
 		close(conn);
-		return list;
+		return mlist;
 	}
 
 
