@@ -809,8 +809,8 @@ VALUES (
 
 
 
-INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시3.png', '20240318104801_78030', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 5);
-INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시3 예고편.mp4', '20240318104819_65085', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 5);
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시3.png', '20240318104801_78030.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 5);
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시3 예고편.mp4', '20240318104819_65085.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 5);
 
 -------------------------------------------------김호용-----------------------------------------------------------------------------
 INSERT INTO ATTACHMENT (FILE_NO, ORIGIN_NAME, CHANGE_NAME, FILE_TYPE, FILE_PATH, FILE_LEVEL, REF_TYPE, REF_NO)
