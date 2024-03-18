@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.fp.admin.model.dao.MemberDao;
-import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 
@@ -62,6 +61,13 @@ public class MemberService {
 		Connection conn = getConnection();
 
 		List<Member> list = mDao.selectListCount(conn, pi);
+		close(conn);
+		return list;
+	}
+
+	public List<Member> selectHumanFilterUser() {
+		Connection conn = getConnection();
+		List<Member> list = mDao.selectHumanFilterUser(conn);
 		close(conn);
 		return list;
 	}

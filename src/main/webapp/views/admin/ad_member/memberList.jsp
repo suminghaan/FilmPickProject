@@ -1,5 +1,5 @@
-<%@page import="com.fp.common.model.vo.PageInfo"%>
 <%@page import="com.fp.member.model.vo.Member"%>
+<%@page import="com.fp.common.model.vo.PageInfo"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -44,14 +44,10 @@ table{
         </div>
         <div class="d-flex justify-content-end container" style="margin: 20px;">
             <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
-            <select class="form-control" style="width: 130px">
-                <option>휴면회원만 조회</option>
-                <option>Level 1</option>
-                <option>Level 2</option>
-                <option>Level 3</option>
-                <option>Level 4</option>
-                <option>Level 5</option>
-            </select>
+            <div class="custom-control custom-switch">
+			  <input type="checkbox" class="custom-control-input" id="humanSwitch">
+			  <label class="custom-control-label" for="humanSwitch">휴면회원만 조회</label>
+			</div>
         </div>
      <form action="<%=contextPath%>/updateLevel.me">
         <div class="container">
@@ -76,16 +72,16 @@ table{
                 	<% for(Member m : pageList){ %>
                     <tr>
                         <td><%= m.getMemNo() %></td>
-                        <td class="userId" onclick="viewMemberPostsPage();" name="userId"><%= m.getMemId() %></td>
+                        <td class="userId" onclick="viewMemberPostsPage();" id="userId" name="userId"><%= m.getMemId() %></td>
                         <td>
-                        <select class="form-control" name="userLevel" onchange="updateuserLevel();">
-	                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
-	                    <option value="2" <%= m.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
-	                    <option value="3" <%= m.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
-	                    <option value="4" <%= m.getMemLevel() == 4 ? "selected" : "" %>>Level 4</option>
-	                    <option value="5" <%= m.getMemLevel() == 5 ? "selected" : "" %>>Level 5</option>
-                        </select>
-                    </td>
+	                        <select class="form-control" name="userLevel" onchange="updateuserLevel();">
+		                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
+		                    <option value="2" <%= m.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
+		                    <option value="3" <%= m.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
+		                    <option value="4" <%= m.getMemLevel() == 4 ? "selected" : "" %>>Level 4</option>
+		                    <option value="5" <%= m.getMemLevel() == 5 ? "selected" : "" %>>Level 5</option>
+	                        </select>
+                    	</td>
                          <td><%= m.getReviewContentCnt() %></td>
                         <td><%= m.getAvgLikePoint() %></td>
                         <td><%= m.getPrefGenre() %></td>
@@ -133,14 +129,29 @@ table{
    		};
    		
    		function updateuserLevel(){
-   			$.ajax({
-   				url: '<%=contextPath%>/updateLevel.me',
-   				data: {userId:$(".userId").text(), userLevel: $("select[name='userLevel']").val()},
-   				success: function(response){
-   					console.log(response);
-   				}
-   			});
-   		};
+   	        // select 태그내에 onchange 이벤트 발생시 실행될 함수
+   		 
+   		}; 
+   		
+   		document.addEventListener('DOMContentLoaded', function() {
+   			var customSwitch = document.getElementById('humanSwitch');
+
+   		    customSwitch.addEventListener('change', function() {
+   		        if (this.checked) {
+   		        	$.ajax({
+   		   		 		url: '<%=contextPath%>/filter.me',
+   		   		 		success: function(list){
+   			   		 		console.log(list);
+   		   		 		},
+   		   		 		error: function(){
+   		   		 			console.log('ajax 통신 실패');
+   		   		 		}
+   		   		 	});
+   		        } else {
+   		            console.log("휴면회원만 조회 체크 해제");
+   		        }
+   		    });
+   		});
    </script>
 </body>
 </html>

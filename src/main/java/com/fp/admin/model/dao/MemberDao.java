@@ -14,7 +14,6 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
-import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 
@@ -158,5 +157,34 @@ public class MemberDao {
 					close(pstmt);
 				}
 				return list;
+	}
+
+	public List<Member> selectHumanFilterUser(Connection conn) {
+		List<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectHumanFilterUser");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getInt("MEM_NO")
+					    , rset.getString("MEM_ID")
+					    , rset.getInt("MEM_LEVEL")
+					    , rset.getInt("REVIEW_CONTENT_COUNT")
+					    , rset.getDouble("AVG_LIKE_POINT")
+					    , rset.getString("PREF_GENRE")
+					    , rset.getString("DORMANT_STATUS")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 }
