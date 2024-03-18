@@ -102,7 +102,7 @@
         </div>
     <br>
     <div class="moving" align="center" style="margin-top: -5px;">
-        <a href="<%= contextPath %>/views/common/mainPage.jsp">메인페이지로 이동 ></a>
+        <a href="<%= contextPath %>/mainpage.fp">메인페이지로 이동 ></a>
     </div>
 
 </div>
