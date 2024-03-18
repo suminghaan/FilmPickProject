@@ -46,7 +46,32 @@ table{
             <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
             <div class="custom-control custom-switch">
 			  <input type="checkbox" class="custom-control-input" id="humanSwitch">
-			  <label class="custom-control-label" for="humanSwitch">휴면회원만 조회</label>
+			  <label class="custom-control-label" for="humanSwitch" style="margin-right: 50px;">휴면회원만 조회</label>
+			</div>
+			
+			<div class="custom-control custom-switch">
+			  <input type="checkbox" class="custom-control-input" id="level1">
+			  <label class="custom-control-label" for="level1" style="margin-right: 50px;">Level 1</label>
+			</div>
+			
+			<div class="custom-control custom-switch">
+			  <input type="checkbox" class="custom-control-input" id="level2">
+			  <label class="custom-control-label" for="level2" style="margin-right: 50px;">Level 2</label>
+			</div>
+			
+			<div class="custom-control custom-switch">
+			  <input type="checkbox" class="custom-control-input" id="level3">
+			  <label class="custom-control-label" for="level3" style="margin-right: 50px;">Level 3</label>
+			</div>
+			
+			<div class="custom-control custom-switch">
+			  <input type="checkbox" class="custom-control-input" id="level4">
+			  <label class="custom-control-label" for="level4" style="margin-right: 50px;">Level 4</label>
+			</div>
+			
+			<div class="custom-control custom-switch">
+			  <input type="checkbox" class="custom-control-input" id="level5">
+			  <label class="custom-control-label" for="level5" style="margin-right: 50px;">Level 5</label>
 			</div>
         </div>
      <form action="<%=contextPath%>/updateLevel.me">
@@ -134,8 +159,9 @@ table{
    		}; 
    		
    		document.addEventListener('DOMContentLoaded', function() { // 휴면회원 조회용 스크립트
-   			var customSwitch = document.getElementById('humanSwitch');
-   			var tableBody = document.querySelector('tbody');
+   			const customSwitch = document.getElementById('humanSwitch');
+   			let tableBody = document.querySelector('tbody');
+            const originalTable = tableBody.innerHTML;
             
    		    customSwitch.addEventListener('change', function() {
             tableBody.innerHTML = ''; // 테이블 내용 초기화
@@ -148,19 +174,19 @@ table{
    		   		 							+ '<td>' + list[i].memNo + '</td>'
    		   		 							+ '<td>' + list[i].memId + '</td>'
    		   		 							+ '<td>' 
-	   		   		 						+ '<select class="form-control" name="userLevel" onchange="updateuserLevel();">' +
-		   		                             '<option value="1"' + (list[i].memLevel === 1 ? ' selected' : '') + '>Level 1</option>' +
-		   		                             '<option value="2"' + (list[i].memLevel === 2 ? ' selected' : '') + '>Level 2</option>' +
-		   		                             '<option value="3"' + (list[i].memLevel === 3 ? ' selected' : '') + '>Level 3</option>' +
-		   		                             '<option value="4"' + (list[i].memLevel === 4 ? ' selected' : '') + '>Level 4</option>' +
-		   		                             '<option value="5"' + (list[i].memLevel === 5 ? ' selected' : '') + '>Level 5</option>' +
-		   		                             '</select>' 
+	   		   		 						+ '<select class="form-control" name="userLevel" onchange="updateuserLevel();">' 
+		   		                            + '<option value="1"' + (list[i].memLevel === 1 ? ' selected' : '') + '>Level 1</option>' 
+		   		                            + '<option value="2"' + (list[i].memLevel === 2 ? ' selected' : '') + '>Level 2</option>' 
+		   		                            + '<option value="3"' + (list[i].memLevel === 3 ? ' selected' : '') + '>Level 3</option>' 
+		   		                            + '<option value="4"' + (list[i].memLevel === 4 ? ' selected' : '') + '>Level 4</option>' 
+		   		                            + '<option value="5"' + (list[i].memLevel === 5 ? ' selected' : '') + '>Level 5</option>' 
+		   		                            + '</select>' 
 		   		                            + '</td>'
-			   		                        + '<td>' + list[i].reviewContentCnt + '</td>' +
-			   	                            '<td>' + list[i].avgLikePoint + '</td>' +
-			   	                            '<td>' + list[i].prefGenre + '</td>' +
-			   	                            '<td>' + list[i].dormantStatus + '</td>' +
-			   	                            '</tr>';
+			   		                        + '<td>' + list[i].reviewContentCnt + '</td>' 
+			   	                            + '<td>' + list[i].avgLikePoint + '</td>' 
+			   	                            + '<td>' + list[i].prefGenre + '</td>' 
+			   	                            + '<td>' + list[i].dormantStatus + '</td>'
+			   	                            + '</tr>';
    		   		 			tableBody.innerHTML += row;
    		   		 			};
    			   		 		
@@ -170,7 +196,7 @@ table{
    		   		 		}
    		   		 	});
    		        } else {
-   		            console.log("휴면회원만 조회 체크 해제");
+   		            tableBody.innerHTML = originalTable;
    		        }
    		    });
    		});
