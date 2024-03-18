@@ -389,3 +389,253 @@ INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '서울의봄 예고편
 
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시.png', '20240318104801_78030', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 5);
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시 예고편.mp4', '20240318104819_65085', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 5);
+
+------------------------------------- 용훈 ---------------------------------
+
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '닥터 두리틀', '2020-01-08', '2', '101분', '동물들과 소통하는 특별한 능력을 지닌 닥터 두리틀(로버트 다우니 주니어)은 사랑하는 사람을 잃고 세상과 단절한 채 동물들과 친구가 되어 살아간다.', 'N', '전체 관람가', 'N', 'N', 31, 32, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '나쁜 녀석들 : 포에버', '2020-01-15', '2', '124분', '마이애미 강력반의 베테랑 형사 ‘마이크’[윌 스미스]는 여전히 범죄자를 소탕하는 데 열성적이지만, 그의 파트너 ‘마커스’[마틴 로렌스]는 이제 일선에서 물러나 가족과 함께 시간을 보내고 싶어한다.', 'N', '청소년 관람불가', 'N', 'N', 33, 34, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '스파이 지니어스', '2020-01-22', '2', '102분', '전 세계를 위협하는 불법 무기 거래 첩보를 입수한 스파이 에이전트는 천상천하 유아독존 슈퍼 스파이 ‘랜스’(윌 스미스)를 파견한다. 하지만, 최첨단 장비로 무장한 정체불명의 빌런 ‘킬리언’(벤 맨델슨)은 ‘랜스’로 위장해 무기를 훔치고 그를 함정에 빠트린다.', 'N', '전체 관람가', 'N', 'N', 35, 36, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '작은 아씨들', '2020-02-12', '2', '135분', '배우가 되고 싶은 첫째 메그(엠마 왓슨) 작가가 되고 싶은 둘째 조(시얼샤 로넌) 음악가가 되고 싶은 셋째 베스(엘리자 스캔런) 화가가 되고 싶은 막내 에이미(플로렌스 퓨) 이웃집 소년 로리(티모시 샬라메)는 네 자매를 우연히 알게되고 각기 다른 개성의 네 자매들과 인연을 쌓아간다.', 'N', '전체 관람가', 'N', 'N', 37, 38, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '1917', '2020-02-19', '2', '119분', '제1차 세계대전이 한창인 1917년. 독일군에 의해 모든 통신망이 파괴된 상황 속에서 영국군 병사 ‘스코필드’(조지 맥케이)와 ‘블레이크’(딘-찰스 채프먼)에게 하나의 미션이 주어졌다.', 'N', '15세 관람가', 'N', 'N', 39, 40, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '뮬란', '2020-09-17', '2', '115분', '무예에 남다른 재능을 지닌 ‘뮬란’은 좋은 집안과 인연을 맺어 가문을 빛내길 바라는 부모님의 뜻에 따라 본연의 모습을 억누르고 성장한다.', 'N', '12세 관람가', 'N', 'N', 61, 62, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '원더 우먼 1984', '2020-12-23', '2', '151분', '1984년 모든 것이 활기찬 시대, 다이애나 프린스는 고고학자로서 인간들 사이에서 조용히 살고 있다.', 'N', '12세 관람가', 'N', 'N', 63, 64, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '남산의 부장들', '2020-01-22', '1', '114분', '1979년 10월 26일, 중앙정보부장 김규평(이병헌)이 대한민국 대통령을 암살한다. 이 사건의 40일전, 미국에서는 전 중앙정보부장 박용각(곽도원)이 청문회를 통해 전 세계에 정권의 실체를 고발하며 파란을 일으킨다.', 'N', '15세 관람가', 'N', 'N', 65, 66, 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '다만 악에서 구하소서', '2020-08-05', '1', '108분', '태국에서 충격적인 납치사건이 발생하고 마지막 청부살인 미션을 끝낸 암살자 인남(황정민)은 그것이 자신과 관계된 것임을 알게 된다.', 'N', '15세 관람가', 'N', 'N', 67, 68, 'Y', SYSDATE);
+
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '닥터 두리틀_31.jpeg',
+    '20240314153026_57162.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    16
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '닥터 두리틀_31.mp4',
+    '20240314153026_55362.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    16
+);
+
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '나쁜 녀석들 포에버_33.jpeg', '20240314143028_55362.jpeg', SYSDATE, 1, 'resources/upfiles/', 1, 'Y', '1', 17);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '나쁜 녀석들 포에버_34.mp4', '20240314143038_56342.mp4', SYSDATE, 2, 'resources/upfiles/', 1, 'Y', '2', 17);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '스파이 지니어스_35.jpeg',
+    '20240315113026_57552.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    18
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '스파이 지니어스_36.mp4',
+    '20240315136027_55552.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    18
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '작은 아씨들_37.jpeg',
+    '20240315115026_51552.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    19
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '작은 아씨들_38.mp4',
+    '20240315135027_55852.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    19
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '1917_39.jpeg',
+    '20240316115026_55751.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    20
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '1917_40.mp4',
+    '20240316135027_55722.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    20
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '뮬란_61.jpeg',
+    '20240316125026_12751.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    31
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '뮬란_62.mp4',
+    '20240316125127_84722.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    31
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '원더 우먼 1984_63.jpeg',
+    '20240316125152_18751.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    32
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '원더 우먼 1984_64.mp4',
+    '20240316125150_84422.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    32
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '남산의 부장들_65.jpeg',
+    '20240317125152_22751.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    33
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '남산의 부장들_66.mp4',
+    '20240317125150_84312.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    33
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '다만 악에서 구하소서_67.jpeg',
+    '20240317125152_22751.JPEG',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    34
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '다만 악에서 구하소서_68.mp4',
+    '20240317125150_84312.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    34
+);
+
+
+
+
+
+
+
+
+
+
