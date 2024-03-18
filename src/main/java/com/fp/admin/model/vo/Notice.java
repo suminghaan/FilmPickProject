@@ -10,11 +10,12 @@ public class Notice {
 	 private int noticeReadCount;
 	 private String noticeWriter; // 조회시 작성자아이디 | 작성하기시 회원번호
 	 private String noticeStatus;
-
+	 private String noticeFix;
+	 
 	 public Notice() {}
 
 	public Notice(int noticeNo, String noticeCategory, String noticeTitle, String noticeContent, String noticeDate,
-			int noticeReadCount, String noticeWriter, String noticeStatus) {
+			int noticeReadCount, String noticeWriter, String noticeStatus, String noticeFix) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeCategory = noticeCategory;
@@ -24,6 +25,18 @@ public class Notice {
 		this.noticeReadCount = noticeReadCount;
 		this.noticeWriter = noticeWriter;
 		this.noticeStatus = noticeStatus;
+		this.noticeFix = noticeFix;
+	}
+	
+	
+
+	public Notice(int noticeNo, String noticeDate, String noticeWriter, String noticeTitle,  String noticeFix) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeDate = noticeDate;
+		this.noticeWriter = noticeWriter;
+		this.noticeTitle = noticeTitle;				
+		this.noticeFix = noticeFix;
 	}
 
 	public int getNoticeNo() {
@@ -90,12 +103,22 @@ public class Notice {
 		this.noticeStatus = noticeStatus;
 	}
 
+	public String getNoticeFix() {
+		return noticeFix;
+	}
+
+	public void setNoticeFix(String noticeFix) {
+		this.noticeFix = noticeFix;
+	}
+
 	@Override
 	public String toString() {
 		return "Notice [noticeNo=" + noticeNo + ", noticeCategory=" + noticeCategory + ", noticeTitle=" + noticeTitle
 				+ ", noticeContent=" + noticeContent + ", noticeDate=" + noticeDate + ", noticeReadCount="
-				+ noticeReadCount + ", noticeWriter=" + noticeWriter + ", noticeStatus=" + noticeStatus + "]";
+				+ noticeReadCount + ", noticeWriter=" + noticeWriter + ", noticeStatus=" + noticeStatus + ", noticeFix="
+				+ noticeFix + "]";
 	}
+	 
 	 
 	 
 }
