@@ -137,4 +137,76 @@ INSERT INTO MOVIE
                 , 11
                 , 12
                 , DEFAULT
-                , DEFAULT);  
+                , DEFAULT);
+                
+--------------------
+INSERT INTO MOVIE
+    VALUES(SEQ_MOVIE_NO.NEXTVAL
+                ,  '한산: 용의 출현'
+                , '2022-07-27'
+                , '1'
+                , '130분'
+                , '명량대첩이 일어나기 5년 전인 1592년 7월 8일, 조선의 앞날은 여전히 풍전등화이다. 위기에 빠진 조국을 위한 이순신 장군의 진두지휘로 한산도 앞바다에서 조선 수군의 전략과 패기가 더해진 한산해전이 벌어진다.'
+                , DEFAULT
+                , '12세 이상'
+                , 'N'
+                , DEFAULT
+                , 13
+                , 14
+                , DEFAULT
+                , DEFAULT);
+                
+-------------
+
+INSERT INTO MOVIE
+    VALUES(SEQ_MOVIE_NO.NEXTVAL
+                ,  '공조2: 인터내셔날'
+                , '2022-09-07'
+                , '1'
+                , '129분'
+                , '남한 형사 강진태와 북한 형사 림철령이 새로운 임무를 위해 다시 한번 뭉친다. 여기에 미국 FBI 잭이 끼어들며 각자의 목적을 이루기 위한 남북미 형사들의 삼각 공조가 펼쳐진다.'
+                , DEFAULT
+                , '15세 이상'
+                , 'N'
+                , DEFAULT
+                , 15
+                , 16
+                , DEFAULT
+                , DEFAULT);
+                
+        
+-----------
+INSERT INTO MOVIE
+    VALUES(SEQ_MOVIE_NO.NEXTVAL
+                ,  '헌트'
+                , '2022-08-10'
+                , '1'
+                , '125분'
+                , '박평호와 김정도는 북한 간첩 동림을 찾아내는 임무를 맡는다. 그러나 일급 기밀이 유출되어 조직 내 스파이가 있음을 알게 되고, 서로를 의심하며 추적하던 중 숨겨진 진실과 마주한다.'
+                , DEFAULT
+                , '15세 이상'
+                , 'N'
+                , DEFAULT
+                , 17
+                , 18
+                , DEFAULT
+                , DEFAULT);
+                
+                
+-----------
+
+INSERT INTO MOVIE
+    VALUES(SEQ_MOVIE_NO.NEXTVAL
+                ,  '올빼미'
+                , '2022-11-23'
+                , '1'
+                , '118분'
+                , '맹인임에도 뛰어난 침술 실력을 인정받은 경수는 궁에 들어가게 된다. 그러던 어느 날, 그는 어둠 속에서 희미하게 소현세자의 충격적인 죽음을 목격한다.'
+                , DEFAULT
+                , '15세 이상'
+                , 'N'
+                , DEFAULT
+                , 19
+                , 20
+                , DEFAULT
+                , DEFAULT);
