@@ -499,3 +499,145 @@ INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '서울의봄 예고편
 
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시3.png', '20240318104801_78030', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 5);
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시3 예고편.mp4', '20240318104819_65085', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 5);
+
+
+-------------------------------------------------배기웅-----------------------------------------------------------------------------
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '신과함께인과연.jpeg',
+    '20240314153026_57162.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    26
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '신과함께인과연.mp4',
+    '20240314153026_87842.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    26
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '안시성.jpeg',
+    '20240314153026_57889.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    27
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '안시성.mp4',
+    '20240314103026_87842.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    27
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '레디플레이어원.jpeg',
+    '20240314154832_77889.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    28
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '레디플레이어원.mp4',
+    '20220314103626_81242.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    28
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '어벤져스인피니티워.jpeg',
+    '20210624154832_12889.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    29
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '어벤져스인피니티워.mp4',
+    '20210814101026_11242.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    29
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '블랙팬서.jpeg',
+    '20190714154832_12481.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    30
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '블랙팬서.mp4',
+    '20230614101626_77842.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    30
+);
