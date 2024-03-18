@@ -577,7 +577,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '닥터 두리틀_31.jpeg',
-    '20240314153026_17162.JPEG',
+    '20240314153026_17162.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -608,7 +608,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '스파이 지니어스_35.jpeg',
-    '20240315113026_57552.JPEG',
+    '20240315113026_57552.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -636,7 +636,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '작은 아씨들_37.jpeg',
-    '20240315115026_51552.JPEG',
+    '20240315115026_51552.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -664,7 +664,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '1917_39.jpeg',
-    '20240316115026_55751.JPEG',
+    '20240316115026_55751.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -692,7 +692,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '뮬란_61.jpeg',
-    '20240316125026_12751.JPEG',
+    '20240316125026_12751.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -720,7 +720,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '원더 우먼 1984_63.jpeg',
-    '20240316125152_18751.JPEG',
+    '20240316125152_18751.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -748,7 +748,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '남산의 부장들_65.jpeg',
-    '20240317125152_22750.JPEG',
+    '20240317125152_22750.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -776,7 +776,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '다만 악에서 구하소서_67.jpeg',
-    '20240317125152_22751.JPEG',
+    '20240317125152_22751.jpeg',
     SYSDATE,
     1,
     'resources/upfiles/',
