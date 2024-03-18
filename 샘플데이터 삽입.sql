@@ -374,4 +374,3 @@ INSERT INTO ATTACHMENT
                     , DEFAULT
                     , 1
                     , 10);
-
