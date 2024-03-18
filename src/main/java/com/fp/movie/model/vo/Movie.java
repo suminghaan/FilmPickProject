@@ -14,6 +14,8 @@ public class Movie {
 	private String mvPoster;
 	private String mvPreview;
 	private String mvStatus;
+	private String starRatingAvg;
+	
 	
 	public Movie() {
 	}
