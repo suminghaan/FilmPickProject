@@ -32,6 +32,33 @@ public class Member {
 		this.prefGenre = prefGenre;
 		this.dormantStatus = dormantStatus;
 	}
+	
+	
+
+	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
+			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String signInDate,
+			int memLevel, String memColor, String memImgPath, int memFile, String dormantStatus) {  // 회원 로그인 용도(은정)
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.memBirth = memBirth;
+		this.memGender = memGender;
+		this.memEmail = memEmail;
+		this.memPhone = memPhone;
+		this.prefGenre = prefGenre;
+		this.nickname = nickname;
+		this.memStatus = memStatus;
+		this.signInDate = signInDate;
+		this.memLevel = memLevel;
+		this.memColor = memColor;
+		this.memImgPath = memImgPath;
+		this.memFile = memFile;
+		this.dormantStatus = dormantStatus;
+	}
+
+
 
 	public Member() {
 
