@@ -34,7 +34,7 @@
 		<entry key="selectComuNoticeList">
 			SELECT
 				  NOTICE_NO
-			  	, REGIST_DATE
+			  	, NOTICE_DATE
 			  	, ADMIN_ID
 			  	, NOTICE_TITLE
 			  	, NOTICE_FIX
