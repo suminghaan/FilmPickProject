@@ -44,7 +44,7 @@
 		<h1>공지사항 등록</h1>
     <hr>
     
-    	<form action="" method="post">
+    	<form action="<%=contextPath %>/insert.co" method="post">
             <table class="table">
                 <tr>
                     <th><label for="title">제목</label></th>
