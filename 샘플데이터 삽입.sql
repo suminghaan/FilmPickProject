@@ -238,3 +238,140 @@ VALUES (SEQ_MOVIE_NO.NEXTVAL, '나이브스 아웃', '2019-12-04', '2', '130분'
 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '겨울왕국 2', '2019-11-21', '2', '103분', '의문의 목소리가 엘사를 부르고, 아렌델 왕국에 위기가 찾아온다. 트롤은 엘사의 힘의 비밀과 진실을 찾아야 한다고 하고, 엘사와 안나는 여행을 떠난다.', '전체관람가', 49, 50);
+
+
+
+
+
+
+
+--------파일 추가--------
+-------수민--------
+-----MOVIE_FILE_MP4
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '범죄도시2_예고편_12.mp4'
+                    , '20240318103404_75346.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 6);
+--             
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '한산_예고편_14.mp4'
+                    , '20240218103403_75346.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 7);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '공조2_예고편_16.mp4'
+                    , '20240118103402_75346.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 8);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '헌트_예고편_18.mp4'
+                    , '20240128103401_75348.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 9);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '올빼미_예고편_20.mp4'
+                    , '20240308103401_75356.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 10);
+                    
+-----MOVIE_FILE_POSTER
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '범죄도시2_11.png'
+                    , '20240318103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 6);
+--             
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '한산_13.png'
+                    , '20240218103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 7);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '공조2_15.png'
+                    , '20240118103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 8);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '헌트_17.png'
+                    , '20240128103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 9);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '올빼미_19.png'
+                    , '20240308103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 10);
+
