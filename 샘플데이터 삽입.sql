@@ -429,134 +429,6 @@ VALUES (SEQ_MOVIE_NO.NEXTVAL, '킹스맨: 퍼스트 에이전트', '2021-12-22',
 
 
 --------파일 추가--------
--------수민--------
------MOVIE_FILE_MP4
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '범죄도시2_예고편_12.mp4'
-                    , '20240318103404_75346.mp4'
-                    , DEFAULT
-                    , 2
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 2
-                    , 6);
---             
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '한산_예고편_14.mp4'
-                    , '20240218103403_75346.mp4'
-                    , DEFAULT
-                    , 2
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 2
-                    , 7);
-                    
---
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '공조2_예고편_16.mp4'
-                    , '20240118103402_75346.mp4'
-                    , DEFAULT
-                    , 2
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 2
-                    , 8);
-                    
---
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '헌트_예고편_18.mp4'
-                    , '20240128103401_75348.mp4'
-                    , DEFAULT
-                    , 2
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 2
-                    , 9);
-                    
---
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '올빼미_예고편_20.mp4'
-                    , '20240308103401_75356.mp4'
-                    , DEFAULT
-                    , 2
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 2
-                    , 10);
-                    
------MOVIE_FILE_POSTER
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '범죄도시2_11.png'
-                    , '20240318103401_75346.png'
-                    , DEFAULT
-                    , 1
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 1
-                    , 6);
---             
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '한산_13.png'
-                    , '20240218103401_75346.png'
-                    , DEFAULT
-                    , 1
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 1
-                    , 7);
-                    
---
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '공조2_15.png'
-                    , '20240118103401_75346.png'
-                    , DEFAULT
-                    , 1
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 1
-                    , 8);
-                    
---
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '헌트_17.png'
-                    , '20240128103401_75346.png'
-                    , DEFAULT
-                    , 1
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 1
-                    , 9);
-                    
---
-INSERT INTO ATTACHMENT
-        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
-                    , '올빼미_19.png'
-                    , '20240308103401_75346.png'
-                    , DEFAULT
-                    , 1
-                    , 'resources/upfiles/'
-                    , 1
-                    , DEFAULT
-                    , 1
-                    , 10);
 -------------------------------------------------- 김지우 ---------------------------------------------------
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '파묘.png', '20240318103838_91929.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 1);
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '파묘 예고편.mp4', '20240318104140_63098.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 1);
@@ -572,6 +444,126 @@ INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '서울의봄 예고편
 
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시.png', '20240318104801_78030.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 5);
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '범죄도시 예고편.mp4', '20240318104819_65085.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 5);
+-------수민--------
+-----MOVIE_FILE_MP4
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '범죄도시2_11.png'
+                    , '20240318103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 6);
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '범죄도시2_예고편_12.mp4'
+                    , '20240318103404_75346.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 6);
+--             
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '한산_13.png'
+                    , '20240218103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 7);
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '한산_예고편_14.mp4'
+                    , '20240218103403_75346.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 7);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '공조2_15.png'
+                    , '20240118103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 8);
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '공조2_예고편_16.mp4'
+                    , '20240118103402_75346.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 8);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '헌트_17.png'
+                    , '20240128103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 9);
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '헌트_예고편_18.mp4'
+                    , '20240128103401_75348.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 9);
+                    
+--
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '올빼미_19.png'
+                    , '20240308103401_75346.png'
+                    , DEFAULT
+                    , 1
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 1
+                    , 10);
+INSERT INTO ATTACHMENT
+        VALUES(SEQ_ATTACHMENT_NO.NEXTVAL
+                    , '올빼미_예고편_20.mp4'
+                    , '20240308103401_75356.mp4'
+                    , DEFAULT
+                    , 2
+                    , 'resources/upfiles/'
+                    , 1
+                    , DEFAULT
+                    , 2
+                    , 10);
+                    
 
 ------------------------------------- 용훈 ---------------------------------
 
