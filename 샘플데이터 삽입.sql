@@ -118,34 +118,23 @@ CONNECT BY
   LEVEL <= 120;
   -- REPLY 샘플 데이터 삽입 끝
   
-  INSERT INTO movie (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE)
-SELECT 
-  SEQ_MOVIE_NO.NEXTVAL,
-  CASE
-    WHEN ROWNUM <= 5 THEN '현재 상영 중인 한국영화 ' || ROWNUM
-    WHEN ROWNUM <= 10 THEN '현재 상영 중인 해외영화 ' || ROWNUM
-    WHEN ROWNUM <= 15 THEN '상영 중이 아닌 한국영화 ' || ROWNUM
-    ELSE '상영 중이 아닌 해외영화 ' || ROWNUM
-  END,
-  TO_CHAR(SYSDATE - DBMS_RANDOM.VALUE(365, 730), 'YYYY-MM-DD'), -- 랜덤한 개봉일 생성 (1년~2년 전)
-  CASE WHEN ROWNUM <= 20 THEN '1' ELSE '2' END, -- 한국영화(1) 또는 해외영화(2)를 랜덤하게 선택
-  TO_CHAR(TRUNC(DBMS_RANDOM.VALUE(60, 180)), 'FM9999'), -- 랜덤한 러닝타임 생성 (60분~180분)
-  '영화 줄거리 ' || ROWNUM, -- 영화 줄거리는 일단 임의의 내용으로 생성
-  CASE WHEN ROWNUM <= 5 THEN 'Y' ELSE 'N' END, -- 5개의 영화에 대해 FPAGE_EXPOSED를 'Y'로 설정
-  CASE MOD(ROWNUM, 4)
-    WHEN 0 THEN '전체관람가'
-    WHEN 1 THEN '12세 이상'
-    WHEN 2 THEN '15세 이상'
-    ELSE '청소년 관람불가'
-  END,
-  CASE WHEN ROWNUM <= 10 THEN 'Y' ELSE 'N' END, -- 현재 상영 중인 영화에 대해 CURRENT_SCREENING를 'Y'로 설정
-  CASE WHEN ROWNUM <= 5 THEN 'Y' ELSE 'N' END, -- 5개의 영화에 대해 MPAGE_EXPOSED를 'Y'로 설정
-  ROWNUM, -- 영화 포스터와 예고편은 1번부터 50번까지 순차적으로 부여
-  ROWNUM,
-  'Y', -- 모든 영화의 상태를 'Y'로 설정
-  SYSDATE -- 등록일은 현재 날짜로 설정
-FROM 
-  DUAL
-CONNECT BY 
-  LEVEL <= 50;
-  -- MOVIE 샘플 데이터 삽입 끝
+  
+  
+-- MOVIE
+
+--수민  
+INSERT INTO MOVIE
+    VALUES(SEQ_MOVIE_NO.NEXTVAL
+                ,  '범죄도시2'
+                , '2022-05-18'
+                , '1'
+                , '106분'
+                , '금천서 강력반은 베트남으로 도주한 용의자를 인도받아 오라는 임무를 받고 베트남에 갔다가 수년간 관광객을 노린 살인범을 발견한다.'
+                , DEFAULT
+                , '15세 이상'
+                , 'N'
+                , DEFAULT
+                , 11
+                , 12
+                , DEFAULT
+                , DEFAULT);  
