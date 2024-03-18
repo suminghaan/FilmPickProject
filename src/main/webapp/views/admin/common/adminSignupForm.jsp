@@ -27,17 +27,17 @@
                 <h2>회원가입</h2>
                 <br><br>
 
-                <form action="<%=contextPath %>/insert.me" method="post">
+                <form action="<%=contextPath %>/insert.ad" method="post">
                     <table class="table">
                         <!-- (tr>th+td*2)*9 -->
                         <tr>
                             <th>* 아이디</th>
-                            <td><input type="text" class="form-control" placeholder="Enter ID" required name="userId"></td>
+                            <td><input type="text" class="form-control" placeholder="Enter ID" required name="adminId"></td>
                             <td><button type="button" class="btn btn-secondary btn-sm" onclick="idCheck()">중복확인</button></td>
                         </tr>
                         <tr>
                             <th>* 비밀번호</th>
-                            <td><input type="password" class="form-control" placeholder="Enter Password" required name="userPwd"></td>
+                            <td><input type="password" class="form-control" placeholder="Enter Password" required name="adminPwd"></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <th>* 이름</th>
-                            <td><input type="text" class="form-control" placeholder="Enter Name" required name="userName"></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Name" required name="adminName"></td>
                             <td></td>
                         </tr>
                         <tr>

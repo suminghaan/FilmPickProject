@@ -1231,3 +1231,11 @@ FROM
     dual
 CONNECT BY 
     level <= 100; -- 100개의 샘플 데이터 생성
+    
+-----------------------영화-카테고리 데이블 데이터 추가----------------------
+INSERT INTO MOVIE_CATEGORY (MV_CATEGORY_NO, MV_NO, CATEGORY_NO)
+SELECT SEQ_MOVIE_CATEGORY_NO.NEXTVAL, 
+       TRUNC(DBMS_RANDOM.VALUE(1, 37)), 
+       TRUNC(DBMS_RANDOM.VALUE(1, 15))
+FROM dual
+CONNECT BY level <= 60;
