@@ -48,4 +48,31 @@
 		)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<!-- 로그인용 쿼리 -->
+	<entry key="loginMember">
+		SELECT
+			   MEM_NO
+			 , MEM_ID
+			 , MEM_PWD
+			 , MEM_NAME
+			 , MEM_BD
+			 , MEM_GENDER
+			 , MEM_EMAIL
+			 , MEM_PHONE
+			 , PREF_GENRE
+		     , NICKNAME
+			 , MEM_STATUS
+		     , SIGNIN_DATE
+			 , MEM_LEVEL
+			 , MEM_COLOR
+		     , MEM_IMGPATH
+		     , MEM_FILE
+		     , DORMANT_STATUS 
+		  FROM MEMBER
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+		   AND MEM_STATUS IN 'Y'
+
+	</entry>
 </properties>
