@@ -17,6 +17,21 @@ public class Member {
 	private String memColor; // 회원정보 색깔
 	private String memImgPath; // 프로필 이미지 경로
 	private int memFile; // 회원정보 사진파일 번호
+	private String dormantStatus; // 휴면회원 여부
+	private int reviewContentCnt; // 리뷰횟수 (회원조회 페이지에서 사용할 핊드)
+	private double avgLikePoint; // 별점평균 (회원조회 페이지에서 사용할 핊드)
+
+	public Member(int memNo, String memId, int memLevel, int reviewContentCnt, double avgLikePoint, String prefGenre,
+			String dormantStatus) { // 회원조회 페이지에서 전체회원조회 용도로 사용될 매개변수 생성자
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memLevel = memLevel;
+		this.reviewContentCnt = reviewContentCnt;
+		this.avgLikePoint = avgLikePoint;
+		this.prefGenre = prefGenre;
+		this.dormantStatus = dormantStatus;
+	}
 
 	public Member() {
 
@@ -24,7 +39,8 @@ public class Member {
 
 	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
 			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String signInDate,
-			int memLevel, String memColor, String memImgPath, int memFile) {
+			int memLevel, String memColor, String memImgPath, int memFile, String dormantStatus, int reviewContentCnt,
+			double avgLikePoint) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -42,6 +58,9 @@ public class Member {
 		this.memColor = memColor;
 		this.memImgPath = memImgPath;
 		this.memFile = memFile;
+		this.dormantStatus = dormantStatus;
+		this.reviewContentCnt = reviewContentCnt;
+		this.avgLikePoint = avgLikePoint;
 	}
 
 	public int getMemNo() {
@@ -172,13 +191,38 @@ public class Member {
 		this.memFile = memFile;
 	}
 
+	public String getDormantStatus() {
+		return dormantStatus;
+	}
+
+	public void setDormantStatus(String dormantStatus) {
+		this.dormantStatus = dormantStatus;
+	}
+
+	public int getReviewContentCnt() {
+		return reviewContentCnt;
+	}
+
+	public void setReviewContentCnt(int reviewContentCnt) {
+		this.reviewContentCnt = reviewContentCnt;
+	}
+
+	public double getAvgLikePoint() {
+		return avgLikePoint;
+	}
+
+	public void setAvgLikePoint(double avgLikePoint) {
+		this.avgLikePoint = avgLikePoint;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
 				+ ", memBirth=" + memBirth + ", memGender=" + memGender + ", memEmail=" + memEmail + ", memPhone="
 				+ memPhone + ", prefGenre=" + prefGenre + ", nickname=" + nickname + ", memStatus=" + memStatus
 				+ ", signInDate=" + signInDate + ", memLevel=" + memLevel + ", memColor=" + memColor + ", memImgPath="
-				+ memImgPath + ", memFile=" + memFile + "]";
+				+ memImgPath + ", memFile=" + memFile + ", dormantStatus=" + dormantStatus + ", reviewContentCnt="
+				+ reviewContentCnt + ", avgLikePoint=" + avgLikePoint + "]";
 	}
 
 }
