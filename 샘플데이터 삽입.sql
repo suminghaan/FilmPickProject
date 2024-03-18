@@ -224,13 +224,68 @@ INSERT INTO MOVIE
             
 
 
----------------------- 이용훈 --------------------------------
+
+
+
+------------------------------------------------------------------------ 정은정 ------------------------------------------------------------------------ 
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '스파이더맨: 노 웨이 홈', '2021-12-15', '2', '148분'
+      , '‘미스테리오’의 계략으로 세상에 정체가 탄로난 스파이더맨 ‘피터 파커’는 하루 아침에 평범한 일상을 잃게 된다. 문제를 해결하기 위해 ‘닥터 스트레인지’를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다. ‘닥터 옥토퍼스’를 비롯해 스파이더맨에게 깊은 원한을 가진 숙적들의 강력한 공격에 ‘피터 파커’는 사상 최악의 위기를 맞게 되는데…'
+      , 'N', '12세 이상', 'N', DEFAULT, 21, 22, 'Y', SYSDATE);
+
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '모가디슈', '2021-07-28', '1', '121분'
+      , '내전으로 고립된 낯선 도시, 모가디슈 지금부터 우리의 목표는 오로지 생존이다! 대한민국이 UN가입을 위해 동분서주하던 시기 1991년 소말리아의 수도 모가디슈에서는 일촉즉발의 내전이 일어난다. 통신마저 끊긴 그 곳에 고립된 대한민국 대사관의 직원과 가족들은 총알과 포탄이 빗발치는 가운데, 살아남기 위해 하루하루를 버텨낸다. 그러던 어느 날 밤, 북한 대사관의 일행들이 도움을 요청하며 문을 두드리는데… 목표는 하나, 모가디슈에서 탈출해야 한다!'
+      , 'N', '15세 이상', 'N', DEFAULT, 23, 24, 'Y', SYSDATE);
+
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '블랙위도우', '2021-07-07', '2', '134분'
+      , '어벤져스의 히어로 블랙 위도우, ‘나타샤 로마노프’ (스칼렛 요한슨)는 자신의 과거와 연결된 레드룸의 거대한 음모와 실체를 깨닫게 된다. 상대의 능력을 복제하는 빌런 ‘태스크마스터’와 새로운 위도우들의 위협에 맞서 목숨을 건 반격을 시작하는 ‘나타샤’는 스파이로 활약했던 자신의 과거 뿐 아니라, 어벤져스가 되기 전 함께했던 동료들을 마주해야만 하는데… 폭발하는 리얼 액션 카타르시스! MCU의 새로운 시대를 시작할 첫 액션 블록버스터를 만끽하라!'
+      , 'N', '12세 이상', 'N', DEFAULT, 25, 26, 'Y', SYSDATE);
+
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '분노의 질주: 더 얼티메이트', '2021-05-19', '2', '142분'
+      , '도미닉(빈 디젤)은 자신과 가장 가까웠던 형제 제이콥(존 시나)이 사이퍼(샤를리즈 테론)와 연합해 전 세계를 위기로 빠트릴 위험천만한 계획을 세운다는 사실을 알게 되고, 이를 막기 위해 다시 한 번 패밀리들을 소환한다. 가장 가까운 자가 한순간, 가장 위험한 적이 된 상황 도미닉과 패밀리들은 이에 반격할 놀라운 컴백과 작전을 세우고 지상도, 상공도, 국경도 경계가 없는 불가능한 대결이 시작되는데…'
+      , 'N', '12세 이상', 'N', DEFAULT, 27, 28, 'Y', SYSDATE);
+
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '소울', '2021-01-20', '2', '107분'
+      , '뉴욕에서 음악 선생님으로 일하던 ‘조’는 꿈에 그리던 최고의 밴드와 재즈 클럽에서 연주하게 된 그 날, 예기치 못한 사고로 영혼이 되어 ‘태어나기 전 세상’에 떨어진다. 탄생 전 영혼들이 멘토와 함께 자신의 관심사를 발견하면 지구 통행증을 발급하는 ‘태어나기 전 세상’ ‘조’는 그 곳에서 유일하게 지구에 가고 싶어하지 않는 시니컬한 영혼 ‘22’의 멘토가 된다. 링컨, 간디, 테레사 수녀도 멘토되길 포기한 영혼 ‘22’ 꿈의 무대에 서려면 ‘22’의 지구 통행증이 필요한 ‘조’ 그는 다시 지구로 돌아가 꿈의 무대에 설 수 있을까?'
+      , 'N', '전체관람가', 'N', DEFAULT, 29, 30, 'Y', SYSDATE);
+
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '듄', '2021-10-20', '2', '155분'
+      , '10191년, 아트레이데스 가문의 후계자인 폴(티모시 샬라메)은 시공을 초월한 존재이자 전 우주를 구원할 예지된 자의 운명을 타고났다. 그리고 어떤 계시처럼 매일 꿈에서 아라키스 행성에 있는 한 여인을 만난다. 모래언덕을 뜻하는 "듄"이라 불리는 아라키스는 물 한 방울 없는 사막이지만 우주에서 가장 비싼 물질인 신성한 환각제 스파이스의 유일한 생산지로 이를 차지하기 위한 전쟁이 치열하다. 황제의 명령으로 폴과 아트레이데스 가문은 죽음이 기다리는 아라키스로 향하는데… 위대한 자는 부름에 응답한다, 두려움에 맞서라, 이것은 위대한 시작이다!'
+      , 'N', '12세 이상', 'N', DEFAULT, 69, 70, 'Y', SYSDATE);
+      
+        
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '미나리', '2021-03-03', '2', '115분'
+      , '"미나리는 어디서든 잘 자라" 낯선 미국, 아칸소로 떠나온 한국 가족. 가족들에게 뭔가 해내는 걸 보여주고 싶은 아빠 "제이콥"(스티븐 연)은 자신만의 농장을 가꾸기 시작하고 엄마 "모니카"(한예리)도 다시 일자리를 찾는다. 아직 어린 아이들을 위해 ‘모니카’의 엄마 ‘순자’(윤여정)가 함께 살기로 하고 가방 가득 고춧가루, 멸치, 한약 그리고 미나리씨를 담은 할머니가 도착한다. 의젓한 큰딸 "앤"(노엘 케이트 조)과 장난꾸러기 막내아들 "데이빗"(앨런 김)은 여느 그랜마같지 않은 할머니가 영- 못마땅한데… 함께 있다면, 새로 시작할 수 있다는 희망으로 하루하루 뿌리 내리며 살아가는 어느 가족의 아주 특별한 여정이 시작된다!'
+      , 'N', '12세 이상', 'N', DEFAULT, 71, 72, 'Y', SYSDATE);
+
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '킹스맨: 퍼스트 에이전트', '2021-12-22', '2', '130분'
+      , '역사상 최악의 폭군들과 범죄자들이 모여 수백만 명의 생명을 위협할 전쟁을 모의하는 광기의 시대. 이들을 막으려는 한 사람과 그가 비밀리에 운영 중인 독립 정보기관, ‘킹스맨’의 최초 미션이 시작된다! 베일에 감춰졌던 킹스맨의 탄생을 목격하라!'
+      , 'N', '청소년 관람불가', 'N', DEFAULT, 73, 74, 'Y', SYSDATE);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
+-------------------------------------- 이용훈 --------------------------------
+
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '닥터 두리틀', '2020-01-08', '2', '101분', '동물들과 소통하는 특별한 능력을 지닌 닥터 두리틀(로버트 다우니 주니어)은 사랑하는 사람을 잃고 세상과 단절한 채 동물들과 친구가 되어 살아간다.', 'N', '전체 관람가', 'N', 'N', 31, 32, 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '나쁜 녀석들 : 포에버', '2020-01-15', '2', '124분', '마이애미 강력반의 베테랑 형사 ‘마이크’[윌 스미스]는 여전히 범죄자를 소탕하는 데 열성적이지만, 그의 파트너 ‘마커스’[마틴 로렌스]는 이제 일선에서 물러나 가족과 함께 시간을 보내고 싶어한다.', 'N', '청소년 관람불가', 'N', 'N', 33, 34, 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '스파이 지니어스', '2020-01-22', '2', '102분', '전 세계를 위협하는 불법 무기 거래 첩보를 입수한 스파이 에이전트는 천상천하 유아독존 슈퍼 스파이 ‘랜스’(윌 스미스)를 파견한다. 하지만, 최첨단 장비로 무장한 정체불명의 빌런 ‘킬리언’(벤 맨델슨)은 ‘랜스’로 위장해 무기를 훔치고 그를 함정에 빠트린다.', 'N', '전체 관람가', 'N', 'N', 35, 36, 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '작은 아씨들', '2020-02-12', '2', '135분', '배우가 되고 싶은 첫째 메그(엠마 왓슨) 작가가 되고 싶은 둘째 조(시얼샤 로넌) 음악가가 되고 싶은 셋째 베스(엘리자 스캔런) 화가가 되고 싶은 막내 에이미(플로렌스 퓨) 이웃집 소년 로리(티모시 샬라메)는 네 자매를 우연히 알게되고 각기 다른 개성의 네 자매들과 인연을 쌓아간다.', 'N', '전체 관람가', 'N', 'N', 37, 38, 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '1917', '2020-02-19', '2', '119분', '제1차 세계대전이 한창인 1917년. 독일군에 의해 모든 통신망이 파괴된 상황 속에서 영국군 병사 ‘스코필드’(조지 맥케이)와 ‘블레이크’(딘-찰스 채프먼)에게 하나의 미션이 주어졌다.', 'N', '15세 관람가', 'N', 'N', 39, 40, 'Y', SYSDATE);
-
+      
 
 ------------------------ 김호용 ------------------------ 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
@@ -899,3 +954,234 @@ VALUES (
     '2',
     30
 );
+
+
+
+-------------------------------------------------------------- 정은정 --------------------------------------------------------------
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '스파이더맨：노 웨이 홈 포스터.jpeg',
+    '20211215110327_51215.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    11
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '스파이더맨：노 웨이 홈 예고편.mp4',
+    '20211215111035_23204.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    11
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '모가디슈 포스터.jpeg',
+    '202107281652_96426.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    12
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '모가디슈 예고편.mp4',
+    '20210728172012_93546.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    12
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '블랙 위도우 포스터.jpeg',
+    '202107071324_12379.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    13
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '블랙 위도우 예고편.mp4',
+    '20210707133011_23125.mp4',
+    SYSDATE,
+    3,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    13
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '분노의 질주：더 얼티메이트 포스터.jpeg',
+    '202105191408_42420.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    14
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '분노의 질주：더 얼티메이트 예고편.mp4',
+    '20210519144822_54523.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    14
+);
+
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '소울 포스터.jpeg',
+    '202101201630_52311.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    15
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '소울 예고편.mp4',
+    '20210120163534_65912.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    15
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '듄 포스터.jpeg',
+    '202110201015_12356.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    35
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '듄 예고편.mp4',
+    '20211020102003_54688.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    35
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '미나리 포스터.jpeg',
+    '202103031120_56255.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    36
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '미나리 예고편.mp4',
+    '20210303115243_98542.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    36
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '킹스맨：퍼스트 에이전트 포스터.jpeg',
+    '202112221803_64555.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    37
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '킹스맨：퍼스트 에이전트 예고편.mp4',
+    '20211222181539_32156.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    37
+);
+
+-------------------------------------------------------------- 정은정 --------------------------------------------------------------
