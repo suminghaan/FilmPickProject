@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="insertAdmin">
+		INSERT
+			INTO ADMIN
+			(
+				ADMIN_NO
+			  , ADMIN_ID
+			  , ADMIN_PWD
+			  , ADMIN_NAME
+			  , PHONE
+			)
+		VALUES
+		(
+			SEQ_ANO.NEXTVAL
+			,?
+			,?
+			,?
+			,?
+		)
+	</entry>
+
+</properties>
