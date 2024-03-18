@@ -7,7 +7,7 @@ public class Board {
 	private int bNo; // 게시글번호
 	private String bTitle; // 게시글 제목
 	private String bConment; // 게시글내용
-	private DATE bRegistDate; // 작성일
+	private String bRegistDate; // 작성일
 	private int bReadCount; // 조회수
 	private int bRecommendCount; // 추천수
 	private String bCategory; // 카테고리 1|2 (영화|잡담)
@@ -15,10 +15,12 @@ public class Board {
 	private String dSatus; // 글 삭제여부
 	private String memNo; // 회원번호 | 작성자아이디
 	private String titleImgUrl; // 대표이미지 경로 보관할 필드(게시글에 미리보는 이미지에 표시) 
+	private int replyCount; // 댓글갯수
+	
 	
 	public Board() {}
 
-	public Board(int bNo, String bTitle, String bConment, DATE bRegistDate, int bReadCount, int bRecommendCount,
+	public Board(int bNo, String bTitle, String bConment, String bRegistDate, int bReadCount, int bRecommendCount,
 			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl) {
 		super();
 		this.bNo = bNo;
@@ -32,6 +34,24 @@ public class Board {
 		this.dSatus = dSatus;
 		this.memNo = memNo;
 		this.titleImgUrl = titleImgUrl;
+	}
+	
+	/**
+	 * 커뮤니티 메인페이지 데이터값들을 담기위한 매개변수생성자
+	 * @호용
+	 */
+	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, int bRecommendCount, String bCategory,
+			String memNo, String titleImgUrl, int replyCount) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bRecommendCount = bRecommendCount;
+		this.bCategory = bCategory;
+		this.memNo = memNo;
+		this.titleImgUrl = titleImgUrl;
+		this.replyCount = replyCount;
 	}
 
 	public int getbNo() {
@@ -58,11 +78,11 @@ public class Board {
 		this.bConment = bConment;
 	}
 
-	public DATE getbRegistDate() {
+	public String getbRegistDate() {
 		return bRegistDate;
 	}
 
-	public void setbRegistDate(DATE bRegistDate) {
+	public void setbRegistDate(String bRegistDate) {
 		this.bRegistDate = bRegistDate;
 	}
 
@@ -120,6 +140,14 @@ public class Board {
 
 	public void setTitleImgUrl(String titleImgUrl) {
 		this.titleImgUrl = titleImgUrl;
+	}
+	
+	public int getReplyCount() {
+		return replyCount;
+	}
+	
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
 	}
 
 	@Override

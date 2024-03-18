@@ -1,4 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
+	<!-- 커뮤니티 메인페이지 영화카테고리의 인기글들에 띄울 4개의 값들을 담기 위한 sql문(영화인기게시글) BY 호용-->
+	<entry key="selectMainPublicList">
+	    SELECT B.*
+	      FROM (
+	            SELECT
+	                   B_NO
+	                 , B_CATEGORY
+	                 , B_TITLE
+	                 , B_READ_COUNT
+	                 , B_RECOMMEND_COUNT
+	                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
+	                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
+	                 , FILE_PATH <!-- ATTACHMENT 테이블과 조인  -->
+	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+	              FROM BOARD B
+	              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+	              JOIN ATTACHMENT A ON (A.REF_NO = B.B_NO)
+	             WHERE B_D_STATUS = 'N'
+	               AND B_CATEGORY = '1'
+	               AND REF_TYPE = '3'
+	               AND B_RECOMMEND_COUNT > 3
+	             ORDER
+	                BY B_NO DESC
+	            ) B
+	    WHERE ROWNUM BETWEEN 1 AND 4
+	</entry>
+	
+	<!-- 커뮤니티 메인페이지 영화카테고리의 일반글에 띄울 4개의 값들을 담기 위한 sql문(영화게시글) BY 호용-->
+	<entry key="selectMainList">
+		    SELECT B.*
+		      FROM (
+		            SELECT
+		                   B_NO
+		                 , B_CATEGORY
+		                 , B_TITLE
+		                 , B_READ_COUNT
+		                 , B_RECOMMEND_COUNT
+		                 , NICKNAME /*MEMBER 테이블과 조인 */
+		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
+		                 , FILE_PATH /* ATTACHMENT 테이블과 조인 */
+		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+		              FROM BOARD B
+		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		              JOIN ATTACHMENT A ON (A.REF_NO = B.B_NO)
+		             WHERE B_D_STATUS = 'N'
+		               AND B_CATEGORY = '1'
+		               AND REF_TYPE = '3'
+		             ORDER
+		                BY B_NO DESC
+		            ) B
+		    WHERE ROWNUM BETWEEN 1 AND 4
+	</entry>
+	
+		<!-- 커뮤니티 메인페이지 잡담카테고리의 일반글에 띄울 4개의 값들을 담기 위한 sql문(영화게시글) BY 호용-->
+	<entry key="selectMainChatList">
+		    SELECT B.*
+		      FROM (
+		            SELECT
+		                   B_NO
+		                 , B_CATEGORY
+		                 , B_TITLE
+		                 , B_READ_COUNT
+		                 , B_RECOMMEND_COUNT
+		                 , NICKNAME /*MEMBER 테이블과 조인 */
+		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
+		                 , FILE_PATH /* ATTACHMENT 테이블과 조인 */
+		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+		              FROM BOARD B
+		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+		              JOIN ATTACHMENT A ON (A.REF_NO = B.B_NO)
+		             WHERE B_D_STATUS = 'N'
+		               AND B_CATEGORY = '2'
+		               AND REF_TYPE = '3'
+		             ORDER
+		                BY B_NO DESC
+		            ) B
+		    WHERE ROWNUM BETWEEN 1 AND 4
+	</entry>
+
 </properties>

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.fp.board.model.vo.Board" %>
+<%
+	List<Board> list = (List<Board>)request.getAttribute("list");
+	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
+	List<Board> chatList = (List<Board>)request.getAttribute("chatList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,57 +152,20 @@
                     </thead>
                     <tbody>
                         <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
-                        <tr>
-                            <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                            <td rowspan="3" class="img">
-                                <img src="../../resources/img/공유.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="writer">작성자 / 작성시간</td>
-                        </tr>
-                        <!-- } 반복문 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-
-                        <!-- 반복문 돌리면 지울 내용 @@@@@@@@@@@@@@@@@@@@@@@@-->
-                        <tr>
-                            <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                            <td rowspan="3" class="img">
-                                <img src="../../resources/img/공유.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                        </tr>
-                        <tr>
-                          <td colspan="2" class="writer">작성자 / 작성시간</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                            <td rowspan="3" class="img">
-                                <img src="../../resources/img/공유.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="writer">작성자 / 작성시간</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                            <td rowspan="3" class="img">
-                                <img src="../../resources/img/공유.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="writer">작성자 / 작성시간</td>
-                        </tr>
+                        <% for(Board b : publicList){ %>
+	                        <tr>
+	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
+	                            <td rowspan="3" class="img">
+	                                <img src="../../resources/img/공유.jpg">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
+	                        </tr>
+	                    <%} %>                  
                     </tbody>
                 </table>
                 

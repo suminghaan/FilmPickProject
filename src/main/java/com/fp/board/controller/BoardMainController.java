@@ -1,11 +1,16 @@
 package com.fp.board.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fp.board.model.service.BoardService;
+import com.fp.board.model.vo.Board;
 
 /**
  * Servlet implementation class BoardMainController
@@ -26,8 +31,20 @@ public class BoardMainController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// 커뮤니티 메인페이지의 영화카테고리의 최신순 인기글4개를 담기위한 메소드 호출구문
+		List<Board> publicList = new BoardService().selectMainPublicList();
+		
+		// 커뮤니티 메인페이지의 영화카테고리의 최신순 일반글4개를 담기위한 메소드 호출구문
+		List<Board> list = new BoardService().selectMainList();
+		
+		// 커뮤니티 메인페이지의 잡담카테고리의 최신순 일반글4개를 담기위한 메소드 호출구문
+		List<Board> chatList = new BoardService().selectMainChatList();
+		
+		request.setAttribute("publicList", publicList);
+		request.setAttribute("list", list);
+		request.setAttribute("chatList", chatList);
+		
+		request.getRequestDispatcher("/views/community/communityList.jsp").forward(request, response);
 	}
 
 	/**
