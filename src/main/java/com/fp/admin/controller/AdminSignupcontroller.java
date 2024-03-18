@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.br.member.model.service.MemberService;
-import com.br.member.model.vo.Member;
+//import com.fp.member.model.service.MemberService;
+import com.fp.member.model.vo.Member;
+import com.fp.admin.model.service.AdminService;
+import com.fp.admin.model.vo.Admin;
 
 /**
  * Servlet implementation class AdminSignupcontroller
@@ -41,10 +43,10 @@ public class AdminSignupcontroller extends HttpServlet {
 				String adminName = request.getParameter("adminName"); 
 				String phone = request.getParameter("phone"); 
 				
-				Member m = new Member(adminId, adminPwd, adminName, phone);
+				Admin a = new Admin(adminId, adminPwd, adminName, phone);
 			
 			// 2) 요청 처리 (서비스 메소드 호출)
-				int result = new MemberService().insertMember(m);
+				int result = new AdminService().insertMember(a);
 			
 			// 3) 돌려받은 결과를 가지고 응답페이지 
 				if(result > 0) { // 성공했을경우
