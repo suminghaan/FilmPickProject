@@ -1214,3 +1214,20 @@ VALUES (
 );
 
 -------------------------------------------------------------- 정은정 --------------------------------------------------------------
+
+-------------------------리뷰 데이터 추가------------------------------
+
+-- 시퀀스를 사용하여 review 테이블에 데이터 삽입
+INSERT INTO REVIEW (MV_REVIEW_NO, MV_NO, REVIEW_CONTENT, LIKE_POINT, AGREE_COUNT, DISAGREE_COUNT, MEM_NO)
+SELECT 
+    seq_review_no.NEXTVAL, -- 다음 시퀀스 값을 사용하여 MV_REVIEW_NO 생성
+    TRUNC(DBMS_RANDOM.VALUE(1, 38)), -- MV_NO를 1부터 37까지 랜덤하게 생성
+    SUBSTR(DBMS_LOB.SUBSTR(DBMS_RANDOM.STRING('X', ROUND(DBMS_RANDOM.VALUE(200, 400)))), 1, 4000), -- 랜덤한 리뷰 내용 생성 (200~400자)
+    0.5 * ROUND(DBMS_RANDOM.VALUE(1, 10), 0), -- 0.5의 배수 값으로 LIKE_POINT 생성 (0.5, 1, 1.5, 2, 2.5, ...)
+    ROUND(DBMS_RANDOM.VALUE(0, 10)), -- 공감 개수를 0부터 10까지 랜덤하게 생성
+    ROUND(DBMS_RANDOM.VALUE(0, 10)), -- 비공감 개수를 0부터 10까지 랜덤하게 생성
+    TRUNC(DBMS_RANDOM.VALUE(1, 31)) -- MEM_NO를 1부터 30까지 랜덤하게 생성
+FROM 
+    dual
+CONNECT BY 
+    level <= 100; -- 100개의 샘플 데이터 생성
