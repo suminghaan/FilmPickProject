@@ -33,7 +33,8 @@
 		ON R.MV_NO = M.MV_NO
 		WHERE MV_NAME LIKE ?
 		AND MV_STATUS = 'Y'
-		GROUP BY(M.MV_NO, MV_NAME, MV_OPENDATE);
+		GROUP BY(M.MV_NO, MV_NAME, MV_OPENDATE)
+		ORDER BY MV_NO
 	</entry>
 	<!-- 영화 포스터 경로 -->
 	<entry key="selectMoviePosterPath">
@@ -44,6 +45,7 @@
 		AND FILE_LEVEL = 1
 		AND FILE_TYPE = 1
 		AND FILE_STATUS = 'Y'
-		WHERE MV_NAME LIKE ?;
+		WHERE MV_NAME LIKE ? 
+		ORDER BY MV_NO
 	</entry>
 </properties>
