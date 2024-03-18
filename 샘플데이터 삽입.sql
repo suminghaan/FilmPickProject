@@ -88,7 +88,7 @@ CONNECT BY
 -- CATEGORY 샘플 데이터 삽입 끝
 
 -- 30개의 샘플 데이터 삽입
-INSERT INTO NOTICE (NOTICE_NO, NOTICE_CATEGORY, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_READ_COUNT, ADMIN_NO, NOTICE_STATUS)
+INSERT INTO NOTICE (NOTICE_NO, NOTICE_CATEGORY, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_READ_COUNT, ADMIN_NO, NOTICE_STATUS, NOTICE_FIX)
 SELECT 
   SEQ_NOTICE_NO.NEXTVAL,
   CASE WHEN ROWNUM <= 15 THEN '1' ELSE '2' END, -- 일반(1) 또는 이벤트(2) 카테고리를 랜덤하게 생성
@@ -97,7 +97,8 @@ SELECT
   SYSDATE - DBMS_RANDOM.VALUE(1, 365), -- 랜덤한 작성일 생성
   0, -- 초기 조회수를 0으로 설정
   MOD(ROWNUM, 5) + 1, -- 1부터 5까지의 숫자를 순환하여 ADMIN_NO 생성
-  'Y' -- 공지사항 상태를 기본값 'Y'로 설정
+  'Y', -- 공지사항 상태를 기본값 'Y'로 설정
+  'N' -- 공지사항 상단고정여부를 기본값 'N'로 설정
 FROM 
   DUAL
 CONNECT BY 
@@ -123,15 +124,15 @@ CONNECT BY
   
 -- MOVIE
 ------------------------ 김지우 ------------------------ 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '파묘', '2024/02/22', 1, '134분', '미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.', DEFAULT, '15세 이상', 'Y', DEFAULT, 1, 2, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '파묘', '2024-02-22', 1, '134분', '미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.', DEFAULT, '15세 이상', 'Y', DEFAULT, 1, 2, DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '스즈메의 문단속', '2024/01/10', 2, '122분', '한 소녀가 우연히 만난 청년과 재난의 문을 닫는 모험에 뛰어들게 되는 이야기를 다룬 애니메이션 영화', DEFAULT, '12세 이상', 'N', DEFAULT, 3, 4, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '스즈메의 문단속', '2024-01-10', 2, '122분', '한 소녀가 우연히 만난 청년과 재난의 문을 닫는 모험에 뛰어들게 되는 이야기를 다룬 애니메이션 영화', DEFAULT, '12세 이상', 'N', DEFAULT, 3, 4, DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '대외비', '2023/03/01', 1, '116분', '1992년 부산, 만년 국회의원 후보 해웅과 정치판의 숨은 실세 순태, 행동파 조폭 필도가 대한민국을 뒤흔들 비밀 문서를 손에 쥐고 판을 뒤집기 위한 치열한 쟁탈전을 벌이는 범죄드라마', DEFAULT, '15세 이상', 'N', DEFAULT, 5, 6, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '대외비', '2023-03-01', 1, '116분', '1992년 부산, 만년 국회의원 후보 해웅과 정치판의 숨은 실세 순태, 행동파 조폭 필도가 대한민국을 뒤흔들 비밀 문서를 손에 쥐고 판을 뒤집기 위한 치열한 쟁탈전을 벌이는 범죄드라마', DEFAULT, '15세 이상', 'N', DEFAULT, 5, 6, DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '서울의 봄', '2023/11/22', 1, '141분', '1979년 12월 12일, 수도 서울 군사반란 발생 그날, 대한민국의 운명이 바뀌었다 대한민국을 뒤흔든 10월 26일 이후, 서울에 새로운 바람이 불어온 것도 잠시 12월 12일, 보안사령관 전두광이 반란을 일으키고 군 내 사조직을 총동원하여 최전선의 전방부대까지 서울로 불러들인다. 권력에 눈이 먼 전두광의 반란군과 이에 맞선 수도경비사령관 이태신을 비롯한 진압군 사이, 일촉즉발의 9시간이 흘러가는데… 목숨을 건 두 세력의 팽팽한 대립 오늘 밤, 대한민국 수도에서 가장 치열한 전쟁이 펼쳐진다!', DEFAULT, '12세 이상', 'N', DEFAULT, 7, 8, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '서울의 봄', '2023-11-22', 1, '141분', '1979년 12월 12일, 수도 서울 군사반란 발생 그날, 대한민국의 운명이 바뀌었다 대한민국을 뒤흔든 10월 26일 이후, 서울에 새로운 바람이 불어온 것도 잠시 12월 12일, 보안사령관 전두광이 반란을 일으키고 군 내 사조직을 총동원하여 최전선의 전방부대까지 서울로 불러들인다. 권력에 눈이 먼 전두광의 반란군과 이에 맞선 수도경비사령관 이태신을 비롯한 진압군 사이, 일촉즉발의 9시간이 흘러가는데… 목숨을 건 두 세력의 팽팽한 대립 오늘 밤, 대한민국 수도에서 가장 치열한 전쟁이 펼쳐진다!', DEFAULT, '12세 이상', 'N', DEFAULT, 7, 8, DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '범죄도시3', '2023/05/31', 1, '105분', '대체불가 괴물형사 마석도, 서울 광수대로 발탁! 베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다. 사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다. 한편, 마약 사건의 배후인 주성철(이준혁)은 계속해서 판을 키워가고 약을 유통하던 일본 조직과 리키(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데... 나쁜 놈들 잡는 데 이유 없고 제한 없다. 커진 판도 시원하게 싹 쓸어버린다!', DEFAULT, '15세 이상', 'N', DEFAULT, 9, 10, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '범죄도시3', '2023-05-31', 1, '105분', '대체불가 괴물형사 마석도, 서울 광수대로 발탁! 베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다. 사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다. 한편, 마약 사건의 배후인 주성철(이준혁)은 계속해서 판을 키워가고 약을 유통하던 일본 조직과 리키(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데... 나쁜 놈들 잡는 데 이유 없고 제한 없다. 커진 판도 시원하게 싹 쓸어버린다!', DEFAULT, '15세 이상', 'N', DEFAULT, 9, 10, DEFAULT, DEFAULT);
 --------------------------------------------------------------------------------------------------------------------------------
 
 --수민  
@@ -1213,3 +1214,20 @@ VALUES (
 );
 
 -------------------------------------------------------------- 정은정 --------------------------------------------------------------
+
+-------------------------리뷰 데이터 추가------------------------------
+
+-- 시퀀스를 사용하여 review 테이블에 데이터 삽입
+INSERT INTO REVIEW (MV_REVIEW_NO, MV_NO, REVIEW_CONTENT, LIKE_POINT, AGREE_COUNT, DISAGREE_COUNT, MEM_NO)
+SELECT 
+    seq_review_no.NEXTVAL, -- 다음 시퀀스 값을 사용하여 MV_REVIEW_NO 생성
+    TRUNC(DBMS_RANDOM.VALUE(1, 38)), -- MV_NO를 1부터 37까지 랜덤하게 생성
+    SUBSTR(DBMS_LOB.SUBSTR(DBMS_RANDOM.STRING('X', ROUND(DBMS_RANDOM.VALUE(200, 400)))), 1, 4000), -- 랜덤한 리뷰 내용 생성 (200~400자)
+    0.5 * ROUND(DBMS_RANDOM.VALUE(1, 10), 0), -- 0.5의 배수 값으로 LIKE_POINT 생성 (0.5, 1, 1.5, 2, 2.5, ...)
+    ROUND(DBMS_RANDOM.VALUE(0, 10)), -- 공감 개수를 0부터 10까지 랜덤하게 생성
+    ROUND(DBMS_RANDOM.VALUE(0, 10)), -- 비공감 개수를 0부터 10까지 랜덤하게 생성
+    TRUNC(DBMS_RANDOM.VALUE(1, 31)) -- MEM_NO를 1부터 30까지 랜덤하게 생성
+FROM 
+    dual
+CONNECT BY 
+    level <= 100; -- 100개의 샘플 데이터 생성

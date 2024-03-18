@@ -313,9 +313,9 @@
             <li class="menu_buttons_co">공지사항/고객센터</li>
           </ul>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
+          <form action="<%= contextPath %>/search.fp" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 search" role="search">
             <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="영화, 인물"
-              aria-label="Search" style="width: 400px;">
+              aria-label="Search" style="width: 400px;" name="searchKeyword">
             <button type="submit" class="btn btn-outline-light searchBtn" style="--bs-btn-border-color: RGB(247, 39, 140);
             --bs-btn-color:RGB(247, 39, 140);
             --bs-btn-hover-color: #000;

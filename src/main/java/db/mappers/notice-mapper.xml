@@ -29,5 +29,21 @@
 		  FROM NOTICE
 		 WHERE NOTICE_STATUS = 'Y'
 	</entry>
+	
+	<!-- 관리자 공지사항 페이지에 보여지는 공지사항 목록 sql문 [수민] -->
+		<entry key="selectComuNoticeList">
+			SELECT
+				  NOTICE_NO
+			  	, REGIST_DATE
+			  	, ADMIN_ID
+			  	, NOTICE_TITLE
+			  	, NOTICE_FIX
+			 FROM NOTICE N
+			 JOIN ADMIN A ON N.ADMIN_NO = A.ADMIN_NO
+			 WHERE N.STATUS = 'Y'
+			 ORDER
+			 	BY NOTICE_NO DESC
+		</entry>
+
 
 </properties>
