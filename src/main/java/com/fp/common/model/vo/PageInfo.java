@@ -1,3 +1,4 @@
+
 package com.fp.common.model.vo;
 
 public class PageInfo {

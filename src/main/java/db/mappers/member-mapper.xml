@@ -7,4 +7,45 @@
 		SET MEM_LEVEL = ?
 		WHERE USER_ID = ?
 	</entry>
+	
+	<entry key="selectMemberList"> <!-- 전체 회원조회 쿼리 (Select) -->
+		SELECT M.MEM_NO AS "MEM_NO"
+		     , MEM_ID
+		     , MEM_LEVEL
+		     , COUNT(REVIEW_CONTENT) "REVIEW_CONTENT_COUNT"
+		     , AVG(LIKE_POINT) "AVG_LIKE_POINT"
+		     , PREF_GENRE
+		     , DORMANT_STATUS
+		FROM MEMBER M
+		JOIN REVIEW R ON M.MEM_NO = R.MV_REVIEW_NO
+		GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
+		ORDER BY MEM_NO DESC, DORMANT_STATUS ASC
+	</entry>
+	
+	<entry key="selectListCount"> <!-- 페이징용 쿼리 -->
+		SELECT COUNT(*) COUNT
+		FROM MEMBER
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+			FROM(
+			    SELECT ROWNUM RNUM, A.*
+			    FROM (
+			            SELECT
+			            	M.MEM_NO
+			              , MEM_ID 
+			              , MEM_LEVEL
+			              , COUNT(REVIEW_CONTENT) "REVIEW_CONTENT_COUNT"
+			              , AVG(LIKE_POINT) "AVG_LIKE_POINT"
+			              , PREF_GENRE
+			              , DORMANT_STATUS
+			            FROM MEMBER M
+			            JOIN REVIEW R ON M.MEM_NO = R.MV_REVIEW_NO
+			            GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
+			            ORDER BY M.MEM_NO DESC, DORMANT_STATUS ASC
+			    ) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

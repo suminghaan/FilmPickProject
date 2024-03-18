@@ -2,8 +2,11 @@ package com.fp.admin.model.service;
 import static com.fp.common.template.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.fp.admin.model.dao.MemberDao;
+import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 
 public class MemberService {
@@ -31,6 +34,36 @@ public class MemberService {
 		close(conn);
 		
 		return result;
+	}
+
+	/** 
+	 * '회원조회' 페이지에서 전체회원을 조회 (Select)
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
+	public List<Member> selectMemberList() {
+		Connection conn = getConnection();
+		List<Member> list = mDao.selectNoticeList(conn);
+		close(conn);
+		return list;
+	}
+
+	public int selectListCount() {
+		Connection conn = getConnection();
+
+		int listCount = mDao.selectListCount(conn);
+		close(conn);
+
+		return listCount;
+	}
+
+	public List<Member> selectList(PageInfo pi) {
+		Connection conn = getConnection();
+
+		List<Member> list = mDao.selectListCount(conn, pi);
+		close(conn);
+		return list;
 	}
 	
 }
