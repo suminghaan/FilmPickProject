@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.member.model.vo.Member" %>
 <%
-	String contextPath = request.getContextPath();
+String contextPath = request.getContextPath();
+Member loginMember = (Member)session.getAttribute("loginUser");
+String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html>
@@ -194,7 +197,15 @@
   <link href="<%= contextPath %>/resources/css/headers.css" rel="stylesheet">
 </head>
 <body>
-
+	
+	<%if(alertMsg != null){ //alert 시킬만한 알람문구가 존재할 경우 %>
+    <script>
+    	alert('<%=alertMsg%>');
+    </script>
+    <%
+    	session.removeAttribute("alertMsg");
+    } %>
+    
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
       <path
@@ -323,16 +334,37 @@
             --bs-btn-hover-border-color: #000;">Search</button>
           </form>
 
+		  <% if(loginMember == null){ %>
           <!-- 로그인 전에 보여질 내용 -->
           <div class="text-end" style="width: 200px">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-outline-warning" style="--bs-btn-border-color: RGB(247, 39, 140);
+            <button type="button" class="btn btn-outline-light me-2" id="login_btn">Login</button>
+            <button type="button" class="btn btn-outline-warning" id="signup_btn" style="--bs-btn-border-color: RGB(247, 39, 140);
               --bs-btn-color: RGB(247, 39, 140);
               --bs-btn-hover-color: #000;
               --bs-btn-hover-bg: RGB(247, 39, 140);
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>
-          <!-- 로그인 시 보여질 내용
+          
+           <script type="text/javascript">
+          	$(function(){
+          		$("#login_btn").click(function(){
+          			location.href="<%= contextPath %>/views/mypage/login.jsp";
+          		})
+          	})
+          
+          </script>
+          
+          <script type="text/javascript">
+          	$(function(){
+          		$("#signup_btn").click(function(){
+          			location.href="<%= contextPath %>/views/mypage/memberSignupCheckForm.jsp";
+          		})
+          	})
+          
+          </script>
+          
+          <%}else{%>
+          <!-- 로그인 시 보여질 내용 -->
           <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
               <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -347,7 +379,9 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">로그아웃</a></li>
               </ul>
-          </div> -->
+          </div> 
+          
+           <%} %>
 
         </div>
       </div>

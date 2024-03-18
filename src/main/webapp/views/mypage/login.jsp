@@ -153,17 +153,17 @@
       <div class="content">
         <div class="login" style="background-color: white;">
           <div class="container">
-            <form action="/action_page.php">
+            <form action="<%= contextPath%>/login.me" method="post">
               <img src="../../resources/img/logo.png" width="150px" height="50px" id="logo">
 
               <div class="form-group">
                 <!--<label for="email">아이디</label>-->
-                <input type="email" class="form-control" id="id" placeholder="아이디를 입력하세요" name="email" style="background-color:transparent;">
+                <input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요" name="memId" style="background-color:transparent;">
               </div>
 
               <div class="form-group">
                 <!--<label for="pwd">비밀번호</label>-->
-                <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="pwd" style="background-color:transparent;">
+                <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="memPwd" style="background-color:transparent;">
               </div>
               <div class="form-group form-check" style="float: right;">
                 <label class="form-check-label">
@@ -171,12 +171,12 @@
                 </label>
               </div>
               <br><br>
-              <center><a href="../common/mainPage.jsp" type="button" class="btn btn-outline-light" style="width: 300px;
+              <center><button type="submit" class="btn btn-outline-light" style="width: 300px;
                                                                                 --bs-btn-border-color: RGB(247, 39, 140);
                                                                                 --bs-btn-color:RGB(247, 39, 140);
                                                                                 --bs-btn-hover-color: #ffffff;
                                                                                 --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                --bs-btn-hover-border-color: #ffffff;">로그인</a></center>
+                                                                                --bs-btn-hover-border-color: #ffffff;">로그인</button></center>
 
               
               <br>
