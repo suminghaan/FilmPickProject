@@ -37,9 +37,12 @@
 			  	, REGIST_DATE
 			  	, ADMIN_ID
 			  	, NOTICE_TITLE
-			  	, 상단고정여부
+			  	, NOTICE_FIX
 			 FROM NOTICE N
-			 JOIN ADMIN A ON 
+			 JOIN ADMIN A ON N.ADMIN_NO = A.ADMIN_NO
+			 WHERE N.STATUS = 'Y'
+			 ORDER
+			 	BY NOTICE_NO DESC
 		</entry>
 
 
