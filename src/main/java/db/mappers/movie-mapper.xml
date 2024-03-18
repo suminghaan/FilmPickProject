@@ -8,7 +8,7 @@
 		WHERE MV_STATUS = 'Y'
 	</entry>
 	
-	<!--  탐색페이지 필터 활용 구문 [용훈] -->
+	<!--  -탐색페이지 필터 활용 구문 [용훈]- -->
 	<entry key="selectExploList">
 		SELECT  M.MV_NO
 				, MV_POSTER
