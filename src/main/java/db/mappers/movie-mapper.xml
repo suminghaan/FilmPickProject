@@ -8,19 +8,19 @@
 		WHERE MV_STATUS = 'Y'
 	</entry>
 	
-	<!--  -탐색페이지 필터 활용 구문 [용훈]- -->
+	<!--  탐색페이지 필터 활용 구문 [용훈] -->
 	<entry key="selectExploList">
 		SELECT  M.MV_NO
-				, MV_POSTER
-				, MV_NAME
-				, ROUND(AVG(LIKE_POINT), 1) "LIKE_POINT"
-				, MV_OPENDATE
-				, MV_NATION
-                , (SELECT COUNT(*) FROM MOVIE_LIKE WHERE  MV_NO = M.MV_NO) "LIKECOUNT"
-                , (SELECT COUNT(*) FROM REVIEW WHERE MV_REVIEW_NO = M.MV_NO) "REVIEWS"
+            , MV_POSTER
+            , MV_NAME
+            , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW WHERE MV_NO = M.MV_NO) "LIKE_POINT"
+            , MV_OPENDATE
+            , FILE_PATH
+            , (SELECT COUNT(*) FROM MOVIE_LIKE WHERE  MV_NO = M.MV_NO) "LIKECOUNT"
+            , (SELECT COUNT(*) FROM REVIEW WHERE MV_REVIEW_NO = M.MV_NO) "REVIEWS"
 		FROM MOVIE M
 		JOIN MOVIE_CATEGORY C ON (M.MV_NO = C.MV_NO)
-		JOIN REVIEW R ON (M.MV_NO = R.MV_NO)
+		JOIN ATTACHMENT A ON (REF_NO = M.MV_NO)
 		WHERE MV_STATUS = 'Y'
 		
 		  
