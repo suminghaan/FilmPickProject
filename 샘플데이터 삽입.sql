@@ -223,3 +223,18 @@ INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '서울의 봄', '2023/11/22', 1,
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '범죄도시3', '2023/05/31', 1, '105분', '대체불가 괴물형사 마석도, 서울 광수대로 발탁! 베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다. 사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다. 한편, 마약 사건의 배후인 주성철(이준혁)은 계속해서 판을 키워가고 약을 유통하던 일본 조직과 리키(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데... 나쁜 놈들 잡는 데 이유 없고 제한 없다. 커진 판도 시원하게 싹 쓸어버린다!', DEFAULT, '15세 이상', 'N', DEFAULT, 9, 10, DEFAULT, DEFAULT);
 --------------------------------------------------------------------------------------------------------------------------------
 
+------------------------ 김호용 ------------------------ 
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '기생충', '2019-05-30', '1', '131분', '전원 백수로 살고 있지만 사이좋은 기택 가족. 장남 기우에게 친구 민혁이 고액 과외를 연결시켜주고 온 가족의 기대를 받으며 기우는 박 사장의 집으로 간다.', '15세 이상', 41, 42);
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '조커', '2019-10-01', '2', '123분', '고담시의 광대 아서 플렉은 코미디언을 꿈꾸고 있다. 그는 서서히 그가 맨 정신으로는 코미디언이 될 수 없다는 사실을 깨닫기 시작한다.', '15세 이상', 43, 44);
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '어벤져스: 엔드게임', '2019-04-24', '2', '182분', '인피니티 워 이후 절반만 살아남은 지구. 살아남은 어벤져스 멤버들은 타노스에게 반격하기 위해 계획을 세운다.', '12세 이상', 45, 46);
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '나이브스 아웃', '2019-12-04', '2', '130분', '베스트셀러 작가 할런이 85세 생일날 숨진 채 발견된다. 그의 죽음의 원인을 밝히기 위해 경찰과 탐정 브누아 블랑은 수사에 나서고, 가족 전체가 용의선상에 오른다.', '12세 이상', 47, 48);
+
+INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, VIEW_RATING, MV_POSTER, MV_PREVIEW) 
+VALUES (SEQ_MOVIE_NO.NEXTVAL, '겨울왕국 2', '2019-11-21', '2', '103분', '의문의 목소리가 엘사를 부르고, 아렌델 왕국에 위기가 찾아온다. 트롤은 엘사의 힘의 비밀과 진실을 찾아야 한다고 하고, 엘사와 안나는 여행을 떠난다.', '전체관람가', 49, 50);
