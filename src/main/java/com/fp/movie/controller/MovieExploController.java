@@ -42,11 +42,24 @@ public class MovieExploController extends HttpServlet {
 		String filter = request.getParameter("filter"); // 필터조회
 		
 		SearchFilter f = new SearchFilter();
+		f.setCurrentScreening(currScreen);
+		f.setCategoryName(category);
+		f.setViewRatiog(viewRating);
+		f.setMvOpenDate(yesrs);
+		f.setMvNation(nation);
+		f.setOrderBy(filter);
 		
-		번호, 포스터, 제목, 별점, 개봉일 국가
-		Movie m = new Movie();
+		System.out.println(f);
 		
 		
+		List<Movie> mlist = new MovieService().selectExploList(f);
+		
+		request.setAttribute("mlist", mlist);
+		request.getRequestDispatcher("views/search/searchExplo.jsp").forward(request, response);
+		
+		
+		
+		/*
 		int listCount; // 현재 게시글 총 갯수
 		int currentPage; // 현재 페이지 (사용자가 요청한 페이지)
 		int pageLimit; // 페이징바의 페이지 최대갯수 (몇개 단위씩)
@@ -79,7 +92,7 @@ public class MovieExploController extends HttpServlet {
 		
 		request.getRequestDispatcher("/views/search/searchExplo.jsp").forward(request, response);
 		
-		
+		*/
 		
 	}
 

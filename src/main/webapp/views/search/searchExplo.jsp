@@ -114,21 +114,21 @@
 			
             <select class="btn btnw" id="categorya" name="category" style="background-color: whitesmoke; color: black;" onchange="searchlist();">
             	<option value="categoryAll">장르</option> 
-                <option value="액션">액션</option>
-                <option value="코미디">코미디</option>
-                <option value="로맨스">로맨스</option>
-                <option value="스릴러">스릴러</option>
-                <option value="공포">공포</option>
-                <option value="판타지">판타지</option>
-                <option value="어드벤처">어드벤처</option>
-                <option value="드라마">드라마</option>
-                <option value="애니메이션">애니메이션</option>
-                <option value="SF">SF</option>
-                <option value="범죄">범죄</option>
-                <option value="모험">모험</option>
-                <option value="다큐멘터리">다큐멘터리</option>
-                <option value="가족">가족</option>
-                <option value="뮤지컬">뮤지컬</option>
+                <option value="1">액션</option>
+                <option value="2">코미디</option>
+                <option value="3">로맨스</option>
+                <option value="4">스릴러</option>
+                <option value="5">공포</option>
+                <option value="6">판타지</option>
+                <option value="7">어드벤처</option>
+                <option value="8">드라마</option>
+                <option value="9">애니메이션</option>
+                <option value="10">SF</option>
+                <option value="11">범죄</option>
+                <option value="12">모험</option>
+                <option value="13">다큐멘터리</option>
+                <option value="14">가족</option>
+                <option value="15">뮤지컬</option>
                 
             </select>
 
@@ -168,7 +168,7 @@
             </div>
             <div class="movie">
                 <div>
-                    <div class="box_post"> <!-- 이렇게 a로하지말고 하지말고 각 div로 만들어야함 그래야 순위가 바뀔거같음 -->
+                    <div class="box_post">
                         <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt="">
                             <div class="box_context">
                                 <div class="post_context">가나다가가나나아자차카타파하가</div>
