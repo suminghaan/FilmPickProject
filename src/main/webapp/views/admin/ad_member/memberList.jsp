@@ -76,9 +76,9 @@ table{
                 	<% for(Member m : pageList){ %>
                     <tr>
                         <td><%= m.getMemNo() %></td>
-                        <td class="userId" onclick="viewMemberPostsPage();"><%= m.getMemId() %></td>
+                        <td class="userId" onclick="viewMemberPostsPage();" name="userId"><%= m.getMemId() %></td>
                         <td>
-                        <select class="form-control">
+                        <select class="form-control" name="userLevel" onchange="updateuserLevel();">
 	                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
 	                    <option value="2" <%= m.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
 	                    <option value="3" <%= m.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
@@ -95,10 +95,10 @@ table{
                     <% } %>
                 </tbody>
             </table>
-        </div>
+        </div><!-- 
         <div class="d-flex justify-content-end container">
             <button type="submit" class="btn btn-secondary btn-sm" style="margin-bottom: 10px;" onclick="alert('user999의 회원등급 수정이 완료되었습니다.')">수정</button>
-        </div>
+        </div> -->
         </form>
         <div class="d-flex justify-content-center container">
             <nav aria-label="Page navigation example">
@@ -127,8 +127,19 @@ table{
    </div>
    
    <script>
+   
    		function viewMemberPostsPage(){
    			location.href = "memberBoardPostView.jsp";
+   		};
+   		
+   		function updateuserLevel(){
+   			$.ajax({
+   				url: '<%=contextPath%>/updateLevel.me',
+   				data: {userId:$(".userId").text(), userLevel: $("select[name='userLevel']").val()},
+   				success: function(response){
+   					console.log(response);
+   				}
+   			});
    		};
    </script>
 </body>
