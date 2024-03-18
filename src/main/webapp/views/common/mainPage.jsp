@@ -268,7 +268,7 @@
                                     <div class="post_context">개봉연도,국가</div>
                                 </div>
                             </a>
-                            <a class="post" href=""><img class="post" src="../../resources/img/파묘.jpeg" alt="">
+                            <a class="post" href=""><img class="post" src="<%= contextPath %>/resources/img/파묘.jpeg" alt="">
                                 <div class="box_context">
                                     <div class="post_context">파묘</div>
                                     <div class="post_context">별점</div>
