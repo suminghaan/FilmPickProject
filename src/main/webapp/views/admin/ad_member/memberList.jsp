@@ -133,15 +133,37 @@ table{
    		 
    		}; 
    		
-   		document.addEventListener('DOMContentLoaded', function() {
+   		document.addEventListener('DOMContentLoaded', function() { // 휴면회원 조회용 스크립트
    			var customSwitch = document.getElementById('humanSwitch');
-
+   			var tableBody = document.querySelector('tbody');
+            
    		    customSwitch.addEventListener('change', function() {
+            tableBody.innerHTML = ''; // 테이블 내용 초기화
    		        if (this.checked) {
    		        	$.ajax({
    		   		 		url: '<%=contextPath%>/filter.me',
    		   		 		success: function(list){
-   			   		 		console.log(list);
+   		   		 			for(let i = 0; i < list.length; i++){
+   		   		 				let row = '<tr>'
+   		   		 							+ '<td>' + list[i].memNo + '</td>'
+   		   		 							+ '<td>' + list[i].memId + '</td>'
+   		   		 							+ '<td>' 
+	   		   		 						+ '<select class="form-control" name="userLevel" onchange="updateuserLevel();">' +
+		   		                             '<option value="1"' + (list[i].memLevel === 1 ? ' selected' : '') + '>Level 1</option>' +
+		   		                             '<option value="2"' + (list[i].memLevel === 2 ? ' selected' : '') + '>Level 2</option>' +
+		   		                             '<option value="3"' + (list[i].memLevel === 3 ? ' selected' : '') + '>Level 3</option>' +
+		   		                             '<option value="4"' + (list[i].memLevel === 4 ? ' selected' : '') + '>Level 4</option>' +
+		   		                             '<option value="5"' + (list[i].memLevel === 5 ? ' selected' : '') + '>Level 5</option>' +
+		   		                             '</select>' 
+		   		                            + '</td>'
+			   		                        + '<td>' + list[i].reviewContentCnt + '</td>' +
+			   	                            '<td>' + list[i].avgLikePoint + '</td>' +
+			   	                            '<td>' + list[i].prefGenre + '</td>' +
+			   	                            '<td>' + list[i].dormantStatus + '</td>' +
+			   	                            '</tr>';
+   		   		 			tableBody.innerHTML += row;
+   		   		 			};
+   			   		 		
    		   		 		},
    		   		 		error: function(){
    		   		 			console.log('ajax 통신 실패');
