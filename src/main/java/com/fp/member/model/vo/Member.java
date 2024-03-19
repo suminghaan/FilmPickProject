@@ -18,11 +18,23 @@ public class Member {
 	private String memImgPath; // 프로필 이미지 경로
 	private int memFile; // 회원정보 사진파일 번호
 	private String dormantStatus; // 휴면회원 여부
-	private int reviewContentCnt; // 리뷰횟수 (회원조회 페이지에서 사용할 핊드)
-	private double avgLikePoint; // 별점평균 (회원조회 페이지에서 사용할 핊드)
+	private int reviewContentCnt; // 리뷰횟수 ( (관리자) 회원조회 페이지에서 사용할 필드 )
+	private double avgLikePoint; // 별점평균 ( (관리자) 회원조회 페이지에서 사용할 필드)
+	private int memBoardCnt; // 회원이 작성한 게시글 개수 ( (관리자) 회원 작성 게시글 조회하는 페이지에서 사용할 필드 )
+
+	// 회원 작성 게시글 조회하는 페이지에서 사용할 매개변수 생성자 (김지우)
+	public Member(String memId, String memImgPath, String memColor, String nickname, int memLevel, int memBoardCnt) {
+		super();
+		this.memId = memId;
+		this.memImgPath = memImgPath;
+		this.memColor = memColor;
+		this.nickname = nickname;
+		this.memLevel = memLevel;
+		this.memBoardCnt = memBoardCnt;
+	}
 
 	public Member(int memNo, String memId, int memLevel, int reviewContentCnt, double avgLikePoint, String prefGenre,
-			String dormantStatus) { // 회원조회 페이지에서 전체회원조회 용도로 사용될 매개변수 생성자
+			String dormantStatus) { // 회원조회 페이지에서 전체회원조회 용도로 사용될 매개변수 생성자 (김지우)
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -35,7 +47,7 @@ public class Member {
 
 	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
 			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String signInDate,
-			int memLevel, String memColor, String memImgPath, int memFile, String dormantStatus) {  // 회원 로그인 용도(은정)
+			int memLevel, String memColor, String memImgPath, int memFile, String dormantStatus) { // 회원 로그인 용도(은정)
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -56,8 +68,8 @@ public class Member {
 		this.dormantStatus = dormantStatus;
 	}
 
-	public Member(String memId, String memPwd, String memEmail, String nickname, String memName, String memBirth, String memGender, 
-			String memPhone, String prefGenre) {  // 회원가입용(은정)
+	public Member(String memId, String memPwd, String memEmail, String nickname, String memName, String memBirth,
+			String memGender, String memPhone, String prefGenre) { // 회원가입용(은정)
 		super();
 		this.memId = memId;
 		this.memPwd = memPwd;
@@ -67,9 +79,8 @@ public class Member {
 		this.memBirth = memBirth;
 		this.memGender = memGender;
 		this.memPhone = memPhone;
-		this.prefGenre = prefGenre;	
+		this.prefGenre = prefGenre;
 	}
-
 
 	public Member() {
 
@@ -253,6 +264,14 @@ public class Member {
 		this.avgLikePoint = avgLikePoint;
 	}
 
+	public int getMemBoardCnt() {
+		return memBoardCnt;
+	}
+
+	public void setMemBoardCnt(int memBoardCnt) {
+		this.memBoardCnt = memBoardCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [memNo=" + memNo + ", memId=" + memId + ", memPwd=" + memPwd + ", memName=" + memName
@@ -260,7 +279,7 @@ public class Member {
 				+ memPhone + ", prefGenre=" + prefGenre + ", nickname=" + nickname + ", memStatus=" + memStatus
 				+ ", signInDate=" + signInDate + ", memLevel=" + memLevel + ", memColor=" + memColor + ", memImgPath="
 				+ memImgPath + ", memFile=" + memFile + ", dormantStatus=" + dormantStatus + ", reviewContentCnt="
-				+ reviewContentCnt + ", avgLikePoint=" + avgLikePoint + "]";
+				+ reviewContentCnt + ", avgLikePoint=" + avgLikePoint + ", memBoardCnt=" + memBoardCnt + "]";
 	}
 
 }
