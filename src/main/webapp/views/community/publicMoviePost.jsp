@@ -8,8 +8,6 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
 	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
-	
-	System.out.println(pi);
 %>
 <!DOCTYPE html>
 <html>
