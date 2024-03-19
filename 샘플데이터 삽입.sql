@@ -847,8 +847,8 @@ VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '겨울왕국2예고편.mp4', '20240318113110
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '신과함께인과연.jpeg',
-    '20240314153026_57162.jpeg',
+    '신과함께인과연.png',
+    '20240314153026_57162.png',
     SYSDATE,
     1,
     'resources/upfiles/',

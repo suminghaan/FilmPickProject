@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="com.fp.movie.model.vo.Movie" %>
+    <%@ page import="com.fp.common.model.vo.Attachment" %>
+    <% 
+    	ArrayList<Movie> movieList = ((ArrayList<Movie>)request.getAttribute("movieList")); 
+    	ArrayList<Attachment> posterList = ((ArrayList<Attachment>)request.getAttribute("posterList"));
+    %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
@@ -9,8 +16,6 @@
 
 
   <style>
-
-
     /* 추가 내용 */
 
     .search_info {
@@ -31,7 +36,7 @@
     }
 
     .movie_info {
-      height: 67%;
+      height: 58%;
       background-color: rgb(12, 12, 12);
       border-radius: 10px;
     }
@@ -117,7 +122,7 @@
       width: 240px;
       height: 50px;
       background-color: rgba(0, 0, 0, 0.2);
-      font-size: 10px;
+      font-size: 13px;
       color: white;
       text-align: left;
       /* 위치를 이동시킬 요소에 absolute. top. left, right 등으로 위치 조절 */
@@ -142,155 +147,38 @@
     <%@ include file="/views/common/header.jsp" %>
 
     <div class="content_wrap" style="background-color: black;">
-      <div class="content">
+      <div class="content" style="height: 1500px;'">
         <div class="search_info">
           사용자 검색 결과
         </div>
         <div class="mp_bar">
-          영화 / 인물
+          영화 / 인물 <%= posterList.size() %>
         </div>
         <div class="movie_info">
           <div style="padding: 10px 0px 0px 100px; color: white;">
             <h4>영화</h4>
           </div>
-          <div id="carouselMovie" class="carousel slide">
+          <div id="carouselMovie" class="carousel slide" style="height: 85%;">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="movie_list">
+                <% for(int i = 0; i < movieList.size(); i++) { %>
+                <% if(i % 8 == 0) {%>
+                	<div class="carousel-item <%= i == 0 ? "active" : ""%>">
+                	<div class="movie_list">
+                <% } %>
                   <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
+                    <img class="thumbnail_img" src="<%= posterList.get(i).getFilePath() %>" alt="">
+                    <div class="thumbnail_title"">
+                      <span><%= movieList.get(i).getMvName() %></span><br>
+                      <span>평균 별점 : <%= movieList.get(i).getStarRatingAvg() != null ? movieList.get(i).getStarRatingAvg() : "정보없음"%></span><br>
+                      <span><%= movieList.get(i).getMvOpenDate() %></span>
                     </div>
                   </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
+                  <% if(i % 8 == 7 || i == (movieList.size() - 1)) {%>
                   </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
                   </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="movie_list">
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/웡카.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>영화별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  <% } %>
+                <% } %>
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMovie" data-bs-slide="prev">
               <span><i class="fa-solid fa-arrow-left fa-2x" style="color: RGB(247, 39, 152);"></i></span>

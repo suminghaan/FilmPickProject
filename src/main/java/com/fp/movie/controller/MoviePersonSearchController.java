@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
 
@@ -34,6 +35,11 @@ public class MoviePersonSearchController extends HttpServlet {
 		String searchKeyword = request.getParameter("searchKeyword");
 		
 		ArrayList<Movie> movieList = new MovieService().selectMovieList(searchKeyword);
+		ArrayList<Attachment> posterList = new MovieService().selectPosterList(searchKeyword);
+		System.out.println(movieList);
+		request.setAttribute("movieList", movieList);
+		request.setAttribute("posterList", posterList);
+		request.getRequestDispatcher("/views/search/search.jsp").forward(request, response);
 	}
 
 	/**

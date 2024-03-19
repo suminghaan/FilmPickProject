@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.SearchFilter;
@@ -129,7 +130,6 @@ public class MovieDao {
 	// 영화 정보와 평균별점, 포스터 파일경로를 조회하는 메소드 [기웅]
 	public ArrayList<Movie> selectMovieList(Connection conn, String searchKeyword) {
 		String movieInfoStarRatingAvgQuery = prop.getProperty("selectMovieStarRatingAvg");
-		String moviePosterPathQuery = prop.getProperty("selectMoviePosterPath");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Movie> movieList = new ArrayList<>();
@@ -160,6 +160,35 @@ public class MovieDao {
 		}
 		
 		return movieList;
+	}
+	
+	// 영화 포스터 경로 받아오는 메소드 [기웅]
+	public ArrayList<Attachment> selectPosterList(Connection conn, String searchKeyword) {
+		String query = prop.getProperty("selectMoviePosterPath");
+		ArrayList<Attachment> posterList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		searchKeyword = "%" + searchKeyword + "%";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchKeyword);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Attachment a = new Attachment();
+				a.setFilePath(rset.getString("FILEPATH"));
+				
+				posterList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return posterList;
 	}
 
 	
