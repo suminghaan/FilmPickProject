@@ -14,8 +14,8 @@
 	                 , B_RECOMMEND_COUNT
 	                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 	                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
-	                 , FILE_PATH <!-- ATTACHMENT 테이블과 조인  -->
-	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+	                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL<!-- ATTACHMENT 테이블과 조인  -->
+	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT <!-- 댓글갯수 -->
 	              FROM BOARD B
 	              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 	              JOIN ATTACHMENT A ON (A.REF_NO = B.B_NO)
@@ -39,9 +39,9 @@
 		                 , B_TITLE
 		                 , B_READ_COUNT
 		                 , B_RECOMMEND_COUNT
-		                 , NICKNAME /*MEMBER 테이블과 조인 */
+		                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
-		                 , FILE_PATH /* ATTACHMENT 테이블과 조인 */
+		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
 		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
 		              FROM BOARD B
 		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
@@ -65,9 +65,9 @@
 		                 , B_TITLE
 		                 , B_READ_COUNT
 		                 , B_RECOMMEND_COUNT
-		                 , NICKNAME /*MEMBER 테이블과 조인 */
+		                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
-		                 , FILE_PATH /* ATTACHMENT 테이블과 조인 */
+		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
 		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
 		              FROM BOARD B
 		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)

@@ -44,7 +44,7 @@ public class BoardDao {
 								 , rset.getInt("B_RECOMMEND_COUNT")
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
-								 , rset.getString("FILE_PATH")
+								 , rset.getString("TITLEIMG_URL")
 								 , rset.getInt("REPLY_COUNT")));
 			}
 		} catch (SQLException e) {
@@ -76,7 +76,7 @@ public class BoardDao {
 								 , rset.getInt("B_RECOMMEND_COUNT")
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
-								 , rset.getString("FILE_PATH")
+								 , rset.getString("TITLEIMG_URL")
 								 , rset.getInt("REPLY_COUNT")));
 			}
 		} catch (SQLException e) {
@@ -108,7 +108,7 @@ public class BoardDao {
 								 , rset.getInt("B_RECOMMEND_COUNT")
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
-								 , rset.getString("FILE_PATH")
+								 , rset.getString("TITLEIMG_URL")
 								 , rset.getInt("REPLY_COUNT")));
 			}
 		} catch (SQLException e) {
