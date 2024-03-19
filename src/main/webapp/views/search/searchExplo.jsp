@@ -221,24 +221,33 @@ select>option {
 				nation:$("#nation").val(),
 				filter:$("#filtera").val(),
 				page:requestPage},
-			success:function(mlist){
-				console.log(mlist);
-				let value = "";
-				for(let i = 0; i < mlist.length; i++){
-					value = `<a class="poster" href="<%= contextPath %>/movieDetail.fp?movieNo=<%= mlist.get(i).getMvNo() %>"<img class="poster" src="<%= m.getMvPoster() %>" alt="">
-	                       		<div class="box_context">
-		                           	<div class="poster_context"><%= mlist.get(i).getMvName() %></div>
-		                           	<div class="poster_context"><%= mlist.get(i).getStarRatingAvg() %></div>
-		                           	<div class="poster_context"><%= mlist.get(i).getMvOpenDate() %></div>  
-	                       		</div>
-                   			</a>`;
+				success:function(jobj){
+					console.log(jobj);
+					console.log(jobj.mlist);
+					console.log(jobj.mlist.length);
+					let value = "";
+					if(jobj.mlist.length > 0){
+						for(let i = 0; i < mlist.length; i++){
+							value += "<a class='poster' href='<%= contextPath %>/movieDetail.fp?movieNo=<%= mlist(i).getMvNo() %>'
+										<img class='poster' src='<%= m.getMvPoster() %>'>
+			                       		<div class='box_context'>
+				                           	<div class='poster_context'><%= mlist.get(i).getMvName() %></div>
+				                           	<div class='poster_context'><%= mlist.get(i).getStarRatingAvg() %></div>
+				                           	<div class='poster_context'><%= mlist.get(i).getMvOpenDate() %></div>  
+			                       		</div>
+		                   			</a>";
+						}
+					}else{
+						value += "존재하는 영화가 없습니다";
+					}
+				},
+				error:function(){
+					console.log("목록 조회 ajax 실패");
 				}
-			},
-			error:function(){
-				console.log("목록 조회 ajax 실패");
-			}
+			
 		})
 	}
+	
 </script>
 	<footer>
 

@@ -220,6 +220,10 @@ public class MovieDao {
 		return null;
 	}
 
+	public List<Movie> selectMainList(Connection conn) {
+		return null;
+	}
+
 	
 
 

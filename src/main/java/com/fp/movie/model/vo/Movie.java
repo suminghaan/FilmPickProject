@@ -44,6 +44,22 @@ public class Movie {
 		this.starRatingAvg = starRatingAvg;
 		this.numberOfStarRating = numberOfStarRating;
 	}
+	
+	
+
+	public Movie(int mvNo, String mvName, String mvOpenDate, String mvStory, String fPageExposed, String mPageExposed,
+			String mvPoster, String mvPreview, String mvStatus) {
+		super();
+		this.mvNo = mvNo;
+		this.mvName = mvName;
+		this.mvOpenDate = mvOpenDate;
+		this.mvStory = mvStory;
+		this.fPageExposed = fPageExposed;
+		this.mPageExposed = mPageExposed;
+		this.mvPoster = mvPoster;
+		this.mvPreview = mvPreview;
+		this.mvStatus = mvStatus;
+	}
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvPoster, String starRatingAvg) {
 		super();

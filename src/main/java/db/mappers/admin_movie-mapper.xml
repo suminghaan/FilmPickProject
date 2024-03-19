@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectMainList">
+		SELECT MV_NO
+			, MV_NAME
+			, MV_OPENDATE
+			, MV_STORY
+			, FPAGE_EXPOSED 
+			, MPAGE_EXPOSED
+			, MV_POSTER
+			, MV_PREVIEW
+			, MV_STATUS
+		FROM MOVIE
+		WHERE MV_STATUS = 'Y'
+	</entry>
+
+</properties>
