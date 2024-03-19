@@ -1,7 +1,5 @@
 package com.fp.board.model.vo;
 
-import oracle.sql.DATE;
-
 public class Board {
 
 	private int bNo; // 게시글번호
@@ -21,6 +19,27 @@ public class Board {
 	public Board() {}
 
 	
+	/** 관리자) 회원 작성 게시글 페이징, 게시글 조회 용도로 사용할 생성자
+	 * 
+	 * @param bNo 글번호
+	 * @param bTitle 게시글 제목
+	 * @param memNo 작성자 닉네임
+	 * @param bRegistDate 작성일
+	 * @param replyCount 조회수
+	 * 
+	 * @author 김지우
+	 */
+	public Board(int bNo, String bTitle, String bConment, String memNo, String bRegistDate,  int replyCount) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bConment = bConment;
+		this.memNo = memNo;
+		this.bRegistDate = bRegistDate;
+		this.replyCount = replyCount;
+	}
+
+
 	/**
 	 * 커뮤니티 메인페이지의 띄울 값들을 보관하기 위한 매개변수 생성자
 	 * @호용
