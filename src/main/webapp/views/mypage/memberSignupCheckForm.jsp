@@ -167,12 +167,12 @@
             <br><br>
             <div>
                 <form action="">
-                  <button type="submit" class="btn btn-outline-light" style="width: 300px;
+                  <a href="<%= contextPath %>/signupForm.me" type="submit" class="btn btn-outline-light" style="width: 300px;
                                                                            --bs-btn-border-color: RGB(247, 39, 140);
                                                                            --bs-btn-color:RGB(247, 39, 140);
                                                                            --bs-btn-hover-color: #ffffff;
                                                                            --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                           --bs-btn-hover-border-color: #ffffff;">확인</button>
+                                                                           --bs-btn-hover-border-color: #ffffff;">확인</a>
                 </form>
             </div>
         </div>

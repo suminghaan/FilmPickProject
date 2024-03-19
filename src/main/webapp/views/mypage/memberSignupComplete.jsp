@@ -30,12 +30,12 @@
                 <p>님, 환영합니다!</p>
                 <br>
                 
-                    <center><button type="submit" class="btn btn-outline-light" style="width: 300px;
+                   	<a href="<%= contextPath %>/loginForm.me" type="submit" class="btn btn-outline-light" style="width: 300px;
                                                                                   --bs-btn-border-color: RGB(247, 39, 140);
                                                                                   --bs-btn-color:RGB(247, 39, 140);
                                                                                   --bs-btn-hover-color: #ffffff;
                                                                                   --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                  --bs-btn-hover-border-color: #ffffff;">로그인하러가기</button></center>
+                                                                                  --bs-btn-hover-border-color: #ffffff;">로그인하러가기</a>
                 <br>
                 <br>
             </div>

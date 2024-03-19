@@ -142,14 +142,14 @@
           <div class="signup_content">
               <h2>회원가입</h2>
   
-              <form action="" method="">
+              <form action="<%= contextPath %>/insert.me" method="post">
                   <table class="table">
                       <tr>
                           <td>
-                              <input type="text" class="form-control" placeholder="* 아이디" required>
+                              <input type="text" class="form-control" name="memId" placeholder="* 아이디" required>
                           </td>
                           <td>
-                            <button type="submit" class="btn btn-outline-light" style="width: 130px; 
+                            <button type="button" class="btn btn-outline-light" onclick="idCheck()"style="width: 130px; 
                                                                                        --bs-btn-border-color: RGB(247, 39, 140);
                                                                                        --bs-btn-color:RGB(247, 39, 140);
                                                                                        --bs-btn-hover-color: #ffffff;
@@ -159,7 +159,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="password" class="form-control" placeholder="* 비밀번호(8~15자의 영문, 숫자, 특수문자 사용)" required>
+                              <input type="password" class="form-control" name="memPwd" placeholder="* 비밀번호(8~15자의 영문, 숫자, 특수문자 사용)" required>
                           </td>
                           <td>
   
@@ -175,7 +175,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="email" class="form-control" placeholder="* 이메일주소" required>
+                              <input type="email" class="form-control" name="memEmail" placeholder="* 이메일주소" required>
                           </td>
                           <td>
   
@@ -183,10 +183,10 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="text" class="form-control" placeholder="* 닉네임" required>
+                              <input type="text" class="form-control" name="nickname" placeholder="* 닉네임" required>
                           </td>
                           <td>
-                            <button type="submit" class="btn btn-outline-light" style="width: 130px;
+                            <button type="submit" class="btn btn-outline-light" onclick="nicknameCheck();" style="width: 130px;
                                                                                        --bs-btn-border-color: RGB(247, 39, 140);
                                                                                        --bs-btn-color:RGB(247, 39, 140);
                                                                                        --bs-btn-hover-color: #ffffff;
@@ -196,7 +196,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="text" class="form-control" placeholder="* 이름" required>
+                              <input type="text" class="form-control" name="memName" placeholder="* 이름" required>
                           </td>
                           <td>
   
@@ -204,7 +204,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="text" class="form-control" placeholder="* 생년월일 (ex. 010101)" required>
+                              <input type="text" class="form-control" name="memBirth" placeholder="* 생년월일 (ex. 010101)" required>
                           </td>
                           <td>
   
@@ -212,7 +212,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="text" class="form-control" placeholder="* 성별" required>
+                              <input type="text" class="form-control" name="memGender" placeholder="* 성별" required>
                           </td>
                           <td>
   
@@ -220,7 +220,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="text" class="form-control" placeholder="* 휴대전화번호" required>
+                              <input type="text" class="form-control" name="memPhone" placeholder="* 휴대전화번호" required>
                           </td>
                           <td>
                             <button type="submit" class="btn btn-outline-light" style="width: 130px;  font-size: smaller;
@@ -246,7 +246,7 @@
                       </tr>
                       
                       <td>
-                          <select name="genre" id="favgenre">
+                          <select name="genre" id="prefGenre">
                               <option value="action">선호장르를 선택하세요</option>
                               <option value="action">SF</option>
                               <option value="action">스릴러</option>
@@ -261,13 +261,50 @@
 
                   </table>
                   
-                  <center><button type="submit" class="btn btn-outline-light" style="width: 350px;
+                  <button href="<%= contextPath %>/signupComplete.me" type="submit" class="btn btn-outline-light" style="width: 350px;
                                                                                    --bs-btn-border-color: RGB(247, 39, 140);
                                                                                    --bs-btn-color:RGB(247, 39, 140);
                                                                                    --bs-btn-hover-color: #ffffff;
                                                                                    --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                   --bs-btn-hover-border-color: #ffffff;">가입하기</button></center>
+                                                                                   --bs-btn-hover-border-color: #ffffff;">가입하기</button>
               </form>    
+              
+              <script>
+              	function idCheck(){
+              		
+              		
+              		const $idInput = $(".signup_content input[name=memId]");
+              		
+              		$.ajax({
+              			url:"<%=contextPath%>/idCheck.me",
+              			data:{checkId:$idInput.val()},
+              			success: function(result){
+              				
+              				if(result == "NNNNN"){
+              					// 사용불가능(NNNNN)
+              					alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.");
+              					$idInput.focus();
+              				}else{
+              					// 사용가능(NNNNY)
+              					if(confirm("사용가능한 아이디입니다. 사용하시겠습니까? : ")){
+              						// 회원가입 버튼 활성화
+              						$(".signup_content :submit").removeAttr("disabled");
+              						
+              						// 아이디 입력하는 input요소 수정불가능한 속성 추가
+              						$idInput.attr("readonly", true);
+              					}else{
+              						$idInput.select();
+              					}
+              				},
+              				error: function(){
+              					console.log("아이디 중복체크용 ajax 통신 실패")
+              				}
+              			}
+
+              		})            		
+              	}          
+              </script>
+              
           </div>
         </section>
       </div>              
