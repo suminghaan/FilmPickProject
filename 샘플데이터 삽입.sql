@@ -1871,7 +1871,7 @@ INSERT INTO PERSON
 VALUES (
     SEQ_PERSON_NO.NEXTVAL
     , '마크 라이런스'
-    , '배우'
+    , '배우, 연출가'
     , '1960-1-18'
     , '영국'
     , 'resources/upfiles/20090321154832_77889.jpeg'
@@ -1880,7 +1880,7 @@ INSERT INTO PERSON
 VALUES (
     SEQ_PERSON_NO.NEXTVAL
     , '사이먼 페그'
-    , '배우'
+    , '배우, 희극인, 각본가'
     , '1970-2-14'
     , '영국'
     , 'resources/upfiles/20090321155232_77189.webp'
