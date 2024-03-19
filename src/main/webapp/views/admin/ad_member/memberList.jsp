@@ -88,7 +88,7 @@ table{
                         <th>휴면여부</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody  id="selectUserTable">
                 	<% if(pageList.isEmpty()){ %>
                 	<tr>
                 		<td colspan="7" style="text-align: center;">존재하는 회원이 없습니다.</td>
@@ -99,13 +99,15 @@ table{
                         <td><%= m.getMemNo() %></td>
                         <td class="userId" onclick="viewMemberPostsPage();" id="userId" name="userId"><%= m.getMemId() %></td>
                         <td>
-	                        <select class="form-control" name="userLevel" onchange="updateuserLevel();">
+	                        <%-- <select class="form-control" name="userLevel" onchange="updateuserLevel();">
 		                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
 		                    <option value="2" <%= m.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
 		                    <option value="3" <%= m.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
 		                    <option value="4" <%= m.getMemLevel() == 4 ? "selected" : "" %>>Level 4</option>
 		                    <option value="5" <%= m.getMemLevel() == 5 ? "selected" : "" %>>Level 5</option>
-	                        </select>
+	                        </select> --%>
+	                        <%= m.getMemLevel() == 1? "Level 1" : m.getMemLevel() == 2? "Level 2" : m.getMemLevel() == 3? "Level 3" : m.getMemLevel() == 4? "Level 4" : m.getMemLevel() == 5? "Level 5" : "" %>
+	                        
                     	</td>
                          <td><%= m.getReviewContentCnt() %></td>
                         <td><%= m.getAvgLikePoint() %></td>
@@ -153,14 +155,10 @@ table{
    			location.href = "memberBoardPostView.jsp";
    		};
    		
-   		function updateuserLevel(){
-   	        // select 태그내에 onchange 이벤트 발생시 실행될 함수
-   		 
-   		}; 
    		
    		document.addEventListener('DOMContentLoaded', function() { // 휴면회원 필터
    			const customSwitch = document.getElementById('humanSwitch');
-   			let tableBody = document.querySelector('tbody');
+   			let tableBody = document.getElementById('selectUserTable');
             const originalTable = tableBody.innerHTML;
             
    		    customSwitch.addEventListener('change', function() {
@@ -174,13 +172,7 @@ table{
    		   		 							+ '<td>' + list[i].memNo + '</td>'
    		   		 							+ '<td>' + list[i].memId + '</td>'
    		   		 							+ '<td>' 
-	   		   		 						+ '<select class="form-control" name="userLevel" onchange="updateuserLevel();">' 
-		   		                            + '<option value="1"' + (list[i].memLevel === 1 ? ' selected' : '') + '>Level 1</option>' 
-		   		                            + '<option value="2"' + (list[i].memLevel === 2 ? ' selected' : '') + '>Level 2</option>' 
-		   		                            + '<option value="3"' + (list[i].memLevel === 3 ? ' selected' : '') + '>Level 3</option>' 
-		   		                            + '<option value="4"' + (list[i].memLevel === 4 ? ' selected' : '') + '>Level 4</option>' 
-		   		                            + '<option value="5"' + (list[i].memLevel === 5 ? ' selected' : '') + '>Level 5</option>' 
-		   		                            + '</select>' 
+	   		   		 						+ 'Level ' + list[i].memLevel
 		   		                            + '</td>'
 			   		                        + '<td>' + list[i].reviewContentCnt + '</td>' 
 			   	                            + '<td>' + list[i].avgLikePoint + '</td>' 
@@ -215,8 +207,8 @@ table{
 	            
 	   			 if($(this).prop('checked')) {
 
-	 	   			$originalTable =  $('tbody').html();
-	 	            $('tbody').html(''); // 테이블 내용 초기화
+	 	   			$originalTable =  $('#selectUserTable').html();
+	 	            $('#selectUserTable').html(''); // 테이블 내용 초기화
 		   			 const $value = $(this).val();
 		   			 
 		   			$.ajax({
@@ -228,20 +220,14 @@ table{
 	   		   		 							+ '<td>' + list[i].memNo + '</td>'
 	   		   		 							+ '<td>' + list[i].memId + '</td>'
 	   		   		 							+ '<td>' 
-		   		   		 						+ '<select class="form-control" name="userLevel" onchange="updateuserLevel();">' 
-			   		                            + '<option value="1"' + (list[i].memLevel === 1 ? ' selected' : '') + '>Level 1</option>' 
-			   		                            + '<option value="2"' + (list[i].memLevel === 2 ? ' selected' : '') + '>Level 2</option>' 
-			   		                            + '<option value="3"' + (list[i].memLevel === 3 ? ' selected' : '') + '>Level 3</option>' 
-			   		                            + '<option value="4"' + (list[i].memLevel === 4 ? ' selected' : '') + '>Level 4</option>' 
-			   		                            + '<option value="5"' + (list[i].memLevel === 5 ? ' selected' : '') + '>Level 5</option>' 
-			   		                            + '</select>' 
+		   		   		 						+ 'Level ' + list[i].memLevel
 			   		                            + '</td>'
 				   		                        + '<td>' + list[i].reviewContentCnt + '</td>' 
 				   	                            + '<td>' + list[i].avgLikePoint + '</td>' 
 				   	                            + '<td>' + list[i].prefGenre + '</td>' 
 				   	                            + '<td>' + list[i].dormantStatus + '</td>'
 				   	                            + '</tr>';
-	   		   		 		  		$('tbody').html($('tbody').html() + row);
+	   		   		 		  		$('#selectUserTable').html($('#selectUserTable').html() + row);
    		   		 			};
 		   				},
 		   				error: function(){
