@@ -105,6 +105,8 @@
         GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
 		ORDER BY MEM_NO DESC
 	</entry>
+	
+	<!-- 회원가입용 쿼리 -->
 	<entry key="insertMember">
 		INSERT 
 				INTO MEMBER
@@ -133,5 +135,22 @@
 				, ?
 				, ?
 				)
+	</entry>
+	
+	<!-- 회원정보페이지 쿼리 -->
+	<entry key="selectMember">
+		SELECT
+		      MEM_NO
+		    , MEM_ID
+		    , MEM_NAME
+		    , NICKNAME
+		    , MEM_PWD
+		    , MEM_PHONE
+		    , MEM_EMAIL
+		    , PREF_GENRE
+		    , SIGNIN_DATE
+		    , MEM_STATUS
+		 FROM MEMBER
+		WHERE MEM_ID = ?
 	</entry>
 </properties>
