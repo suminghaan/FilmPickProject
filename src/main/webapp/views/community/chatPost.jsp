@@ -144,7 +144,7 @@
             </div>
             <br><br><br>
                 <span class="all_comunity" onclick="allComu();">[잡담] 전체 게시글</span>
-                <a href="http://www.naver.com" class="btn btn-secondary" style="margin-left: 590px;">글쓰기</a>
+                <a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 590px;">글쓰기</a>
             <br><br>
 
             <div class="content">

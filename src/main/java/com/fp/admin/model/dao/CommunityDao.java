@@ -1,5 +1,7 @@
 package com.fp.admin.model.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,13 +11,24 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
+import com.fp.common.model.vo.PageInfo;
+import com.fp.notice.model.dao.NoticeDao;
+
 import static com.fp.common.template.JDBCTemplate.close;
 
 public class CommunityDao {
 	
 	private Properties prop = new Properties();
 	
-	public List<Notice> selectComuNoticeList(Connection conn){
+	public CommunityDao() {
+		try {
+			prop.loadFromXML(new FileInputStream(NoticeDao.class.getResource("/db/mappers/community-mapper.xml").getPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public List<Notice> selectComuNoticeList(Connection conn, PageInfo pi){
 		List<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -23,6 +36,13 @@ public class CommunityDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -40,6 +60,29 @@ public class CommunityDao {
 		}
 		return list;
 		
+	}
+	
+	public int selectNoticeListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoticeListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
 	}
 
 }

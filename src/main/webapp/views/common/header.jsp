@@ -318,9 +318,9 @@ String alertMsg = (String)session.getAttribute("alertMsg");
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
             <li class="menu_buttons"><a href="<%= contextPath %>/openexplo.mo" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="<%= contextPath %>/main.bo" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
+            <li class="menu_buttons"><a href="<%= contextPath %>/list.no?page=1" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
             <li class="menu_buttons_co">공지사항/고객센터</li>
           </ul>
 
@@ -337,32 +337,14 @@ String alertMsg = (String)session.getAttribute("alertMsg");
 		  <% if(loginMember == null){ %>
           <!-- 로그인 전에 보여질 내용 -->
           <div class="text-end" style="width: 200px">
-            <button type="button" class="btn btn-outline-light me-2" id="login_btn">Login</button>
-            <button type="button" class="btn btn-outline-warning" id="signup_btn" style="--bs-btn-border-color: RGB(247, 39, 140);
+            <a href="<%= contextPath %>/loginForm.me" type="button" class="btn btn-outline-light me-2" id="login_btn">Login</a>
+            <a href="<%= contextPath %>/signupCheckForm.me" type="submit" class="btn btn-outline-warning" id="signup_btn" style="--bs-btn-border-color: RGB(247, 39, 140);
               --bs-btn-color: RGB(247, 39, 140);
               --bs-btn-hover-color: #000;
               --bs-btn-hover-bg: RGB(247, 39, 140);
-              --bs-btn-hover-border-color: #000;">Sign-up</button>
+              --bs-btn-hover-border-color: #000;">Sign-up</a>
           </div>
-          
-           <script type="text/javascript">
-          	$(function(){
-          		$("#login_btn").click(function(){
-          			location.href="<%= contextPath %>/views/mypage/login.jsp";
-          		})
-          	})
-          
-          </script>
-          
-          <script type="text/javascript">
-          	$(function(){
-          		$("#signup_btn").click(function(){
-          			location.href="<%= contextPath %>/views/mypage/memberSignupCheckForm.jsp";
-          		})
-          	})
-          
-          </script>
-          
+        
           <%}else{%>
           <!-- 로그인 시 보여질 내용 -->
           <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">

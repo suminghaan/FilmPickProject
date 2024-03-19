@@ -71,29 +71,29 @@
           -->
           <br><br>
 
-          <form action="" method="">
+          <form action="<%= contextPath %>/post.bo" method="post" enctype="multipart/form-data">
               <table class="table">
                   <tr>
                       <th width="100px" style="color: white;">카테고리</th>
                       <td>
-                          <select name="" class="form-control">
-                              <option value="10">영화</option>
-                              <option value="20">잡담</option>
+                          <select name="category" class="form-control">
+                              <option value="영화">영화</option>
+                              <option value="잡담">잡담</option>
                           </select>
                       </td>
                   </tr>
                   <tr>
                       <th style="color: white;">제목</th>
-                      <td><input type="text" class="form-control" required name=""></td>
+                      <td><input type="text" class="form-control" required name="title"></td>
                   </tr>
                   <tr>
                       <th style="color: white;">내용</th>
-                      <td><textarea cols="130" rows="10" class="form-control-file" style="resize: none;" required name=""></textarea></td>
+                      <td><textarea cols="130" rows="10" class="form-control-file" style="resize: none;" required name="content"></textarea></td>
                   </tr>
                   <tr>
                       <th style="color: white;">첨부파일</th>
                       <td>
-                          <input type="file" class="form-control-file" name="">
+                          <input type="file" class="form-control-file" name="upfile">
                       </td>
                   </tr>
                   <tr>

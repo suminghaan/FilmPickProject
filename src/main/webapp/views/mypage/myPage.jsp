@@ -153,51 +153,63 @@
                   <table class="table">
                       <tr>
                           <th>* 아이디</th>
-                          <td><input type="text" class="form-control" placeholder="아이디를 입력하세요" readonly value="user01"></td>
+                          <td><input type="text" class="form-control" placeholder="아이디를 입력하세요" readonly value="<%=loginMember.getMemId()%>"></td>
                       </tr>
                       <tr>
                           <th>* 이름</th>
-                          <td><input type="text" class="form-control" placeholder="이름을 입력하세요" required value="홍길동"></td>
+                          <td><input type="text" class="form-control" placeholder="이름을 입력하세요" required value="<%=loginMember.getMemName()%>"></td>
                       </tr>
                       <tr>
                           <th>* 닉네임</th>
-                          <td><input type="text" class="form-control" placeholder="닉네임을 입력하세요" required value="유저1"></td>
+                          <td><input type="text" class="form-control" placeholder="닉네임을 입력하세요" required value="<%=loginMember.getNickname()%>"></td>
                       </tr>
                       <tr>
                           <th>* 비밀번호</th>
-                          <td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" required value="**********"></td>
+                          <td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" required value="<%=loginMember.getMemPwd()%>"></td>
                       </tr>
                       <tr>
                           <th>* 비밀번호 확인</th>
                           <td>
-                              <input type="password" class="form-control" placeholder="비밀번호를 다시 한번 입력하세요" required value="**********">
+                              <input type="password" class="form-control" placeholder="비밀번호를 다시 한번 입력하세요" required value="<%=loginMember.getMemPwd()%>">
                               <button type="button" class="btn" data-toggle="modal"data-target="#changePwdModal">비밀번호 변경</button>
                           </td>
                       </tr>
                       <tr>
                           <th>* 휴대전화번호</th>
-                          <td><input type="text" class="form-control" placeholder="휴대전화번호를 입력하세요(-포함)" value="010-3333-5555"></td>
+                          <td><input type="text" class="form-control" placeholder="휴대전화번호를 입력하세요(-포함)" value="<%=loginMember.getMemPhone()%>"></td>
                       </tr>
                       <tr>
                           <th>* 이메일</th>
-                          <td><input type="email" class="form-control" placeholder="이메일을 입력하세요(@포함)" value="user01@filmpick.com"></td>
+                          <td><input type="email" class="form-control" placeholder="이메일을 입력하세요(@포함)" value="<%=loginMember.getMemEmail()%>"></td>
                       </tr>
   
                       <tr>
-                          <th>  선호장르</th>
+                          <th>&nbsp;&nbsp;선호장르</th>
                           <td>
-                              <select name="genre" id="favgenre">
-                                <option value="action">선호장르</option>
-                                <option value="action">SF</option>
-                                <option value="action">스릴러</option>
-                                <option value="action">로맨스</option>
-                                <option value="action">액션</option>
-                                <option value="action">코미디</option>
-                                <option value="action">에로</option>
-                                <option value="action">범죄</option>
-                                <option value="action">애니메이션</option>
+                              <select name="genre" id="prefgenre">
+                                <option name="genre" value="genre">선호장르</option>
+                                <option name="sf" value="sf">SF</option>
+                                <option name="thriller" value="thriller">스릴러</option>
+                                <option name="romance" value="romance">로맨스</option>
+                                <option name="action" value="action">액션</option>
+                                <option name="comedy" value="comedy">코미디</option>
+                                <option name="erotic" value="erotic">에로</option>
+                                <option name="crime" value="crime">범죄</option>
+                                <option name="animation" value="animation">애니메이션</option>               
                               </select>
                           </td>
+                          <script>
+                          	$(function(){
+                          		// 현재 로그인한 회원의 관신분야 => loginMember.getPrefGenre()
+                          		let prefGenre = '<%=loginMember.getPrefGenre() == null ? "" : loginMember.getPrefGenre()%>';
+                          		
+                          		$(":option").each(function(idx,el){
+                          			if(prefgenre.indexOf(el.value) != -1){
+                          				$(this).attr("selected", true);
+                          			}
+                          		})
+                          	})
+                          </script>
                       </tr>
                   </table>
                   
