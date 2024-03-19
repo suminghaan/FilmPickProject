@@ -58,22 +58,19 @@ public class Member {
 		this.dormantStatus = dormantStatus;
 	}
 
-	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
-			String memEmail, String memPhone, String prefGenre, String nickname) {  // 회원 로그인용도(은정)
+	public Member(String memId, String memPwd, String memEmail, String nickname, String memName, String memBirth, String memGender, 
+			String memPhone, String prefGenre) {  // 회원가입용(은정)
 		super();
-		this.memNo = memNo;
 		this.memId = memId;
 		this.memPwd = memPwd;
+		this.memEmail = memEmail;
+		this.nickname = nickname;
 		this.memName = memName;
 		this.memBirth = memBirth;
 		this.memGender = memGender;
-		this.memEmail = memEmail;
 		this.memPhone = memPhone;
-		this.prefGenre = prefGenre;
-		this.nickname = nickname;
+		this.prefGenre = prefGenre;	
 	}
-
-
 
 
 	public Member() {
