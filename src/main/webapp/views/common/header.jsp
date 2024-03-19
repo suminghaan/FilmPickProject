@@ -311,7 +311,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="<%= contextPath %>/views/common/mainPage.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img style="height: 65px;" src="../..//resources/img/logo.png" alt="">
+            <img style="height: 65px;" src="<%= contextPath %>/resources/img/logo.png" alt="">
           </a>
 
           <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

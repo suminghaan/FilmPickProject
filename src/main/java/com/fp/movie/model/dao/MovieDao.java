@@ -138,20 +138,21 @@ public class MovieDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				Movie m = new Movie();
-				m.setMvNo(rset.getInt("M.MV_NO"));
+				m.setMvNo(rset.getInt("MV_NO"));
 				m.setMvName(rset.getString("MV_NAME"));
 				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
 				m.setStarRatingAvg(rset.getString("AVG_LIKE_POINT"));
+				movieList.add(m);
 			}
-			
-			pstmt = conn.prepareStatement(moviePosterPathQuery);
-			
-			
+				
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
-		return null;
+		return movieList;
 	}
 
 	

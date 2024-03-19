@@ -90,4 +90,47 @@
         GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
 		ORDER BY MEM_NO DESC
 	</entry>
+	
+	<entry key="selectLevelFilterUser"> <!-- 회원등급(level) 조회용 쿼리 -->
+		SELECT M.MEM_NO AS "MEM_NO"
+		     , MEM_ID
+		     , MEM_LEVEL
+		     , COUNT(REVIEW_CONTENT) "REVIEW_CONTENT_COUNT"
+		     , AVG(LIKE_POINT) "AVG_LIKE_POINT"
+		     , PREF_GENRE
+		     , DORMANT_STATUS
+		FROM MEMBER M 
+		JOIN REVIEW R ON M.MEM_NO = R.MV_REVIEW_NO
+		WHERE MEM_LEVEL=?
+        GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
+		ORDER BY MEM_NO DESC
+	<entry key="insertMember">
+		INSERT 
+				INTO MEMBER
+				(
+				MEM_NO
+				, MEM_ID
+				, MEM_PWD
+				, MEM_EMAIL
+				, NICKNAME
+				, MEM_NAME
+				, MEM_BD
+				, MEM_GENDER
+				, MEM_PHONE
+				, PREF_GENRE
+				)
+				VALUES
+				(
+				SEQ_UNO.NEXTVAL
+				, ?
+				, ?
+				, ?
+				, ?
+				, ?
+				, ?
+				, ?
+				, ?
+				, ?
+				)
+	</entry>
 </properties>

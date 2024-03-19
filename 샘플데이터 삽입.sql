@@ -1239,3 +1239,10 @@ SELECT SEQ_MOVIE_CATEGORY_NO.NEXTVAL,
        TRUNC(DBMS_RANDOM.VALUE(1, 15))
 FROM dual
 CONNECT BY level <= 60;
+---------------------------- MEMBER 테이블 회원등급 UPDATE -----------------------------------------------------
+---------- 김지우
+-------------- MEM_NO가 26 ~ 28인 회원 등급 5로 변경
+-------------- MEM_NO가 29 ~ 30인 회원 등급 4로 변경
+UPDATE MEMBER SET MEM_LEVEL=4 WHERE MEM_NO BETWEEN 29 AND 30;
+UPDATE MEMBER SET MEM_LEVEL=5 WHERE MEM_NO BETWEEN 26 AND 28;
+

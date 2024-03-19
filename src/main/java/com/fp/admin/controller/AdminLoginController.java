@@ -1,30 +1,27 @@
-package com.fp.admin.controller.ad_member;
+package com.fp.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.fp.admin.model.service.MemberService;
-import com.fp.member.model.vo.Member;
-import com.google.gson.Gson;
+import com.fp.admin.model.service.AdminService;
+import com.fp.admin.model.vo.Admin;
 
 /**
- * Servlet implementation class MemberFilterController
+ * Servlet implementation class AdminLoginController
  */
-@WebServlet("/filter.me")
-public class MemberFilterController extends HttpServlet {
+@WebServlet("/login.ad")
+public class AdminLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberFilterController() {
+    public AdminLoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,10 +30,20 @@ public class MemberFilterController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Member> list = new MemberService().selectHumanFilterUser();
 
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		String adminId = request.getParameter("adminId");
+		String adminPwd = request.getParameter("adminPwd");
+		
+		Admin a = new AdminService().loginAdmin(adminId, adminPwd);
+		
+		if(a == null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "로그인 실패 다시 시도하십시오.");
+		}else {
+			HttpSession session = request.getSession(); 
+			session.setAttribute("loginAdmin", a);
+			response.sendRedirect(request.getContextPath()+"/main.ad");
+		}
 	}
 
 	/**

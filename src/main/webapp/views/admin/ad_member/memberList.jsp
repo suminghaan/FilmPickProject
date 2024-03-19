@@ -50,28 +50,28 @@ table{
 			</div>
 			
 			<div class="custom-control custom-switch">
-			  <input type="checkbox" class="custom-control-input" id="level1">
-			  <label class="custom-control-label" for="level1" style="margin-right: 50px;">Level 1</label>
+			  <input type="checkbox" class="custom-control-input levelSwitch" id="level1Switch" value="1">
+			  <label class="custom-control-label" for="level1Switch" style="margin-right: 50px;">Level 1</label>
 			</div>
 			
 			<div class="custom-control custom-switch">
-			  <input type="checkbox" class="custom-control-input" id="level2">
-			  <label class="custom-control-label" for="level2" style="margin-right: 50px;">Level 2</label>
+			  <input type="checkbox" class="custom-control-input levelSwitch" id="level2Switch" value="2">
+			  <label class="custom-control-label" for="level2Switch" style="margin-right: 50px;">Level 2</label>
 			</div>
 			
 			<div class="custom-control custom-switch">
-			  <input type="checkbox" class="custom-control-input" id="level3">
-			  <label class="custom-control-label" for="level3" style="margin-right: 50px;">Level 3</label>
+			  <input type="checkbox" class="custom-control-input levelSwitch" id="level3Switch" value="3">
+			  <label class="custom-control-label" for="level3Switch" style="margin-right: 50px;">Level 3</label>
 			</div>
 			
 			<div class="custom-control custom-switch">
-			  <input type="checkbox" class="custom-control-input" id="level4">
-			  <label class="custom-control-label" for="level4" style="margin-right: 50px;">Level 4</label>
+			  <input type="checkbox" class="custom-control-input levelSwitch" id="level4Switch" value="4">
+			  <label class="custom-control-label" for="level4Switch" style="margin-right: 50px;">Level 4</label>
 			</div>
 			
 			<div class="custom-control custom-switch">
-			  <input type="checkbox" class="custom-control-input" id="level5">
-			  <label class="custom-control-label" for="level5" style="margin-right: 50px;">Level 5</label>
+			  <input type="checkbox" class="custom-control-input levelSwitch" id="level5Switch" value="5">
+			  <label class="custom-control-label" for="level5Switch" style="margin-right: 50px;">Level 5</label>
 			</div>
         </div>
      <form action="<%=contextPath%>/updateLevel.me">
@@ -158,7 +158,7 @@ table{
    		 
    		}; 
    		
-   		document.addEventListener('DOMContentLoaded', function() { // 휴면회원 조회용 스크립트
+   		document.addEventListener('DOMContentLoaded', function() { // 휴면회원 필터
    			const customSwitch = document.getElementById('humanSwitch');
    			let tableBody = document.querySelector('tbody');
             const originalTable = tableBody.innerHTML;
@@ -167,7 +167,7 @@ table{
             tableBody.innerHTML = ''; // 테이블 내용 초기화
    		        if (this.checked) {
    		        	$.ajax({
-   		   		 		url: '<%=contextPath%>/filter.me',
+   		   		 		url: '<%=contextPath%>/humanfilter.me',
    		   		 		success: function(list){
    		   		 			for(let i = 0; i < list.length; i++){
    		   		 				let row = '<tr>'
@@ -200,6 +200,61 @@ table{
    		        }
    		    });
    		});
+   		
+   		
    </script>
+   
+   	<script> // level 1 ~ level 5 필터
+   		$(function(){
+	   		 $('.custom-control-input').click(function(){  // 클릭된 스위치를 제외한 나머지 스위치 비활성화
+	   			 $('.custom-control-input').not(this).prop('checked', false);
+	   	     });
+	   		 
+ 	  			let $originalTable;
+	   		 $('.levelSwitch').click(function(){
+	            
+	   			 if($(this).prop('checked')) {
+
+	 	   			$originalTable =  $('tbody').html();
+	 	            $('tbody').html(''); // 테이블 내용 초기화
+		   			 const $value = $(this).val();
+		   			 
+		   			$.ajax({
+		   				url: '<%=contextPath%>/levelfilter.me',
+		   				data: {level: $value},
+		   				success: function(list){
+		   					for(let i = 0; i < list.length; i++){
+	   		   		 				let row = '<tr>'
+	   		   		 							+ '<td>' + list[i].memNo + '</td>'
+	   		   		 							+ '<td>' + list[i].memId + '</td>'
+	   		   		 							+ '<td>' 
+		   		   		 						+ '<select class="form-control" name="userLevel" onchange="updateuserLevel();">' 
+			   		                            + '<option value="1"' + (list[i].memLevel === 1 ? ' selected' : '') + '>Level 1</option>' 
+			   		                            + '<option value="2"' + (list[i].memLevel === 2 ? ' selected' : '') + '>Level 2</option>' 
+			   		                            + '<option value="3"' + (list[i].memLevel === 3 ? ' selected' : '') + '>Level 3</option>' 
+			   		                            + '<option value="4"' + (list[i].memLevel === 4 ? ' selected' : '') + '>Level 4</option>' 
+			   		                            + '<option value="5"' + (list[i].memLevel === 5 ? ' selected' : '') + '>Level 5</option>' 
+			   		                            + '</select>' 
+			   		                            + '</td>'
+				   		                        + '<td>' + list[i].reviewContentCnt + '</td>' 
+				   	                            + '<td>' + list[i].avgLikePoint + '</td>' 
+				   	                            + '<td>' + list[i].prefGenre + '</td>' 
+				   	                            + '<td>' + list[i].dormantStatus + '</td>'
+				   	                            + '</tr>';
+	   		   		 		  		$('tbody').html($('tbody').html() + row);
+   		   		 			};
+		   				},
+		   				error: function(){
+		   					console.log('ajax 통신 실패');
+		   				}
+		   			});
+	   			 } else {
+	   				 console.log($originalTable);
+	   				 $('tbody').html($originalTable);
+	   			 }
+	   		 });
+   			
+   		});
+   	</script>
 </body>
 </html>

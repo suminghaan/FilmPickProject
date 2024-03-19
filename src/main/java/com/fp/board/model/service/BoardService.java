@@ -1,12 +1,13 @@
 package com.fp.board.model.service;
+import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.getConnection;
-import static com.fp.common.template.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.List;
 
 import com.fp.board.model.dao.BoardDao;
 import com.fp.board.model.vo.Board;
+import com.fp.movie.model.vo.Movie;
 
 public class BoardService {
 	
@@ -43,6 +44,17 @@ public class BoardService {
 		List<Board> chatList = bDao.selectMainChatList(conn);
 		close(conn);
 		return chatList;
+	}
+	
+	/**
+	 * 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문
+	 * @호용
+	 */
+	public List<Movie> selectPublicMovieName(){
+		Connection conn = getConnection();
+		List<Movie> mList = bDao.selectPublicMovieName(conn);
+		close(conn);
+		return mList;
 	}
 
 }
