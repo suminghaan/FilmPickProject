@@ -187,5 +187,47 @@
 			)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<!-- 커뮤니티의 게시글 등록을 위한 insert sql문 by호용 -->
+	<entry key="insertBoard">
+   		INSERT
+   		  INTO BOARD
+   		  (
+   		 	B_NO
+		  ,	B_CATEGORY
+		  ,	B_TITLE
+		  ,	B_CONTENT
+		  ,	MEM_NO
+   		  )
+   		  VALUES
+   		  (
+   		  	SEQ_BNO.NEXTVAL
+   		  , ? <!-- (사용자가 선택한 카테고리) -->
+   		  , ? <!-- (사용자가 입력한 제목) -->
+   		  , ? <!-- (사용자가 입력한 내용) -->
+   		  , ? <!-- ( 작성자 회원번호 (로그인한 회원번호) ) -->
+   		  )
+   </entry>
+   
+   <!-- 커뮤니티의 게시글 등록을 위한 insert sql문(첨부파일이 있을경우) by호용 -->
+   <entry key="insertAttachment">
+   		INSERT
+   		  INTO ATTACHMENT
+   		  (
+   		  	FILE_NO
+		  ,	REF_NO
+		  ,	ORIGIN_NAME
+		  ,	CHANGE_NAME
+		  ,	FILE_PATH
+   		  )
+   		  VALUES
+   		  (
+   		  	SEQ_FNO.NEXTVAL
+   		  , SEQ_BNO.CURRVAL<!--바로 이전의 NEXTVAL로 발생된 번호(하나의 트랜잭션으로 관리해야됨)-->
+   		  , ? <!-- (전달된 첨부파일의 원본명) -->
+   		  , ? <!-- (해당 첨부파일의 수정명 == 실제 업로드된 파일명) -->
+   		  , ? <!-- (저장경로) -->
+   		  )
+   </entry>
 
 </properties>

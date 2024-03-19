@@ -1,5 +1,7 @@
 package com.fp.board.model.dao;
 
+import static com.fp.common.template.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,8 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import static com.fp.common.template.JDBCTemplate.close;
+
 import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
 
@@ -286,6 +289,51 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return chatList;
+	}
+	
+	/**
+	 * @호용
+	 * 게시글 등록을 위한 메소드
+	 */
+	public int insertBoard(Connection conn, Board b) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertBoard");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getbCategory());
+			pstmt.setString(2, b.getbTitle());
+			pstmt.setString(3, b.getbContent());
+			pstmt.setString(4, b.getMemNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * @호용
+	 * 게시글 등록을 위한 메소드 (첨부파일이 있을경우 실행)
+	 */
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 }

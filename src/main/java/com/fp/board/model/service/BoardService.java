@@ -1,5 +1,9 @@
 package com.fp.board.model.service;
 import static com.fp.common.template.JDBCTemplate.close;
+import static com.fp.common.template.JDBCTemplate.commit;
+import static com.fp.common.template.JDBCTemplate.getConnection;
+import static com.fp.common.template.JDBCTemplate.rollback;
+import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -7,6 +11,7 @@ import java.util.List;
 
 import com.fp.board.model.dao.BoardDao;
 import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
 
@@ -101,5 +106,30 @@ public class BoardService {
 		close(conn);
 		return chatList;
 	}
+	
+	/**
+	 * @호용
+	 * 게시글 등록을 위한 메소드
+	 */
+	public int insertBoard(Board b, Attachment at) {
+		Connection conn = getConnection();
+		int result1 = bDao.insertBoard(conn, b);
+		int result2 = 1; // 첨부파일테이블은 1로 초기화해둬야 첨부파일없이 insert할 때도 제대로 commit됨
+		
+		if(at != null) {
+			result2 = bDao.insertAttachment(conn, at);	
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
+	}
 
 }
+
+
+
