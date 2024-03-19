@@ -88,7 +88,7 @@ table{
                         <th>휴면여부</th>
                     </tr>
                 </thead>
-                <tbody  id="selectUserTable">
+                <tbody id="selectUserTable">
                 	<% if(pageList.isEmpty()){ %>
                 	<tr>
                 		<td colspan="7" style="text-align: center;">존재하는 회원이 없습니다.</td>
@@ -97,7 +97,7 @@ table{
                 	<% for(Member m : pageList){ %>
                     <tr>
                         <td><%= m.getMemNo() %></td>
-                        <td class="userId" onclick="viewMemberPostsPage();" id="userId" name="userId"><%= m.getMemId() %></td>
+                        <td class="userId" id="userId" name="userId"><%= m.getMemId() %></td>
                         <td>
 	                        <%-- <select class="form-control" name="userLevel" onchange="updateuserLevel();">
 		                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
@@ -118,10 +118,7 @@ table{
                     <% } %>
                 </tbody>
             </table>
-        </div><!-- 
-        <div class="d-flex justify-content-end container">
-            <button type="submit" class="btn btn-secondary btn-sm" style="margin-bottom: 10px;" onclick="alert('user999의 회원등급 수정이 완료되었습니다.')">수정</button>
-        </div> -->
+        </div>
         </form>
         <div class="d-flex justify-content-center container">
             <nav aria-label="Page navigation example">
@@ -129,19 +126,19 @@ table{
 	                <% if(pi.getCurrentPage() == 1){ %>
 	                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 	                <% } else { %>
-	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/selectList.me?page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
+	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/selectlist.me?page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
 	                <% } %>    
                     <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
 	                    <% if(p == pi.getCurrentPage()){ %>
 	                    	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
 	                    <% } else { %>
-	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/selectList.me?page=<%= p %>"><%= p %></a></li>
+	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/selectlist.me?page=<%= p %>"><%= p %></a></li>
 	                    <% } %>
                     <% } %>
                     <% if(pi.getCurrentPage() == pi.getMaxPage()){ %>
                     	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
                     <% } else { %>
-                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/selectList.me?page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
+                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/selectlist.me?page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
                   	<% } %>
                   </ul>
             </nav>
@@ -151,10 +148,11 @@ table{
    
    <script>
    
-   		function viewMemberPostsPage(){
-   			location.href = "memberBoardPostView.jsp";
-   		};
-   		
+   		$(function(){ // 회원 아이디 클릭시 회원 게시글 작성 페이지로 이동
+   			$('.userId').click(function(){
+   				location.href = '<%=contextPath%>/list.bo?memId=' + $(this).text() + '&page=1';
+   			});
+   		});
    		
    		document.addEventListener('DOMContentLoaded', function() { // 휴면회원 필터
    			const customSwitch = document.getElementById('humanSwitch');

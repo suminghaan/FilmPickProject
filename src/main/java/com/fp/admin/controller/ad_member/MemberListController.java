@@ -16,7 +16,7 @@ import com.fp.member.model.vo.Member;
 /**
  * Servlet implementation class MemberListController
  */
-@WebServlet("/selectList.me")
+@WebServlet("/selectlist.me")
 public class MemberListController extends HttpServlet { 
 	private static final long serialVersionUID = 1L;
 
