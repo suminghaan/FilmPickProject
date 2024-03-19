@@ -177,7 +177,7 @@ public class MovieDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				Attachment a = new Attachment();
-				a.setFilePath(rset.getString("FILEPATH"));
+				a.setFilePath(rset.getString("MV_POSTER"));
 				
 				posterList.add(a);
 			}
