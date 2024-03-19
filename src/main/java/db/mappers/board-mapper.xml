@@ -55,7 +55,7 @@
 		    WHERE ROWNUM BETWEEN 1 AND 4
 	</entry>
 	
-		<!-- 커뮤니티 메인페이지 잡담카테고리의 일반글에 띄울 4개의 값들을 담기 위한 sql문(영화게시글) BY 호용-->
+	<!-- 커뮤니티 메인페이지 잡담카테고리의 일반글에 띄울 4개의 값들을 담기 위한 sql문(영화게시글) BY 호용-->
 	<entry key="selectMainChatList">
 		    SELECT B.*
 		      FROM (
@@ -79,6 +79,18 @@
 		                BY B_NO DESC
 		            ) B
 		    WHERE ROWNUM BETWEEN 1 AND 4
+	</entry>
+	
+	<!-- 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문 추후 수정해야됨(찜하기 테이블과 조인해야됨)-->
+	<entry key="selectPublicMovieName">
+	    SELECT B.*
+	      FROM (
+	            SELECT
+				   MV_NO
+				 , MV_NAME
+	              FROM MOVIE
+	            ) B
+	    WHERE ROWNUM BETWEEN 1 AND 10
 	</entry>
 
 </properties>

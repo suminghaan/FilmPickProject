@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.fp.board.model.vo.Board" %>
+<%@ page import="com.fp.movie.model.vo.Movie" %>
 <%
 	List<Board> list = (List<Board>)request.getAttribute("list");
 	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
 	List<Board> chatList = (List<Board>)request.getAttribute("chatList");
+	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
 %>
 <!DOCTYPE html>
 <html>
@@ -177,37 +179,11 @@
                         </tr>
                     </thead>
                     <tbody class="movie_name">
+                    <%for(Movie m : mList){ %>
                         <tr>
-                            <td onclick="movie_go();">영화제목</td>
+                            <td onclick="movie_go();"><%= m.getMvName() %></td>
                         </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-
+                    <%} %>
                     </tbody>
                 </table>
 
