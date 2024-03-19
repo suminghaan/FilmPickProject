@@ -32,8 +32,6 @@ public class Member {
 		this.prefGenre = prefGenre;
 		this.dormantStatus = dormantStatus;
 	}
-	
-	
 
 	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
 			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String signInDate,

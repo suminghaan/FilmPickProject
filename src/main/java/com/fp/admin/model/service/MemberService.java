@@ -139,10 +139,10 @@ public class MemberService {
 		return list;
 	}
 
-	public List<Board> selectUserBoardList(String memId) {
+	public List<Member> selectUserBoardList(String memId) {
 		Connection conn = getConnection();
 
-		List<Board> list = mDao.selectUserBoardList(conn, memId);
+		List<Member> list = mDao.selectUserBoardList(conn, memId);
 		close(conn);
 		return list;
 	}
