@@ -29,11 +29,27 @@ public class MovieDao {
 	}
 	
 	// 페이징 하기위해 리스트 갯수 조회 구문 [용훈]
-	public int selectListCount(Connection conn) {
+	public int selectListCount(Connection conn, SearchFilter f) {
 		int listCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectListCount");
+		
+		if(!f.getCurrentScreening().equals("mvAll")) {
+			sql += " AND CURRENT_SCREENING = '" + f.getCurrentScreening() + "'";
+		}
+		if(!f.getCategoryName().equals("categoryAll")) {
+			sql += " AND CATEGORY_NO = '" + f.getCategoryName() + "'";
+		}
+		if(!f.getViewRatiog().equals("viewRatingAll")) {
+			sql += " AND VIEW_RATING = '" + f.getViewRatiog() + "'";
+		}
+		if(!f.getMvNation().equals("nationAll")) {
+			sql += " AND MV_NATION = '" + f.getMvNation() + "'";
+		}
+		if(!f.getMvOpenDate().equals("yearsAll")) {
+			sql += " AND MV_OPENDATE LIKE '" + f.getMvOpenDate() + "%'";
+		}
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -51,17 +67,8 @@ public class MovieDao {
 		return listCount;
 	}
 	
-	// 탐색페이지 페이징 구문 [용훈]
-	public List<Movie> selectList(Connection conn, PageInfo pi) {
-		List<Movie> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		return null;
-	}
-	
-	// 탐색페이지 필터 활용 구문 [용훈]
-	public List<Movie> selectExploList(Connection conn, SearchFilter f) {
+	// 탐색페이지 탐색, 필터 활용 구문 [용훈]
+	public List<Movie> selectExploList(Connection conn, SearchFilter f, PageInfo pi) {
 		List<Movie> mlist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

@@ -16,27 +16,21 @@ public class MovieService {
 	private MovieDao mDao = new MovieDao();
 	
 	// 페이징 하기위해 리스트 갯수 조회 구문 [용훈]
-	public int selectListCount() {
+	public int selectListCount(SearchFilter f) {
 		Connection conn = getConnection();
-		int listCount = mDao.selectListCount(conn);
+		int listCount = mDao.selectListCount(conn, f);
 		
 		close(conn);
 		return listCount;
 	}
 	
-	// 탐색페이지 페이징 구문 [용훈]
-	public List<Movie> selectList(PageInfo pi) {
-		Connection conn = getConnection();
-		List<Movie> list = mDao.selectList(conn, pi);
-		close(conn);
-		return list;
-	}
 	
-	// 탐색페이지 필터 활용 구문 [용훈]
-	public List<Movie> selectExploList(SearchFilter f){
+	
+	// 탐색페이지 탐색,필터 활용 구문 [용훈]
+	public List<Movie> selectExploList(SearchFilter f, PageInfo pi){
 		
 		Connection conn = getConnection();
-		List<Movie> mlist = mDao.selectExploList(conn, f);
+		List<Movie> mlist = mDao.selectExploList(conn, f, pi);
 		
 		close(conn);
 		return mlist;
