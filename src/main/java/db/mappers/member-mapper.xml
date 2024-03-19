@@ -106,6 +106,47 @@
 		ORDER BY MEM_NO DESC
 	</entry>
 	
+	<!-- 회원 작성 게시글 페이징 용도 -->
+	<entry key="selectBoardListCount">
+		SELECT COUNT(*) COUNT
+		FROM BOARD B
+        JOIN MEMBER M USING (MEM_NO)
+        WHERE M.MEM_ID = ?
+	</entry>
+	
+	<!-- 회원 작성 게시글 페이징 용도 -->
+	<entry key="selectBoardList">
+		SELECT *
+			FROM(
+			    SELECT ROWNUM RNUM, A.*
+			    FROM (
+			            SELECT
+			            	B_NO
+			              , B_TITLE 
+			              , B_CONTENT
+			              , MEM_ID
+			              , SIGNIN_DATE
+			              , B_READ_COUNT
+			            FROM BOARD B 
+			            JOIN MEMBER M USING (MEM_NO)
+                        WHERE M.MEM_ID = ?
+                        ORDER BY MEM_NO DESC
+			    ) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 회원 작성 게시글 개수 세는 용도 -->
+	<entry key="selectUserBoardCount">
+		 SELECT MEM_IMGPATH
+          , NICKNAME
+          , MEM_LEVEL
+          , (SELECT COUNT(*) FROM BOARD JOIN MEMBER USING (MEM_NO) WHERE MEM_ID = 'user030') COUNT
+          FROM MEMBER
+          WHERE MEM_ID = ?
+	</entry>
+<!-- =============================================================================================================================================== -->	
+	
 	<!-- 회원가입용 쿼리 -->
 	<entry key="insertMember">
 		INSERT 
