@@ -8,7 +8,7 @@ SELECT
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'M' ELSE 'F' END, -- 랜덤한 성별 생성
   'user' || LPAD(ROWNUM, 3, '0') || '@example.com', -- 이메일 생성
   '1234567890', -- 랜덤한 전화번호 생성
-  CASE WHEN MOD(ROWNUM, 3) = 0 THEN 'Action' WHEN MOD(ROWNUM, 3) = 1 THEN 'Comedy' ELSE 'Drama' END, -- 랜덤한 선호장르 생성
+  CASE WHEN MOD(ROWNUM, 3) = 0 THEN '액션' WHEN MOD(ROWNUM, 3) = 1 THEN '코미디' ELSE '로맨스' END, -- 랜덤한 선호장르 생성
   'Nickname' || LPAD(ROWNUM, 3, '0'), -- 닉네임을 'Nickname001', 'Nickname002', ... 형식으로 생성
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'Y' ELSE 'N' END, -- 랜덤한 회원상태 생성
   SYSDATE - DBMS_RANDOM.VALUE(1, 365), -- 랜덤한 회원정보수정일 생성
