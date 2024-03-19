@@ -54,4 +54,13 @@ public class MovieService {
 	}
 
 
+
+	public Movie selectMovieInfo(int movieNo) {
+		Connection conn = getConnection();
+		Movie m = mDao.selectMovieInfo(conn, movieNo);
+		close(conn);
+		return m;
+	}
+
+
 }

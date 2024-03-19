@@ -526,16 +526,16 @@
             height: 25px;
         }
     </style>
-
+	<%@ include file="/views/common/header.jsp" %>
     <!-- starRating css -->
-    <link rel="stylesheet" href="../../resources/css/starRating.css">
-    <link rel="stylesheet" href="../../resources/css/heart_movieDetail.css">
-    <link rel="stylesheet" href="../../resources/css/starRating_forReviewTap.css">
-    <link rel="stylesheet" href="../../resources/css/like&dislike_movieDetail.css">
+    <link rel="stylesheet" href="<%= contextPath %>/resources/css/starRating.css">
+    <link rel="stylesheet" href="<%= contextPath %>/resources/css/heart_movieDetail.css">
+    <link rel="stylesheet" href="<%= contextPath %>/resources/css/starRating_forReviewTap.css">
+    <link rel="stylesheet" href="<%= contextPath %>/resources/css/like&dislike_movieDetail.css">
 </head>
 
 <body>
-    <%@ include file="/views/common/header.jsp" %>
+    
 
         <div class="content_wrap" style="background-color: black; height: 2500px;">
             <div class="content">
@@ -843,12 +843,12 @@
                                                 <div class="disag_filled filled_wrap">
                                                     <button type="button" class="ag_disag_btn disag_filled_btn"><img
                                                             class="ag_filled_img ag_disag_img"
-                                                            src="../../resources/img/싫어요.png" alt=""></button>
+                                                            src="<%= contextPath %>/resources/img/싫어요.png" alt=""></button>
                                                 </div>
                                                 <div class="disag_empty empty_wrap">
                                                     <button type="button" class="ag_disag_btn disag_empty_btn"><img
                                                             class="ag_empty_img ag_disag_img"
-                                                            src="../../resources/img/빈싫어요.png" alt=""></button>
+                                                            src="<%= contextPath %>/resources/img/빈싫어요.png" alt=""></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1263,10 +1263,10 @@
 
 
     </main>
-    <script src="../../resources/assets/js/starRating.js"></script>
-    <script src="../../resources/assets/js/starRating_forReviewTap.js"></script>
-    <script src="../../resources/assets/js/like&dislike.js"></script>
-    <script src="../../resources/assets/js/reviewBtnHover.js"></script>
+    <script src="<%= contextPath %>/resources/assets/js/starRating.js"></script>
+    <script src="<%= contextPath %>/resources/assets/js/starRating_forReviewTap.js"></script>
+    <script src="<%= contextPath %>/resources/assets/js/like&dislike.js"></script>
+    <script src="<%= contextPath %>/resources/assets/js/reviewBtnHover.js"></script>
     <script>
         $(".more_info_btn").each(function (index, el) {
             $(this).click(function () {

@@ -202,6 +202,24 @@ public class MovieDao {
 		return posterList;
 	}
 
+	public Movie selectMovieInfo(Connection conn, int movieNo) {
+		String query = prop.getProperty("selectMovieInfo");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Movie m = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			
+			rset = pstmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 	
 
 
