@@ -94,4 +94,27 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
+	public Member selectMember(Connection conn, String memId) {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rset = pstmt.executeQuery();
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+		return m;
+		
+	}
 }
