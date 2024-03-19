@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fp.admin.model.service.MemberService;
 import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberBoardListController
@@ -66,7 +67,7 @@ public class MemberBoardController extends HttpServlet { // 단순히 화면만 
 
 		List<Board> pageList = new MemberService().selectBoardList(memId, pi);
 
-		List<Board> userProfile = new MemberService().selectUserBoardList(memId);
+		List<Member> userProfile = new MemberService().selectUserBoardList(memId);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("pageList", pageList);

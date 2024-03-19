@@ -103,9 +103,20 @@ public class MovieDao {
 		}else if(f.getOrderBy().equals("reviews")) {
 			sql += " ORDER BY REVIEWS DESC";
 		}
+		
+		sql = "SELECT * FROM(SELECT ROWNUM RNUM, A.* FROM (" + sql + ") A ) WHERE RNUM BETWEEN ? AND ?";
+		
+		
 		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

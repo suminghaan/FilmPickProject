@@ -277,7 +277,7 @@ public class MemberDao {
 		return list;
 	}
 
-	public List<Board> selectUserBoardList(Connection conn, String memId) {
+	public List<Member> selectUserBoardList(Connection conn, String memId) {
 		
 
 		return null;
