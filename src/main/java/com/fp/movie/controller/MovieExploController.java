@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.SearchFilter;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MovieExploController
@@ -49,30 +52,17 @@ public class MovieExploController extends HttpServlet {
 		f.setMvNation(nation);
 		f.setOrderBy(filter);
 		
-		System.out.println(f);
+//		System.out.println(f);
 		
-		
-		List<Movie> mlist = new MovieService().selectExploList(f);
-		
-		request.setAttribute("mlist", mlist);
-		request.getRequestDispatcher("views/search/searchExplo.jsp").forward(request, response);
-		
-		
-		
-		/*
-		int listCount; // 현재 게시글 총 갯수
-		int currentPage; // 현재 페이지 (사용자가 요청한 페이지)
-		int pageLimit; // 페이징바의 페이지 최대갯수 (몇개 단위씩)
-		int boardLimit; // 한 페이지에 보여질 게시글 최대갯수 (몇개 단위씩)
+		int listCount = new MovieService().selectListCount(f); // 총 게시글 갯수 (db로부터 조회)
+		int currentPage = Integer.parseInt(request.getParameter("page")); //사용자가 요청한 페이지수 (현재페이지)
+		int pageLimit = 5; // 페이징바의 페이지 최대갯수 (몇개 단위씩)
+		int boardLimit = 25; // 한 페이지에 보여질 게시글 최대갯수 (몇개 단위씩)
 		
 		int maxPage; // 가장 마지막페이지(총페이지수)
 		int startPage; // 사용자가 요청한 페이지 하단에 보여질 페이징바의 시작수
 		int endPage; // 사용자가 요청한 페이지 하단에 보여질 페이징바의 끝수
 		
-		listCount = new MovieService().selectListCount(); // 총 게시글 갯수 (db로부터 조회)
-		currentPage = Integer.parseInt(request.getParameter("page")); //사용자가 요청한 페이지수 (현재페이지)
-		pageLimit = 5; // 페이징바의 페이지 최대갯수 (페이징바의 목록수 단위)
-		boardLimit = 25; // 게시글 최대 갯수 (게시글 노출 단위)
 		
 		maxPage = (int)Math.ceil((double)listCount/boardLimit); // 총 페이지 수 
 		
@@ -85,14 +75,30 @@ public class MovieExploController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		List<Movie> list = new MovieService().selectList(pi);
 		
+		/*
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("/views/search/searchExplo.jsp").forward(request, response);
 		
 		*/
+		
+		
+		List<Movie> mlist = new MovieService().selectExploList(f, pi);
+		
+		System.out.println(mlist);
+		
+		JSONObject jobj = new JSONObject();
+		
+		jobj.put("mlist", mlist);
+		jobj.put("pi", pi);
+		
+		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(jobj, response.getWriter());
+		
+		
 		
 	}
 
