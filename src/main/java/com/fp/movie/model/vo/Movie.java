@@ -17,14 +17,16 @@ public class Movie {
 	
 //	평균별점 추가
 	private String starRatingAvg;
+	
+//	별점 매긴 사람 수 추가
+	private int numberOfStarRating;
 		
 	public Movie() {
 	}
 
-
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
-			String mvPreview, String mvStatus, String starRatingAvg) {
+			String mvPreview, String mvStatus, String starRatingAvg, int numberOfStarRating) {
 		super();
 		this.mvNo = mvNo;
 		this.mvName = mvName;
@@ -40,9 +42,8 @@ public class Movie {
 		this.mvPreview = mvPreview;
 		this.mvStatus = mvStatus;
 		this.starRatingAvg = starRatingAvg;
+		this.numberOfStarRating = numberOfStarRating;
 	}
-
-
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvPoster, String starRatingAvg) {
 		super();
@@ -51,6 +52,14 @@ public class Movie {
 		this.mvOpenDate = mvOpenDate;
 		this.mvPoster = mvPoster;
 		this.starRatingAvg = starRatingAvg;
+	}
+	
+	public int getNumberOfStarRating() {
+		return numberOfStarRating;
+	}
+
+	public void setNumberOfStarRating(int numberOfStarRating) {
+		this.numberOfStarRating = numberOfStarRating;
 	}
 
 	
@@ -193,20 +202,14 @@ public class Movie {
 		this.starRatingAvg = starRatingAvg;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Movie [mvNo=" + mvNo + ", mvName=" + mvName + ", mvOpenDate=" + mvOpenDate + ", mvNation=" + mvNation
 				+ ", mvRTime=" + mvRTime + ", mvStory=" + mvStory + ", fPageExposed=" + fPageExposed + ", viewRating="
 				+ viewRating + ", currentScreening=" + currentScreening + ", mPageExposed=" + mPageExposed
 				+ ", mvPoster=" + mvPoster + ", mvPreview=" + mvPreview + ", mvStatus=" + mvStatus + ", starRatingAvg="
-				+ starRatingAvg + "]";
+				+ starRatingAvg + ", numberOfStarRating=" + numberOfStarRating + "]";
 	}
-
-	
-
-	
-	
 	
 }
 
