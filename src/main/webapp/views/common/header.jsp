@@ -337,32 +337,14 @@ String alertMsg = (String)session.getAttribute("alertMsg");
 		  <% if(loginMember == null){ %>
           <!-- 로그인 전에 보여질 내용 -->
           <div class="text-end" style="width: 200px">
-            <button type="button" class="btn btn-outline-light me-2" id="login_btn">Login</button>
-            <button type="button" class="btn btn-outline-warning" id="signup_btn" style="--bs-btn-border-color: RGB(247, 39, 140);
+            <a href="<%= contextPath %>/loginForm.me" type="button" class="btn btn-outline-light me-2" id="login_btn">Login</a>
+            <a href="<%= contextPath %>/signupCheckForm.me" type="submit" class="btn btn-outline-warning" id="signup_btn" style="--bs-btn-border-color: RGB(247, 39, 140);
               --bs-btn-color: RGB(247, 39, 140);
               --bs-btn-hover-color: #000;
               --bs-btn-hover-bg: RGB(247, 39, 140);
-              --bs-btn-hover-border-color: #000;">Sign-up</button>
+              --bs-btn-hover-border-color: #000;">Sign-up</a>
           </div>
-          
-           <script type="text/javascript">
-          	$(function(){
-          		$("#login_btn").click(function(){
-          			location.href="<%= contextPath %>/views/mypage/login.jsp";
-          		})
-          	})
-          
-          </script>
-          
-          <script type="text/javascript">
-          	$(function(){
-          		$("#signup_btn").click(function(){
-          			location.href="<%= contextPath %>/views/mypage/memberSignupCheckForm.jsp";
-          		})
-          	})
-          
-          </script>
-          
+        
           <%}else{%>
           <!-- 로그인 시 보여질 내용 -->
           <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
