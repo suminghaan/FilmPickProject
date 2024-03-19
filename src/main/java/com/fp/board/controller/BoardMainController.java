@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fp.board.model.service.BoardService;
 import com.fp.board.model.vo.Board;
+import com.fp.movie.model.vo.Movie;
 
 /**
  * Servlet implementation class BoardMainController
@@ -40,9 +41,13 @@ public class BoardMainController extends HttpServlet {
 		// 커뮤니티 메인페이지의 잡담카테고리의 최신순 일반글4개를 담기위한 메소드 호출구문
 		List<Board> chatList = new BoardService().selectMainChatList();
 		
+		// 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문
+		List<Movie> mList = new BoardService().selectPublicMovieName();
+		
 		request.setAttribute("publicList", publicList);
 		request.setAttribute("list", list);
 		request.setAttribute("chatList", chatList);
+		request.setAttribute("mList", mList);
 		
 		request.getRequestDispatcher("/views/community/communityList.jsp").forward(request, response);
 	}

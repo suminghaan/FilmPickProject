@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 import static com.fp.common.template.JDBCTemplate.close;
 import com.fp.board.model.vo.Board;
+import com.fp.movie.model.vo.Movie;
 
 public class BoardDao {
 	
@@ -44,7 +45,7 @@ public class BoardDao {
 								 , rset.getInt("B_RECOMMEND_COUNT")
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
-								 , rset.getString("FILE_PATH")
+								 , rset.getString("TITLEIMG_URL")
 								 , rset.getInt("REPLY_COUNT")));
 			}
 		} catch (SQLException e) {
@@ -76,7 +77,7 @@ public class BoardDao {
 								 , rset.getInt("B_RECOMMEND_COUNT")
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
-								 , rset.getString("FILE_PATH")
+								 , rset.getString("TITLEIMG_URL")
 								 , rset.getInt("REPLY_COUNT")));
 			}
 		} catch (SQLException e) {
@@ -108,7 +109,7 @@ public class BoardDao {
 								 , rset.getInt("B_RECOMMEND_COUNT")
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
-								 , rset.getString("FILE_PATH")
+								 , rset.getString("TITLEIMG_URL")
 								 , rset.getInt("REPLY_COUNT")));
 			}
 		} catch (SQLException e) {
@@ -119,7 +120,33 @@ public class BoardDao {
 		}
 		return chatList;
 	}
-
+	
+	/**
+	 * 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문
+	 * @호용
+	 */
+	public List<Movie> selectPublicMovieName(Connection conn){
+		List<Movie> mList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPublicMovieName");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvName(rset.getString("MV_NAME"));
+				mList.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return mList;
+	}
+	
 }
 
 

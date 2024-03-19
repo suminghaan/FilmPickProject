@@ -14,8 +14,8 @@
 	                 , B_RECOMMEND_COUNT
 	                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 	                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
-	                 , FILE_PATH <!-- ATTACHMENT 테이블과 조인  -->
-	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+	                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL<!-- ATTACHMENT 테이블과 조인  -->
+	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT <!-- 댓글갯수 -->
 	              FROM BOARD B
 	              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 	              JOIN ATTACHMENT A ON (A.REF_NO = B.B_NO)
@@ -39,9 +39,9 @@
 		                 , B_TITLE
 		                 , B_READ_COUNT
 		                 , B_RECOMMEND_COUNT
-		                 , NICKNAME /*MEMBER 테이블과 조인 */
+		                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
-		                 , FILE_PATH /* ATTACHMENT 테이블과 조인 */
+		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
 		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
 		              FROM BOARD B
 		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
@@ -55,7 +55,7 @@
 		    WHERE ROWNUM BETWEEN 1 AND 4
 	</entry>
 	
-		<!-- 커뮤니티 메인페이지 잡담카테고리의 일반글에 띄울 4개의 값들을 담기 위한 sql문(영화게시글) BY 호용-->
+	<!-- 커뮤니티 메인페이지 잡담카테고리의 일반글에 띄울 4개의 값들을 담기 위한 sql문(영화게시글) BY 호용-->
 	<entry key="selectMainChatList">
 		    SELECT B.*
 		      FROM (
@@ -65,9 +65,9 @@
 		                 , B_TITLE
 		                 , B_READ_COUNT
 		                 , B_RECOMMEND_COUNT
-		                 , NICKNAME /*MEMBER 테이블과 조인 */
+		                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
-		                 , FILE_PATH /* ATTACHMENT 테이블과 조인 */
+		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
 		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
 		              FROM BOARD B
 		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
@@ -79,6 +79,18 @@
 		                BY B_NO DESC
 		            ) B
 		    WHERE ROWNUM BETWEEN 1 AND 4
+	</entry>
+	
+	<!-- 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문 추후 수정해야됨(찜하기 테이블과 조인해야됨)-->
+	<entry key="selectPublicMovieName">
+	    SELECT B.*
+	      FROM (
+	            SELECT
+				   MV_NO
+				 , MV_NAME
+	              FROM MOVIE
+	            ) B
+	    WHERE ROWNUM BETWEEN 1 AND 10
 	</entry>
 
 </properties>

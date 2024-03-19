@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<%@ page import="com.fp.admin.model.vo.Admin" %>
+    
 <%
 	String contextPath = request.getContextPath();
+
+	Admin loginAdmin = (Admin)session.getAttribute("loginAdmin");
 
 	String alertMsg = (String) session.getAttribute("alertMsg");
 
@@ -87,7 +91,7 @@ background-color: black!important;
         <ul class="navbar-nav bg-info-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="관리자메인페이지.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%=contextPath%>/main.ad">
                 <div class="sidebar-brand-text mx-3">FILM PICK ADMIN</div>
             </a>
 
@@ -97,8 +101,120 @@ background-color: black!important;
             
             <!-- Divider -->
             <hr class="sidebar-divider">
+            
+            <% if(loginAdmin == null) { %>
+			<!-- case1. 로그인 전  -->
+			<!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <span>회원관리</span>
+                </a>
+            </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <span>영화관리</span>
+                </a>
+            </li>
 
+           <!-- Nav Item - Pages Collapse Menu -->
+           <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <span>커뮤니티</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                aria-expanded="true" aria-controls="collapseThree">
+                <span>고객센터</span>
+            </a>           
+        </li>
+
+		
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" id="navbar">
+
+                    
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars">FILM PICK ADMIN</i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div>
+                                <img class="img-profile rounded-circle"
+                                    src="<%=contextPath%>/views/admin/ad_resources/img/icon_person_white.svg">
+                                </div><br><br>
+                                    <div>관리자</div>
+                            </a>
+                            
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown" style="width:300px">
+                                <form action="<%=contextPath %>/login.ad" method="post">
+			                        <table>
+			                            <tr>
+			                                <th>아이디</th>
+			                                <td><input class="form-control" type="text" placeholder="Enter Your ID" name="adminId" required></td>
+			                            </tr>
+			                            <tr>
+			                                <th>비밀번호</th>
+			                                <td><input class="form-control" type="password" placeholder="Enter Your Password" name="adminPwd" required></td>
+			                            </tr>
+			                            <tr>
+			                                <td colspan="2" style="text-align: center; padding-top: 10px;" >
+			                                    <button type="submit" class="btn-secondary btn-sm">로그인</button>
+			                                    <button type="button" class="btn-secondary btn-sm" id="signup_btn">회원가입</button>
+			                                </td>
+			                            </tr>
+			                        </table>
+			                        
+			                    </form>
+			                    <script>
+			                    	$(function(){
+			                    		$("#signup_btn").click(function(){
+	
+			                    			location.href = "<%=contextPath%>/adminSignupForm.ad";
+			                    			// 단순한 페이지 요청임에도 불구하고 매번 서블릿 호출해서 포워딩 방식으로 응답
+			                    		})
+			                    	})
+			                    </script>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+			
+			
+			<% }else { %>
+			<!-- case2. 로그인 후  -->
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -217,7 +333,7 @@ background-color: black!important;
 
                 </nav>
                 <!-- End of Topbar -->
-                
+                <% } %> 
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">

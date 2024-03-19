@@ -27,7 +27,7 @@
 	<!-- 영화, 인물 검색 시 사용할 구문 [기웅] -->
 	<!-- 영화 제목, 개봉연도, 평균별점 조회 -->
 	<entry key="selectMovieStarRatingAvg">
-		SELECT M.MV_NO, MV_NAME, MV_OPENDATE, ROUND(AVG(LIKE_POINT), 1) AS "AVG_LIKE_POINT"
+		SELECT M.MV_NO AS "MV_NO", MV_NAME, MV_OPENDATE, ROUND(AVG(LIKE_POINT), 1) AS "AVG_LIKE_POINT"
 		FROM MOVIE M
 		LEFT JOIN REVIEW R
 		ON R.MV_NO = M.MV_NO

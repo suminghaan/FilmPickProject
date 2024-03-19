@@ -14,7 +14,14 @@ public class AdminService {
 	
 	private AdminDao aDao = new AdminDao();
 	
-	public int insertMember(Admin a) {
+	public Admin loginAdmin(String adminId, String adminPwd) {
+		Connection conn = getConnection();
+		Admin loginAdmin = aDao.loginAdmin(conn, adminId, adminPwd);
+		close(conn);
+		return loginAdmin;
+	}
+	
+	public int insertAdmin(Admin a) {
 		Connection conn = getConnection();
 		int result = aDao.insertAdmin(conn, a);
 		if(result > 0) {

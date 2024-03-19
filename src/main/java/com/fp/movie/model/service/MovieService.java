@@ -42,7 +42,7 @@ public class MovieService {
 		return mlist;
 	}
 
-	// 검색페이지에서 검색 키워드에 따라 영화 리스트를 조회하는 메소드 [기웅]
+	// 검색페이지에서 검색 키워드에 따라 영화 정보와 평균 별점을 조회하는 메소드[기웅]
 	public ArrayList<Movie> selectMovieList(String searchKeyword) {
 		Connection conn = getConnection();
 		ArrayList<Movie> movieList = mDao.selectMovieList(conn, searchKeyword);

@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.fp.board.model.vo.Board" %>
+<%@ page import="com.fp.movie.model.vo.Movie" %>
 <%
 	List<Board> list = (List<Board>)request.getAttribute("list");
 	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
 	List<Board> chatList = (List<Board>)request.getAttribute("chatList");
+	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
 %>
 <!DOCTYPE html>
 <html>
@@ -156,7 +158,7 @@
 	                        <tr>
 	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
 	                            <td rowspan="3" class="img">
-	                                <img src="../../resources/img/공유.jpg">
+	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
 	                            </td>
 	                        </tr>
 	                        <tr>
@@ -177,37 +179,11 @@
                         </tr>
                     </thead>
                     <tbody class="movie_name">
+                    <%for(Movie m : mList){ %>
                         <tr>
-                            <td onclick="movie_go();">영화제목</td>
+                            <td onclick="movie_go();"><%= m.getMvName() %></td>
                         </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-                        <tr>
-                            <td onclick="movie_go();">영화제목</td>
-                        </tr>
-
+                    <%} %>
                     </tbody>
                 </table>
 
@@ -223,58 +199,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
-                    <!-- } 반복문 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-
-                    <!-- 반복문 돌리면 지울 내용 @@@@@@@@@@@@@@@@@@@@@@@@-->
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
+                        <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
+                        <% for(Board b : list){ %>
+	                        <tr>
+	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
+	                            <td rowspan="3" class="img">
+	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
+	                        </tr>
+	                    <%} %> 
                 </tbody>
             </table>
 
@@ -289,58 +228,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
-                    <!-- } 반복문 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-
-                    <!-- 반복문 돌리면 지울 내용 @@@@@@@@@@@@@@@@@@@@@@@@-->
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="title" onclick="community_check();">게시글제목[댓글갯수]</td>
-                        <td rowspan="3" class="img">
-                            <img src="../../resources/img/공유.jpg">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="writer">작성자 / 작성시간</td>
-                    </tr>
+                        <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
+                        <% for(Board b : chatList){ %>
+	                        <tr>
+	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
+	                            <td rowspan="3" class="img">
+	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                        </tr>
+	                        <tr>
+	                            <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
+	                        </tr>
+	                    <%} %> 
                 </tbody>
             </table>
             
