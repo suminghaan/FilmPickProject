@@ -57,7 +57,7 @@ public class ComuNoticeListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, noticeLimit, maxPage, startPage, endPage);
 		
-		List<Notice> list = new CommunityService().selectComuNoticeList();
+		List<Notice> list = new CommunityService().selectComuNoticeList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

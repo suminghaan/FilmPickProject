@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.notice.model.dao.NoticeDao;
 
 import static com.fp.common.template.JDBCTemplate.close;
@@ -27,7 +28,7 @@ public class CommunityDao {
 		}
 	}
 	
-	public List<Notice> selectComuNoticeList(Connection conn){
+	public List<Notice> selectComuNoticeList(Connection conn, PageInfo pi){
 		List<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -35,6 +36,13 @@ public class CommunityDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
