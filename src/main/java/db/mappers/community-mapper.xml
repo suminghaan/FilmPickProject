@@ -68,8 +68,8 @@
 				)
 				VALUES
 				(
-					SEQ_ATTACHMENT_NO
-				  , REF_NO...?
+					SEQ_ATTACHMENT_NO.NEXTVAL
+				  , SEQ_NOTICE_NO.CURRVAL
 				  , ?
 				  , ?
 				  , ?

@@ -1,5 +1,6 @@
 package com.fp.admin.controller.ad_community;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,6 +68,17 @@ public class ComuNoticeEnroll extends HttpServlet {
 			}
 			
 			int result = new CommunityService().insertNotice(n, at);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "공지사항이 성공적으로 등록되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/list.co?page=1");
+			}else {
+				if(at != null) {
+					new File(savePath + at.getChangeName()).delete();
+				}
+				session.setAttribute("alertMsg", "공지사항 등록 실패. \n다시 입력해주세요.");
+				response.sendRedirect(request.getContextPath() + "/insert.co");
+			}
 			
 		}
 		
