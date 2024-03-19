@@ -2,6 +2,20 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+	<entry key="loginAdmin">
+		SELECT
+				ADMIN_NO
+			  , ADMIN_ID
+			  , ADMIN_PWD
+			  , ADMIN_NAME
+			  , ADMIN_PHONE
+			  , ADMIN_STATUS
+		 FROM ADMIN
+		WHERE ADMIN_ID = ?
+		  AND ADMIN_PWD = ?
+		  AND ADMIN_STATUS IN ('Y', 'N')
+	</entry>
+
 	<entry key="insertAdmin">
 		INSERT
 			INTO ADMIN
@@ -10,7 +24,7 @@
 			  , ADMIN_ID
 			  , ADMIN_PWD
 			  , ADMIN_NAME
-			  , PHONE
+			  , ADMIN_PHONE
 			)
 		VALUES
 		(

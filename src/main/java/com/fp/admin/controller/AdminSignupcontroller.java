@@ -45,30 +45,20 @@ public class AdminSignupcontroller extends HttpServlet {
 				
 				Admin a = new Admin(adminId, adminPwd, adminName, phone);
 			
-			// 2) 요청 처리 (서비스 메소드 호출)
-				int result = new AdminService().insertMember(a);
+				int result = new AdminService().insertAdmin(a);
 			
-			// 3) 돌려받은 결과를 가지고 응답페이지 
-				if(result > 0) { // 성공했을경우
-					
-					// 응답페이지 : index페이지
-					// 응답데이터 : 성공메세지 "성공적으로 회원가입 되었습니다!" 알람문구
-					// 			(포워딩 방식이 아니기 때문에 request에 담으면 안됨 => session에 담기)
+				if(result > 0) { // 성공했을경우					
 					
 					HttpSession session = request.getSession();
-					session.setAttribute("alertMsg", "성공적으로 회원가입 되었습니다!");
+					session.setAttribute("alertMsg", "관리자 회원가입이 완료되었습니다.");
 					
 					response.sendRedirect(request.getContextPath());
 					
 					
 				}else {// 실패했을경우
 					
-					// 응답페이지 : /views/common/errorPage.jsp 에러페이지
-					// 응답데이터 : 에러문구 (request)
-					request.setAttribute("errorMsg", "회원가입에 실패했습니다.");
-					
-					RequestDispatcher view = request.getRequestDispatcher("/views/common/errorPage.jsp");
-					view.forward(request, response);
+					HttpSession session = request.getSession();
+					session.setAttribute("alertMsg", "회원가입 실패 다시 시도하십시오.");
 				}
 	}
 

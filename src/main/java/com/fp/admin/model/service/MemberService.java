@@ -39,15 +39,21 @@ public class MemberService {
 	 * '회원조회' 페이지에서 전체회원을 조회 (Select)
 	 *
 	 * @author 김지우
-	 * @return list 
+	 * @return listCount
 	 */
 	public List<Member> selectMemberList() {
 		Connection conn = getConnection();
-		List<Member> list = mDao.selectNoticeList(conn);
+		List<Member> list = mDao.selectMemberList(conn);
 		close(conn);
 		return list;
 	}
 
+	/** 
+	 * 페이징 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public int selectListCount() {
 		Connection conn = getConnection();
 
@@ -57,6 +63,12 @@ public class MemberService {
 		return listCount;
 	}
 
+	/** 
+	 * 페이징 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public List<Member> selectList(PageInfo pi) {
 		Connection conn = getConnection();
 
@@ -65,9 +77,28 @@ public class MemberService {
 		return list;
 	}
 
+	/** 
+	 *  휴면회원 필터
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public List<Member> selectHumanFilterUser() {
 		Connection conn = getConnection();
 		List<Member> list = mDao.selectHumanFilterUser(conn);
+		close(conn);
+		return list;
+	}
+
+	/** 
+	 * 회원등급 필터
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
+	public List<Member> selectLevelFilter(int level) {
+		Connection conn = getConnection();
+		List<Member> list = mDao.selectLevelFilter(conn, level);
 		close(conn);
 		return list;
 	}
