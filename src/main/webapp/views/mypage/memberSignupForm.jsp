@@ -186,7 +186,7 @@
                               <input type="text" class="form-control" name="nickname" placeholder="* 닉네임" required>
                           </td>
                           <td>
-                            <button type="submit" class="btn btn-outline-light" onclick="nicknameCheck();" style="width: 130px;
+                            <button type="button" class="btn btn-outline-light" onclick="nicknameCheck();" style="width: 130px;
                                                                                        --bs-btn-border-color: RGB(247, 39, 140);
                                                                                        --bs-btn-color:RGB(247, 39, 140);
                                                                                        --bs-btn-hover-color: #ffffff;
@@ -270,8 +270,9 @@
               </form>    
               
               <script>
+              
+              // 아이디 중복확인
               	function idCheck(){
-              		
               		
               		const $idInput = $(".signup_content input[name=memId]");
               		

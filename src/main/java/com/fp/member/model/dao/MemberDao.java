@@ -114,7 +114,30 @@ public class MemberDao {
 			close(pstmt);
 			close(rset);
 		}
-		return m;
+		return m;	
+	}
+	
+	public int idCheck(Connection conn, String idCheck) {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("idCheck");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,idCheck);
+			rset=pstmt.executeQuery();
+			
+				if(rset.next()) {
+					count =rset.getInt("count");
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return count;
 		
 	}
 }
