@@ -38,14 +38,10 @@
 	</entry>
 	<!-- 영화 포스터 경로 -->
 	<entry key="selectMoviePosterPath">
-		SELECT MV_NO, FILE_PATH || CHANGE_NAME AS "FILEPATH"
+		SELECT MV_POSTER
 		FROM MOVIE
-		JOIN ATTACHMENT
-		ON MV_NO = REF_NO
-		AND FILE_LEVEL = 1
-		AND FILE_TYPE = 1
-		AND FILE_STATUS = 'Y'
-		WHERE MV_NAME LIKE ? 
+		WHERE MV_NAME LIKE ?
+		AND MV_STATUS = 'Y'
 		ORDER BY MV_NO
 	</entry>
 </properties>
