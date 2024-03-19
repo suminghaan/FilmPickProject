@@ -1,5 +1,12 @@
+<%@page import="com.fp.board.model.vo.Board"%>
+<%@page import="java.util.List"%>
+<%@page import="com.fp.common.model.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	List<Board> pageList = (List<Board>) request.getAttribute("pageList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,8 +60,10 @@ table{
     margin-top: 5px;
     color: lightgray;
 }
-table{
-    
+
+.user-level{
+	display: flex;
+	flex-direction: row;
 }
 </style>
 </head>
@@ -64,15 +73,27 @@ table{
     	<div class="container">
         <div class="container user-info">
             <div class="userprofile1">
-                <img src="../ad_resources/img/profile_person.png" style="width: 70%;">
+                <img src="<%=contextPath%>/views/admin/ad_resources/img/profile_person.png" style="width: 70%;">
             </div>
             <div class="userprofile2">
                 <div class="container user-profile-nickname">
                     <span class="user-profile2-text" style="font-weight: bold;">닉네임</span>
-                    <span class="user-profile2-text">|</span>
-                    <span>Level 3</span>
                 </div>
-                <div class="container user-profile-totalWrite">
+                <div class="container user-profile-nickname user-level">
+                	<div>
+                    	<select class="form-control" style="width: 100px; margin-top: 10px;">
+                    		<option value="1">Level 1</option>
+                    		<option value="2">Level 2</option>
+                    		<option value="3">Level 3</option>
+                    		<option value="4">Level 4</option>
+                    		<option value="5">Level 5</option>
+                    	</select>
+                    </div>
+                    <div style="display: flex;">    
+                    	<button class="btn btn-dark btn-sm" style="align-self: center; margin: 10px;">수정</button>
+                    </div>	
+                </div>
+                <div class="container user-profile-totalWrite" style="margin-top: 20px;">
                     <span>총 게시글 개수 <b>55</b>개</span>
                 </div>
             </div>
@@ -91,131 +112,48 @@ table{
                     </tr>
                 </thead>
                 <tbody id="table-body">
+                	<% if(pageList.isEmpty()){ %>
+                	<tr><td colspan="5" style="text-align: center;">존재하는 회원이 없습니다.</td></tr>
+                	<% } else { %>
+                	<% for(Board b : pageList){ %>
                     <tr>
-                        <td>999</td>
+                        <td><%= b.getbNo() %></td>
                         <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="container" style="margin-top: 10px;"><img src="../ad_resources/img/board_content_img.png">
-                                <span class="board-content">장르는 스릴러로 추천 부탁드릴게요</span>
+                            <%= b.getbTitle() %>
+                            <div class="container" style="margin-top: 10px;"><img src="<%=contextPath%>/views/admin/ad_resources/img/board_content_img.png">
+                                <span class="board-content"><%= b.getbConment() %></span>
                             </div>
                         </td>
-                        <td>닉네임원</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
+                        <td><%= b.getMemNo() %></td>
+                        <td><%= b.getbRegistDate() %></td>
+                        <td><%= b.getbReadCount() %></td>
                     </tr>
-                    <tr>
-                        <td>552</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="container" style="margin-top: 10px;"><img src="../ad_resources/img/board_content_img.png">
-                                <span class="board-content">장르는 스릴러로 추천 부탁드릴게요</span>
-                            </div>
-                        </td>
-                        <td>닉네임투</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>166</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임쓰리</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>231</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임포</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>643</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임파이브</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임식스</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>333</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임세븐</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>555</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임에잇</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr>
-                        <td>231</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임나인</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid black;">
-                        <td>987</td>
-                        <td>
-                            넷플릭스 볼만한 거 추천 부탁드려요 [7]
-                            <div class="board-content">장르는 스릴러로 추천 부탁드릴게요</div>
-                        </td>
-                        <td>닉네임텐</td>
-                        <td>24.02.05</td>
-                        <td>27</td>
-                    </tr>
+                    <% } %>
+                	<% } %>
                 </tbody>
             </table>
         </div>
         <div class="d-flex justify-content-center container">
             <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
+                <ul class="pagination justify-content-center">
+	                <% if(pi.getCurrentPage() == 1){ %>
+	                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	                <% } else { %>
+	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/selectlist.me?page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
+	                <% } %>    
+                    <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+	                    <% if(p == pi.getCurrentPage()){ %>
+	                    	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                    <% } else { %>
+	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/selectlist.me?page=<%= p %>"><%= p %></a></li>
+	                    <% } %>
+                    <% } %>
+                    <% if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+                    	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    <% } else { %>
+                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/selectlist.me?page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
+                  	<% } %>
+                  </ul>
             </nav>
         </div>
     </div>

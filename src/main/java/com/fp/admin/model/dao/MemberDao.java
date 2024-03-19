@@ -14,6 +14,7 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 
@@ -217,5 +218,68 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public int selectBoardListCount(Connection conn, String memId) {
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBoardListCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public List<Board> selectBoardListCount(Connection conn, String memId, PageInfo pi) {
+		List<Board> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBoardList");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setString(1, memId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new Board(rset.getInt("B_NO")
+						, rset.getString("B_TITLE")
+						, rset.getString("B_CONTENT")
+						, rset.getString("MEM_ID"),
+						rset.getString("SIGNIN_DATE")
+						, rset.getInt("B_READ_COUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public List<Board> selectUserBoardList(Connection conn, String memId) {
+		
+
+		return null;
 	}
 }
