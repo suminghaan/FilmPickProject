@@ -107,6 +107,8 @@ public class MovieDao {
 									rset.getString("mv_poster"),
 									rset.getString("like_point")));
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
