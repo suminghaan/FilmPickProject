@@ -14,6 +14,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    
+
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,6 +26,7 @@
     <meta name="author" content="">
 
     <title>Admin Page</title>
+    
 
     <!-- Custom fonts for this template-->
     <link href="<%=contextPath%>/views/admin/ad_resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -198,9 +204,8 @@ background-color: black!important;
 			                    <script>
 			                    	$(function(){
 			                    		$("#signup_btn").click(function(){
-	
+											console.log("선택되는지");
 			                    			location.href = "<%=contextPath%>/adminSignupForm.ad";
-			                    			// 단순한 페이지 요청임에도 불구하고 매번 서블릿 호출해서 포워딩 방식으로 응답
 			                    		})
 			                    	})
 			                    </script>
@@ -320,10 +325,10 @@ background-color: black!important;
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#">
                                     로그아웃
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<%=contextPath%>">
                                     홈페이지
                                 </a>
                             </div>
@@ -352,19 +357,21 @@ background-color: black!important;
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃을 하시겠습니까??</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">로그아웃을 누르시면 처음화면으로 돌아갑니다.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="<%=contextPath%>/logout.ad">Logout</a>
                 </div>
             </div>
         </div>
     </div>
+    
+
     <!-- Bootstrap core JavaScript-->
     <script src="<%=contextPath%>/views/admin/ad_resources/vendor/jquery/jquery.min.js"></script>
     <script src="<%=contextPath%>/views/admin/ad_resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
