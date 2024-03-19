@@ -139,12 +139,32 @@ public class MemberService {
 		return list;
 	}
 
+	/**
+	 * 페이징, 게시글 조회 용도
+	 *
+	 * @author 김지우
+	 * @param memId 
+	 * @return list
+	 */
 	public List<Member> selectUserBoardList(String memId) {
 		Connection conn = getConnection();
 
 		List<Member> list = mDao.selectUserBoardList(conn, memId);
 		close(conn);
 		return list;
+	}
+
+	/**
+	 * 회원등급 수정 용도
+	 *
+	 * @author 김지우
+	 * @param userId 회원아이디
+	 * @param userLevel 수정할 회원등급
+	 * @return result
+	 */
+	public int updateUserLevel(String userId, int userLevel) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

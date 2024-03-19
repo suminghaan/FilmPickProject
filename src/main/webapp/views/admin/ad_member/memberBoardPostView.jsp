@@ -1,3 +1,4 @@
+<%@page import="com.fp.member.model.vo.Member"%>
 <%@page import="com.fp.board.model.vo.Board"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fp.common.model.vo.PageInfo"%>
@@ -6,6 +7,7 @@
 <%
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	List<Board> pageList = (List<Board>) request.getAttribute("pageList");
+	List<Member> userProfile = (List<Member>) request.getAttribute("userProfile");
 %>
 <!DOCTYPE html>
 <html>
@@ -65,6 +67,7 @@ table{
 	display: flex;
 	flex-direction: row;
 }
+
 </style>
 </head>
 <body>
@@ -72,31 +75,39 @@ table{
     <div class="container-fluid">
     	<div class="container">
         <div class="container user-info">
-            <div class="userprofile1">
-                <img src="<%=contextPath%>/views/admin/ad_resources/img/profile_person.png" style="width: 70%;">
+            <% if(userProfile.isEmpty()){ %>
+            	<span style="font-weight: bold; font-size: 50px;">회원 정보가 조회되지 않습니다.</span>
+            <% } else { %>
+            <% for(Member m : userProfile){ %>
+             <form action="updateLevel.me?level=<%=m.getMemLevel()%>&memId=<%=m.getMemId()%>"> 
+            	<div class="userprofile1">
+                	<img src="<%=contextPath%>/views/admin/ad_resources/img/profile_person.png" style="width: 70%;">
+            	</div>
+            	<div class="userprofile2">
+	                <div class="container user-profile-nickname">
+	                    <span class="user-profile2-text" style="font-weight: bold;"><%=m.getNickname()%></span>
+	                </div>
+	                <div class="container user-profile-nickname user-level">
+	                	<div>
+	                		<select class="form-control" name="userLevel" style="width: 100px; margin-top: 10px;"> <!-- onchange="updateuserLevel();" -->
+		                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
+		                    <option value="2" <%= m.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
+		                    <option value="3" <%= m.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
+		                    <option value="4" <%= m.getMemLevel() == 4 ? "selected" : "" %>>Level 4</option>
+		                    <option value="5" <%= m.getMemLevel() == 5 ? "selected" : "" %>>Level 5</option>
+	                        </select>
+	                    </div>
+	                    <div style="display: flex;">    
+	                    	<button type="submit" class="btn btn-dark btn-sm" style="align-self: center; margin: 10px;">수정</button>
+	                    </div>	
+	                </div>
+	                <div class="container user-profile-totalWrite" style="margin-top: 20px;">
+	                    <span>총 게시글 개수 <b><%= m.getMemBoardCnt() %></b>개</span>
+	                </div>
             </div>
-            <div class="userprofile2">
-                <div class="container user-profile-nickname">
-                    <span class="user-profile2-text" style="font-weight: bold;">닉네임</span>
-                </div>
-                <div class="container user-profile-nickname user-level">
-                	<div>
-                    	<select class="form-control" style="width: 100px; margin-top: 10px;">
-                    		<option value="1">Level 1</option>
-                    		<option value="2">Level 2</option>
-                    		<option value="3">Level 3</option>
-                    		<option value="4">Level 4</option>
-                    		<option value="5">Level 5</option>
-                    	</select>
-                    </div>
-                    <div style="display: flex;">    
-                    	<button class="btn btn-dark btn-sm" style="align-self: center; margin: 10px;">수정</button>
-                    </div>	
-                </div>
-                <div class="container user-profile-totalWrite" style="margin-top: 20px;">
-                    <span>총 게시글 개수 <b>55</b>개</span>
-                </div>
-            </div>
+             </form> 
+            <% } %>
+            <% } %>
         </div>
         <div class="container">
             <div class="container" style="margin-top: 15px; padding-left: 0px;">
@@ -113,7 +124,7 @@ table{
                 </thead>
                 <tbody id="table-body">
                 	<% if(pageList.isEmpty()){ %>
-                	<tr><td colspan="5" style="text-align: center;">존재하는 회원이 없습니다.</td></tr>
+                	<tr><td colspan="5" style="text-align: center;">존재하는 게시글이 없습니다.</td></tr>
                 	<% } else { %>
                 	<% for(Board b : pageList){ %>
                     <tr>
@@ -121,7 +132,7 @@ table{
                         <td>
                             <%= b.getbTitle() %>
                             <div class="container" style="margin-top: 10px;"><img src="<%=contextPath%>/views/admin/ad_resources/img/board_content_img.png">
-                                <span class="board-content"><%= b.getbConment() %></span>
+                                <span class="board-content"><%= b.getbContent() %></span>
                             </div>
                         </td>
                         <td><%= b.getMemNo() %></td>

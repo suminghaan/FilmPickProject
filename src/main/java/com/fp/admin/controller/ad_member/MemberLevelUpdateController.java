@@ -33,11 +33,8 @@ public class MemberLevelUpdateController extends HttpServlet {
 		
 		  String userId = request.getParameter("userId"); 
 		  int userLevel = Integer.parseInt(request.getParameter("userLevel"));
-		  
-		  Member m = new Member(); // m.setMemNo(userNo); m.setMemId(userId);
-		  m.setMemLevel(userLevel);
-		  
-		  int result = new MemberService().updateUserLevel(m);
+		  System.out.println(userId + " " + userLevel);
+		  int result = new MemberService().updateUserLevel(userId, userLevel);
 		  
 		  if (result > 0) { 
 			  request.getSession().setAttribute("alertMsg", "회원등급 수정이 완료되었습니다.");

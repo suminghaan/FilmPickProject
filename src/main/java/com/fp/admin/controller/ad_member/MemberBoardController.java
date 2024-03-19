@@ -71,6 +71,7 @@ public class MemberBoardController extends HttpServlet { // 단순히 화면만 
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("pageList", pageList);
+		request.setAttribute("userProfile", userProfile);
 
 		request.getRequestDispatcher("/views/admin/ad_member/memberBoardPostView.jsp").forward(request, response);
 	}
