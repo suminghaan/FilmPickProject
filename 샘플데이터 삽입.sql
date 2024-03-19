@@ -124,15 +124,15 @@ CONNECT BY
   
 -- MOVIE
 ------------------------ 김지우 ------------------------ 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '파묘', '2024-02-22', 1, '134분', '미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.', DEFAULT, '15세 이상', 'Y', DEFAULT, 1, 2, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '파묘', '2024-02-22', 1, '134분', '미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.', DEFAULT, '15세 이상', 'Y', DEFAULT, 'resources/upfiles/20240318103838_91929.png', 'resources/upfiles/20240318104140_63098.mp4', DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '스즈메의 문단속', '2024-01-10', 2, '122분', '한 소녀가 우연히 만난 청년과 재난의 문을 닫는 모험에 뛰어들게 되는 이야기를 다룬 애니메이션 영화', DEFAULT, '12세 이상', 'N', DEFAULT, 3, 4, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '스즈메의 문단속', '2024-01-10', 2, '122분', '한 소녀가 우연히 만난 청년과 재난의 문을 닫는 모험에 뛰어들게 되는 이야기를 다룬 애니메이션 영화', DEFAULT, '12세 이상', 'N', DEFAULT, 'resources/upfiles/20240318104334_13872.png', 'resources/upfiles/20240318104441_38300.mp4', DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '대외비', '2023-03-01', 1, '116분', '1992년 부산, 만년 국회의원 후보 해웅과 정치판의 숨은 실세 순태, 행동파 조폭 필도가 대한민국을 뒤흔들 비밀 문서를 손에 쥐고 판을 뒤집기 위한 치열한 쟁탈전을 벌이는 범죄드라마', DEFAULT, '15세 이상', 'N', DEFAULT, 5, 6, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '대외비', '2023-03-01', 1, '116분', '1992년 부산, 만년 국회의원 후보 해웅과 정치판의 숨은 실세 순태, 행동파 조폭 필도가 대한민국을 뒤흔들 비밀 문서를 손에 쥐고 판을 뒤집기 위한 치열한 쟁탈전을 벌이는 범죄드라마', DEFAULT, '15세 이상', 'N', DEFAULT, 'resources/upfiles/20240318104522_63626.png', 'resources/upfiles/20240318104633_46273.mp4', DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '서울의 봄', '2023-11-22', 1, '141분', '1979년 12월 12일, 수도 서울 군사반란 발생 그날, 대한민국의 운명이 바뀌었다 대한민국을 뒤흔든 10월 26일 이후, 서울에 새로운 바람이 불어온 것도 잠시 12월 12일, 보안사령관 전두광이 반란을 일으키고 군 내 사조직을 총동원하여 최전선의 전방부대까지 서울로 불러들인다. 권력에 눈이 먼 전두광의 반란군과 이에 맞선 수도경비사령관 이태신을 비롯한 진압군 사이, 일촉즉발의 9시간이 흘러가는데… 목숨을 건 두 세력의 팽팽한 대립 오늘 밤, 대한민국 수도에서 가장 치열한 전쟁이 펼쳐진다!', DEFAULT, '12세 이상', 'N', DEFAULT, 7, 8, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '서울의 봄', '2023-11-22', 1, '141분', '1979년 12월 12일, 수도 서울 군사반란 발생 그날, 대한민국의 운명이 바뀌었다 대한민국을 뒤흔든 10월 26일 이후, 서울에 새로운 바람이 불어온 것도 잠시 12월 12일, 보안사령관 전두광이 반란을 일으키고 군 내 사조직을 총동원하여 최전선의 전방부대까지 서울로 불러들인다. 권력에 눈이 먼 전두광의 반란군과 이에 맞선 수도경비사령관 이태신을 비롯한 진압군 사이, 일촉즉발의 9시간이 흘러가는데… 목숨을 건 두 세력의 팽팽한 대립 오늘 밤, 대한민국 수도에서 가장 치열한 전쟁이 펼쳐진다!', DEFAULT, '12세 이상', 'N', DEFAULT, 'resources/upfiles/20240318104722_50221.png', 'resources/upfiles/20240318104745_76619.mp4', DEFAULT, DEFAULT);
 
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '범죄도시3', '2023-05-31', 1, '105분', '대체불가 괴물형사 마석도, 서울 광수대로 발탁! 베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다. 사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다. 한편, 마약 사건의 배후인 주성철(이준혁)은 계속해서 판을 키워가고 약을 유통하던 일본 조직과 리키(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데... 나쁜 놈들 잡는 데 이유 없고 제한 없다. 커진 판도 시원하게 싹 쓸어버린다!', DEFAULT, '15세 이상', 'N', DEFAULT, 9, 10, DEFAULT, DEFAULT);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '범죄도시3', '2023-05-31', 1, '105분', '대체불가 괴물형사 마석도, 서울 광수대로 발탁! 베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다. 사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다. 한편, 마약 사건의 배후인 주성철(이준혁)은 계속해서 판을 키워가고 약을 유통하던 일본 조직과 리키(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데... 나쁜 놈들 잡는 데 이유 없고 제한 없다. 커진 판도 시원하게 싹 쓸어버린다!', DEFAULT, '15세 이상', 'N', DEFAULT, 'resources/upfiles/20240318104801_78030.png', 'resources/upfiles/20240318104819_65085.mp4', DEFAULT, DEFAULT);
 --------------------------------------------------------------------------------------------------------------------------------
 
 --수민  
@@ -233,31 +233,31 @@ INSERT INTO MOVIE
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '스파이더맨: 노 웨이 홈', '2021-12-15', '2', '148분'
       , '‘미스테리오’의 계략으로 세상에 정체가 탄로난 스파이더맨 ‘피터 파커’는 하루 아침에 평범한 일상을 잃게 된다. 문제를 해결하기 위해 ‘닥터 스트레인지’를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다. ‘닥터 옥토퍼스’를 비롯해 스파이더맨에게 깊은 원한을 가진 숙적들의 강력한 공격에 ‘피터 파커’는 사상 최악의 위기를 맞게 되는데…'
-      , 'N', '12세 이상', 'N', DEFAULT, 21, 22, 'Y', SYSDATE);
+      , 'N', '12세 이상', 'N', DEFAULT, 'resources/upfiles/20211215110327_51215.jpeg', 'resources/upfiles/20211215111035_23204.mp4', 'Y', SYSDATE);
 
 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '모가디슈', '2021-07-28', '1', '121분'
       , '내전으로 고립된 낯선 도시, 모가디슈 지금부터 우리의 목표는 오로지 생존이다! 대한민국이 UN가입을 위해 동분서주하던 시기 1991년 소말리아의 수도 모가디슈에서는 일촉즉발의 내전이 일어난다. 통신마저 끊긴 그 곳에 고립된 대한민국 대사관의 직원과 가족들은 총알과 포탄이 빗발치는 가운데, 살아남기 위해 하루하루를 버텨낸다. 그러던 어느 날 밤, 북한 대사관의 일행들이 도움을 요청하며 문을 두드리는데… 목표는 하나, 모가디슈에서 탈출해야 한다!'
-      , 'N', '15세 이상', 'N', DEFAULT, 23, 24, 'Y', SYSDATE);
+      , 'N', '15세 이상', 'N', DEFAULT, 'resources/upfiles/202107281652_96426.jpeg', 'resources/upfiles/20210728172012_93546.mp4', 'Y', SYSDATE);
 
 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '블랙위도우', '2021-07-07', '2', '134분'
       , '어벤져스의 히어로 블랙 위도우, ‘나타샤 로마노프’ (스칼렛 요한슨)는 자신의 과거와 연결된 레드룸의 거대한 음모와 실체를 깨닫게 된다. 상대의 능력을 복제하는 빌런 ‘태스크마스터’와 새로운 위도우들의 위협에 맞서 목숨을 건 반격을 시작하는 ‘나타샤’는 스파이로 활약했던 자신의 과거 뿐 아니라, 어벤져스가 되기 전 함께했던 동료들을 마주해야만 하는데… 폭발하는 리얼 액션 카타르시스! MCU의 새로운 시대를 시작할 첫 액션 블록버스터를 만끽하라!'
-      , 'N', '12세 이상', 'N', DEFAULT, 25, 26, 'Y', SYSDATE);
+      , 'N', '12세 이상', 'N', DEFAULT, 'resources/upfiles/202107071324_12379.jpeg', 'resources/upfiles/20210707133011_23125.mp4', 'Y', SYSDATE);
 
 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '분노의 질주: 더 얼티메이트', '2021-05-19', '2', '142분'
       , '도미닉(빈 디젤)은 자신과 가장 가까웠던 형제 제이콥(존 시나)이 사이퍼(샤를리즈 테론)와 연합해 전 세계를 위기로 빠트릴 위험천만한 계획을 세운다는 사실을 알게 되고, 이를 막기 위해 다시 한 번 패밀리들을 소환한다. 가장 가까운 자가 한순간, 가장 위험한 적이 된 상황 도미닉과 패밀리들은 이에 반격할 놀라운 컴백과 작전을 세우고 지상도, 상공도, 국경도 경계가 없는 불가능한 대결이 시작되는데…'
-      , 'N', '12세 이상', 'N', DEFAULT, 27, 28, 'Y', SYSDATE);
+      , 'N', '12세 이상', 'N', DEFAULT, 'resources/upfiles/202105191408_42420.jpeg', 'resources/upfiles/20210519144822_54523.mp4', 'Y', SYSDATE);
 
 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '소울', '2021-01-20', '2', '107분'
       , '뉴욕에서 음악 선생님으로 일하던 ‘조’는 꿈에 그리던 최고의 밴드와 재즈 클럽에서 연주하게 된 그 날, 예기치 못한 사고로 영혼이 되어 ‘태어나기 전 세상’에 떨어진다. 탄생 전 영혼들이 멘토와 함께 자신의 관심사를 발견하면 지구 통행증을 발급하는 ‘태어나기 전 세상’ ‘조’는 그 곳에서 유일하게 지구에 가고 싶어하지 않는 시니컬한 영혼 ‘22’의 멘토가 된다. 링컨, 간디, 테레사 수녀도 멘토되길 포기한 영혼 ‘22’ 꿈의 무대에 서려면 ‘22’의 지구 통행증이 필요한 ‘조’ 그는 다시 지구로 돌아가 꿈의 무대에 설 수 있을까?'
-      , 'N', '전체관람가', 'N', DEFAULT, 29, 30, 'Y', SYSDATE);
+      , 'N', '전체관람가', 'N', DEFAULT, 'resources/upfiles/202101201630_52311.jpeg', 'resources/upfiles/20210120163534_65912.mp4', 'Y', SYSDATE);
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
@@ -304,8 +304,8 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    51,
-    52,
+    'resources/upfiles/20240314153026_57162.png',
+    'resources/upfiles/20240314153026_87842.mp4',
     DEFAULT,
     DEFAULT
 );
@@ -330,8 +330,8 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    53,
-    54,
+    'resources/upfiles/20240314153026_57889.jpeg',
+    'resources/upfiles/20240314103026_87842.mp4',
     DEFAULT,
     DEFAULT
 );
@@ -354,8 +354,8 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    55,
-    56,
+    'resources/upfiles/20240314154832_77889.jpeg',
+    'resources/upfiles/20220314103626_81242.mp4',
     DEFAULT,
     DEFAULT
 );
@@ -374,8 +374,8 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    57,
-    58,
+    'resources/upfiles/20210624154832_12889.jpeg',
+    'resources/upfiles/20210814101026_11242.mp4',
     DEFAULT,
     DEFAULT
 );
@@ -393,8 +393,8 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    59,
-    60,
+    'resources/upfiles/20190714154832_12481.jpeg',
+    'resources/upfiles/20230614101626_77842.mp4',
     DEFAULT,
     DEFAULT
 );
@@ -413,19 +413,19 @@ INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FP
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '듄', '2021-10-20', '2', '155분'
       , '10191년, 아트레이데스 가문의 후계자인 폴(티모시 샬라메)은 시공을 초월한 존재이자 전 우주를 구원할 예지된 자의 운명을 타고났다. 그리고 어떤 계시처럼 매일 꿈에서 아라키스 행성에 있는 한 여인을 만난다. 모래언덕을 뜻하는 "듄"이라 불리는 아라키스는 물 한 방울 없는 사막이지만 우주에서 가장 비싼 물질인 신성한 환각제 스파이스의 유일한 생산지로 이를 차지하기 위한 전쟁이 치열하다. 황제의 명령으로 폴과 아트레이데스 가문은 죽음이 기다리는 아라키스로 향하는데… 위대한 자는 부름에 응답한다, 두려움에 맞서라, 이것은 위대한 시작이다!'
-      , 'N', '12세 이상', 'N', DEFAULT, 69, 70, 'Y', SYSDATE);
+      , 'N', '12세 이상', 'N', DEFAULT, 'resources/upfiles/202110201015_12356.jpeg', 'resources/upfiles/20211020102003_54688.mp4', 'Y', SYSDATE);
       
         
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '미나리', '2021-03-03', '2', '115분'
       , '"미나리는 어디서든 잘 자라" 낯선 미국, 아칸소로 떠나온 한국 가족. 가족들에게 뭔가 해내는 걸 보여주고 싶은 아빠 "제이콥"(스티븐 연)은 자신만의 농장을 가꾸기 시작하고 엄마 "모니카"(한예리)도 다시 일자리를 찾는다. 아직 어린 아이들을 위해 ‘모니카’의 엄마 ‘순자’(윤여정)가 함께 살기로 하고 가방 가득 고춧가루, 멸치, 한약 그리고 미나리씨를 담은 할머니가 도착한다. 의젓한 큰딸 "앤"(노엘 케이트 조)과 장난꾸러기 막내아들 "데이빗"(앨런 김)은 여느 그랜마같지 않은 할머니가 영- 못마땅한데… 함께 있다면, 새로 시작할 수 있다는 희망으로 하루하루 뿌리 내리며 살아가는 어느 가족의 아주 특별한 여정이 시작된다!'
-      , 'N', '12세 이상', 'N', DEFAULT, 71, 72, 'Y', SYSDATE);
+      , 'N', '12세 이상', 'N', DEFAULT, 'resources/upfiles/202103031120_56255.jpeg', 'resources/upfiles/20210303115243_98542.mp4', 'Y', SYSDATE);
 
 
 INSERT INTO MOVIE (MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) 
 VALUES (SEQ_MOVIE_NO.NEXTVAL, '킹스맨: 퍼스트 에이전트', '2021-12-22', '2', '130분'
       , '역사상 최악의 폭군들과 범죄자들이 모여 수백만 명의 생명을 위협할 전쟁을 모의하는 광기의 시대. 이들을 막으려는 한 사람과 그가 비밀리에 운영 중인 독립 정보기관, ‘킹스맨’의 최초 미션이 시작된다! 베일에 감춰졌던 킹스맨의 탄생을 목격하라!'
-      , 'N', '청소년 관람불가', 'N', DEFAULT, 73, 74, 'Y', SYSDATE);
+      , 'N', '청소년 관람불가', 'N', DEFAULT, 'resources/upfiles/202112221803_64555.jpeg', 'resources/upfiles/20211222181539_32156.mp4', 'Y', SYSDATE);
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 

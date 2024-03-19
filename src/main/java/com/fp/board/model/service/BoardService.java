@@ -69,11 +69,37 @@ public class BoardService {
 		return listCount;
 	}
 	
+	/**
+	 * @param 호용
+	 * 커뮤니티 영화카테고리의 인기게시글페이지에 담을 값을 구하기위한 메소드
+	 */
 	public List<Board> selectPublicList(PageInfo pi){
 		Connection conn = getConnection();
 		List<Board> publicList = bDao.selectPublicList(conn, pi);
 		close(conn);
 		return publicList;
+	}
+	
+	/**
+	 * @param 호용
+	 * 커뮤니티 영화카테고리의 전체게시글페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Board> selectList(PageInfo pi){
+		Connection conn = getConnection();
+		List<Board> list = bDao.selectList(conn, pi);
+		close(conn);
+		return list;
+	}
+	
+	/**
+	 * @param 호용
+	 * 커뮤니티 잡담카테고리의 전체게시글페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Board> selectChatList(PageInfo pi){
+		Connection conn = getConnection();
+		List<Board> chatList = bDao.selectChatList(conn, pi);
+		close(conn);
+		return chatList;
 	}
 
 }

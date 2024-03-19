@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.common.model.vo.PageInfo" %>
+<%@ page import="com.fp.board.model.vo.Board" %>
+<%@ page import="com.fp.movie.model.vo.Movie" %>
+<%@ page import="java.util.List" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	List<Board> chatList = (List<Board>)request.getAttribute("chatList");
+	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,137 +159,21 @@
                         </thead>
                         <tbody>
                             <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
+                            <% for(Board b : chatList){ %>
                             <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
+                                <td colspan="2" class="title" onclick="community_check();"><%=b.getbNo() + " [잡담]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
                                 <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
+                                    <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
+                                <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
+                                <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
                             </tr>
+                            <%} %>
                             <!-- } 반복문 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-
-                            <!-- 반복문 돌리면 지울 내용 @@@@@@@@@@@@@@@@@@@@@@@@-->
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check();">번호 [잡담] 게시글제목[댓글갯수]</td>
-                                <td rowspan="3" class="img">
-                                    <img src="../../01_HTML/resources/image/city1.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count">조회수갯수 좋아요갯수</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer">작성자 / 작성시간</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>   
@@ -294,37 +187,11 @@
                             </tr>
                         </thead>
                         <tbody class="movie_name">
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-                            <tr>
-                                <td onclick="movie_go();">영화제목</td>
-                            </tr>
-
+                        <%for(Movie m : mList){ %>
+                        	<tr>
+                            	<td onclick="movie_go();"><%= m.getMvName() %></td>
+                        	</tr>
+                    	<%} %>
                         </tbody>
                     </table>
                 </div>    
@@ -334,13 +201,26 @@
             <br><br><br>
             <!-- 여기에 검색시 잡담탭의 전체게시글의 특정 게시글을 검색 -->
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            	<% if(pi.getCurrentPage() == 1){ %>
+            		<!-- 현재 내가 보고있는 페이지가 1페이지와 일치할경우 클릭불가능 -->
+                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <% }else{ %>
+                	<!-- 클릭시 내가 보고있는 페이지의 이전페이지로 이동하기위한 구문 -->
+                	<li class="page-item"><a class="page-link" href="<%= contextPath %>/chat.bo?page=<%= pi.getCurrentPage() - 1%>">Previous</a></li>
+                <% } %>
+                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+               		<%if(p == pi.getCurrentPage()){ %>
+               		<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+               		<%}else{ %>
+               		<li class="page-item"><a class="page-link" href="<%= contextPath %>/chat.bo?page=<%= p %>"><%= p %></a></li>
+               		<% } %>
+                <% } %>
+                <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+                <!-- 현재 내가 보고있는 페이지가 마지막페이지와 일치할 경우 클릭 불가능 -->
+                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+ 				<%}else{ %>
+                <li class="page-item"><a class="page-link" href="<%= contextPath%>/chat.bo?page=<%=pi.getCurrentPage()+1%>">Next</a></li>
+ 				<%} %>
             </ul>
 
             <div class="notice_search" align="center">

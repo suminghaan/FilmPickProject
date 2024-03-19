@@ -212,6 +212,82 @@ public class BoardDao {
 		return publicList;
 	}
 	
+	/**
+	 * 커뮤니티 영화카테고리 전체게시글에 띄울 값들을 구하기위한 메소드
+	 * @호용
+	 */
+	public List<Board> selectList(Connection conn, PageInfo pi){
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("B_NO")
+								 , rset.getString("B_TITLE")
+								 , rset.getString("B_REGIST_DATE")
+								 , rset.getInt("B_READ_COUNT")
+								 , rset.getInt("B_RECOMMEND_COUNT")
+								 , rset.getString("B_CATEGORY")
+								 , rset.getString("NICKNAME")
+								 , rset.getString("TITLEIMG_URL")
+								 , rset.getInt("REPLY_COUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	/**
+	 * 커뮤니티 잡담카테고리 전체게시글에 띄울 값들을 구하기위한 메소드
+	 * @호용
+	 */
+	public List<Board> selectChatList(Connection conn, PageInfo pi){
+		List<Board> chatList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectChatList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				chatList.add(new Board(rset.getInt("B_NO")
+								 , rset.getString("B_TITLE")
+								 , rset.getString("B_REGIST_DATE")
+								 , rset.getInt("B_READ_COUNT")
+								 , rset.getInt("B_RECOMMEND_COUNT")
+								 , rset.getString("B_CATEGORY")
+								 , rset.getString("NICKNAME")
+								 , rset.getString("TITLEIMG_URL")
+								 , rset.getInt("REPLY_COUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return chatList;
+	}
+	
 }
 
 
