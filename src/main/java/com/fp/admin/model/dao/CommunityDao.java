@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.notice.model.dao.NoticeDao;
 
@@ -83,6 +84,51 @@ public class CommunityDao {
 			close(pstmt);
 		}
 		return listCount;
+	}
+	
+	public int insertNotice(Connection conn, Notice n) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNotice");
+		
+		try {
+			pstmt = conn.prepareCall(sql);
+			pstmt.setString(1, n.getNoticeCategory());
+			pstmt.setString(2, n.getNoticeTitle());
+			pstmt.setString(3, n.getNoticeContent());
+			pstmt.setString(4, n.getNoticeWriter());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
 	}
 
 }

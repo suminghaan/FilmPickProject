@@ -69,7 +69,7 @@
     <br>
     
     <div class="list">
-        <a href="<%= contextPath %>/enrollForm.co" class="btn btn-outline-secondary listBtn" onclick="noticeEnroll();">신규등록</a>
+        <a href="<%= contextPath %>/enrollForm.co" class="btn btn-outline-secondary listBtn">신규등록</a>
     </div>
     
     <br><br>
@@ -130,7 +130,6 @@
 	                <% } %>
 	                
 	                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
-	                	<% System.out.println("p : " + p); %>
 	                	<% if(p == pi.getCurrentPage()) { %>
 	                	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
 	                	<%}else { %>

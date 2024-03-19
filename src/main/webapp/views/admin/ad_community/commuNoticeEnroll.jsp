@@ -44,7 +44,7 @@
 		<h1>공지사항 등록</h1>
     <hr>
     
-    	<form action="<%=contextPath %>/insert.co" method="post">
+    	<form action="<%=contextPath %>/insert.co" method="post" enctype="multipart/form-data">
             <table class="table">
                 <tr>
                     <th><label for="title">제목</label></th>
@@ -53,7 +53,7 @@
                 <tr>
                 	<th><label for="noticeSection">구분</label></th>
                 	<td colspan="3">
-                		<select class="form-control" id="noticeSection">
+                		<select class="form-control" id="noticeSection" name="noticeCategory">
 		                    <option>일반</option>
 		                    <option>이벤트</option>
 		                </select>
@@ -66,10 +66,12 @@
                 	
                 </tr>
                 <tr>
-                	<td colspan="4"><input type="file"></td>
+                	<th><label for="noticeFile">첨부파일</label></th>
+                	<td colspan="3"><input type="file" class="form-control-file border" name="noticeFile" ></td>
 				</tr>
 				<tr>
-                	<td colspan="4">
+					<th>상단고정여부</th>
+                	<td colspan="3">
                 		<input type="checkbox" id="fix">
                 		<label for="fix">상단고정</label>
                 	</td>

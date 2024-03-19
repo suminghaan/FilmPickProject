@@ -25,11 +25,55 @@
 				  
 		</entry>
 
-	<!-- 관리자 공지사항 페이징처리 -->
+	<!-- 관리자 공지사항 페이징처리 [수민]-->
 		<entry key="selectNoticeListCount">
 			SELECT COUNT(*) COUNT
 			  FROM NOTICE
 			 WHERE NOTICE_STATUS = 'Y'
+		</entry>
+		
+		
+
+	<!-- 관리자 공지사항 등록 [수민]-->
+		<entry key="insertNotice">
+			INSERT
+				INTO NOTICE
+				(
+					NOTICE_NO
+				  , NOTICE_CATEGORY
+				  , NOTICE_TITLE
+				  , NOTICE_CONTENT
+				  , ADMIN_NO
+				)
+				VALUES
+				(
+					SEQ_NOTICE_NO.NEXTVAL
+				  , ?
+				  , ?
+				  , ?
+				  , ?
+				)
+		</entry>
+		
+	<!-- 관리자 공지사항 등록 [수밍] -->
+		<entry key="insertAttachment">
+			INSERT
+				INTO ATTACHMENT
+				(
+					FILE_NO
+				  , REF_NO
+				  , ORIGIN_NAME
+				  , CHANGE_NAME
+				  , FILE_PATH
+				)
+				VALUES
+				(
+					SEQ_ATTACHMENT_NO
+				  , REF_NO...?
+				  , ?
+				  , ?
+				  , ?
+				)
 		</entry>
 
 
