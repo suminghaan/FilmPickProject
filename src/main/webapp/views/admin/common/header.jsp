@@ -228,7 +228,7 @@ background-color: black!important;
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<%=contextPath%>/selectList.me?page=1">회원조회</a>
+                        <a class="collapse-item" href="<%=contextPath%>/selectlist.me?page=1">회원조회</a>
                         <a class="collapse-item" href="../ad_member/cancelMemberList.jsp">탈퇴회원조회</a>
                         <a class="collapse-item" href="../ad_member/reportMemberList.jsp">신고회원관리</a>
                         <a class="collapse-item" href="../ad_member/restrictedMemberList.jsp">이용제한회원조회</a>
