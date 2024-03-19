@@ -6,7 +6,7 @@ public class Board {
 
 	private int bNo; // 게시글번호
 	private String bTitle; // 게시글 제목
-	private String bConment; // 게시글내용
+	private String bContent; // 게시글내용
 	private String bRegistDate; // 작성일
 	private int bReadCount; // 조회수
 	private int bRecommendCount; // 추천수
@@ -41,12 +41,12 @@ public class Board {
 
 
 
-	public Board(int bNo, String bTitle, String bConment, String bRegistDate, int bReadCount, int bRecommendCount,
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
 			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
-		this.bConment = bConment;
+		this.bContent = bContent;
 		this.bRegistDate = bRegistDate;
 		this.bReadCount = bReadCount;
 		this.bRecommendCount = bRecommendCount;
@@ -79,13 +79,13 @@ public class Board {
 	}
 
 
-	public String getbConment() {
-		return bConment;
+	public String getbContent() {
+		return bContent;
 	}
 
 
-	public void setbConment(String bConment) {
-		this.bConment = bConment;
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
 	}
 
 
@@ -181,7 +181,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bConment=" + bConment + ", bRegistDate=" + bRegistDate
+		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bRegistDate=" + bRegistDate
 				+ ", bReadCount=" + bReadCount + ", bRecommendCount=" + bRecommendCount + ", bCategory=" + bCategory
 				+ ", bStatus=" + bStatus + ", dSatus=" + dSatus + ", memNo=" + memNo + ", titleImgUrl=" + titleImgUrl
 				+ ", replyCount=" + replyCount + "]";
