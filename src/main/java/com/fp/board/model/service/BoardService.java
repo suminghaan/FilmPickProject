@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.fp.board.model.dao.BoardDao;
 import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
 
 public class BoardService {
@@ -55,6 +56,24 @@ public class BoardService {
 		List<Movie> mList = bDao.selectPublicMovieName(conn);
 		close(conn);
 		return mList;
+	}
+	
+	/**
+	 * @param 호용
+	 * @return 총 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = bDao.selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+	public List<Board> selectPublicList(PageInfo pi){
+		Connection conn = getConnection();
+		List<Board> publicList = bDao.selectPublicList(conn, pi);
+		close(conn);
+		return publicList;
 	}
 
 }

@@ -139,6 +139,7 @@
                         <button type="image" class="community_search_btn" alt="검색">검색</button> 
                 </form>
             </div>
+            
             <br><br><br>
             <a href="http://www.naver.com" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
             <br><br>
@@ -156,7 +157,7 @@
                         <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                         <% for(Board b : publicList){ %>
 	                        <tr>
-	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
+	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ " [" + b.getReplyCount() + "]" %></td>
 	                            <td rowspan="3" class="img">
 	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
 	                            </td>
