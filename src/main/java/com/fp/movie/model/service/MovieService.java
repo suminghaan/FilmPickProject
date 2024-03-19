@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.dao.MovieDao;
 import com.fp.movie.model.vo.Movie;
@@ -48,6 +49,14 @@ public class MovieService {
 		ArrayList<Movie> movieList = mDao.selectMovieList(conn, searchKeyword);
 		close(conn);
 		return movieList;
+	}
+	
+	// 검색페이지에서 검색 키워드에 따라 영화의 메인 포스터 첨부파일의 경로를 조회하는 메소드[기웅]
+	public ArrayList<Attachment> selectPosterList(String searchKeyword) {
+		Connection conn = getConnection();
+		ArrayList<Attachment> posterList = mDao.selectPosterList(conn, searchKeyword);
+		close(conn);
+		return posterList;
 	}
 
 
