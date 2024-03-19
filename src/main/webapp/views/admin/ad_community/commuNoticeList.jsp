@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="com.fp.common.model.vo.PageInfo" %>
+<%@ page import="com.fp.admin.model.vo.Notice" %>
+<%@ page import="java.util.List" %>
+    
+<% List<Notice> list = (List<Notice>)request.getAttribute("list"); %>
+<% PageInfo pi = (PageInfo)request.getAttribute("pi"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +62,7 @@
         <span>검색</span>&nbsp;&nbsp;&nbsp;
         <input type="text" placeholder="검색어를 입력해주세요">
         <button type="button">
-            <img src="../img/icon_search.png">
+            <img src="<%=contextPath %>/views/admin/img/icon_search.png">
         </button>          
     </div>
     
@@ -68,7 +75,7 @@
     <br><br>
     
     <div>
-        <table class="table table-hover" >
+        <table class="table table-hover" id="notice_list">
             <thead class="thead-dark">
                 <tr>
                     <th>번호</th>
@@ -81,63 +88,65 @@
             </thead>
             
             <tbody>
-                <tr>
-                    <td>3</td>
-                    <td>2024-02-02</td>
-                    <td>admin1</td>
-                    <td>공지사항 제목 3</td>
-                    <td>Y</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>2024-01-22</td>
-                    <td>admin2</td>
-                    <td>공지사항 제목 2</td>
-                    <td>Y</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>2024-01-09</td>
-                    <td>admin1</td>
-                    <td>공지사항 제목 1</td>
-                    <td>N</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
-                    </td>
-                </tr>
+            	<!-- case1. 등록한 공지글이 없을 경우 -->
+            	<% if(list.isEmpty()) { %>
+            	<tr>
+            		<td colspan="6" style="text-align: center;">아직 등록된 공지사항이 없습니다.</td>
+            	</tr>
+            	<% }else { %>
+            	<!-- case2. 등록된 공지글이 있을 경우 -->
+	            	<% for(Notice n : list) { %>
+	                <tr>
+	                    <td><%=n.getNoticeNo() %></td>
+	                    <td><%=n.getNoticeDate() %></td>
+	                    <td><%=n.getNoticeWriter() %></td>
+	                    <td><%=n.getNoticeTitle() %></td>
+	                    <td><%=n.getNoticeFix() %></td>
+	                    <td>
+	                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
+	                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
+	                    </td>
+	                </tr>
+                	<%} %>
+                <%} %>
 
             </tbody>
 
         </table>
         
+        <!-- 페이징바 영역 -->
         <div class="d-flex justify-content-center container">
 	        <nav aria-label="Page navigation example">
 	            <ul class="pagination">
-	                <li class="page-item">
+	            	
+	            	<% if(pi.getCurrentPage() == 1) { %>
+	                <li class="page-item disabled">
 	                <a class="page-link" href="#" aria-label="Previous">
 	                    <span aria-hidden="true">&laquo;</span>
 	                </a>
 	                </li>
-	                <li class="page-item"><a class="page-link" href="#">1</a></li>
-	                <li class="page-item"><a class="page-link" href="#">2</a></li>
-	                <li class="page-item"><a class="page-link" href="#">3</a></li>
-	                <li class="page-item"><a class="page-link" href="#">4</a></li>
+	                <% }else { %>
+	                <li class="page-item"><a class="page-link" href="<%=contextPath%>/list.co?page=<%=pi.getCurrentPage() -1%>">Previous</a></li>
+	                <% } %>
+	                
+	                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
+	                	<% System.out.println("p : " + p); %>
+	                	<% if(p == pi.getCurrentPage()) { %>
+	                	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                	<%}else { %>
+	                	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.co?page=<%=p%>"><%= p %></a></li>
+	                	<% } %>
+	                <% } %>
+	                
+	                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
+	                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                <% }else { %>
 	                <li class="page-item">
-	                <a class="page-link" href="#" aria-label="Next">
+	                <a class="page-link" href="<%=contextPath %>/list.co?page=<%=pi.getCurrentPage() +1 %>" aria-label="Next">
 	                    <span aria-hidden="true">&raquo;</span>
 	                </a>
 	                </li>
+	                <% } %>
 	            </ul>
 	        </nav>
 	    </div>

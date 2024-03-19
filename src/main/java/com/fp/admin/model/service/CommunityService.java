@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fp.admin.model.dao.CommunityDao;
 import com.fp.admin.model.vo.Notice;
+import com.fp.common.template.JDBCTemplate;
 
 public class CommunityService {
 	
@@ -16,6 +17,13 @@ public class CommunityService {
 		List<Notice> list = coDao.selectComuNoticeList(conn);
 		close(conn);
 		return list;
+	}
+	
+	public int selectNoticeListCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int listCount = coDao.selectNoticeListCount(conn);
+		close(conn);
+		return listCount;
 	}
 
 }

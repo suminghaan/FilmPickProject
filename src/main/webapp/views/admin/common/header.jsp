@@ -262,7 +262,7 @@ background-color: black!important;
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<%=contextPath%>/list.co">공지사항</a>
+                    <a class="collapse-item" href="<%=contextPath%>/list.co?page=1">공지사항</a>
                     <a class="collapse-item" href="../ad_community/commuBlindList.jsp">블라인드 게시글 관리</a>
                     <a class="collapse-item" href="../ad_community/commuReportBoardList.jsp">신고된 게시글 관리</a>
                     <a class="collapse-item" href="../ad_community/commuReportCommentList.jsp">신고된 댓글 관리</a>
@@ -382,8 +382,7 @@ background-color: black!important;
     <!-- Custom scripts for all pages-->
     <script src="<%=contextPath%>/views/admin/ad_resources/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<%=contextPath%>/views/admin/ad_resources/vendor/chart.js/Chart.min.js"></script>
+    
 
     <!-- Page level custom scripts -->
     <script src="<%=contextPath%>/views/admin/ad_resources/js/demo/chart-area-demo.js"></script>
