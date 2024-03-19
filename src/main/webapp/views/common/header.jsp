@@ -388,6 +388,6 @@ String alertMsg = (String)session.getAttribute("alertMsg");
     </header>
 
   </main>
-
+<script src="<%= contextPath %>/resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
