@@ -150,7 +150,7 @@
                     <thead class="thead">
                         <tr class="head">
                             <td colspan="2" class="public tab">[영화]인기글</td>
-                            <td class="plus_view"><a href="http://www.naver.com">더보기</a></td>
+                            <td class="plus_view"><a href="<%= contextPath %>/publicMovie.bo?page=1">더보기</a></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -196,7 +196,7 @@
                 <thead class="thead">
                     <tr class="head">
                         <td colspan="2" class="public tab">[영화]일반 게시글</td>
-                        <td class="plus_view"><a href="http://www.naver.com">더보기</a></td>
+                        <td class="plus_view"><a href="<%= contextPath %>/movie.bo?page=1">더보기</a></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -225,7 +225,7 @@
                 <thead class="thead">
                     <tr class="head">
                         <td colspan="2" class="public tab">[잡담] 일반 게시글</td>
-                        <td class="plus_view"><a href="http://www.naver.com">더보기</a></td>
+                        <td class="plus_view"><a href="<%= contextPath %>/chat.bo?page=1">더보기</a></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -253,7 +253,7 @@
 
     <script>
         function community_go(){
-            location.href="http://www.naver.com";
+            location.href="<%= contextPath %>/main.bo";
         }
 
         function community_check(){

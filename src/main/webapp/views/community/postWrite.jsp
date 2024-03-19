@@ -77,8 +77,8 @@
                       <th width="100px" style="color: white;">카테고리</th>
                       <td>
                           <select name="category" class="form-control">
-                              <option value="영화">영화</option>
-                              <option value="잡담">잡담</option>
+                              <option value="1">영화</option>
+                              <option value="2">잡담</option>
                           </select>
                       </td>
                   </tr>

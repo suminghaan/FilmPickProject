@@ -237,7 +237,7 @@
 
     <script>
         function community_go(){
-            location.href="http://www.naver.com";
+            location.href="<%= contextPath %>/main.bo";
         }
 
         function community_check(){
@@ -249,7 +249,7 @@
         }
 
         function allComu(){ 
-            location.href="http://www.naver.com";
+            location.href="<%= contextPath %>/publicMovie.bo?page=1";
         }
 
     </script>

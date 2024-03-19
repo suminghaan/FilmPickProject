@@ -82,7 +82,7 @@ public class BoardPostWriteController extends HttpServlet {
 			// 응답뷰 지정
 			if(result > 0) {
 				session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
-				if(category.equals("영화")) {
+				if(category.equals("1")) {
 					response.sendRedirect(request.getContextPath() + "/movie.bo?page=1");
 				}else {
 					response.sendRedirect(request.getContextPath() + "/chat.bo?page=1");
@@ -92,7 +92,7 @@ public class BoardPostWriteController extends HttpServlet {
 					new File(savePath + at.getChangeName()).delete();
 				}
 				session.setAttribute("alertMsg", "게시글 등록이 실패되었습니다.");
-				if(category.equals("영화")) {
+				if(category.equals("1")) {
 					response.sendRedirect(request.getContextPath() + "/movie.bo?page=1");
 				}else {
 					response.sendRedirect(request.getContextPath() + "/chat.bo?page=1");

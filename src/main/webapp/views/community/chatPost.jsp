@@ -237,7 +237,7 @@
 
     <script>
         function community_go(){
-            location.href="http://www.naver.com";
+            location.href="<%= contextPath %>/main.bo";
         }
 
         function community_check(){
