@@ -213,11 +213,25 @@ public class MovieDao {
 			pstmt.setInt(1, movieNo);
 			
 			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				m = new Movie();
+				m.setMvNo(rset.getInt("MV_NO"));
+				m.setMvName(rset.getString("MV_NAME"));
+				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
+				m.setMvRTime(rset.getString("MV_RTIME"));
+				m.setMvStory(rset.getString("MV_STORY"));
+				m.setStarRatingAvg(rset.getString("AVG_STAR_RATING"));
+				m.setNumberOfStarRating(rset.getInt("NUMBER_OF_STAR_RATING"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
-		return null;
+		return m;
 	}
 
 	public List<Movie> selectMainList(Connection conn) {

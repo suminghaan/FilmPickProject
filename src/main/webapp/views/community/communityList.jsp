@@ -141,7 +141,7 @@
             </div>
             
             <br><br><br>
-            <a href="http://www.naver.com" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
+            <a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
             <br><br>
 
             <div class="content">

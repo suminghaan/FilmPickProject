@@ -249,7 +249,7 @@
         }
 
         function allComu(){ 
-            location.href="http://www.naver.com";
+            location.href="<%= contextPath %>/chat.bo?page=1";
         }
 
     </script>

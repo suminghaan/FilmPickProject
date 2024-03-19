@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.fp.movie.model.vo.Movie" %>
+    <%
+    	Movie movie = (Movie)request.getAttribute("movie");
+    %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
@@ -540,12 +544,12 @@
         <div class="content_wrap" style="background-color: black; height: 2500px;">
             <div class="content">
                 <div class="search_info">
-                    <span>"다크나이트"</span> 검색 결과
+                    <span>"<%= movie.getMvName() %>"</span> 검색 결과
                 </div>
                 <div class="movie_info">
-                    <span>영화제목</span><br>
-                    <span>개봉연도</span><span>장르</span><span>국가</span><br>
-                    <span>영화 러닝타임</span><br>
+                    <span><%= movie.getMvName() %></span><br>
+                    <span> 개봉일 : <%= movie.getMvOpenDate() %></span><span>장르</span><br>
+                    <span>러닝타임 : <%= movie.getMvRTime() %></span><br>
                 </div>
                 <div class="movie_poster_preview">
                     <div class="movie_mainPoster">
@@ -572,9 +576,9 @@
                             </button>
                         </div>
                         <div class="poster_info">
-                            <span>영화제목</span><br>
-                            <span>영화별점</span><br>
-                            <span>개봉연도, 국가</span>
+                            <span><%= movie.getMvName() %></span><br>
+                            <span>평균 별점 : <%= movie.getStarRatingAvg() %></span><br>
+                            <span>개봉일 : <%= movie.getMvOpenDate() %></span>
                         </div>
                     </div>
                     <div class="movie_preview_etc">
@@ -620,9 +624,8 @@
                     <div class="movie_like">
                         <div class="movie_btn_wrap">
                             <div class="star-rating_info">
-                                <span class="star-rating_avg">영화 평균 별점</span><br>
-                                <span class="star-rating_count" style="font-size: 10px; padding-left: 10px;">별점 매긴 사람
-                                    수</span>
+                                <span class="star-rating_avg"><%= movie.getMvName() %> 평균 별점 : <%= movie.getStarRatingAvg() %></span><br>
+                                <span class="star-rating_count" style="font-size: 10px; padding-left: 10px;">별점 매긴 사람 수 : <%= movie.getNumberOfStarRating() %></span>
                             </div>
                             <div class="star-wrap">
                                 <div class="rating">
@@ -712,9 +715,7 @@
                     </div>
                     <div class="movie_people">
                         <div class="movie_summary" style="margin: 20px;">
-                            각종 범죄가 난무하는 고담시를 지키는 배트맨, 어느 날 도시에 광기 어린 악당 조커가 등장해 사람들을 두려움에 빠뜨린다. 조커는 배트맨이 정체를 밝힐 때까지 사람들을
-                            죽이겠다고
-                            협박하고, 배트맨은 자신의 모든 것을 걸고 최악의 악당 조커와 맞서기 시작한다.
+                            <%= movie.getMvStory() %>
                         </div>
                         <div class="movie_people_info">
                             <h4>출연/제작</h4>
