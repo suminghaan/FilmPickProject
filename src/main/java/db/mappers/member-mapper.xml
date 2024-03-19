@@ -104,6 +104,7 @@
 		WHERE MEM_LEVEL=?
         GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
 		ORDER BY MEM_NO DESC
+	</entry>
 	<entry key="insertMember">
 		INSERT 
 				INTO MEMBER
