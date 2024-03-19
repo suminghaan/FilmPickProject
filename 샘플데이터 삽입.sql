@@ -135,7 +135,7 @@ INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '서울의 봄', '2023-11-22', 1,
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '범죄도시3', '2023-05-31', 1, '105분', '대체불가 괴물형사 마석도, 서울 광수대로 발탁! 베트남 납치 살해범 검거 후 7년 뒤, ‘마석도’(마동석)는 새로운 팀원들과 함께 살인사건을 조사한다. 사건 조사 중, ‘마석도’는 신종 마약 사건이 연루되었음을 알게 되고 수사를 확대한다. 한편, 마약 사건의 배후인 주성철(이준혁)은 계속해서 판을 키워가고 약을 유통하던 일본 조직과 리키(아오키 무네타카)까지 한국에 들어오며 사건의 규모는 점점 더 커져가는데... 나쁜 놈들 잡는 데 이유 없고 제한 없다. 커진 판도 시원하게 싹 쓸어버린다!', DEFAULT, '15세 이상', 'N', DEFAULT, 'resources/upfiles/20240318104801_78030.png', 'resources/upfiles/20240318104819_65085.mp4', DEFAULT, DEFAULT);
 --------------------------------------------------------------------------------------------------------------------------------
 
---수민  
+-------------------------수민  ----------------
 INSERT INTO MOVIE
     VALUES(SEQ_MOVIE_NO.NEXTVAL
                 ,  '범죄도시2'
@@ -147,8 +147,8 @@ INSERT INTO MOVIE
                 , '15세 이상'
                 , 'N'
                 , DEFAULT
-                , 11
-                , 12
+                , 'resources/upfiles/20240318103401_75346.png'
+                , 'resources/upfiles/20240318103404_75346.mp4'
                 , DEFAULT
                 , DEFAULT);
                 
@@ -164,8 +164,8 @@ INSERT INTO MOVIE
                 , '12세 이상'
                 , 'N'
                 , DEFAULT
-                , 13
-                , 14
+                , 'resources/upfiles/20240218103401_75346.png'
+                , 'resources/upfiles/20240218103403_75346.mp4'
                 , DEFAULT
                 , DEFAULT);
                 
@@ -182,8 +182,8 @@ INSERT INTO MOVIE
                 , '15세 이상'
                 , 'N'
                 , DEFAULT
-                , 15
-                , 16
+                , 'resources/upfiles/20240118103401_75346.png'
+                , 'resources/upfiles/20240118103402_75346.mp4'
                 , DEFAULT
                 , DEFAULT);
                 
@@ -200,8 +200,8 @@ INSERT INTO MOVIE
                 , '15세 이상'
                 , 'N'
                 , DEFAULT
-                , 17
-                , 18
+                , 'resources/upfiles/20240128103401_75346.png'
+                , 'resources/upfiles/20240128103401_75348.mp4'
                 , DEFAULT
                 , DEFAULT);
                 
@@ -219,8 +219,8 @@ INSERT INTO MOVIE
                 , '15세 이상'
                 , 'N'
                 , DEFAULT
-                , 19
-                , 20
+                , 'resources/upfiles/20240308103401_75346.png'
+                , 'resources/upfiles/20240308103401_75356.mp4'
                 , DEFAULT
                 , DEFAULT);
             
