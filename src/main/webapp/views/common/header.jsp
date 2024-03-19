@@ -310,7 +310,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
     <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="<%= contextPath %>/views/common/mainPage.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <a href="<%= contextPath %>/mainpage.fp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <img style="height: 65px;" src="<%= contextPath %>/resources/img/logo.png" alt="">
           </a>
 
