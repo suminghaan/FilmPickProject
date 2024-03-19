@@ -29,11 +29,11 @@ public class Board {
 	 * 
 	 * @author 김지우
 	 */
-	public Board(int bNo, String bTitle, String bConment, String memNo, String bRegistDate,  int replyCount) {
+	public Board(int bNo, String bTitle, String bContent, String memNo, String bRegistDate,  int replyCount) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
-		this.bConment = bConment;
+		this.bContent = bContent;
 		this.memNo = memNo;
 		this.bRegistDate = bRegistDate;
 		this.replyCount = replyCount;
