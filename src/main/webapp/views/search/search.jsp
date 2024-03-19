@@ -152,7 +152,7 @@
           사용자 검색 결과
         </div>
         <div class="mp_bar">
-          영화 / 인물 <%= posterList.size() %>
+          영화 / 인물
         </div>
         <div class="movie_info">
           <div style="padding: 10px 0px 0px 100px; color: white;">
@@ -166,7 +166,7 @@
                 	<div class="movie_list">
                 <% } %>
                   <div class="thumbnail">
-                    <img class="thumbnail_img" src="<%= posterList.get(i).getFilePath() %>" alt="">
+                    <a href="<%= contextPath %>/movieDetail.fp?movieNo=<%= movieList.get(i).getMvNo() %>"><img class="thumbnail_img" src="<%= posterList.get(i).getFilePath() %>" alt=""></a>
                     <div class="thumbnail_title"">
                       <span><%= movieList.get(i).getMvName() %></span><br>
                       <span>평균 별점 : <%= movieList.get(i).getStarRatingAvg() != null ? movieList.get(i).getStarRatingAvg() : "정보없음"%></span><br>
