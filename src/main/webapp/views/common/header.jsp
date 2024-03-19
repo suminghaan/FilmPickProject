@@ -310,7 +310,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
     <header style="background-color: black!important;" id="header" class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="<%= contextPath %>/views/common/mainPage.jsp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <a href="<%= contextPath %>/mainpage.fp" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <img style="height: 65px;" src="<%= contextPath %>/resources/img/logo.png" alt="">
           </a>
 
@@ -370,14 +370,14 @@ String alertMsg = (String)session.getAttribute("alertMsg");
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
-                <li><a class="dropdown-item" href="#">별점 남긴 영화</a></li>
-                <li><a class="dropdown-item" href="#">찜한 영화 목록</a></li>
-                <li><a class="dropdown-item" href="#">작성글 조회</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/myPage.jsp">회원정보 수정</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/movieStarRatingList.jsp">별점 남긴 영화</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/movieLikeList.jsp">찜한 영화 목록</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/myPostList.jsp">작성글 조회</a></li>
                 <li><a class="dropdown-item" href="#">고객센터</a></li>
-                <li><a class="dropdown-item" href="#">메시지함</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/msgBox.jsp">메시지함</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/logout.me">로그아웃</a></li>
               </ul>
           </div> 
           

@@ -52,7 +52,7 @@
                         </tr>
                         <tr>
                             <th>&nbsp;&nbsp;전화번호</th>
-                            <td><input type="text" class="form-control" placeholder="Enter Phone Number(- include)" name="phone"></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Phone Number(- include)" name="adminphone"></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -71,10 +71,10 @@
                 		
                 		
                 		// 아이디 입력하는 input요소객체 
-                		const $idInput = $(".signup_content input[name=userId]")
+                		const $idInput = $(".signup_content input[name=adminId]")
                 	
                 		$.ajax({
-                			url:"<%=contextPath%>/idCheck.me",
+                			url:"<%=contextPath%>/idCheck.ad",
                 			data: {checkId:$idInput.val()},
                 			success: function(result){
                 				// 1) 사용불가능(NNNNN)일 경우 => alert로 메세지 출력, 다시 입력할 수 있도록 유도

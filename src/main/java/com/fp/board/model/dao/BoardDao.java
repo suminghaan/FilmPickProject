@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 import static com.fp.common.template.JDBCTemplate.close;
 import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
 
 public class BoardDao {
@@ -145,6 +146,70 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return mList;
+	}
+	
+	/**
+	 * 
+	 * @param 호용
+	 * @return 총 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery(); // 완성형 SELECT문이라서 바로 rset에 담을 수 있음
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT"); // 조회문은 변수.next()로 한행 밀어야됨
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;	
+	}
+	
+	/**
+	 * 커뮤니티 영화카테고리 인기게시글에 띄울 값들을 구하기위한 메소드
+	 * @호용
+	 */
+	public List<Board> selectPublicList(Connection conn, PageInfo pi){
+		List<Board> publicList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPublicList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				publicList.add(new Board(rset.getInt("B_NO")
+								 , rset.getString("B_TITLE")
+								 , rset.getString("B_REGIST_DATE")
+								 , rset.getInt("B_READ_COUNT")
+								 , rset.getInt("B_RECOMMEND_COUNT")
+								 , rset.getString("B_CATEGORY")
+								 , rset.getString("NICKNAME")
+								 , rset.getString("TITLEIMG_URL")
+								 , rset.getInt("REPLY_COUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return publicList;
 	}
 	
 }

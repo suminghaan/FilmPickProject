@@ -41,7 +41,7 @@ public class AdminSignupcontroller extends HttpServlet {
 				String adminId = request.getParameter("adminId");
 				String adminPwd = request.getParameter("adminPwd"); 
 				String adminName = request.getParameter("adminName"); 
-				String phone = request.getParameter("phone"); 
+				String phone = request.getParameter("adminphone"); 
 				
 				Admin a = new Admin(adminId, adminPwd, adminName, phone);
 			
@@ -52,7 +52,7 @@ public class AdminSignupcontroller extends HttpServlet {
 					HttpSession session = request.getSession();
 					session.setAttribute("alertMsg", "관리자 회원가입이 완료되었습니다.");
 					
-					response.sendRedirect(request.getContextPath());
+					response.sendRedirect(request.getContextPath()+"/main.ad");
 					
 					
 				}else {// 실패했을경우

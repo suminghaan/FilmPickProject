@@ -23,7 +23,7 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<!-- 총 공지사항 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<!-- 총 공지사항(게시글) 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
 	<entry key="selectListCount">
 		SELECT COUNT(*) COUNT
 		  FROM NOTICE
