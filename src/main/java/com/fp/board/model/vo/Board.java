@@ -11,10 +11,9 @@ public class Board {
 	private String bCategory; // 카테고리 1|2 (영화|잡담)
 	private String bStatus; // 블라인드 여부 Y
 	private String dSatus; // 글 삭제여부
-	private String memNo; // 회원번호 | 작성자아이디
+	private String memNo; // 회원번호 | 작성자아이디 | 닉네임(관리자 페이지에서 쓸 예정 (김지우))
 	private String titleImgUrl; // 대표이미지 경로 보관할 필드(게시글에 미리보는 이미지에 표시) 
-	private int replyCount; // 댓글갯수
-	
+	private int replyCount; // 댓글갯수 
 	
 	public Board() {}
 
@@ -29,7 +28,7 @@ public class Board {
 	 * 
 	 * @author 김지우
 	 */
-	public Board(int bNo, String bTitle, String bContent, String memNo, String bRegistDate,  int replyCount) {
+	public Board(int bNo, String bTitle, String bContent, String memNo, String bRegistDate, int replyCount) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
