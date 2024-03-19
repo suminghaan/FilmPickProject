@@ -34,5 +34,12 @@ public class AdminService {
 		return result;
 		
 	}
+	
+	public int idCheck(String checkId) {
+		Connection conn = getConnection();
+		int count = aDao.idCheck(conn, checkId);
+		close(conn);
+		return count;
+	}
 
 }

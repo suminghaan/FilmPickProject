@@ -28,12 +28,19 @@
 			)
 		VALUES
 		(
-			SEQ_ANO.NEXTVAL
+			SEQ_ADMIN_NO.NEXTVAL
 			,?
 			,?
 			,?
 			,?
 		)
+	</entry>
+	
+	<entry key="idCheck">
+		SELECT
+			COUNT(*) COUNT
+		 FROM ADMIN
+		WHERE ADMIN_ID = ?
 	</entry>
 
 </properties>
