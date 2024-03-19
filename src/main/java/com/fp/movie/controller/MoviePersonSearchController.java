@@ -36,7 +36,6 @@ public class MoviePersonSearchController extends HttpServlet {
 		
 		ArrayList<Movie> movieList = new MovieService().selectMovieList(searchKeyword);
 		ArrayList<Attachment> posterList = new MovieService().selectPosterList(searchKeyword);
-		System.out.println(movieList);
 		request.setAttribute("movieList", movieList);
 		request.setAttribute("posterList", posterList);
 		request.getRequestDispatcher("/views/search/search.jsp").forward(request, response);
