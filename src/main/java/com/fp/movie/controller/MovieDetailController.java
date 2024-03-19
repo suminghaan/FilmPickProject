@@ -33,6 +33,7 @@ public class MovieDetailController extends HttpServlet {
 		
 		Movie m = new MovieService().selectMovieInfo(movieNo);
 				
+		request.setAttribute("movie", m);
 		request.getRequestDispatcher("/views/search/movieDetail.jsp").forward(request, response);
 	}
 
