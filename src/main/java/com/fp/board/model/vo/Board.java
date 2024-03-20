@@ -104,6 +104,28 @@ public class Board {
 		this.replyCount = replyCount;
 	}
 
+	
+	/**
+	 * 커뮤니티 게시글상세페이지에 띄울 값들을 보관하기 위한 매개변수 생성자
+	 * @param bNo 글번호
+	 * @param bTitle 게시글 제목
+	 * @param bContent 게시글 내용
+	 * @param bRegistDate 작성시간
+	 * @param bCategory 카테고리(영화 | 잡담)
+	 * @param memNo (작성자아이디)
+	 * @author 김호용
+	 */
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, String bCategory, String memNo) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bRegistDate = bRegistDate;
+		this.bCategory = bCategory;
+		this.memNo = memNo;
+	}
+
+
 	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
 			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
 			String memId, String memImgPath, String memColor, String nickname, int memLevel, int boardCount) {

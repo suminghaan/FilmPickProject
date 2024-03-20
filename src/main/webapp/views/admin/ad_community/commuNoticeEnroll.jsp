@@ -72,7 +72,7 @@
 				<tr>
 					<th>상단고정여부</th>
                 	<td colspan="3">
-                		<input type="checkbox" id="fix">
+                		<input type="checkbox" id="fix" name="noticeFix">
                 		<label for="fix">상단고정</label>
                 	</td>
                 </tr>

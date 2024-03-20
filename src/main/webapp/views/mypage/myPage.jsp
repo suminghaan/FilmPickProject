@@ -198,25 +198,14 @@
                                 <option name="animation" value="animation">애니메이션</option>               
                               </select>
                           </td>
-                          <script>
-                          	$(function(){
-                          		// 현재 로그인한 회원의 관신분야 => loginMember.getPrefGenre()
-                          		let prefGenre = '<%=loginMember.getPrefGenre() == null ? "" : loginMember.getPrefGenre()%>';
-                          		
-                          		$(":option").each(function(idx,el){
-                          			if(prefgenre.indexOf(el.value) != -1){
-                          				$(this).attr("selected", true);
-                          			}
-                          		})
-                          	})
-                          </script>
+                          
                       </tr>
                   </table>
                   
                   <div class="" style="text-align: center;">
                     <button type="submit" class="btn">정보변경</button>
-                    <button type="button" class="btn">초기화</button>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#resignModal">회원탈퇴</button>
+                    <button type="reset" class="btn">초기화</button>
+                    <a href="<%=contextPath%>/deleteForm.me" class="btn">회원탈퇴</a>
                   </div>
               </form>
           </div>
@@ -230,7 +219,7 @@
 
 
   </main>
-  <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>

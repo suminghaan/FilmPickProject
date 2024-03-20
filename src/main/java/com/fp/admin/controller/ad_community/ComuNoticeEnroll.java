@@ -48,6 +48,7 @@ public class ComuNoticeEnroll extends HttpServlet {
 			String noticeTitle = multiRequest.getParameter("noticeTitle");
 			String noticeContent = multiRequest.getParameter("noticeContent");
 			String category = multiRequest.getParameter("noticeCategory");
+			String noticeFix = multiRequest.getParameter("noticeFix");
 			
 			HttpSession session = request.getSession();
 			int adminNo = ((Admin)session.getAttribute("loginAdmin")).getAdminNo();
@@ -57,6 +58,7 @@ public class ComuNoticeEnroll extends HttpServlet {
 			n.setNoticeContent(noticeContent);
 			n.setNoticeCategory(category);
 			n.setNoticeWriter(String.valueOf(adminNo));
+			n.setNoticeFix(noticeFix);
 			
 			Attachment at = null;
 			

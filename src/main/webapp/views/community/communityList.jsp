@@ -3,11 +3,13 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.fp.board.model.vo.Board" %>
 <%@ page import="com.fp.movie.model.vo.Movie" %>
+<%@ page import="com.fp.common.model.vo.*" %>
 <%
 	List<Board> list = (List<Board>)request.getAttribute("list");
 	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
 	List<Board> chatList = (List<Board>)request.getAttribute("chatList");
 	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>
@@ -141,7 +143,9 @@
             </div>
             
             <br><br><br>
-            <a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
+            <%if(loginMember != null){ %>
+            	<a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
+            <%} %>
             <br><br>
 
             <div class="content">
@@ -157,7 +161,7 @@
                         <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                         <% for(Board b : publicList){ %>
 	                        <tr>
-	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ " [" + b.getReplyCount() + "]" %></td>
+	                            <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%= b.getbTitle()+ " [" + b.getReplyCount() + "]" %></td>
 	                            <td rowspan="3" class="img">
 	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
 	                            </td>
@@ -203,7 +207,7 @@
                         <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                         <% for(Board b : list){ %>
 	                        <tr>
-	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
+	                            <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
 	                            <td rowspan="3" class="img">
 	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
 	                            </td>
@@ -232,8 +236,8 @@
                         <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                         <% for(Board b : chatList){ %>
 	                        <tr>
-	                            <td colspan="2" class="title" onclick="community_check();"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
-	                            <td rowspan="3" class="img">
+	                            <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
+	                            <td rowspan="3" class="img">                          
 	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
 	                            </td>
 	                        </tr>
@@ -256,8 +260,8 @@
             location.href="<%= contextPath %>/main.bo";
         }
 
-        function community_check(){
-            location.href="http://www.naver.com";
+        function community_check(no){
+            location.href="<%=contextPath%>/detail.bo?no=" + no;
         }
 
         function movie_go(){

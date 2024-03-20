@@ -235,4 +235,12 @@
 		  FROM MEMBER
 		 WHERE MEM_ID = ?
 	</entry>
+	
+	<entry key="deleteMember">
+		UPDATE
+			   MEMBER
+		   SET MEM_STATUS = 'N'
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+	</entry>
 </properties>
