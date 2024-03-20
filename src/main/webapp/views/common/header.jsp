@@ -352,7 +352,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/myPage.jsp">회원정보 수정</a></li>
+                <li><a class="dropdown-item" href="<%=contextPath%>/myPage.me">회원정보 수정</a></li>
                 <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/movieStarRatingList.jsp">별점 남긴 영화</a></li>
                 <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/movieLikeList.jsp">찜한 영화 목록</a></li>
                 <li><a class="dropdown-item" href="<%=contextPath%>/views/mypage/myPostList.jsp">작성글 조회</a></li>

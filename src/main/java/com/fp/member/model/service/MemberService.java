@@ -55,4 +55,20 @@ public class MemberService {
 		
 		return result;
 	}
+	
+	public Member updatePwdMember(String memId, String memPwd, String newPwd) {
+		Connection conn = getConnection();
+		int result = mDao.updatePwdMember(conn, memId, memPwd, newPwd);
+		
+		Member updateMem= null;
+		if(result > 0) {
+			commit(conn);
+			updateMem = mDao.selectMember(conn, memId);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return updateMem;
+	}
 }
