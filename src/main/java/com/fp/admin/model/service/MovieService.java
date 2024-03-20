@@ -13,7 +13,7 @@ public class MovieService {
 	private MovieDao mDao = new MovieDao();
 	
 	// 메인페이지 영화 조회 구문 [용훈]
-
+	/*
 	public List<Movie> selectMainList() {
 		
 		Connection conn = getConnection();
@@ -24,5 +24,5 @@ public class MovieService {
 		
 		return list;
 	}
-
+	*/
 }

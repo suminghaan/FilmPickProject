@@ -17,7 +17,7 @@ public class MovieDao {
 	private Properties prop = new Properties();
 
 	// 메인페이지 영화 조회 구문 [용훈]
-	
+	/*
 	public List<Movie> selectMainList(Connection conn) {
 		List<Movie> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -48,5 +48,5 @@ public class MovieDao {
 		}
 		return list;
 	}
-
+	*/
 }

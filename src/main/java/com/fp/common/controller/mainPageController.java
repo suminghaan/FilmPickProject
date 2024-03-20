@@ -32,7 +32,7 @@ public class mainPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Movie> list = new MovieService().selectMainList();
+		//List<Movie> list = new MovieService().selectMainList();
 		
 		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
 		
