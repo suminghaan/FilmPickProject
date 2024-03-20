@@ -149,6 +149,28 @@
           FROM MEMBER
           WHERE MEM_ID = ?
 	</entry>
+	
+	<!-- 회원 작성 댓글 글 조회, 페이징에 쓸 용도 -->
+	<entry key="selectReplyList">
+		SELECT *
+			FROM (
+			    SELECT ROWNUM RNUM, A.*
+			    FROM (
+			        SELECT
+			            B.B_NO AS B_NO,
+			            B.B_TITLE AS B_TITLE,
+			            M.NICKNAME AS NICKNAME,
+			            M.SIGNIN_DATE AS SIGNIN_DATE,
+			            B.B_READ_COUNT AS B_READ_COUNT,
+			            (SELECT COUNT(*) FROM REPLY WHERE BOARD_NO = B.B_NO) AS REPLYCOUNT
+			        FROM BOARD B 
+			        JOIN MEMBER M USING (MEM_NO)
+			        WHERE M.MEM_ID = ?
+			        ORDER BY B.B_NO DESC
+			    ) A
+			)
+			WHERE RNUM BETWEEN ? AND ?;
+	</entry>
 <!-- =============================================================================================================================================== -->	
 	
 	<!-- 회원가입용 쿼리 -->

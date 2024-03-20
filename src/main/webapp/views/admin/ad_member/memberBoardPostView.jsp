@@ -106,13 +106,15 @@ table{
 	                </div>
             </div>
              <!-- </form>  -->
-             <% memId = b.getMemNo(); // 회원 아이디 저장 %>
+             <% memId = b.getMemNo(); // 회원 아이디 저장 
+             	session.setAttribute("memId", memId);
+             %>
             <% } %>
             <% } %>
         </div>
         <div class="container">
             <div class="container" style="margin-top: 15px; padding-left: 0px;">
-                <button type="button" class="btn btn-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberBoardPostView.jsp'">게시글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberReplyPostView.jsp'">댓글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberReviewPostView.jsp'">리뷰</button>            </div>
+                <button type="button" class="btn btn-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.bo?memId=<%=memId%>&page=1'">게시글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.re'">댓글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberReviewPostView.jsp'">리뷰</button>            </div>
             <table class="table table" style="margin-top: 0px;">
                 <thead id="table-head">
                     <tr class="table-active">
