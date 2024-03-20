@@ -1,14 +1,19 @@
 package com.fp.movie.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
+import com.fp.person.model.service.PersonService;
+import com.fp.person.model.vo.Person;
 
 /**
  * Servlet implementation class MovieDetailController
@@ -32,7 +37,11 @@ public class MovieDetailController extends HttpServlet {
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
 		
 		Movie m = new MovieService().selectMovieInfo(movieNo);
-				
+		ArrayList<Attachment> attList = new MovieService().selectAddiMovie(movieNo);
+		ArrayList<Person> personList = new PersonService().selectPersonInfo(movieNo);
+		
+		request.setAttribute("personList", personList);
+		request.setAttribute("attList", attList);
 		request.setAttribute("movie", m);
 		request.getRequestDispatcher("/views/search/movieDetail.jsp").forward(request, response);
 	}

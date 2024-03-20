@@ -63,4 +63,13 @@ public class MovieService {
 	}
 
 
+
+	public ArrayList<Attachment> selectAddiMovie(int movieNo) {
+		Connection conn = getConnection();
+		ArrayList<Attachment> attList = mDao.selectAddiMovie(conn, movieNo);
+		close(conn);
+		return attList;
+	}
+
+
 }
