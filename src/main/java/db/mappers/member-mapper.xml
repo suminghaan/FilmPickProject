@@ -228,6 +228,7 @@
 			, ?
 			)
 	</entry>
+	
 	<!-- 아이디중복체크 -->
 	<entry key="idCheck">
 		SELECT
@@ -236,10 +237,20 @@
 		 WHERE MEM_ID = ?
 	</entry>
 	
+	<!-- 회원탈퇴 -->
 	<entry key="deleteMember">
 		UPDATE
 			   MEMBER
 		   SET MEM_STATUS = 'N'
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+	</entry>
+	
+	<!-- 비밀번호 변경 -->
+	<entry key="updatePwdMember">
+		UPDATE
+		       MEMBER
+		   SET MEM_PWD = ?
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>

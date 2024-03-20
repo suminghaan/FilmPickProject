@@ -166,14 +166,7 @@
                       <tr>
                           <th>* 비밀번호</th>
                           <td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" required value="<%=loginMember.getMemPwd()%>"></td>
-                      </tr>
-                      <tr>
-                          <th>* 비밀번호 확인</th>
-                          <td>
-                              <input type="password" class="form-control" placeholder="비밀번호를 다시 한번 입력하세요" required value="<%=loginMember.getMemPwd()%>">
-                              <button type="button" class="btn" data-toggle="modal"data-target="#changePwdModal">비밀번호 변경</button>
-                          </td>
-                      </tr>
+                      </tr>    
                       <tr>
                           <th>* 휴대전화번호</th>
                           <td><input type="text" class="form-control" placeholder="휴대전화번호를 입력하세요(-포함)" value="<%=loginMember.getMemPhone()%>"></td>
@@ -204,6 +197,7 @@
                   
                   <div class="" style="text-align: center;">
                     <button type="submit" class="btn">정보변경</button>
+                    <button type="button" class="btn" data-toggle="modal"data-target="#changePwdModal">비밀번호 변경</button>
                     <button type="reset" class="btn">초기화</button>
                     <a href="<%=contextPath%>/deleteForm.me" class="btn">회원탈퇴</a>
                   </div>
@@ -211,6 +205,45 @@
           </div>
       </section>
 
+	  <!-- 비밀번호 변경용 모달창 -->
+	  
+	  <div class="modal" id="changePwdModal">
+	  	<div class="modal-dialog">
+	  	<div class="modal-content">
+	  	
+	  		<!-- Modal Header -->
+	  		<div class="modal-header">
+	  		<h4 class="modal-title">비밀번호 변경</h4>
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		</div>
+	  		
+	  		<!-- Modal Body -->
+	  		<div class="modal-body">
+	  			<form action="<%=contextPath%>/updatePwd.me" method="post">
+	  				<table align="center">
+	  					<tr>
+	  						<th>* 현재 비밀번호</th>
+	  						<td><input type="password" class="form-control" name="memPwd"></td>
+	  					</tr>
+	  					<tr>
+	  						<th>* 변경할 비밀번호</th>
+	  						<td><input type="password" class="form-control" name="newPwd"></td>
+	  					</tr>
+	  					<tr>
+	  						<th>* 변경할 비밀번호 재입력</th>
+	  						<td><input type="password" class="form-control"></td>
+	  					</tr>
+	  					<tr>
+	  						<td colspan="2" style="text-align:center; padding-top: 10px;">
+								<button type="submit" class="btn btn-outline-warning btn-sm">비밀번호 변경</button>
+	  						</td>
+	  					</tr>
+	  				</table>
+	  			</form>
+	  		</div>  		
+	  	</div>
+	  	</div>
+	  </div>
 
       </div>
     </div>

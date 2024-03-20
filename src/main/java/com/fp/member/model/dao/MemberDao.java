@@ -106,7 +106,19 @@ public class MemberDao {
 			pstmt.setString(1, memId);
 			rset = pstmt.executeQuery();
 			
-			
+			if(rset.next()) {
+				m = new Member(rset.getInt("mem_no")
+							 , rset.getString("mem_id")
+							 , rset.getString("mem_name")
+							 , rset.getString("nickname")
+							 , rset.getString("mem_pwd")
+							 , rset.getString("mem_phone")
+							 , rset.getString("mem_email")
+							 , rset.getString("pref_genre")
+							 , rset.getString("signin_date")
+							 , rset.getString("mem_status")
+						);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -154,6 +166,27 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updatePwdMember(Connection conn, String memId, String memPwd, String newPwd) {
+		int result =0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwdMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPwd);
+			pstmt.setString(2, memId);
+			pstmt.setString(3, memPwd);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
 			close(pstmt);
 		}
 		return result;
