@@ -233,7 +233,8 @@
                     <div class="modal-dialog">
                         <div class="modal-content"> 
                             <div class="modal-body">
-                                <form action="<%=contextPath%>/report.bo?no=<%=loginMember.getMemNo()%>" method="get">
+                                <form action="<%=contextPath%>/report.bo?memNo=<%=loginMember.getMemNo()%>" method="get">
+                                <input type="hidden" name="no" value="">
                                     <p class="modal-text">
                                             <input type="checkbox" name="notify" value="1"> 욕설 <br>
                                             <input type="checkbox" name="notify" value="2"> 도배 <br>
