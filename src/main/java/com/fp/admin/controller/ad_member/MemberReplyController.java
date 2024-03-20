@@ -32,7 +32,6 @@ public class MemberReplyController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("댓글(list.re) 서블릿 실행됨");
 		
 		String memId = request.getParameter("memId");
 		String memNo = request.getParameter("memNo");
