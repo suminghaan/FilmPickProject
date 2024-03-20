@@ -111,7 +111,7 @@ public class Member {
 		this.reviewContentCnt = reviewContentCnt;
 		this.avgLikePoint = avgLikePoint;
 	}
-
+	
 	public int getMemNo() {
 		return memNo;
 	}
@@ -281,5 +281,5 @@ public class Member {
 				+ memImgPath + ", memFile=" + memFile + ", dormantStatus=" + dormantStatus + ", reviewContentCnt="
 				+ reviewContentCnt + ", avgLikePoint=" + avgLikePoint + ", memBoardCnt=" + memBoardCnt + "]";
 	}
-
+	
 }

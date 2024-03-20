@@ -41,4 +41,18 @@ public class MemberService {
 		close(conn);
 		return count;
 	}
+	
+	public int deleteMember(String memId, String memPwd) {
+		Connection conn = getConnection();
+		int result = mDao.deleteMember(conn, memId, memPwd);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
 }

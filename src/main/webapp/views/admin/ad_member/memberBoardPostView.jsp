@@ -1,4 +1,3 @@
-<%@page import="com.fp.member.model.vo.Member"%>
 <%@page import="com.fp.board.model.vo.Board"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fp.common.model.vo.PageInfo"%>
@@ -7,7 +6,8 @@
 <%
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	List<Board> pageList = (List<Board>) request.getAttribute("pageList");
-	List<Member> userProfile = (List<Member>) request.getAttribute("userProfile");
+	List<Board> userProfile = (List<Board>) request.getAttribute("userProfile");
+	String memId = null; // 회원 아이디
 %>
 <!DOCTYPE html>
 <html>
@@ -78,34 +78,35 @@ table{
             <% if(userProfile.isEmpty()){ %>
             	<span style="font-weight: bold; font-size: 50px;">회원 정보가 조회되지 않습니다.</span>
             <% } else { %>
-            <% for(Member m : userProfile){ %>
-             <form action="updateLevel.me?level=<%=m.getMemLevel()%>&memId=<%=m.getMemId()%>"> 
-            	<div class="userprofile1">
+            <% for(Board b : userProfile){ %>
+<%--              <form action="updateLevel.me?level=<%=m.getMemLevel()%>&memId=<%=m.getMemId()%>"> 
+ --%>            	<div class="userprofile1">
                 	<img src="<%=contextPath%>/views/admin/ad_resources/img/profile_person.png" style="width: 70%;">
             	</div>
             	<div class="userprofile2">
 	                <div class="container user-profile-nickname">
-	                    <span class="user-profile2-text" style="font-weight: bold;"><%=m.getNickname()%></span>
+	                    <span class="user-profile2-text" style="font-weight: bold;"><%=b.getMemNo()%></span>
 	                </div>
 	                <div class="container user-profile-nickname user-level">
 	                	<div>
-	                		<select class="form-control" name="userLevel" style="width: 100px; margin-top: 10px;"> <!-- onchange="updateuserLevel();" -->
-		                    <option value="1" <%= m.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
-		                    <option value="2" <%= m.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
-		                    <option value="3" <%= m.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
-		                    <option value="4" <%= m.getMemLevel() == 4 ? "selected" : "" %>>Level 4</option>
-		                    <option value="5" <%= m.getMemLevel() == 5 ? "selected" : "" %>>Level 5</option>
+	                		<select class="form-control" id="userLevel" style="width: 100px; margin-top: 10px;"> <!-- onchange="updateuserLevel();" -->
+		                    <option value="1" <%= b.getMemLevel() == 1 ? "selected" : "" %>>Level 1</option>
+		                    <option value="2" <%= b.getMemLevel() == 2 ? "selected" : "" %>>Level 2</option>
+		                    <option value="3" <%= b.getMemLevel() == 3 ? "selected" : "" %>>Level 3</option>
+		                    <option value="4" <%= b.getMemLevel() == 4 ? "selected" : "" %>>Level 4</option>
+		                    <option value="5" <%= b.getMemLevel() == 5 ? "selected" : "" %>>Level 5</option>
 	                        </select>
 	                    </div>
 	                    <div style="display: flex;">    
-	                    	<button type="submit" class="btn btn-dark btn-sm" style="align-self: center; margin: 10px;">수정</button>
+	                    	<a onclick="goToUserLevelServlet();" class="btn btn-dark btn-sm" style="align-self: center; margin: 10px;">수정</a>
 	                    </div>	
 	                </div>
 	                <div class="container user-profile-totalWrite" style="margin-top: 20px;">
-	                    <span>총 게시글 개수 <b><%= m.getMemBoardCnt() %></b>개</span>
+	                    <span>총 게시글 개수 <b><%= b.getBoardCount() %></b>개</span>
 	                </div>
             </div>
-             </form> 
+             <!-- </form>  -->
+             <% memId = b.getMemNo(); // 회원 아이디 저장 %>
             <% } %>
             <% } %>
         </div>
@@ -130,7 +131,7 @@ table{
                     <tr>
                         <td><%= b.getbNo() %></td>
                         <td>
-                            <%= b.getbTitle() %>
+                            <%= b.getbTitle() %> [<%= b.getReplyCount() %>]
                             <div class="container" style="margin-top: 10px;"><img src="<%=contextPath%>/views/admin/ad_resources/img/board_content_img.png">
                                 <span class="board-content"><%= b.getbContent() %></span>
                             </div>
@@ -150,24 +151,31 @@ table{
 	                <% if(pi.getCurrentPage() == 1){ %>
 	                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 	                <% } else { %>
-	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/selectlist.me?page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
+	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/list.bo?memId=<%=memId%>&page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
 	                <% } %>    
                     <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
 	                    <% if(p == pi.getCurrentPage()){ %>
 	                    	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
 	                    <% } else { %>
-	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/selectlist.me?page=<%= p %>"><%= p %></a></li>
+	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.bo?memId=<%=memId%>&page=<%= p %>"><%= p %></a></li>
 	                    <% } %>
                     <% } %>
                     <% if(pi.getCurrentPage() == pi.getMaxPage()){ %>
                     	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
                     <% } else { %>
-                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/selectlist.me?page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
+                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/list.bo?memId=<%=memId%>&page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
                   	<% } %>
                   </ul>
             </nav>
         </div>
     </div>
     </div>
+    <script>
+    	function goToUserLevelServlet(){
+    		const $userLevelSelectedValue = $('#userLevel').val();
+    		console.log($userLevelSelectedValue);
+    		location.href = '<%=contextPath%>/updatelevel.me?userId=<%=memId%>&userLevel=' + $userLevelSelectedValue;
+    	};
+    </script>
 </body>
 </html>

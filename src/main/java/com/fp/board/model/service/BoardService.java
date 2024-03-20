@@ -1,10 +1,9 @@
 package com.fp.board.model.service;
+import static com.fp.common.template.JDBCTemplate.*;
 import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
 import static com.fp.common.template.JDBCTemplate.rollback;
-import static com.fp.common.template.JDBCTemplate.close;
-import static com.fp.common.template.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.List;
@@ -127,6 +126,44 @@ public class BoardService {
 		}
 		close(conn);
 		return result1 * result2;
+	}
+	
+	/**
+	 * 클릭시 조회수 증가를 위한 메소드
+	 * @호용
+	 */
+	public int increaseCount(int boardNo) {
+		Connection conn = getConnection();
+		int result = bDao.increaseCount(conn, boardNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/**
+	 * 클릭시 게시글 상세페이지에 띄울 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public Board selectBoard(int boardNo) {
+		Connection conn = getConnection();
+		Board b = bDao.selectBoard(conn, boardNo);
+		close(conn);
+		return b;
+	}
+	
+	/**
+	 * 클릭시 게시글 상세페이지에 띄울 값들을 담기위한 메소드(첨부파일)
+	 * @author 호용
+	 */
+	public Attachment selectAttachment(int boardNo) {
+		Connection conn = getConnection();
+		Attachment at = bDao.selectAttachment(conn, boardNo);
+		close(conn);
+		return at;
 	}
 
 }

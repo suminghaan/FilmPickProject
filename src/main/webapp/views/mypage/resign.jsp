@@ -130,10 +130,10 @@
                 <h2>프로필사진 등급 닉네임</h2>
                 <br>
     
-                <form action="/action_page.php">
+                <form action="<%=contextPath%>/delete.me" method="post">
                     <div class="form-group" style="color: black;">
-                        <input type="text" class="form-control" id="userid" placeholder="아이디나오게" name="name" style="background-color:transparent; color: black;" required>
-                        <input type="password" class="form-control" id="pwd-check" placeholder="비밀번호를 입력하세요" style="background-color:transparent; color: black;" required>
+                        <input type="text" class="form-control" id="memid" value="<%=loginMember.getMemId() %>" name="memId" style="background-color:transparent; color: black;" required>
+                        <input type="password" class="form-control" id="pwd" name="memPwd" placeholder="비밀번호를 입력하세요" style="background-color:transparent; color: black;" required>
                         <input type="password" class="form-control" id="pwd-check" placeholder="비밀번호를 다시 입력하세요" style="background-color:transparent; color: black;" required>    
                     </div>
                 <p>본인확인을 위해 비밀번호를 입력하세요.</p>
@@ -143,12 +143,12 @@
                     <br>
         
                 <!-- 클래스명 다시 생각해보기 -->
-                    <center><button type="submit" class="btn btn-outline-light" style="width: 300px;
+                    <button type="submit" class="btn btn-outline-light" style="width: 300px;
                                                                                         --bs-btn-border-color: RGB(247, 39, 140);
                                                                                         --bs-btn-color:RGB(247, 39, 140);
                                                                                         --bs-btn-hover-color: #ffffff;
                                                                                         --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                        --bs-btn-hover-border-color: #ffffff;">탈퇴하기</button></center>
+                                                                                        --bs-btn-hover-border-color: #ffffff;">탈퇴하기</button>
                     <br>
                     <br>
                     <br>

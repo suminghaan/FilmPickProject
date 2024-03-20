@@ -1,27 +1,23 @@
-package com.fp.admin.controller.ad_member;
+package com.fp.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.admin.model.service.MemberService;
-import com.fp.member.model.vo.Member;
-
 /**
- * Servlet implementation class MemberLevelUpdateController
+ * Servlet implementation class MemberDeleteFormController
  */
-@WebServlet("/updatelevel.me")
-public class MemberLevelUpdateController extends HttpServlet {
+@WebServlet("/deleteForm.me")
+public class MemberDeleteFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLevelUpdateController() {
+    public MemberDeleteFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +26,7 @@ public class MemberLevelUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		  String userId = request.getParameter("userId"); 
-		  int userLevel = Integer.parseInt(request.getParameter("userLevel"));
-		  
-		  int result = new MemberService().updateUserLevel(userId, userLevel);
-		  
-		  if (result > 0) { 
-			  request.getSession().setAttribute("alertMsg", "회원등급 수정이 완료되었습니다.");
-			  response.sendRedirect(request.getContextPath() + "/list.bo?memId=" + userId + "&page=1"); 
-		  } else {
-		  
-		  }
+		request.getRequestDispatcher("/views/mypage/resign.jsp").forward(request, response);
 	}
 
 	/**

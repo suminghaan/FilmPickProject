@@ -139,7 +139,9 @@
             </div>
             <br><br><br>
                 <span class="all_comunity" onclick="allComu();">[영화] 전체 게시글</span>
-                <a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 590px;">글쓰기</a>
+                <%if(loginMember != null){ %>
+                	<a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 590px;">글쓰기</a>
+            	<%} %>
             <br><br>
 
             <div class="content">
@@ -156,7 +158,7 @@
                             <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                             <% for(Board b : list){ %>
                             <tr>
-                                <td colspan="2" class="title" onclick="community_check();"><%=b.getbNo() + " [영화]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
+                                <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%=b.getbNo() + " [영화]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
                                 <td rowspan="3" class="img">
                                     <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
                                 </td>
@@ -235,8 +237,8 @@
             location.href="<%= contextPath %>/main.bo";
         }
 
-        function community_check(){
-            location.href="http://www.naver.com";
+        function community_check(no){
+            location.href="<%=contextPath%>/detail.bo?no=" + no;
         }
 
         function movie_go(){

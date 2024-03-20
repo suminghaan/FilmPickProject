@@ -228,5 +228,44 @@
    		  , ? <!-- (저장경로) -->
    		  )
    </entry>
+   
+   <!-- 조회수 증가를 위한 sql문 by호용 -->
+   <entry key="increaseCount">
+   		UPDATE
+   			   BOARD
+   		   SET B_READ_COUNT = B_READ_COUNT + 1
+   		 WHERE B_NO = ? <!-- 현재 넘겨받은 글번화 일치하는 -->
+   		   AND B_D_STATUS = 'N'
+   		   AND B_B_STATUS = 'N' <!-- 유요한 글번호(삭제되지않은) -->
+   </entry>
+   
+   <!-- 게시글 상세페이지를 띄우기위한 sql문 by호용 -->
+   <entry key="selectBoard">
+   		SELECT
+   			   B_NO
+   			 , B_CATEGORY
+   			 , B_TITLE
+   			 , B_CONTENT
+   			 , MEM_ID <!-- 멤버테이블과 조인 -->
+   			 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
+   	      FROM BOARD B
+   	      JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+   	     WHERE B_NO = ? <!-- 현재 넘겨받은 글번호와 일치하는 -->
+   	       AND B_B_STATUS = 'N'
+   	       AND B_D_STATUS = 'N'
+   </entry>
+   
+   <!-- 게시글 상세페이지를 띄우기위한 sql문(첨부파일) by호용 -->
+   <entry key="selectAttachment">
+   		SELECT 
+   			   FILE_NO
+   			 , ORIGIN_NAME
+   			 , CHANGE_NAME
+   			 , FILE_PATH
+   	  	  FROM ATTACHMENT
+   	  	 WHERE REF_NO = ? <!-- 참조하는게시글번호가 현재 넘겨받은 글번호와 일치하는지? -->
+   	  	 ORDER
+		    BY FILE_LEVEL ASC
+   </entry>
 
 </properties>

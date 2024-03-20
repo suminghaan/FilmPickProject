@@ -121,12 +121,13 @@
 			    SELECT ROWNUM RNUM, A.*
 			    FROM (
 			        SELECT
-			            B.B_NO,
-			            B.B_TITLE,
-			            B.B_CONTENT,
-			            M.NICKNAME,
-			            M.SIGNIN_DATE,
-			            B.B_READ_COUNT
+			            B.B_NO AS B_NO,
+			            B.B_TITLE AS B_TITLE,
+			            B.B_CONTENT AS B_CONTENT,
+			            M.NICKNAME AS NICKNAME,
+			            M.SIGNIN_DATE AS SIGNIN_DATE,
+			            B.B_READ_COUNT AS B_READ_COUNT,
+			            (SELECT COUNT(*) FROM REPLY WHERE BOARD_NO = B.B_NO) AS REPLYCOUNT
 			        FROM BOARD B 
 			        JOIN MEMBER M USING (MEM_NO)
 			        WHERE M.MEM_ID = ?
@@ -138,13 +139,13 @@
 	
 	<!-- 회원 작성 게시글 개수 세고 닉네임, 레벨 조회하는 용도 -->
 	<entry key="selectUserBoardCount">
-		 SELECT
-		    MEM_ID
-		  ,	MEM_IMGPATH
+		SELECT
+		    MEM_ID 
+		  ,	MEM_IMGPATH 
 		  , MEM_COLOR
           , NICKNAME
           , MEM_LEVEL
-          , (SELECT COUNT(*) FROM BOARD JOIN MEMBER USING (MEM_NO) WHERE MEM_ID = ?) COUNT
+          , (SELECT COUNT(*) FROM BOARD JOIN MEMBER USING (MEM_NO) WHERE MEM_ID = ?) BOARDCOUNT
           FROM MEMBER
           WHERE MEM_ID = ?
 	</entry>
@@ -233,5 +234,13 @@
 			   COUNT(*) COUNT
 		  FROM MEMBER
 		 WHERE MEM_ID = ?
+	</entry>
+	
+	<entry key="deleteMember">
+		UPDATE
+			   MEMBER
+		   SET MEM_STATUS = 'N'
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
 	</entry>
 </properties>
