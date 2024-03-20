@@ -1,29 +1,28 @@
 package com.fp.board.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fp.board.model.service.BoardService;
-import com.fp.board.model.vo.Reply;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class AjaxReplyListController
+ * Servlet implementation class BoardGoodController
  */
-@WebServlet("/rlist.bo")
-public class AjaxReplyListController extends HttpServlet {
+@WebServlet("/good.bo")
+public class AjaxBoardGoodController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxReplyListController() {
+    public AjaxBoardGoodController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,11 +32,10 @@ public class AjaxReplyListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardNo = Integer.parseInt(request.getParameter("no"));
-		
-		List<Reply> list = new BoardService().selectReplyList(boardNo);
-		request.setAttribute("list", list);
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		int result = new BoardService().good(boardNo);
+		response.getWriter().print(result);
+		//response.setContentType("application/json; charset=utf-8");
+		//new Gson().toJson(result, response.getWriter());
 	}
 
 	/**

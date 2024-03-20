@@ -9,6 +9,7 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
+	Reply list = (Reply)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -35,6 +36,7 @@
          --bs-table-bg: rgb(39, 39, 39) !important;
          --bs-table-color: white !important;
          /* background-color: rgb(39, 39, 39); */
+         margin: auto;
      }
 
      .title{
@@ -102,6 +104,7 @@
                             <%if(loginMember != null && loginMember.getMemId().equals(b.getMemNo())){ %>
                             <a href="<%= contextPath %>/updateForm.bo?no=<%= b.getbNo() %>" class="btn btn-outline-secondary btn-sm">수정하기</a>
                             <a href="<%=contextPath%>/delete.bo?no=<%=b.getbNo()%>" class="btn btn-outline-danger btn-sm" onclick="return deleteBo();">삭제하기</a>
+                            <button type="button" class="btn btn-outline-warning btn-sm" onclick="good();">추천가기</button>
                             <%} %>
                             <!-- ---------------------------------------------------------------- -->
                             <button type="button" class="btn btn-outline-warning btn-sm" onclick="history.back();">뒤로가기</button>
@@ -118,7 +121,7 @@
                         <th>댓글작성</th>
                         <%if(loginMember == null){ // 로그인 전일 경우%>
                         <th width="650px">
-                        	<textarea rows="4" class="form-control" style="resize: none;" readonly>로그인 후 이용가 가능한 서비스입니다.</textarea>
+                        	<textarea rows="4" class="form-control" style="resize: none;" readonly>로그인 후 이용 가능한 서비스입니다.</textarea>
                         </th>
                         <td>
                         	<button class="btn btn-secondary btn-sm" disabled>댓글등록</button>
@@ -148,6 +151,7 @@
     	selectReplyList();
     })
     
+    
     // ajax로 댓글 등록 요청하는 용도의 함수
     function insertReply(){
     	$.ajax({
@@ -167,6 +171,21 @@
     	})
     }
     
+	// ajax로 게시글 추천하는 함수
+	function good(){
+    	$.ajax({
+    		url:"<%=contextPath%>/good.bo",
+    		data:{no:<%=b.getbNo()%>},
+    		success:function(result){
+    			if(result > 0){
+    				alert("게시글을 추천하였습니다.");
+    			}
+    		},error:function(){
+    			console.log("게시글 추천용 ajax실패")
+    		}
+    	})
+    }
+	
 	// ajax로 해당 이 게시글에 딸려있는 댓글 목록 조회용
 	function selectReplyList(){
     	$.ajax({
@@ -214,7 +233,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content"> 
                             <div class="modal-body">
-                                <form action="" method="">
+                                <form action="<%=contextPath%>/report.bo?no=<%=loginMember.getMemNo()%>" method="get">
                                     <p class="modal-text">
                                             <input type="checkbox" name="notify" value="1"> 욕설 <br>
                                             <input type="checkbox" name="notify" value="2"> 도배 <br>
@@ -225,7 +244,7 @@
                                     </p> <br><br>
                                     <button type="button" class="btn btn-secondary modal-btn no" style="width: 100px;" data-dismiss="modal">취소</button>
                                     <button type="submit" class="btn btn-dark modal-btn" style="width: 100px;">신고하기</button>
-                                </form>
+                                </form> 
                             </div>
                         </div>
                     </div>
