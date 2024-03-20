@@ -301,10 +301,44 @@ public class MovieDao {
 		}
 		return reviewList;
 	}
+//	영화 상세보기에서 관련 영화 정보를 가져오는 메소드 [기웅]
+	public ArrayList<Movie> selectRelMovieList(Connection conn, int movieNo) {
+		String query = prop.getProperty("selectRelMovieList");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Movie> movieList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			pstmt.setInt(2, movieNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("MV_NO"));
+				m.setMvName(rset.getString("MV_NAME"));
+				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
+				m.setMvPoster(rset.getString("MV_POSTER"));
+				m.setStarRatingAvg(rset.getString("AVG_STAR_RATING"));
+				
+				movieList.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return movieList;
+	}
+
 	
 	public List<Movie> selectMainList(Connection conn) {
 		return null;
 	}
+
 
 
 

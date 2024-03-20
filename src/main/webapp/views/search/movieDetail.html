@@ -357,8 +357,31 @@
             height: 25%;
             background-color: rgb(15, 15, 15);
             border-radius: 10px;
-            margin: 20px;
-            padding: 20px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .short_summary {
+            height: 100%;
+        }
+
+        .long_summary {
+            position: absolute;
+            height: 400px;
+            top: 0;
+            padding: 0 20px;
+            display: none;
+        }
+
+        .long_summary_btn
+        , .short_summary_btn {
+            color: white;
+            border-bottom: none;
+            cursor: pointer;
         }
 
         .movie_people_info {
@@ -610,6 +633,7 @@
             color: white;
             cursor: pointer;
         }
+
         /* 영화 리뷰 끝 */
 
         .movie_relate_title {
@@ -673,7 +697,7 @@
             display: block;
         }
 
-        .thumbnail:hover> .thumbnail_img {
+        .thumbnail:hover>.thumbnail_img {
             opacity: 0.8;
         }
 
@@ -1036,9 +1060,30 @@
                     </div>
                     <div class="movie_people">
                         <div class="movie_summary" style="margin: 20px;">
-                            각종 범죄가 난무하는 고담시를 지키는 배트맨, 어느 날 도시에 광기 어린 악당 조커가 등장해 사람들을 두려움에 빠뜨린다. 조커는 배트맨이 정체를 밝힐 때까지 사람들을
-                            죽이겠다고
-                            협박하고, 배트맨은 자신의 모든 것을 걸고 최악의 악당 조커와 맞서기 시작한다.
+                            <div class="short_summary">
+                                "2045년, 암울한 현실과 달리 가상현실 오아시스(OASIS)에서는 누구든 원하는 캐릭터로 어디든지 갈 수 있고, 뭐든지 할 수 있고 상상하는 모든 게
+                                가능하다.
+                                웨이드 와츠(타이 쉐리던) 역시 유일한 낙은 대부분의 사람들이 하루를 보내는 오아시스에 접속하는 것이다.
+
+                                어느 날 오아시스의 창시자인 괴짜 천재 제임스 할리데이(마크 라이런스)는 자신이 가상현실이
+                                <a class="long_summary_btn">더보기</a>
+                            </div>
+                            <div class="long_summary">
+                                "2045년, 암울한 현실과 달리 가상현실 오아시스(OASIS)에서는 누구든 원하는 캐릭터로 어디든지 갈 수 있고, 뭐든지 할 수 있고 상상하는 모든 게
+                                가능하다.
+                                웨이드 와츠(타이 쉐리던) 역시 유일한 낙은 대부분의 사람들이 하루를 보내는 오아시스에 접속하는 것이다.
+
+                                어느 날 오아시스의 창시자인 괴짜 천재 제임스 할리데이(마크 라이런스)는 자신이 가상현실 속에 숨겨둔 3개의 미션에서 우승하는 사람에게 오아시스의 소유권과
+                                막대한
+                                유산을 상속한다는 유언을 남기고, 그가 사랑했던 80년대 대중문화 속에 힌트가 있음을 알린다.
+                                제임스 할리데이를 선망했던 소년 ‘웨이드 와츠’가 첫 번째 수수께끼를 푸는 데 성공하자 이를 저지하기 위해 현실에서 살인도 마다하지 않는 ‘IOI’라는 거대
+                                기업이
+                                뛰어든다.
+
+                                모두의 꿈과 희망이 되는 오아시스를 지키기 위해서는 반드시 우승해야 한다!
+                                그리고 우승을 위해서는 가상현실이 아닌 현실세계의 우정과 사랑의 힘이 필요하기만 한데…"
+                                <a class="short_summary_btn">접기</a>
+                            </div>
                         </div>
                         <div class="movie_people_info">
                             <h4>출연/제작</h4>
@@ -1512,7 +1557,7 @@
                     <div class="movie_relate_els">
                         <div class="movie_relate_els_top">
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1520,7 +1565,7 @@
                                 </div>
                             </div>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1528,7 +1573,7 @@
                                 </div>
                             </div>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1536,7 +1581,7 @@
                                 </div>
                             </div>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1546,7 +1591,7 @@
                         </div>
                         <div class="movie_relate_els_bottom">
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1554,7 +1599,7 @@
                                 </div>
                             </div>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1562,7 +1607,7 @@
                                 </div>
                             </div>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1570,7 +1615,7 @@
                                 </div>
                             </div>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <a><img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span>영화제목</span><br>
                                     <span>영화별점</span><br>
@@ -1628,6 +1673,16 @@
                 $(el).parent().parent(".review_content_long").prev().css("display", "block");
                 $(el).parent().parent(".review_content_long").css("display", "none");
             })
+        })
+
+        $(".long_summary_btn").click(function() {
+            $(this).parent().css("display", "none");
+            $(this).parent().next().css("display", "block");
+        })
+
+        $(".short_summary_btn").click(function() {
+            $(this).parent().css("display", "none");
+            $(this).parent().prev().css("display", "block");
         })
 
     </script>

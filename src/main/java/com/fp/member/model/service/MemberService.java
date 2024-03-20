@@ -3,7 +3,10 @@ package com.fp.member.model.service;
 import static com.fp.common.template.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
+import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.dao.MemberDao;
 import com.fp.member.model.vo.Member;
 
@@ -70,5 +73,19 @@ public class MemberService {
 		close(conn);
 		
 		return updateMem;
+	}
+	
+	public int selectListCount(int memNo) {
+		Connection conn = getConnection();
+		int listCount = mDao.selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+	public List<Board> selectList(PageInfo pi){
+		Connection conn =getConnection();
+		List<Board> list = mDao.selectList(conn,pi);
+		close(conn);
+		return list;
 	}
 }

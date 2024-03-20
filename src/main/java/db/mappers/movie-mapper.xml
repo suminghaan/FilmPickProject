@@ -89,4 +89,34 @@
 	ON M.MEM_NO = R.MEM_NO
 	WHERE R.MV_NO = ?
 	</entry>
+	<!-- 영화 상세보기에서 관련 영화 정보를 가져오는 쿼리 -->
+	<entry key="selectRelMovieList">
+		<![CDATA[SELECT 
+		    MV_NO
+		    , MV_NAME
+		    , MV_OPENDATE
+		    , MV_POSTER
+		    , AVG_STAR_RATING
+		FROM (
+		    SELECT 
+		        M.MV_NO AS "MV_NO"
+		        , MV_NAME
+		        , MV_OPENDATE
+		        , MV_POSTER
+		        , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW R WHERE R.MV_NO = M.MV_NO) AS "AVG_STAR_RATING"
+		        , ROWNUM RNUM
+		    FROM MOVIE M
+		    JOIN MOVIE_CATEGORY MC
+		    ON MC.MV_NO = M.MV_NO
+		    WHERE MC.CATEGORY_NO IN (
+		        SELECT CATEGORY_NO
+		        FROM MOVIE M
+		        JOIN MOVIE_CATEGORY MC
+		        ON MC.MV_NO = M.MV_NO
+		        WHERE M.MV_NO = ?
+		    )
+		    AND M.MV_NO <> ?
+		)
+		WHERE RNUM < 11]]>
+	</entry>
 </properties>
