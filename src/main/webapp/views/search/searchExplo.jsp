@@ -113,6 +113,15 @@ select>option {
 .btnw {
 	width: 200px;
 }
+.topPage {
+	position: sticky;
+	right: 350px;
+	bottom: 50px;
+	display: flex;
+	justify-content: flex-end;
+	opacity: 0;
+	z-index: 1000;
+}
 </style>
 </head>
 <body>
@@ -194,10 +203,32 @@ select>option {
 				<div class="movielist">
 
 					<div class="box_poster"></div>
-
+					
 				</div>
+					<!-- 상단으로 올라가는 버튼 -->
+					<div class="topPage">
+						<a href="#wrap"><img src="<%= contextPath %>/resources/img/up_icon.png" alt="up_icon" style="width: 50px;"></a>
+					</div>
 			</div>
 		</div>
+		
+		<script>
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    $('.topPage').each(function () {
+                        var top_of_window = $(window).scrollTop();
+
+                        if (top_of_window <= 0) {
+                            $(this).stop().animate({ 'opacity': '0' }, 50);
+                        } else {
+                            $(this).stop().animate({ 'opacity': '1' }, 200);
+                        }
+                    });
+                });
+            });
+         </script>
+		
+		
 	</section>
 
 
@@ -285,7 +316,7 @@ select>option {
 	            
 	            setTimeout(function(){
 	            	mutex = false;
-	            }, 1000);
+	            }, 2000);
 	        }
 	    }
 	    //현재위치 최신화

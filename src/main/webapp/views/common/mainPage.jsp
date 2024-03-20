@@ -490,10 +490,9 @@
 						</div> </a>
 				</div>
 			</div>
+			<!-- 상단으로 올라가는 버튼 -->
 			<div class="topPage">
-				<a href="#wrap"><img
-					src="<%= contextPath %>/resources/img/up_icon.png" alt="up_icon"
-					style="width: 50px;"></a>
+				<a href="#wrap"><img src="<%= contextPath %>/resources/img/up_icon.png" alt="up_icon" style="width: 50px;"></a>
 			</div>
 
 			<script>
