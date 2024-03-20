@@ -216,10 +216,10 @@
                             <div class="modal-body">
                                 <form action="" method="">
                                     <p class="modal-text">
-                                            <input type="checkbox" name="notify" value="욕설"> 욕설 <br>
-                                            <input type="checkbox" name="notify" value="도배"> 도배 <br>
-                                            <input type="checkbox" name="notify" value="음란성 및 선정성"> 음란성 및 선정성 <br>
-                                            <input type="checkbox" name="notify" value="기타"> 기타 <br><br><br>
+                                            <input type="checkbox" name="notify" value="1"> 욕설 <br>
+                                            <input type="checkbox" name="notify" value="2"> 도배 <br>
+                                            <input type="checkbox" name="notify" value="3"> 음란성 및 선정성 <br>
+                                            <input type="checkbox" name="notify" value="4"> 기타 <br><br><br>
                                             자세한내용입력<br>
                                             <textarea rows="7" class="form-control" style="resize: none;" name=""></textarea>
                                     </p> <br><br>
