@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
@@ -525,6 +526,57 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * 게시글에 댓글을 띄우기위한 메소드
+	 * @author 호용
+	 */
+	public List<Reply> selectReplyList(Connection conn, int boardNo){
+		List<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Reply(rset.getInt("REPLY_NO")
+								 , rset.getString("REPLY_CONTENT")
+								 , rset.getString("ENROLL_DATE")
+								 , rset.getString("MEM_ID")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	/**
+	 * 댓글 등록을 위한 메소드
+	 * @author 호용
+	 */
+	public int insertReply(Connection conn, Reply r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, r.getReMemNo());
+			pstmt.setInt(2, r.getReBoNo());
+			pstmt.setString(3, r.getReplyContent());
+			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

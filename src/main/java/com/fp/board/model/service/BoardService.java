@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.fp.board.model.dao.BoardDao;
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
@@ -209,6 +210,32 @@ public class BoardService {
 	public int deleteBoard(int boardNo) {
 		Connection conn = getConnection();
 		int result = bDao.deleteBoard(conn, boardNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/**
+	 * 게시글에 댓글을 띄우기위한 메소드
+	 * @author 호용
+	 */
+	public List<Reply> selectReplyList(int boardNo){
+		Connection conn = getConnection();
+		List<Reply> list = bDao.selectReplyList(conn, boardNo);
+		close(conn);
+		return list;
+	}
+	/**
+	 * 댓글 등록을 위한 메소드
+	 * @author 호용
+	 */
+	public int insertReply(Reply r) {
+		Connection conn = getConnection();
+		int result = bDao.insertReply(conn, r);
 		if(result > 0) {
 			commit(conn);
 		}else {

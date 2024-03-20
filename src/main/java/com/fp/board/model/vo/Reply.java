@@ -11,7 +11,7 @@ public class Reply {
 	private String reMemNo; // insert시 회원번호 | select시 회원아이디 
 	
 	public Reply() {}
-
+	
 	public Reply(int replyNo, String replyContent, String enrollDate, String bStatus, String dStatus, int reBoNo,
 			String reMemNo) {
 		super();
@@ -21,6 +21,22 @@ public class Reply {
 		this.bStatus = bStatus;
 		this.dStatus = dStatus;
 		this.reBoNo = reBoNo;
+		this.reMemNo = reMemNo;
+	}
+	
+	/**
+	 * 게시글에 댓글을 띄우는데 띄워야되는 값을 담을 매개변수 생성자
+	 * @param replyNo 댓글번호
+	 * @param replyContent 댓글내용
+	 * @param enrollDate 작성일자
+	 * @param reMemNo 회원아이디
+	 * @author 호용
+	 */
+	public Reply(int replyNo, String replyContent, String enrollDate, String reMemNo) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.enrollDate = enrollDate;
 		this.reMemNo = reMemNo;
 	}
 

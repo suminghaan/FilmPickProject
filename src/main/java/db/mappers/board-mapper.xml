@@ -276,7 +276,7 @@
 		    BY FILE_LEVEL ASC
    </entry>
    
-   <!-- 게시글 수정을 위한 sql문 -->
+   <!-- 게시글 수정을 위한 sql문 by호용 -->
    <entry key="updateBoard">
    		UPDATE
    			   BOARD
@@ -286,7 +286,7 @@
    		 WHERE B_NO = ? 
    </entry>
 
-   <!-- 게시글 수정시 첨부파일 수정을 위한 sql문 -->
+   <!-- 게시글 수정시 첨부파일 수정을 위한 sql문 by호용 -->
    <entry key="updateAttachment">
    		UPDATE
    			   ATTACHMENT
@@ -296,7 +296,7 @@
    		 WHERE FILE_NO = ? <!-- 기존 첨부파일의 고유번호 -->
    </entry>
  
-   <!-- 게시글 수정시 첨부파일 업로드를 위한 sql문 -->
+   <!-- 게시글 수정시 첨부파일 업로드를 위한 sql문 by호용 -->
    <entry key="insertNewAttachment">
    		INSERT
    		  INTO ATTACHMENT
@@ -321,12 +321,46 @@
    		  )
    </entry>
    
-   <!-- 게시글 삭제을 위한 sql문 -->
+   <!-- 게시글 삭제을 위한 sql문 by호용 -->
    <entry key="deleteBoard">
    		UPDATE
    			   BOARD
    		   SET B_D_STATUS = 'Y'
    		 WHERE B_NO = ? 
    </entry>
+   
+   <!-- 화면에 댓글을 띄우기위한 sql문 by호용 -->
+   <entry key="selectReplyList">
+		SELECT
+			   REPLY_NO
+			 , MEM_ID <!-- 멤버테이블과 조인 -->
+			 , REPLY_CONTENT
+			 , TO_CHAR(ENROLL_DATE, 'YYYY/MM/DD HH:MI') ENROLL_DATE
+		  FROM REPLY R
+		  JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO)
+		 WHERE BOARD_NO = ?
+		   AND REPLY_D_STATUS = 'N'
+		 ORDER
+		    BY REPLY_NO DESC
+   </entry>
+   
+    <!-- 댓글등록을 위한 sql문 by호용 -->
+	<entry key="insertReply">
+		INSERT
+		  INTO REPLY
+		  (
+		  	REPLY_NO
+		  , MEM_NO
+		  , BOARD_NO
+		  , REPLY_CONTENT
+		  )
+		  VALUES
+		  (
+		  	SEQ_REPLY_NO.NEXTVAL
+		  , ? <!-- 댓글등록요청 보낸 회원번호(로그이인한 회원번호) -->
+		  , ? <!-- 참조하는 게시글 번호(현재보고있는 게시글번호) -->
+		  , ? <!-- 사용자가 입력한 댓글내용 -->
+		  )
+	</entry>   
    
 </properties>

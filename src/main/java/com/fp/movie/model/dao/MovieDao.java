@@ -15,6 +15,7 @@ import java.util.Properties;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.Review;
 import com.fp.movie.model.vo.SearchFilter;
 
 public class MovieDao {
@@ -265,10 +266,46 @@ public class MovieDao {
 		
 		return attList;
 	}
+//	영화 상세보기에서 리뷰 정보를 불러오는 메소드 [기웅]
+	public ArrayList<Review> selectReviewInfo(Connection conn, int movieNo) {
+		String query = prop.getProperty("selectReviewInfo");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> reviewList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				reviewList.add(new Review(
+							rset.getInt("MV_REVIEW_NO")
+							, rset.getString("REVIEW_CONTENT")
+							, rset.getString("REVIEW_DATE")
+							, rset.getString("LIKE_POINT")
+							, rset.getString("NICKNAME")
+							, rset.getInt("MEM_LEVEL")
+							, rset.getInt("COUNT_AGREE")
+							, rset.getInt("COUNT_DISAGREE")
+							, rset.getString("MEM_IMGPATH")
+							, rset.getString("MEM_COLOR")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return reviewList;
+	}
 	
 	public List<Movie> selectMainList(Connection conn) {
 		return null;
 	}
+
 
 
 	
