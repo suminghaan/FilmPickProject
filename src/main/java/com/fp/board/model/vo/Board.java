@@ -131,6 +131,26 @@ public class Board {
 		this.memNo = memNo;
 	}
 
+	
+	/**
+	 * 마이페이지 작성글목록
+	 * @param bNo
+	 * @param bTitle
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @author 정은정
+	 */
+	public Board(int bNo, String bCategory, String bTitle, String bRegistDate, int bReadCount, String memNo) {
+		super();
+		this.bNo = bNo;
+		this.bCategory = bCategory;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.memNo = memNo;
+	}
+
+
 
 	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
 			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,

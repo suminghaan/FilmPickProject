@@ -287,4 +287,35 @@
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>
+	<!-- 작성글 조회 -->
+	<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+	  	  FROM BOARD
+     	 WHERE B_B_STATUS = 'N'
+       	   AND B_D_STATUS = 'N'
+           AND MEM_NO = ?
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM(
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                       B_NO
+		                     , B_CATEGORY
+		                     , B_TITLE
+		                     , TO_CHAR(B_REGIST_DATE, 'YYYY/MM/DD') REGIST_DATE
+		                     , B_READ_COUNT
+		                  FROM BOARD B
+                          JOIN MEMBER M ON (M.MEM_NO=B.MEM_NO)	                  
+		                 WHERE B_B_STATUS = 'N'
+                           AND B_D_STATUS = 'N'
+                           AND MEM_NO = ?
+		                 ORDER
+		                    BY B_NO DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

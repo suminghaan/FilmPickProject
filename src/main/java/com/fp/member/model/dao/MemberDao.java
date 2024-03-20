@@ -6,8 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import static com.fp.common.template.JDBCTemplate.*;
 
@@ -190,5 +194,60 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	public List<Board> selectList(Connection conn, PageInfo pi){
+		
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectList");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			int startRow = (pi.getCurrentPage()-1)* pi.getBoardLimit()+ 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("b_no")
+								 , rset.getString("b_category")
+								 , rset.getString("b_title")
+								 , rset.getString("b_regist_date")
+								 , rset.getInt("b_read_count")
+								 , rset.getString("mem_no")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 }
