@@ -10,6 +10,7 @@ import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.dao.MovieDao;
 import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.Review;
 import com.fp.movie.model.vo.SearchFilter;
 
 public class MovieService {
@@ -53,8 +54,7 @@ public class MovieService {
 		return posterList;
 	}
 
-
-
+//	영화 상세보기에서 영화 정보를 불러오는 메소드 [기웅]
 	public Movie selectMovieInfo(int movieNo) {
 		Connection conn = getConnection();
 		Movie m = mDao.selectMovieInfo(conn, movieNo);
@@ -62,13 +62,30 @@ public class MovieService {
 		return m;
 	}
 
-
-
+//	영화 상세보기에서 추가 사진을 불러오는 메소드 [기웅]
 	public ArrayList<Attachment> selectAddiMovie(int movieNo) {
 		Connection conn = getConnection();
 		ArrayList<Attachment> attList = mDao.selectAddiMovie(conn, movieNo);
 		close(conn);
 		return attList;
+	}
+
+
+//	영화 상세보기에서 리뷰 정보를 불러오는 메소드 [기웅]
+	public ArrayList<Review> selectReviewInfo(int movieNo) {
+		Connection conn = getConnection();
+		ArrayList<Review> reviewList = mDao.selectReviewInfo(conn, movieNo);
+		close(conn);
+		return reviewList;
+	}
+
+
+//	영화 상세보기에서 관련 영화 정보를 가져오는 메소드 [기웅]
+	public ArrayList<Movie> selectRelMovieList(int movieNo) {
+		Connection conn = getConnection();
+		ArrayList<Movie> movieList = mDao.selectRelMovieList(conn, movieNo);
+		close(conn);
+		return movieList;
 	}
 
 

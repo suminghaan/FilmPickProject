@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.Review;
 import com.fp.person.model.service.PersonService;
 import com.fp.person.model.vo.Person;
 
@@ -39,7 +40,11 @@ public class MovieDetailController extends HttpServlet {
 		Movie m = new MovieService().selectMovieInfo(movieNo);
 		ArrayList<Attachment> attList = new MovieService().selectAddiMovie(movieNo);
 		ArrayList<Person> personList = new PersonService().selectPersonInfo(movieNo);
+		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
+		ArrayList<Movie> movieList = new MovieService().selectRelMovieList(movieNo);
 		
+		request.setAttribute("movieList", movieList);
+		request.setAttribute("reviewList", reviewList);
 		request.setAttribute("personList", personList);
 		request.setAttribute("attList", attList);
 		request.setAttribute("movie", m);
