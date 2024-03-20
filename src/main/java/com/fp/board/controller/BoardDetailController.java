@@ -13,16 +13,16 @@ import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.Attachment;
 
 /**
- * Servlet implementation class boardDetailController
+ * Servlet implementation class BoardDetailController
  */
 @WebServlet("/detail.bo")
-public class boardDetailController extends HttpServlet {
+public class BoardDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public boardDetailController() {
+    public BoardDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }

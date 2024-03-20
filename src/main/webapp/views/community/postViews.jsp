@@ -63,6 +63,12 @@
          margin-left: 260px;
      }
 
+    .community_logo{
+       color: white;
+       cursor: pointer;
+       font-size: 25px;
+       margin-left: 30px;
+   	}
 </style>
 </head>
 <body>
@@ -74,6 +80,7 @@
 
         <div class="background">
             <br>
+            <span class="community_logo" onclick="community_go();">커뮤니티</span><br><br><br>
             <span class="writer"><%=b.getMemNo() + " / " + b.getbRegistDate() %></span> <br>
             <table class="tableb table" align="center">
                 <thead>
@@ -83,14 +90,14 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="content"><p style="min-height: 300px;"><%= b.getbContent() %><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %></p></td>
+                        <td class="content"><p style="min-height: 300px; white-space:pre"><%= b.getbContent() %><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %></p></td>
                     </tr>
                     <tr>
                         <td colspan="6" align="center">
                             <!-- 현재 로그인한 사용자가 해당 게시글 작성자일 경우 보여지는 버튼 요소-->
                             <%if(loginMember != null && loginMember.getMemId().equals(b.getMemNo())){ %>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="update();">수정하기</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="delete1();">삭제하기</button>
+                            <a href="<%= contextPath %>/updateForm.bo?no=<%= b.getbNo() %>" class="btn btn-outline-secondary btn-sm">수정하기</a>
+                            <a class="btn btn-outline-danger btn-sm">삭제하기</a>
                             <%} %>
                             <!-- ---------------------------------------------------------------- -->
                             <button type="button" class="btn btn-outline-warning btn-sm" onclick="history.back();">뒤로가기</button>
@@ -170,25 +177,9 @@
     <!-- Section end -->
 
     <script>
-        function community_go(){
-            location.href="http://www.naver.com";
-        }
-
-        function community_check(){
-            location.href="http://www.naver.com";
-        }
-
-        function movie_go(){
-            location.href="http://www.naver.com";
-        }
-
-        function update(){
-            location.href="http://www.naver.com";
-        }
-
-        function delete1(){
-            location.href="http://www.naver.com";
-        }
+    function community_go(){
+        location.href="<%= contextPath %>/main.bo";
+    }
     </script>
     <!-- 컨텐츠부분 종료 -->
 	

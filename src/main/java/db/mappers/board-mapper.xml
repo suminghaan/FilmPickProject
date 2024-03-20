@@ -267,5 +267,50 @@
    	  	 ORDER
 		    BY FILE_LEVEL ASC
    </entry>
+   
+   <!-- 게시글 수정을 위한 sql문 -->
+   <entry key="updateBoard">
+   		UPDATE
+   			   BOARD
+   		   SET B_CATEGORY = ?
+   		     , B_TITLE = ?
+   		     , B_CONTENT = ?
+   		 WHERE B_NO = ? 
+   </entry>
 
+   <!-- 게시글 수정시 첨부파일 수정을 위한 sql문 -->
+   <entry key="updateAttachment">
+   		UPDATE
+   			   ATTACHMENT
+   		   SET ORIGIN_NAME = ? <!-- 새로 넘어온 첨부파일의 원본명 -->
+   		     , CHANGE_NAME = ? <!-- 새로 넘어온 첨부파일의 수정명 -->
+   		     , FILE_PATH = ? <!-- 새로 넘어온 첨부파일의 저장경로 -->
+   		 WHERE FILE_NO = ? <!-- 기존 첨부파일의 고유번호 -->
+   </entry>
+ 
+   <!-- 게시글 수정시 첨부파일 업로드를 위한 sql문 -->
+   <entry key="insertNewAttachment">
+   		INSERT
+   		  INTO ATTACHMENT
+   		  (
+   		  	FILE_NO
+   		  , REF_TYPE
+   		  , FILE_TYPE
+   		  , REF_NO
+   		  , ORIGIN_NAME
+   		  , CHANGE_NAME
+   		  , FILE_PATH
+   		  )
+   		  VALUES
+   		  (
+   		  	SEQ_ATTACHMENT_NO.NEXTVAL
+   		  , '3'
+   		  , '1'
+   		  , ? <!-- 기존의 게시글 번호 -->
+   		  , ? <!-- 새로 넘어온 첨부파일의 원본명 -->
+   		  , ? <!-- 새로 넘어온 첨부파일의 수정명 -->
+   		  , ? <!-- 새로 넘어온 첨부파일의 저장경로 -->
+   		  )
+   </entry>
+   
 </properties>

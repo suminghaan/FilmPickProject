@@ -165,6 +165,32 @@ public class BoardService {
 		close(conn);
 		return at;
 	}
+	
+	/**
+	 * 게시글 수정을 위한 메소드
+	 * @author 호용
+	 */
+	public int updateBoard(Board b, Attachment at) {
+		
+		Connection conn = getConnection();
+		int result1 = bDao.updateBoard(conn, b);
+		
+		int result2 = 1;
+		if(at != null) { // 새로 넘어온 첨부파일이 있었을 경우
+			if(at.getFileNo() != 0) { // 기존의 첨부파일이 있었을 경우 update Attachment
+				result2 = bDao.updateAttachment(conn, at);
+			}else { // 기존의 첨부파일이 없었을 경우 insert Attachment
+				result2 = bDao.insertNewAttachment(conn, at);
+			}
+		}
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
+	}
 
 }
 
