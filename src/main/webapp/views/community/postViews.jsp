@@ -69,6 +69,10 @@
        font-size: 25px;
        margin-left: 30px;
    	}
+   	
+   	.coment>tbody td{
+   		white-space: pre;
+   	}
 </style>
 </head>
 <body>
@@ -108,43 +112,102 @@
             </table>
 
             <!-- 댓글관련영역 -->
-            <table class="table coment" align="center">
+            <table class="table coment" align="center" id="reply_area"> 
                 <thead>
                     <tr>
-                        <form action="" method="">
-                            <th>댓글작성</th>
-                            <th width="650px"><textarea rows="4" class="form-control" style="resize: none;" name=""></textarea></th>
-                            <td><button type="submit" class="btn btn-secondary btn-sm">댓글등록</button></td>
-                        </form>
-                        <td></td><!--형식상 맞추려고 만든 td임 -->
+                        <th>댓글작성</th>
+                        <%if(loginMember == null){ // 로그인 전일 경우%>
+                        <th width="650px">
+                        	<textarea rows="4" class="form-control" style="resize: none;" readonly>로그인 후 이용가 가능한 서비스입니다.</textarea>
+                        </th>
+                        <td>
+                        	<button class="btn btn-secondary btn-sm" disabled>댓글등록</button>
+                        </td>
+                        <td>
+                        	<!--형식상 맞추려고 만든 td임 -->
+                        </td>
+                        <%}else{ %>
+                        <th width="650px">
+                        	<textarea rows="4" class="form-control" style="resize: none;" id="reply_content"></textarea>
+                        </th>
+                        <td>
+                        	<button class="btn btn-secondary btn-sm" onclick="insertReply();">댓글등록</button>
+                        </td>
+                        <td>
+                        	<!--형식상 맞추려고 만든 td임 -->
+                        </td>
+                        <%} %>
                     </tr>
-                </thead>
                 <tbody>
-                    <tr>
-                        <th>user01</th>
-                        <td>댓글내용입니다~~~~~</td>
-                        <td>2024/01/12</td>
-                        <td><img id="img1" class="img" data-toggle="modal" data-target="#img1" src="<%=contextPath %>/resources/img/신고버튼.png"></td>
-                    </tr>
-                    <tr>
-                        <th>user01</th>
-                        <td>댓글내용입니다~~~~~</td>
-                        <td>2024/01/12</td>
-                        <td><img id="img1" class="img" data-toggle="modal" data-target="#myModal" src="<%=contextPath %>/resources/img/신고버튼.png"></td>
-                    </tr>
-                    <tr>
-                        <th>user01</th>
-                        <td>댓글내용입니다~~~~~</td>
-                        <td>2024/01/12</td>
-                        <td><img id="img1" class="img" data-toggle="modal" data-target="#myModal" src="<%=contextPath %>/resources/img/신고버튼.png"></td>
-                    </tr>
-                    <tr>
-                        <th>user01</th>
-                        <td>댓글내용입니다~~~~~</td>
-                        <td>2024/01/12</td>
-                        <td><img id="img1" class="img" data-toggle="modal" data-target="#myModal" src="<%=contextPath %>/resources/img/신고버튼.png"></td>
-                    </tr>
+
                 </tbody>
+                </thead>
+    <script>
+    
+    $(function(){
+    	selectReplyList();
+    })
+    
+    // ajax로 댓글 등록 요청하는 용도의 함수
+    function insertReply(){
+    	$.ajax({
+    		url:"<%=contextPath%>/rinsert.bo",
+    		data:{
+    			no:<%=b.getbNo()%>,
+    			content:$("#reply_content").val()
+    		},
+    		type:"post",
+    		success:function(result){
+    			if(result > 0)//댓글작성성공
+    				$("#reply_content").val("");
+    				selectReplyList();
+    		},error:function(){
+    			console.log("댓글 등록용 ajax실패")
+    		}
+    	})
+    }
+    
+	// ajax로 해당 이 게시글에 딸려있는 댓글 목록 조회용
+	function selectReplyList(){
+    	$.ajax({
+    		url:"<%=contextPath%>/rlist.bo",
+    		data:{no:<%=b.getbNo()%>},
+    		success:function(list){
+    			let value = "";
+    			if(list.length > 0){
+    				for(let i=0; i<list.length; i++){
+    					value += "<tr>"
+    						   +	"<th>" + list[i].reMemNo + "</th>"
+    						   +	"<td>" + list[i].replyContent + "</td>"
+    						   +	"<td>" + list[i].enrollDate + "</td>"
+    						   +	"<td><img id='img1' class='img' data-toggle='modal' data-target='#img1' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
+    						   + "</tr>";
+    				}
+    			}else{
+    				value += "<tr><td colspan='4'>존재하는 댓글이 없습니다.</td></tr>";
+    			}
+    			$("#reply_area tbody").html(value);
+    		},
+    		error:function(){
+    			console.log("댓글목록 조회용 ajax실패")
+    		}
+    	})
+    }
+                    
+  
+    				
+    function community_go(){
+        location.href="<%= contextPath %>/main.bo";
+    }
+    
+    function deleteBo(){
+    	if(confirm("게시글을 삭제하시겠습니까??")){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
+    </script>
 
                 <!-- The Modal -->
                 <div class="modal" id="img1">
@@ -168,26 +231,12 @@
                     </div>
                 </div>
                 <!-- The Modal end-->
-
             </table>
 
         </div> <br><br>
     </section>
     <!-- Section end -->
 
-    <script>
-    function community_go(){
-        location.href="<%= contextPath %>/main.bo";
-    }
-    
-    function deleteBo(){
-    	if(confirm("게시글을 삭제하시겠습니까??")){
-    		return true;
-    	}else{
-    		return false;
-    	}
-    }
-    </script>
     <!-- 컨텐츠부분 종료 -->
 	
 	<%@ include file="/views/common/footer.jsp" %>
