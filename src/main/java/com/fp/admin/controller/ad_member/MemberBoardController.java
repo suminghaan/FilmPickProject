@@ -67,7 +67,7 @@ public class MemberBoardController extends HttpServlet { // 단순히 화면만 
 
 		List<Board> pageList = new MemberService().selectBoardList(memId, pi);
 
-		List<Member> userProfile = new MemberService().selectUserBoardList(memId);
+		List<Board> userProfile = new MemberService().selectUserBoardList(memId);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("pageList", pageList);
