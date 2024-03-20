@@ -103,7 +103,7 @@ table{
         </div>
         <div class="container">
             <div class="container" style="margin-top: 15px; padding-left: 0px;">
-                <button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.bo?memId=<%=memId%>&page=1'">게시글</button><button type="button" class="btn btn-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.re?page=1&memNo=<%=memNo%>&memId=<%=memId%>'">댓글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberReviewPostView.jsp'">리뷰</button>
+                <button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.bo?memId=<%=memId%>&page=1'">게시글</button><button type="button" class="btn btn-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.re?page=1&memNo=<%=memNo%>&memId=<%=memId%>'">댓글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.rv?memNo=<%=memNo%>&page=1'">리뷰</button>
                 <hr style="margin: 0px;">
                 <div style="margin-top: 10px; margin-bottom: 10px;"><b>댓글 단 게시글</b></div>
             </div>
