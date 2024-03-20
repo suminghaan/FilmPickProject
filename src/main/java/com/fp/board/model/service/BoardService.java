@@ -244,6 +244,22 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
+	/**
+	 * 게시글 추천버튼 클릭시 추천수가 1회 늘어나는 메소드
+	 * @author 호용
+	 */
+	public int good(int boardNo) {
+		Connection conn = getConnection();
+		int result = bDao.good(conn, boardNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 
 }
 

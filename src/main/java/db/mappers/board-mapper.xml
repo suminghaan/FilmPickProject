@@ -363,4 +363,13 @@
 		  )
 	</entry>   
    
+   <!-- 추천수 증가를 위한 sql문 by호용 -->
+   <entry key="good">
+   		UPDATE
+   			   BOARD
+   		   SET B_RECOMMEND_COUNT = B_RECOMMEND_COUNT + 1
+   		 WHERE B_NO = ? <!-- 현재 넘겨받은 글번화 일치하는 -->
+   		   AND B_D_STATUS = 'N' <!-- 유요한 글번호(삭제되지않은) -->
+   </entry>
+   
 </properties>

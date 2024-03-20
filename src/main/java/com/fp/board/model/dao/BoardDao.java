@@ -586,6 +586,26 @@ public class BoardDao {
 		return result;
 	}
 	
+	/**
+	 * 게시글 추천버튼 클릭시 추천수가 1회 늘어나는 메소드
+	 * @author 호용
+	 */
+	public int good(Connection conn, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("good");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }
 
 

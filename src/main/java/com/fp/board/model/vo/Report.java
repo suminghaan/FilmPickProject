@@ -6,7 +6,7 @@ public class Report {
 	private int reportType; //신고분류(1욕설 | 2도배 | 3선정 | 4기타)
 	private String reportContent; //신고내용
 	private String reportDate; // 신고날짜
-	private int reportBoardNo; // 게시글번호
+	private int reportBoardNo; // 신고받은게시글 | 댓글 번호
 	private String reportMemNo; //신고한 회원번호
 	private String reportedMemNo; //신고받은 회원번호
 	
