@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="com.fp.common.model.vo.PageInfo, com.fp.movie.model.vo.Movie, java.util.List"%>
-<%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	List<Movie> mlist = (List<Movie>)request.getAttribute("mlist");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,6 +59,7 @@ select>option {
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	min-height: 500px;
 	margin-left: 20px;
+	margin-top: -10px;
 }
 
 .box_poster {
@@ -91,7 +88,7 @@ select>option {
 
 .poster_img {
 	width: 215px;
-	height: 265px;
+	height: 305px;
 }
 
 .box_context {
@@ -101,7 +98,7 @@ select>option {
 	font-size: 14px;
 	display: none;
 	position: absolute;
-	top: 200px;
+	top: 240px;
 	padding: 5px;
 }
 
@@ -132,14 +129,14 @@ select>option {
 
 				<select class="btn btnw" id="currentScreen" name="currentScreen"
 					style="background-color: whitesmoke; color: black;"
-					onchange="searchlist();">
+					onchange="searchlist(1);">
 					<option value="mvAll">전체영화</option>
 					<option value="Y">현재상영중인영화</option>
 					<option value="A">개봉예정영화</option>
 					<option value="N">지난영화</option>
 				</select> <select class="btn btnw" id="categorya" name="category"
 					style="background-color: whitesmoke; color: black;"
-					onchange="searchlist();">
+					onchange="searchlist(1);">
 					<option value="categoryAll">장르</option>
 					<option value="1">액션</option>
 					<option value="2">코미디</option>
@@ -159,7 +156,7 @@ select>option {
 
 				</select> <select class="btn btnw" id="viewRating" name="viewRating"
 					style="background-color: whitesmoke; color: black;"
-					onchange="searchlist();">
+					onchange="searchlist(1);">
 					<option value="viewRatingAll">등급</option>
 					<option value="전체관람가">전체관람가</option>
 					<option value="12세 이상">12세 이상</option>
@@ -167,7 +164,7 @@ select>option {
 					<option value="청소년 관람불가">청소년 관람불가</option>
 				</select> <select class="btn btnw" id="years" name="yesrs"
 					style="background-color: whitesmoke; color: black;"
-					onchange="searchlist();">
+					onchange="searchlist(1);">
 					<option value="yearsAll">연대</option>
 					<option value="newyear">올해개봉작</option>
 					<option value="202">2020년대</option>
@@ -177,7 +174,7 @@ select>option {
 					<option value="198">1980년대이전</option>
 				</select> <select class="btn btnw" id="nation" name="nation"
 					style="background-color: whitesmoke; color: black;"
-					onchange="searchlist();">
+					onchange="searchlist(1);">
 					<option value="nationAll">국가</option>
 					<option value="1">국내영화</option>
 					<option value="2">해외영화</option>
@@ -187,7 +184,7 @@ select>option {
 			<div id="content">
 				<div id="filter">
 					<select class="btn btn-outline" id="filtera" name="filter"
-						style="color: #b4b4b4;" onchange="searchlist();">
+						style="color: #b4b4b4;" onchange="searchlist(1);">
 						<option value="likeMovie">인기순</option>
 						<option value="lately">최신순</option>
 						<option value="korean">가나다순</option>
@@ -200,20 +197,28 @@ select>option {
 
 				</div>
 			</div>
-			<a class="page-link" href="<%= contextPath %>/openexplo.mo?page="></a>
 		</div>
 	</section>
 
 
 	<script>
 
+	let lastScroll = 0;
+	let globalPage= 1;
+	var mutex = false;
+	
+	
 	$(function(){
-		searchlist(1);
+		searchlist(globalPage);
 	})
 	
 	function searchlist(requestPage){
+		
+		//console.log(globalPage);
+		
 		$.ajax({
 			url: "<%= contextPath %>/explo.mo",
+			type: "post",
 			data: {currentScreen:$("#currentScreen").val(),
 				category:$("#categorya").val(),
 				viewRating:$("#viewRating").val(),
@@ -222,31 +227,70 @@ select>option {
 				filter:$("#filtera").val(),
 				page:requestPage},
 				success:function(jobj){
-					console.log(jobj);
-					console.log(jobj.mlist);
-					console.log(jobj.mlist.length);
+					
+					//console.log(jobj.mlist.length);
 					let value = "";
 					if(jobj.mlist.length > 0){
-						for(let i = 0; i < mlist.length; i++){
-							value += "<a class='poster' href='<%= contextPath %>/movieDetail.fp?movieNo=<%= mlist(i).getMvNo() %>'
-										<img class='poster' src='<%= m.getMvPoster() %>'>
-			                       		<div class='box_context'>
-				                           	<div class='poster_context'><%= mlist.get(i).getMvName() %></div>
-				                           	<div class='poster_context'><%= mlist.get(i).getStarRatingAvg() %></div>
-				                           	<div class='poster_context'><%= mlist.get(i).getMvOpenDate() %></div>  
-			                       		</div>
-		                   			</a>";
+						for(let i = 0; i < jobj.mlist.length; i++){
+							value += "<a class='poster' href='<%= contextPath %>/movieDetail.fp?movieNo=" + jobj.mlist[i].mvNo + "'>"
+										+ "<img class='poster_img' src='" + jobj.mlist[i].mvPoster  +"'>"
+			                       		+ "<div class='box_context'>"
+				                        +   "<div class='poster_context'>" + jobj.mlist[i].mvName + "</div>"
+				                        +   "<div class='poster_context'>" + "평균별점 : " + jobj.mlist[i].starRatingAvg + "</div>"
+				                        +   "<div class='poster_context'>" + "개봉일 : " + jobj.mlist[i].mvOpenDate + "</div>"  
+			                       		+ "</div>"
+		                   			+ "</a>";
 						}
+						//globalPage++; //페이지 증가
+
 					}else{
-						value += "존재하는 영화가 없습니다";
+						value += "";
 					}
+					//console.log(jobj.mlist.length);
+					if(requestPage == 1){
+						globalPage = 1;
+						$(".box_poster").html(value);
+					}else{
+						$(".box_poster").append(value);
+					}
+					
+					//globalPage++;
+					
 				},
 				error:function(){
 					console.log("목록 조회 ajax 실패");
+					
 				}
-			
-		})
-	}
+		});
+	};
+	// 스크롤링 제이쿼리
+	$(document).scroll(function(e){
+	    
+	    var currentScroll = $(this).scrollTop();
+	    var documentHeight = $(document).height();
+
+	    //(현재 화면상단 + 현재 화면 높이)
+	    var nowHeight = $(this).scrollTop() + $(window).height();
+
+	    //스크롤이 아래로 내려갔을때만 해당 이벤트 진행.
+	    if(currentScroll > lastScroll){
+
+	        if(documentHeight < (nowHeight + (documentHeight*0.1))){
+	        	if(mutex){
+	        	 return;	
+	        	}
+	        	mutex = true;
+	        	globalPage++;
+	            searchlist(globalPage);
+	            
+	            setTimeout(function(){
+	            	mutex = false;
+	            }, 1000);
+	        }
+	    }
+	    //현재위치 최신화
+	    lastScroll = currentScroll;
+	});
 	
 </script>
 	<footer>

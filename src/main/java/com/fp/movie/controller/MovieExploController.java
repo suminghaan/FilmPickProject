@@ -87,7 +87,7 @@ public class MovieExploController extends HttpServlet {
 		
 		List<Movie> mlist = new MovieService().selectExploList(f, pi);
 		
-		System.out.println(mlist);
+//		System.out.println(mlist);
 		
 		JSONObject jobj = new JSONObject();
 		
