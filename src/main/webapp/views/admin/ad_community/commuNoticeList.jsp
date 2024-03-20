@@ -10,8 +10,9 @@
 <% PageInfo pi = (PageInfo)request.getAttribute("pi"); %>
 
 <!-- 공지사항 수정에쓰이는 부분 -->
-<% Notice n = (Notice)request.getAttribute("n"); %>
-<% Attachment at = (Attachment)request.getAttribute("at"); %>
+<% //Notice n = (Notice)request.getAttribute("n"); %>
+<% //Attachment at = (Attachment)request.getAttribute("at"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,13 +101,13 @@
             	</tr>
             	<% }else { %>
             	<!-- case2. 등록된 공지글이 있을 경우 -->
-	            	<% for(Notice n : list) { %>
+	            	<% for(Notice not: list) { %>
 	                <tr>
-	                    <td><%=n.getNoticeNo() %></td>
-	                    <td><%=n.getNoticeDate() %></td>
-	                    <td><%=n.getNoticeWriter() %></td>
-	                    <td><%=n.getNoticeTitle() %></td>
-	                    <td><%=n.getNoticeFix() %></td>
+	                    <td><%=not.getNoticeNo() %></td>
+	                    <td><%=not.getNoticeDate() %></td>
+	                    <td><%=not.getNoticeWriter() %></td>
+	                    <td><%=not.getNoticeTitle() %></td>
+	                    <td><%=not.getNoticeFix() %></td>
 	                    <td>
 	                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
 	                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
@@ -172,12 +173,12 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <form action="<%=contextPath %>/update.cono" method="post" enctype="multipart/form-data" id="update_form">
-			            <input type="hidden" name="no" value="<%=n.getNoticeNo() %>">
+			            <input type="hidden" name="no" value=" ">
 			            <table>
 			                <tr>
-			                    <th><label for="title">제목</label></th>
-			                    <td colspan="3"><input type="text" id="title" class="form-control" required name="noticeTitle" value="<%= n.getNoticeTitle()%>"></td>
 			                </tr>
+			                    <td colspan="3"><input type="text" id="title" class="form-control" required name="noticeTitle" value=""></td>
+			                    <th><label for="title">제목</label></th>
 			                <tr>
 			                	<th><label for="noticeSection">구분</label></th>
 			                	<td colspan="3">
@@ -190,17 +191,17 @@
 			                </tr>
 			                <tr>
 			                    <th><label for="noticeContent">공지내용</label></th>
-			                    <td colspan="3"><textarea cols="30" rows="10" class="form-control" style="resize: none;" required name="noticeContent"><%=n.getNoticeContent() %></textarea></td>
+			                    <td colspan="3"><textarea cols="30" rows="10" class="form-control" style="resize: none;" required name="noticeContent"><%%></textarea></td>
 			                	
 			                </tr>
 			                <tr>
 			                	<th><label for="noticeFile">첨부파일</label></th>
 			                	<td colspan="4">
 			                		<!-- 기존에 첨부파일 있을 경우 보여지는 기존첨부파일명 -->
-			                		<% if(at != null) { %>
-			                			<%= at.getOriginName() %>
-			                			<input type="hidden" id="noticeFile" name="originFileNo" value="<%=at.getFileNo() %>">
-			                		<% } %>
+			                		<%  %>
+			                			
+			                			<input type="hidden" id="noticeFile" name="originFileNo" value="<%%>">
+			                		<%  %>
 			                		<!-- 새로운 첨부파일 업로드 시 -->
 			                		<input type="file" class="form-control-file" id="noticeFile" name="upfile">
 			                	</td>

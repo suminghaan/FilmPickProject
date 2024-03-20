@@ -44,10 +44,12 @@
 				  , NOTICE_TITLE
 				  , NOTICE_CONTENT
 				  , ADMIN_NO
+				  , NOTICE_FIX
 				)
 				VALUES
 				(
 					SEQ_NOTICE_NO.NEXTVAL
+				  , ?
 				  , ?
 				  , ?
 				  , ?
@@ -62,17 +64,23 @@
 				(
 					FILE_NO
 				  , REF_NO
+				  , REF_TYPE
 				  , ORIGIN_NAME
 				  , CHANGE_NAME
 				  , FILE_PATH
+				  , FILE_TYPE
+				  , FILE_LEVEL
 				)
 				VALUES
 				(
 					SEQ_ATTACHMENT_NO.NEXTVAL
 				  , SEQ_NOTICE_NO.CURRVAL
+				  , 5
 				  , ?
 				  , ?
 				  , ?
+				  , 1
+				  , 2
 				)
 		</entry>
 
