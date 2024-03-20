@@ -149,7 +149,7 @@
                               <input type="text" class="form-control" name="memId" placeholder="* 아이디" required>
                           </td>
                           <td>
-                            <button type="button" class="btn btn-outline-light" onclick="idCheck()"style="width: 130px; 
+                            <button type="button" class="btn btn-outline-light" onclick="idCheck();"style="width: 130px; 
                                                                                        --bs-btn-border-color: RGB(247, 39, 140);
                                                                                        --bs-btn-color:RGB(247, 39, 140);
                                                                                        --bs-btn-hover-color: #ffffff;
@@ -278,7 +278,7 @@
               		
               		$.ajax({
               			url:"<%=contextPath%>/idCheck.me",
-              			data:{checkId:$idInput.val()},
+              			data:{checkId: $idInput.val()},
               			success: function(result){
               				
               				if(result == "NNNNN"){

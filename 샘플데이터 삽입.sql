@@ -14,7 +14,7 @@ SELECT
   SYSDATE - DBMS_RANDOM.VALUE(1, 365), -- 랜덤한 회원정보수정일 생성
   CASE WHEN ROWNUM <= 5 THEN 1 WHEN ROWNUM <= 15 THEN 2 ELSE 3 END, -- 회원등급을 1, 2, 3 중에서 랜덤하게 생성
   '#FFFFFF', -- 기본 회원정보색깔
-  'resources/xxxx/xxxxx.jpg', -- 기본 회원정보 이미지 경로
+  NULL, -- 기본 회원정보 이미지 경로
   NULL, -- NULL 값으로 MEM_FILE 생성
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'Y' ELSE 'N' END
 FROM 

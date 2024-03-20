@@ -130,7 +130,7 @@ public class MemberDao {
 			
 				if(rset.next()) {
 					count =rset.getInt("count");
-				}
+					}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
