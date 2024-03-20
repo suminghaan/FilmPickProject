@@ -33,7 +33,7 @@ public class MemberLevelUpdateController extends HttpServlet {
 		
 		  String userId = request.getParameter("userId"); 
 		  int userLevel = Integer.parseInt(request.getParameter("userLevel"));
-		  System.out.println(userId + " " + userLevel);
+		  
 		  int result = new MemberService().updateUserLevel(userId, userLevel);
 		  
 		  if (result > 0) { 
