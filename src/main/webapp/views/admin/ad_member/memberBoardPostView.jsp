@@ -7,7 +7,8 @@
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	List<Board> pageList = (List<Board>) request.getAttribute("pageList");
 	List<Board> userProfile = (List<Board>) request.getAttribute("userProfile");
-	String memId = null; // 회원 아이디
+	String memNo = null;
+	String memId = null;
 %>
 <!DOCTYPE html>
 <html>
@@ -78,14 +79,17 @@ table{
             <% if(userProfile.isEmpty()){ %>
             	<span style="font-weight: bold; font-size: 50px;">회원 정보가 조회되지 않습니다.</span>
             <% } else { %>
-            <% for(Board b : userProfile){ %>
+            <% for(Board b : userProfile){ 
+            		memNo = b.getMemNo();
+            		memId = b.getMemId();
+            	%>
 <%--              <form action="updateLevel.me?level=<%=m.getMemLevel()%>&memId=<%=m.getMemId()%>"> 
  --%>            	<div class="userprofile1">
                 	<img src="<%=contextPath%>/views/admin/ad_resources/img/profile_person.png" style="width: 70%;">
             	</div>
             	<div class="userprofile2">
 	                <div class="container user-profile-nickname">
-	                    <span class="user-profile2-text" style="font-weight: bold;"><%=b.getMemNo()%></span>
+	                    <span class="user-profile2-text" style="font-weight: bold;"><%=b.getMemNickname()%></span>
 	                </div>
 	                <div class="container user-profile-nickname user-level">
 	                	<div>
@@ -106,15 +110,12 @@ table{
 	                </div>
             </div>
              <!-- </form>  -->
-             <% memId = b.getMemNo(); // 회원 아이디 저장 
-             	session.setAttribute("memId", memId);
-             %>
             <% } %>
             <% } %>
         </div>
         <div class="container">
             <div class="container" style="margin-top: 15px; padding-left: 0px;">
-                <button type="button" class="btn btn-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.bo?memId=<%=memId%>&page=1'">게시글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.re'">댓글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberReviewPostView.jsp'">리뷰</button>            </div>
+                <button type="button" class="btn btn-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.bo?memId=<%=memId%>&page=1'">게시글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='<%=contextPath%>/list.re?page=1&memNo=<%=memNo%>&memId=<%=memId%>'">댓글</button><button type="button" class="btn btn-outline-dark rounded-0 shadow" onclick="location.href='/film/views/admin/ad_member/memberReviewPostView.jsp'">리뷰</button>            </div>
             <table class="table table" style="margin-top: 0px;">
                 <thead id="table-head">
                     <tr class="table-active">

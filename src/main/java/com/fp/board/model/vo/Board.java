@@ -15,6 +15,7 @@ public class Board {
 	private String titleImgUrl; // 대표이미지 경로 보관할 필드(게시글에 미리보는 이미지에 표시) 
 	private int replyCount; // 댓글갯수 
 	// ** 2024.03.20 (관리자 : 김지우) 회원 작성 게시글 조회 페이지에서 쓸 필드 추가
+	private String memId; // 회원 아이디
 	private String memColor; // 회원 색깔
 	private int boardCount; // 총 게시글 개수
 	private int memLevel; // 회원등급
@@ -34,9 +35,10 @@ public class Board {
 	 * 
 	 * @author 김지우
 	 */
-	public Board(String memNo, String titleImgUrl, String memColor, String memNickname, int memLevel, int boardCount) {
+	public Board(String memNo, String memId, String titleImgUrl, String memColor, String memNickname, int memLevel, int boardCount) {
 		super();
 		this.memNo = memNo;
+		this.memId = memId;
 		this.titleImgUrl = titleImgUrl;
 		this.memColor = memColor;
 		this.memNickname = memNickname;
@@ -307,15 +309,25 @@ public class Board {
 		return memNickname;
 	}
 
-
-
 	public void setMemNickname(String memNickname) {
 		this.memNickname = memNickname;
 	}
 
+	public String getMemId() {
+		return memId;
+	}
+
+
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
+
+
 	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
 			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
-			String memColor, int boardCount, int memLevel, String memNickname) {
+			String memId, String memColor, int boardCount, int memLevel, String memNickname) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -329,6 +341,7 @@ public class Board {
 		this.memNo = memNo;
 		this.titleImgUrl = titleImgUrl;
 		this.replyCount = replyCount;
+		this.memId = memId;
 		this.memColor = memColor;
 		this.boardCount = boardCount;
 		this.memLevel = memLevel;

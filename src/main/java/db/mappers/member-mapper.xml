@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+<!-- ========================= 김지우 ========================================================================================================================================================= -->
 	<entry key="updateUserLevel"> <!-- 회원조회 페이지에서 회원등급을 수정하는 쿼리 (Update) -->
 		UPDATE 
 			   	MEMBER
@@ -140,7 +141,8 @@
 	<!-- 회원 작성 게시글 개수 세고 닉네임, 레벨 조회하는 용도 -->
 	<entry key="selectUserBoardCount">
 		SELECT
-		    MEM_ID 
+			MEM_NO
+		  , MEM_ID 
 		  ,	MEM_IMGPATH 
 		  , MEM_COLOR
           , NICKNAME
@@ -150,13 +152,14 @@
           WHERE MEM_ID = ?
 	</entry>
 	
-	<!-- 회원 작성 댓글 글 조회, 페이징에 쓸 용도 -->
+	<!-- 회원이 작성한 댓글의 글 조회, 페이징에 쓸 용도 -->
 	<entry key="selectReplyList">
 		SELECT *
 			FROM (
 			    SELECT ROWNUM RNUM, A.*
 			    FROM (
 			        SELECT
+                        R.REPLY_NO AS REPLY_NO,
 			            B.B_NO AS B_NO,
 			            B.B_TITLE AS B_TITLE,
 			            M.NICKNAME AS NICKNAME,
@@ -164,12 +167,20 @@
 			            B.B_READ_COUNT AS B_READ_COUNT,
 			            (SELECT COUNT(*) FROM REPLY WHERE BOARD_NO = B.B_NO) AS REPLYCOUNT
 			        FROM BOARD B 
-			        JOIN MEMBER M USING (MEM_NO)
-			        WHERE M.MEM_ID = ?
+                    JOIN REPLY R ON (R.BOARD_NO = B.B_NO)
+                    JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+			        WHERE R.MEM_NO = ?
 			        ORDER BY B.B_NO DESC
 			    ) A
 			)
-			WHERE RNUM BETWEEN ? AND ?;
+			WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 회원이 작성한 댓글의 글 개수를 count -->
+	<entry key="selectReplyListCount">
+		SELECT COUNT(*) COUNT
+		FROM REPLY R
+        WHERE MEM_NO = ?
 	</entry>
 <!-- =============================================================================================================================================== -->	
 	
