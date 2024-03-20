@@ -18,9 +18,23 @@ public class Review {
 	private String memImgPath;
 	private String memColor;
 	
+	// ** 2024.03.20 (관리자 : 김지우) 회원 리뷰 조회 페이지에서 사용할 필드 추가
+	private String mvName; // 영화제목
+	
 	public Review() {
 	}
 	
+	public Review(int mvReviewNo, String mvName, String reviewContent, String likePoint, String nickname,
+			String reviewDate) { // 회원 리뷰 조회 페이지에서 사용할 매개변수 생성자 
+		super();
+		this.mvReviewNo = mvReviewNo;
+		this.mvName = mvName;
+		this.reviewContent = reviewContent;
+		this.likePoint = likePoint;
+		this.nickname = nickname;
+		this.reviewDate = reviewDate;
+	}
+
 	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, int memNo, int mvNo,
 			String nickname, int memLevel, int agreeCount, int disagreeCount, String memImgPath, String memColor) {
 		super();
@@ -51,6 +65,25 @@ public class Review {
 		this.disagreeCount = disagreeCount;
 		this.memImgPath = memImgPath;
 		this.memColor = memColor;
+	}
+
+	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, int memNo, int mvNo,
+			String nickname, int memLevel, int agreeCount, int disagreeCount, String memImgPath, String memColor,
+			String mvName) {
+		super();
+		this.mvReviewNo = mvReviewNo;
+		this.reviewContent = reviewContent;
+		this.reviewDate = reviewDate;
+		this.likePoint = likePoint;
+		this.memNo = memNo;
+		this.mvNo = mvNo;
+		this.nickname = nickname;
+		this.memLevel = memLevel;
+		this.agreeCount = agreeCount;
+		this.disagreeCount = disagreeCount;
+		this.memImgPath = memImgPath;
+		this.memColor = memColor;
+		this.mvName = mvName;
 	}
 
 	public String getNickname() {
@@ -149,12 +182,20 @@ public class Review {
 		this.mvNo = mvNo;
 	}
 
+	public String getMvName() {
+		return mvName;
+	}
+
+	public void setMvName(String mvName) {
+		this.mvName = mvName;
+	}
+
 	@Override
 	public String toString() {
 		return "Review [mvReviewNo=" + mvReviewNo + ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate
 				+ ", likePoint=" + likePoint + ", memNo=" + memNo + ", mvNo=" + mvNo + ", nickname=" + nickname
 				+ ", memLevel=" + memLevel + ", agreeCount=" + agreeCount + ", disagreeCount=" + disagreeCount
-				+ ", memImgPath=" + memImgPath + ", memColor=" + memColor + "]";
+				+ ", memImgPath=" + memImgPath + ", memColor=" + memColor + ", mvName=" + mvName + "]";
 	}
 
 }
