@@ -97,6 +97,7 @@ public class CommunityDao {
 			pstmt.setString(2, n.getNoticeTitle());
 			pstmt.setString(3, n.getNoticeContent());
 			pstmt.setString(4, n.getNoticeWriter());
+			pstmt.setString(5, n.getNoticeFix());
 			
 			result = pstmt.executeUpdate();
 			

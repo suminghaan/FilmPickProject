@@ -37,7 +37,7 @@ public class ComuNoticeEnroll extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		if(ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 10 * 1024 * 1024;
 			
@@ -48,7 +48,12 @@ public class ComuNoticeEnroll extends HttpServlet {
 			String noticeTitle = multiRequest.getParameter("noticeTitle");
 			String noticeContent = multiRequest.getParameter("noticeContent");
 			String category = multiRequest.getParameter("noticeCategory");
-			String noticeFix = multiRequest.getParameter("noticeFix");
+			String noticeFix = null;
+			if(multiRequest.getParameter("noticeFix") == null) {
+				noticeFix = "N";
+			}else {
+				noticeFix = multiRequest.getParameter("noticeFix");
+			}
 			
 			HttpSession session = request.getSession();
 			int adminNo = ((Admin)session.getAttribute("loginAdmin")).getAdminNo();
@@ -62,10 +67,10 @@ public class ComuNoticeEnroll extends HttpServlet {
 			
 			Attachment at = null;
 			
-			if(multiRequest.getOriginalFileName("upfile") != null) {
+			if(multiRequest.getOriginalFileName("noticeFile") != null) {
 				at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setOriginName(multiRequest.getOriginalFileName("noticeFile"));
+				at.setChangeName(multiRequest.getFilesystemName("noticeFile"));
 				at.setFilePath("resources/upfiles/");
 			}
 			
@@ -79,7 +84,7 @@ public class ComuNoticeEnroll extends HttpServlet {
 					new File(savePath + at.getChangeName()).delete();
 				}
 				session.setAttribute("alertMsg", "공지사항 등록 실패. \n다시 입력해주세요.");
-				response.sendRedirect(request.getContextPath() + "/insert.co");
+				response.sendRedirect(request.getContextPath() + "/enrollForm.co");
 			}
 			
 		}
