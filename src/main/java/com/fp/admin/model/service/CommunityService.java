@@ -46,5 +46,26 @@ public class CommunityService {
 		close(conn);
 		return result1 * result2;
 	}
+	
+	public int deleteNotice(int noticeNo) {
+		Connection conn = getConnection();
+		int result = coDao.deleteNotice(conn, noticeNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public List<Notice> searchNotice(String keyword) {
+		Connection conn = getConnection();
+		List<Notice> list = coDao.searchNotice(conn, keyword);
+		close(conn);
+		return list;
+		
+	}
 
 }

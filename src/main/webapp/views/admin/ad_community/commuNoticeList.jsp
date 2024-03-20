@@ -66,10 +66,10 @@
 
     <div class="d-flex justify-content-center container">
         <span>검색</span>&nbsp;&nbsp;&nbsp;
-        <input type="text" placeholder="검색어를 입력해주세요">
-        <button type="button">
+        <input type="text" id="searchInput" class="input" placeholder="검색어를 입력해주세요" name="keyword">
+        <button type="button" onclick="search();">
             <img src="<%=contextPath %>/views/admin/img/icon_search.png">
-        </button>          
+        </button>
     </div>
     
     <br>
@@ -110,7 +110,7 @@
 	                    <td><%=not.getNoticeFix() %></td>
 	                    <td>
 	                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
-	                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
+	                        <a href="<%=contextPath %>/delete.co?noticeNo=<%=not.getNoticeNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
 	                    </td>
 	                </tr>
                 	<%} %>
@@ -172,13 +172,13 @@
         
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="<%=contextPath %>/update.cono" method="post" enctype="multipart/form-data" id="update_form">
+                    <form action="<%=contextPath %>/updateForm.co?no=<% %>" method="post" enctype="multipart/form-data" id="update_form">
 			            <input type="hidden" name="no" value=" ">
 			            <table>
 			                <tr>
 			                </tr>
-			                    <td colspan="3"><input type="text" id="title" class="form-control" required name="noticeTitle" value=""></td>
-			                    <th><label for="title">제목</label></th>
+			                	<th><label for="title">제목</label></th>
+			                    <td colspan="3"><input type="text" id="title" class="form-control" required name="noticeTitle" value=""></td>			                    
 			                <tr>
 			                	<th><label for="noticeSection">구분</label></th>
 			                	<td colspan="3">
@@ -225,6 +225,38 @@
             
         </div>
     </div>
+    
+    <script>
+    	function search(){
+    		$.ajax({
+    			type:'post',
+    			url : "<%=contextPath%>/noticeSearch.co",
+    			data:{
+    				keyword:$("#searchInput").val()
+    			},
+    			success:function(list){
+    				console.log(list);
+    				<% for(Notice not: list) { %>
+	                <tr>
+	                    <td><%=not.getNoticeNo() %></td>
+	                    <td><%=not.getNoticeDate() %></td>
+	                    <td><%=not.getNoticeWriter() %></td>
+	                    <td><%=not.getNoticeTitle() %></td>
+	                    <td><%=not.getNoticeFix() %></td>
+	                    <td>
+	                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
+	                        <a href="<%=contextPath %>/delete.co?noticeNo=<%=not.getNoticeNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
+	                    </td>
+	                </tr>
+                	<%} %>
+    			},
+    			error:function(){
+    				console.log("목록 조회 ajax 실패");
+    			}
+    		})
+    	}
+    
+    </script>
     
     
     <script>

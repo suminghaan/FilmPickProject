@@ -131,5 +131,52 @@ public class CommunityDao {
 		return result;
 		
 	}
+	
+	public int deleteNotice(Connection conn, int noticeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public List<Notice> searchNotice(Connection conn, String keyword) {
+		List<Notice> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, keyword);
+
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Notice(rset.getInt("notice_no"),
+									rset.getString("notice_date"),
+									rset.getString("admin_id"),
+									rset.getString("notice_title"),
+									rset.getString("notice_fix")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }
