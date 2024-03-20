@@ -59,6 +59,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
 
     .content {
       height: 100%;
+      color: white;
     }
 
     #footer {
@@ -195,6 +196,9 @@ String alertMsg = (String)session.getAttribute("alertMsg");
 
   <!-- Custom styles for this template -->
   <link href="<%= contextPath %>/resources/css/headers.css" rel="stylesheet">
+  <link rel="stylesheet" href="<%= contextPath %>/resources/css/heart_movieDetail.css">
+  <link rel="stylesheet" href="<%= contextPath %>/resources/css/starRating_forReviewTap.css">
+  <link rel="stylesheet" href="<%= contextPath %>/resources/css/like&dislike_movieDetail.css">
 </head>
 <body>
 	
@@ -370,6 +374,33 @@ String alertMsg = (String)session.getAttribute("alertMsg");
     </header>
 
   </main>
-<script src="<%= contextPath %>/resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="<%= contextPath %>/resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="<%= contextPath %>/resources/assets/js/like&dislike.js"></script>
+    <script>
+        $(".more_info_btn").each(function (index, el) {
+            $(this).click(function () {
+                $(el).parent().parent(".review_content").next().css("display", "block");
+                $(el).parent().parent(".review_content").css("display", "none");
+            })
+        })
+
+        $(".more_info_btn_long").each(function (index, el) {
+            $(this).click(function () {
+                $(el).parent().parent(".review_content_long").prev().css("display", "block");
+                $(el).parent().parent(".review_content_long").css("display", "none");
+            })
+        })
+
+        $(".long_summary_btn").click(function() {
+            $(this).parent().css("display", "none");
+            $(this).parent().next().css("display", "block");
+        })
+
+        $(".short_summary_btn").click(function() {
+            $(this).parent().css("display", "none");
+            $(this).parent().prev().css("display", "block");
+        })
+        
+    </script>
 </body>
 </html>
