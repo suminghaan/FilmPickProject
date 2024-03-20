@@ -14,10 +14,57 @@ public class Board {
 	private String memNo; // 회원번호 | 작성자아이디 | 닉네임(관리자 페이지에서 쓸 예정 (김지우))
 	private String titleImgUrl; // 대표이미지 경로 보관할 필드(게시글에 미리보는 이미지에 표시) 
 	private int replyCount; // 댓글갯수 
+	// ** 2024.03.20 (관리자 : 김지우) 회원 작성 게시글 조회 페이지에서 쓸 필드 추가
+	private String memColor; // 회원 색깔
+	private int boardCount; // 총 게시글 개수
+	private int memLevel; // 회원등급
+	private String memNickname; // 닉네임
 	
 	public Board() {}
 
 	
+	
+	/**
+	 * @param memNo 회원 아이디
+	 * @param titleImgUrl 회원 프로필 이미지 경로
+	 * @param memColor 회원 프로필 색상
+	 * @param memNickname 회원 닉네임
+	 * @param memLevel 회원등급
+	 * @param boardCount 총 게시글 개수
+	 */
+	public Board(String memNo, String titleImgUrl, String memColor, String memNickname, int memLevel, int boardCount) {
+		super();
+		this.memNo = memNo;
+		this.titleImgUrl = titleImgUrl;
+		this.memColor = memColor;
+		this.memNickname = memNickname;
+		this.memLevel = memLevel;
+		this.boardCount = boardCount;
+	}
+
+
+
+	/** (관리자) 회원 작성 게시글 조회에서 쓸 용도
+	 * 
+	 * @param bNo 게시글 번호
+	 * @param bTitle 게시글 제목
+	 * @param bContent 게시글 내용
+	 * @param memNo 닉네임
+	 * @param bRegistDate 작성일
+	 * @param bReadCount 조회수
+	 * @param replyCount 댓글 개수
+	 */
+	public Board(int bNo, String bTitle, String bContent, String memNo, String bRegistDate, int bReadCount, int replyCount) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.memNo = memNo;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.replyCount = replyCount;
+	}
+
 	/** 관리자) 회원 작성 게시글 페이징, 게시글 조회 용도로 사용할 생성자
 	 * 
 	 * @param bNo 글번호
@@ -57,10 +104,9 @@ public class Board {
 		this.replyCount = replyCount;
 	}
 
-
-
 	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
-			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount) {
+			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
+			String memId, String memImgPath, String memColor, String nickname, int memLevel, int boardCount) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -75,7 +121,6 @@ public class Board {
 		this.titleImgUrl = titleImgUrl;
 		this.replyCount = replyCount;
 	}
-
 
 	public int getbNo() {
 		return bNo;
@@ -195,19 +240,73 @@ public class Board {
 	public void setReplyCount(int replyCount) {
 		this.replyCount = replyCount;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bRegistDate=" + bRegistDate
-				+ ", bReadCount=" + bReadCount + ", bRecommendCount=" + bRecommendCount + ", bCategory=" + bCategory
-				+ ", bStatus=" + bStatus + ", dSatus=" + dSatus + ", memNo=" + memNo + ", titleImgUrl=" + titleImgUrl
-				+ ", replyCount=" + replyCount + "]";
+	
+	public String getMemColor() {
+		return memColor;
 	}
 
 
-	
+
+	public void setMemColor(String memColor) {
+		this.memColor = memColor;
+	}
 
 
+
+	public int getBoardCount() {
+		return boardCount;
+	}
+
+
+
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
+
+
+
+	public int getMemLevel() {
+		return memLevel;
+	}
+
+
+
+	public void setMemLevel(int memLevel) {
+		this.memLevel = memLevel;
+	}
+
+
+
+	public String getMemNickname() {
+		return memNickname;
+	}
+
+
+
+	public void setMemNickname(String memNickname) {
+		this.memNickname = memNickname;
+	}
+
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
+			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
+			String memColor, int boardCount, int memLevel, String memNickname) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bRecommendCount = bRecommendCount;
+		this.bCategory = bCategory;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
+		this.memNo = memNo;
+		this.titleImgUrl = titleImgUrl;
+		this.replyCount = replyCount;
+		this.memColor = memColor;
+		this.boardCount = boardCount;
+		this.memLevel = memLevel;
+		this.memNickname = memNickname;
+	}
 
 }
