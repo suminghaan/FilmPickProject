@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectPersonInfo">
+	<![CDATA[SELECT P_NO, P_NAME, P_JOB, CASTING, P_BD, P_NATION, P_FILE
+	FROM ( 
+		SELECT P_NO, P_NAME, CASTING, P_JOB, P_BD, P_NATION, P_FILE, ROWNUM AS "RNUM"
+        FROM PERSON
+        JOIN CASTING
+        ON P_NO = PERSON_NO
+        WHERE MOVIE_NO = ?)
+	WHERE RNUM < 7
+	]]>
+	</entry>
+</properties>

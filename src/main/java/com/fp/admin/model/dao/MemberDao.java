@@ -266,7 +266,8 @@ public class MemberDao {
 						, rset.getString("B_CONTENT")
 						, rset.getString("NICKNAME")
 						, rset.getString("SIGNIN_DATE")
-						, rset.getInt("B_READ_COUNT")));
+						, rset.getInt("B_READ_COUNT")
+						, rset.getInt("REPLYCOUNT")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -277,8 +278,8 @@ public class MemberDao {
 		return list;
 	}
 
-	public List<Member> selectUserBoardList(Connection conn, String memId) {
-		List<Member> list = new ArrayList<>();
+	public List<Board> selectUserBoardList(Connection conn, String memId) {
+		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectUserBoardCount");
@@ -290,12 +291,12 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				list.add(new Member(rset.getString("MEM_ID")
+				list.add(new Board(rset.getString("MEM_ID")
 									, rset.getString("MEM_IMGPATH")
 									, rset.getString("MEM_COLOR")
 									, rset.getString("NICKNAME")
-									, rset.getInt("MEM_LEVEL"),
-									rset.getInt("COUNT")));
+									, rset.getInt("MEM_LEVEL")
+									, rset.getInt("BOARDCOUNT")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -305,5 +306,25 @@ public class MemberDao {
 		}
 
 		return list;
+	}
+
+	public int updateUserLevel(Connection conn, String userId, int userLevel) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateUserLevel");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userLevel);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }

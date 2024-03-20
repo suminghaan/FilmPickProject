@@ -9,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fp.board.model.service.BoardService;
-import com.fp.board.model.vo.Board;
-import com.fp.common.model.vo.Attachment;
 
 /**
- * Servlet implementation class boardDetailController
+ * Servlet implementation class BoardDeleteController
  */
-@WebServlet("/detail.bo")
-public class boardDetailController extends HttpServlet {
+@WebServlet("/delete.bo")
+public class BoardDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public boardDetailController() {
+    public BoardDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,24 +30,12 @@ public class boardDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardNo = Integer.parseInt(request.getParameter("no"));
-		BoardService bService = new BoardService();
-		// 1) 조회수 증가 (update)
-		int result = bService.increaseCount(boardNo);
-		
+		int result = new BoardService().deleteBoard(boardNo);
 		if(result > 0) {
-		// 조회수 증가 성공
-			Board b = bService.selectBoard(boardNo);
-			if(b.getbCategory().equals("1")) {
-				b.setbCategory("영화");
-			}else {
-				b.setbCategory("잡담");
-			}
-			Attachment at = bService.selectAttachment(boardNo);
-			request.setAttribute("b", b);
-			request.setAttribute("at", at);
-			request.getRequestDispatcher("/views/community/postViews.jsp").forward(request, response);
+			request.getSession().setAttribute("alertMsg", "게시글이 삭제됐습니다.");
+			response.sendRedirect(request.getContextPath() + "/main.bo");
 		}else {
-		// 조회수 증가 실패
+			//실패
 		}
 	}
 

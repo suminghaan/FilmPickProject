@@ -24,13 +24,15 @@ public class Board {
 
 	
 	
-	/**
+	/** (관리자) 회원 프로필 조회 용도
 	 * @param memNo 회원 아이디
 	 * @param titleImgUrl 회원 프로필 이미지 경로
 	 * @param memColor 회원 프로필 색상
 	 * @param memNickname 회원 닉네임
 	 * @param memLevel 회원등급
 	 * @param boardCount 총 게시글 개수
+	 * 
+	 * @author 김지우
 	 */
 	public Board(String memNo, String titleImgUrl, String memColor, String memNickname, int memLevel, int boardCount) {
 		super();
@@ -53,6 +55,8 @@ public class Board {
 	 * @param bRegistDate 작성일
 	 * @param bReadCount 조회수
 	 * @param replyCount 댓글 개수
+	 * 
+	 * @author 김지우
 	 */
 	public Board(int bNo, String bTitle, String bContent, String memNo, String bRegistDate, int bReadCount, int replyCount) {
 		super();

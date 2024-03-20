@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="com.fp.common.model.vo.Attachment" %>
     <%@ page import="com.fp.movie.model.vo.Movie" %>
+    <%@ page import="com.fp.person.model.vo.Person" %>
     <%
     	Movie movie = (Movie)request.getAttribute("movie");
+    	ArrayList<Attachment> attList = ((ArrayList<Attachment>)request.getAttribute("attList"));
+    	ArrayList<Person> personList = ((ArrayList<Person>)request.getAttribute("personList"));
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -140,7 +145,7 @@
 
         .etc_poster {
             height: 90%;
-            /* width: 90%; */
+            /* width: 15%; */
         }
 
         /* ==================영화 리뷰=================== */
@@ -204,8 +209,33 @@
             height: 25%;
             background-color: rgb(15, 15, 15);
             border-radius: 10px;
-            margin: 20px;
-            padding: 20px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .short_summary {
+            height: 100%;
+        }
+
+        .long_summary {
+            position: absolute;
+            height: 400px;
+            top: 0;
+            padding: 0 20px;
+            display: none;
+            background-color: rgb(15, 15, 15);
+            z-index: 10;
+        }
+
+        .long_summary_btn
+        , .short_summary_btn {
+            color: white;
+            border-bottom: none;
+            cursor: pointer;
         }
 
         .movie_people_info {
@@ -556,7 +586,7 @@
                         <div id="carouselPoster" class="carousel slide">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="mainPoster" src="../../resources/img/다크나이트.webp" alt="">
+                                    <img class="mainPoster" src="<%= movie.getMvPoster() %>" alt="">
                                 </div>
                                 <div class="carousel-item">
                                     <img class="mainPoster" src="../../resources/img/다크나이트2.jpeg" alt="">
@@ -584,25 +614,22 @@
                     <div class="movie_preview_etc">
                         <div class="movie_mainPreview">
                             <video class="mainPreview" autoplay muted controls loop
-                                src="../../resources/video/다크나이트.mp4" type="video/mp4"></video>
+                                src="<%= movie.getMvPreview() %>" type="video/mp4"></video>
                         </div>
                         <div class="movie_etc">
                             <div id="carouselEtc" class="carousel slide">
                                 <div class="carousel-inner carousel-inner_etc">
-                                    <div class="carousel-item active">
+                                <% for(int i = 0; i < attList.size(); i++) {%>
+                                	<% if(i % 2 == 0) { %>
+                                    <div class="carousel-item <%= i == 0 ? "active" : "" %>">
                                         <div class="etcList_wrap">
-                                            <img class="etc_poster" src="../../resources/img/다크나이트.webp" alt="">
-                                            <img class="etc_poster" src="../../resources/img/다크나이트2.jpeg" alt="">
-                                            <img class="etc_poster" src="../../resources/img/다크나이트2.jpeg" alt="">
+                                    <% } %>
+                                            <img class="etc_poster" src="<%= attList.get(i).getFilePath() %>" alt="">
+                                    <% if(i % 2 == 1 || i == (attList.size() - 1)) {%>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="etcList_wrap">
-                                            <img class="etc_poster" src="../../resources/img/다크나이트.webp" alt="">
-                                            <img class="etc_poster" src="../../resources/img/다크나이트2.jpeg" alt="">
-                                            <img class="etc_poster" src="../../resources/img/다크나이트2.jpeg" alt="">
-                                        </div>
-                                    </div>
+                                    <% } %>
+                                <% } %>
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselEtc"
                                     data-bs-slide="prev">
@@ -715,98 +742,45 @@
                     </div>
                     <div class="movie_people">
                         <div class="movie_summary" style="margin: 20px;">
-                            <%= movie.getMvStory() %>
+                            <div class="short_summary">
+                            	<% if(movie.getMvStory().length() > 200) {%>
+                            		<%= movie.getMvStory().substring(0, 200) + "..."%>
+                            		<a class="long_summary_btn">더보기</a>
+                            	<% } else { %>
+                            		<%= movie.getMvStory() %>
+                            	<% } %>
+                            </div>
+                             <% if(movie.getMvStory().length() > 200) {%>
+                            <div class="long_summary">
+                            	<%= movie.getMvStory() %>
+                                <a class="short_summary_btn">접기</a>
+                             </div>
+                             <% } %>
                         </div>
                         <div class="movie_people_info">
                             <h4>출연/제작</h4>
-                            <div class="movie_people_top">
+                            <% for(int i = 0; i < personList.size(); i++) {%>
+                            <% if(i % 3 == 0) { %>
+                            <div class="movie_people_<%= i == 0 ? "top" : (i == 3) ? "bottom" : "" %>">
+                            <% } %>
                                 <div class="people_img_info_wrap">
                                     <div class="people_img_wrap">
-                                        <img class="people_img" src="../../resources/img/공효진.jpeg" alt="">
+                                        <img class="people_img" src="<%= personList.get(i).getpFile() %>" alt="">
                                     </div>
                                     <div class="people_info_wrap">
-                                        <span>이름 : </span><br>
-                                        <span>배역 : </span>
+                                        <span>이름 : <%= personList.get(i).getpName() %></span><br>
+                                        <span>배역 : <%= personList.get(i).getCasting() %></span>
                                     </div>
                                     <div class="people_tooltip">
-                                        <span>생년월일 : </span><br>
-                                        <span>국적 : </span><br>
+                                        <span>생년월일 : <%= personList.get(i).getpBD() %></span><br>
+                                        <span>국적 : <%= personList.get(i).getpNation() %></span><br>
                                         <span>대표작 : (2~3개만)</span>
                                     </div>
                                 </div>
-                                <div class="people_img_info_wrap">
-                                    <div class="people_img_wrap">
-                                        <img class="people_img" src="../../resources/img/공효진.jpeg" alt="">
-                                    </div>
-                                    <div class="people_info_wrap">
-                                        <span>이름 : </span><br>
-                                        <span>배역 : </span>
-                                    </div>
-                                    <div class="people_tooltip">
-                                        <span>생년월일 : </span><br>
-                                        <span>국적 : </span><br>
-                                        <span>대표작 : (2~3개만)</span>
-                                    </div>
-                                </div>
-                                <div class="people_img_info_wrap">
-                                    <div class="people_img_wrap">
-                                        <img class="people_img" src="../../resources/img/공효진.jpeg" alt="">
-                                    </div>
-                                    <div class="people_info_wrap">
-                                        <span>이름 : </span><br>
-                                        <span>배역 : </span>
-                                    </div>
-                                    <div class="people_tooltip">
-                                        <span>생년월일 : </span><br>
-                                        <span>국적 : </span><br>
-                                        <span>대표작 : (2~3개만)</span>
-                                    </div>
-                                </div>
+                            <% if(i % 3 == 2 || i == (personList.size() - 1)) { %>
                             </div>
-                            <div class="movie_people_bottom">
-                                <div class="people_img_info_wrap">
-                                    <div class="people_img_wrap">
-                                        <img class="people_img" src="../../resources/img/공효진.jpeg" alt="">
-                                    </div>
-                                    <div class="people_info_wrap">
-                                        <span>이름 : </span><br>
-                                        <span>배역 : </span>
-                                    </div>
-                                    <div class="people_tooltip">
-                                        <span>생년월일 : </span><br>
-                                        <span>국적 : </span><br>
-                                        <span>대표작 : (2~3개만)</span>
-                                    </div>
-                                </div>
-                                <div class="people_img_info_wrap">
-                                    <div class="people_img_wrap">
-                                        <img class="people_img" src="../../resources/img/공효진.jpeg" alt="">
-                                    </div>
-                                    <div class="people_info_wrap">
-                                        <span>이름 : </span><br>
-                                        <span>배역 : </span>
-                                    </div>
-                                    <div class="people_tooltip">
-                                        <span>생년월일 : </span><br>
-                                        <span>국적 : </span><br>
-                                        <span>대표작 : (2~3개만)</span>
-                                    </div>
-                                </div>
-                                <div class="people_img_info_wrap">
-                                    <div class="people_img_wrap">
-                                        <img class="people_img" src="../../resources/img/공효진.jpeg" alt="">
-                                    </div>
-                                    <div class="people_info_wrap">
-                                        <span>이름 : </span><br>
-                                        <span>배역 : </span>
-                                    </div>
-                                    <div class="people_tooltip">
-                                        <span>생년월일 : </span><br>
-                                        <span>국적 : </span><br>
-                                        <span>대표작 : (2~3개만)</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -1283,6 +1257,16 @@
             })
         })
 
+        $(".long_summary_btn").click(function() {
+            $(this).parent().css("display", "none");
+            $(this).parent().next().css("display", "block");
+        })
+
+        $(".short_summary_btn").click(function() {
+            $(this).parent().css("display", "none");
+            $(this).parent().prev().css("display", "block");
+        })
+        
     </script>
 </body>
 

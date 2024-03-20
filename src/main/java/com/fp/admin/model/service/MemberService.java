@@ -146,10 +146,10 @@ public class MemberService {
 	 * @param memId 
 	 * @return list
 	 */
-	public List<Member> selectUserBoardList(String memId) {
+	public List<Board> selectUserBoardList(String memId) {
 		Connection conn = getConnection();
 
-		List<Member> list = mDao.selectUserBoardList(conn, memId);
+		List<Board> list = mDao.selectUserBoardList(conn, memId);
 		close(conn);
 		return list;
 	}
@@ -163,8 +163,18 @@ public class MemberService {
 	 * @return result
 	 */
 	public int updateUserLevel(String userId, int userLevel) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = getConnection();
+		
+		int result = mDao.updateUserLevel(conn, userId, userLevel);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
 	}
 
 }

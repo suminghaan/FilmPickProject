@@ -39,6 +39,14 @@
 	<%@ include file="/views/admin/common/header.jsp" %>
 	<!-- Header end -->
 	
+	<!-- 로그인 실패시 나오는 alert창 -->
+	<% if(alertMsg != null){ %>
+		<script>
+			alert('<%=alertMsg%>');
+		</script>
+	<% session.removeAttribute(alertMsg);} %>
+	
+	
 	<!-- section start -->
 	<div class="bodyBox">
 		<h1>공지사항 등록</h1>
@@ -54,8 +62,8 @@
                 	<th><label for="noticeSection">구분</label></th>
                 	<td colspan="3">
                 		<select class="form-control" id="noticeSection" name="noticeCategory">
-		                    <option>일반</option>
-		                    <option>이벤트</option>
+		                    <option value="1">일반</option>
+		                    <option value="2">이벤트</option>
 		                </select>
                 	</td>
                 	
@@ -87,6 +95,18 @@
         </form>
     </div>
 	<!-- section end -->
+	
+	<!-- 상단고정여부 -->
+	<script>
+	
+		$("input:checkbox").change(function(){
+			if(this.checked){
+				$(this).attr('value', 'Y');
+			}else{
+				$(this).attr('value', 'N');
+			}
+		});
+	</script>
 
 </body>
 </html>

@@ -82,6 +82,21 @@ public class Member {
 		this.prefGenre = prefGenre;
 	}
 
+	public Member(int memNo, String memId, String memName, String nickname, String memPwd, String memPhone, String memEmail, 
+			String prefGenre, String signInDate, String memStatus) { // 마이페이지 - 회원정보(은정)
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.memPwd = memPwd;
+		this.memPhone = memPhone;
+		this.memEmail = memEmail;
+		this.prefGenre = prefGenre;
+		this.signInDate = signInDate;
+		this.memStatus = memStatus;	
+	}
+
 	public Member() {
 
 	}
@@ -111,7 +126,7 @@ public class Member {
 		this.reviewContentCnt = reviewContentCnt;
 		this.avgLikePoint = avgLikePoint;
 	}
-
+	
 	public int getMemNo() {
 		return memNo;
 	}
@@ -281,5 +296,5 @@ public class Member {
 				+ memImgPath + ", memFile=" + memFile + ", dormantStatus=" + dormantStatus + ", reviewContentCnt="
 				+ reviewContentCnt + ", avgLikePoint=" + avgLikePoint + ", memBoardCnt=" + memBoardCnt + "]";
 	}
-
+	
 }

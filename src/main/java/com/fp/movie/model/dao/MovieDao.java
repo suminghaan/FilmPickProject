@@ -202,6 +202,7 @@ public class MovieDao {
 		return posterList;
 	}
 
+	// 영화 상세보기에서 영화 정보 받아오는 메소드 [기웅]
 	public Movie selectMovieInfo(Connection conn, int movieNo) {
 		String query = prop.getProperty("selectMovieInfo");
 		PreparedStatement pstmt = null;
@@ -221,6 +222,8 @@ public class MovieDao {
 				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
 				m.setMvRTime(rset.getString("MV_RTIME"));
 				m.setMvStory(rset.getString("MV_STORY"));
+				m.setMvPoster(rset.getString("MV_POSTER"));
+				m.setMvPreview(rset.getString("MV_PREVIEW"));
 				m.setStarRatingAvg(rset.getString("AVG_STAR_RATING"));
 				m.setNumberOfStarRating(rset.getInt("NUMBER_OF_STAR_RATING"));
 			}
@@ -234,9 +237,39 @@ public class MovieDao {
 		return m;
 	}
 
+	// 영화 상세보기 페이지에서 영화 추가사진 불러오는 메소드
+	public ArrayList<Attachment> selectAddiMovie(Connection conn, int movieNo) {
+		String query = prop.getProperty("selectAddiMovie");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Attachment> attList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment a = new Attachment();
+				a.setFileNo(rset.getInt("FILE_NO"));
+				a.setFilePath(rset.getString("FILEPATH"));
+				
+				attList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return attList;
+	}
+	
 	public List<Movie> selectMainList(Connection conn) {
 		return null;
 	}
+
 
 	
 

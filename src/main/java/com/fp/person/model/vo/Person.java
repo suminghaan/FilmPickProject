@@ -8,9 +8,13 @@ public class Person {
 	private String pNation;
 	private String pFile;
 	
+//	배역 추가
+	private String casting;
+	
 	public Person() {}
 
-	public Person(int pNo, String pName, String pJob, String pBD, String pNation, String pFile) {
+
+	public Person(int pNo, String pName, String pJob, String pBD, String pNation, String pFile, String casting) {
 		super();
 		this.pNo = pNo;
 		this.pName = pName;
@@ -18,7 +22,9 @@ public class Person {
 		this.pBD = pBD;
 		this.pNation = pNation;
 		this.pFile = pFile;
+		this.casting = casting;
 	}
+
 
 	public int getpNo() {
 		return pNo;
@@ -39,6 +45,16 @@ public class Person {
 	public String getpJob() {
 		return pJob;
 	}
+
+	public String getCasting() {
+		return casting;
+	}
+
+
+	public void setCasting(String casting) {
+		this.casting = casting;
+	}
+
 
 	public void setpJob(String pJob) {
 		this.pJob = pJob;
@@ -68,10 +84,11 @@ public class Person {
 		this.pFile = pFile;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Person [pNo=" + pNo + ", pName=" + pName + ", pJob=" + pJob + ", pBD=" + pBD + ", pNation=" + pNation
-				+ ", pFile=" + pFile + "]";
+				+ ", pFile=" + pFile + ", casting=" + casting + "]";
 	}
 	
 }

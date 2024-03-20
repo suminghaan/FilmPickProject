@@ -1,5 +1,4 @@
 package com.fp.board.model.service;
-import static com.fp.common.template.JDBCTemplate.*;
 import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
@@ -60,6 +59,17 @@ public class BoardService {
 		List<Movie> mList = bDao.selectPublicMovieName(conn);
 		close(conn);
 		return mList;
+	}
+	
+	/**
+	 * 커뮤니티 영화이름 클릭시 영화 상세페이지 이동을 위한 영화번호를 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<Movie> selectAllMovie(){
+		Connection conn = getConnection();
+		List<Movie> allMovie = bDao.selectAllMovie(conn);
+		close(conn);
+		return allMovie;
 	}
 	
 	/**
@@ -164,6 +174,48 @@ public class BoardService {
 		Attachment at = bDao.selectAttachment(conn, boardNo);
 		close(conn);
 		return at;
+	}
+	
+	/**
+	 * 게시글 수정을 위한 메소드
+	 * @author 호용
+	 */
+	public int updateBoard(Board b, Attachment at) {
+		
+		Connection conn = getConnection();
+		int result1 = bDao.updateBoard(conn, b);
+		
+		int result2 = 1;
+		if(at != null) { // 새로 넘어온 첨부파일이 있었을 경우
+			if(at.getFileNo() != 0) { // 기존의 첨부파일이 있었을 경우 update Attachment
+				result2 = bDao.updateAttachment(conn, at);
+			}else { // 기존의 첨부파일이 없었을 경우 insert Attachment
+				result2 = bDao.insertNewAttachment(conn, at);
+			}
+		}
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
+	}
+	
+	/**
+	 * 게시글 삭제를 위한 메소드
+	 * @author 호용
+	 */
+	public int deleteBoard(int boardNo) {
+		Connection conn = getConnection();
+		int result = bDao.deleteBoard(conn, boardNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 }

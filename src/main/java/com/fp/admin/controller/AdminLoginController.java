@@ -42,8 +42,8 @@ public class AdminLoginController extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession(); 
 			session.setAttribute("loginAdmin", a);
-			response.sendRedirect(request.getContextPath()+"/main.ad");
 		}
+		response.sendRedirect(request.getContextPath()+"/main.ad");
 	}
 
 	/**

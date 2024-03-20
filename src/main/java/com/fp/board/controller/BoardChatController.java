@@ -79,11 +79,15 @@ public class BoardChatController extends HttpServlet {
 		// 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문
 		List<Movie> mList = new BoardService().selectPublicMovieName();
 		
+		// 커뮤니티 영화이름 클릭시 영화 상세페이지 이동을 위한 영화번호를 담기위한 메소드
+		List<Movie> allMovie = new BoardService().selectAllMovie();
+		
 		// 응답페이지 => /views/community/chatPost.jsp
 		// 응답데이터 => 사용자가 요청한 페이지상에 보여져야될 게시글 목록, 페이징바를 만들기 위한 pi
 		request.setAttribute("pi", pi);
 		request.setAttribute("chatList", chatList);
 		request.setAttribute("mList", mList);
+		request.setAttribute("allMovie", allMovie);
 		
 		// 리퀘스트객체외 리스폰스 객체를 응답페이지 jsp에 전달하기
 		request.getRequestDispatcher("/views/community/chatPost.jsp").forward(request, response);
