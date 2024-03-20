@@ -1,30 +1,104 @@
 package com.fp.movie.model.vo;
 
 public class Review {
-	
+		
 	private int mvReviewNo;
 	private String reviewContent;
 	private String reviewDate;
-	private int likePoint;
-	private int agreement;
-	private int disagreed;
+	private String likePoint;
 	private int memNo;
 	private int mvNo;
 	
+	
+	// 리뷰 정보를 볼 때 필수적인 요소 추가
+	private String nickname;
+	private int memLevel;
+	private int agreeCount;
+	private int disagreeCount;
+	private String memImgPath;
+	private String memColor;
+	
 	public Review() {
 	}
-
-	public Review(int mvReviewNo, String reviewContent, String reviewDate, int likePoint, int agreement, int disagreed,
-			int memNo, int mvNo) {
+	
+	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, int memNo, int mvNo,
+			String nickname, int memLevel, int agreeCount, int disagreeCount, String memImgPath, String memColor) {
 		super();
 		this.mvReviewNo = mvReviewNo;
 		this.reviewContent = reviewContent;
 		this.reviewDate = reviewDate;
 		this.likePoint = likePoint;
-		this.agreement = agreement;
-		this.disagreed = disagreed;
 		this.memNo = memNo;
 		this.mvNo = mvNo;
+		this.nickname = nickname;
+		this.memLevel = memLevel;
+		this.agreeCount = agreeCount;
+		this.disagreeCount = disagreeCount;
+		this.memImgPath = memImgPath;
+		this.memColor = memColor;
+	}
+
+	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, String nickname, int memLevel,
+			int agreeCount, int disagreeCount, String memImgPath, String memColor) {
+		super();
+		this.mvReviewNo = mvReviewNo;
+		this.reviewContent = reviewContent;
+		this.reviewDate = reviewDate;
+		this.likePoint = likePoint;
+		this.nickname = nickname;
+		this.memLevel = memLevel;
+		this.agreeCount = agreeCount;
+		this.disagreeCount = disagreeCount;
+		this.memImgPath = memImgPath;
+		this.memColor = memColor;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public int getMemLevel() {
+		return memLevel;
+	}
+
+	public void setMemLevel(int memLevel) {
+		this.memLevel = memLevel;
+	}
+
+	public int getAgreeCount() {
+		return agreeCount;
+	}
+
+	public void setAgreeCount(int agreeCount) {
+		this.agreeCount = agreeCount;
+	}
+
+	public int getDisagreeCount() {
+		return disagreeCount;
+	}
+
+	public void setDisagreeCount(int disagreeCount) {
+		this.disagreeCount = disagreeCount;
+	}
+
+	public String getMemImgPath() {
+		return memImgPath;
+	}
+
+	public void setMemImgPath(String memImgPath) {
+		this.memImgPath = memImgPath;
+	}
+
+	public String getMemColor() {
+		return memColor;
+	}
+
+	public void setMemColor(String memColor) {
+		this.memColor = memColor;
 	}
 
 	public int getMvReviewNo() {
@@ -51,28 +125,12 @@ public class Review {
 		this.reviewDate = reviewDate;
 	}
 
-	public int getLikePoint() {
+	public String getLikePoint() {
 		return likePoint;
 	}
 
-	public void setLikePoint(int likePoint) {
+	public void setLikePoint(String likePoint) {
 		this.likePoint = likePoint;
-	}
-
-	public int getAgreement() {
-		return agreement;
-	}
-
-	public void setAgreement(int agreement) {
-		this.agreement = agreement;
-	}
-
-	public int getDisagreed() {
-		return disagreed;
-	}
-
-	public void setDisagreed(int disagreed) {
-		this.disagreed = disagreed;
 	}
 
 	public int getMemNo() {
@@ -94,9 +152,9 @@ public class Review {
 	@Override
 	public String toString() {
 		return "Review [mvReviewNo=" + mvReviewNo + ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate
-				+ ", likePoint=" + likePoint + ", agreement=" + agreement + ", disagreed=" + disagreed + ", memNo="
-				+ memNo + ", mvNo=" + mvNo + "]";
+				+ ", likePoint=" + likePoint + ", memNo=" + memNo + ", mvNo=" + mvNo + ", nickname=" + nickname
+				+ ", memLevel=" + memLevel + ", agreeCount=" + agreeCount + ", disagreeCount=" + disagreeCount
+				+ ", memImgPath=" + memImgPath + ", memColor=" + memColor + "]";
 	}
-	
-	
+
 }
