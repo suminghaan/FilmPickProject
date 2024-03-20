@@ -83,7 +83,25 @@
 				  , 2
 				)
 		</entry>
-
+		
+		
+		<!-- 관리자 공지사항 삭제 [수민] -->
+		<entry key="deleteNotice">
+			UPDATE
+				   NOTICE
+			   SET NOTICE_STATUS = 'N'
+			 WHERE NOTICE_NO = ?
+		
+		</entry>
+		
+		<!-- 관리자 검색기능 [수민] -->
+		<entry key="searchNotice">
+			SELECT  *
+			FROM NOTICE N
+			JOIN ADMIN AD ON N.ADMIN_NO = AD.ADMIN_NO
+			WHERE N.NOTICE_STATUS = 'Y'
+			  AND N.NOTICE_TITLE LIKE '%' || ? || '%'
+		</entry>
 
 
 
