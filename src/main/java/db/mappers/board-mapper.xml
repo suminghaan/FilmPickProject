@@ -321,4 +321,12 @@
    		  )
    </entry>
    
+   <!-- 게시글 삭제을 위한 sql문 -->
+   <entry key="deleteBoard">
+   		UPDATE
+   			   BOARD
+   		   SET B_D_STATUS = 'Y'
+   		 WHERE B_NO = ? 
+   </entry>
+   
 </properties>

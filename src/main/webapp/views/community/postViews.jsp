@@ -97,7 +97,7 @@
                             <!-- 현재 로그인한 사용자가 해당 게시글 작성자일 경우 보여지는 버튼 요소-->
                             <%if(loginMember != null && loginMember.getMemId().equals(b.getMemNo())){ %>
                             <a href="<%= contextPath %>/updateForm.bo?no=<%= b.getbNo() %>" class="btn btn-outline-secondary btn-sm">수정하기</a>
-                            <a class="btn btn-outline-danger btn-sm">삭제하기</a>
+                            <a href="<%=contextPath%>/delete.bo?no=<%=b.getbNo()%>" class="btn btn-outline-danger btn-sm" onclick="return deleteBo();">삭제하기</a>
                             <%} %>
                             <!-- ---------------------------------------------------------------- -->
                             <button type="button" class="btn btn-outline-warning btn-sm" onclick="history.back();">뒤로가기</button>
@@ -106,7 +106,6 @@
                     </tr>
                 </tbody>
             </table>
-            
 
             <!-- 댓글관련영역 -->
             <table class="table coment" align="center">
@@ -179,6 +178,14 @@
     <script>
     function community_go(){
         location.href="<%= contextPath %>/main.bo";
+    }
+    
+    function deleteBo(){
+    	if(confirm("게시글을 삭제하시겠습니까??")){
+    		return true;
+    	}else{
+    		return false;
+    	}
     }
     </script>
     <!-- 컨텐츠부분 종료 -->

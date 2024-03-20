@@ -1,5 +1,4 @@
 package com.fp.board.model.service;
-import static com.fp.common.template.JDBCTemplate.*;
 import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
@@ -201,6 +200,22 @@ public class BoardService {
 		}
 		close(conn);
 		return result1 * result2;
+	}
+	
+	/**
+	 * 게시글 삭제를 위한 메소드
+	 * @author 호용
+	 */
+	public int deleteBoard(int boardNo) {
+		Connection conn = getConnection();
+		int result = bDao.deleteBoard(conn, boardNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 }

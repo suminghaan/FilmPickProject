@@ -514,6 +514,26 @@ public class BoardDao {
 		return result;
 	}
 	
+	/**
+	 * 게시글 삭제를 위한 메소드
+	 * @author 호용
+	 */
+	public int deleteBoard(Connection conn, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteBoard");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 }
 
 
