@@ -17,6 +17,7 @@ import java.util.Properties;
 import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
+import com.fp.movie.model.vo.Review;
 
 public class MemberDao {
 	private Properties prop = new Properties();
@@ -413,6 +414,63 @@ public class MemberDao {
 						, rset.getString("SIGNIN_DATE")
 						, rset.getInt("B_READ_COUNT")
 						, rset.getInt("REPLYCOUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int selectReviewListCount(Connection conn, String memNo) {
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewListCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public List<Review> selectReviewList(Connection conn, String memNo, PageInfo pi) {
+		List<Review> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewList");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setString(1, memNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new Review(rset.getInt("MV_REVIEW_NO")
+						, rset.getString("MV_NAME")
+						, rset.getString("REVIEW_CONTENT")
+						, rset.getString("LIKE_POINT")
+						, rset.getString("NICKNAME")
+						, rset.getString("REVIEW_DATE")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

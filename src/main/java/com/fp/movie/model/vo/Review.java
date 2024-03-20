@@ -24,6 +24,7 @@ public class Review {
 	public Review() {
 	}
 	
+	
 	public Review(int mvReviewNo, String mvName, String reviewContent, String likePoint, String nickname,
 			String reviewDate) { // 회원 리뷰 조회 페이지에서 사용할 매개변수 생성자 
 		super();

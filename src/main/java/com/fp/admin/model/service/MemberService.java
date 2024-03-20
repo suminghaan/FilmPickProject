@@ -12,6 +12,7 @@ import com.fp.admin.model.dao.MemberDao;
 import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
+import com.fp.movie.model.vo.Review;
 
 public class MemberService {
 
@@ -203,6 +204,29 @@ public class MemberService {
 		Connection conn = getConnection();
 
 		List<Board> list = mDao.selectReplyList(conn, memNo, pi);
+		close(conn);
+		return list;
+	}
+
+	/** 회원이 작성한 리뷰의 페이징, 조회 용도
+	 * 
+	 * @author 김지우
+	 * @param memNo
+	 * @return listCount
+	 */
+	public int selectReviewListCount(String memNo) {
+		Connection conn = getConnection();
+		
+		int listCount = mDao.selectReviewListCount(conn, memNo);
+		close(conn);
+
+		return listCount;
+	}
+
+	public List<Review> selectReviewList(String memNo, PageInfo pi) {
+		Connection conn = getConnection();
+
+		List<Review> list = mDao.selectReviewList(conn, memNo, pi);
 		close(conn);
 		return list;
 	}
