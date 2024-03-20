@@ -38,6 +38,11 @@
         font-weight: bold;
         text-decoration: none;
     }
+    #textplace{
+    	padding-left: 10px;
+    	padding-right : 10px;
+    	font-size: 15px;
+    }
     .search{
         display: flex;
         flex-direction: row;
@@ -96,7 +101,7 @@
       </div>
         <div>
             <form class="search">
-            <input class="text-box form-control me-2" type="search" aria-label="Search">
+            <input id="textplace" class="text-box form-control me-2" type="search" aria-label="Search" placeholder="영화, 인물">
             <button class="btn btn-outline-success" type="submit">검색</button>
             </form>
         </div>

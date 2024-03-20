@@ -429,6 +429,15 @@ VALUES (SEQ_MOVIE_NO.NEXTVAL, '킹스맨: 퍼스트 에이전트', '2021-12-22',
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
+----------------------------------------------- 용훈 -------------------------------------------------
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '듄: 파트2', '2024-02-28', '2', '166분', '황제의 모략으로 멸문한 가문의 유일한 후계자 폴.(티모시 샬라메) 어머니 레이디 제시카(레베카 퍼거슨)와 간신히 목숨만 부지한 채 사막으로 도망친다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135127_75552.jpeg', 'resources/upfiles/20240320135127_38483.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '가여운 것들', '2024-03-06', '2', '141분', '천재적이지만 특이한 과학자 갓윈 백스터(윌렘 대포)에 의해 새롭게 되살아난 벨라 백스터(엠마 스톤).', 'N', '청소년 관람불가', 'Y', 'N', 'resources/upfiles/20240320135128_11483.jpeg', 'resources/upfiles/20240320135128_15883.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '시민덕희', '2024-01-24', '1', '114분', '내 돈을 사기 친 그 놈이 구조 요청을 해왔다! 세탁소 화재로 인해 대출상품을 알아보던 생활력 만렙 덕희에게 어느 날, 거래은행의 손대리가 합리적인 대출상품을 제안하겠다며 전화를 걸어온다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135130_85133.jpeg', 'resources/upfiles/20240320135130_12345.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '귀멸의 칼날: 인연의 기적, 그리고 합동 강화 훈련으로', '2024-02-14', '2', '103분', '‘탄지로’와 상현 4 ‘한텐구’의 목숨을 건 혈투와, ‘무잔’과의 최종 국면을 앞둔 귀살대원들의 마지막 훈련을 그린 영화', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135135_84741.jpeg', 'resources/upfiles/20240320135135_99175.mp4', 'Y', SYSDATE);
+
+
+
+
 
 --------파일 추가--------
 -------------------------------------------------- 김지우 ---------------------------------------------------
@@ -1213,6 +1222,119 @@ VALUES (
 );
 
 -------------------------------------------------------------- 정은정 --------------------------------------------------------------
+----------------------------- 용훈 -------------------------------
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '듄: 파트2.jpeg',
+    '20240320135127_75552.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    38
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '듄: 파트2.mp4',
+    '20240320135127_38483.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    38
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '가여운 것들.jpeg',
+    '20240320135128_11483.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    39
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '가여운 것들.mp4',
+    '20240320135128_15883.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    39
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '시민덕희.jpeg',
+    '20240320135130_85133.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    40
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '시민덕희.mp4',
+    '20240320135130_12345.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    40
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '귀멸의 칼날: 인연의 기적, 그리고 합동 강화 훈련으로.jpeg',
+    '20240320135135_84741.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    41
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '귀멸의 칼날: 인연의 기적, 그리고 합동 강화 훈련으로.mp4',
+    '20240320135135_99175.mp4',
+    SYSDATE,
+    2,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '2',
+    41
+);
+
 
 ------------------영화 추가 사진 기웅-----------------
 
