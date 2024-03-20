@@ -354,7 +354,7 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    'resources/upfiles/20240314154832_77889.jpeg',
+    'resources/upfiles/20240314154832_77889.webp',
     'resources/upfiles/20220314103626_81242.mp4',
     DEFAULT,
     DEFAULT
@@ -902,8 +902,8 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '레디플레이어원.jpeg',
-    '20240314154832_77889.jpeg',
+    '레디플레이어원.webp',
+    '20240314154832_77889.webp',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -1272,6 +1272,20 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
+    '레디플레이어원추가사진5.png',
+    '20181222154832_77866.png',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    28
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
     '스티븐스필버그.webp',
     '20080321154832_77889.webp',
     SYSDATE,
@@ -1314,8 +1328,8 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '올리비아쿡.webp',
-    '20120821155232_77189.jpeg',
+    '올리비아쿡.jpg',
+    '20120821155232_77189.jpg',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -1874,7 +1888,7 @@ VALUES (
     , '배우, 연출가'
     , '1960-1-18'
     , '영국'
-    , 'resources/upfiles/20090321154832_77889.jpeg'
+    , 'resources/upfiles/20090321154832_77889.jpg'
 );
 INSERT INTO PERSON
 VALUES (
@@ -1892,7 +1906,7 @@ VALUES (
     , '배우'
     , '1993-12-27'
     , '잉글랜드'
-    , 'resources/upfiles/20120821155232_77189.jpeg'
+    , 'resources/upfiles/20120821155232_77189.jpg'
 );
 INSERT INTO PERSON
 VALUES (
@@ -1942,3 +1956,5 @@ VALUES (
     , 28
     , 5
 );
+
+commit;
