@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="com.fp.common.model.vo.Attachment" %>
 <%@ page import="com.fp.common.model.vo.PageInfo" %>
 <%@ page import="com.fp.admin.model.vo.Notice" %>
 <%@ page import="java.util.List" %>
     
 <% List<Notice> list = (List<Notice>)request.getAttribute("list"); %>
 <% PageInfo pi = (PageInfo)request.getAttribute("pi"); %>
+
+<!-- 공지사항 수정에쓰이는 부분 -->
+<% Notice n = (Notice)request.getAttribute("n"); %>
+<% Attachment at = (Attachment)request.getAttribute("at"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -166,16 +171,17 @@
         
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="<%=contextPath %>/update.cono" method="post" enctype="multipart/form-data" id="update_form">
+			            <input type="hidden" name="no" value="<%=n.getNoticeNo() %>">
 			            <table>
 			                <tr>
 			                    <th><label for="title">제목</label></th>
-			                    <td colspan="3"><input type="text" id="title" class="form-control" required name="noticeTitle"></td>
+			                    <td colspan="3"><input type="text" id="title" class="form-control" required name="noticeTitle" value="<%= n.getNoticeTitle()%>"></td>
 			                </tr>
 			                <tr>
 			                	<th><label for="noticeSection">구분</label></th>
 			                	<td colspan="3">
-			                		<select class="form-control" id="noticeSection">
+			                		<select class="form-control" id="noticeSection" name="category">
 					                    <option>일반</option>
 					                    <option>이벤트</option>
 					                </select>
@@ -184,15 +190,24 @@
 			                </tr>
 			                <tr>
 			                    <th><label for="noticeContent">공지내용</label></th>
-			                    <td colspan="3"><textarea cols="30" rows="10" class="form-control" style="resize: none;" required name="noticeContent"></textarea></td>
+			                    <td colspan="3"><textarea cols="30" rows="10" class="form-control" style="resize: none;" required name="noticeContent"><%=n.getNoticeContent() %></textarea></td>
 			                	
 			                </tr>
 			                <tr>
-			                	<td colspan="4"><input type="file"></td>
+			                	<th><label for="noticeFile">첨부파일</label></th>
+			                	<td colspan="4">
+			                		<!-- 기존에 첨부파일 있을 경우 보여지는 기존첨부파일명 -->
+			                		<% if(at != null) { %>
+			                			<%= at.getOriginName() %>
+			                			<input type="hidden" id="noticeFile" name="originFileNo" value="<%=at.getFileNo() %>">
+			                		<% } %>
+			                		<!-- 새로운 첨부파일 업로드 시 -->
+			                		<input type="file" class="form-control-file" id="noticeFile" name="upfile">
+			                	</td>
 							</tr>
 							<tr>
 			                	<td colspan="4">
-			                		<input type="checkbox" id="fix">
+			                		<input type="checkbox" id="fix" name="noticeFix">
 			                		<label for="fix">상단고정</label>
 			                	</td>
 			                </tr>

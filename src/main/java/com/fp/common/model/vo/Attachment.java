@@ -1,7 +1,7 @@
 package com.fp.common.model.vo;
 
 public class Attachment {
-	private int fileNO;//첨부파일번호
+	private int fileNo;//첨부파일번호
 	private String originName;//첨부파일원본명
 	private String changeName;//첨부파일수정명
 	private String uploadDate;//파일업로드날짜
@@ -25,10 +25,10 @@ public class Attachment {
 	
 	public Attachment() {}
 	
-	public Attachment(int fileNO, String originName, String changeName, String uploadDate, int fileType,
+	public Attachment(int fileNo, String originName, String changeName, String uploadDate, int fileType,
 			String filePath, int fileLevel, String fileStatus, String refType, int refNo) {
 		super();
-		this.fileNO = fileNO;
+		this.fileNo = fileNo;
 		this.originName = originName;
 		this.changeName = changeName;
 		this.uploadDate = uploadDate;
@@ -40,12 +40,12 @@ public class Attachment {
 		this.refNo = refNo;
 	}
 
-	public int getFileNO() {
-		return fileNO;
+	public int getFileNo() {
+		return fileNo;
 	}
 
-	public void setFileNO(int fileNO) {
-		this.fileNO = fileNO;
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
 	}
 
 	public String getOriginName() {
@@ -122,7 +122,7 @@ public class Attachment {
 	
 	@Override
 	public String toString() {
-		return "Attachment [fileNO=" + fileNO + ", originName=" + originName + ", changeName=" + changeName
+		return "Attachment [fileNo=" + fileNo + ", originName=" + originName + ", changeName=" + changeName
 				+ ", uploadDate=" + uploadDate + ", fileType=" + fileType + ", filePath=" + filePath + ", fileLevel="
 				+ fileLevel + ", fileStatus=" + fileStatus + ", refType=" + refType + ", refNo=" + refNo + "]";
 	}
