@@ -178,6 +178,8 @@ public class MemberService {
 	}
 
 	/** 회원이 작성한 댓글의 페이징, 조회 용도
+	 * 
+	 * @author 김지우
 	 * @param memNo 회원번호
 	 * @return listCount 회원이 작성한 댓글의 게시글 수 count
 	 */
@@ -190,6 +192,13 @@ public class MemberService {
 		return listCount;
 	}
 
+	/** 회원이 작성한 댓글의 페이징, 조회 용도
+	 * 
+	 * @author 김지우
+	 * @param memNo 회원번호
+	 * @param pi 페이징 객체
+	 * @return list
+	 */
 	public List<Board> selectReplyList(String memNo, PageInfo pi) {
 		Connection conn = getConnection();
 
