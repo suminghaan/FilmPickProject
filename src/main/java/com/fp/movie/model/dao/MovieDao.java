@@ -99,7 +99,7 @@ public class MovieDao {
 		}else if(f.getOrderBy().equals("lately")) {
 			sql += " ORDER BY MV_OPENDATE DESC";
 		}else if(f.getOrderBy().equals("korean")) {
-			sql += " ORDER BY MV_NAME DESC";
+			sql += " ORDER BY MV_NAME";
 		}else if(f.getOrderBy().equals("reviews")) {
 			sql += " ORDER BY REVIEWS DESC";
 		}
