@@ -1259,7 +1259,7 @@ INSERT INTO ATTACHMENT
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
     '레디플레이어원추가사진4.webp',
-    '20180322154832_77866.jpg',
+    '20180322154832_77866.webp',
     SYSDATE,
     1,
     'resources/upfiles/',
