@@ -152,6 +152,33 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 커뮤니티 영화이름 클릭시 영화 상세페이지 이동을 위한 영화번호를 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<Movie> selectAllMovie(Connection conn){
+		List<Movie> allMovie = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPublicMovieName");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("MV_NO"));
+				m.setMvName(rset.getString("MV_NAME"));
+				allMovie.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return allMovie;
+	}
+	
+	/**
 	 * 
 	 * @param 호용
 	 * @return 총 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨

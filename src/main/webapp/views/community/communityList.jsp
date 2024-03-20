@@ -9,6 +9,7 @@
 	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
 	List<Board> chatList = (List<Board>)request.getAttribute("chatList");
 	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
+	List<Movie> allMovie = (List<Movie>)request.getAttribute("allMovie");
 	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
@@ -184,9 +185,9 @@
                         </tr>
                     </thead>
                     <tbody class="movie_name">
-                    <%for(Movie m : mList){ %>
+                    <%for(Movie all : allMovie){ %>
                         <tr>
-                            <td onclick="movie_go();"><%= m.getMvName() %></td>
+                            <td onclick="movie_go(<%= all.getMvNo()%>);"><%= all.getMvName() %></td>
                         </tr>
                     <%} %>
                     </tbody>
@@ -264,8 +265,8 @@
             location.href="<%=contextPath%>/detail.bo?no=" + no;
         }
 
-        function movie_go(){
-            location.href="http://www.naver.com";
+        function movie_go(no){
+            location.href="<%=contextPath%>/movieDetail.fp?movieNo=" + no;
         }
 
     </script>

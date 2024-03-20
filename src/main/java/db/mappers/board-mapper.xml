@@ -90,6 +90,14 @@
 	    WHERE ROWNUM BETWEEN 1 AND 10
 	</entry>
 	
+	<!-- 커뮤니티 영화이름 클릭시 영화 상세페이지 이동을 위한 영화번호를 담기위한 메소드 by호용-->
+	<entry key="selectAllMovie">
+	           SELECT
+				   MV_NO
+				 , MV_NAME
+	              FROM MOVIE
+	</entry>
+	
 	<!-- 총 게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
 	<entry key="selectListCount">
 		SELECT COUNT(*) COUNT

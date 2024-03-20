@@ -8,6 +8,7 @@
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	List<Board> publicList = (List<Board>)request.getAttribute("publicList");
 	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
+	List<Movie> allMovie = (List<Movie>)request.getAttribute("allMovie");
 %>
 <!DOCTYPE html>
 <html>
@@ -187,11 +188,11 @@
                             </tr>
                         </thead>
                         <tbody class="movie_name">
-						<%for(Movie m : mList){ %>
-                        	<tr>
-                            	<td onclick="movie_go();"><%= m.getMvName() %></td>
-                        	</tr>
-                    	<%} %>
+	                    <%for(Movie all : allMovie){ %>
+	                        <tr>
+	                            <td onclick="movie_go(<%= all.getMvNo()%>);"><%= all.getMvName() %></td>
+	                        </tr>
+	                    <%} %>
                         </tbody>
                     </table>
                 </div>    
@@ -244,8 +245,8 @@
             location.href="<%=contextPath%>/detail.bo?no=" + no;
         }
 
-        function movie_go(){
-            location.href="http://www.naver.com";
+        function movie_go(no){
+            location.href="<%=contextPath%>/movieDetail.fp?movieNo=" + no;
         }
 
         function allComu(){ 

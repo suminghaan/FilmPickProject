@@ -44,10 +44,14 @@ public class BoardMainController extends HttpServlet {
 		// 커뮤니티 메인페이지의 우측에 인기영화란의 영화제목을 담기위한 메소드 호출구문
 		List<Movie> mList = new BoardService().selectPublicMovieName();
 		
+		// 커뮤니티 영화이름 클릭시 영화 상세페이지 이동을 위한 영화번호를 담기위한 메소드
+		List<Movie> allMovie = new BoardService().selectAllMovie();
+		
 		request.setAttribute("publicList", publicList);
 		request.setAttribute("list", list);
 		request.setAttribute("chatList", chatList);
 		request.setAttribute("mList", mList);
+		request.setAttribute("allMovie", allMovie);
 		
 		request.getRequestDispatcher("/views/community/communityList.jsp").forward(request, response);
 	}
