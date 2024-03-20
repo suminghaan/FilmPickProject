@@ -146,10 +146,10 @@ public class MemberService {
 	 * @param memId 
 	 * @return list
 	 */
-	public List<Board> selectUserBoardList(String memId) {
+	public List<Board> selectUserBoardList(String memNo) {
 		Connection conn = getConnection();
 
-		List<Board> list = mDao.selectUserBoardList(conn, memId);
+		List<Board> list = mDao.selectUserBoardList(conn, memNo);
 		close(conn);
 		return list;
 	}
@@ -175,6 +175,36 @@ public class MemberService {
 		close(conn);
 		
 		return result;
+	}
+
+	/** 회원이 작성한 댓글의 페이징, 조회 용도
+	 * 
+	 * @author 김지우
+	 * @param memNo 회원번호
+	 * @return listCount 회원이 작성한 댓글의 게시글 수 count
+	 */
+	public int selectReplyListCount(String memNo) {
+		Connection conn = getConnection();
+		
+		int listCount = mDao.selectReplyListCount(conn, memNo);
+		close(conn);
+
+		return listCount;
+	}
+
+	/** 회원이 작성한 댓글의 페이징, 조회 용도
+	 * 
+	 * @author 김지우
+	 * @param memNo 회원번호
+	 * @param pi 페이징 객체
+	 * @return list
+	 */
+	public List<Board> selectReplyList(String memNo, PageInfo pi) {
+		Connection conn = getConnection();
+
+		List<Board> list = mDao.selectReplyList(conn, memNo, pi);
+		close(conn);
+		return list;
 	}
 
 }
