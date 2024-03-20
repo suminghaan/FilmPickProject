@@ -220,6 +220,12 @@ public class MemberDao {
 		return list;
 	}
 
+	/**
+	 * 회원 작성 게시글 페이징 용도
+	 *
+	 * @author 김지우
+	 * @return listCount 
+	 */
 	public int selectBoardListCount(Connection conn, String memId) {
 		int listCount = 0;
 
@@ -243,6 +249,12 @@ public class MemberDao {
 		return listCount;
 	}
 
+	/**
+	 * 회원 작성 게시글 페이징, 조회 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public List<Board> selectBoardListCount(Connection conn, String memId, PageInfo pi) {
 		List<Board> list = new ArrayList<>();
 
@@ -278,6 +290,12 @@ public class MemberDao {
 		return list;
 	}
 
+	/**
+	 * 회원 작성 게시글 개수 세고 닉네임, 레벨 조회하는 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public List<Board> selectUserBoardList(Connection conn, String memId) {
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -309,6 +327,12 @@ public class MemberDao {
 		return list;
 	}
 
+	/**
+	 * 회원등급 수정 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public int updateUserLevel(Connection conn, String userId, int userLevel) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -329,6 +353,12 @@ public class MemberDao {
 		return result;
 	}
 
+	/**
+	 * 회원이 작성한 댓글의 글 개수를 세는 용도
+	 *
+	 * @author 김지우
+	 * @return listCount 
+	 */
 	public int selectReplyListCount(Connection conn, String memNo) {
 		int listCount = 0;
 
@@ -352,6 +382,12 @@ public class MemberDao {
 		return listCount;
 	}
 
+	/**
+	 * 회원이 작성한 댓글의 글 조회, 페이징에 쓸 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public List<Board> selectReplyList(Connection conn, String memNo, PageInfo pi) {
 		List<Board> list = new ArrayList<>();
 
