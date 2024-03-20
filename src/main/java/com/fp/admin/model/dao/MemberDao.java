@@ -291,7 +291,8 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				list.add(new Board(rset.getString("MEM_ID")
+				list.add(new Board(rset.getString("MEM_NO")
+								    , rset.getString("MEM_ID")
 									, rset.getString("MEM_IMGPATH")
 									, rset.getString("MEM_COLOR")
 									, rset.getString("NICKNAME")
@@ -326,5 +327,63 @@ public class MemberDao {
 		}
 		
 		return result;
+	}
+
+	public int selectReplyListCount(Connection conn, String memNo) {
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyListCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public List<Board> selectReplyList(Connection conn, String memNo, PageInfo pi) {
+		List<Board> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setString(1, memNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new Board(rset.getInt("REPLY_NO")
+						, rset.getString("B_NO")
+						, rset.getString("B_TITLE")
+						, rset.getString("NICKNAME")
+						, rset.getString("SIGNIN_DATE")
+						, rset.getInt("B_READ_COUNT")
+						, rset.getInt("REPLYCOUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 }

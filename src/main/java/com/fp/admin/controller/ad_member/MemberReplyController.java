@@ -1,11 +1,17 @@
 package com.fp.admin.controller.ad_member;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fp.admin.model.service.MemberService;
+import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class MemberReplyController
@@ -28,9 +34,47 @@ public class MemberReplyController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("댓글(list.re) 서블릿 실행됨");
 		
-		String memId = (String) request.getSession().getAttribute("memId");
+		String memId = request.getParameter("memId");
+		String memNo = request.getParameter("memNo");
 		
-		request.getRequestDispatcher(request.getContextPath() + "/list.re");
+		System.out.println(memNo);
+		int listCount;
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
+		int maxPage;
+		int startPage;
+		int endPage;
+
+		listCount = new MemberService().selectReplyListCount(memNo);
+
+		currentPage = Integer.parseInt(request.getParameter("page"));
+
+		pageLimit = 5;
+
+		boardLimit = 10;
+
+		maxPage = (int) Math.ceil((double) listCount / boardLimit);
+
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+
+		endPage = startPage + pageLimit - 1;
+
+		if (endPage > maxPage) {
+			endPage = maxPage;
+		}
+
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+
+		List<Board> pageList = new MemberService().selectReplyList(memNo, pi);
+
+		List<Board> userProfile = new MemberService().selectUserBoardList(memId); // 회원 프로필 조회하는건 게시글 페이지랑 동일함
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("pageList", pageList);
+		request.setAttribute("userProfile", userProfile);
+
+		request.getRequestDispatcher("/views/admin/ad_member/memberReplyPostView.jsp").forward(request, response);
 	}
 
 	/**
