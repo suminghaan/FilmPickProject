@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 #wrap, #wrap * {
 	box-sizing: border-box;
@@ -99,22 +101,28 @@
 /*.carousel-item.active {
                 display: flex !important;
             } */
-.box_post {
+#carousepost {
 	display: flex;
 	height: 300px;
 }
 
-.post {
+#poster {
 	margin: 10px;
 	width: 100%;
 	height: 100%;
 }
 
-.post:hover {
+.poster_img {
+	margin: 10px;
+	width: 215px;
+	height: 305px;
+}
+
+.poster:hover {
 	filter: brightness(1.03);
 }
 
-.post:hover>div {
+.poster:hover>div {
 	display: block;
 }
 
@@ -271,18 +279,15 @@
 						</div>
 					</div>
 
-					<a class="carousel-control-prev" href="#main_movie" type="button"
-						data-bs-target="#main_movie"
-						style="margin-left: -50px; justify-content: center;"
-						data-bs-slide="prev"> <span><i
-							class="fa-solid fa-arrow-left" style="color: #ffffff;"></i></span>
-
-					</a> <a class="carousel-control-next" href="#main_movie" type="button"
-						data-bs-target="#main_movie"
-						style="margin-right: -50px; justify-content: center;"
-						data-bs-slide="next"> <span><i
-							class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></span>
-
+					<a class="carousel-control-prev" href="#main_movie" type="button" data-bs-target="#main_movie" style="margin-left: -50px; justify-content: center;" data-bs-slide="prev"> 
+						<span>
+							<i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+						</span>
+					</a> 
+					<a class="carousel-control-next" href="#main_movie" type="button" data-bs-target="#main_movie" style="margin-right: -50px; justify-content: center;" data-bs-slide="next"> 
+						<span>
+							<i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
+						</span>
 					</a>
 
 				</div>
@@ -300,44 +305,50 @@
 					<div class="box_font">
 						<a href="">현재 상영중인 영화</a>
 					</div>
-					<div class="box_post">
-						<a class="post" href=""><img class="post"
-							src="../../resources/img/듄2.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="post"
-							src="<%= contextPath %>/resources/img/파묘.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">파묘</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/가여운것들.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">가여운것들</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/건국전쟁.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">건국전쟁</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/웡카.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">웡카</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a>
+					
+					<div id="carouselMovie" class="carousel slide" data-bs-ride="false">
+					    <div class="carousel-inner">
+					        <% for (int i = 0; i < 10; i++) { %>
+					            <div class="carousel-item <% if (i == 0) { %>active<% } %>">
+					                <!-- 각각의 콘텐츠를 추가하세요 -->
+					                <div class="container">
+					                    <div class="row">
+					                        <div class="col">
+					                            <a id="poster" href="">
+					                                <img class="poster_img" src="<%=contextPath %>/resources/img/듄2.jpeg">
+					                                <div class="box_context">
+					                                    <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
+					                                    <div class="post_context">별점</div>
+					                                    <div class="post_context">개봉연도,국가</div>
+					                                </div>
+					                            </a>
+					                            <a id="poster" href="">
+					                                <img class="poster_img" src="<%=contextPath %>/resources/img/파묘.jpeg">
+					                                <div class="box_context">
+					                                    <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
+					                                    <div class="post_context">별점</div>
+					                                    <div class="post_context">개봉연도,국가</div>
+					                                </div>
+					                            </a>
+					                        </div>
+					                    </div>
+					                </div>
+					            </div>
+					        <% } %>
+					    </div>
+					    <a class="carousel-control-prev movePage" href="#carouselMovie" type="button" data-bs-target="#carouselMovie" style="justify-content: flex-end;" data-bs-slide="prev">
+					        <img src="<%= contextPath %>/resources/img/left_icon.png">
+					    </a>
+					    <a class="carousel-control-next movePage" href="#carouselMovie" type="button" data-bs-target="#carouselMovie" style="justify-content: flex-end;" data-bs-slide="next">
+					        <img src="<%= contextPath %>/resources/img/right_icon.png">
+					    </a>
 					</div>
+					
 					<br> <br>
 					<div class="box_font">
 						<a href="">영화 인기작</a>
 					</div>
-					<div class="box_post">
+					<div id="carousepost" class="carousel slide">
 						<a class="post" href=""><img class="post"
 							src="../../resources/img/듄2.jpeg" alt="">
 							<div class="box_context">
@@ -430,9 +441,8 @@
 						<div class="movePage">
 							<a class="carousel-control-next" href="#review" type="button"
 								data-bs-target="#review" style="justify-content: flex-end;"
-								data-bs-slide="next"> <img
-								src="<%= contextPath %>/resources/img/right_icon.png"
-								alt="up_icon"></a> </a>
+								data-bs-slide="next"> 
+								<img src="<%= contextPath %>/resources/img/right_icon.png"></a>
 						</div>
 					</div>
 					<!-- <div class="review">
@@ -456,7 +466,7 @@
 				<div class="box_font">
 					<a href="">사용자영화 최신순</a>
 				</div>
-				<div class="box_post">
+				<div id="carousepost" class="carousel slide">
 					<a class="post" href=""><img class="post"
 						src="../../resources/img/듄2.jpeg" alt="">
 						<div class="box_context">
@@ -494,7 +504,19 @@
 			<div class="topPage">
 				<a href="#wrap"><img src="<%= contextPath %>/resources/img/up_icon.png" alt="up_icon" style="width: 50px;"></a>
 			</div>
-
+			
+			<script>
+			    $(function(){
+			        $(".owl-carousel").owlCarousel({
+			            items: 3,
+			            margin: 10,
+			            loop: true,
+			            nav: true,
+			            navText: ['이전', '다음']
+			        });
+			    });
+			</script>
+			
 			<script>
                         $(document).ready(function () {
                             $(window).scroll(function () {
@@ -510,7 +532,7 @@
                             });
                         });
 
-                    </script>
+             </script>
 		</div>
 		</div>
 
