@@ -336,6 +336,85 @@ public class BoardDao {
 		return result;
 	}
 	
+	/**
+	 * 조회수 증가를 위한 메소드
+	 * @호용
+	 */
+	public int increaseCount(Connection conn, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * 클릭시 게시글 상세페이지에 띄울 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public Board selectBoard(Connection conn, int boardNo) {
+		Board b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBoard");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				b = new Board(rset.getInt("B_NO")
+							, rset.getString("B_TITLE")
+							, rset.getString("B_CONTENT")
+							, rset.getString("B_REGIST_DATE")
+						    , rset.getString("B_CATEGORY")
+						    , rset.getString("MEM_ID"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return b;
+	}
+	
+	/**
+	 * 클릭시 게시글 상세페이지에 띄울 값들을 담기위한 메소드(첨부파일)
+	 * @author 호용
+	 */
+	public Attachment selectAttachment(Connection conn, int boardNo) {
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				at = new Attachment();
+				at.setFileNo(rset.getInt("FILE_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setFilePath(rset.getString("FILE_PATH"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return at;
+	}
+	
 }
 
 
