@@ -103,7 +103,7 @@ public class MemberDao {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectListCount");
+		String sql = prop.getProperty("selectUserListCount");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class MemberDao {
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("selectUserList");
 
 		try {
 			pstmt = conn.prepareStatement(sql);

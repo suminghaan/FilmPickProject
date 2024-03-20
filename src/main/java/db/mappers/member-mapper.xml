@@ -23,12 +23,12 @@
 		ORDER BY MEM_NO DESC, DORMANT_STATUS ASC
 	</entry>
 	
-	<entry key="selectListCount"> <!-- 페이징용 쿼리 -->
+	<entry key="selectUserListCount"> <!-- 페이징용 쿼리 -->
 		SELECT COUNT(*) COUNT
 		FROM MEMBER
 	</entry>
 	
-	<entry key="selectList">
+	<entry key="selectUserList">
 		SELECT *
 			FROM(
 			    SELECT ROWNUM RNUM, A.*
