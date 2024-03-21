@@ -14,16 +14,16 @@ import com.fp.admin.model.vo.Notice;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ComuNoticeSearchController
+ * Servlet implementation class ComuNoticeDetail
  */
-@WebServlet("/noticeSearch.co")
-public class ComuNoticeSearchController extends HttpServlet {
+@WebServlet("/noticeDetail.co")
+public class AjaxComuNoticeDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ComuNoticeSearchController() {
+    public AjaxComuNoticeDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +32,13 @@ public class ComuNoticeSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String keyword = request.getParameter("keyword");
-		
-		List<Notice> list = new CommunityService().searchNotice(keyword);
-		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
-		
+
+		String noticeNo = request.getParameter("notice");
+		System.out.println(noticeNo);
+		List<Notice> uplist = new CommunityService().updateNotice(noticeNo);
+		System.out.println(uplist);
+		response.setContentType("apllication/json; charset=utf-8");
+		new Gson().toJson(uplist, response.getWriter());
 	}
 
 	/**

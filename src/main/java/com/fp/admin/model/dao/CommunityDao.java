@@ -179,4 +179,36 @@ public class CommunityDao {
 		return list;
 	}
 
+	public List<Notice> updateNotice(Connection conn, String noticeNo) {
+		List<Notice> uplist = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("updateNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, noticeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				uplist.add(new Notice(rset.getInt("notice_no"),
+									  rset.getString("notice_category"),
+									  rset.getString("notice_title"),
+									  rset.getString("notice_content"),
+									  rset.getString("notice_fix"),
+									  rset.getString("origin_name"),
+									  rset.getString("change_name"),									  
+									  rset.getString("file_path")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return uplist;
+	}
+
 }
