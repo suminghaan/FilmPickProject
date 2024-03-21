@@ -273,6 +273,7 @@
    			 , FILE_PATH
    	  	  FROM ATTACHMENT
    	  	 WHERE REF_NO = ? <!-- 참조하는게시글번호가 현재 넘겨받은 글번호와 일치하는지? -->
+   	  	   AND REF_TYPE = 3 
    	  	 ORDER
 		    BY FILE_LEVEL ASC
    </entry>
