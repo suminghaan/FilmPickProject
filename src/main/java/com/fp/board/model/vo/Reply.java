@@ -9,6 +9,7 @@ public class Reply {
 	private String dStatus; // 삭제여부(Y|N)
 	private int reBoNo; // 게시글번호
 	private String reMemNo; // insert시 회원번호 | select시 회원아이디 
+	private int reMemberNo; // 댓글작성한 회원 번호임 (안변함)
 	
 	public Reply() {}
 	
@@ -32,12 +33,13 @@ public class Reply {
 	 * @param reMemNo 회원아이디
 	 * @author 호용
 	 */
-	public Reply(int replyNo, String replyContent, String enrollDate, String reMemNo) {
+	public Reply(int replyNo, String replyContent, String enrollDate, String reMemNo, int reMemberNo) {
 		super();
 		this.replyNo = replyNo;
 		this.replyContent = replyContent;
 		this.enrollDate = enrollDate;
 		this.reMemNo = reMemNo;
+		this.reMemberNo = reMemberNo;
 	}
 
 	public int getReplyNo() {
@@ -94,6 +96,14 @@ public class Reply {
 
 	public void setReMemNo(String reMemNo) {
 		this.reMemNo = reMemNo;
+	}
+	
+	public int getReMemberNo() {
+		return reMemberNo;
+	}
+	
+	public void setReMemberNo(int reMemberNo) {
+		this.reMemberNo = reMemberNo;
 	}
 
 	@Override

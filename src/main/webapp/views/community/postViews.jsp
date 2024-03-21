@@ -4,12 +4,14 @@
 <%@ page import="com.fp.common.model.vo.*" %>
 <%
 	Board b = (Board)request.getAttribute("b");
-	// 글번호,카테고리명,제목,내용,작성자아이디
+	// 글번호,카테고리명,제목,내용,작성자아이디, 작성자회원번호
 	
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
-	Reply list = (Reply)request.getAttribute("list");
+	//Reply list = (Reply)request.getAttribute("list");
+	//System.out.println(list);
+	//System.out.println(at);
 %>
 <!DOCTYPE html>
 <html>
@@ -104,11 +106,13 @@
                             <%if(loginMember != null && loginMember.getMemId().equals(b.getMemNo())){ %>
                             <a href="<%= contextPath %>/updateForm.bo?no=<%= b.getbNo() %>" class="btn btn-outline-secondary btn-sm">수정하기</a>
                             <a href="<%=contextPath%>/delete.bo?no=<%=b.getbNo()%>" class="btn btn-outline-danger btn-sm" onclick="return deleteBo();">삭제하기</a>
+                            <%} %>
+                            <%if(loginMember != null){ %>																					
+                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#boardReport" onclick="boardHidden('<%=b.getbNo()%>', '<%=loginMember.getMemNo()%>', '<%=b.getMemberNo()%>', '1');">신고하기</button>
                             <button type="button" class="btn btn-outline-warning btn-sm" onclick="good();">추천가기</button>
                             <%} %>
                             <!-- ---------------------------------------------------------------- -->
                             <button type="button" class="btn btn-outline-warning btn-sm" onclick="history.back();">뒤로가기</button>
-                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#img1">신고하기</button>
                         </td>
                     </tr>
                 </tbody>
@@ -195,12 +199,12 @@
     			let value = "";
     			if(list.length > 0){
     				for(let i=0; i<list.length; i++){
-    					value += "<tr>"
-    						   +	"<th>" + list[i].reMemNo + "</th>"
-    						   +	"<td>" + list[i].replyContent + "</td>"
-    						   +	"<td>" + list[i].enrollDate + "</td>"
-    						   +	"<td><img id='img1' class='img' data-toggle='modal' data-target='#img1' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
-    						   + "</tr>";
+    				    value += "<tr>"
+    				           +  "<th>" + list[i].reMemNo + "</th>"                                                                                            
+    				           +  "<td>" + list[i].replyContent + "</td>"   
+    				           +  "<td>" + list[i].enrollDate + "</td>"
+    				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='hidden(" + list[i].replyNo + ', <%=loginMember.getMemNo()%>, ' + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
+    				           + "</tr>";
     				}
     			}else{
     				value += "<tr><td colspan='4'>존재하는 댓글이 없습니다.</td></tr>";
@@ -211,9 +215,7 @@
     			console.log("댓글목록 조회용 ajax실패")
     		}
     	})
-    }
-                    
-  
+    }                
     				
     function community_go(){
         location.href="<%= contextPath %>/main.bo";
@@ -226,26 +228,76 @@
     		return false;
     	}
     }
+    
+    
+    // 댓글신고				 
+    function hidden(replyNo, reportNo, reportedNo, typeNo){
+    	// 전달받은 값들을 해당 input 요소에value로 대입하는 구문
+        document.getElementById('replyNo').value = replyNo; //히든으로 넘길 댓글번호
+        document.getElementById('replyReportNo').value = reportNo; //히든으로 넘길 신고한회원번호
+        document.getElementById('replyReportedNo').value = reportedNo; //히든으로 넘길 신고받은회원번호
+        document.getElementById('replyTypeNo').value = typeNo; //히든으로 넘길 신고타입 댓글은 2임
+    }
+    
+    // 게시글신고				 
+    function boardHidden(boardNo, reportNo, reportedNo, typeNo){
+    	// 전달받은 값들을 해당 input 요소에value로 대입하는 구문
+        document.getElementById('boardNo').value = boardNo; //히든으로 넘길 게시글번호
+        document.getElementById('boardReportNo').value = reportNo; //히든으로 넘길 신고한회원번호
+        document.getElementById('boardReportedNo').value = reportedNo; //히든으로 넘길 신고받은회원번호
+        document.getElementById('boardTypeNo').value = typeNo; //히든으로 넘길 신고타입 게시글은 1임
+    }
+    
     </script>
-
-                <!-- The Modal -->
-                <div class="modal" id="img1">
+				
+				<!-- 게시글신고 The Modal -->
+                <div class="modal" id="boardReport">
                     <div class="modal-dialog">
                         <div class="modal-content"> 
                             <div class="modal-body">
-                                <form action="<%=contextPath%>/report.bo?memNo=<%=loginMember.getMemNo()%>" method="get">
-                                <input type="hidden" name="no" value="">
+                            <form action="<%=contextPath%>/boReport.bo" method="post">
+								<input type="hidden" id="boardNo" name="boardNo" value="">
+                                <input type="hidden" id="boardReportNo" name="boardReportNo" value="">
+                                <input type="hidden" id="boardReportedNo" name="boardReportedNo" value="">
+                                <input type="hidden" id="boardTypeNo" name="boardTypeNo" value="">
                                     <p class="modal-text">
-                                            <input type="checkbox" name="notify" value="1"> 욕설 <br>
-                                            <input type="checkbox" name="notify" value="2"> 도배 <br>
-                                            <input type="checkbox" name="notify" value="3"> 음란성 및 선정성 <br>
-                                            <input type="checkbox" name="notify" value="4"> 기타 <br><br><br>
+                                            <input class="ca" type="checkbox" name="notify" value="1"> 욕설 <br>
+                                            <input class="ca" type="checkbox" name="notify" value="2"> 도배 <br>
+                                            <input class="ca" type="checkbox" name="notify" value="3"> 음란성 및 선정성 <br>
+                                            <input class="ca" type="checkbox" name="notify" value="4"> 기타 <br><br><br>
                                             자세한내용입력<br>
-                                            <textarea rows="7" class="form-control" style="resize: none;" name=""></textarea>
+                                            <textarea id="texBo" rows="7" class="form-control" style="resize: none;" name="content"></textarea>
                                     </p> <br><br>
                                     <button type="button" class="btn btn-secondary modal-btn no" style="width: 100px;" data-dismiss="modal">취소</button>
                                     <button type="submit" class="btn btn-dark modal-btn" style="width: 100px;">신고하기</button>
-                                </form> 
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- The Modal end-->
+				
+                <!-- 댓글신고 The Modal -->
+                <div class="modal" id="replyReport">
+                    <div class="modal-dialog">
+                        <div class="modal-content"> 
+                            <div class="modal-body">
+                            <form action="<%=contextPath%>/boReReport.bo" method="post">
+                                <input type="hidden" id="replyNo" name="replyNo" value="">
+                                <input type="hidden" id="replyReportNo" name="replyReportNo" value="">
+                                <input type="hidden" id="replyReportedNo" name="replyReportedNo" value="">
+                                <input type="hidden" id="replyTypeNo" name="replyTypeNo" value="">
+                                    <p class="modal-text">
+                                            <input class="ca" type="checkbox" name="notify" value="1"> 욕설 <br>
+                                            <input class="ca" type="checkbox" name="notify" value="2"> 도배 <br>
+                                            <input class="ca" type="checkbox" name="notify" value="3"> 음란성 및 선정성 <br>
+                                            <input class="ca" type="checkbox" name="notify" value="4"> 기타 <br><br><br>
+                                            자세한내용입력<br>
+                                            <textarea id="tex" rows="7" class="form-control" style="resize: none;" name=""></textarea>
+                                    </p> <br><br>
+                                    <button type="button" class="btn btn-secondary modal-btn no" style="width: 100px;" data-dismiss="modal">취소</button>
+                                    <button type="submit" class="btn btn-dark modal-btn" style="width: 100px;">신고하기</button>
+                            </form> 
                             </div>
                         </div>
                     </div>

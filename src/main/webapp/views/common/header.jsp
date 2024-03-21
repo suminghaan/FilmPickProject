@@ -374,6 +374,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
     </header>
 
   </main>
+
 	<script src="<%= contextPath %>/resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="<%= contextPath %>/resources/assets/js/like&dislike.js"></script>
     <script>
@@ -383,6 +384,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
                 $(el).parent().parent(".review_content").css("display", "none");
             })
         })
+
 
         $(".more_info_btn_long").each(function (index, el) {
             $(this).click(function () {

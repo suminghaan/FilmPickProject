@@ -10,6 +10,7 @@ import java.util.List;
 import com.fp.board.model.dao.BoardDao;
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
+import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
@@ -258,6 +259,36 @@ public class BoardService {
 			rollback(conn);
 		}
 		close(conn);
+		return result;
+	}
+	
+	/**
+	 * 게시글 신고를 위한 메소드
+	 * @author 호용
+	 */
+	public int reportBoard(Report re) {
+		Connection conn = getConnection();
+		int result = bDao.reportBoard(conn, re);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
+	}
+	
+	/**
+	 * 댓글 신고를 위한 메소드
+	 * @author 호용
+	 */
+	public int replyReportBoard(Report re) {
+		Connection conn = getConnection();
+		int result = bDao.replyReportBoard(conn, re);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		return result;
 	}
 

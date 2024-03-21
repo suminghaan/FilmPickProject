@@ -3,15 +3,18 @@ package com.fp.board.model.vo;
 public class Report {
 
 	private int reportNo; //신고번호
-	private int reportType; //신고분류(1욕설 | 2도배 | 3선정 | 4기타)
+	private String reportType; //신고분류(1욕설 | 2도배 | 3선정 | 4기타)
 	private String reportContent; //신고내용
 	private String reportDate; // 신고날짜
-	private int reportBoardNo; // 신고받은게시글 | 댓글 번호
+	private int reportBoardNo; // 신고받은게시글 | 댓글 번호 (유동적으로 바뀜)
 	private String reportMemNo; //신고한 회원번호
 	private String reportedMemNo; //신고받은 회원번호
-	
-	public Report(int reportNo, int reportType, String reportContent, String reportDate, int reportBoardNo,
-			String reportMemNo, String reportedMemNo) {
+	private String type; // 신고타입(1게시글신고 | 2댓글신고)
+
+	public Report() {}
+
+	public Report(int reportNo, String reportType, String reportContent, String reportDate, int reportBoardNo,
+			String reportMemNo, String reportedMemNo, String type) {
 		super();
 		this.reportNo = reportNo;
 		this.reportType = reportType;
@@ -20,6 +23,7 @@ public class Report {
 		this.reportBoardNo = reportBoardNo;
 		this.reportMemNo = reportMemNo;
 		this.reportedMemNo = reportedMemNo;
+		this.type = type;
 	}
 
 	public int getReportNo() {
@@ -30,11 +34,11 @@ public class Report {
 		this.reportNo = reportNo;
 	}
 
-	public int getReportType() {
+	public String getReportType() {
 		return reportType;
 	}
 
-	public void setReportType(int reportType) {
+	public void setReportType(String reportType) {
 		this.reportType = reportType;
 	}
 
@@ -78,11 +82,21 @@ public class Report {
 		this.reportedMemNo = reportedMemNo;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "Report [reportNo=" + reportNo + ", reportType=" + reportType + ", reportContent=" + reportContent
 				+ ", reportDate=" + reportDate + ", reportBoardNo=" + reportBoardNo + ", reportMemNo=" + reportMemNo
-				+ ", reportedMemNo=" + reportedMemNo + "]";
+				+ ", reportedMemNo=" + reportedMemNo + ", type=" + type + "]";
 	}
+	
+	
 	
 }

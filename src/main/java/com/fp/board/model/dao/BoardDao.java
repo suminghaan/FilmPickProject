@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
+import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Movie;
@@ -403,7 +404,8 @@ public class BoardDao {
 							, rset.getString("B_CONTENT")
 							, rset.getString("B_REGIST_DATE")
 						    , rset.getString("B_CATEGORY")
-						    , rset.getString("MEM_ID"));
+						    , rset.getString("MEM_ID")
+						    , rset.getInt("MEM_NO"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -552,7 +554,8 @@ public class BoardDao {
 				list.add(new Reply(rset.getInt("REPLY_NO")
 								 , rset.getString("REPLY_CONTENT")
 								 , rset.getString("ENROLL_DATE")
-								 , rset.getString("MEM_ID")));
+								 , rset.getString("MEM_ID")
+								 , rset.getInt("MEM_NO")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -601,6 +604,54 @@ public class BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * 게시글 신고를 위한 메소드
+	 * @author 호용
+	 */
+	public int reportBoard(Connection conn, Report re) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("reportBoard");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, re.getType());
+			pstmt.setString(2, re.getReportContent());
+			pstmt.setInt(3, re.getReportBoardNo());
+			pstmt.setString(4, re.getReportMemNo());
+			pstmt.setString(5, re.getReportedMemNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * 댓글 신고를 위한 메소드
+	 * @author 호용
+	 */
+	public int replyReportBoard(Connection conn, Report re) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("replyReportBoard");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, re.getType());
+			pstmt.setString(2, re.getReportContent());
+			pstmt.setInt(3, re.getReportBoardNo());
+			pstmt.setString(4, re.getReportMemNo());
+			pstmt.setString(5, re.getReportedMemNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			close(pstmt);
 		}
 		return result;
