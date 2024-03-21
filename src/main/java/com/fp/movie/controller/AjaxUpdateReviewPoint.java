@@ -1,31 +1,25 @@
 package com.fp.movie.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
-import com.fp.movie.model.vo.Movie;
-import com.fp.person.model.service.PersonService;
-import com.fp.person.model.vo.Person;
 
 /**
- * Servlet implementation class MoviePersonSearchController
+ * Servlet implementation class AjaxUpdateReviewPoint
  */
-@WebServlet("/search.fp")
-public class MoviePersonSearchController extends HttpServlet {
+@WebServlet("/insertReview.fp")
+public class AjaxUpdateReviewPoint extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoviePersonSearchController() {
+    public AjaxUpdateReviewPoint() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +28,24 @@ public class MoviePersonSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchKeyword = request.getParameter("searchKeyword");
+		request.setCharacterEncoding("UTF-8");
 		
-		ArrayList<Movie> movieList = new MovieService().selectMovieList(searchKeyword);
-		ArrayList<Attachment> posterList = new MovieService().selectPosterList(searchKeyword);
-		ArrayList<Person> personList = new PersonService().selectPersonByKeyword(searchKeyword);
+		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		double likePoint = Double.parseDouble(request.getParameter("likePoint"));
+		String reviewContent = null;
 		
-		request.setAttribute("personList", personList);
-		request.setAttribute("movieList", movieList);
-		request.setAttribute("posterList", posterList);
-		request.getRequestDispatcher("/views/search/search.jsp").forward(request, response);
+		if(request.getParameter("reviewContent") != null ) {
+			reviewContent = request.getParameter("reviewContent");
+		}
+		
+		int result = new MovieService().insertReview(movieNo, userNo, likePoint, reviewContent);
+		response.setContentType("text/html; chartset=utf-8");
+		if(result > 0) {
+			response.getWriter().print("등록 성공!");
+		} else {
+			response.getWriter().print("등록 실패!");
+		}
 	}
 
 	/**

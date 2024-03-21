@@ -1,31 +1,25 @@
 package com.fp.movie.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
-import com.fp.movie.model.vo.Movie;
-import com.fp.person.model.service.PersonService;
-import com.fp.person.model.vo.Person;
 
 /**
- * Servlet implementation class MoviePersonSearchController
+ * Servlet implementation class AjaxMovieUpdateHeartController
  */
-@WebServlet("/search.fp")
-public class MoviePersonSearchController extends HttpServlet {
+@WebServlet("/updateheart.fp")
+public class AjaxMovieUpdateHeartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoviePersonSearchController() {
+    public AjaxMovieUpdateHeartController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +28,17 @@ public class MoviePersonSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchKeyword = request.getParameter("searchKeyword");
+		int mvNo = Integer.parseInt(request.getParameter("movieNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		String isChecked = request.getParameter("isChecked");
 		
-		ArrayList<Movie> movieList = new MovieService().selectMovieList(searchKeyword);
-		ArrayList<Attachment> posterList = new MovieService().selectPosterList(searchKeyword);
-		ArrayList<Person> personList = new PersonService().selectPersonByKeyword(searchKeyword);
-		
-		request.setAttribute("personList", personList);
-		request.setAttribute("movieList", movieList);
-		request.setAttribute("posterList", posterList);
-		request.getRequestDispatcher("/views/search/search.jsp").forward(request, response);
+		int result = new MovieService().updateMovieLike(mvNo, userNo, isChecked);
+		response.setContentType("text/html; charset=utf-8");
+		if (result > 0) {
+			response.getWriter().print("좋아요 표시 성공");
+		} else {
+			response.getWriter().print("좋아요 표시 실패");
+		}
 	}
 
 	/**

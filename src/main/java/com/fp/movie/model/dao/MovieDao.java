@@ -458,6 +458,28 @@ public class MovieDao {
 		return list;
 	}
 
+	public int insertReview(Connection conn, int movieNo, int userNo, double likePoint, String reviewContent) {
+		String query = prop.getProperty("insertReview");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reviewContent);
+			pstmt.setString(2, String.valueOf(likePoint));
+			pstmt.setInt(3, userNo);
+			pstmt.setInt(4, movieNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+	
+		return result;
+	}
+
 
 
 
