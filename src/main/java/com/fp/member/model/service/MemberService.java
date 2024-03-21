@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.dao.MemberDao;
 import com.fp.member.model.vo.Member;
@@ -75,16 +76,31 @@ public class MemberService {
 		return updateMem;
 	}
 	
-	public int selectListCount(int memNo) {
+	public int selectMyPostListCount(int memNo) {
 		Connection conn = getConnection();
-		int listCount = mDao.selectListCount(conn, memNo);
+		int listCount = mDao.selectMyPostListCount(conn, memNo);
 		close(conn);
 		return listCount;
 	}
 	
-	public List<Board> selectList(int memNo, PageInfo pi){
+	public List<Board> selectMyPostList(int memNo, PageInfo pi){
 		Connection conn =getConnection();
-		List<Board> list = mDao.selectList(conn,memNo,pi);
+		List<Board> list = mDao.selectMyPostList(conn,memNo,pi);
+		close(conn);
+		return list;
+	}
+	
+	/* 작성댓글목록 */
+	public int selectMyCommentListCount(int memNo) {
+		Connection conn = getConnection();
+		int listCount = mDao.selectMyCommentListCount(conn, memNo);
+		close(conn);
+		return listCount;
+	}
+	
+	public List<Reply> selectMyCommentList(int memNo, PageInfo pi){
+		Connection conn =getConnection();
+		List<Reply> list = mDao.selectMyCommentList(conn, memNo,pi);
 		close(conn);
 		return list;
 	}
