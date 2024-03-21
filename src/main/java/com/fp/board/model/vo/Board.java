@@ -21,15 +21,29 @@ public class Board {
 	private int boardCount; // 총 게시글 개수
 	private int memLevel; // 회원등급
 	private String memNickname; // 닉네임
+	// ** 2024.03.21 (관리자 : 한수민) 블라인드 게시글 조회 페이지에서 쓸 필드 추가
+	private String replyContent; // 댓글내용
 	
 	public Board() {}
 	
 	
 
 	
-	
+	/**
+	 * (관리자) 블라인드게시글 조회용도
+	 * @param bNo 게시글번호
+	 * @param bTitle 게시글제목
+	 * @param bRegistDate 게시글등록일
+	 * @param bReadCount 조회수
+	 * @param bCategory 카테고리
+	 * @param replyCount 댓글수
+	 * @param memId 등록자
+	 * @param replyContent 댓글내용
+	 * 
+	 * @author 한수민
+	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory,
-			int replyCount, String memId) {
+			int replyCount, String memId, String replyContent) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -38,6 +52,7 @@ public class Board {
 		this.bCategory = bCategory;
 		this.replyCount = replyCount;
 		this.memId = memId;
+		this.replyContent = replyContent;
 	}
 
 
@@ -372,6 +387,24 @@ public class Board {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
+	
+	
+
+
+
+	public String getReplyContent() {
+		return replyContent;
+	}
+
+
+
+
+
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
+
+
 
 
 
