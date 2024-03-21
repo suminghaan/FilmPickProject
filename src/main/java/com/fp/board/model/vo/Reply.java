@@ -41,6 +41,20 @@ public class Reply {
 		this.reMemNo = reMemNo;
 		this.reMemberNo = reMemberNo;
 	}
+	
+	/**
+	 * 마이페이지 작성댓글목록 페이지 
+	 * @param replyNo 댓글번호
+	 * @param replyContent 댓글내용
+	 * @param enrollDate 작성일자
+	 * @author 은정
+	 */
+	public Reply(int replyNo, String replyContent, String enrollDate) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.enrollDate = enrollDate;
+	}
 
 	public int getReplyNo() {
 		return replyNo;

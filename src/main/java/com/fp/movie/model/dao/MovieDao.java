@@ -334,10 +334,78 @@ public class MovieDao {
 		return movieList;
 	}
 
+//	좋아요 표시 메소드 [기웅]
+	public int insertMovieLike(Connection conn, int mvNo, int userNo) {
+		String query = prop.getProperty("insertMovieLike");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mvNo);
+			pstmt.setInt(2, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+//	좋아요 표시 제거 메소드 [기웅]
+	public int deleteMovieLike(Connection conn, int mvNo, int userNo) {
+		String query = prop.getProperty("deleteMovieLike");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mvNo);
+			pstmt.setInt(2, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
-	public List<Movie> selectMainList(Connection conn) {
+	public List<Movie> selectMainListv(Connection conn) {
 		return null;
 	}
+
+	// 첫페이지 영화 포스터 조회 메소드 [용훈]
+	public List<Movie> firstselect(Connection conn) {
+		List<Movie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("firstselect");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("MV_NO"));
+				m.setMvPoster(rset.getString("MV_POSTER"));
+				
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
 
 
 

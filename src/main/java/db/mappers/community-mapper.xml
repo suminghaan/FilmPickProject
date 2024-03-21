@@ -102,6 +102,25 @@
 			WHERE N.NOTICE_STATUS = 'Y'
 			  AND N.NOTICE_TITLE LIKE '%' || ? || '%'
 		</entry>
+		
+		
+		<!-- 관리자 공지사항 수정버튼 시 보여지는 목록 [수민] -->
+		<entry key="updateNotice">
+			SELECT 
+		  		NOTICE_NO
+		  	  , NOTICE_TITLE
+		  	  , NOTICE_CATEGORY
+		  	  , NOTICE_CONTENT
+		  	  , ORIGIN_NAME
+		  	  , CHANGE_NAME <!-- 첨부파일수정된이름 -->
+		  	  , FILE_PATH
+		  	  , NOTICE_FIX
+		 	FROM NOTICE N
+		 	LEFT JOIN ATTACHMENT A ON N.NOTICE_NO = A.REF_NO
+		 	 AND A.REF_TYPE = 5
+		 	WHERE N.NOTICE_NO = ?
+				  
+		</entry>
 
 
 

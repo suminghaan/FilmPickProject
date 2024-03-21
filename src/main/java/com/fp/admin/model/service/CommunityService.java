@@ -68,4 +68,11 @@ public class CommunityService {
 		
 	}
 
+	public List<Notice> updateNotice(String noticeNo) {
+		Connection conn = getConnection();
+		List<Notice> uplist = coDao.updateNotice(conn, noticeNo);
+		close(conn);
+		return uplist;
+	}
+
 }

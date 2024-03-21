@@ -119,4 +119,34 @@
 		)
 		WHERE RNUM < 11]]>
 	</entry>
+	<!-- 영화 좋아요 표시 처리하는 쿼리 [기웅] -->
+	<entry key="insertMovieLike">
+	INSERT INTO MOVIE_LIKE
+	VALUES (
+	    SEQ_MOVIE_LIKE_NO.NEXTVAL
+	    , SYSDATE
+	    , ?    
+	    , ?
+	)
+	</entry>
+	
+	<entry key="deleteMovieLike">
+	DELETE
+	FROM MOVIE_LIKE
+	WHERE MV_NO = ?
+	AND   MEM_NO = ?
+	</entry>
+	
+	<entry key="firstselect">
+	<![CDATA[
+		SELECT F.*
+		FROM (
+		    SELECT MV_NO, MV_POSTER
+		    FROM MOVIE
+		    WHERE MV_STATUS = 'Y'
+		    ORDER BY MV_OPENDATE DESC
+		) F
+		WHERE ROWNUM <= 5
+	]]>
+	</entry>
 </properties>

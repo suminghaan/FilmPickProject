@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.fp.movie.model.vo.Movie, java.util.List"%>
 <%
 	String contextPath = request.getContextPath();
 %>
@@ -10,6 +10,8 @@
 <title>firstPage</title>
 <link rel="stylesheet" type="text/css" href="resources/css/slick-1.8.1/slick-1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/slick-1.8.1/slick-1.8.1/slick/slick-theme.css"/>
+<!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <style>
 
     #wrap, #wrap *{
@@ -27,6 +29,10 @@
     .content{
         background-color: rgb(8, 8, 8);
         padding-left: 20px;
+    }
+    .content_img{
+    	width: 400px;
+    	height: 570px;
     }
     .logo{
         margin: 30px;
@@ -82,26 +88,75 @@
             <a href="<%= contextPath %>/mainpage.fp"><img src="resources/img/logo.png" alt="" style="width:200px"></a>
         </div>
     </div>
-    <div class="content">
-        <div>
-            <a href=""><img src="resources/img/파묘.jpeg" alt="" style="width: 400px; height: 600px;"></a>
-        </div>
-        <div>
-            <a href=""><img src="resources/img/듄2.jpeg" alt="" style="width: 400px; height: 600px;"></a>
-        </div>
-        <div>
-            <a href=""><img src="resources/img/건국전쟁.jpeg" alt="" style="width: 400px; height: 600px;"></a>
-        </div>
-        <div>
-            <a href=""><img src="resources/img/웡카.jpeg" alt="" style="width: 400px; height: 600px;"></a>
-        </div>
-        <div>
-            <a href=""><img src="resources/img/가여운것들.jpeg" alt="" style="width: 400px; height: 600px;"></a>
-        </div>
+    <div id="movie_content" class="content">
+        
       </div>
+      <script>
+      	$(function(){
+      		movieList();
+      	})
+      	
+      	function movieList(list){
+      		$.ajax({
+      			url: "<%= contextPath %>/firstmovie.co",
+      			success:function(list){
+      				let value = "";
+      				if(list.length > 0){
+      					for(let i = 0; i < list.length; i++){
+      					value += "<div>"
+      							+ "<a href='<%= contextPath %>/movieDetail.fp?movieNo=" + list[i].mvNo + "'>"
+      	            			+	 "<img class='content_img' src='" + list[i].mvPoster + "'>"
+      	            			+ "</a>"
+      	         				+ "</div>";
+      					}
+      				}else{
+      					value += "";
+      				}
+      				$("#movie_content").html(value);
+      				console.log(list);
+      				
+      				$('.content').slick({
+      		            
+      		            dots: true,
+      		            slidesToShow: 3,
+      		            slidesToScroll: 1,
+      		            autoplay: true,
+      		            autoplaySpeed: 5000,
+      		            centerMode: true,
+      		            centerPadding: '0px',
+      		            slidesToShow: 3,
+      		            responsive: [{
+      		                breakpoint: 0,
+      		                settings: {
+      		                    slidesToShow: 3,
+      		                    slidesToScroll: 3,
+      		                    infinite: true,
+      		                    dots: true
+      		                }
+      		            },
+      		            {
+      		                breakpoint: 0,
+      		                settings: {
+      		                    slidesToShow: 2,
+      		                    slidesToScroll: 2
+      		                }
+      		            },
+      		            {
+      		                breakpoint: 0,
+      		                settings: {
+      		                    slidesToShow: 1,
+      		                    slidesToScroll: 1
+      		                }
+      		            }
+      		            ]
+      		        });
+      			}
+      		})
+      	}
+      </script>
         <div>
-            <form class="search">
-            <input id="textplace" class="text-box form-control me-2" type="search" aria-label="Search" placeholder="영화, 인물">
+            <form class="search" action="<%= contextPath %>/search.fp" method="get" role="search">
+            <input id="textplace" name="searchKeyword" class="text-box form-control me-2" type="search" aria-label="Search" placeholder="영화, 인물">
             <button class="btn btn-outline-success" type="submit">검색</button>
             </form>
         </div>
@@ -116,7 +171,7 @@
 <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script>
-        $('.content').slick({
+        /* $('.content').slick({
             
             dots: true,
             slidesToShow: 3,
@@ -150,7 +205,7 @@
                 }
             }
             ]
-        });
+        }); */
     </script>
 
     

@@ -1,4 +1,4 @@
-package com.fp.admin.controller.ad_community;
+package com.fp.common.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.admin.model.service.CommunityService;
-import com.fp.admin.model.vo.Notice;
+import com.fp.movie.model.service.MovieService;
+import com.fp.movie.model.vo.Movie;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ComuNoticeSearchController
+ * Servlet implementation class firstPageController
  */
-@WebServlet("/noticeSearch.co")
-public class ComuNoticeSearchController extends HttpServlet {
+@WebServlet("/firstmovie.co")
+public class firstPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ComuNoticeSearchController() {
+    public firstPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +32,12 @@ public class ComuNoticeSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		List<Movie> list = new MovieService().firstselect();
 		
-		String keyword = request.getParameter("keyword");
-		
-		List<Notice> list = new CommunityService().searchNotice(keyword);
-		
-		response.setContentType("application/json; charset=utf-8");
+		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(list, response.getWriter());
-		
+	
 	}
 
 	/**
