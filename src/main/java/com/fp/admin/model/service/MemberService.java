@@ -223,6 +223,12 @@ public class MemberService {
 		return listCount;
 	}
 
+	/** 회원이 작성한 리뷰의 페이징, 조회 용도
+	 * 
+	 * @author 김지우
+	 * @param memNo
+	 * @return listCount
+	 */
 	public List<Review> selectReviewList(String memNo, PageInfo pi) {
 		Connection conn = getConnection();
 

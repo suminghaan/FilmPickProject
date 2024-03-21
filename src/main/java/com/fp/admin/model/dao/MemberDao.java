@@ -424,6 +424,12 @@ public class MemberDao {
 		return list;
 	}
 
+	/**
+	 * 회원이 작성한 리뷰 조회, 페이징에 쓸 용도
+	 *
+	 * @author 김지우
+	 * @return listCount 
+	 */
 	public int selectReviewListCount(Connection conn, String memNo) {
 		int listCount = 0;
 
@@ -447,6 +453,12 @@ public class MemberDao {
 		return listCount;
 	}
 
+	/**
+	 * 회원이 작성한 리뷰 조회, 페이징에 쓸 용도
+	 *
+	 * @author 김지우
+	 * @return list 
+	 */
 	public List<Review> selectReviewList(Connection conn, String memNo, PageInfo pi) {
 		List<Review> list = new ArrayList<>();
 
