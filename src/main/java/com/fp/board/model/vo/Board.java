@@ -29,9 +29,21 @@ public class Board {
 	
 
 	
-	
+	/**
+	 * (관리자) 블라인드게시글 조회용도
+	 * @param bNo 게시글번호
+	 * @param bTitle 게시글제목
+	 * @param bRegistDate 게시글등록일
+	 * @param bReadCount 조회수
+	 * @param bCategory 카테고리
+	 * @param replyCount 댓글수
+	 * @param memId 등록자
+	 * @param replyContent 댓글내용
+	 * 
+	 * @author 한수민
+	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory,
-			int replyCount, String memId) {
+			int replyCount, String memId, String replyContent) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -40,6 +52,7 @@ public class Board {
 		this.bCategory = bCategory;
 		this.replyCount = replyCount;
 		this.memId = memId;
+		this.replyContent = replyContent;
 	}
 
 
