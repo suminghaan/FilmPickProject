@@ -89,6 +89,27 @@ public class MovieService {
 	}
 
 
+//	영화에 좋아요 표시하는 메소드 [기웅]
+	public int updateMovieLike(int mvNo, int userNo, String isChecked) {
+		Connection conn = getConnection();
+		
+		int result = 0;
+		// 좋아요 표시
+		if(isChecked.equals("false")) {
+			result = mDao.insertMovieLike(conn, mvNo, userNo);
+		} else { // 좋아요 표시 제거
+			result = mDao.deleteMovieLike(conn, mvNo, userNo);
+		}
+		
+		// 0이면 실패
+		if (result != 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
 // 첫페이지 영화 포스터 조회 메소드 [용훈]
 	public List<Movie> firstselect() {
 		Connection conn = getConnection();

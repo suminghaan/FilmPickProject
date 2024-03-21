@@ -334,6 +334,46 @@ public class MovieDao {
 		return movieList;
 	}
 
+//	좋아요 표시 메소드 [기웅]
+	public int insertMovieLike(Connection conn, int mvNo, int userNo) {
+		String query = prop.getProperty("insertMovieLike");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mvNo);
+			pstmt.setInt(2, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+//	좋아요 표시 제거 메소드 [기웅]
+	public int deleteMovieLike(Connection conn, int mvNo, int userNo) {
+		String query = prop.getProperty("deleteMovieLike");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, mvNo);
+			pstmt.setInt(2, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	public List<Movie> selectMainListv(Connection conn) {
 		return null;
@@ -365,6 +405,7 @@ public class MovieDao {
 		
 		return list;
 	}
+
 
 
 
