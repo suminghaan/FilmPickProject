@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.main_content>div.mypage_content{
+	.mypage{
       border: 1px solid lightgray;
       background-color: white;
+      color: black;
       width: 800px;
       margin: auto;
       margin-top: 50px;
@@ -16,6 +17,40 @@
       min-height: 400px;
       padding: 50px; 
       border-radius: 0.7em;
+    }
+    .mypage_header{
+      height: 200px;
+      display: flex;
+    }
+    .mypage_header1, .mypage_header4{
+      width: 20%;
+    }
+    .mypage_header2, .mypage_header3{
+      width: 30%;
+      margin: auto;
+    }
+    .mypage_profile_pic{
+      width: 150px;
+      height: 150px;
+      border: 3px solid;
+      border-radius: 10.0em;
+      overflow: hidden;
+      margin: auto;
+    }
+    .profile_thumbnail{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .mypage_content{
+      height: 500px;
+    }
+    .mypage_footer{
+      height: 100px;
+    }
+    .btn{
+      height: 50px;
+      margin-top: auto;
     }
 </style>
 </head>
@@ -130,24 +165,69 @@
     <div class="content_wrap" style="background-color: black;">
       <div class="content">
 
-
         <section class="main_content">
-          <div class="mypage_content">
+          <div class="mypage">
               <h2>회원정보</h2>
   
               <!-- 프로필사진, 닉네임, 등급, 프로필사진 수정 -->
-              <div>
-                  <div>
-                      <img src="" alt="">
+              <div class="mypage_header">
+
+                <div class="mypage_header1"></div>
+                   
+                <div class="mypage_header2" id="mypage_header2">
+                  <div class="mypage_profile_pic" id="mypage_profile_pic" style="display: flex; align-items: center; justify-content: center; color:#F72798">
+                    <i class="fa-solid fa-user fa-4x" id="profile" style="color: #F72798; display: block;"></i>
                   </div>
+
+                </div>
+
+                <div class="mypage_header3">
                   <h7>등급</h7>
-                  <h4>유저1</h4>
-                  <button class="btn-editprofilephoto">프로필사진 수정</button>
-  
+                  <h2><%=loginMember.getNickname()%></h2>
+                  <div id="btnWrap1">
+                    <div id="btnWrap2" style="display: flex">
+                    <input type="color" id="selectColor" style="width: 50px; height: 30px;"><button style="width: 150px; height: 30px;" onclick="changeColor();">프로필색 변경</button>
+                    </div>
+                  <label class="input-file-button" for="input-file">사진선택하기</label>
+                  <input type="file" id="input-file" accept="image/*" onchange="loadFile(this)">
+                  <script>
+                    function loadFile(input) {
+                        $("#profile").css("display", "none");
+                        let file = input.files[0]; // 선택파일 가져오기
+            
+                        let newImage = document.createElement("img"); //새 이미지 태그 생성
+            
+                        //이미지 source 가져오기
+                        newImage.src = URL.createObjectURL(file);
+                        newImage.style.width = "100%"; //div에 꽉차게 넣으려고
+                        newImage.style.height = "100%";
+                        newImage.style.objectFit = "cover"; // div에 넘치지 않고 들어가게
+            
+                        //이미지를 mypage_profile_pic div에 추가
+                        let container = document.getElementById('mypage_profile_pic');
+                        container.appendChild(newImage);
+                    }
+                  </script>
+
+                  
+
+
+                  <button class="btn-editprofilephoto" id="popupBtn" style="width: 200px;">프로필사진 수정</button>
+                  </div>
+                  <script>
+                    function changeColor(){
+                      document.getElementById("mypage_profile_pic").style.color=document.getElementById("selectColor").value;
+                      document.getElementById("profile").style.color=document.getElementById("selectColor").value;
+                    }
+                  </script>
+                </div>
+
+                <div class="mypage_header4"></div>
+                  
               </div>
   
               <br><br>
-  
+              <div class="mypage_content">
               <!-- 회원정보 -->
               <form action="">
                   <table class="table">
@@ -166,7 +246,7 @@
                       <tr>
                           <th>* 비밀번호</th>
                           <td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" required value="<%=loginMember.getMemPwd()%>"></td>
-                      </tr>    
+                      </tr> 
                       <tr>
                           <th>* 휴대전화번호</th>
                           <td><input type="text" class="form-control" placeholder="휴대전화번호를 입력하세요(-포함)" value="<%=loginMember.getMemPhone()%>"></td>
@@ -179,33 +259,37 @@
                       <tr>
                           <th>&nbsp;&nbsp;선호장르</th>
                           <td>
-                              <select name="genre" id="prefgenre">
-                                <option name="genre" value="genre">선호장르</option>
-                                <option name="sf" value="sf">SF</option>
-                                <option name="thriller" value="thriller">스릴러</option>
-                                <option name="romance" value="romance">로맨스</option>
-                                <option name="action" value="action">액션</option>
-                                <option name="comedy" value="comedy">코미디</option>
-                                <option name="erotic" value="erotic">에로</option>
-                                <option name="crime" value="crime">범죄</option>
-                                <option name="animation" value="animation">애니메이션</option>               
+                            <select name="genre" id="prefgenre">
+                              <option name="genre" value="genre">선호장르</option>
+                              <option name="sf" value="sf">SF</option>
+                              <option name="thriller" value="thriller">스릴러</option>
+                              <option name="romance" value="romance">로맨스</option>
+                              <option name="action" value="action">액션</option>
+                              <option name="comedy" value="comedy">코미디</option>
+                              <option name="erotic" value="erotic">에로</option>
+                              <option name="crime" value="crime">범죄</option>
+                              <option name="animation" value="animation">애니메이션</option> 
                               </select>
                           </td>
-                          
                       </tr>
                   </table>
-                  
-                  <div class="" style="text-align: center;">
+              </div>    
+                  <div class="mypage_footer" style="display: flex; justify-content: center;">
                     <button type="submit" class="btn">정보변경</button>
                     <button type="button" class="btn" data-toggle="modal"data-target="#changePwdModal">비밀번호 변경</button>
                     <button type="reset" class="btn">초기화</button>
-                    <a href="<%=contextPath%>/deleteForm.me" class="btn">회원탈퇴</a>
+                    <button type="button" class="btn" onclick="deleteMember()">회원탈퇴</button>
                   </div>
+                  <script>
+                    function deleteMember() {
+                      location.href="<%=contextPath%>/deleteForm.me";
+                    }
+                
+                  </script>
               </form>
           </div>
       </section>
-
-	  <!-- 비밀번호 변경용 모달창 -->
+       <!-- 비밀번호 변경용 모달창 -->
 	  
 	  <div class="modal" id="changePwdModal">
 	  	<div class="modal-dialog">
@@ -222,20 +306,20 @@
 	  			<form action="<%=contextPath%>/updatePwd.me" method="post">
 	  				<table align="center">
 	  					<tr>
-	  						<th>* 현재 비밀번호</th>
+	  						<th style="width: 200px;">* 현재 비밀번호</th>
 	  						<td><input type="password" class="form-control" name="memPwd"></td>
 	  					</tr>
 	  					<tr>
-	  						<th>* 변경할 비밀번호</th>
-	  						<td><input type="password" class="form-control" name="newPwd"></td>
+	  						<th style="width: 200px;">* 변경할 비밀번호</th>
+	  						<td><input type="password" class="form-control" name="newPwd""></td>
 	  					</tr>
 	  					<tr>
-	  						<th>* 변경할 비밀번호 재입력</th>
-	  						<td><input type="password" class="form-control"></td>
+	  						<th style="width: 200px;">* 변경할 비밀번호 재입력</th>
+	  						<td><input type="password" class="form-control""></td>
 	  					</tr>
 	  					<tr>
 	  						<td colspan="2" style="text-align:center; padding-top: 10px;">
-								<button type="submit" class="btn btn-outline-warning btn-sm">비밀번호 변경</button>
+								<button type="submit" class="btn btn-outline-warning btn-sm" style="width: 150px;">비밀번호 변경</button>
 	  						</td>
 	  					</tr>
 	  				</table>
@@ -244,7 +328,6 @@
 	  	</div>
 	  	</div>
 	  </div>
-
       </div>
     </div>
 
