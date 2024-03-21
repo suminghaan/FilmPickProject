@@ -6,6 +6,7 @@
 <%
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	List<Member> pageList = (List<Member>) request.getAttribute("pageList");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -37,8 +38,8 @@ table{
         <hr>
         <div class="d-flex justify-content-center container">
             <span>아이디</span>&nbsp;&nbsp;&nbsp;
-            <input type="text" placeholder="아이디를 입력해주세요">
-            <button type="button">
+            <input type="text" placeholder="아이디를 입력해주세요" id="searchUserId">
+            <button type="button" id="btnSearch">
                 <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_search.png">
             </button>          
         </div>
@@ -200,7 +201,7 @@ table{
 	   			 $('.custom-control-input').not(this).prop('checked', false);
 	   	     });
 	   		 
- 	  			let $originalTable;
+ 	  		 let $originalTable;
 	   		 $('.levelSwitch').click(function(){
 	            
 	   			 if($(this).prop('checked')) {
@@ -238,6 +239,43 @@ table{
 	   			 }
 	   		 });
    			
+   		});
+   	</script>
+   	
+   	<script>
+   		$(function(){
+   			let $originalTable;
+   			
+   			$('#btnSearch').click(function(){
+   				let $searchIdValue = $('#searchUserId').val(); 
+   				$originalTable =  $('#selectUserTable').html();
+ 	            $('#selectUserTable').html(''); // 테이블 내용 초기화
+   				
+   				$.ajax({
+   					url: '<%=contextPath%>/searchuser.me',
+   					data: {memId: $searchIdValue},
+   					success: function(list){
+   						for(let i = 0; i < list.length; i++){
+		   		 				let row = '<tr>'
+		   		 							+ '<td>' + list[i].memNo + '</td>'
+		   		 							+ '<td>' + list[i].memId + '</td>'
+		   		 							+ '<td>' 
+	   		   		 						+ 'Level ' + list[i].memLevel
+		   		                            + '</td>'
+			   		                        + '<td>' + list[i].reviewContentCnt + '</td>' 
+			   	                            + '<td>' + list[i].avgLikePoint + '</td>' 
+			   	                            + '<td>' + list[i].prefGenre + '</td>' 
+			   	                            + '<td>' + list[i].dormantStatus + '</td>'
+			   	                            + '</tr>';
+		   		 		  		$('#selectUserTable').html($('#selectUserTable').html() + row);
+	   		 			};
+   					},
+   					error: function(){
+   						console.log('ajax 통신 실패');
+   					}
+   					
+   				});
+   			});
    		});
    	</script>
 </body>
