@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.List" %>
+<%@ page import = "com.fp.board.model.vo.Reply" %>
+<%@ page import = "com.fp.common.model.vo.PageInfo" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	List<Reply>list = (List<Reply>)request.getAttribute("list");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,47 +128,72 @@
 
     <div class="container">
 
-        <h3>작성글조회</h3>
+        <h3>댓글조회</h3>
+        <button href="<%=contextPath%>/myPlist.me?page=1">글</button>
+        <button href="<%=contextPath%>/myClist.me?page=1">댓글</button>
 
-        <table class="table">
+        <table class="table table-hover" id="myContentList">
           <thead>
             <tr>
-              <th>번호</th>
-              <th>댓글내용</th>
-              <th>작성일</th>
+              <th width="100px">댓글번호</th>
+              <th width="700px">댓글내용</th>
+              <th width="200px">작성일</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>10</td>
-              <td>댓글내용</td>
-              <td>2024-02-06</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>댓글내용</td>
-                <td>2024-02-06</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>댓글내용</td>
-                <td>2024-02-06</td>
-            </tr>
+            <%if(list.isEmpty()){ %>
+          	<!-- case1. 조회된 댓글이 없을 경우 -->
+          	<tr>
+          		<td colspan="3" style="text-align:center;">작성한 댓글이 없습니다.</td>
+          	</tr>
+          	
+          	<%}else{ %>
+          	<!-- case2. 조회된 댓글이 있을 경우 -->
+          		<%for(Reply re : list){ %>
+          		<tr onclick="board(<%=re.getReplyNo()%>);">
+          			<td><%=re.getReplyNo()%></td>
+          			<td><%=re.getReplyContent()%></td>
+          			<td><%=re.getEnrollDate()%></td>
+          		</tr>
+          		<%} %>
+          	<%} %>
           </tbody>
         </table>
+        
+        <script>
+        	$(function(){
+        		$("#myContentList>tbody>tr").click(function(){
+        			location.href="<%=contextPath%>/rlist.bo?no=" + $(this).children().eq(0).text(); 
+        		})
+        	})
+        </script>
+        
       </div>
 
 
-      <div class="container">
-  
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">4</a></li>
-          <li class="page-item"><a class="page-link" href="#">5</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+     <!-- 페이징바 영역 -->
+        <ul class="pagination justify-content-center">
+          
+          <%if(pi.getCurrentPage() == 1){ %>
+          <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+          <%}else{ %>
+          <li class="page-item"><a class="page-link" href="<%=contextPath%>/myClist.me?page=<%=pi.getCurrentPage()-1%>">Previous</a></li>
+          <%} %>
+          
+          <%for(int p = pi.getStartPage(); p <= pi.getEndPage(); p++){ %>
+          	
+          	<%if(p == pi.getCurrentPage()){ %>
+          	<li class="page-item active"><a class="page-link" href="#"><%=p %></a></li>
+          	<%}else{ %>
+          	<li class="page-item"><a class="page-link" href="<%=contextPath%>/myClist.me?page=<%=p%>"><%=p %></a></li>
+          	<%} %>
+          <%} %>
+          
+          <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+		  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+		  <%}else{ %>    
+		  <li class="page-item"><a class="page-link" href="<%=contextPath%>/myClist.me?page=<%=pi.getCurrentPage()+1%>">Next</a></li>
+		  <%} %>      
         </ul>
       </div>
 

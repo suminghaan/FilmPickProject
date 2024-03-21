@@ -110,6 +110,13 @@ public class MovieService {
 		
 		return result;
 	}
+// 첫페이지 영화 포스터 조회 메소드 [용훈]
+	public List<Movie> firstselect() {
+		Connection conn = getConnection();
+		List<Movie> list = mDao.firstselect(conn);
+		close(conn);
+		return list;
+	}
 
 
 }

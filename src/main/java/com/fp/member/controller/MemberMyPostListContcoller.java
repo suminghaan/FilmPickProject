@@ -47,7 +47,7 @@ public class MemberMyPostListContcoller extends HttpServlet {
 		
 		int memNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		// session에 담아놓은 로그인멤버를 불러오는거 이게 object여서 그거를 member로 형변환하고 필요한 정보 추출
-		listCount = new MemberService().selectListCount(memNo);
+		listCount = new MemberService().selectMyPostListCount(memNo);
 		
 		currentPage = Integer.parseInt(request.getParameter("page"));
 		
@@ -67,7 +67,7 @@ public class MemberMyPostListContcoller extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		// 사용자가 요청한 페이지에 보여져야될 게시글 목록
-		List<Board> list = new MemberService().selectList(memNo,pi);
+		List<Board> list = new MemberService().selectMyPostList(memNo,pi);
 		
 		request.setAttribute("memNo", memNo);
 		request.setAttribute("pi", pi);

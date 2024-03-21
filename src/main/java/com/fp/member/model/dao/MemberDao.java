@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import static com.fp.common.template.JDBCTemplate.*;
@@ -195,13 +196,13 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
-	public int selectListCount(Connection conn, int memNo) {
+	// 작성글조회
+	public int selectMyPostListCount(Connection conn, int memNo) {
 		int listCount = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectListCount");
+		String sql = prop.getProperty("selectMyPostListCount");
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, memNo);
@@ -219,12 +220,13 @@ public class MemberDao {
 		return listCount;
 	}
 	
-	public List<Board> selectList(Connection conn,int memNo, PageInfo pi){
+
+	public List<Board> selectMyPostList(Connection conn,int memNo, PageInfo pi){
 		
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectList");
+		String sql = prop.getProperty("selectMyPostList");
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
@@ -243,6 +245,66 @@ public class MemberDao {
 								 , rset.getString("b_title")
 								 , rset.getString("regist_date")
 								 , rset.getInt("b_read_count")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
+	
+	/* 작성댓글조회 */
+	
+	public int selectMyCommentListCount(Connection conn, int memNo) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMyCommentListCount");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	public List<Reply> selectMyCommentList(Connection conn, int memNo, PageInfo pi){
+		
+		List<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMyCommentList");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1)* pi.getBoardLimit()+ 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Reply(rset.getInt("reply_no")
+								 , rset.getString("reply_content")
+								 , rset.getString("enroll_date")
 						));
 			}
 		} catch (SQLException e) {
