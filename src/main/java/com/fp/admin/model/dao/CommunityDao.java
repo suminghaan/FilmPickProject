@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
+import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.notice.model.dao.NoticeDao;
@@ -293,6 +294,98 @@ public class CommunityDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public List<Board> selectBlindBoardList(Connection conn, PageInfo pi) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlindBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("b_no"),
+								   rset.getString("b_title"),
+								   rset.getString("b_regist_date"),
+								   rset.getInt("b_read_count"),
+								   rset.getString("b_category"),
+								   rset.getInt("reply"),
+								   rset.getString("mem_id") 
+								   ));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
+	}
+
+	public List<Board> searchBlindBoard(Connection conn, String keyword) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchBlindBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, keyword);
+
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("b_no"),
+								   rset.getString("b_title"),
+								   rset.getString("b_regist_date"),
+								   rset.getInt("b_read_count"),
+								   rset.getString("b_category"),
+								   rset.getInt("reply"),
+								   rset.getString("mem_id") ));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int selectBlindBoardListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlindBoardListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
 	}
 
 }

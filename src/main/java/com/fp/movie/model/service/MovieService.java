@@ -136,4 +136,15 @@ public class MovieService {
 	}
 
 
+//	영화 리뷰 추가하는 메소드 [기웅]
+	public int insertReview(int movieNo, int userNo, double likePoint, String reviewContent) {
+		Connection conn = getConnection();
+		
+		int result = mDao.insertReview(conn, movieNo, userNo, likePoint, reviewContent);
+		
+		close(conn);
+		return result;
+	}
+
+
 }

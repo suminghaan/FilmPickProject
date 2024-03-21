@@ -14,6 +14,19 @@ public class Person {
 	public Person() {}
 
 
+	
+	public Person(int pNo, String pName, String pJob, String pBD, String pNation, String pFile) {
+		super();
+		this.pNo = pNo;
+		this.pName = pName;
+		this.pJob = pJob;
+		this.pBD = pBD;
+		this.pNation = pNation;
+		this.pFile = pFile;
+	}
+
+
+
 	public Person(int pNo, String pName, String pJob, String pBD, String pNation, String pFile, String casting) {
 		super();
 		this.pNo = pNo;

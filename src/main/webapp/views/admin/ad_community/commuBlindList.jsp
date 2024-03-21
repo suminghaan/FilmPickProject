@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.fp.common.model.vo.Attachment" %>
+<%@ page import="com.fp.common.model.vo.PageInfo" %>
+<%@ page import="com.fp.board.model.vo.Board" %>
+<%@ page import="java.util.List" %>
+    
+<% List<Board> list = (List<Board>)request.getAttribute("list"); %>
+<% PageInfo pi = (PageInfo)request.getAttribute("pi"); %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,15 +60,15 @@
 	
 	    <div class="d-flex justify-content-center container">
 	        <span>검색</span>&nbsp;&nbsp;&nbsp;
-	        <input type="text" placeholder="검색어를 입력해주세요">
-	        <button type="button">
-	            <img src="../img/icon_search.png">
-	        </button>          
-	    </div>
+	        <input type="text" id="searchInput" class="input" placeholder="제목으로 검색어를 입력해주세요" name="keyword">
+	        <button type="button" onclick="search();">
+	            <img src="<%=contextPath %>/views/admin/img/icon_search.png">
+	        </button>
+    	</div>
 	    <br>
 	    
 	    <div>
-		    <table class="table table-hover">
+		    <table class="table table-hover" id="blindBoardList">
 	            <thead class="thead-dark">
 	                <tr>
 	                    <th>번호</th>
@@ -77,25 +85,28 @@
 	            <tbody>
 	
 	                <!-- case1. 조회된 게시글 없을 경우 -->
-	                            <!--
-	                            <tr>
-	                                <td colspan="7" style="text-align: center;">존재하는 게시글이 없습니다.</td>
-	                            </tr>
-	                            -->
+	                <% if(list.isEmpty()){ %>
+	                <tr>
+	                    <td colspan="7" style="text-align: center;">존재하는 게시글이 없습니다.</td>
+	                </tr>
+	                <% }else { %>            
 	
 	                <!-- case2. 조회된 게시글 있을 경우  -->
-	                <tr class="blindContent">
-	                    <td>3</td>
-	                    <td>2024.03.08</td>
-	                    <td>user01</td>
-	                    <td>제목3</td>
-	                    <td>555</td>
-	                    <td>3</td>
-	                    <td>영화</td>
-	                    <td>                      	
-                        	<button type="button" class="btn btn-outline-warning" onclick="alert('블라인드처리를 해제하시겠습니까? \n해지시 다시 사용자에게 보여지게됩니다.')">블라인드해제</button>
-                    	</td>
-	                </tr>
+	                <% for(Board bo: list) { %>
+		                <tr class="blindContent">
+		                    <td><%=bo.getbNo() %></td>
+		                    <td><%=bo.getbRegistDate() %></td>
+		                    <td><%=bo.getMemId() %></td>
+		                    <td><%=bo.getbTitle() %></td>
+		                    <td><%=bo.getbReadCount() %></td>
+		                    <td><%=bo.getReplyCount() %></td>
+		                    <td><%=bo.getbCategory() %></td>
+		                    <td>                      	
+	                        	<button type="button" class="btn btn-outline-warning" onclick="alert('블라인드처리를 해제하시겠습니까? \n해지시 다시 사용자에게 보여지게됩니다.')">블라인드해제</button>
+	                    	</td>
+		                </tr>
+		                <%} %>
+	                <%} %>
 					<!-- 글(.blindContent)를 누르면 나오는 해당 게시글 내용 -->
 					<tr class="blindDetail">
 						<td colspan="6">
@@ -110,7 +121,7 @@
 							</div>
 						</td>
 					</tr>
-
+				<!--  
 	                <tr class="blindContent">
 	                    <td>2</td>
 	                    <td>2024.03.08</td>
@@ -123,7 +134,7 @@
                         	<button type="button" class="btn btn-outline-warning" onclick="alert('블라인드처리를 해제하시겠습니까? \n해지시 다시 사용자에게 보여지게됩니다.')">블라인드해제</button>
                     	</td>
 	                </tr>
-					<!-- 글(.blindContent)를 누르면 나오는 해당 게시글 내용 -->
+					<!-- 글(.blindContent)를 누르면 나오는 해당 게시글 내용 
 					<tr class="blindDetail">
 						<td colspan="6">
 							<div class="form-group">
@@ -137,31 +148,47 @@
 							</div>
 						</td>
 					</tr>
-	
+						-->
 	            </tbody>
 	
 	        </table>
         </div>
 	    
-	    <div class="d-flex justify-content-center container">
+	    <!-- 페이징바 영역 -->
+        <div class="d-flex justify-content-center container">
 	        <nav aria-label="Page navigation example">
 	            <ul class="pagination">
-	                <li class="page-item">
+	            	
+	            	<% if(pi.getCurrentPage() == 1) { %>
+	                <li class="page-item disabled">
 	                <a class="page-link" href="#" aria-label="Previous">
 	                    <span aria-hidden="true">&laquo;</span>
 	                </a>
 	                </li>
-	                <li class="page-item"><a class="page-link" href="#">1</a></li>
-	                <li class="page-item"><a class="page-link" href="#">2</a></li>
-	                <li class="page-item"><a class="page-link" href="#">3</a></li>
-	                <li class="page-item"><a class="page-link" href="#">4</a></li>
+	                <% }else { %>
+	                <li class="page-item"><a class="page-link" href="<%=contextPath%>/blindList.co?page=<%=pi.getCurrentPage() -1%>">Previous</a></li>
+	                <% } %>
+	                
+	                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
+	                	<% if(p == pi.getCurrentPage()) { %>
+	                	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                	<%}else { %>
+	                	<li class="page-item"><a class="page-link" href="<%=contextPath%>/blindList.co?page=<%=p%>"><%= p %></a></li>
+	                	<% } %>
+	                <% } %>
+	                
+	                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
+	                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                <% }else { %>
 	                <li class="page-item">
-	                <a class="page-link" href="#" aria-label="Next">
+	                <a class="page-link" href="<%=contextPath %>/blindList.co?page=<%=pi.getCurrentPage() +1 %>" aria-label="Next">
 	                    <span aria-hidden="true">&raquo;</span>
 	                </a>
 	                </li>
-	            </ul>
-	        </nav>
+	                <% } %>
+		            </ul>
+		        </nav>
+		    </div>
 	    </div>
 	    
 	    
@@ -170,6 +197,48 @@
 	<!-- section end -->
 
 	<script>
+	
+	//검색기능 ajax
+		function search(){
+	    		$.ajax({
+	    			type:'post',
+	    			url : "<%=contextPath%>/blindBoardSearch.co",
+	    			data:{
+	    				keyword:$("#searchInput").val()
+	    			},
+	    			success:function(list){
+	    				
+	    				let value = ""
+	    				
+	    				console.log(list);
+	    				
+	    				if(list.length > 0){
+	    					for(let i=0; i<list.length; i++){
+	    						value += "<tr>"
+	    								+ "<td>" + list[i].bNo + "</td>"
+	    								+ "<td>" + list[i].bRegistDate + "</td>"
+	    								+ "<td>" + list[i].MemId() + "</td>"
+	    								+ "<td>" + list[i].bTitle() + "</td>"
+	    								+ "<td>" + list[i].bReadCount() + "</td>"
+	    								+ "<td>" + list[i].ReplyCount() + "</td>"
+	    								+ "<td>" + list[i].bCategory() + "</td>"
+	    		                        +"</tr>";
+	    					}
+	    				}else{
+	    					value += "<tr><td colspan='7'>해당하는 블라인드 게시글이 없습니다.</td></tr>";
+	    				}
+	    				
+	    				
+	    				$("#blindBoardList tbody").html(value);
+	    			},
+	    			error:function(){
+	    				console.log("목록 조회 ajax 실패");
+	    			}
+	    		})
+	    	}
+	
+	
+	
 		$(function(){
 			$(".blindContent").click(function(){
 				const $c = $(this).next();

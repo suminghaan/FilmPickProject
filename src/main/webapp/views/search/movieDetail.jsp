@@ -176,10 +176,8 @@
         }
 
         .like_review_btn {
-            height: 50%;
             width: 100%;
             display: flex;
-            flex: row;
             justify-content: space-evenly;
         }
 
@@ -196,7 +194,11 @@
 
         .like_btn_wrap,
         .review_btn_wrap {
-            height: 50%;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* ==================출연/제작 스타일=================== */
@@ -561,6 +563,12 @@
         .starRating_img {
             height: 25px;
         }
+        
+        /* heart 이미지 크기*/
+        .heart-label {
+        	height: 70px;
+    		width: 70px;
+        }
     </style>
 	<%@ include file="/views/common/header.jsp" %>
     <!-- starRating css -->
@@ -660,73 +668,72 @@
                                 <div class="rating">
                                     <label class="rating__label rating__label--half" for="starhalf_main">
                                         <input type="radio" id="starhalf_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="0.5">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--full" for="star1_main">
                                         <input type="radio" id="star1_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="1">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--half" for="star1half_main">
                                         <input type="radio" id="star1half_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="1.5">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--full" for="star2_main">
                                         <input type="radio" id="star2_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="2">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--half" for="star2half_main">
                                         <input type="radio" id="star2half_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="2.5">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--full" for="star3_main">
                                         <input type="radio" id="star3_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="3">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--half" for="star3half_main">
                                         <input type="radio" id="star3half_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="3.5">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--full" for="star4_main">
                                         <input type="radio" id="star4_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="4">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--half" for="star4half_main">
                                         <input type="radio" id="star4half_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="4.5">
                                         <span class="star-icon"></span>
                                     </label>
                                     <label class="rating__label rating__label--full" for="star5_main">
                                         <input type="radio" id="star5_main" class="rating__input" name="rating"
-                                            value="">
+                                            value="5">
                                         <span class="star-icon"></span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="like_review_btn_wrap">
-                            <div class="like_review_btn">
-                                <div class="like_btn_wrap">
-                                    <div class="like_btn">
-                                        <label for="checkbox" style="margin-top: 20px;">
-                                            <input type="checkbox" id="checkbox" hidden>
-                                            <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg" p-id="2271">
-                                                <path
-                                                    d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                                    fill="#231F20" p-id="2272" id="heart"></path>
-                                            </svg>
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div style="margin-left: 10px;">
+							<div class="like_btn_wrap" style="margin-left: 30px;">
+	                                    <div class="heart">
+										    <label class="heart_label" for="mainHeart")>
+										        <input type="checkbox" class="heart_checkbox" id="mainHeart" hidden>
+										        <svg t="1689815540548" class="heart_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+										            p-id="2271" onclick="heartUpdate(<%= movie.getMvNo() %>)">
+										            <path
+										                d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+										                fill="#231F20" p-id="2272" id="heart"></path>
+										        </svg>
+										        <span class="heart_span" ></span>
+										    </label>
+										</div>
+                                    <div style="margin-top: 10px;">
                                         좋아요
                                     </div>
                                 </div>
@@ -735,11 +742,10 @@
                                         <button type="button"><i class="fa-solid fa-pen-to-square fa-4x"
                                                 style="color: #F72798;"></i></button>
                                     </div>
-                                    <div style="margin-left: 30px;">
+                                    <div style="margin-right: 10px;">
                                         리뷰
                                     </div>
-                                </div>
-                            </div>
+                            	</div>                        
                         </div>
                     </div>
                     <div class="movie_people">
@@ -848,11 +854,14 @@
                                 <div class="user_review_info">
                                     <div class="user_review_star">
                                         <div class="star-wrap">
-                                        <% for(int j = 0; j < (int)Double.parseDouble(reviewList.get(i).getLikePoint()); j++) {%>
+                                        <% for(int j = 0; j < 5; j++) {%>
+                                        <% if (j < (int)Double.parseDouble(reviewList.get(i).getLikePoint())) { %>
                                             <img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
-                                        <% } %>
-                                        <% if(Double.parseDouble(reviewList.get(i).getLikePoint()) % 1 == 0.5) { %>
+                                        <% } else if(j < Math.ceil((Double.parseDouble(reviewList.get(i).getLikePoint()))) ) {%>
                                         	<img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
+                                        <% } else { %>
+                                        	<img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
+                                        <% } %>
                                         <% } %>
                                         </div>
 
@@ -944,6 +953,56 @@
         $(".short_summary_btn").click(function() {
             $(this).parent().css("display", "none");
             $(this).parent().prev().css("display", "block");
+        })
+        
+		// 좋아요 표시, 제거 함수
+		function heartUpdate(mvNo) {
+        	<% if(loginMember != null) { %>
+        	console.log($("#mainHeart").is(':checked'));
+        		$.ajax({
+        			url:"<%= contextPath %>/updateheart.fp"
+        			, method:"post"
+        			, data: {
+        				movieNo: mvNo
+        				, userNo: <%= loginMember.getMemNo()%>
+        				, isChecked: $("#mainHeart").is(':checked')
+        			}
+        			, success: function(msg) {
+        			}
+        			, error: function() {
+        				console.log("AJAX 통신 실패");
+        			}
+        		})
+	        <% } else { %>
+	        	alert("로그인 후 이용 가능한 서비스입니다");
+	        	$(".heart_checkbox").attr("disabled", true);
+	        <% } %>
+        }
+        
+        // 별점 매기기 함수
+        $(".rating__input").each(function(index, el) {
+        	$(this).click(function() {
+        		<% if(loginMember != null) { %>
+	        		$.ajax({
+	        			url:"<%= contextPath %>/insertReview.fp"
+	        			, method: "post"
+	        			, data: {
+	        				movieNo: <%= movie.getMvNo() %>
+	        				, userNo: <%= loginMember.getMemNo()%>
+	        				, likePoint: $(el).val()
+	        			}
+	        			, success: function(msg) {
+	        				alert(msg);
+	        			}
+	        			, error: function() {
+	        				console.log("AJAX 통신 실패");
+	        			}
+	        		})
+    	        <% } else { %>
+	        		alert("로그인 후 이용 가능한 서비스입니다");
+	        		$(".heart_checkbox").attr("disabled", true);
+	        	<% } %>
+        	})
         })
         
     </script>

@@ -61,4 +61,36 @@ public class PersonDao {
 		
 		return personList;
 	}
+
+	public ArrayList<Person> selectPersonByKeyword(Connection conn, String searchKeyword) {
+		String query = prop.getProperty("selectPersonByKeyword");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Person> personList = new ArrayList<>();
+		searchKeyword = '%' + searchKeyword + '%';
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchKeyword);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				personList.add(new Person(
+							rset.getInt("P_NO")
+							, rset.getString("P_NAME")
+							, rset.getString("P_JOB")
+							, rset.getString("P_BD")
+							, rset.getString("P_NATION")
+							, rset.getString("P_FILE")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return personList;
+	}
 }

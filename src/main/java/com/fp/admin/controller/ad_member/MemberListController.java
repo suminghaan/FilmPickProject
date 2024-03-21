@@ -33,7 +33,7 @@ public class MemberListController extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException { // '회원조회' 페이지에서 회원의 등급을 수정하는 서블릿 (Update)
+			throws ServletException, IOException { 
 		
 		int listCount; 
 		int currentPage;

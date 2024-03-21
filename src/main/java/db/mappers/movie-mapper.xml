@@ -185,4 +185,16 @@
 		WHERE ROWNUM <= 10
 	]]>
 	</entry>
+	
+	<entry key="insertReview">
+	INSERT INTO REVIEW
+	VALUES (
+	    SEQ_REVIEW_NO.NEXTVAL
+	    , ?
+	    , SYSDATE
+	    , ?
+	    , ?
+	    , ?
+	)
+	</entry>
 </properties>

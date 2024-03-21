@@ -10,16 +10,20 @@ body {
 
 .heart{
     /*100% 창 높이*/
-    height: 100vh;
+    /*height: 100vh;*/
     /*배치 center*/
+    height: 80px;
+    width: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
     /*사용자정의: var 함수로 핸들링*/
     /* --c: #ff6b81; */
 }
 
-.icon{
+.heart_icon{
+    height: 70px;
     width: 70px;
     /*상대포지션*/
     position: relative;
@@ -69,9 +73,9 @@ body {
 }
 
 /*checkbox를 클릭할 경우 애니메이션 실행*/
-#checkbox:checked + svg #heart{
+.heart_checkbox:checked + svg #heart{
     /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
-    animation: drawHeart 0.7s linear forwards;
+    animation: drawHeart 1s linear forwards;
 }
 
 /* #checkbox:checked ~ .heart_span{
@@ -81,9 +85,9 @@ body {
     animation-delay: 0.8s ;
 } */
 
-#checkbox:checked + svg{
+.heart_checkbox:checked + svg{
      /*애니메이션실행: 애니메이션이름, 실행시간, 선형 마지막 정지한 프레임*/
-    animation: beat 0.7s linear forwards;;
+    animation: beat 1s linear forwards;;
 }
 .heart_label{
     /*마우스 heart로 이동시 마우스 커서변동*/

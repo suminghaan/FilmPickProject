@@ -263,7 +263,7 @@ background-color: black!important;
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="<%=contextPath%>/list.co?page=1">공지사항</a>
-                    <a class="collapse-item" href="../ad_community/commuBlindList.jsp">블라인드 게시글 관리</a>
+                    <a class="collapse-item" href="<%=contextPath%>/blindList.co?page=1">블라인드 게시글 관리</a>
                     <a class="collapse-item" href="../ad_community/commuReportBoardList.jsp">신고된 게시글 관리</a>
                     <a class="collapse-item" href="../ad_community/commuReportCommentList.jsp">신고된 댓글 관리</a>
                     <div class="collapse-divider"></div>

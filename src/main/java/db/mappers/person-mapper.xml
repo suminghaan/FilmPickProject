@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<!-- 영화 상세보기에서 영화에 등장하는 인물의 정보와 배역을 불러오는 쿼리 [기웅] -->
 	<entry key="selectPersonInfo">
 	<![CDATA[SELECT P_NO, P_NAME, P_JOB, CASTING, P_BD, P_NATION, P_FILE
 	FROM ( 
@@ -11,5 +12,11 @@
         WHERE MOVIE_NO = ?)
 	WHERE RNUM < 7
 	]]>
+	</entry>
+	<!-- 영화&인물 검색에서 인물 키워드로 검색하는 쿼리 [기웅] -->
+	<entry key="selectPersonByKeyword">
+	SELECT P_NO, P_NAME, P_JOB, P_BD, P_NATION, P_FILE
+	FROM PERSON
+	WHERE P_NAME LIKE ?
 	</entry>
 </properties>

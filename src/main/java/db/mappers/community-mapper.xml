@@ -103,7 +103,7 @@
 			  AND REF_NO = ?
 		</entry>
 		
-		<!-- 관리자 검색기능 [수민] -->
+		<!-- 관리자 공지사항 검색기능 [수민] -->
 		<entry key="searchNotice">
 			SELECT  *
 			FROM NOTICE N
@@ -177,6 +177,49 @@
 				 , ?
 				 , 1
 				)
+		</entry>
+		
+		
+		<!-- 관리자 블라인드 게시글 목록 조회 [수민] -->
+		<entry key="selectBlindBoardList">
+			SELECT *
+				FROM(
+					SELECT ROWNUM RNUM, A.*
+					  FROM (
+					  	SELECT
+					  		B_NO
+					  	  , B_REGIST_DATE
+					  	  , MEM_ID
+					  	  , B_TITLE
+					  	  , B_READ_COUNT
+					  	  , (SELECT COUNT(*) 
+					  	  	 FROM REPLY R 
+					  	  	 WHERE BOARD_NO = B_NO) REPLY
+					  	  , B_CATEGORY
+					 	FROM BOARD B
+					 	JOIN MEMBER USING (MEM_NO)
+					 	WHERE B_B_STATUS = 'Y'
+					 	ORDER
+					 		BY B_NO DESC
+					  		) A
+					)
+				WHERE RNUM BETWEEN ? AND ?
+		</entry>
+		
+		<!-- 관리자 공지사항 페이징처리 [수민]-->
+		<entry key="selectBlindBoardListCount">
+			SELECT COUNT(*) COUNT
+			  FROM BOARD
+			 WHERE B_B_STATUS = 'Y'
+		</entry>
+		
+		<!-- 관리자 블라인드게시글 검색기능 [수민] -->
+		<entry key="searchBlindBoard">
+			SELECT  *
+			FROM BOARD
+			JOIN MEMBER USING (MEM_NO)
+			WHERE B_B_STATUS = 'Y'
+			  AND B_TITLE LIKE '%' || ? || '%'
 		</entry>
 
 
