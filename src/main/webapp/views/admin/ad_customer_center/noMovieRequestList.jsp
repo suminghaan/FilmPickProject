@@ -127,7 +127,13 @@ table{
                     <div class="container item2">
                         <div class="regist-date">
                             <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span><%= nm.getNmEnrollDate() %></span>
-                            <span class="no-check" style="justify-content: end;"><b><%= nm.getNmApproval() == "Y" ? "승인" : nm.getNmApproval() == "N" ? "거절" : nm.getNmApproval() == "D" ? "보류" : " " %></b></span>
+                            <span class="no-check" style="justify-content: end;"><b>
+                            <%= 
+	                            nm.getNmApproval() == null ? " " : 
+							    nm.getNmApproval().equals("Y") ? "승인" : 
+							    nm.getNmApproval().equals("N") ? "거절" : 
+							    nm.getNmApproval().equals("D") ? "미확인" : " " 
+						    %></b></span>
                         </div>
                         <div class="story-writer">
                             <div class="container story">
