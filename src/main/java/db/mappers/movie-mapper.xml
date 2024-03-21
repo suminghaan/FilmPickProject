@@ -182,7 +182,7 @@
 		WHERE MV_STATUS = 'Y'
 		ORDER BY MV_OPENDATE DESC
 		) P
-		WHERE ROWNUM <= 10;
+		WHERE ROWNUM <= 10
 	]]>
 	</entry>
 </properties>

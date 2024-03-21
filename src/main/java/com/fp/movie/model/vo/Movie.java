@@ -47,6 +47,8 @@ public class Movie {
 	
 	
 
+	
+
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvStory, String fPageExposed, String mPageExposed,
 			String mvPoster, String mvPreview, String mvStatus) {
 		super();

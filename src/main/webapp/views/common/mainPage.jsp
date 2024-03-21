@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.fp.movie.model.vo.Movie, java.util.List" %>
+<%
+	List<Movie> vlist = (List<Movie>)request.getAttribute("vlist");
+	List<Movie> plist = (List<Movie>)request.getAttribute("plist");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -8,9 +13,9 @@
 <meta charset="UTF-8">
 <title>Main Page</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <style>
 #wrap, #wrap * {
 	box-sizing: border-box;
 	color: white;
@@ -225,7 +230,6 @@
 
 	</header>
 
-	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">  -->
 	<section>
 
 		<div id="wrap">
@@ -234,49 +238,22 @@
 
 					<!-- The slideshow -->
 					<div class="carousel-inner">
-						<div class="carousel-item active main_item">
+						<% for(int i = 0; i < vlist.size(); i++){ %>
+						<div class="carousel-item <%= i == 0 ? "active" : "" %>">
 							<div class="posi">
 								<div id="main_video">
-									<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/rjW9E1BR_30?si=tmWSvmdDWIBUaMH3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-									<!-- <video width="560" height="315" src="<%= contextPath %>resources/upfiles/20240318104140_63098.mp4"></video>  -->
-									<video width="560" height="315" controls>
-										<source
-											src="<%= contextPath %>/resources/upfiles/20240318104140_63098.mp4"
-											type="video/mp4">
+									<video id="video_<%= i %>" width="560" height="315" controls autoplay>
+									    <source src="<%= vlist.get(i).getMvPreview() %>" type="video/mp4">
 									</video>
 								</div>
 								<div id="main_content">
-									<div class="title_font">파묘</div>
-									<div class="title_date">2024.02.22</div>
-									<div class="title_content">미국 LA, 거액의 의뢰를 받은 무당
-										‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을
-										알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이
-										합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한
-										기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고…
-										나와서는 안될 것이 나왔다.</div>
+									<div class="title_font"><%= vlist.get(i).getMvName() %></div>
+									<div class="title_date"><%= vlist.get(i).getMvOpenDate() %></div>
+									<div class="title_content"><%= vlist.get(i).getMvStory() %></div>
 								</div>
 							</div>
 						</div>
-						<div class="carousel-item main_item">
-							<div class="posi">
-								<div id="main_video">
-									<iframe width="560" height="315"
-										src="https://www.youtube.com/embed/81JOj5-xNGc?si=Cpdu4fFLjHGq67a1"
-										title="YouTube video player" frameborder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-										allowfullscreen></iframe>
-								</div>
-								<div id="main_content">
-									<div class="title_font">듄: 파트2</div>
-									<div class="title_date">2024.02.28</div>
-									<div class="title_content">황제의 모략으로 멸문한 가문의 유일한 후계자
-										폴.(티모시 샬라메) 어머니 레이디 제시카(레베카 퍼거슨)와 간신히 목숨만 부지한 채 사막으로 도망친다.
-										그곳에서 만난 반란군들과 숨어 지내다 그들과 함께 황제의 모든 것을 파괴할 전투를 준비한다. 한편 반란군들의
-										기세가 높아질수록 불안해진 황제와 귀족 가문은 잔혹한 암살자 페이드 로타(오스틴 버틀러)를 보내 반란군을
-										몰살하려 하는데… 운명의 반격이 시작된다!</div>
-								</div>
-							</div>
-						</div>
+						<% } %>
 					</div>
 
 					<a class="carousel-control-prev" href="#main_movie" type="button" data-bs-target="#main_movie" style="margin-left: -50px; justify-content: center;" data-bs-slide="prev"> 
@@ -289,17 +266,30 @@
 							<i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
 						</span>
 					</a>
-
 				</div>
+				<script>
+				    document.addEventListener("DOMContentLoaded", function() {
+				        let mainMovieCarousel = document.getElementById("main_movie");
+				        let prevButton = mainMovieCarousel.querySelector(".carousel-control-prev");
+				        let nextButton = mainMovieCarousel.querySelector(".carousel-control-next");
+				
+				        // Function to pause videos in active item
+				        function pauseVideos() {
+				        	let activeItem = mainMovieCarousel.querySelector(".carousel-item.active");
+				        	let videos = activeItem.querySelectorAll("video");
+				
+				            // Pause all videos in the active item
+				            videos.forEach(function(video) {
+				                video.pause();
+				            });
+				        }
+				
+				        // 이전, 다음 버튼 클릭 시 비디오 일시정지 버튼
+				        prevButton.addEventListener("click", pauseVideos);
+				        nextButton.addEventListener("click", pauseVideos);
+				    });
+				</script>
 
-				<!-- <div id="main_video">
-	                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rjW9E1BR_30?si=tmWSvmdDWIBUaMH3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-	                </div> -->
-				<!-- <div id="main_content">
-	                    <div class="title_font">파묘</div>
-	                    <div class="title_date">2024.02.22</div>
-	                    <div class="title_content">미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.</div>
-	                </div> -->
 
 				<div class="being_movie box">
 					<div class="box_font">
@@ -350,31 +340,31 @@
 					</div>
 					<div id="carousepost" class="carousel slide">
 						<a class="post" href=""><img class="post"
-							src="../../resources/img/듄2.jpeg" alt="">
+							src="<%=contextPath%>/resources/img/듄2.jpeg" alt="">
 							<div class="box_context">
 								<div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
 								<div class="post_context">별점</div>
 								<div class="post_context">개봉연도,국가</div>
 							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/파묘.jpeg" alt="">
+							src="<%=contextPath%>/resources/img/파묘.jpeg" alt="">
 							<div class="box_context">
 								<div class="post_context">파묘</div>
 								<div class="post_context">별점</div>
 								<div class="post_context">개봉연도,국가</div>
 							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/가여운것들.jpeg" alt="">
+							src="<%=contextPath%>/resources/img/가여운것들.jpeg" alt="">
 							<div class="box_context">
 								<div class="post_context">가여운것들</div>
 								<div class="post_context">별점</div>
 								<div class="post_context">개봉연도,국가</div>
 							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/건국전쟁.jpeg" alt="">
+							src="<%=contextPath%>/resources/img/건국전쟁.jpeg" alt="">
 							<div class="box_context">
 								<div class="post_context">건국전쟁</div>
 								<div class="post_context">별점</div>
 								<div class="post_context">개봉연도,국가</div>
 							</div> </a> <a class="post" href=""><img class="post"
-							src="../../resources/img/웡카.jpeg" alt="">
+							src="<%=contextPath%>/resources/img/웡카.jpeg" alt="">
 							<div class="box_context">
 								<div class="post_context">웡카</div>
 								<div class="post_context">별점</div>
@@ -468,31 +458,31 @@
 				</div>
 				<div id="carousepost" class="carousel slide">
 					<a class="post" href=""><img class="post"
-						src="../../resources/img/듄2.jpeg" alt="">
+						src="<%=contextPath%>/resources/img/듄2.jpeg" alt="">
 						<div class="box_context">
 							<div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
 							<div class="post_context">별점</div>
 							<div class="post_context">개봉연도,국가</div>
 						</div> </a> <a class="post" href=""><img class="post"
-						src="../../resources/img/파묘.jpeg" alt="">
+						src="<%=contextPath%>/resources/img/파묘.jpeg" alt="">
 						<div class="box_context">
 							<div class="post_context">파묘</div>
 							<div class="post_context">별점</div>
 							<div class="post_context">개봉연도,국가</div>
 						</div> </a> <a class="post" href=""><img class="post"
-						src="../../resources/img/가여운것들.jpeg" alt="">
+						src="<%=contextPath%>/resources/img/가여운것들.jpeg" alt="">
 						<div class="box_context">
 							<div class="post_context">가여운것들</div>
 							<div class="post_context">별점</div>
 							<div class="post_context">개봉연도,국가</div>
 						</div> </a> <a class="post" href=""><img class="post"
-						src="../../resources/img/건국전쟁.jpeg" alt="">
+						src="<%=contextPath%>/resources/img/건국전쟁.jpeg" alt="">
 						<div class="box_context">
 							<div class="post_context">건국전쟁</div>
 							<div class="post_context">별점</div>
 							<div class="post_context">개봉연도,국가</div>
 						</div> </a> <a class="post" href=""><img class="post"
-						src="../../resources/img/웡카.jpeg" alt="">
+						src="<%=contextPath%>/resources/img/웡카.jpeg" alt="">
 						<div class="box_context">
 							<div class="post_context">웡카</div>
 							<div class="post_context">별점</div>
@@ -504,18 +494,10 @@
 			<div class="topPage">
 				<a href="#wrap"><img src="<%= contextPath %>/resources/img/up_icon.png" alt="up_icon" style="width: 50px;"></a>
 			</div>
+			<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+			<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 			
-			<script>
-			    $(function(){
-			        $(".owl-carousel").owlCarousel({
-			            items: 3,
-			            margin: 10,
-			            loop: true,
-			            nav: true,
-			            navText: ['이전', '다음']
-			        });
-			    });
-			</script>
 			
 			<script>
                         $(document).ready(function () {

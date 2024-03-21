@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.admin.model.service.MovieService;
+import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
 
 /**
@@ -32,9 +32,15 @@ public class mainPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//List<Movie> list = new MovieService().selectMainList();
+		List<Movie> vlist = new MovieService().selectMainListv();
+		List<Movie> plist = new MovieService().selectMainListp();
+		
+		request.setAttribute("vlist", vlist);
+		request.setAttribute("plist", plist);
 		
 		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
+		System.out.println(vlist);
+		System.out.println(plist);
 		
 	}
 

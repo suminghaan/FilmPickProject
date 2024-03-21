@@ -385,11 +385,14 @@ public class MovieDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				vlist.add(new Movie(rset.getInt("mv_no"),
-									rset.getString("MV_NAME"),
-									rset.getString("MV_OPENDATE"),
-									rset.getString("MV_STORY"),
-									rset.getString("MV_PREVIEW")));
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("MV_NO"));
+				m.setMvName(rset.getString("MV_NAME"));
+				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
+				m.setMvStory(rset.getString("MV_STORY"));
+				m.setMvPreview(rset.getString("MV_PREVIEW"));
+				
+				vlist.add(m);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
