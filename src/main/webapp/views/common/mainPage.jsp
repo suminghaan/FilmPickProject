@@ -65,12 +65,21 @@
 
 .title_font {
 	font-size: 60px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .title_date {
 	font-size: 30px;
 }
-
+.title_content{
+	
+	text-overflow: ellipsis;
+	/*white-space: nowrap;*/
+	overflow: hidden;
+}
+}
 .topPage {
 	position: sticky;
 	right: 350px;
@@ -81,7 +90,7 @@
 }
 
 .box {
-	background-color: rgb(46, 46, 46);
+	background-color: rgb(20, 20, 20);
 	padding: 20px;
 }
 
@@ -93,7 +102,7 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 5px;
-	background-color: rgb(19, 19, 19);
+	background-color: rgb(15, 15, 15);
 }
 
 .box_font>a {

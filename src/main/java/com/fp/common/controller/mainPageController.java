@@ -39,8 +39,7 @@ public class mainPageController extends HttpServlet {
 		request.setAttribute("plist", plist);
 		
 		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
-		System.out.println(vlist);
-		System.out.println(plist);
+		
 		
 	}
 
