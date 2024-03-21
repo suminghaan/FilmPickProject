@@ -154,7 +154,7 @@
         <div class="login" style="background-color: white;">
           <div class="container">
             <form action="<%= contextPath%>/login.me" method="post">
-              <img src="../../resources/img/logo.png" width="150px" height="50px" id="logo">
+              <img src="<%= contextPath %>/resources/img/logo.png" width="150px" height="50px" id="logo">
 
               <div class="form-group">
                 <!--<label for="email">아이디</label>-->
