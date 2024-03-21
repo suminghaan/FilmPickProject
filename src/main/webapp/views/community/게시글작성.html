@@ -185,6 +185,8 @@
 
     /*컨텐츠부분*/
 
+
+
     .background{
         min-height: 500px;
         margin: 50px;
@@ -207,10 +209,13 @@
     .table{
         width: 80%;
         margin: auto;
+
         /* 절때 건들이면 안되는 스타일 */
         --bs-table-bg: rgb(39, 39, 39);
         --bs-table-color: white;
         border-top: 1px solid white;
+
+
     }
     .modal-content{
         display: flex;
@@ -384,6 +389,7 @@
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small">
+
                 <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
                 <li><a class="dropdown-item" href="#">별점 남긴 영화</a></li>
                 <li><a class="dropdown-item" href="#">찜한 영화 목록</a></li>
@@ -392,6 +398,13 @@
                 <li><a class="dropdown-item" href="#">메시지함</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">로그아웃</a></li>
+
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+
               </ul>
           </div> -->
 
@@ -400,6 +413,7 @@
     </header>
 
     <!-- 컨텐츠부분 시작 -->
+
     <section class="content_wrap" style="background: black; min-height: 800px;">
       <div class="background">
           <span class="text">글쓰기</span>
@@ -519,6 +533,127 @@
         </ul>
       </footer>
     </div>
+
+    <section class="content_wrap" style="background: black;">
+        <div class="background">
+            <span class="text">글쓰기</span>
+            <!--
+            <span class="back" onclick="history.back();">뒤로가기</span>
+            -->
+            <br><br>
+
+            <form action="" method="">
+                <table class="table">
+                    <tr>
+                        <th width="100px" style="color: white;">카테고리</th>
+                        <td>
+                            <select name="" class="form-control">
+                                <option value="10">영화</option>
+                                <option value="20">잡담</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color: white;">제목</th>
+                        <td><input type="text" class="form-control" required name=""></td>
+                    </tr>
+                    <tr>
+                        <th style="color: white;">내용</th>
+                        <td><textarea cols="30" rows="10" class="form-control-file" style="resize: none;" required name=""></textarea></td>
+                    </tr>
+                    <tr>
+                        <th style="color: white;">첨부파일</th>
+                        <td>
+                            <input type="file" class="form-control-file" name="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#myModal">등록하기</button>
+                            <button type="reset" class="btn btn-outline-danger btn-sm">초기화</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm" onclick="history.back();">뒤로가기</button>
+                        </td>
+                    </tr>
+                </table>
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content"> 
+                            <div class="modal-body">
+                                <p class="modal-text">등록하시겠습니까?</p> <br><br>
+                                <button type="button" class="btn btn-secondary modal-btn" style="width: 100px;" data-dismiss="modal">취소</button>
+                                <button type="submit" class="btn btn-dark modal-btn" style="width: 100px;">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- The Modal end-->
+            </form>
+
+        </div>
+    </section>
+    <!-- Section end -->
+
+    <script>
+        function community_go(){
+            location.href="http://www.naver.com";
+        }
+
+        function community_check(){
+            location.href="http://www.naver.com";
+        }
+
+        function movie_go(){
+            location.href="http://www.naver.com";
+        }
+
+        function update(){
+            location.href="http://www.naver.com";
+        }
+
+        function delete1(){
+            location.href="http://www.naver.com";
+        }
+    </script>
+    <!--
+    삭제하기 버튼 클릭시 /delete.no라는 url로 요청되도록 단,
+    삭제할 글 번호를 넘기면서 요청 ( /delete.no?no=번호 )
+    
+    해당 요청을 받아서 처리해주는 Servlet 클래스를 만들어서 
+    넘어온 글 번호를 가지고 해당 공지사항의 글의 status 컬럼값을 'N'으로 변경
+    
+    성공했을 경우 => 목록페이지 보여지도록 + alert "성공적으로 공지사항 삭제"
+    실패했을 경우 =? 에러페이지 보여지도록 + 에러문구 "공지사항 삭제 실패"
+
+    수정하기 버튼 클릭시는 수정할 글 번호를 넘기면서 요청
+    -->
+    <!-- 컨텐츠부분 종료 -->
+
+    <div id="footer" class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24">
+                <use xlink:href="#bootstrap" />
+              </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2024 Company, Inc</span>
+          </div>
+  
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼1<svg class="bi" width="24" height="24">
+                  <use xlink:href="#twitter" />
+                </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼2<svg class="bi" width="24" height="24">
+                  <use xlink:href="#instagram" />
+                </svg></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="#">버튼3<svg class="bi" width="24" height="24">
+                  <use xlink:href="#facebook" />
+                </svg></a></li>
+          </ul>
+        </footer>
+      </div>
+
 
   </main>
   <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>

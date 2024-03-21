@@ -35,7 +35,8 @@ public class AjaxReplyListController extends HttpServlet {
 		int boardNo = Integer.parseInt(request.getParameter("no"));
 		
 		List<Reply> list = new BoardService().selectReplyList(boardNo);
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
+		//request.getRequestDispatcher("/views/community/postViews.jsp").forward(request, response);
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
 	}

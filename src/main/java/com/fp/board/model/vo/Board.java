@@ -13,7 +13,8 @@ public class Board {
 	private String dSatus; // 글 삭제여부
 	private String memNo; // 회원번호 | 작성자아이디 | 닉네임(관리자 페이지에서 쓸 예정 (김지우))
 	private String titleImgUrl; // 대표이미지 경로 보관할 필드(게시글에 미리보는 이미지에 표시) 
-	private int replyCount; // 댓글갯수 
+	private int replyCount; // 댓글갯수
+	private int memberNo; // 게시글을 작성한 회원의 번호
 	// ** 2024.03.20 (관리자 : 김지우) 회원 작성 게시글 조회 페이지에서 쓸 필드 추가
 	private String memId; // 회원 아이디
 	private String memColor; // 회원 색깔
@@ -108,6 +109,7 @@ public class Board {
 		this.memNo = memNo;
 		this.titleImgUrl = titleImgUrl;
 		this.replyCount = replyCount;
+		
 	}
 
 	
@@ -121,7 +123,7 @@ public class Board {
 	 * @param memNo (작성자아이디)
 	 * @author 김호용
 	 */
-	public Board(int bNo, String bTitle, String bContent, String bRegistDate, String bCategory, String memNo) {
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, String bCategory, String memNo, int memberNo) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -129,6 +131,7 @@ public class Board {
 		this.bRegistDate = bRegistDate;
 		this.bCategory = bCategory;
 		this.memNo = memNo;
+		this.memberNo = memberNo;
 	}
 
 	
@@ -340,6 +343,16 @@ public class Board {
 
 	public void setMemId(String memId) {
 		this.memId = memId;
+	}
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+	
+	
+	
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 
