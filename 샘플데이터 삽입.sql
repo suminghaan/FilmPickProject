@@ -2142,12 +2142,18 @@ VALUES (
           , NULL
           , 28
           , NULL
-          , 'resources/upfiles/19980321122025_13532.png'
-          , 'resources/upfiles/19980321122026_54893.mp4'
+          , 'resources/upfiles/20240322141812_43653.png'
+          , 'resources/upfiles/20240322141813_70152.mp4'
 );
 
 -- 첨부파일 테이블에 굿윌헌팅 영화 포스터 이미지, 예고편 영상 샘플데이터 넣음 (김지우)
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '굿윌헌팅_포스터.png', '19980321122025_13532.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 38);
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '굿윌헌팅_예고편.mp4', '19980321122026_54893.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 38);
+
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '타이타닉_포스터.png', '20240322131811_45733.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 42);
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '타이타닉_예고편.mp4', '20240322131812_15674.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 42);
+
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '엑시트_포스터.png', '20240322141812_43653.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 43);
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '엑시트_예고편.mp4', '20240322141813_70152.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 43);
 
 commit;
