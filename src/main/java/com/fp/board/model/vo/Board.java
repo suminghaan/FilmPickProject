@@ -140,14 +140,13 @@ public class Board {
 	 * @param bReadCount
 	 * @author 정은정
 	 */
-	public Board(int bNo, String bCategory, String bTitle, String bRegistDate, int bReadCount, String memNo) {
+	public Board(int bNo, String bCategory, String bTitle, String bRegistDate, int bReadCount) {
 		super();
 		this.bNo = bNo;
 		this.bCategory = bCategory;
 		this.bTitle = bTitle;
 		this.bRegistDate = bRegistDate;
 		this.bReadCount = bReadCount;
-		this.memNo = memNo;
 	}
 
 

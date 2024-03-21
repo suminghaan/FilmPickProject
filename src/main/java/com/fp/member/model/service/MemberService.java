@@ -77,14 +77,14 @@ public class MemberService {
 	
 	public int selectListCount(int memNo) {
 		Connection conn = getConnection();
-		int listCount = mDao.selectListCount(conn);
+		int listCount = mDao.selectListCount(conn, memNo);
 		close(conn);
 		return listCount;
 	}
 	
-	public List<Board> selectList(PageInfo pi){
+	public List<Board> selectList(int memNo, PageInfo pi){
 		Connection conn =getConnection();
-		List<Board> list = mDao.selectList(conn,pi);
+		List<Board> list = mDao.selectList(conn,memNo,pi);
 		close(conn);
 		return list;
 	}

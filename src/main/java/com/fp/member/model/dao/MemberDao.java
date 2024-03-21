@@ -196,7 +196,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int selectListCount(Connection conn) {
+	public int selectListCount(Connection conn, int memNo) {
 		int listCount = 0;
 		
 		PreparedStatement pstmt = null;
@@ -204,6 +204,7 @@ public class MemberDao {
 		String sql = prop.getProperty("selectListCount");
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
 			rset=pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -218,7 +219,7 @@ public class MemberDao {
 		return listCount;
 	}
 	
-	public List<Board> selectList(Connection conn, PageInfo pi){
+	public List<Board> selectList(Connection conn,int memNo, PageInfo pi){
 		
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -226,10 +227,13 @@ public class MemberDao {
 		String sql = prop.getProperty("selectList");
 		try {
 			pstmt=conn.prepareStatement(sql);
+			
 			int startRow = (pi.getCurrentPage()-1)* pi.getBoardLimit()+ 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -237,9 +241,8 @@ public class MemberDao {
 				list.add(new Board(rset.getInt("b_no")
 								 , rset.getString("b_category")
 								 , rset.getString("b_title")
-								 , rset.getString("b_regist_date")
+								 , rset.getString("regist_date")
 								 , rset.getInt("b_read_count")
-								 , rset.getString("mem_no")
 						));
 			}
 		} catch (SQLException e) {

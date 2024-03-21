@@ -41,17 +41,17 @@ public class MemberMyPostListContcoller extends HttpServlet {
 		int boardLimit;// 한 페이지에 보여질 게시글 최대갯수(몇개 단위씩)
 		// 위의 4개를 가지고 페이징바 시작수, 끝수, 가장 마지막 페이지(총 페이지수)
 		
-		int maxPage;// 가장 마지막 페이지(총 페이지수)
-		int startPage;	  // 사용자가 요청한 페이지 하단에 보여질 페이징바의 시작수
-		int endPage;	  // 사용자가 요청한 페이지 하단에 보여질 페이징바의 끝수
+		int maxPage; // 가장 마지막 페이지(총 페이지수)
+		int startPage; // 사용자가 요청한 페이지 하단에 보여질 페이징바의 시작수
+		int endPage; // 사용자가 요청한 페이지 하단에 보여질 페이징바의 끝수
 		
-		int MemNo = ((Member)request.getSession().getAttribute("loginMember")).getMemNo();
+		int memNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		// session에 담아놓은 로그인멤버를 불러오는거 이게 object여서 그거를 member로 형변환하고 필요한 정보 추출
-		listCount = new MemberService().selectListCount(MemNo);
+		listCount = new MemberService().selectListCount(memNo);
 		
 		currentPage = Integer.parseInt(request.getParameter("page"));
 		
-		pageLimit = 10 ;
+		pageLimit = 5;
 		boardLimit = 10;
 
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
@@ -60,10 +60,16 @@ public class MemberMyPostListContcoller extends HttpServlet {
 		
 		endPage = startPage + pageLimit - 1;
 		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		List<Board> list = new MemberService().selectList(pi);
+		// 사용자가 요청한 페이지에 보여져야될 게시글 목록
+		List<Board> list = new MemberService().selectList(memNo,pi);
 		
+		request.setAttribute("memNo", memNo);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		

@@ -68,10 +68,6 @@
         			location.href="<%=contextPath%>/detail.bo?no=" + $(this).children().eq(0).text(); 
         		})
         	})
-        	
-        	//function board(no){
-        		//location.href="<%=contextPath%>/detail.bo?=no" + no;
-        //	}
         </script>
       </div>
 		<!-- 페이징바 영역 -->
