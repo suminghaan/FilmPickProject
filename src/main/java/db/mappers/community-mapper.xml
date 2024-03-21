@@ -232,6 +232,40 @@
 			WHERE B_NO = ?
 			
 		</entry>
-
+		
+		<!-- 관리자 신고게시글 페이징처리 [수민] -->
+		<entry key="reportBoardListCount">
+			SELECT COUNT(*) COUNT
+			  FROM BOARD
+			 JOIN REPORT ON BOARD_NO = B_NO
+			 WHERE BOARD_NO = B_NO
+		</entry>
+		
+		<!-- 관리자 신고된 게시글 목록 조회 [수민] -->
+		<entry key="selectReportBoardList">
+			SELECT *
+				FROM(
+					SELECT ROWNUM RNUM, A.*
+					  FROM (
+					  	SELECT
+						        B_NO
+						      , B_REGIST_DATE
+						      , MEM_ID
+						      , B_TITLE
+						      , B_READ_COUNT
+						      , (SELECT COUNT(*) 
+						         FROM REPORT R 
+						         WHERE BOARD_NO = B_NO) REPORT
+						      , B_CATEGORY
+						    FROM BOARD B
+						    JOIN MEMBER USING (MEM_NO)
+						    LEFT JOIN REPORT ON BOARD_NO = B_NO
+						    WHERE BOARD_NO = B_NO
+						    ORDER
+						        BY B_NO DESC
+					  		) A
+					)
+				WHERE RNUM BETWEEN ? AND ?
+		</entry>
 
 </properties>

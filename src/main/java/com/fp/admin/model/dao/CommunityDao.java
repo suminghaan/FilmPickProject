@@ -30,6 +30,7 @@ public class CommunityDao {
 		}
 	}
 	
+	// 공지사항 조회
 	public List<Notice> selectComuNoticeList(Connection conn, PageInfo pi){
 		List<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -64,6 +65,7 @@ public class CommunityDao {
 		
 	}
 	
+	// 공지사항 페이징
 	public int selectNoticeListCount(Connection conn) {
 		int listCount = 0;
 		
@@ -87,6 +89,7 @@ public class CommunityDao {
 		return listCount;
 	}
 	
+	// 공지사항 등록
 	public int insertNotice(Connection conn, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -110,6 +113,7 @@ public class CommunityDao {
 		return result;
 	}
 	
+	// 공지사항 등록시 파일첨부
 	public int insertAttachment(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -133,6 +137,7 @@ public class CommunityDao {
 		
 	}
 	
+	// 공지사항 삭제
 	public int deleteNotice(Connection conn, int noticeNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -151,6 +156,7 @@ public class CommunityDao {
 		return result;
 	}
 	
+	// 공지사항 삭제시 파일삭제
 	public int deleteAttachment(Connection conn, int noticeNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -169,6 +175,7 @@ public class CommunityDao {
 		return result;
 	}
 
+	//공지사항 검색
 	public List<Notice> searchNotice(Connection conn, String keyword) {
 		List<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -198,6 +205,7 @@ public class CommunityDao {
 		return list;
 	}
 
+	// 공지사항 상세 목록
 	public List<Notice> updateNoticeForm(Connection conn, String noticeNo) {
 		List<Notice> uplist = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -230,6 +238,7 @@ public class CommunityDao {
 		return uplist;
 	}
 
+	// 공지사항 수정
 	public int updateNotice(Connection conn, Notice n) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -253,6 +262,7 @@ public class CommunityDao {
 
 	}
 
+	// 공지사항 수정 시 기존 파일 있을경우 
 	public int updateAttachment(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -275,6 +285,7 @@ public class CommunityDao {
 		return result;
 	}
 
+	// 공지사항 수정시 기존파일 없이 등록
 	public int insertNewAttachment(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -296,6 +307,7 @@ public class CommunityDao {
 		return result;
 	}
 
+	// 블라인드게시글 조회
 	public List<Board> selectBlindBoardList(Connection conn, PageInfo pi) {
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -334,7 +346,8 @@ public class CommunityDao {
 		
 		return list;
 	}
-
+	
+	// 블라인드게시글 검색
 	public List<Board> searchBlindBoard(Connection conn, String keyword) {
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -366,6 +379,7 @@ public class CommunityDao {
 		return list;
 	}
 
+	// 블라인드게시글 페이징
 	public int selectBlindBoardListCount(Connection conn) {
 		int listCount = 0;
 		
@@ -389,6 +403,7 @@ public class CommunityDao {
 		return listCount;
 	}
 
+	// 블라인드 해제처리
 	public int removeBlind(Connection conn, int boardNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -405,6 +420,69 @@ public class CommunityDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	// 신고게시글 페이징
+	public int reportBoardListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("reportBoardListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	// 신고게시글 조회
+	public List<Board> selectReportBoardList(Connection conn, PageInfo pi) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReportBoardList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("b_no"),
+								   rset.getString("b_title"),
+								   rset.getString("b_regist_date"),
+								   rset.getInt("b_read_count"),
+								   rset.getString("b_category"),
+								   rset.getInt("report"),
+								   rset.getString("mem_id")
+								   ));				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
 	}
 
 }
