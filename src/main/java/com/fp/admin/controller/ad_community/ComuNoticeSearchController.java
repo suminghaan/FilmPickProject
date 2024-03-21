@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fp.admin.model.service.CommunityService;
 import com.fp.admin.model.vo.Notice;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ComuNoticeSearchController
@@ -36,9 +37,9 @@ public class ComuNoticeSearchController extends HttpServlet {
 		
 		List<Notice> list = new CommunityService().searchNotice(keyword);
 		
-		response.setContentType("text/html; charset=utf-8");
-		response.getWriter().print(list);
-		System.out.print(list);
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
+		
 	}
 
 	/**
