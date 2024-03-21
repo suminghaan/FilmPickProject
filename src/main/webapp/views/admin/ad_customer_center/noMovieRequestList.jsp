@@ -4,533 +4,200 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>없는영화 신청 확인 </title>
+<title>없는영화 신청 목록</title>
 <style>
-#header {
-  height: 100px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
-
-.content_wrap {
-  padding-top: 100px;
-  margin:auto;
-  width: 1500px;
-}
-
-.content {
-  height: 100%;
-}
-
-#footer {
-  height: 100px;
-}
-
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.search_bar {
-  width: 400px;
-}
-
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-@media (max-width: 990px) {
-  #header {
-    height: 250px;
-  }
-  .content_wrap {
-    padding-top: 250px;
-  }
-  .search_bar {
-    width: 600px;
-  }
-}
-
-.b-example-divider {
-  width: 100%;
-  height: 3rem;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.b-example-vr {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-}
-
-.bi {
-  vertical-align: -.125em;
-  fill: currentColor;
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-  display: flex;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
-}
-
-.bd-mode-toggle {
-  z-index: 1500;
-}
-
-.bd-mode-toggle .dropdown-menu .active .bi {
-  display: block !important;
-}
-
-.menu_buttons {
-  margin-left: 20px;
-}
-
-.menu_buttons:hover {
-  transform: scale(1.3);
-}
-
-.menu_buttons_co {
-  margin-left: 10px;
-  display: none;
-}
-
-.menu_buttons:hover + .menu_buttons_co {
-  display: block;
-}
-
-.search {
-  position: relative;
-}
-
-.searchBtn {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-}
-
-.search-info {
-  margin-top: 200px;
-  height: 5%;
-  background-color: gray;
-}
-
-/*컨텐츠부분*/
-
- .all{
-     padding: 5px 5px 5px 5px;
-     width: 1100px;
-     align-items: center;
-     margin: 0 auto;
- }
-
- .modal-body {
-     position: relative;
- }
-
- .psModal{
-     position: absolute;
-     top: 19px;
-     right: 19px;
- }
-
- .psButton-body{
-     position: relative;
- }
-
- .psButton{
-     position: absolute;
-     top: 27.5px;
-     left: 300px;
- }
-  
-
-#title{
+#select-user-title{
     margin-top: 50px;
 }
-
-h1{
-    font-weight: bold !important;
-    color: black;
+table{
+    margin-top: 20px;
 }
-
-.dr{
-	display: flex;
-}
-
-.dr *{
-	margin-right : 20px;
-}
-
-.modal-text{
-    margin-right: 10px;
+.title>h1{
     font-weight: bold;
 }
 
-label{
-	margin-right: 15px;
+.no-movie-list{
+    width: 100%;
+    height: 260px;
+    box-shadow: 0 0 7px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 17px;
+    cursor: pointer;
 }
 
-input[type="radio"]{
-	margin-right: 5px;
+.title{
+    font-weight: bold;
 }
 
-label
-{
-    color: black;
-}
-   
-   
-  /*모달 스타일*/
-  
-.modal-header{
-		color: black;
-		font-weight: bold !important;
+.all-list{
+    display: flex;
+    flex-direction: row;
 }
 
-.castingList{
-		display:flex;
-		width:400px;
+.item1, .item2{
+    flex: 1;
 }
 
-.person{
-		display:flex;
-		flex-direction:column;
+.item1 img {
+    width: 100%;
+    height: auto;
 }
 
-img{
-		width:80px;
-		height:80px;
+.item2{
+    margin-top: 5px;
 }
 
-.inputUser{
-		display:flex;
+.story{
+    margin-top: 15px;
+    color: rgb(127, 127, 127);
+    height: 155px;
 }
 
+.item1{
+    width: 25%;
+}
+
+.item2{
+    width: 70%;
+    padding: 0px;
+    margin-left: 10px;
+}
+
+.no-check{
+    color: gray;
+}
+
+.regist-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.writer{
+    padding: 0px;
+}
+
+.recognize{
+    color: rgb(41, 128, 185);
+}
+
+.refuse{
+    color: rgb(192, 57, 43);
+}
 </style>
 </head>
 <body>
-<%@ include file="/views/admin/common/header.jsp" %>
+	<%@ include file="/views/admin/common/header.jsp" %>
     <div class="container-fluid">
-    	<div class="content">
-
-        
-        <section class="content_wrap" style="padding-top: 0px;">
-
+    	 <div class="container">
+        <div id="title" class="title">
+            <h1 id="select-user-title">없는영화 신청 목록</h1>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-end container" style="margin: 20px;">
+            <img src="../ad_resources/img/icon_filter.png" style="margin-right: 10px;">
+            <select class="form-control" style="width: 100px">
+                <option>승인</option>
+                <option>거절</option>
+                <option>미확인</option>
+            </select>
+        </div>
         <div class="container">
-            <div id="title" class="title"></div>
-            <h1>없는영화 신청글 확인</h1>
-            <hr>
-        </div>
-        
-        <form action="" method="">
-            <div class="all">                
-                <div class="form-group">
-                    <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="" placeholder="파묘" style="width: 500px;">
-                </div>
-
-                <br>
-
-                <div class="form-group">
-                    <label for="mGrade">영화관람등급</label>
-                    <select class="form-control" id="mGrade" name="" style="width: 400px;">
-                        <option value="1">전체관람</option>
-                        <option value="2" selected>12세 관람가</option>
-                        <option value="3">15세 관람가</option>
-                        <option value="4">청소년관람불가</option>
-                    </select>
-                </div>
-                    
-                <br>
-
-                <div class="form-group">
-                    <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.
-                    </textarea>                
-                </div>
-                
-
-                <br>
-
-                <div class="form-group dr">
-                
-                	<div>
-                    	<label>개봉일</label>
-                    	<input type="date" name="dateIn" class="form-control" style="width: 300px;" value="2024-01-11">
+            <div class="container">
+                <div class="no-movie-list all-list" onclick="moveWrite();">
+                    <div clss="container item1">
+                        <h4 class="title">귀멸의 칼날</h4>
+                        <img src="../ad_resources/img/poster-guikal.png" class="img-fluid" style="width: 130px;">
                     </div>
-                    <div>
-                    	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" class="form-control" style="width: 300px;" value="122분">
-                	</div>
-                </div>
-                <br>
-
-                
-                <br>
-
-                <div class="form-group psButton-body">
-                    <label>출연/제작</label>
-                    <input type="text" name="casting" class="form-control" style="width: 300px;">
-                    <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
-                
-                	<div class="castingList">
-                		<div class="person">
-	                    <img src="../ad_resources/img/최동훈감독.PNG" alt=""> 최동훈 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-	                    </div>
-	                    <div class="person">
-	                    <img src="../ad_resources/img/김우빈.PNG" alt=""> 김우빈 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-	                    </div>
-	                    <div class="person">
-	                    <img src="../ad_resources/img/김태리.PNG" alt=""> 김태리 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-	                    </div>
-	                    <div class="person">
-	                    <img src="../ad_resources/img/류준열.PNG" alt=""> 류준열 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-						</div>
-					</div>
-                	
-                </div>
-                <br>
-
-
-                <div class="form-group">
-                    <label>영화 장르 선택</label>
-                    <br>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbox1" name="category" value="SF" checked>
-                        <label class="form-check-label" for="cbox1">SF</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox2" name="category" value="스릴러">
-                        <label class="form-check-label" for="cbox2">스릴러</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox3" name="category" value="로맨스">
-                        <label class="form-check-label" for="cbox3">로맨스</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox4" name="category" value="액션" checked>
-                        <label class="form-check-label" for="cbox4">액션</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox5" name="category" value="판타지">
-                        <label class="form-check-label" for="cbox5">판타지</label>
-
-        
-                        <input class="form-check-input" type="checkbox" id="cbox6" name="category" value="코미디">
-                        <label class="form-check-label" for="cbox6">코미디</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox7" name="category" value="에로">
-                        <label class="form-check-label" for="cbox7">에로</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox8" name="category" value="범죄">
-                        <label class="form-check-label" for="cbox8">범죄</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox9" name="category" value="애니메이션">
-                        <label class="form-check-label" for="cbox9">애니메이션</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox10" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">느와르</label>
-                    </div>
-                </div>
-                <br>
-                
-
-                <div class="form-group">
-                <label>국가</label>
-                <br>
-                
-                <div class="form-check form-check-inline">
-                    <input type="radio" id="radio1" name="nation" value="1" checked style="margin-top: 10px;"> 
-                    <label for="radio1">국내</label>
-
-                    <input type="radio" id="radio2" name="nation" value="2">
-                    <label for="radio2">해외</label>
-                </div>
-                
-                <br><br>
- 
-                <label>영화포스터</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="">
-                    <label class="custom-file-label" for="customFile1">파일추가</label>
-                    <img src="" alt="미리보기이미지">
-                </div>
-
-                <br><br>
-
-                <label>예고편영상</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="">
-                    <label class="custom-file-label" for="customFile2">파일추가</label>
-                    <img src="" alt="미리보기이미지">
-                </div>
-                
-                <br><br>
-
-                <div class="form-group">
-                <label>기타 추가 희망 이미지 또는 동영상</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="">
-                        <label class="custom-file-label" for="customFile3">파일추가</label>
-                        <img src="" alt="미리보기이미지">
+                    <div class="container item2">
+                        <div class="regist-date">
+                            <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span>2024/02/11</span>
+                            <span class="no-check" style="justify-content: end;"><b>미확인</b></span>
+                        </div>
+                        <div class="story-writer">
+                            <div class="container story">
+                                ‘탄지로’와 상현 4 ‘한텐구’의 목숨을 건 혈투와, ‘무잔’과의 최종 국면을 앞둔 귀살대원들의 마지막 훈련을 그린 영화
+                            </div>
+                            <div class="container writer" style="text-align: right;">
+                                <b>작성자</b> user000
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
-
-                <br>
-
-                <div class="form-group">
-                    <label>첫 페이지 노출 선택여부 : </label>
-                    <br>
-                    <input type="radio" id="radioX" name="gender" value="X" checked> 
-                    <label for="radioX">선택안함</label>
-
-                    <input type="radio" id="radioM" name="gender" value="M">
-                    <label for="radioM">첫페이지 노출</label>
-
-                    <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('신규영화 등록이 완료되었습니다.')">업로드</button>
+                <div class="no-movie-list all-list" onclick="moveWrite();">
+                    <div clss="container item1">
+                        <h4 class="title">파묘</h4>
+                        <img src="../ad_resources/img/poster-pamou.png" class="img-fluid" style="width: 130px;">
+                    </div>
+                    <div class="container item2">
+                        <div class="regist-date">
+                            <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span>2024/02/01</span>
+                            <span class="recognize" style="justify-content: end;"><b>승인</b></span>
+                        </div>
+                        <div class="story-writer">
+                            <div class="container story">
+                                미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다. “전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지” 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. ‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만, ‘화림’의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.                            </div>
+                            <div class="container writer" style="text-align: right;">
+                                <b>작성자</b> user000
+                            </div>
+                        </div>
+                    </div>
                 </div>
-		     <div class="form-group">
-                    <label>사용자 요청사항</label>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">사용자가 입력한 요청사항</textarea>       
-                </div>
-                <br>
-                
-                <!-- 사용자가 등록한 영화일 경우 -->
-                <div class="form-group inputUser">
-                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
-                    <div class="userInfo">
-                        <p><label>등록한 사용자 ID : </label>user01</p>
-                        <p><label>등록한 영화 갯수 : </label>13번</p>
+
+                <div class="no-movie-list all-list" onclick="moveWrite();">
+                    <div clss="container item1">
+                        <h4 class="title">검은 사제들</h4>
+                        <img src="../ad_resources/img/poster-geomsa.png" class="img-fluid" style="width: 130px;">
+                    </div>
+                    <div class="container item2">
+                        <div class="regist-date">
+                            <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span>2024/02/10</span>
+                            <span class="refuse" style="justify-content: end;"><b>거절</b></span>
+                        </div>
+                        <div class="story-writer">
+                            <div class="container story">
+                                2015년 서울 뺑소니 교통사고 이후 의문의 증상에 시달리는 한 소녀(박소담). 잦은 돌출 행동으로 교단의 눈 밖에 난 ‘김신부’(김윤석)는 모두의 반대와 의심 속, 소녀를 구하기 위한 자신만의 계획을 준비한다. 이를 위해선 모든 자격에 부합하는 또 한 명의 사제가 필요한 상황, 모두가 기피하는 가운데 신학생인 ‘최부제’(강동원)가 선택되고, 그는 ‘김신부’를 돕는 동시에 감시하라는 미션을 받게 된다. 그리고 마침내 소녀를 구할 수 있는 단 하루의 기회, 김신부와 최부제는 모두의 목숨을 잃을 수도 있는 위험한 예식을 시작하는데… “절대 쳐다보지마. 이제부터 넌 여기 없는 거야”
+                            </div>
+                            <div class="container writer" style="text-align: right;">
+                                <b>작성자</b> user000
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
-        <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
-        <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
-    	</div>
-  </div>
-    
-
-    <!-- 인물검색 Modal -->
-    <div class="modal" id="searchModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-        
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">배우 검색</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-        
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <input type="text" name="runningTime" class="form-control">
-                    <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
-                    <hr>
-                    <div>
-                        검색된 인물 나오는 공간
-                    </div>
-                </div>
-        
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
-                </div>
-        
+        </div>
+        <div class="container">
+            <div class="d-flex justify-content-center container">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
-    
-
-     <div class="modal fade" id="refuseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">거절사유 입력</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
-                    <span class="modal-text">거절사유</span>
-                    <span><textarea rows="5" style="resize:none;" placeholder="내용을 입력해주세요" class="form-control"></textarea></span>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center ">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="alert('거절사유 작성이 완료되었습니다.')">작성</button>
-            </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="recognizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">수정사항 확인</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container" style="margin-top: 20px; margin-bottom: 10px;">
-                    <span class="modal-text">개봉일</span>
-                    <span>2024-01-11</span>
-                </div>
-                <div class="container" style="margin-top: 30px; margin-bottom: 10px;">
-                    <span class="modal-text">영화장르</span>
-                    <span>스릴러</span>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">확인</button>
-            </div>
-        </div>
-        </div>
-    </div>
+   </div>	
+   <script>
+   		function moveWrite(){
+   			location.href = "../ad_customer_center/noMovieRequestList.jsp";
+   		}
+   </script>
 </body>
 </html>
