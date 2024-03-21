@@ -92,6 +92,7 @@
         
       </div>
       <script>
+      // 영화포스터 호출하는 제이쿼리
       	$(function(){
       		movieList();
       	})

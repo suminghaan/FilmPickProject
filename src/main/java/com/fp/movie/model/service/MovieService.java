@@ -119,8 +119,13 @@ public class MovieService {
 	}
 
 
-// 메인페이지 영화 조회 메소드
+// 메인페이지 영화예고편 조회 메소드
 	public List<Movie> selectMainListv() {
+		return null;
+	}
+	
+// 메인페이지 영화예고편 조회 메소드
+	public List<Movie> selectMainListp() {
 		return null;
 	}
 

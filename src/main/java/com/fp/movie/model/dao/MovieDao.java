@@ -376,7 +376,21 @@ public class MovieDao {
 	}
 	
 	public List<Movie> selectMainListv(Connection conn) {
-		return null;
+		List<Movie> vlist = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainListv");
+		
+		return vlist;
+	}
+	
+	public List<Movie> selectMainListp(Connection conn) {
+		List<Movie> vlist = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainListp");
+		
+		return vlist;
 	}
 
 	// 첫페이지 영화 포스터 조회 메소드 [용훈]
