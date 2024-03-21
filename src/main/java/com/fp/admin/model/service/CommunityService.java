@@ -49,14 +49,18 @@ public class CommunityService {
 	
 	public int deleteNotice(int noticeNo) {
 		Connection conn = getConnection();
-		int result = coDao.deleteNotice(conn, noticeNo);
+		int result1 = coDao.deleteNotice(conn, noticeNo);
+		int result2 = coDao.deleteAttachment(conn, noticeNo);
 		
-		if(result > 0) {
+		
+		if(result1 > 0 && result2 >= 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		close(conn);
+		
+		int result = result1 + result2;
 		return result;
 	}
 
@@ -68,11 +72,33 @@ public class CommunityService {
 		
 	}
 
-	public List<Notice> updateNotice(String noticeNo) {
+	public List<Notice> updateNoticeForm(String noticeNo) {
 		Connection conn = getConnection();
-		List<Notice> uplist = coDao.updateNotice(conn, noticeNo);
+		List<Notice> uplist = coDao.updateNoticeForm(conn, noticeNo);
 		close(conn);
 		return uplist;
+	}
+
+	public int updateNotice(Notice n, Attachment at) {
+		Connection conn = getConnection();
+		int result1 = coDao.updateNotice(conn, n);
+		
+		int result2 = 1;
+		if(at != null) {
+			if(at.getFileNo() != 0) {
+				result2 = coDao.updateAttachment(conn,at);
+			}else {
+				result2 = coDao.insertNewAttachment(conn, at);
+			}
+		}
+		
+		if(result1 > 0 && result2 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
 	}
 
 }

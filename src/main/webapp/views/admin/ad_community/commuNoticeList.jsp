@@ -169,7 +169,8 @@
         
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="<%=contextPath %>/updateForm.co" method="post" enctype="multipart/form-data" id="update_form">
+                    <form action="<%=contextPath %>/update.aa" method="post" enctype="multipart/form-data" id="update_form">
+			            <input type="hidden" id="noticeNo" name="no" value="">
 			            <table>
 			                <tr>
 			                </tr>
@@ -179,8 +180,8 @@
 			                	<th><label for="noticeSection">구분</label></th>
 			                	<td colspan="3">
 			                		<select class="form-control" id="noticeSection" name="category">
-					                    <option id="normal">일반</option>
-					                    <option id="event" >이벤트</option>
+					                    <option id="normal" value="1">일반</option>
+					                    <option id="event" value="2">이벤트</option>
 					                </select>
 			                	</td>
 			                	
@@ -194,7 +195,7 @@
 			                	<th><label for="noticeFile">첨부파일</label></th>
 			                	<td colspan="4">
 			                		<!-- 기존에 첨부파일 있을 경우 보여지는 기존첨부파일명 -->			                			
-			                		<a id="noticeFileOrigin" name="originFileNo"></a>
+			                		<a id="noticeFileOrigin" ></a>
 			                		<!-- 새로운 첨부파일 업로드 시 -->
 			                		<input type="file" class="form-control-file" id="noticeFile" name="upfile">
 			                	</td>
@@ -206,13 +207,18 @@
 			                	</td>
 			                </tr>
 			            </table>
-			        </form>
+			        <div>
+			        	<button type="submit" class="btn btn-outline-secondary modifyBtn" style="float: right;">수정</button>
+			        </div>
+			      	</form>
                 </div>
         
                 <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary modifyBtn" style="float: right;" data-dismiss="modal">수정</button>
+               	<!-- 
+               	<div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-secondary modifyBtn" style="float: right;">수정</button>
                 </div>
+                </form> -->
             </div>
 
             
@@ -254,6 +260,7 @@
     	}
     	
     	function update(noticeNo) {
+    		console.log("update 함수 실행")
     		$.ajax({
        			type:'post',
        			url: "<%=contextPath%>/noticeDetail.co",
@@ -262,6 +269,7 @@
        			},
        			success:function(uplist){
        				
+       				$("#noticeNo").val(uplist[0].noticeNo);
        				$("#title").val(uplist[0].noticeTitle);
 
         			if((uplist[0].noticeCategory)== 1){
@@ -274,11 +282,13 @@
  
        				$("#noticeContent").val(uplist[0].noticeContent);
        				
+       				
        				if(uplist[0].nfileOriginName != null){
        					$("#noticeFileOrigin").html(uplist[0].nfileOriginName);
        					$("#noticeFileOrigin").attr('download', uplist[0].nfileOriginName);
        					$("#noticeFileOrigin").attr('href', "<%=contextPath%>" + "/" + uplist[0].nfilePath + uplist[0].nfileChangeName);
-       				}      	
+       				} 
+       				
        				
        				if(uplist[0].noticeFix == 'Y'){
        					$("#fix").attr("checked", true);
@@ -302,10 +312,10 @@
     <script>
 
     	function deleted(){
-    		let d = prompt("등록된 영화를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
+    		let d = prompt("삭제를 희망하시면 삭제라고 입력해주세요");
     		
     		if(d=="삭제"){
-                alert("영화가 삭제되었습니다.")
+                alert("공지사항을 삭제하겠습니다.")
             }else{
                 alert("잘못입력하셨습니다. 다시 확인해주세요")
             }

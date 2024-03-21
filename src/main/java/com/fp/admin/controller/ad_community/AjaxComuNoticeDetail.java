@@ -35,7 +35,7 @@ public class AjaxComuNoticeDetail extends HttpServlet {
 
 		String noticeNo = request.getParameter("notice");
 		System.out.println(noticeNo);
-		List<Notice> uplist = new CommunityService().updateNotice(noticeNo);
+		List<Notice> uplist = new CommunityService().updateNoticeForm(noticeNo);
 		System.out.println(uplist);
 		response.setContentType("apllication/json; charset=utf-8");
 		new Gson().toJson(uplist, response.getWriter());
