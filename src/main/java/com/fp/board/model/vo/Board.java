@@ -21,6 +21,8 @@ public class Board {
 	private int boardCount; // 총 게시글 개수
 	private int memLevel; // 회원등급
 	private String memNickname; // 닉네임
+	// ** 2024.03.21 (관리자 : 한수민) 블라인드 게시글 조회 페이지에서 쓸 필드 추가
+	private String replyContent; // 댓글내용
 	
 	public Board() {}
 	
@@ -372,6 +374,24 @@ public class Board {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
+	
+	
+
+
+
+	public String getReplyContent() {
+		return replyContent;
+	}
+
+
+
+
+
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
+
+
 
 
 
