@@ -121,12 +121,18 @@ public class MovieService {
 
 // 메인페이지 영화예고편 조회 메소드
 	public List<Movie> selectMainListv() {
-		return null;
+		Connection conn = getConnection();
+		List<Movie> vlist = mDao.selectMainListv(conn);
+		close(conn);
+		return vlist;
 	}
 	
 // 메인페이지 영화예고편 조회 메소드
 	public List<Movie> selectMainListp() {
-		return null;
+		Connection conn = getConnection();
+		List<Movie> plist = mDao.selectMainListp(conn);
+		close(conn);
+		return plist;
 	}
 
 

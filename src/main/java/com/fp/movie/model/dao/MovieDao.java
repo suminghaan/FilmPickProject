@@ -107,8 +107,6 @@ public class MovieDao {
 		
 		sql = "SELECT * FROM(SELECT ROWNUM RNUM, A.* FROM (" + sql + ") A ) WHERE RNUM BETWEEN ? AND ?";
 		
-		
-		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
@@ -375,22 +373,59 @@ public class MovieDao {
 		return result;
 	}
 	
+	// 메인페이지 영화예고편 조회 [용훈]
 	public List<Movie> selectMainListv(Connection conn) {
 		List<Movie> vlist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectMainListv");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				vlist.add(new Movie(rset.getInt("mv_no"),
+									rset.getString("MV_NAME"),
+									rset.getString("MV_OPENDATE"),
+									rset.getString("MV_STORY"),
+									rset.getString("MV_PREVIEW")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
 		return vlist;
 	}
-	
+	// 메인페이지 영화포스터 조회 [용훈]
 	public List<Movie> selectMainListp(Connection conn) {
-		List<Movie> vlist = new ArrayList<>();
+		List<Movie> plist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectMainListp");
 		
-		return vlist;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				plist.add(new Movie(rset.getInt("mv_no"),
+									rset.getString("mv_name"),
+									rset.getString("mv_opendate"),
+									rset.getString("mv_poster"),
+									rset.getString("like_point")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return plist;
 	}
 
 	// 첫페이지 영화 포스터 조회 메소드 [용훈]
