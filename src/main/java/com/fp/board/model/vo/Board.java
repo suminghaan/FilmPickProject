@@ -30,7 +30,7 @@ public class Board {
 
 	
 	/**
-	 * (관리자) 블라인드게시글 조회용도
+	 * (관리자) 블라인드게시글의 댓글 조회용도
 	 * @param bNo 게시글번호
 	 * @param bTitle 게시글제목
 	 * @param bRegistDate 게시글등록일
@@ -54,7 +54,34 @@ public class Board {
 		this.memId = memId;
 		this.replyContent = replyContent;
 	}
+	
+	
 
+
+
+
+	/**
+	 * (관리자) 블라인드 게시글 목록 조회용
+	 * @param bNo
+	 * @param bTitle
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @param bCategory
+	 * @param replyCount
+	 * @param memId
+	 *  @author 한수민
+	 */
+	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory, int replyCount,
+			String memId) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.replyCount = replyCount;
+		this.memId = memId;
+	}
 
 
 
@@ -184,6 +211,36 @@ public class Board {
 		this.bRegistDate = bRegistDate;
 		this.bReadCount = bReadCount;
 	}
+
+
+	
+
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
+			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
+			int memberNo, String memId, String memColor, int boardCount, int memLevel, String memNickname,
+			String replyContent) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bRecommendCount = bRecommendCount;
+		this.bCategory = bCategory;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
+		this.memNo = memNo;
+		this.titleImgUrl = titleImgUrl;
+		this.replyCount = replyCount;
+		this.memberNo = memberNo;
+		this.memId = memId;
+		this.memColor = memColor;
+		this.boardCount = boardCount;
+		this.memLevel = memLevel;
+		this.memNickname = memNickname;
+		this.replyContent = replyContent;
+	}
+
 
 
 
@@ -429,6 +486,19 @@ public class Board {
 		this.boardCount = boardCount;
 		this.memLevel = memLevel;
 		this.memNickname = memNickname;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bRegistDate=" + bRegistDate
+				+ ", bReadCount=" + bReadCount + ", bRecommendCount=" + bRecommendCount + ", bCategory=" + bCategory
+				+ ", bStatus=" + bStatus + ", dSatus=" + dSatus + ", memNo=" + memNo + ", titleImgUrl=" + titleImgUrl
+				+ ", replyCount=" + replyCount + ", memberNo=" + memberNo + ", memId=" + memId + ", memColor="
+				+ memColor + ", boardCount=" + boardCount + ", memLevel=" + memLevel + ", memNickname=" + memNickname
+				+ ", replyContent=" + replyContent + "]";
 	}
 
 }

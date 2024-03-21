@@ -123,4 +123,18 @@ public class CommunityService {
 		return listCount;
 	}
 
+	public int removeBlind(int boardNo) {
+		Connection conn = getConnection();
+		int result = coDao.removeBlind(conn, boardNo);
+
+		if(result > 0 ) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+
+		return result;
+	}
+
 }

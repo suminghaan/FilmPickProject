@@ -320,8 +320,9 @@ public class CommunityDao {
 								   rset.getInt("b_read_count"),
 								   rset.getString("b_category"),
 								   rset.getInt("reply"),
-								   rset.getString("mem_id") 
-								   ));
+								   rset.getString("mem_id"), 
+								   rset.getString("reply_content")
+								   ));				
 			}
 
 		} catch (SQLException e) {
@@ -386,6 +387,24 @@ public class CommunityDao {
 			close(pstmt);
 		}
 		return listCount;
+	}
+
+	public int removeBlind(Connection conn, int boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("removeBlind");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

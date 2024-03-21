@@ -83,9 +83,10 @@
 	            </thead>
 	            
 	            <tbody>
-	
+				
 	                <!-- case1. 조회된 게시글 없을 경우 -->
 	                <% if(list.isEmpty()){ %>
+	               
 	                <tr>
 	                    <td colspan="7" style="text-align: center;">존재하는 게시글이 없습니다.</td>
 	                </tr>
@@ -102,25 +103,29 @@
 		                    <td><%=bo.getReplyCount() %></td>
 		                    <td><%=bo.getbCategory() %></td>
 		                    <td>                      	
-	                        	<button type="button" class="btn btn-outline-warning" onclick="alert('블라인드처리를 해제하시겠습니까? \n해지시 다시 사용자에게 보여지게됩니다.')">블라인드해제</button>
+	                        	<a href="<%=contextPath %>/removeBlind.co?bNo=<%=bo.getbNo() %>" class="btn btn-outline-warning" onclick="removeBlind();">블라인드해제</button>
 	                    	</td>
 		                </tr>
 		                <%} %>
 	                <%} %>
 					<!-- 글(.blindContent)를 누르면 나오는 해당 게시글 내용 -->
+					<% for(Board board: list) { %>
 					<tr class="blindDetail">
 						<td colspan="6">
 							<div class="form-group">
 								<label for="content"><h6>게시글 내용</h6></label>
-								<textarea class="form-control" name="borderContent" id="content" cols="50" rows="8">작성되어있는 게시글 내용</textarea>
+								<textarea class="form-control" name="borderContent" id="content" cols="50" rows="8"><%=board.getbContent() %></textarea>
 							</div>
 							<div>
 								<label for="comment"><h6>댓글</h6></label>
-								<input type="text" class="form-control-plaintext" id="comment" placeholder="달려있는 댓글">								
-								<input type="text" class="form-control-plaintext" id="comment" placeholder="달려있는 댓글">													
+								<%%>
+								<input type="text" class="form-control-plaintext" id="comment" value="">								
+							<!--  	<input type="text" class="form-control-plaintext" id="comment" placeholder="달려있는 댓글">		-->											
+								<%  %>
 							</div>
 						</td>
 					</tr>
+					<% } %>
 				<!--  
 	                <tr class="blindContent">
 	                    <td>2</td>
@@ -253,6 +258,11 @@
 				}
 			})
 		})
+		
+		// 블라인드 해제
+		function removeBlind(){
+			alert("해당 게시글 블라인드처리를 해제합니다.")
+		}
 	</script>
 
 </body>

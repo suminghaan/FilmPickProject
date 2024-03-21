@@ -196,8 +196,10 @@
 					  	  	 FROM REPLY R 
 					  	  	 WHERE BOARD_NO = B_NO) REPLY
 					  	  , B_CATEGORY
+					  	  , REPLY_CONTENT
 					 	FROM BOARD B
 					 	JOIN MEMBER USING (MEM_NO)
+					 	LEFT JOIN REPLY ON BOARD_NO = B_NO
 					 	WHERE B_B_STATUS = 'Y'
 					 	ORDER
 					 		BY B_NO DESC
@@ -206,7 +208,7 @@
 				WHERE RNUM BETWEEN ? AND ?
 		</entry>
 		
-		<!-- 관리자 공지사항 페이징처리 [수민]-->
+		<!-- 관리자 블라인드게시글 페이징처리 [수민]-->
 		<entry key="selectBlindBoardListCount">
 			SELECT COUNT(*) COUNT
 			  FROM BOARD
@@ -220,6 +222,15 @@
 			JOIN MEMBER USING (MEM_NO)
 			WHERE B_B_STATUS = 'Y'
 			  AND B_TITLE LIKE '%' || ? || '%'
+		</entry>
+		
+		<!-- 관리자 블라인드게시글 블라인드 해제 [수민] -->
+		<entry key="removeBlind">
+			UPDATE
+				  BOARD
+			  SET B_B_STATUS = 'Y'
+			WHERE B_NO = ?
+			
 		</entry>
 
 
