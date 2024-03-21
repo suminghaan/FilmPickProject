@@ -119,4 +119,17 @@
 		)
 		WHERE RNUM < 11]]>
 	</entry>
+	
+	<entry key="firstselect">
+	<![CDATA[
+		SELECT F.*
+		FROM (
+		    SELECT MV_NO, MV_POSTER
+		    FROM MOVIE
+		    WHERE MV_STATUS = 'Y'
+		    ORDER BY MV_OPENDATE DESC
+		) F
+		WHERE ROWNUM <= 5
+	]]>
+	</entry>
 </properties>
