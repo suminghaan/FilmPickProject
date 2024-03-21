@@ -63,7 +63,7 @@ table{
 }
 
 .item1{
-    width: 25%;
+    width: 30px;
 }
 
 .item2{
@@ -113,21 +113,19 @@ table{
         </div>
         <div class="container">
             <div class="container">
-                <div class="no-movie-list all-list" onclick="moveWrite();">
                 	<% if(pageList.isEmpty()){ %>
                 		<b>신청 목록이 존재하지 않습니다.</b>
                 	<% } else {  %>
                 	<% for(NoMovie nm : pageList){ %>
-                    <div clss="container item1">
+                <div class="no-movie-list all-list" onclick="moveWrite();">
+                    <div class="container item1">
                         <h4 class="title"><%= nm.getNmTitle() %></h4>
-                        <% for(int i = 0; i < pageList.size(); i++) { %>
-                        <img src="<%= contextPath + "/" + pageList.get(i).getNmPoster() %>" class="img-fluid" style="width: 130px;">
-                    	<% } %>
+                        <img src="<%= contextPath + "/" + nm.getNmPoster() %>" class="img-fluid" style="width: 130px;">
                     </div>
                     <div class="container item2">
                         <div class="regist-date">
                             <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span><%= nm.getNmEnrollDate() %></span>
-                            <span class="no-check" style="justify-content: end;"><b>
+                            <span class="no-check" style="justify-content: end;" id="approval"><b>
                             <%= 
 	                            nm.getNmApproval() == null ? " " : 
 							    nm.getNmApproval().equals("Y") ? "승인" : 
@@ -144,9 +142,9 @@ table{
                             </div>
                         </div>
                     </div>
+                </div>
                     <% } %>
                 	<% } %>
-                </div>
             </div>
         </div>
         <div class="container">
@@ -180,6 +178,22 @@ table{
    		function moveWrite(){
    			location.href = "../ad_customer_center/noMovieRequestList.jsp";
    		}
+   		
+   		$(document).ready(function() {
+   		    let approvalText = $('#approvalText');
+   		    let text = approvalText.text().trim();
+   		    console.log(text);
+   		    switch(text) {
+   		        case '승인':
+   		            approvalText.css('color', 'rgb(41, 128, 185)'); // 파란색
+   		            break;
+   		        case '거절':
+   		            approvalText.css('color', 'rgb(192, 57, 43)'); // 빨간색
+   		            break;
+   		        default:
+   		            break;
+   		    }
+   		});
    </script>
 </body>
 </html>
