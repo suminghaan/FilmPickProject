@@ -235,20 +235,24 @@
     				keyword:$("#searchInput").val()
     			},
     			success:function(list){
-    				console.log(list);
-    				<% for(Notice not: list) { %>
-	                <tr>
-	                    <td><%=not.getNoticeNo() %></td>
-	                    <td><%=not.getNoticeDate() %></td>
-	                    <td><%=not.getNoticeWriter() %></td>
-	                    <td><%=not.getNoticeTitle() %></td>
-	                    <td><%=not.getNoticeFix() %></td>
-	                    <td>
-	                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice">수정</button>
-	                        <a href="<%=contextPath %>/delete.co?noticeNo=<%=not.getNoticeNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
-	                    </td>
-	                </tr>
-                	<%} %>
+    				
+    				let value = ""
+    				
+    				if(list.length > 0){
+    					for(let i=0; i<list.length; i++){
+    						value += "<tr>"
+    								+ "<td>" + list[i].noticeNo + "</td>"
+    								+ "<td>" + list[i].noticeDate + "</td>"
+    								+ "<td>" + list[i].noticeWriter + "</td>"
+    								+ "<td>" + list[i].noticeTitle + "</td>"
+    								+ "<td>" + list[i].noticeFix + "</td>"
+    		                        +"</tr>";
+    					}
+    				}else{
+    					value += "<tr><td colspan='5'>해당하는 공지사항이 없습니다,</td></tr>";
+    				}
+    				
+    				$("#notice_list tbody").html(value);
     			},
     			error:function(){
     				console.log("목록 조회 ajax 실패");
