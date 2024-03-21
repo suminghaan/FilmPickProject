@@ -15,6 +15,7 @@ public class CommunityService {
 	
 	private CommunityDao coDao = new CommunityDao();
 	
+	// 공지사항 조회
 	public List<Notice> selectComuNoticeList(PageInfo pi){
 		Connection conn = getConnection();
 		List<Notice> list = coDao.selectComuNoticeList(conn, pi);
@@ -22,6 +23,7 @@ public class CommunityService {
 		return list;
 	}
 	
+	// 공지사항 페이징
 	public int selectNoticeListCount() {
 		Connection conn = JDBCTemplate.getConnection();
 		int listCount = coDao.selectNoticeListCount(conn);
@@ -29,6 +31,7 @@ public class CommunityService {
 		return listCount;
 	}
 	
+	// 공지사항 등록
 	public int insertNotice(Notice n, Attachment at) {
 		Connection conn = getConnection();
 		
@@ -48,6 +51,7 @@ public class CommunityService {
 		return result1 * result2;
 	}
 	
+	// 공지사항 삭제
 	public int deleteNotice(int noticeNo) {
 		Connection conn = getConnection();
 		int result1 = coDao.deleteNotice(conn, noticeNo);
@@ -65,6 +69,7 @@ public class CommunityService {
 		return result;
 	}
 
+	// 공지사항 검색
 	public List<Notice> searchNotice(String keyword) {
 		Connection conn = getConnection();
 		List<Notice> list = coDao.searchNotice(conn, keyword);
@@ -73,6 +78,7 @@ public class CommunityService {
 		
 	}
 
+	// 공지사항 수정
 	public List<Notice> updateNoticeForm(String noticeNo) {
 		Connection conn = getConnection();
 		List<Notice> uplist = coDao.updateNoticeForm(conn, noticeNo);
@@ -80,6 +86,7 @@ public class CommunityService {
 		return uplist;
 	}
 
+	// 공지사항 수정 시 파일 
 	public int updateNotice(Notice n, Attachment at) {
 		Connection conn = getConnection();
 		int result1 = coDao.updateNotice(conn, n);
@@ -102,6 +109,7 @@ public class CommunityService {
 		return result1 * result2;
 	}
 
+	// 블라인드처리 게시글 조회
 	public List<Board> selectBlindBoardList(PageInfo pi) {
 		Connection conn = getConnection();
 		List<Board> list = coDao.selectBlindBoardList(conn, pi);
@@ -109,6 +117,7 @@ public class CommunityService {
 		return list;
 	}
 
+	// 블라인드처리 게시글검색
 	public List<Board> searchBlindBoard(String keyword) {
 		Connection conn = getConnection();
 		List<Board> list = coDao.searchBlindBoard(conn, keyword);
@@ -116,11 +125,43 @@ public class CommunityService {
 		return list;
 	}
 
+	// 블라인드처리 페이징
 	public int selectBlindBoardListCount() {
 		Connection conn = JDBCTemplate.getConnection();
 		int listCount = coDao.selectBlindBoardListCount(conn);
 		close(conn);
 		return listCount;
+	}
+
+	// 블라인드 해제
+	public int removeBlind(int boardNo) {
+		Connection conn = getConnection();
+		int result = coDao.removeBlind(conn, boardNo);
+
+		if(result > 0 ) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+
+		return result;
+	}
+
+	//신고게시글 페이징
+	public int reportBoardListCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int listCount = coDao.reportBoardListCount(conn);
+		close(conn);
+		return listCount;
+	}
+
+	// 신고게시글 조회
+	public List<Board> selectReportBoardList(PageInfo pi) {
+		Connection conn = getConnection();
+		List<Board> list = coDao.selectReportBoardList(conn, pi);
+		close(conn);
+		return list;
 	}
 
 }
