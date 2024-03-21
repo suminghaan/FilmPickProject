@@ -3,9 +3,11 @@
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="com.fp.movie.model.vo.Movie" %>
     <%@ page import="com.fp.common.model.vo.Attachment" %>
+    <%@ page import="com.fp.person.model.vo.Person" %>
     <% 
     	ArrayList<Movie> movieList = ((ArrayList<Movie>)request.getAttribute("movieList")); 
     	ArrayList<Attachment> posterList = ((ArrayList<Attachment>)request.getAttribute("posterList"));
+    	ArrayList<Person> personList = ((ArrayList<Person>)request.getAttribute("personList"));
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -99,7 +101,6 @@
     }
 
     .person_img {
-      width: 150px;
       height: 210px;
       border-radius: 20px;
     }
@@ -196,99 +197,25 @@
           </div>
           <div id="carouselPerson" class="carousel slide">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="person_list" >
+            <% for (int i = 0; i < personList.size(); i++) {%>
+            	<% if (i % 2 == 0) { %>
+              	<div class="carousel-item <%= i == 0 ? "active" : "" %>">
+                	<div class="person_list" >
+               	<% } %> 
                   <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/공유.jpg" alt="">
+                    <img class="person_img" src="<%= personList.get(i).getpFile() %>" alt="">
                     <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
+                      <span>이름 :<%= personList.get(i).getpName() %></span><br>
+                      <span>출생연도 : <%= personList.get(i).getpBD() %></span><br>
+                      <span>국적 : <%= personList.get(i).getpNation() %></span><br>
+                      <span>직업 : <%= personList.get(i).getpJob() %></span>
                     </div>
                   </div>
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/공유.jpg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/공유.jpg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
+                <% if(i % 2 == 1 || i == (personList.size() - 1)) {%>  
                 </div>
               </div>
-              <div class="carousel-item">
-                <div class="person_list" >
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/공효진.jpeg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/공효진.jpeg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/공효진.jpeg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="person_list" >
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/고경표.jpeg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/고경표.jpeg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                  <div class="person_wrap">
-                    <img class="person_img" src="../../resources/img/고경표.jpeg" alt="">
-                    <div class="information">
-                      <span>이름 :</span><br>
-                      <span>출생연도 : </span><br>
-                      <span>국적 : </span><br>
-                      <span>직업 : </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <% } %>
+           <% } %>   
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselPerson" data-bs-slide="prev">
               <span><i class="fa-solid fa-arrow-left fa-2x" style="color: RGB(247, 39, 152);"></i></span>
