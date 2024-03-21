@@ -76,7 +76,13 @@ public class NoticeListController extends HttpServlet {
 		
 		// 사용자가 요청한 페이지에 보여져야될 게시글(공지사항) 목록
 		List<Notice> list = new NoticeService().selectList(pi);
-		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getCategory().equals("1")) {
+				list.get(i).setCategory("일반");
+			}else {
+				list.get(i).setCategory("이벤트");
+			}
+		}
 		// 응답페이지 => /views/notice/noticeList.jsp
 		// 응답데이터 => 사용자가 요청한 페이지상에 보여져야될 게시글 목록, 페이징바를 만들기 위한 pi
 		request.setAttribute("pi", pi);

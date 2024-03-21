@@ -1,6 +1,6 @@
 package com.fp.notice.model.dao;
 
-import static com.fp.common.template.JDBCTemplate.*;
+import static com.fp.common.template.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.notice.model.vo.Notice;
 
@@ -105,6 +105,83 @@ public class NoticeDao {
 		}
 		
 		return list;
+	}
+	
+	/**
+	 * 조회수 증가를 위한 메소드
+	 * @호용
+	 */
+	public int increaseCount(Connection conn, int noticeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * 클릭시 공지사항 상세페이지에 띄울 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public Notice selectNotice(Connection conn, int noticeNo) {
+		Notice n = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				n = new Notice(rset.getInt("NOTICE_NO")
+							 , rset.getString("NOTICE_CATEGORY")
+							 , rset.getString("NOTICE_TITLE")
+							 , rset.getString("NOTICE_CONTENT")
+							 , rset.getString("NOTICE_DATE")
+							 , rset.getInt("NOTICE_READ_COUNT")
+							 , rset.getString("ADMIN_ID") // admin테이블 조인
+							 , rset.getInt("ADMIN_NO"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return n;
+	}
+	
+	public Attachment selectAttachment(Connection conn, int noticeNo) {
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoticeAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				at = new Attachment();
+				at.setFileNo(rset.getInt("FILE_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setFilePath(rset.getString("FILE_PATH"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return at;
 	}
 	
 }

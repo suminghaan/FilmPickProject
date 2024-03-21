@@ -1,11 +1,15 @@
 package com.fp.notice.model.service;
 
 import static com.fp.common.template.JDBCTemplate.close;
+import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
+import static com.fp.common.template.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
 
+
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.notice.model.dao.NoticeDao;
 import com.fp.notice.model.vo.Notice;
@@ -35,6 +39,44 @@ public class NoticeService {
 		List<Notice> list = nDao.selectList(conn, pi);
 		close(conn);
 		return list;
+	}
+	
+	/**
+	 * 클릭시 조회수 증가를 위한 메소드
+	 * @호용
+	 */
+	public int increaseCount(int noticeNo) {
+		Connection conn = getConnection();
+		int result = nDao.increaseCount(conn, noticeNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	/**
+	 * 클릭시 공지사항 상세페이지에 띄울 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public Notice selectNotice(int noticeNo) {
+		Connection conn = getConnection();
+		Notice n = nDao.selectNotice(conn, noticeNo);
+		close(conn);
+		return n;
+	}
+	
+	/**
+	 * 클릭시 공지사항 상세페이지에 띄울 값들을 담기위한 메소드(첨부파일)
+	 * @author 호용
+	 */
+	public Attachment selectAttachment(int noticeNo) {
+		Connection conn = getConnection();
+		Attachment at = nDao.selectAttachment(conn, noticeNo);
+		close(conn);
+		return at;
 	}
 	
 }

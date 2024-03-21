@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.notice.model.vo.*" %>
+<%@ page import="com.fp.common.model.vo.*" %>
+<%
+	Notice n = (Notice)request.getAttribute("n");
+	// 글번호,카테고리명,제목,내용,작성자아이디, 작성자회원번호
+	
+	Attachment at = (Attachment)request.getAttribute("at");
+	// null (첨부파일이 없을경우)
+	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,18 +99,18 @@
 
                     <div class="background">
         
-                        <span class="list">전체 2</span>
+                        <span class="list"></span>
         
                         <div class="content_name">
                             <div class="content_first">
-                                <div class="division">[일반]</div>
-                                <div class="notice_title">공지사항제목</div>
+                                <div class="division"><%="["+n.getCategory()+"]"%></div>
+                                <div class="notice_title"><%=n.getNoticeTitle()%></div>
                             </div>
                             <div class="content_second">
-                                <div class="upload_date">2024/02/20 조회수 36</div>
+                                <div class="upload_date"><%=n.getNoticeDate() + "  조회수 " + n.getNoticeReadCount()%></div>
                             </div>
                         </div>
-                        <div class="notice_content">공지사항내용</div>
+                        <div class="notice_content"><%=n.getNoticeContent()%><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %></div>
                         
                         <button type="button" class="btn btn-secondary backbtn" onclick="history.back();">뒤로가기</button>
                     

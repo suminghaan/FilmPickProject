@@ -90,7 +90,7 @@
                     </tr>
                 <% } else{%>
                 	<% for(Notice n : list){ %>
-                    <tr>
+                    <tr onclick="noticeDetail(<%=n.getNoticeNo()%>);">
                         <td><%= n.getNoticeNo() %></td>
                         <td><%= n.getCategory() %></td>
                         <td><%= n.getNoticeTitle() %></td>
@@ -140,12 +140,10 @@
       
     <!-- Section Script start-->
     <script>
-
-      $(function(){
-        $("#notice_list>tbody>tr").click(function(){
-          location.href="noticeContent.jsp" // 추후 수정
-        })
-      })
+		function noticeDetail(no){
+			location.href="<%=contextPath%>/detail.no?no=" + no;
+		}
+		
 
     </script>
     <!-- Section Script end-->

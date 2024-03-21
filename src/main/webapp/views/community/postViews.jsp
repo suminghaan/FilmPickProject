@@ -9,9 +9,6 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
-	//Reply list = (Reply)request.getAttribute("list");
-	//System.out.println(list);
-	//System.out.println(at);
 %>
 <!DOCTYPE html>
 <html>
@@ -203,7 +200,7 @@
     				           +  "<th>" + list[i].reMemNo + "</th>"                                                                                            
     				           +  "<td>" + list[i].replyContent + "</td>"   
     				           +  "<td>" + list[i].enrollDate + "</td>"
-    				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='hidden(" + list[i].replyNo + ', <%=loginMember.getMemNo()%>, ' + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
+    				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport'  src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
     				           + "</tr>";
     				}
     			}else{
@@ -282,7 +279,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content"> 
                             <div class="modal-body">
-                            <form action="<%=contextPath%>/boReReport.bo" method="post">
+                           	 <form action="<%=contextPath%>/boReReport.bo" method="post">
                                 <input type="hidden" id="replyNo" name="replyNo" value="">
                                 <input type="hidden" id="replyReportNo" name="replyReportNo" value="">
                                 <input type="hidden" id="replyReportedNo" name="replyReportedNo" value="">
@@ -297,7 +294,7 @@
                                     </p> <br><br>
                                     <button type="button" class="btn btn-secondary modal-btn no" style="width: 100px;" data-dismiss="modal">취소</button>
                                     <button type="submit" class="btn btn-dark modal-btn" style="width: 100px;">신고하기</button>
-                            </form> 
+                               </form> 
                             </div>
                         </div>
                     </div>
