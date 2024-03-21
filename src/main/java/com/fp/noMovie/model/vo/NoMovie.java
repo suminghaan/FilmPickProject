@@ -17,14 +17,28 @@ public class NoMovie {
 	private int adminNo; // 신청 처리한 관리자 번호
 	private String nmPoster; // 영화 메인포스터 경로
 	private String nmPreview; // 영화 메인예고편 경로
+	private String memNickname;
 	
 	public NoMovie() {
 		
 	}
-	
+
+	public NoMovie(String nmTitle, String nmPoster, String nmEnrollDate, String nmApproval, String nmStory, int memNo,
+			String memNickname) { // (관리자 : 김지우) 없는영화 신청 목록 조회 페이지에서 쓰일 매개변수 생성자
+		super();
+		this.nmTitle = nmTitle;
+		this.nmPoster = nmPoster;
+		this.nmEnrollDate = nmEnrollDate;
+		this.nmApproval = nmApproval;
+		this.nmStory = nmStory;
+		this.memNo = memNo;
+		this.memNickname = memNickname;
+	}
+
 	public NoMovie(int nmEnrollNo, String nmTitle, String nmStory, String nmReleaseDate, String nmRunTime,
 			String nmUserRequest, String nmNicknameStatus, String nmApproval, String nmNation, String nmViewGrade,
-			String nmEnrollDate, String nmRefuseReason, int memNo, int adminNo, String nmPoster, String nmPreview) {
+			String nmEnrollDate, String nmRefuseReason, int memNo, int adminNo, String nmPoster, String nmPreview,
+			String memNickname) {
 		super();
 		this.nmEnrollNo = nmEnrollNo;
 		this.nmTitle = nmTitle;
@@ -42,6 +56,7 @@ public class NoMovie {
 		this.adminNo = adminNo;
 		this.nmPoster = nmPoster;
 		this.nmPreview = nmPreview;
+		this.memNickname = memNickname;
 	}
 
 	public int getNmEnrollNo() {
@@ -172,6 +187,14 @@ public class NoMovie {
 		this.nmPreview = nmPreview;
 	}
 
+	public String getMemNickname() {
+		return memNickname;
+	}
+
+	public void setMemNickname(String memNickname) {
+		this.memNickname = memNickname;
+	}
+
 	@Override
 	public String toString() {
 		return "NoMovie [nmEnrollNo=" + nmEnrollNo + ", nmTitle=" + nmTitle + ", nmStory=" + nmStory
@@ -179,7 +202,7 @@ public class NoMovie {
 				+ ", nmNicknameStatus=" + nmNicknameStatus + ", nmApproval=" + nmApproval + ", nmNation=" + nmNation
 				+ ", nmViewGrade=" + nmViewGrade + ", nmEnrollDate=" + nmEnrollDate + ", nmRefuseReason="
 				+ nmRefuseReason + ", memNo=" + memNo + ", adminNo=" + adminNo + ", nmPoster=" + nmPoster
-				+ ", nmPreview=" + nmPreview + "]";
+				+ ", nmPreview=" + nmPreview + ", memNickname=" + memNickname + "]";
 	}
 	
 }
