@@ -2085,6 +2085,7 @@ VALUES (
     , 5
 );
 
+-- 없는영화신청 테이블에 샘플데이터 삽입 (김지우)
 INSERT INTO NO_MOVIE_ENROLL
 VALUES (
             SEQ_NO_MOVIE_ENROLL_NO.NEXTVAL
@@ -2105,5 +2106,8 @@ VALUES (
           , 'resources/upfiles/20240321103032_32135.mp4'
 );
 
-SELECT * FROM ATTACHMENT;
+-- 첨부파일 테이블에 굿윌헌팅 영화 포스터 이미지, 예고편 영상 샘플데이터 넣음 (김지우)
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '굿윌헌팅_포스터.png', '20240321120838_13223.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 38);
+INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '굿윌헌팅_예고편.mp4', '20240321120839_52314.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 38);
+
 commit;
