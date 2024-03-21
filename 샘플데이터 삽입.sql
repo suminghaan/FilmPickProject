@@ -2106,6 +2106,46 @@ VALUES (
           , 'resources/upfiles/19980321122026_54893.mp4'
 );
 
+INSERT INTO NO_MOVIE_ENROLL
+VALUES (
+            SEQ_NO_MOVIE_ENROLL_NO.NEXTVAL
+          , '타이타닉'
+          , '"내 인생의 가장 큰 행운은 당신을 만난 거야" 우연한 기회로 티켓을 구해 타이타닉호에 올라탄 자유로운 영혼을 가진 화가 ‘잭’(레오나르도 디카프리오)은 막강한 재력의 약혼자와 함께 1등실에 승선한 ‘로즈’(케이트 윈슬렛)에게 한눈에 반한다. 진실한 사랑을 꿈꾸던 ‘로즈’ 또한 생애 처음 황홀한 감정에 휩싸이고, 둘은 운명 같은 사랑에 빠지는데… 가장 차가운 곳에서 피어난 뜨거운 사랑! 영원히 가라앉지 않는 세기의 사랑이 펼쳐진다!'
+          , '1998-02-20'
+          , '195분'
+          , '프란시스 피셔 배우를 추가해주세요'
+          , 'Y'
+          , 'Y'
+          , '2'
+          , '3'
+          , '2024-03-22'
+          , NULL
+          , 29
+          , NULL
+          , 'resources/upfiles/20240322131811_45733.png'
+          , 'resources/upfiles/20240322131812_15674.mp4'
+);
+
+INSERT INTO NO_MOVIE_ENROLL
+VALUES (
+            SEQ_NO_MOVIE_ENROLL_NO.NEXTVAL
+          , '엑시트'
+          , '대학교 산악 동아리 에이스 출신이지만 졸업 후 몇 년째 취업 실패로 눈칫밥만 먹는 용남은 온 가족이 참석한 어머니의 칠순 잔치에서 연회장 직원으로 취업한 동아리 후배 의주를 만난다 어색한 재회도 잠시, 칠순 잔치가 무르익던 중 의문의 연기가 빌딩에서 피어 오르며 피할 새도 없이 순식간에 도심 전체는 유독가스로 뒤덮여 일대혼란에 휩싸이게 된다. 용남과 의주는 산악 동아리 시절 쌓아 뒀던 모든 체력과 스킬을 동원해 탈출을 향한 기지를 발휘하기 시작하는데…'
+          , '2019-07-31'
+          , '103분'
+          , '황효은 배우를 추가해주세요'
+          , 'Y'
+          , 'N'
+          , '1'
+          , '2'
+          , '2024-03-22'
+          , NULL
+          , 28
+          , NULL
+          , 'resources/upfiles/19980321122025_13532.png'
+          , 'resources/upfiles/19980321122026_54893.mp4'
+);
+
 -- 첨부파일 테이블에 굿윌헌팅 영화 포스터 이미지, 예고편 영상 샘플데이터 넣음 (김지우)
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '굿윌헌팅_포스터.png', '19980321122025_13532.png', SYSDATE, 1, 'resources/upfiles/', 1, DEFAULT, 1, 38);
 INSERT INTO ATTACHMENT VALUES(SEQ_ATTACHMENT_NO.NEXTVAL, '굿윌헌팅_예고편.mp4', '19980321122026_54893.mp4', SYSDATE, 2, 'resources/upfiles/', 1, DEFAULT, 2, 38);
