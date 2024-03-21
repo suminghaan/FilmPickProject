@@ -23,9 +23,27 @@ public class Board {
 	private String memNickname; // 닉네임
 	
 	public Board() {}
+	
+	
 
 	
 	
+	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory,
+			int replyCount, String memId) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.replyCount = replyCount;
+		this.memId = memId;
+	}
+
+
+
+
+
 	/** (관리자) 회원 프로필 조회 용도
 	 * @param memNo 회원 아이디
 	 * @param titleImgUrl 회원 프로필 이미지 경로

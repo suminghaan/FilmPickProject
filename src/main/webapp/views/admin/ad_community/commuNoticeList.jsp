@@ -63,7 +63,7 @@
 
     <div class="d-flex justify-content-center container">
         <span>검색</span>&nbsp;&nbsp;&nbsp;
-        <input type="text" id="searchInput" class="input" placeholder="검색어를 입력해주세요" name="keyword">
+        <input type="text" id="searchInput" class="input" placeholder="제목으로 검색어를 입력해주세요" name="keyword">
         <button type="button" onclick="search();">
             <img src="<%=contextPath %>/views/admin/img/icon_search.png">
         </button>

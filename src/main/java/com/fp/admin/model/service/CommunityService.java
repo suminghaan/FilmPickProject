@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fp.admin.model.dao.CommunityDao;
 import com.fp.admin.model.vo.Notice;
+import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.common.template.JDBCTemplate;
@@ -99,6 +100,27 @@ public class CommunityService {
 		}
 		close(conn);
 		return result1 * result2;
+	}
+
+	public List<Board> selectBlindBoardList(PageInfo pi) {
+		Connection conn = getConnection();
+		List<Board> list = coDao.selectBlindBoardList(conn, pi);
+		close(conn);
+		return list;
+	}
+
+	public List<Board> searchBlindBoard(String keyword) {
+		Connection conn = getConnection();
+		List<Board> list = coDao.searchBlindBoard(conn, keyword);
+		close(conn);
+		return list;
+	}
+
+	public int selectBlindBoardListCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int listCount = coDao.selectBlindBoardListCount(conn);
+		close(conn);
+		return listCount;
 	}
 
 }
