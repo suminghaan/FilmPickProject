@@ -121,7 +121,7 @@ table{
                     <div clss="container item1">
                         <h4 class="title"><%= nm.getNmTitle() %></h4>
                         <% for(int i = 0; i < pageList.size(); i++) { %>
-                        <img src="" class="img-fluid" style="width: 130px;">
+                        <img src="<%= contextPath + "/" + pageList.get(i).getNmPoster() %>" class="img-fluid" style="width: 130px;">
                     	<% } %>
                     </div>
                     <div class="container item2">
