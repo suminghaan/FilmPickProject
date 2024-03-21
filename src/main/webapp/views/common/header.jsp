@@ -196,7 +196,6 @@ String alertMsg = (String)session.getAttribute("alertMsg");
 
   <!-- Custom styles for this template -->
   <link href="<%= contextPath %>/resources/css/headers.css" rel="stylesheet">
-  <link rel="stylesheet" href="<%= contextPath %>/resources/css/heart_movieDetail.css">
   <link rel="stylesheet" href="<%= contextPath %>/resources/css/starRating_forReviewTap.css">
   <link rel="stylesheet" href="<%= contextPath %>/resources/css/like&dislike_movieDetail.css">
 </head>
