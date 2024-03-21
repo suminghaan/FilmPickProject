@@ -25,7 +25,9 @@
         
     <div class="container">
 
-        <h3>작성글 목록</h3>
+        <h3>작성글 목록</h3> 
+        <a href="<%=contextPath%>/myPlist.me?page=1" type="button" class="btn btn-outline-light me-2" id="plist_btn">글</a>
+        <a href="<%=contextPath%>/myClist.me?page=1" type="button" class="btn btn-outline-light me-2" id="clist_btn">댓글</a>
 
         <table class="table table-hover" id="myPostList">
         
