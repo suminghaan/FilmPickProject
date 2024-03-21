@@ -1,5 +1,185 @@
 package com.fp.noMovie.model.vo;
 
 public class NoMovie {
+	private int nmEnrollNo; // 없는영화 신청 번호
+	private String nmTitle; // 영화 제목
+	private String nmStory; // 영화 줄거리
+	private String nmReleaseDate; //개봉일
+	private String nmRunTime; // 러닝타임
+	private String nmUserRequest; // 사용자 요청사항
+	private String nmNicknameStatus; // 닉네임 제공여부
+	private String nmApproval; // 승인여부
+	private String nmNation; // 국가
+	private String nmViewGrade; // 관람등급
+	private String nmEnrollDate; // 작성일
+	private String nmRefuseReason; // 거절 및 반려 사유
+	private int memNo; // 글 작성한 회원번호
+	private int adminNo; // 신청 처리한 관리자 번호
+	private String nmPoster; // 영화 메인포스터 경로
+	private String nmPreview; // 영화 메인예고편 경로
+	
+	public NoMovie() {
+		
+	}
+	
+	public NoMovie(int nmEnrollNo, String nmTitle, String nmStory, String nmReleaseDate, String nmRunTime,
+			String nmUserRequest, String nmNicknameStatus, String nmApproval, String nmNation, String nmViewGrade,
+			String nmEnrollDate, String nmRefuseReason, int memNo, int adminNo, String nmPoster, String nmPreview) {
+		super();
+		this.nmEnrollNo = nmEnrollNo;
+		this.nmTitle = nmTitle;
+		this.nmStory = nmStory;
+		this.nmReleaseDate = nmReleaseDate;
+		this.nmRunTime = nmRunTime;
+		this.nmUserRequest = nmUserRequest;
+		this.nmNicknameStatus = nmNicknameStatus;
+		this.nmApproval = nmApproval;
+		this.nmNation = nmNation;
+		this.nmViewGrade = nmViewGrade;
+		this.nmEnrollDate = nmEnrollDate;
+		this.nmRefuseReason = nmRefuseReason;
+		this.memNo = memNo;
+		this.adminNo = adminNo;
+		this.nmPoster = nmPoster;
+		this.nmPreview = nmPreview;
+	}
 
+	public int getNmEnrollNo() {
+		return nmEnrollNo;
+	}
+
+	public void setNmEnrollNo(int nmEnrollNo) {
+		this.nmEnrollNo = nmEnrollNo;
+	}
+
+	public String getNmTitle() {
+		return nmTitle;
+	}
+
+	public void setNmTitle(String nmTitle) {
+		this.nmTitle = nmTitle;
+	}
+
+	public String getNmStory() {
+		return nmStory;
+	}
+
+	public void setNmStory(String nmStory) {
+		this.nmStory = nmStory;
+	}
+
+	public String getNmReleaseDate() {
+		return nmReleaseDate;
+	}
+
+	public void setNmReleaseDate(String nmReleaseDate) {
+		this.nmReleaseDate = nmReleaseDate;
+	}
+
+	public String getNmRunTime() {
+		return nmRunTime;
+	}
+
+	public void setNmRunTime(String nmRunTime) {
+		this.nmRunTime = nmRunTime;
+	}
+
+	public String getNmUserRequest() {
+		return nmUserRequest;
+	}
+
+	public void setNmUserRequest(String nmUserRequest) {
+		this.nmUserRequest = nmUserRequest;
+	}
+
+	public String getNmNicknameStatus() {
+		return nmNicknameStatus;
+	}
+
+	public void setNmNicknameStatus(String nmNicknameStatus) {
+		this.nmNicknameStatus = nmNicknameStatus;
+	}
+
+	public String getNmApproval() {
+		return nmApproval;
+	}
+
+	public void setNmApproval(String nmApproval) {
+		this.nmApproval = nmApproval;
+	}
+
+	public String getNmNation() {
+		return nmNation;
+	}
+
+	public void setNmNation(String nmNation) {
+		this.nmNation = nmNation;
+	}
+
+	public String getNmViewGrade() {
+		return nmViewGrade;
+	}
+
+	public void setNmViewGrade(String nmViewGrade) {
+		this.nmViewGrade = nmViewGrade;
+	}
+
+	public String getNmEnrollDate() {
+		return nmEnrollDate;
+	}
+
+	public void setNmEnrollDate(String nmEnrollDate) {
+		this.nmEnrollDate = nmEnrollDate;
+	}
+
+	public String getNmRefuseReason() {
+		return nmRefuseReason;
+	}
+
+	public void setNmRefuseReason(String nmRefuseReason) {
+		this.nmRefuseReason = nmRefuseReason;
+	}
+
+	public int getMemNo() {
+		return memNo;
+	}
+
+	public void setMemNo(int memNo) {
+		this.memNo = memNo;
+	}
+
+	public int getAdminNo() {
+		return adminNo;
+	}
+
+	public void setAdminNo(int adminNo) {
+		this.adminNo = adminNo;
+	}
+
+	public String getNmPoster() {
+		return nmPoster;
+	}
+
+	public void setNmPoster(String nmPoster) {
+		this.nmPoster = nmPoster;
+	}
+
+	public String getNmPreview() {
+		return nmPreview;
+	}
+
+	public void setNmPreview(String nmPreview) {
+		this.nmPreview = nmPreview;
+	}
+
+	@Override
+	public String toString() {
+		return "NoMovie [nmEnrollNo=" + nmEnrollNo + ", nmTitle=" + nmTitle + ", nmStory=" + nmStory
+				+ ", nmReleaseDate=" + nmReleaseDate + ", nmRunTime=" + nmRunTime + ", nmUserRequest=" + nmUserRequest
+				+ ", nmNicknameStatus=" + nmNicknameStatus + ", nmApproval=" + nmApproval + ", nmNation=" + nmNation
+				+ ", nmViewGrade=" + nmViewGrade + ", nmEnrollDate=" + nmEnrollDate + ", nmRefuseReason="
+				+ nmRefuseReason + ", memNo=" + memNo + ", adminNo=" + adminNo + ", nmPoster=" + nmPoster
+				+ ", nmPreview=" + nmPreview + "]";
+	}
+	
 }
