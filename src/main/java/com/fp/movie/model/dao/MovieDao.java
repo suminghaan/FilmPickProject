@@ -335,7 +335,7 @@ public class MovieDao {
 	}
 
 	
-	public List<Movie> selectMainList(Connection conn) {
+	public List<Movie> selectMainListv(Connection conn) {
 		return null;
 	}
 

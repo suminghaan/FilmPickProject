@@ -98,4 +98,10 @@ public class MovieService {
 	}
 
 
+// 메인페이지 영화 조회 메소드
+	public List<Movie> selectMainListv() {
+		return null;
+	}
+
+
 }
