@@ -50,7 +50,7 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<entry key="searchUserList"> <!-- 회원 아이디 검색용 쿼리  -->
+	<!-- <entry key="searchUserList"> 회원 아이디 검색용 쿼리 
 		SELECT
             M.MEM_NO
           , MEM_ID
@@ -64,7 +64,7 @@
         WHERE MEM_ID LIKE '%' || ? || '%'
         GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
         ORDER BY M.MEM_NO DESC, DORMANT_STATUS ASC
-	</entry>
+	</entry> -->
 	
 	<entry key="selectHumanFilterUser"> <!-- 휴면회원 조회용 쿼리 -->
 		SELECT M.MEM_NO AS "MEM_NO"
