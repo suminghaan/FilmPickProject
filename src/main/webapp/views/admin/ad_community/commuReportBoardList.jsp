@@ -4,9 +4,11 @@
 <%@ page import="com.fp.common.model.vo.Attachment" %>
 <%@ page import="com.fp.common.model.vo.PageInfo" %>
 <%@ page import="com.fp.board.model.vo.Board" %>
+<%@ page import="com.fp.board.model.vo.Report" %>
 <%@ page import="java.util.List" %>
     
 <% List<Board> list = (List<Board>)request.getAttribute("list"); %>
+<% List<Report> rlist = (List<Report>)request.getAttribute("rlist"); %>
 <% PageInfo pi = (PageInfo)request.getAttribute("pi"); %>   
 
 <!DOCTYPE html>
@@ -125,42 +127,49 @@
 	                        <table class="reportDetail">
 	                            <tr>
 	                                <th width="100px">제목</th>
-	                                <td colspan="3">현재 조회하고 있는 신고글 제목</td>
+	                                <td colspan="3"><%=bo.getbTitle() %></td>
 	                            </tr>
 	                            <tr>
 	                                <th>게시글 내용</th>
 	                                <td colspan="3">
 	                                    <p style="min-height: 200px;">
-	                                        현재 조회하고 있는 게시글의 내용
+	                                        <%=bo.getbContent() %>
 	                                    </p>
 	                                </td>
-	                            </tr>
+	                            </tr>	     
+	                            <% if(bo.getFileOriginName() != null){ %>                       
 	                            <tr>
 	                                <th>게시글에 등록된 첨부파일</th>
 	                                <td colspan="3">
-	                                    <input type="file">
+	                                    <a href="<%=contextPath %>/<%=bo.getFilePath() + bo.getFileChangeName() %>" download="<%=bo.getFileOriginName()%>"><%=bo.getFileOriginName() %></a>
 	                                </td>
 	                            </tr>
-	        
-	                            <tr>
-	                                <th>신고 내용</th>
-	                                <td colspan="3">                            
-	                                    <div>
-	                                        <p>신고자 아이디 : 아이디보여지는공간</p>
-	                                        <p>신고 내용 : </p>
-	        
-	                                    </div>
-	        
-	                                    <div>
-	                                        <p>신고자 아이디 : 아이디보여지는공간</p>
-	                                        <p>신고 내용 : </p>                                          
-	                                    </div>                                   
-	                                </td>
-	                            </tr>
+	        					<%} %>
+	        					
+	        					<% for(Report r :rlist) { %>
+	        						<% if(bo.getbNo() == r.getReportBoardNo()) {%>
+		                            <tr>
+		                                <th>신고 내용</th>
+		                                <td colspan="3">                            
+		                                    <div>
+		                                        <p>신고자 회원번호 : <%=r.getReportMemNo() %></p>
+		                                        <p>신고 내용 : <%=r.getReportContent() %></p>
+		        
+		                                    </div>                                  
+		                                </td>
+		                            </tr>
+		                            <% } %>
+	                            <% } %>
 	                            <tr>
 	                                <td colspan="3"></td>
 	                                <td>
-	                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="alert('블라인드 게시글로 처리되었습니다.')">블라인드처리</button>
+	                                <% if((bo.getbStatus()).equals("N")) {%>
+	                                    <a href="<%=contextPath %>/reportBlind.co?bno=<%=bo.getbNo() %>" class="btn btn-outline-danger btn-sm" onclick="alert('해당 게시글을 블라인드 처리합니다.')">블라인드처리</a>
+	                                <%}else{ %>
+	                                	<button class="btn btn-outline-danger btn-sm" disabled>블라인드처리</button>
+	                                <%} %>
+	                                
+	                                
 	                                </td>
 	                            </tr>
 	                        </table>
@@ -168,90 +177,48 @@
 	                </tr>
 					<%} %>
 	          <%} %>
-	          <!--  
-                <tr class="reportList">
-                    <td>2</td>
-                    <td>2024.03.08</td>
-                    <td>user02</td>
-                    <td>제목2</td>
-                    <td>10</td>
-                    <td>1</td>
-                    <td>잡담</td>
-                    <td><button type="button" class="btn btn-outline-warning" onclick="reportBoard();">신고회원관리</button></td>
-                </tr>
-
-                <!-- 글(.reportList)를 누르면 나오는 세부 내용  
-                <tr class="reportContent">
-                    <td colspan="2"></td>
-                    <td colspan="4">
-                        <div>
-                            <table class="reportDetail">
-                                <tr>
-                                    <th width="100px">제목</th>
-                                    <td colspan="3">현재 조회하고 있는 신고글 제목</td>
-                                </tr>
-                                <tr>
-                                    <th>게시글 내용</th>
-                                    <td colspan="3">
-                                        <p style="min-height: 200px;">
-                                            현재 조회하고 있는 게시글의 내용
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>게시글에 등록된 첨부파일</th>
-                                    <td colspan="3">
-                                        <input type="file">
-                                    </td>
-                                </tr>
-            
-                                <tr>
-                                    <th>신고 내용</th>
-                                    <td colspan="3">                            
-                                        <div>
-                                            <p>신고자 아이디 : 아이디보여지는공간</p>
-                                            <p>신고 내용 : </p>
-            
-                                        </div>
-            
-                                        <div>
-                                            <p>신고자 아이디 : 아이디보여지는공간</p>
-                                            <p>신고 내용 : </p>                                          
-                                        </div>                                   
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-				-->
             </tbody>
 
         </table>
     
     <!-- section end -->
     
-	    <div class="d-flex justify-content-center container">
+	    <!-- 페이징바 영역 -->
+        <div class="d-flex justify-content-center container">
 	        <nav aria-label="Page navigation example">
 	            <ul class="pagination">
-	                <li class="page-item">
+	            	
+	            	<% if(pi.getCurrentPage() == 1) { %>
+	                <li class="page-item disabled">
 	                <a class="page-link" href="#" aria-label="Previous">
 	                    <span aria-hidden="true">&laquo;</span>
 	                </a>
 	                </li>
-	                <li class="page-item"><a class="page-link" href="#">1</a></li>
-	                <li class="page-item"><a class="page-link" href="#">2</a></li>
-	                <li class="page-item"><a class="page-link" href="#">3</a></li>
-	                <li class="page-item"><a class="page-link" href="#">4</a></li>
+	                <% }else { %>
+	                <li class="page-item"><a class="page-link" href="<%=contextPath%>/reportBoardList.co?page=<%=pi.getCurrentPage() -1%>">Previous</a></li>
+	                <% } %>
+	                
+	                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
+	                	<% if(p == pi.getCurrentPage()) { %>
+	                	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                	<%}else { %>
+	                	<li class="page-item"><a class="page-link" href="<%=contextPath%>/reportBoardList.co?page=<%=p%>"><%= p %></a></li>
+	                	<% } %>
+	                <% } %>
+	                
+	                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
+	                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                <% }else { %>
 	                <li class="page-item">
-	                <a class="page-link" href="#" aria-label="Next">
+	                <a class="page-link" href="<%=contextPath %>/reportBoardList.co?page=<%=pi.getCurrentPage() +1 %>" aria-label="Next">
 	                    <span aria-hidden="true">&raquo;</span>
 	                </a>
 	                </li>
-	            </ul>
-	        </nav>
+	                <% } %>
+		            </ul>
+		        </nav>
+		    </div>
 	    </div>
-    </div>
     
     
 
@@ -297,6 +264,7 @@
 	    	}
   
   
+	  // 신고회원관리 버튼 지우가 페이지 구현하면 링크 연결 예정 
         function reportBoard(){
    			location.href = "../ad_member/reportMemberList.jsp";
    		}

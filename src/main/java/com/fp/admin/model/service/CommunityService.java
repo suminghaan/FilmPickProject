@@ -4,9 +4,11 @@ import static com.fp.common.template.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.List;
 
+
 import com.fp.admin.model.dao.CommunityDao;
 import com.fp.admin.model.vo.Notice;
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.common.template.JDBCTemplate;
@@ -163,6 +165,14 @@ public class CommunityService {
 		close(conn);
 		return list;
 	}
+	
+	// 신고게시글 신고내용 상세 조회
+		public List<Report> selectDetailReportBoardList(PageInfo pi) {
+			Connection conn = getConnection();
+			List<Report> rlist = coDao.selectDetailReportBoardList(conn, pi);
+			close(conn);
+			return rlist;
+		}
 
 	// 신고글 검색
 	public List<Board> searchReportBoard(String keyword) {
@@ -171,5 +181,25 @@ public class CommunityService {
 		close(conn);
 		return list;
 	}
+
+	// 신고글 블라인드 처리
+	public int reportBlind(int boardNo) {
+		Connection conn = getConnection();
+		int result1 = coDao.reportBlind(conn, boardNo);
+		int result2 = coDao.reportBlindAttachment(conn, boardNo);
+		
+		
+		if(result1 > 0 && result2 >= 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		int result = result1 + result2;
+		return result;
+	}
+
+	
 
 }

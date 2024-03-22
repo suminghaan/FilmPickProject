@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fp.admin.model.service.CommunityService;
 import com.fp.admin.model.vo.Notice;
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.PageInfo;
 
 /**
@@ -57,9 +58,11 @@ public class ComuReportBoardListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, noticeLimit, maxPage, startPage, endPage);
 		
 		List<Board> list = new CommunityService().selectReportBoardList(pi);
+		List<Report> rlist = new CommunityService().selectDetailReportBoardList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
+		request.setAttribute("rlist", rlist);
 		request.getRequestDispatcher("/views/admin/ad_community/commuReportBoardList.jsp").forward(request, response);
 		
 	}
