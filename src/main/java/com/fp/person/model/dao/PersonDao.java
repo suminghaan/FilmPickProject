@@ -1,5 +1,7 @@
 package com.fp.person.model.dao;
 
+import static com.fp.common.template.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,10 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Properties;
 
 import com.fp.person.model.vo.Person;
-import static com.fp.common.template.JDBCTemplate.*;
 
 public class PersonDao {
 	private Properties prop = new Properties();
@@ -93,4 +95,46 @@ public class PersonDao {
 		}
 		return personList;
 	}
+	
+	/**
+	 * 없는영화 신청에서 출연진 인물 검색해서 맞는 값을 띄우기위한 메소드
+	 * @author 호용
+	 */
+	public List<Person> selectPersonList(Connection conn, String name){
+		List<Person> person = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPersonList");
+		name = "%" + name + "%";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				person.add(new Person(rset.getInt("P_NO")
+									, rset.getString("P_NAME")
+									, rset.getString("P_JOB")
+									, rset.getString("P_BD")
+									, rset.getString("P_NATION")
+									, rset.getString("P_FILE")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return person;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

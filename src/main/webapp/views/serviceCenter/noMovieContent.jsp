@@ -83,6 +83,20 @@
       height: 80px;
     }
     
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	}
 </style>
 </head>
 <body>
@@ -300,11 +314,11 @@
                   
                           <!-- Modal body -->
                           <div class="modal-body">
-                              <input type="text" name="runningTime" class="form-control">
-                              <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
+                              <input type="text" name="inputPerson" class="form-control inputPerson"">
+                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
                               <hr>
-                              <div>
-                                  검색된 인물 나오는 공간
+                              <div class="viewPerson">
+                                  
                               </div>
                           </div>
                   
@@ -323,38 +337,86 @@
 
         <script>
  
-              var count = 0; //최대 8명만 추가할 수 있는 조건
-              // 없는영화 출연진 추가하는 스크립트
-              $("#personBtn").click(function(){              
-                if(count < 8){
-
-                let result = "";
-                  result += "<table class='person-table'>"
-                          +   "<tr>"
-                          +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
-                          +   "</tr>"
-                          +   "<tr>"
-                          +     "<td>고경표</td>"
-                          +   "</tr>"
-                          +   "<tr>"
-                          +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
-                          +   "</tr>"
-                          +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
-                          + "</table>";
-
-                    $(".person-div").append(result);
-                    count++;
-                }else{
-                  alert("8명이상 추가할 수 없습니다.");
+        function searchPerson(){
+            let result = "";
+            $.ajax({
+                url:"<%=contextPath%>/search.pe",
+                data:{name:$(".inputPerson").val()},
+                type:"post",
+                success:function(person){ // 인물번호, 인물이미지경로, 인물이름, 인물직업 조회
+                	console.log(person.length);
+                    if(person.length != 0){ // 받아온 person에 값이 담겨있을 때
+                        for(let i=0; i<person.length; i++){
+                            result = " ";
+                            result =  "<div class='check'>"
+                                    +       "<table>"
+                                    +           "<tr>"
+                                    +               "<td><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></td>"
+                                    +           "</tr>"
+                                    +           "<tr>"
+                                    +               "<td class='personName'>" + person[i].pName + "</td>"
+                                    +               "<input name='personNo' class='personNo' type='hidden' value='" + person[i].pNo + "'>"
+                                    +           "</tr>"
+                                    +           "<tr>"
+                                    +               "<td>" + person[i].pJob + "</td>"
+                                    +           "</tr>"
+                                    +       "<input class='checkboxbox' type='checkbox'>"
+                                    +       "</table>"
+                                    +   "</div>";
+                            $(".viewPerson").append(result);
+                        }
+                    } else if (person.length == 0){ // 받아온 person이 비어있을 때
+                        result = " ";
+                    	console.log("length는 0");
+                        $(".viewPerson").html("검색된 인물이 없습니다.");
+                    }
+                },
+                error:function() {
+                	console.log("AJAX 통신 실패");
                 }
-              });
-			  //인물 빼는 스크립트
-              $("#personRemoveBtn").click(function(){
-                $(".person-div").find("table").last().remove();
-                  if(count > 0){
-                    count--;
-                  }
-              });
+                
+            });
+        }
+        
+         var count = 0; //최대 8명만 추가할 수 있는 조건
+         // 없는영화 출연진 추가하는 스크립트
+         $("#personBtn").click(function(){
+        	
+       		let inputChecked = [];	 
+        	 
+        //   $(".viewPerson input:checked").each(function(){
+       // 	   inputChecked.push($(this));
+        //   }); 
+        	 
+           if(count < 8){
+
+           let result = "";
+             result += "<table class='person-table'>"
+                     +   "<tr>"
+                     +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
+                     +   "</tr>"
+                     +   "<tr>"
+                     +     "<td>고경표</td>"
+                     +   "</tr>"
+                     +   "<tr>"
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
+                     +   "</tr>"
+                     +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
+                     + "</table>"
+                     + "<br><br>"
+               $(".person-div").append(result);
+               count++;
+           }else{
+             alert("8명이상 추가할 수 없습니다.");
+           }
+         });
+		//인물 빼는 스크립트
+         $("#personRemoveBtn").click(function(){
+           $(".person-div").find("table").last().remove();
+             if(count > 0){
+               count--;
+             }
+         });
 
         </script>
     
