@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fp.board.model.service.BoardService;
+import com.fp.board.model.vo.Board;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
 
@@ -41,10 +43,13 @@ public class mainPageController extends HttpServlet {
 		List<Movie> plist2 = new MovieService().selectMainListp(no2);
 		List<Movie> plist3 = new MovieService().selectMainListp(no3);
 		
+		List<Board> b = new BoardService().selectMainPageList();
+		
 		request.setAttribute("vlist", vlist);
 		request.setAttribute("plist1", plist1);
 		request.setAttribute("plist2", plist2);
 		request.setAttribute("plist3", plist3);
+		request.setAttribute("b", b);
 		
 		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
 		

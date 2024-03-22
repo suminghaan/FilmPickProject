@@ -91,6 +91,19 @@ public class Board {
 		this.reportCount = reportCount;
 	}
 
+
+
+
+	public Board(int bNo, String bTitle, String bRegistDate, String memNickname) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.memNickname = memNickname;
+	}
+
+
+
 	/**
 	 * (관리자) 블라인드게시글의 댓글 조회용도
 	 * @param bNo 게시글번호
