@@ -43,7 +43,7 @@ public class Board {
 	 * @author 한수민
 	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory,
-			int replyCount, String memId, String replyContent) {
+			int replyCount, String memId, String bContent) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -52,7 +52,7 @@ public class Board {
 		this.bCategory = bCategory;
 		this.replyCount = replyCount;
 		this.memId = memId;
-		this.replyContent = replyContent;
+		this.bContent = bContent;
 	}
 	
 	

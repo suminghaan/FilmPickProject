@@ -186,7 +186,7 @@
 				FROM(
 					SELECT ROWNUM RNUM, A.*
 					  FROM (
-					  	SELECT
+					     SELECT
 					  		B_NO
 					  	  , B_REGIST_DATE
 					  	  , MEM_ID
@@ -196,10 +196,9 @@
 					  	  	 FROM REPLY R 
 					  	  	 WHERE BOARD_NO = B_NO) REPLY
 					  	  , B_CATEGORY
-					  	  , REPLY_CONTENT
+					  	  , B_CONTENT
 					 	FROM BOARD B
 					 	JOIN MEMBER USING (MEM_NO)
-					 	LEFT JOIN REPLY ON BOARD_NO = B_NO
 					 	WHERE B_B_STATUS = 'Y'
 					 	ORDER
 					 		BY B_NO DESC

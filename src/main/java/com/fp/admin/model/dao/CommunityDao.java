@@ -332,10 +332,11 @@ public class CommunityDao {
 								   rset.getInt("b_read_count"),
 								   rset.getString("b_category"),
 								   rset.getInt("reply"),
-								   rset.getString("mem_id"), 
-								   rset.getString("reply_content")
+								   rset.getString("mem_id"),
+								   rset.getString("b_content")
 								   ));				
 			}
+			System.out.print(list);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
