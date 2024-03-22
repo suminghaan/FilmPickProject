@@ -246,8 +246,9 @@
 		<entry key="reportBoardListCount">
 			SELECT COUNT(*) COUNT
 			  FROM BOARD
-			 JOIN REPORT ON BOARD_NO = B_NO
-			 WHERE BOARD_NO = B_NO
+			 JOIN REPORT ON REPORT_REF_NO = B_NO
+			 WHERE REPORT_REF_NO = B_NO
+			   AND BOARD_NO_TYPE = 1
 		</entry>
 		
 		<!-- 관리자 신고된 게시글 목록 조회 [수민] -->
@@ -276,12 +277,13 @@
 					    JOIN MEMBER USING (MEM_NO)
 					    LEFT JOIN ATTACHMENT A ON B_NO = REF_NO
 		 				AND A.REF_TYPE = 3
-                           WHERE B_NO  IN (
-                                       SELECT BOARD_NO
+                        WHERE B_NO  IN (
+                                       SELECT REPORT_REF_NO
                                        FROM REPORT
+                                       WHERE BOARD_NO_TYPE = 1
                             )
-						    ORDER
-						        BY B_NO DESC
+						ORDER
+						   BY B_NO DESC
 					  		) A
 					)
 				WHERE RNUM BETWEEN ? AND ?
@@ -298,11 +300,12 @@
 		      , B_READ_COUNT
 		      , (SELECT COUNT(*) 
 		         FROM REPORT R 
-		         WHERE BOARD_NO = B_NO) REPORT
+		         WHERE REPORT_REF_NO = B_NO
+		           AND BOARD_NO_TYPE = 1) REPORT
 		      , B_CATEGORY
 			FROM BOARD
 			JOIN MEMBER USING (MEM_NO)
-			JOIN REPORT ON BOARD_NO = B_NO
+			JOIN REPORT ON REPORT_REF_NO = B_NO
 			WHERE B_TITLE LIKE '%' || ? || '%'
 		</entry>
 		
@@ -313,12 +316,13 @@
 			SELECT ROWNUM RNUM, A.*
 			  FROM (
 			  	SELECT
-			  		 BOARD_NO
+			  		 REPORT_REF_NO
 				   , REPORT_NO
 				   , REPORT_TYPE
 				   , REPORT_MEM_NO
 				   , REPORT_CONTENT 
-				FROM REPORT			
+				FROM REPORT
+			   WHERE BOARD_NO_TYPE = 1			
 			  		) A
 			)
 		WHERE RNUM BETWEEN ? AND ?
@@ -346,7 +350,8 @@
 		<entry key="reportCommentListCount">
 			SELECT COUNT(*) COUNT
 			  FROM REPLY
-			 JOIN REPORT USING (BOARD_NO)
+			 JOIN REPORT ON REPORT_REF_NO = BOARD_NO
+			 WHERE BOARD_NO_TYPE = 2
 		</entry>
 		
 		<!-- 관리자 신고된 댓글 목록 조회 [수민] -->
