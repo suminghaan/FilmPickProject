@@ -46,7 +46,7 @@
 	      margin-left: 1250px;
     }
     
-        /* 뒤늦게 추가함*/
+    /* 뒤늦게 추가함*/
     .dr{
       display: flex;
     }
@@ -83,6 +83,20 @@
       height: 80px;
     }
     
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	}
 </style>
 </head>
 <body>
@@ -99,17 +113,17 @@
           <div class="background">
               <div class="background2">
                       <div class="container-fluid"><br>
-                          <h1>없는영화신청</h1> <br>
+                          <h1 style="color:black;">없는영화신청</h1> <br>
                           <form action="" method="">
                               <div class="form-group">
-                                  <label for="exampleFormControlInput1">영화제목</label> <br>
+                                  <label for="exampleFormControlInput1" style="color:black;">영화제목</label> <br>
                                   <input type="text" class="form-control" id="exampleFormControlInput1" name="" style="width: 600px;">
                               </div>
 
                               <br>
 
                               <div class="form-group">
-                                  <label for="exampleFormControlSelect1">영화관람등급</label>
+                                  <label for="exampleFormControlSelect1" style="color:black;">영화관람등급</label>
                                   <select class="form-control" id="exampleFormControlSelect1" name="" style="width: 600px;">
                                       <option value="전체">전체관람</option>
                                       <option value="12세">12</option>
@@ -121,27 +135,27 @@
                               <br>
 
                               <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">영화줄거리</label> <br>
+                                  <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리</label> <br>
                                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="" style="width: 600px;"></textarea>
                               </div>
                               
 
                               <br>
                               <div class="form-group dr">
-                                <div class="form-group">
+                                <div class="form-group" style="color:black;">
                                     개봉일
                                     <input type="date" name="dateIn" class="form-control" style="width: 300px;">
                                 </div><br><br><br><br>
                                 
 
-                                <div class="form-group">
+                                <div class="form-group" style="color:black;">
                                     러닝타임
                                     <input type="text" name="runningTime" class="form-control" style="width: 300px;">
                                 </div><br>
                               </div>
                               
 
-                              <div class="form-group psButton-body">
+                              <div class="form-group psButton-body" style="color:black;">
                                   출연/제작
                                   <input type="text" name="" class="form-control" style="width: 600px;">
                                   <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
@@ -155,7 +169,7 @@
                               
 
                               <br><br>
-                              <div class="form-group form-category">
+                              <div class="form-group form-category" style="color:black;">
                               영화 장르 선택 <br>
                               
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
@@ -192,7 +206,7 @@
                               <br><br>
 
 
-                              <div class="form-group">
+                              <div class="form-group" style="color:black;">
                               국가
                               <br>
                                   <div class="form-check form-check-inline">
@@ -206,30 +220,30 @@
                               <br>
 
 
-                              영화포스터
-                              <div class="custom-file">
+                              <p style="color:black;">영화포스터</p>
+                              <div class="custom-file" style="color:black;">
                                   <input type="file" class="custom-file-input" id="customFile1" name="">
-                                  <label class="custom-file-label" for="customFile1">파일추가</label>
+                                  <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
 
                               <br>
 
-                              예고편영상
-                              <div class="custom-file">
+                              <p style="color:black;">예고편영상</p>
+                              <div class="custom-file" style="color:black;">
                                   <input type="file" class="custom-file-input" id="customFile2" name="">
-                                  <label class="custom-file-label" for="customFile2">파일추가</label>
+                                  <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
 
                               <br>
 
 
-                              <div class="form-group">
+                              <div class="form-group" style="color:black;">
                               기타 추가 희망 이미지 또는 동영상
                                   <div class="custom-file">
                                       <input type="file" class="custom-file-input" id="customFile3" name="">
-                                      <label class="custom-file-label" for="customFile3">파일추가</label>
+                                      <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
                                       <img src="" alt="미리보기이미지">
                                   </div>
                               </div>
@@ -237,12 +251,12 @@
 
                               <br>
 
-                              <div class="form-group">
+                              <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
                                   <textarea name="" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
                               </div>
 
-                              <div>
+                              <div style="color:black;">
                                   <input type="checkbox" id="idCheck" value="동의" name="" style="margin-left: 1000px;">
                                   <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
                                   
@@ -251,7 +265,7 @@
                                   <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
                               </div>
                                       <!-- 영화등록 Modal -->
-                                      <div class="modal" id="submitModal">
+                                      <div class="modal" id="submitModal" style="color:black;">
                                           <div class="modal-dialog">
                                               <div class="modal-content">
                                           
@@ -288,7 +302,7 @@
           <!-- /.container-fluid -->
 
               <!-- 인물검색 Modal -->
-              <div class="modal" id="searchModal">
+              <div class="modal" id="searchModal" style="color:black;">
                   <div class="modal-dialog">
                       <div class="modal-content">
                   
@@ -300,11 +314,11 @@
                   
                           <!-- Modal body -->
                           <div class="modal-body">
-                              <input type="text" name="runningTime" class="form-control">
-                              <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
+                              <input type="text" name="inputPerson" class="form-control inputPerson"">
+                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
                               <hr>
-                              <div>
-                                  검색된 인물 나오는 공간
+                              <div class="viewPerson">
+                                  
                               </div>
                           </div>
                   
@@ -323,38 +337,84 @@
 
         <script>
  
-              var count = 0; //최대 8명만 추가할 수 있는 조건
-              
-              $("#personBtn").click(function(){              
-                if(count < 8){
-
-                let result = "";
-                  result += "<table class='person-table'>"
-                          +   "<tr>"
-                          +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
-                          +   "</tr>"
-                          +   "<tr>"
-                          +     "<td>고경표</td>"
-                          +   "</tr>"
-                          +   "<tr>"
-                          +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
-                          +   "</tr>"
-                          +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
-                          + "</table>";
-
-                    $(".person-div").append(result);
-                    count++;
-                }else{
-                  alert("8명이상 추가할 수 없습니다.");
+        function searchPerson(){
+        	
+        	$(".viewPerson").html("");
+            let result = "";
+            $.ajax({
+                url:"<%=contextPath%>/search.pe",
+                data:{name:$(".inputPerson").val()},
+                type:"post",
+                success:function(person){ // 인물번호, 인물이미지경로, 인물이름, 인물직업 조회
+                	console.log(person.length);
+                    if(person.length != 0){ // 받아온 person에 값이 담겨있을 때
+                        for(let i=0; i<person.length; i++){
+                            result =  "<div class='check'>"
+                                    +       "<table>"
+                                    +           "<tr>"
+                                    +               "<td><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></td>"
+                                    +           "</tr>"
+                                    +           "<tr>"
+                                    +               "<td class='personName'>" + person[i].pName + "</td>"
+                                    +               "<input name='personNo' class='personNo' type='hidden' value='" + person[i].pNo + "'>"
+                                    +           "</tr>"
+                                    +           "<tr>"
+                                    +               "<td>" + person[i].pJob + "</td>"
+                                    +           "</tr>"
+                                    +       "<input class='checkboxbox' type='checkbox'>"
+                                    +       "</table>"
+                                    +   "</div>";
+                            $(".viewPerson").append(result);
+                        }
+                    } else if (person.length == 0){ // 받아온 person이 비어있을 때
+                        result = " ";
+                    	console.log("length는 0");
+                        $(".viewPerson").html("검색된 인물이 없습니다.");
+                    }
+                },
+                error:function() {
+                	console.log("AJAX 통신 실패");
                 }
-              });
+                
+            });
+        }
+        
+         var count = 0; //최대 8명만 추가할 수 있는 조건
+         // 없는영화 출연진 추가하는 스크립트
+         $("#personBtn").click(function(){
+        	
+       		let inputChecked = $(".viewPerson input:checked");
+       		console.log(inputChecked);
+        	 
+           if(count < 8){
 
-              $("#personRemoveBtn").click(function(){
-                $(".person-div").find("table").last().remove();
-                  if(count > 0){
-                    count--;
-                  }
-              });
+           let result = "";
+             result += "<table class='person-table'>"
+                     +   "<tr>"
+                     +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
+                     +   "</tr>"
+                     +   "<tr>"
+                     +     "<td>고경표</td>"
+                     +   "</tr>"
+                     +   "<tr>"
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
+                     +   "</tr>"
+                     +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
+                     + "</table>"
+                     + "<br><br>"
+               $(".person-div").append(result);
+               count++;
+           }else{
+             alert("8명이상 추가할 수 없습니다.");
+           }
+         });
+		//인물 빼는 스크립트
+         $("#personRemoveBtn").click(function(){
+           $(".person-div").find("table").last().remove();
+             if(count > 0){
+               count--;
+             }
+         });
 
         </script>
     

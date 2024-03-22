@@ -30,7 +30,44 @@
 		 WHERE NOTICE_STATUS = 'Y'
 	</entry>
 	
+	<!-- 조회수 증가를 위한 sql문 by호용 -->
+	<entry key="increaseCount">
+		UPDATE
+			   NOTICE
+		   SET NOTICE_READ_COUNT = NOTICE_READ_COUNT + 1
+		 WHERE NOTICE_NO = ?
+		   AND NOTICE_STATUS = 'Y'
+	</entry>
 	
-
+	<!-- 공지사항 상세페이지를 띄우기위한 sql문 by호용 -->
+	<entry key="selectNotice">
+		SELECT
+			   NOTICE_NO
+			 , NOTICE_CATEGORY
+			 , NOTICE_TITLE
+			 , NOTICE_CONTENT
+			 , N.ADMIN_NO
+			 , ADMIN_ID <!-- ADMIN테이블 조인 -->
+			 , TO_CHAR(NOTICE_DATE, 'YY/MM/DD') NOTICE_DATE
+			 , NOTICE_READ_COUNT
+	      FROM NOTICE N
+	      JOIN ADMIN A ON(N.ADMIN_NO = A.ADMIN_NO)
+	     WHERE NOTICE_NO = ? <!-- 현재 넘겨받은 글번호와 일치하는 -->
+	       AND NOTICE_STATUS = 'Y'
+	</entry>
+	
+	<!-- 공지사항 상세페이지를 띄우기위한 sql문(첨부파일) by호용 -->
+	<entry key="selectNoticeAttachment">
+		   		SELECT 
+   			   FILE_NO
+   			 , ORIGIN_NAME
+   			 , CHANGE_NAME
+   			 , FILE_PATH
+   	  	  FROM ATTACHMENT
+   	  	 WHERE REF_NO = ? <!-- 참조하는게시글번호가 현재 넘겨받은 글번호와 일치하는지? -->
+   	  	   AND REF_TYPE = 5
+   	  	 ORDER
+		    BY FILE_LEVEL ASC
+	</entry>
 
 </properties>

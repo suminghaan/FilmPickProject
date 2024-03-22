@@ -92,11 +92,11 @@
             
             <tbody>
             	<!-- case1. 등록한 공지글이 없을 경우 -->
-            	<% if(list.isEmpty()) { %>
+            	<% if(list.isEmpty()) {  %>
             	<tr>
             		<td colspan="6" style="text-align: center;">아직 등록된 공지사항이 없습니다.</td>
             	</tr>
-            	<% }else { %>
+            	<% }else {%>
             	<!-- case2. 등록된 공지글이 있을 경우 -->
 	            	<% for(Notice not: list) { %>
 	                <tr>

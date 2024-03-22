@@ -63,7 +63,7 @@ table{
 }
 
 .item1{
-    width: 25%;
+    width: 30px;
 }
 
 .item2{
@@ -86,13 +86,27 @@ table{
     padding: 0px;
 }
 
-.recognize{
-    color: rgb(41, 128, 185);
-}
+/* ---------------------- */
+<style>
+    .approval {
+        font-weight: bold;
+        color: black;
+    }
 
-.refuse{
-    color: rgb(192, 57, 43);
-}
+    /* 승인일 때의 색상 */
+    .approval[data-approval="승인"] {
+        color: rgb(41, 128, 185);
+    }
+
+    /* 거절일 때의 색상 */
+    .approval[data-approval="거절"] {
+        color: red;
+    }
+
+    /* 미확인일 때의 색상 */
+    .approval[data-approval="미확인"] {
+        color: gray;
+    }
 </style>
 </head>
 <body>
@@ -102,38 +116,53 @@ table{
         <div id="title" class="title">
             <h1 id="select-user-title">없는영화 신청 목록</h1>
         </div>
-        <hr>
-        <div class="d-flex justify-content-end container" style="margin: 20px;">
-            <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
-            <select class="form-control" style="width: 100px">
-                <option>승인</option>
-                <option>거절</option>
-                <option>미확인</option>
-            </select>
+         <div class="d-flex justify-content-end container" style="margin: 20px;">
+	            <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
+				<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input approvalSwitch" id="approvalSwitch" value="Y">
+				  <label class="custom-control-label" for="approvalSwitch" style="margin-right: 50px;">승인</label>
+				</div>
+				
+				<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input approvalSwitch" id="rejectionSwitch" value="N">
+				  <label class="custom-control-label" for="rejectionSwitch" style="margin-right: 50px;">거절</label>
+				</div>
+				
+				<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input approvalSwitch" id="unconfirmedSwitch" value="D">
+				  <label class="custom-control-label" for="unconfirmedSwitch" style="margin-right: 50px;">미확인</label>
+				</div>
+        </div>
         </div>
         <div class="container">
             <div class="container">
-                <div class="no-movie-list all-list" onclick="moveWrite();">
                 	<% if(pageList.isEmpty()){ %>
                 		<b>신청 목록이 존재하지 않습니다.</b>
                 	<% } else {  %>
                 	<% for(NoMovie nm : pageList){ %>
-                    <div clss="container item1">
+                <div class="no-movie-list all-list" onclick="moveWrite();">
+                    <div class="container item1">
                         <h4 class="title"><%= nm.getNmTitle() %></h4>
-                        <% for(int i = 0; i < pageList.size(); i++) { %>
-                        <img src="<%= contextPath + "/" + pageList.get(i).getNmPoster() %>" class="img-fluid" style="width: 130px;">
-                    	<% } %>
+                        <img src="<%= contextPath + "/" + nm.getNmPoster() %>" class="img-fluid" style="width: 130px;">
                     </div>
                     <div class="container item2">
                         <div class="regist-date">
                             <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span><%= nm.getNmEnrollDate() %></span>
-                            <span class="no-check" style="justify-content: end;"><b>
+                            <span class="no-check approval" style="justify-content: end;" id="approval" data-approval="<%= 
+							    nm.getNmApproval() == null ? " " : 
+							    nm.getNmApproval().equals("Y") ? "승인" : 
+							    nm.getNmApproval().equals("N") ? "거절" : 
+							    nm.getNmApproval().equals("D") ? "미확인" : " " 
+							%>">
+                            <b>
                             <%= 
 	                            nm.getNmApproval() == null ? " " : 
 							    nm.getNmApproval().equals("Y") ? "승인" : 
 							    nm.getNmApproval().equals("N") ? "거절" : 
 							    nm.getNmApproval().equals("D") ? "미확인" : " " 
-						    %></b></span>
+						    %>
+						    </b>
+						    </span>
                         </div>
                         <div class="story-writer">
                             <div class="container story">
@@ -144,9 +173,9 @@ table{
                             </div>
                         </div>
                     </div>
+                </div>
                     <% } %>
                 	<% } %>
-                </div>
             </div>
         </div>
         <div class="container">
@@ -175,11 +204,16 @@ table{
         </div>
         </div>
     </div>
-   </div>	
    <script>
    		function moveWrite(){
    			location.href = "../ad_customer_center/noMovieRequestList.jsp";
    		}
+   		
+   		$(function(){
+	   		 $('.approvalSwitch').on('change', function(){  // 클릭된 스위치를 제외한 나머지 스위치 비활성화
+	   			 $('.approvalSwitch').not(this).prop('checked', false);
+	   	     });
+   		});
    </script>
 </body>
 </html>

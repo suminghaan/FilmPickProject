@@ -50,6 +50,22 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<!-- <entry key="searchUserList"> 회원 아이디 검색용 쿼리 
+		SELECT
+            M.MEM_NO
+          , MEM_ID
+          , MEM_LEVEL
+          , COUNT(REVIEW_CONTENT) "REVIEW_CONTENT_COUNT"
+          , AVG(LIKE_POINT) "AVG_LIKE_POINT"
+          , PREF_GENRE
+          , DORMANT_STATUS
+        FROM MEMBER M
+        JOIN REVIEW R ON M.MEM_NO = R.MV_REVIEW_NO
+        WHERE MEM_ID LIKE '%' || ? || '%'
+        GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
+        ORDER BY M.MEM_NO DESC, DORMANT_STATUS ASC
+	</entry> -->
+	
 	<entry key="selectHumanFilterUser"> <!-- 휴면회원 조회용 쿼리 -->
 		SELECT M.MEM_NO AS "MEM_NO"
 		     , MEM_ID
@@ -179,12 +195,44 @@
 			WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<!-- 회원이 작성한 리뷰 조회, 페이징에 쓸 용도 -->
 	<entry key="selectReviewListCount">
 		SELECT COUNT(*) COUNT
 		FROM REVIEW
         WHERE MEM_NO = ?
 	</entry>
-<!-- =============================================================================================================================================== -->	
+	
+	<!-- 회원조회의 검색 용도 -->
+	<entry key="searchUserListCount">
+		SELECT COUNT(*) COUNT
+		FROM MEMBER
+        WHERE MEM_ID LIKE '%' || ? || '%'
+	</entry>
+	
+	<!-- 회원조회의 검색 용도 -->
+	<entry key="searchUserList">
+		SELECT *
+			FROM (
+			    SELECT ROWNUM RNUM, A.*
+			    FROM (
+			         SELECT
+			            	M.MEM_NO
+			              , MEM_ID 
+			              , MEM_LEVEL
+			              , COUNT(REVIEW_CONTENT) "REVIEW_CONTENT_COUNT"
+			              , AVG(LIKE_POINT) "AVG_LIKE_POINT"
+			              , PREF_GENRE
+			              , DORMANT_STATUS
+                       FROM MEMBER M
+			            JOIN REVIEW R ON M.MEM_NO = R.MV_REVIEW_NO
+                        WHERE M.MEM_ID LIKE '%' || ? || '%'
+			            GROUP BY M.MEM_NO, MEM_ID, MEM_LEVEL, PREF_GENRE, DORMANT_STATUS
+			            ORDER BY M.MEM_NO DESC, DORMANT_STATUS ASC
+			    ) A
+			)
+			WHERE RNUM BETWEEN ? AND ?
+	</entry>
+<!-- ================================ 절취선 끝쪽 =============================================================================================================== -->	
 	
 	<!-- 로그인용 쿼리 -->
 	<entry key="loginMember">
@@ -230,7 +278,7 @@
 				)
 				VALUES
 				(
-				SEQ_UNO.NEXTVAL
+				SEQ_MEMBER_NO.NEXTVAL
 				, ?
 				, ?
 				, ?
@@ -260,42 +308,21 @@
 		WHERE MEM_ID = ?
 	</entry>
 	
-	<entry key="insertMember">
-		INSERT 
-			INTO MEMBER
-			(
-			  MEM_NO
-			, MEM_ID
-			, MEM_PWD
-			, MEM_EMAIL
-			, NICKNAME
-			, MEM_NAME
-			, MEM_BD
-			, MEM_GENDER
-			, MEM_PHONE
-			, PREF_GENRE
-			)
-			VALUES
-			(
-			SEQ_MEMBER_NO.NEXTVAL
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			)
-	</entry>
-	
 	<!-- 아이디중복체크 -->
 	<entry key="idCheck">
 		SELECT
 			   COUNT(*) COUNT
 		  FROM MEMBER
 		 WHERE MEM_ID = ?
+	</entry>
+	
+	<!-- 닉네임중복체크 -->
+	<entry key="nicknameCheck">
+		SELECT
+			   COUNT(*) COUNT
+		  FROM MEMBER
+		 WHERE NICKNAME = ?
+		 AND MEM_STATUS = 'Y'
 	</entry>
 	
 	<!-- 회원탈퇴 -->

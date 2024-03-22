@@ -70,7 +70,7 @@
             <div class="content_link"">
             	<!-- 추후 링크 수정 @@@@@@@@@@ -->
                 <a href="<%= contextPath %>/list.no?page=1" style="color: rgb(255, 255, 255);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
-                <a href="../serviceCenter/inquiryList.jsp" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <a href="<%=contextPath%>/views/serviceCenter/inquiryList.jsp" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
             </div>
             <br>
             <table class="tableback table table-hover" id="notice_list">
@@ -90,7 +90,7 @@
                     </tr>
                 <% } else{%>
                 	<% for(Notice n : list){ %>
-                    <tr>
+                    <tr onclick="noticeDetail(<%=n.getNoticeNo()%>);">
                         <td><%= n.getNoticeNo() %></td>
                         <td><%= n.getCategory() %></td>
                         <td><%= n.getNoticeTitle() %></td>
@@ -140,12 +140,10 @@
       
     <!-- Section Script start-->
     <script>
-
-      $(function(){
-        $("#notice_list>tbody>tr").click(function(){
-          location.href="noticeContent.jsp" // 추후 수정
-        })
-      })
+		function noticeDetail(no){
+			location.href="<%=contextPath%>/detail.no?no=" + no;
+		}
+		
 
     </script>
     <!-- Section Script end-->

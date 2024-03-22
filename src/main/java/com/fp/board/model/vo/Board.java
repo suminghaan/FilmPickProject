@@ -23,14 +23,90 @@ public class Board {
 	private String memNickname; // 닉네임
 	// ** 2024.03.21 (관리자 : 한수민) 블라인드 게시글 조회 페이지에서 쓸 필드 추가
 	private String replyContent; // 댓글내용
+	// ** 2024.03.22 (관리자 : 한수민) 신고된 게시글 페이지에서 쓸 필드 추가
+	private int reportCount; // 신고수
+	private String fileOriginName; // 기존파일명
+	private String fileChangeName; // 바뀐파일명
+	private String filePath;	// 파일경로
 	
 	public Board() {}
 	
-	
+	/**
+	 * (관리자) 신고게시글 조회용
+	 * @param bNo
+	 * @param bTitle
+	 * @param bContent
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @param bCategory
+	 * @param memId
+	 * @param reportCount
+	 * @param fileOriginName
+	 * @param fileChangeName
+	 * @param filePath
+	 * 
+	 * @author 수민
+	 */
+
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, String bCategory,
+			String memId, int reportCount, String fileOriginName, String fileChangeName, String filePath, String bStatus) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.memId = memId;
+		this.reportCount = reportCount;
+		this.fileOriginName = fileOriginName;
+		this.fileChangeName = fileChangeName;
+		this.filePath = filePath;
+		this.bStatus = bStatus;
+	}
 
 	
+	
 	/**
-	 * (관리자) 블라인드게시글 조회용도
+	 * (관리자) 신고게시글 검색기능
+	 * @param bNo
+	 * @param bTitle
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @param bCategory
+	 * @param memId
+	 * @param reportCount
+	 * 
+	 * @author 수민
+	 */
+
+	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory, String memId,
+			int reportCount) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.memId = memId;
+		this.reportCount = reportCount;
+	}
+
+
+
+	// 메인페이지에 호출할 게시물 조회 [용훈]
+	public Board(int bNo, String bTitle, String bRegistDate, String memNickname) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.memNickname = memNickname;
+	}
+
+
+
+	/**
+	 * (관리자) 블라인드게시글의 댓글 조회용도
 	 * @param bNo 게시글번호
 	 * @param bTitle 게시글제목
 	 * @param bRegistDate 게시글등록일
@@ -43,7 +119,7 @@ public class Board {
 	 * @author 한수민
 	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory,
-			int replyCount, String memId, String replyContent) {
+			int replyCount, String memId, String bContent) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -52,9 +128,36 @@ public class Board {
 		this.bCategory = bCategory;
 		this.replyCount = replyCount;
 		this.memId = memId;
-		this.replyContent = replyContent;
+		this.bContent = bContent;
 	}
+	
+	
 
+
+
+
+	/**
+	 * (관리자) 블라인드 게시글 목록 조회용
+	 * @param bNo
+	 * @param bTitle
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @param bCategory
+	 * @param replyCount
+	 * @param memId
+	 *  @author 한수민
+	 */
+	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory, int replyCount,
+			String memId) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.replyCount = replyCount;
+		this.memId = memId;
+	}
 
 
 
@@ -131,7 +234,7 @@ public class Board {
 	 * @호용
 	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, int bRecommendCount, String bCategory,
-			String memNo, String titleImgUrl, int replyCount) {
+			String memNo, String titleImgUrl, int replyCount, String bStatus, String dSatus) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -142,6 +245,8 @@ public class Board {
 		this.memNo = memNo;
 		this.titleImgUrl = titleImgUrl;
 		this.replyCount = replyCount;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
 		
 	}
 
@@ -184,6 +289,36 @@ public class Board {
 		this.bRegistDate = bRegistDate;
 		this.bReadCount = bReadCount;
 	}
+
+
+	
+
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
+			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
+			int memberNo, String memId, String memColor, int boardCount, int memLevel, String memNickname,
+			String replyContent) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bRecommendCount = bRecommendCount;
+		this.bCategory = bCategory;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
+		this.memNo = memNo;
+		this.titleImgUrl = titleImgUrl;
+		this.replyCount = replyCount;
+		this.memberNo = memberNo;
+		this.memId = memId;
+		this.memColor = memColor;
+		this.boardCount = boardCount;
+		this.memLevel = memLevel;
+		this.memNickname = memNickname;
+		this.replyContent = replyContent;
+	}
+
 
 
 
@@ -408,6 +543,56 @@ public class Board {
 
 
 
+	public int getReportCount() {
+		return reportCount;
+	}
+
+
+
+
+	public void setReportCount(int reportCount) {
+		this.reportCount = reportCount;
+	}
+
+
+
+
+	public String getFileOriginName() {
+		return fileOriginName;
+	}
+
+
+
+	public void setFileOriginName(String fileOriginName) {
+		this.fileOriginName = fileOriginName;
+	}
+
+
+
+	public String getFileChangeName() {
+		return fileChangeName;
+	}
+
+
+
+	public void setFileChangeName(String fileChangeName) {
+		this.fileChangeName = fileChangeName;
+	}
+
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
+
 	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, int bRecommendCount,
 			String bCategory, String bStatus, String dSatus, String memNo, String titleImgUrl, int replyCount,
 			String memId, String memColor, int boardCount, int memLevel, String memNickname) {
@@ -429,6 +614,19 @@ public class Board {
 		this.boardCount = boardCount;
 		this.memLevel = memLevel;
 		this.memNickname = memNickname;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bRegistDate=" + bRegistDate
+				+ ", bReadCount=" + bReadCount + ", bRecommendCount=" + bRecommendCount + ", bCategory=" + bCategory
+				+ ", bStatus=" + bStatus + ", dSatus=" + dSatus + ", memNo=" + memNo + ", titleImgUrl=" + titleImgUrl
+				+ ", replyCount=" + replyCount + ", memberNo=" + memberNo + ", memId=" + memId + ", memColor="
+				+ memColor + ", boardCount=" + boardCount + ", memLevel=" + memLevel + ", memNickname=" + memNickname
+				+ ", replyContent=" + replyContent + "]";
 	}
 
 }

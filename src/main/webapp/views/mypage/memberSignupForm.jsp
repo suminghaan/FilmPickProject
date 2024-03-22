@@ -146,7 +146,7 @@
                   <table class="table">
                       <tr>
                           <td>
-                              <input type="text" class="form-control" name="memId" placeholder="* 아이디" required>
+                              <input type="text" class="form-control" name="memId" id="memId" placeholder="* 아이디" required>
                           </td>
                           <td>
                             <button type="button" class="btn btn-outline-light" onclick="idCheck();"style="width: 130px; 
@@ -159,7 +159,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="password" class="form-control" name="memPwd" placeholder="* 비밀번호(8~15자의 영문, 숫자, 특수문자 사용)" required>
+                              <input type="password" class="form-control" name="memPwd" id="memPwd" placeholder="* 비밀번호(8~15자의 영문, 숫자, 특수문자 사용)" required>
                           </td>
                           <td>
   
@@ -167,7 +167,7 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="password" class="form-control" placeholder="* 비밀번호확인" required>
+                              <input type="password" class="form-control" name="checkPwd" id="checkPwd" placeholder="* 비밀번호확인" required>
                           </td>
                           <td>
   
@@ -204,15 +204,18 @@
                       </tr>
                       <tr>
                           <td>
-                              <input type="text" class="form-control" name="memBirth" placeholder="* 생년월일 (ex. 010101)" required>
+                              <input type="text" class="form-control" name="memBirth" id="memBirth" placeholder="* 생년월일 (ex. 010101)" required>
                           </td>
                           <td>
   
                           </td>
                       </tr>
                       <tr>
-                          <td>
-                              <input type="text" class="form-control" name="memGender" placeholder="* 성별" required>
+                          <td>&nbsp;
+                              <input type="radio" name="memGender" id="memGenderM" value="M" required>
+                              <label for="radioM">&nbsp;남자</label>
+                              <input type="radio" name="memGender" id="memGenderF" value="F" required>
+                              <label for="radioF">&nbsp;여자</label>
                           </td>
                           <td>
   
@@ -236,7 +239,7 @@
                               <input type="text" class="form-control" placeholder="* 인증번호 6자리 입력" required>
                           </td>
                           <td>
-                            <button type="submit" class="btn btn-outline-light" style="width: 130px;
+                            <button type="button" class="btn btn-outline-light" style="width: 130px;
                                                                                        --bs-btn-border-color: RGB(247, 39, 140);
                                                                                        --bs-btn-color:RGB(247, 39, 140);
                                                                                        --bs-btn-hover-color: #ffffff;
@@ -261,51 +264,132 @@
 
                   </table>
                   
-                  <button href="<%= contextPath %>/signupComplete.me" type="submit" class="btn btn-outline-light" style="width: 350px;
-                                                                                   --bs-btn-border-color: RGB(247, 39, 140);
+                  <button type="submit" class="btn btn-outline-light" style="width: 350px;
+                                                                             	   --bs-btn-border-color: RGB(247, 39, 140);
                                                                                    --bs-btn-color:RGB(247, 39, 140);
                                                                                    --bs-btn-hover-color: #ffffff;
                                                                                    --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                   --bs-btn-hover-border-color: #ffffff;">가입하기</button>
+                                                                                   --bs-btn-hover-border-color: #ffffff;" disabled>가입하기</button>
               </form>    
               
-              <script>
               
-              // 아이디 중복확인
-              	function idCheck(){
-              		
-              		const $idInput = $(".signup_content input[name=memId]");
-              		
-              		$.ajax({
-              			url:"<%=contextPath%>/idCheck.me",
-              			data:{checkId: $idInput.val()},
-              			success: function(result){
-              				
-              				if(result == "NNNNN"){
-              					// 사용불가능(NNNNN)
-              					alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.");
-              					$idInput.focus();
-              				}else{
-              					// 사용가능(NNNNY)
-              					if(confirm("사용가능한 아이디입니다. 사용하시겠습니까? : ")){
-              						// 회원가입 버튼 활성화
-              						$(".signup_content :submit").removeAttr("disabled");
-              						
-              						// 아이디 입력하는 input요소 수정불가능한 속성 추가
-              						$idInput.attr("readonly", true);
-              					}else{
-              						$idInput.select();
-              					}
-              				},
-              				error: function(){
-              					console.log("아이디 중복체크용 ajax 통신 실패")
-              				}
-              			}
 
-              		})            		
-              	}          
-              </script>
+			<script>
+			function idCheck(){
+			
+				// 아이디 유효성검사
+	            const regExp = /^[a-z0-9]{5,12}$/;
+		            if(!regExp.test($(".signup_content input[name=memId]").val())){
+				        alert("유효한 아이디의 형식이 아닙니다. 다시 입력해주세요");
+				        document.getElementById("memId").select();
+				        return false;
+		            }
+	            
+		        // 아이디 중복확인
+	            const $idInput = $(".signup_content input[name=memId]");
+		            $.ajax({
+		            url:"<%=contextPath%>/idCheck.me",
+		            data:{checkId: $idInput.val()},
+		            success: function(result){
+	              				
+	              		if(result == "NNNNN"){
+		              		// 사용불가능(NNNNN)
+		              		alert("이미 존재하거나 탈퇴한 회원의 아이디입니다.");
+		              		$idInput.focus();
+	              		}else{
+	              			// 사용가능(NNNNY)
+	              			if(confirm("사용가능한 아이디입니다. 사용하시겠습니까? : ")){
+		              			// 회원가입 버튼 활성화
+		              			$(".signup_content :submit").removeAttr("disabled");
+		              			// 아이디 입력하는 input요소 수정불가능한 속성 추가
+		              			$idInput.attr("readonly", true);
+	              			}else{
+	              				$idInput.select();
+	              			}
+	              		}
+	              	},
+	              	error: function(){
+	              	console.log("아이디 중복체크용 ajax 통신 실패")
+	              	}
+	              	})            		
+			}          
+			</script>
               
+              
+			<script>
+			$("#checkPwd").focusout(function() {
+				
+				// 비밀번호 유효성검사
+				const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*#?&]{8,15}$/;	  
+					if(!regExp.test($(".signup_content input[name=memPwd]").val())){
+						alert("유효한 비밀번호의 형식이 아닙니다. 다시 입력해주세요");
+						document.getElementById("memPwd").select();
+						return false;
+					}
+	    
+				// 비밀번호 일치 여부 검사 
+				const memPwd = document.getElementById("memPwd").value;
+				const checkPwd = document.getElementById("checkPwd").value; 
+					if(memPwd != checkPwd){
+						alert("비밀번호가 일치하지 않습니다.");
+						document.getElementById("checkPwd").select();
+						return false;	  
+					}
+			});
+			</script> 
+               
+              
+			<script>
+			// 닉네임 중복확인
+			function nicknameCheck(){
+
+				const $nicknameInput = $(".signup_content input[name=nickname]");
+					$.ajax({
+					url:"<%=contextPath%>/nicknameCheck.me",
+					data:{checkNickname: $nicknameInput.val()},
+					method:"post",
+					success: function(result){
+              				
+						if(result == "NNNNN"){
+							// 사용불가능(NNNNN)
+							alert("이미 존재하는 닉네임입니다.");
+							$nicknameInput.focus();
+						}else{
+							// 사용가능(NNNNY)
+							if(confirm("사용가능한 닉네임입니다. 사용하시겠습니까?")){
+							// 회원가입 버튼 활성화
+								$(".signup_content :submit").removeAttr("disabled");
+								// 닉네임 입력하는 input요소 수정불가능한 속성 추가
+								$nicknameInput.attr("readonly", true);
+							}else{
+								$nicknameInput.select();
+							}
+              			}
+              		},
+              		error: function(){
+              			console.log("닉네임 중복체크용 ajax 통신 실패")
+              		}
+				})            		
+			}          
+			</script>
+			
+			<script>
+			// 생년월일
+			$("#memBirth").focusout(function(){
+				const regExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;	
+					if(!regExp.test($(".signup_content input[name=memBirth]").val())){
+						alert("유효한 생년월일 형식이 아닙니다. 다시 입력해주세요");
+						//document.getElementById("memBirth").focus();
+						return false;
+					}
+			});
+			</script>
+			
+			<script>
+			// 휴대전화번호
+			
+			</script>
+   			
           </div>
         </section>
       </div>              

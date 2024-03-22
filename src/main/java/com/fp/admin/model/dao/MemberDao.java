@@ -492,4 +492,65 @@ public class MemberDao {
 		}
 		return list;
 	}
+
+	/** 회원 아이디 검색 용도
+	 * 
+	 * @author 김지우
+	 * @param memId 회원 아이디
+	 * @param pi 
+	 * @return 
+	 */
+	public List<Member> searchUserList(Connection conn, String memId, PageInfo pi) {
+		List<Member> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchUserList");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setString(1, memId);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new Member(rset.getInt("MEM_NO"), rset.getString("MEM_ID"), rset.getInt("MEM_LEVEL"),
+						rset.getInt("REVIEW_CONTENT_COUNT"), rset.getDouble("AVG_LIKE_POINT"),
+						rset.getString("PREF_GENRE"), rset.getString("DORMANT_STATUS")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int searchUserListCount(Connection conn, String memId) {
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchUserListCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 }

@@ -10,6 +10,9 @@ public class Reply {
 	private int reBoNo; // 게시글번호
 	private String reMemNo; // insert시 회원번호 | select시 회원아이디 
 	private int reMemberNo; // 댓글작성한 회원 번호임 (안변함)
+	// ** 2024.03.22 (관리자 : 한수민) 신고된 댓글조회 페이지에서 쓸 필드 추가
+	private int report; // 신고당한 횟수
+	private String boCategory; // 게시글의 카테고리
 	
 	public Reply() {}
 	
@@ -25,6 +28,32 @@ public class Reply {
 		this.reMemNo = reMemNo;
 	}
 	
+	
+	/**
+	 * (관리자) 신고된 댓글 목록 조회 
+	 * @param replyNo
+	 * @param replyContent
+	 * @param enrollDate
+	 * @param bStatus
+	 * @param reBoNo
+	 * @param reMemNo
+	 * @param report
+	 * 
+	 * @author 수민
+	 */
+	public Reply(int replyNo, String replyContent, String enrollDate, String bStatus, int reBoNo, String reMemNo,
+			int report, String boCategory) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.enrollDate = enrollDate;
+		this.bStatus = bStatus;
+		this.reBoNo = reBoNo;
+		this.reMemNo = reMemNo;
+		this.report = report;
+		this.boCategory = boCategory;
+	}
+
 	/**
 	 * 게시글에 댓글을 띄우는데 띄워야되는 값을 담을 매개변수 생성자
 	 * @param replyNo 댓글번호
@@ -118,6 +147,24 @@ public class Reply {
 	
 	public void setReMemberNo(int reMemberNo) {
 		this.reMemberNo = reMemberNo;
+	}
+	
+	
+
+	public int getReport() {
+		return report;
+	}
+
+	public void setReport(int report) {
+		this.report = report;
+	}
+
+	public String getBoCategory() {
+		return boCategory;
+	}
+
+	public void setBoCategory(String boCategory) {
+		this.boCategory = boCategory;
 	}
 
 	@Override

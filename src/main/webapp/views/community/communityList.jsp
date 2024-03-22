@@ -164,7 +164,9 @@
 	                        <tr>
 	                            <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%= b.getbTitle()+ " [" + b.getReplyCount() + "]" %></td>
 	                            <td rowspan="3" class="img">
+	                            	<%if(b.getTitleImgUrl() != null){ %> 
 	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                                <%} %>
 	                            </td>
 	                        </tr>
 	                        <tr>
@@ -210,7 +212,9 @@
 	                        <tr>
 	                            <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
 	                            <td rowspan="3" class="img">
+	                            	<%if(b.getTitleImgUrl() != null){ %>  
 	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                                <%}%>
 	                            </td>
 	                        </tr>
 	                        <tr>
@@ -238,8 +242,10 @@
                         <% for(Board b : chatList){ %>
 	                        <tr>
 	                            <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%= b.getbTitle()+ "[" + b.getReplyCount() + "]" %></td>
-	                            <td rowspan="3" class="img">                          
-	                                <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                            <td rowspan="3" class="img">               
+	                            	<%if(b.getTitleImgUrl() != null){ %>           
+	                                <img src="<%=contextPath + "/" + b.getTitleImgUrl()%>">
+	                                <%}%>
 	                            </td>
 	                        </tr>
 	                        <tr>

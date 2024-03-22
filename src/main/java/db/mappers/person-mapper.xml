@@ -19,4 +19,18 @@
 	FROM PERSON
 	WHERE P_NAME LIKE ?
 	</entry>
+	
+	<!-- 없는영화 신청에서 출연진 인물 검색해서 맞는 값을 띄우기위한 sql문 by 호용 -->
+	<entry key="selectPersonList">
+		SELECT
+			   P_NO
+			 , P_NAME
+			 , P_JOB
+			 , P_BD
+			 , P_NATION
+			 , P_FILE
+		  FROM PERSON
+		 WHERE P_NAME LIKE ?
+	</entry>
+	
 </properties>

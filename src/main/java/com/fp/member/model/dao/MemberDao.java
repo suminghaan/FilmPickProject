@@ -28,6 +28,7 @@ public class MemberDao {
 		}
 	}
 	
+	// 로그인
 	public Member loginMember(Connection conn, String memId, String memPwd) {
 		
 		Member m = null;
@@ -72,6 +73,7 @@ public class MemberDao {
 		
 	}
 	
+	// 회원가입
 	public int insertMember(Connection conn, Member m) {
 		
 		int result = 0;		
@@ -100,6 +102,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	// 회원정보
 	public Member selectMember(Connection conn, String memId) {
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -134,6 +137,7 @@ public class MemberDao {
 		return m;	
 	}
 	
+	// 아이디 중복확인
 	public int idCheck(Connection conn, String idCheck) {
 		int count = 0;
 		PreparedStatement pstmt = null;
@@ -147,7 +151,7 @@ public class MemberDao {
 			
 				if(rset.next()) {
 					count =rset.getInt("count");
-					}
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
@@ -157,6 +161,31 @@ public class MemberDao {
 		return count;	
 	}
 	
+	// 닉네임 중복확인
+	public int nicknameCheck(Connection conn, String nicknameCheck) {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("nicknameCheck");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,nicknameCheck);
+			rset=pstmt.executeQuery();
+			
+				if(rset.next()) {
+					count =rset.getInt("count");
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return count;	
+	}
+	
+	// 회원탈퇴
 	public int deleteMember(Connection conn, String memId, String memPwd) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -176,6 +205,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	// 비밀번호 변경
 	public int updatePwdMember(Connection conn, String memId, String memPwd, String newPwd) {
 		int result =0;
 		PreparedStatement pstmt = null;
@@ -196,6 +226,7 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
 	// 작성글조회
 	public int selectMyPostListCount(Connection conn, int memNo) {
 		int listCount = 0;
@@ -258,7 +289,7 @@ public class MemberDao {
 	
 	
 	
-	/* 작성댓글조회 */
+	// 작성댓글조회
 	
 	public int selectMyCommentListCount(Connection conn, int memNo) {
 		int listCount = 0;

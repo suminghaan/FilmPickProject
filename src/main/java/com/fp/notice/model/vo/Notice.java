@@ -15,6 +15,7 @@ public class Notice {
 	private int noticeReadCount; // 조회수
 	private String adminNo; // 관리자아이디 | 관리자번호
 	private String noticeStatus; // 공지사항상태 (Y|N)
+	private int noticeAdminNo; // 관리자회원번호(안변함)
 	
 	public Notice() {}
 
@@ -31,7 +32,30 @@ public class Notice {
 		this.noticeStatus = noticeStatus;
 	}
 	
-	
+	/**
+	 * 공지사항 상세페이지에 띄울 값
+	 * @param noticeNo
+	 * @param category
+	 * @param noticeTitle
+	 * @param noticeContent
+	 * @param noticeDate
+	 * @param noticeReadCount
+	 * @param adminNo
+	 * @param noticeAdminNo
+	 */
+	public Notice(int noticeNo, String category, String noticeTitle, String noticeContent, String noticeDate,
+			int noticeReadCount, String adminNo, int noticeAdminNo) {
+		super();
+		this.noticeNo = noticeNo;
+		this.category = category;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.noticeDate = noticeDate;
+		this.noticeReadCount = noticeReadCount;
+		this.adminNo = adminNo; // 관리자 아이디
+		this.noticeAdminNo = noticeAdminNo; // 관리자 회원번호
+	}
+
 	/**
 	 * 호용
 	 * @param 공지사항 메인페이지에 보여질 값을 담을 필드
@@ -45,6 +69,14 @@ public class Notice {
 		this.noticeDate = noticeDate;
 	}
 
+	public int getNoticeAdminNo() {
+		return noticeAdminNo;
+	}
+	
+	public void setNoticeAdminNo(int noticeAdminNo) {
+		this.noticeAdminNo = noticeAdminNo;
+	}
+	
 	public int getNoticeNo() {
 		return noticeNo;
 	}

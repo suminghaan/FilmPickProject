@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.movie.model.vo.SearchFilter;
@@ -289,6 +290,7 @@ public class MovieDao {
 							, rset.getInt("COUNT_DISAGREE")
 							, rset.getString("MEM_IMGPATH")
 							, rset.getString("MEM_COLOR")
+							, rset.getInt("MEM_NO")
 						));
 			}
 		} catch (SQLException e) {
@@ -404,12 +406,21 @@ public class MovieDao {
 		return vlist;
 	}
 	// 메인페이지 영화포스터 조회 [용훈]
-	public List<Movie> selectMainListp(Connection conn) {
+	public List<Movie> selectMainListp(Connection conn, String no) {
 		List<Movie> plist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectMainListp");
 		
+		// ORDERBY 관련 IF문 [용훈]
+				if(no.equals("1")) {
+					sql += " ORDER BY MV_OPENDATE DESC";
+				}else if(no.equals("2")) {
+					sql += " ORDER BY LIKECOUNT DESC";
+				}else if(no.equals("3")) {
+					sql += " ORDER BY LIKE_POINT";
+				}
+				sql = "SELECT P.* FROM (" + sql + ") P WHERE ROWNUM <= 10";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
@@ -457,7 +468,7 @@ public class MovieDao {
 		
 		return list;
 	}
-
+//	리뷰 더보기를 위한 메소드 [기웅]
 	public int insertReview(Connection conn, int movieNo, int userNo, double likePoint, String reviewContent) {
 		String query = prop.getProperty("insertReview");
 		PreparedStatement pstmt = null;
@@ -478,6 +489,128 @@ public class MovieDao {
 		}
 	
 		return result;
+	}
+
+//	다른 사용자의 정보를 불러오는 메소드[기웅]
+	public Member selectOtherUser(Connection conn, int otherUserNo) {
+		String query = prop.getProperty("selectOtherUserInfo");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member();
+				m.setMemLevel(rset.getInt("MEM_LEVEL"));
+				m.setNickname(rset.getString("NICKNAME"));
+				m.setMemImgPath(rset.getString("MEM_IMGPATH"));
+				m.setMemColor(rset.getString("MEM_COLOR"));
+				m.setReviewContentCnt(rset.getInt("COUNT_STAR_RATING"));
+				m.setAvgLikePoint(rset.getDouble("AVG_STAR_RATING"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
+
+//	다른 유저의 리뷰 정보를 불러오는 메소드 [기웅]
+	public ArrayList<Review> selectOtherUserReview(Connection conn, int otherUserNo) {
+		String query = prop.getProperty("selectReviewOtherUser");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> rList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Review r = new Review();
+				r.setMvReviewNo(rset.getInt("MV_REVIEW_NO"));
+				r.setReviewContent(rset.getString("REVIEW_CONTENT"));
+				r.setReviewDate(rset.getString("REVIEW_DATE"));
+				r.setLikePoint(rset.getString("LIKE_POINT"));
+				r.setAgreeCount(rset.getInt("AGREE_COUNT"));
+				r.setDisagreeCount(rset.getInt("DISAGREE_COUNT"));
+				
+				rList.add(r);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return rList;
+	}
+
+//	
+	public ArrayList<Movie> bothInterestMovie(Connection conn, int userNo, int otherUserNo) {
+		String query = prop.getProperty("bothInterestMovieList");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Movie> movieList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			pstmt.setInt(2, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	public ArrayList<Review> selectMainReviewList(Connection conn) {
+		ArrayList<Review> reviewList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				reviewList.add(new Review(
+						rset.getInt("MV_REVIEW_NO")
+						, rset.getString("REVIEW_CONTENT")
+						, rset.getString("REVIEW_DATE")
+						, rset.getString("LIKE_POINT")
+						, rset.getString("NICKNAME")
+						, rset.getInt("MEM_LEVEL")
+						, rset.getInt("COUNT_AGREE")
+						, rset.getInt("COUNT_DISAGREE")
+						, rset.getString("MEM_IMGPATH")
+						, rset.getString("MEM_COLOR")
+						, rset.getInt("MEM_NO")
+					));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return reviewList;
 	}
 
 

@@ -158,18 +158,22 @@
                         <tbody>
                             <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                             <% for(Board b : list){ %>
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%=b.getbNo() + " [영화]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
-                                <td rowspan="3" class="img">
-                                    <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
-                            </tr>
+                            	<%if(b.getbStatus().equalsIgnoreCase("N") && b.getdSatus().equalsIgnoreCase("N")){ %>
+	                            <tr>
+	                                <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%=b.getbNo() + " [영화]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
+	                                <td rowspan="3" class="img">
+	                                	<%if(b.getTitleImgUrl() != null){ %>
+	                                    <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                                    <%} %> 
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                            </tr>
+	                            <tr>
+	                                <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
+	                            </tr>
+	                            <%} %>
                             <%} %>
                             <!-- } 반복문 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                         </tbody>
@@ -213,7 +217,7 @@
                		<li class="page-item"><a class="page-link" href="<%= contextPath %>/movie.bo?page=<%= p %>"><%= p %></a></li>
                		<% } %>
                 <% } %>
-                <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+                 <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
                 <!-- 현재 내가 보고있는 페이지가 마지막페이지와 일치할 경우 클릭 불가능 -->
                 <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
  				<%}else{ %>

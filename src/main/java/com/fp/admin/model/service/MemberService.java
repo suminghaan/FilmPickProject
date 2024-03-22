@@ -237,4 +237,33 @@ public class MemberService {
 		return list;
 	}
 
+	/** 회원 아이디 검색 용도
+	 * 
+	 * @author 김지우
+	 * @param memId 회원 아이디
+	 * @param pi 
+	 * @return 
+	 */
+	public List<Member> searchUserList(String memId, PageInfo pi) {
+		Connection conn = getConnection();
+		List<Member> list = mDao.searchUserList(conn, memId, pi);
+		close(conn);
+		return list;
+	}
+
+	/** 회원 아이디 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @param memId 회원 아이디
+	 * @return 
+	 */
+	public int searchUserListCount(String memId) {
+		Connection conn = getConnection();
+		
+		int listCount = mDao.searchUserListCount(conn, memId);
+		close(conn);
+
+		return listCount;
+	}
+
 }

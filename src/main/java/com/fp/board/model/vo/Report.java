@@ -12,6 +12,26 @@ public class Report {
 	private String type; // 신고타입(1게시글신고 | 2댓글신고)
 
 	public Report() {}
+	
+	
+	/**
+	 * (관리자) 신고된 게시글 상세 조회 
+	 * @param reportNo
+	 * @param reportType
+	 * @param reportContent
+	 * @param reportMemNo
+	 * @author 한수민
+	 */
+	public Report(int reportBoardNo, int reportNo, String reportType, String reportContent, String reportMemNo) {
+		super();
+		this.reportBoardNo = reportBoardNo;
+		this.reportNo = reportNo;
+		this.reportType = reportType;
+		this.reportContent = reportContent;
+		this.reportMemNo = reportMemNo;
+	}
+
+
 
 	public Report(int reportNo, String reportType, String reportContent, String reportDate, int reportBoardNo,
 			String reportMemNo, String reportedMemNo, String type) {

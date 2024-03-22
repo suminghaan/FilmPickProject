@@ -9,9 +9,6 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
-	//Reply list = (Reply)request.getAttribute("list");
-	//System.out.println(list);
-	//System.out.println(at);
 %>
 <!DOCTYPE html>
 <html>
@@ -203,7 +200,9 @@
     				           +  "<th>" + list[i].reMemNo + "</th>"                                                                                            
     				           +  "<td>" + list[i].replyContent + "</td>"   
     				           +  "<td>" + list[i].enrollDate + "</td>"
-    				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='hidden(" + list[i].replyNo + ', <%=loginMember.getMemNo()%>, ' + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
+    				           	  <%if(loginMember != null){%>
+    				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='replyHidden(" + list[i].replyNo + ", <%=loginMember.getMemNo()%>, " + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
+    				          	  <%}%>	
     				           + "</tr>";
     				}
     			}else{
@@ -231,7 +230,7 @@
     
     
     // 댓글신고				 
-    function hidden(replyNo, reportNo, reportedNo, typeNo){
+    function replyHidden(replyNo, reportNo, reportedNo, typeNo){
     	// 전달받은 값들을 해당 input 요소에value로 대입하는 구문
         document.getElementById('replyNo').value = replyNo; //히든으로 넘길 댓글번호
         document.getElementById('replyReportNo').value = reportNo; //히든으로 넘길 신고한회원번호
@@ -282,7 +281,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content"> 
                             <div class="modal-body">
-                            <form action="<%=contextPath%>/boReReport.bo" method="post">
+                           	 <form action="<%=contextPath%>/boReReport.bo" method="post">
                                 <input type="hidden" id="replyNo" name="replyNo" value="">
                                 <input type="hidden" id="replyReportNo" name="replyReportNo" value="">
                                 <input type="hidden" id="replyReportedNo" name="replyReportedNo" value="">
@@ -293,11 +292,11 @@
                                             <input class="ca" type="checkbox" name="notify" value="3"> 음란성 및 선정성 <br>
                                             <input class="ca" type="checkbox" name="notify" value="4"> 기타 <br><br><br>
                                             자세한내용입력<br>
-                                            <textarea id="tex" rows="7" class="form-control" style="resize: none;" name=""></textarea>
+                                            <textarea id="tex" rows="7" class="form-control" style="resize: none;" name="content"></textarea>
                                     </p> <br><br>
                                     <button type="button" class="btn btn-secondary modal-btn no" style="width: 100px;" data-dismiss="modal">취소</button>
                                     <button type="submit" class="btn btn-dark modal-btn" style="width: 100px;">신고하기</button>
-                            </form> 
+                               </form> 
                             </div>
                         </div>
                     </div>

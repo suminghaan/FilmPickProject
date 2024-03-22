@@ -43,11 +43,36 @@ public class MovieDetailController extends HttpServlet {
 		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
 		ArrayList<Movie> movieList = new MovieService().selectRelMovieList(movieNo);
 		
-		request.setAttribute("movieList", movieList);
-		request.setAttribute("reviewList", reviewList);
-		request.setAttribute("personList", personList);
-		request.setAttribute("attList", attList);
-		request.setAttribute("movie", m);
+		if(m != null) {
+			request.setAttribute("movie", m);
+		} else {
+			System.out.println("movie == null");
+		}
+		
+		if(attList != null) {
+			request.setAttribute("attList", attList);
+		} else {
+			System.out.println("attList == null");
+		}
+		
+		if(personList != null) {
+			request.setAttribute("personList", personList);
+		} else {
+			System.out.println("personList == null");
+		}
+		
+		if(reviewList != null) {
+			request.setAttribute("reviewList", reviewList);
+		} else {
+			System.out.println("reviewList == null");
+		}
+		
+		if(movieList != null) {
+			request.setAttribute("movieList", movieList);
+		} else {
+			System.out.println("movieList == null");
+		}
+		
 		request.getRequestDispatcher("/views/search/movieDetail.jsp").forward(request, response);
 	}
 
