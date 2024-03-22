@@ -357,7 +357,7 @@
 		<!-- 관리자 신고된 댓글 목록 조회 [수민] -->
 		<entry key="selectReportCommentList">
 			SELECT *
-			FROM(
+				FROM(
 					SELECT ROWNUM RNUM, A.*
 					FROM (
 					  	SELECT
@@ -373,10 +373,9 @@
 					      , B_NO
 					    FROM REPLY RP
 					    JOIN MEMBER USING (MEM_NO)
-					    JOIN BOARD  ON B_NO = RP.BOARD_NO
+					    JOIN BOARD ON B_NO = RP.BOARD_NO
                         JOIN REPORT ON RP.BOARD_NO = REPORT_REF_NO
                         WHERE BOARD_NO_TYPE = '2'
-                            )
 						    ORDER
 						        BY B_NO DESC
 					  		) A
@@ -403,5 +402,33 @@
 		WHERE RNUM BETWEEN ? AND ?
 		</entry>
 		
+		<!-- 관리자 신고댓글 블라인드처리 [수민] -->
+		<entry key="reportCommentBlind">
+			UPDATE
+				   REPLY
+			   SET REPLY_B_STATUS = 'Y'
+			 WHERE REPLY_NO = ?			 
+		</entry>
+		
+		
+		<!-- 관리자 신고된 댓글 검색기능 [수민] -->
+		<entry key="searchReportComment">
+			SELECT  
+				REPLY_NO
+		      , ENROLL_DATE
+		      , REPLY_CONTENT
+		      , MEM_ID
+		      , (SELECT COUNT(*) 
+		         FROM REPORT R 
+		         WHERE REPORT_REF_NO = REPLY_NO
+		           AND BOARD_NO_TYPE = 2) REPORT
+		      , B_CATEGORY
+		      , BOARD_NO
+			FROM REPLY
+			JOIN MEMBER USING (MEM_NO)
+			JOIN BOARD ON B_NO = RP.BOARD_NO
+			JOIN REPORT ON REPORT_REF_NO = REPLY_NO
+			WHERE B_TITLE LIKE '%' || ? || '%'
+		</entry>
 
 </properties>

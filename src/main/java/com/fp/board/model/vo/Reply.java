@@ -29,6 +29,34 @@ public class Reply {
 	}
 	
 	
+	
+	
+
+	/**
+	 * 신고된 댓글 검색시 사용됨
+	 * @param replyNo
+	 * @param replyContent
+	 * @param enrollDate
+	 * @param reBoNo
+	 * @param reMemNo
+	 * @param report
+	 * @param boCategory
+	 * 
+	 * @author 수민
+	 */
+
+	public Reply(int replyNo, String replyContent, String enrollDate, int reBoNo, String reMemNo, int report,
+			String boCategory) {
+		super();
+		this.replyNo = replyNo;
+		this.replyContent = replyContent;
+		this.enrollDate = enrollDate;
+		this.reBoNo = reBoNo;
+		this.reMemNo = reMemNo;
+		this.report = report;
+		this.boCategory = boCategory;
+	}
+
 	/**
 	 * (관리자) 신고된 댓글 목록 조회 
 	 * @param replyNo

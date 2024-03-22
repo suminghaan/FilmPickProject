@@ -705,5 +705,57 @@ public class CommunityDao {
 		
 		return rlist;
 	}
+	
+	// 신고된 댓글 블라인드 처리 
+	public int reportCommentBlind(Connection conn, int replyNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("reportCommentBlind");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, replyNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 신고 댓글 검색 기능 
+	public List<Reply> searchReportComment(Connection conn, String keyword) {
+		List<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchReportComment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, keyword);
+
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Reply(rset.getInt("reply_no"),
+								   rset.getString("reply_content"),
+								   rset.getString("enroll_date"),
+								   rset.getString("board_no"),
+								   rset.getString("mem_id"),
+								   rset.getInt("report"),
+								   rset.getString("b_category")
+								    ));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }

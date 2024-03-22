@@ -225,6 +225,29 @@ public class CommunityService {
 		return rlist;
 	}
 
+	// 신고된 댓글 블라인드 처리 
+	public int reportCommentBlind(int replyNo) {
+		Connection conn = getConnection();
+		int result = coDao.reportCommentBlind(conn, replyNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	// 신고된 댓글 검색 기능 
+	public List<Reply> searchReportComment(String keyword) {
+		Connection conn = getConnection();
+		List<Reply> list = coDao.searchReportComment(conn, keyword);
+		close(conn);
+		return list;
+	}
+
 	
 
 }
