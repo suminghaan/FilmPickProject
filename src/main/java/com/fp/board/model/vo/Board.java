@@ -64,7 +64,32 @@ public class Board {
 		this.filePath = filePath;
 	}
 
+	
+	
+	/**
+	 * (관리자) 신고게시글 검색기능
+	 * @param bNo
+	 * @param bTitle
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @param bCategory
+	 * @param memId
+	 * @param reportCount
+	 * 
+	 * @author 수민
+	 */
 
+	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory, String memId,
+			int reportCount) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.memId = memId;
+		this.reportCount = reportCount;
+	}
 
 	/**
 	 * (관리자) 블라인드게시글의 댓글 조회용도
