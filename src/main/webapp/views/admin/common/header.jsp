@@ -265,7 +265,7 @@ background-color: black!important;
                     <a class="collapse-item" href="<%=contextPath%>/list.co?page=1">공지사항</a>
                     <a class="collapse-item" href="<%=contextPath%>/blindList.co?page=1">블라인드 게시글 관리</a>
                     <a class="collapse-item" href="<%=contextPath%>/reportBoardList.co?page=1">신고된 게시글 관리</a>
-                    <a class="collapse-item" href="../ad_community/commuReportCommentList.jsp">신고된 댓글 관리</a>
+                    <a class="collapse-item" href="<%=contextPath%>/reportCommentList.co?page=1">신고된 댓글 관리</a>
                     <div class="collapse-divider"></div>
                 </div>
             </div>

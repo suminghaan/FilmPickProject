@@ -257,19 +257,28 @@
 					SELECT ROWNUM RNUM, A.*
 					  FROM (
 					  	SELECT
-						        B_NO
-						      , B_REGIST_DATE
-						      , MEM_ID
-						      , B_TITLE
-						      , B_READ_COUNT
-						      , (SELECT COUNT(*) 
-						         FROM REPORT R 
-						         WHERE BOARD_NO = B_NO) REPORT
-						      , B_CATEGORY
-						    FROM BOARD B
-						    JOIN MEMBER USING (MEM_NO)
-						    LEFT JOIN REPORT ON BOARD_NO = B_NO
-						    WHERE BOARD_NO = B_NO
+					        B_NO
+					      , B_REGIST_DATE
+					      , MEM_ID
+					      , B_TITLE
+					      , B_READ_COUNT
+					      , (SELECT COUNT(*) 
+					         FROM REPORT R 
+					         WHERE BOARD_NO = B_NO) REPORT
+					      , B_CATEGORY
+					      , B_CONTENT
+					      , B_B_STATUS
+					      , ORIGIN_NAME
+				  	      , CHANGE_NAME 
+				  	      , FILE_PATH
+					    FROM BOARD B
+					    JOIN MEMBER USING (MEM_NO)
+					    LEFT JOIN ATTACHMENT A ON B_NO = REF_NO
+		 				AND A.REF_TYPE = 3
+                           WHERE B_NO  IN (
+                                       SELECT BOARD_NO
+                                       FROM REPORT
+                            )
 						    ORDER
 						        BY B_NO DESC
 					  		) A
@@ -295,5 +304,42 @@
 			JOIN REPORT ON BOARD_NO = B_NO
 			WHERE B_TITLE LIKE '%' || ? || '%'
 		</entry>
+		
+		<!-- 관리자 신고게시글 신고내역 조회 [수민] -->
+		<entry key="selectDetailReportBoardList">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM, A.*
+			  FROM (
+			  	SELECT
+			  		 BOARD_NO
+				   , REPORT_NO
+				   , REPORT_TYPE
+				   , REPORT_MEM_NO
+				   , REPORT_CONTENT 
+				FROM REPORT			
+			  		) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+		</entry>
+		
+		<!-- 관리자 신고글 블라인드처리 [수민] -->
+		<entry key="reportBlind">
+			UPDATE
+				   BOARD
+			   SET B_B_STATUS = 'Y'
+			 WHERE B_NO = ?
+			 
+		</entry>
+		
+		<!-- 관리자 신고된게시글 블라인드처리 시 같이 등록한 이미지 status값 변경 [수민] -->
+		<entry key="reportBlindAttachment">
+			UPDATE
+				  ATTACHMENT
+			  SET FILE_STATUS = 'N'
+			WHERE REF_TYPE = 3
+			  AND REF_NO = ?
+		</entry>
+		
 
 </properties>

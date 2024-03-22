@@ -49,7 +49,7 @@ public class Board {
 	 */
 
 	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, String bCategory,
-			String memId, int reportCount, String fileOriginName, String fileChangeName, String filePath) {
+			String memId, int reportCount, String fileOriginName, String fileChangeName, String filePath, String bStatus) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -62,6 +62,7 @@ public class Board {
 		this.fileOriginName = fileOriginName;
 		this.fileChangeName = fileChangeName;
 		this.filePath = filePath;
+		this.bStatus = bStatus;
 	}
 
 	
