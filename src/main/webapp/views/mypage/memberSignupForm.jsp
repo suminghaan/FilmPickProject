@@ -270,10 +270,9 @@
               </form>    
               
               <script>
-              
               // 아이디 중복확인
               	function idCheck(){
-              		
+
               		const $idInput = $(".signup_content input[name=memId]");
               		
               		$.ajax({
@@ -296,16 +295,15 @@
               					}else{
               						$idInput.select();
               					}
-              				},
-              				error: function(){
-              					console.log("아이디 중복체크용 ajax 통신 실패")
               				}
+              			},
+              			error: function(){
+              				console.log("아이디 중복체크용 ajax 통신 실패")
               			}
-
               		})            		
               	}          
               </script>
-              
+   
           </div>
         </section>
       </div>              
