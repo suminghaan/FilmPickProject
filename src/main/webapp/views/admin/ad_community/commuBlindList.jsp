@@ -103,29 +103,24 @@
 		                    <td><%=bo.getReplyCount() %></td>
 		                    <td><%=bo.getbCategory() %></td>
 		                    <td>                      	
-	                        	<a href="<%=contextPath %>/removeBlind.co?bNo=<%=bo.getbNo() %>" class="btn btn-outline-warning" onclick="removeBlind();">블라인드해제</button>
+	                        	<a href="<%=contextPath %>/removeBlind.co?b_No=<%=bo.getbNo() %>" class="btn btn-outline-warning" onclick="removeBlind();">블라인드해제</a>
 	                    	</td>
 		                </tr>
+		                
+		                <!-- 글(.blindContent)를 누르면 나오는 해당 게시글 내용 -->
+					
+						<tr class="blindDetail">
+							<td colspan="6">
+								<div class="form-group">
+									<label for="content"><h6>게시글 내용</h6></label>
+									<textarea class="form-control" name="borderContent" id="content" cols="50" rows="8"><%=bo.getbContent() %></textarea>
+								</div>
+							</td>
+						</tr>
 		                <%} %>
 	                <%} %>
-					<!-- 글(.blindContent)를 누르면 나오는 해당 게시글 내용 -->
-					<% for(Board board: list) { %>
-					<tr class="blindDetail">
-						<td colspan="6">
-							<div class="form-group">
-								<label for="content"><h6>게시글 내용</h6></label>
-								<textarea class="form-control" name="borderContent" id="content" cols="50" rows="8"><%=board.getbContent() %></textarea>
-							</div>
-							<div>
-								<label for="comment"><h6>댓글</h6></label>
-								<%%>
-								<input type="text" class="form-control-plaintext" id="comment" value="">								
-							<!--  	<input type="text" class="form-control-plaintext" id="comment" placeholder="달려있는 댓글">		-->											
-								<%  %>
-							</div>
-						</td>
-					</tr>
-					<% } %>
+					
+					
 				<!--  
 	                <tr class="blindContent">
 	                    <td>2</td>
@@ -222,11 +217,11 @@
 	    						value += "<tr>"
 	    								+ "<td>" + list[i].bNo + "</td>"
 	    								+ "<td>" + list[i].bRegistDate + "</td>"
-	    								+ "<td>" + list[i].MemId() + "</td>"
-	    								+ "<td>" + list[i].bTitle() + "</td>"
-	    								+ "<td>" + list[i].bReadCount() + "</td>"
-	    								+ "<td>" + list[i].ReplyCount() + "</td>"
-	    								+ "<td>" + list[i].bCategory() + "</td>"
+	    								+ "<td>" + list[i].MemId + "</td>"
+	    								+ "<td>" + list[i].bTitle + "</td>"
+	    								+ "<td>" + list[i].bReadCount + "</td>"
+	    								+ "<td>" + list[i].ReplyCount + "</td>"
+	    								+ "<td>" + list[i].bCategory + "</td>"
 	    		                        +"</tr>";
 	    					}
 	    				}else{

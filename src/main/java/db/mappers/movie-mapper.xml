@@ -84,6 +84,7 @@
     , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 2) AS "COUNT_DISAGREE"
     , MEM_IMGPATH
     , MEM_COLOR
+    , R.MEM_NO AS "MEM_NO"
 	FROM REVIEW R
 	JOIN MEMBER M
 	ON M.MEM_NO = R.MEM_NO
@@ -167,10 +168,7 @@
 	
 	<!-- 메인페이지 영화포스터 조회 [용훈] -->
 	<entry key="selectMainListp">
-	<![CDATA[
-		SELECT P.*
-		FROM (
-		    SELECT DISTINCT M.MV_NO
+	    SELECT DISTINCT M.MV_NO
             , MV_POSTER
             , MV_NAME
             , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW WHERE MV_NO = M.MV_NO) "LIKE_POINT"
@@ -180,12 +178,9 @@
 		FROM MOVIE M
 		LEFT JOIN MOVIE_CATEGORY C ON (M.MV_NO = C.MV_NO)
 		WHERE MV_STATUS = 'Y'
-		ORDER BY MV_OPENDATE DESC
-		) P
-		WHERE ROWNUM <= 10
-	]]>
 	</entry>
 	
+	<!-- 리뷰 등록하는 쿼리 [기웅] -->
 	<entry key="insertReview">
 	INSERT INTO REVIEW
 	VALUES (
@@ -196,5 +191,32 @@
 	    , ?
 	    , ?
 	)
+	</entry>
+	
+	<!-- 다른 유저의 정보를 조회하는 쿼리 [기웅] -->
+	<entry key="selectOtherUserInfo">
+		SELECT 
+             MEM_LEVEL
+            , MEM_IMGPATH
+            , MEM_COLOR
+            , (SELECT COUNT(*) FROM REVIEW WHERE MEM_NO = M.MEM_NO) AS "COUNT_STAR_RATING"
+            , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW WHERE MEM_NO = M.MEM_NO) AS "AVG_STAR_RATING"
+		FROM MEMBER M
+		WHERE M.MEM_NO = ?
+	</entry>
+	
+	<!-- 다른 유저의 리뷰 내용을 조회하는 쿼리 -->
+	<entry key="selectReviewOtherUser">
+		 SELECT 
+            MV_REVIEW_NO
+            , REVIEW_CONTENT
+            , REVIEW_DATE
+            , LIKE_POINT
+            , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 1) AS "AGREE_COUNT"
+            , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 2) AS "DISAGREE_COUNT"
+        FROM REVIEW R
+        JOIN MEMBER M
+        ON M.MEM_NO = R.MEM_NO
+        WHERE M.MEM_NO = ?
 	</entry>
 </properties>

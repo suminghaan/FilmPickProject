@@ -1,4 +1,4 @@
-package com.fp.common.controller;
+package com.fp.admin.controller.ad_community;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.movie.model.service.MovieService;
-import com.fp.movie.model.vo.Movie;
+import com.fp.admin.model.service.CommunityService;
+import com.fp.board.model.vo.Board;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class mainPageController
+ * Servlet implementation class AjaxReportBoardSearchController
  */
-@WebServlet("/mainpage.fp")
-public class mainPageController extends HttpServlet {
+@WebServlet("/reportBoardSearch.co")
+public class AjaxReportBoardSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public mainPageController() {
+    public AjaxReportBoardSearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,24 +32,13 @@ public class mainPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String keyword = request.getParameter("keyword");
 		
-		String no1 = "1";
-		String no2 = "2";
-		String no3 = "3";
+		List<Board> list = new CommunityService().searchReportBoard(keyword);
 		
-		List<Movie> vlist = new MovieService().selectMainListv();
-		List<Movie> plist1 = new MovieService().selectMainListp(no1);
-		List<Movie> plist2 = new MovieService().selectMainListp(no2);
-		List<Movie> plist3 = new MovieService().selectMainListp(no3);
-		
-		request.setAttribute("vlist", vlist);
-		request.setAttribute("plist1", plist1);
-		request.setAttribute("plist2", plist2);
-		request.setAttribute("plist3", plist3);
-		
-		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
-		
-		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**

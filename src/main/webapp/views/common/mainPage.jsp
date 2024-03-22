@@ -3,7 +3,9 @@
 <%@ page import="com.fp.movie.model.vo.Movie, java.util.List" %>
 <%
 	List<Movie> vlist = (List<Movie>)request.getAttribute("vlist");
-	List<Movie> plist = (List<Movie>)request.getAttribute("plist");
+	List<Movie> plist1 = (List<Movie>)request.getAttribute("plist1");
+	List<Movie> plist2 = (List<Movie>)request.getAttribute("plist2");
+	List<Movie> plist3 = (List<Movie>)request.getAttribute("plist3");
 %>
 
 <!DOCTYPE html>
@@ -12,11 +14,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/slick-1.8.1/slick-1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/slick-1.8.1/slick-1.8.1/slick/slick-theme.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="resources/css/slick-1.8.1/slick-1.8.1/slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="resources/css/slick-1.8.1/slick-1.8.1/slick/slick-theme.css"/>  -->
 	
     <style>
 #wrap, #wrap * {
@@ -82,7 +84,7 @@
 	/*white-space: nowrap;*/
 	overflow: hidden;
 }
-}
+
 .topPage {
 	position: sticky;
 	right: 350px;
@@ -115,14 +117,23 @@
 .posi {
 	display: flex;
 }
-/*.carousel-item.active {
-                display: flex !important;
-            } */
+
 #carousepost {
 	display: flex;
-	height: 300px;
+    height: 310px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: -20px;
 }
-
+.slick-prev {
+    left: -40px !important; 
+}
+.slick-next {
+    right: 0px !important;
+}
+.slick-list {
+    margin-left: 30px !important;
+}
 #poster {
 	margin: 10px;
 	width: 100%;
@@ -174,6 +185,8 @@
 	height: 120px;
 	justify-content: space-between;
 	align-items: center;
+	margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .commu_list {
@@ -306,88 +319,42 @@
 
 				<div class="being_movie box">
 					<div class="box_font">
-						<a href="">현재 상영중인 영화</a>
+						<a href="">최신 영화</a>
 					</div>
-					
-					<div id="carouselMovie" class="carousel slide" data-bs-ride="false">
-					    <div class="carousel-inner">
-					        <% for (int i = 0; i < 10; i++) { %>
-					            <div class="carousel-item <% if (i == 0) { %>active<% } %>">
-					                <!-- 각각의 콘텐츠를 추가하세요 -->
-					                <div class="container">
-					                    <div class="row">
-					                        <div class="col">
-					                            <a id="poster" href="">
-					                                <img class="poster_img" src="<%=contextPath %>/resources/img/듄2.jpeg">
-					                                <div class="box_context">
-					                                    <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
-					                                    <div class="post_context">별점</div>
-					                                    <div class="post_context">개봉연도,국가</div>
-					                                </div>
-					                            </a>
-					                            <a id="poster" href="">
-					                                <img class="poster_img" src="<%=contextPath %>/resources/img/파묘.jpeg">
-					                                <div class="box_context">
-					                                    <div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
-					                                    <div class="post_context">별점</div>
-					                                    <div class="post_context">개봉연도,국가</div>
-					                                </div>
-					                            </a>
-					                        </div>
-					                    </div>
-					                </div>
-					            </div>
-					        <% } %>
-					    </div>
-					    <a class="carousel-control-prev movePage" href="#carouselMovie" type="button" data-bs-target="#carouselMovie" style="justify-content: flex-end;" data-bs-slide="prev">
-					        <img src="<%= contextPath %>/resources/img/left_icon.png">
-					    </a>
-					    <a class="carousel-control-next movePage" href="#carouselMovie" type="button" data-bs-target="#carouselMovie" style="justify-content: flex-end;" data-bs-slide="next">
-					        <img src="<%= contextPath %>/resources/img/right_icon.png">
-					    </a>
+				 	<div id="carousepost" class="poster_content">
+						<% for(int i = 0; i < plist1.size(); i++){ %>
+						<a class="post" href="<%= contextPath %>/movieDetail.fp?movieNo=<%= plist1.get(i).getMvNo() %>">
+							<img class="poster_img" src="<%= plist1.get(i).getMvPoster() %>">
+								<div class="box_context">
+									<div class="post_context"><%= plist1.get(i).getMvName() %></div>
+									<div class="post_context">"평균 별점 : " + <%= plist1.get(i).getStarRatingAvg() %></div>
+									<div class="post_context"><%= plist1.get(i).getMvOpenDate() %></div>
+								</div>
+						</a> 
+						<% } %>
 					</div>
 					
 					<br> <br>
 					<div class="box_font">
 						<a href="">영화 인기작</a>
 					</div>
-					<div id="carousepost" class="carousel slide">
-						<a class="post" href=""><img class="poster_img"
-							src="<%=contextPath%>/resources/img/듄2.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="poster_img"
-							src="<%=contextPath%>/resources/img/파묘.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">파묘</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="poster_img"
-							src="<%=contextPath%>/resources/img/가여운것들.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">가여운것들</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="poster_img"
-							src="<%=contextPath%>/resources/img/건국전쟁.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">건국전쟁</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a> <a class="post" href=""><img class="poster_img"
-							src="<%=contextPath%>/resources/img/웡카.jpeg" alt="">
-							<div class="box_context">
-								<div class="post_context">웡카</div>
-								<div class="post_context">별점</div>
-								<div class="post_context">개봉연도,국가</div>
-							</div> </a>
+					<div id="carousepost" class="poster_content">
+					<input type="hidden" name="1">
+						<% for(int i = 0; i < plist2.size(); i++){ %>
+						<a class="post" href="<%= contextPath %>/movieDetail.fp?movieNo=<%= plist2.get(i).getMvNo() %>">
+							<img class="poster_img" src="<%= plist2.get(i).getMvPoster() %>">
+								<div class="box_context">
+									<div class="post_context"><%= plist2.get(i).getMvName() %></div>
+									<div class="post_context">"평균 별점 : " + <%= plist2.get(i).getStarRatingAvg() %></div>
+									<div class="post_context"><%= plist2.get(i).getMvOpenDate() %></div>
+								</div>
+						</a> 
+						<% } %>
 					</div>
 				</div>
 				<div class="commu box">
 					<div class="box_font">
-						<a href="">커 뮤 니 티</a>
+						<a href="<%=contextPath%>/main.bo">커 뮤 니 티</a>
 					</div>
 					<div class="commu_box">
 						<div class="commu_list">
@@ -412,9 +379,9 @@
 							</div>
 						</div>
 						<div class="movePage">
-							<a href=""><img
-								src="<%= contextPath %>/resources/img/right_icon.png"
-								alt="up_icon"></a>
+							<a href="<%=contextPath%>/main.bo">
+								<img src="<%= contextPath %>/resources/img/right_icon.png">
+							</a>
 						</div>
 					</div>
 					<div class="box_font">
@@ -463,83 +430,43 @@
                             </div>
                             -->
 
-				
+				 
 			</div>
 			<div class="new_movie box" style="margin-bottom: 10px;">
 				<div class="box_font">
-					<a href="">사용자영화 최신순</a>
+					<a href="">영화 평점순</a>
 				</div>
-				<div id="carousepost" class="carousel slide">
-					<a class="post" href=""><img class="poster_img"
-						src="<%=contextPath%>/resources/img/듄2.jpeg" alt="">
-						<div class="box_context">
-							<div class="post_context">어디까지길게쓰면글자가짤리게될까가나다가가나나아자차카타파하가</div>
-							<div class="post_context">별점</div>
-							<div class="post_context">개봉연도,국가</div>
-						</div> </a> <a class="post" href=""><img class="poster_img"
-						src="<%=contextPath%>/resources/img/파묘.jpeg" alt="">
-						<div class="box_context">
-							<div class="post_context">파묘</div>
-							<div class="post_context">별점</div>
-							<div class="post_context">개봉연도,국가</div>
-						</div> </a> <a class="post" href=""><img class="poster_img"
-						src="<%=contextPath%>/resources/img/가여운것들.jpeg" alt="">
-						<div class="box_context">
-							<div class="post_context">가여운것들</div>
-							<div class="post_context">별점</div>
-							<div class="post_context">개봉연도,국가</div>
-						</div> </a> <a class="post" href=""><img class="poster_img"
-						src="<%=contextPath%>/resources/img/건국전쟁.jpeg" alt="">
-						<div class="box_context">
-							<div class="post_context">건국전쟁</div>
-							<div class="post_context">별점</div>
-							<div class="post_context">개봉연도,국가</div>
-						</div> </a> <a class="post" href=""><img class="poster_img"
-						src="<%=contextPath%>/resources/img/웡카.jpeg" alt="">
-						<div class="box_context">
-							<div class="post_context">웡카</div>
-							<div class="post_context">별점</div>
-							<div class="post_context">개봉연도,국가</div>
-						</div> </a>
-				</div>
+				<div id="carousepost" class="poster_content">
+						<% for(int i = 0; i < plist3.size(); i++){ %>
+						<a class="post" href="<%= contextPath %>/movieDetail.fp?movieNo=<%= plist3.get(i).getMvNo() %>">
+							<img class="poster_img" src="<%= plist3.get(i).getMvPoster() %>">
+								<div class="box_context">
+									<div class="post_context"><%= plist3.get(i).getMvName() %></div>
+									<div class="post_context">"평균 별점 : " + <%= plist3.get(i).getStarRatingAvg() %></div>
+									<div class="post_context"><%= plist3.get(i).getMvOpenDate() %></div>
+								</div>
+						</a> 
+						<% } %>
+					</div>
+					 
 			</div>
 			<!-- 상단으로 올라가는 버튼 -->
 			<div class="topPage" style="">
 				<a href="#wrap"><img src="<%= contextPath %>/resources/img/up_icon.png" alt="up_icon" style="width: 50px;"></a>
 			</div>
-			
-			<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-			<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-			<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-			
-			<script>
-                        $(document).ready(function () {
-                            $(window).scroll(function () {
-                                $('.topPage').each(function () {
-                                    var top_of_window = $(window).scrollTop();
-
-                                    if (top_of_window <= 0) {
-                                        $(this).stop().animate({ 'opacity': '0' }, 50);
-                                    } else {
-                                        $(this).stop().animate({ 'opacity': '1' }, 200);
-                                    }
-                                });
-                            });
-                        });
-
-             </script>
-			
-			<script>
-		        /* $('.content').slick({
+			 
+			 <script>
+			 $(document).ready(function() {
+		         $('.poster_content').slick({
 		            
-		            dots: true,
-		            slidesToShow: 3,
+		            //dots: true,
+		            slidesToShow: 4,
 		            slidesToScroll: 1,
 		            autoplay: true,
-		            autoplaySpeed: 5000,
-		            centerMode: true,
+		            autoplaySpeed: 7000,
+		            centerMode: false,
 		            centerPadding: '0px',
-		            slidesToShow: 3,
+		            initialSlide: 0,
 		            responsive: [{
 		                breakpoint: 0,
 		                settings: {
@@ -564,10 +491,33 @@
 		                }
 		            }
 		            ]
-		        }); */
+		        });
+			 });
 		    </script>
 			
 			
+			<script>
+                        $(document).ready(function () {
+                            $(window).scroll(function () {
+                                $('.topPage').each(function () {
+                                    var top_of_window = $(window).scrollTop();
+
+                                    if (top_of_window <= 0) {
+                                        $(this).stop().animate({ 'opacity': '0' }, 50);
+                                    } else {
+                                        $(this).stop().animate({ 'opacity': '1' }, 200);
+                                    }
+                                });
+                            });
+                        });
+
+             </script>
+			 
+			
+			
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 			
              
 		</div>

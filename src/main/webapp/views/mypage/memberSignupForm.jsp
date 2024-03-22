@@ -266,14 +266,13 @@
                                                                                    --bs-btn-color:RGB(247, 39, 140);
                                                                                    --bs-btn-hover-color: #ffffff;
                                                                                    --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                   --bs-btn-hover-border-color: #ffffff;">가입하기</button>
+                                                                                   --bs-btn-hover-border-color: #ffffff;" disabled>가입하기</button>
               </form>    
               
               <script>
-              
               // 아이디 중복확인
               	function idCheck(){
-              		
+
               		const $idInput = $(".signup_content input[name=memId]");
               		
               		$.ajax({
@@ -296,16 +295,51 @@
               					}else{
               						$idInput.select();
               					}
-              				},
-              				error: function(){
-              					console.log("아이디 중복체크용 ajax 통신 실패")
               				}
+              			},
+              			error: function(){
+              				console.log("아이디 중복체크용 ajax 통신 실패")
               			}
-
               		})            		
               	}          
               </script>
               
+              <script>
+              // 닉네임 중복확인
+              	function nicknameCheck(){
+
+              		const $nicknameInput = $(".signup_content input[name=nickname]");
+              		
+              		$.ajax({
+              			url:"<%=contextPath%>/nicknameCheck.me",
+              			data:{checkNickname: $nicknameInput.val()},
+              			method:"post",
+              			success: function(result){
+              				
+              				if(result == "NNNNN"){
+              					// 사용불가능(NNNNN)
+              					alert("이미 존재하는 닉네임입니다.");
+              					$nicknameInput.focus();
+              				}else{
+              					// 사용가능(NNNNY)
+              					if(confirm("사용가능한 닉네임입니다. 사용하시겠습니까?")){
+              						// 회원가입 버튼 활성화
+              						$(".signup_content :submit").removeAttr("disabled");
+              						
+              						// 닉네임 입력하는 input요소 수정불가능한 속성 추가
+              						$nicknameInput.attr("readonly", true);
+              					}else{
+              						$nicknameInput.select();
+              					}
+              				}
+              			},
+              			error: function(){
+              				console.log("닉네임 중복체크용 ajax 통신 실패")
+              			}
+              		})            		
+              	}          
+              </script>
+   			
           </div>
         </section>
       </div>              

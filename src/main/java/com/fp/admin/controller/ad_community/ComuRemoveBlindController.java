@@ -30,17 +30,17 @@ public class ComuRemoveBlindController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int boardNo = Integer.parseInt(request.getParameter("bNo"));
+		int boardNo = Integer.parseInt(request.getParameter("b_No"));
 		
 		int result = new CommunityService().removeBlind(boardNo);
 		
 		HttpSession session = request.getSession();
 		if(result > 0) {
 			session.setAttribute("alertMst", "해당 게시글이 블라인드 해제되었습니다.");
-			response.sendRedirect(request.getContextPath()+ "blindList.co?page=1");
+			response.sendRedirect(request.getContextPath()+ "/blindList.co?page=1");
 		}else {
 			session.setAttribute("alertMst", "블라인드 해제 실패");
-			response.sendRedirect(request.getContextPath()+ "blindList.co?page=1");
+			response.sendRedirect(request.getContextPath()+ "/blindList.co?page=1");
 		}
 	}
 

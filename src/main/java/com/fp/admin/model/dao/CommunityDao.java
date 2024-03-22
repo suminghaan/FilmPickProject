@@ -332,10 +332,11 @@ public class CommunityDao {
 								   rset.getInt("b_read_count"),
 								   rset.getString("b_category"),
 								   rset.getInt("reply"),
-								   rset.getString("mem_id"), 
-								   rset.getString("reply_content")
+								   rset.getString("mem_id"),
+								   rset.getString("b_content")
 								   ));				
 			}
+			System.out.print(list);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -470,8 +471,8 @@ public class CommunityDao {
 								   rset.getString("b_regist_date"),
 								   rset.getInt("b_read_count"),
 								   rset.getString("b_category"),
-								   rset.getInt("report"),
-								   rset.getString("mem_id")
+								   rset.getString("mem_id"),
+								   rset.getInt("report")								   
 								   ));				
 			}
 
@@ -482,6 +483,38 @@ public class CommunityDao {
 			close(rset);
 		}
 		
+		return list;
+	}
+
+	// 신고게시글 검색 
+	public List<Board> searchReportBoard(Connection conn, String keyword) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchReportBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, keyword);
+
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("b_no"),
+								   rset.getString("b_title"),
+								   rset.getString("b_regist_date"),
+								   rset.getInt("b_read_count"),
+								   rset.getString("b_category"),
+								   rset.getString("mem_id"),
+								   rset.getInt("report") ));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		return list;
 	}
 
