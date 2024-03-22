@@ -264,7 +264,8 @@
 					      , B_READ_COUNT
 					      , (SELECT COUNT(*) 
 					         FROM REPORT R 
-					         WHERE BOARD_NO = B_NO) REPORT
+					         WHERE BOARD_NO_TYPE=1
+					           AND REPORT_REF_NO = B_NO) REPORT
 					      , B_CATEGORY
 					      , B_CONTENT
 					      , B_B_STATUS
