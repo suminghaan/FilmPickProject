@@ -670,18 +670,25 @@
                       name:$(".inputPerson").val()
                     },
                     type:"post",
-                    success:function(person){
+                    success:function(person){ // 인물번호, 인물이미지경로, 인물이름, 인물직업 조회
                       if(person != null){
                         for(let i=0; i<person.length; i++){
-                          result += "<table>"
-                                  +   "<tr>"
-                                  +     "<td><img src='person[i].인물얼굴경로'></td>"
-                                  +   "</tr>"
-                                  +   "<tr>"
-                                  +     "<td>person[i].인물이름 / person[i].인물직업</td>"
-                                  +   "</tr>"
-                                  + "</table>"
-                                $(".viewPerson").append(result);
+                          result = "<div class='check'>"
+                                  +  "<input type='checkbox'>"
+                                  +   "<table>"
+                                  +     "<tr>"
+                                  +       "<td><img class='personImg' src='person[i].인물얼굴경로'></td>"
+                                  +     "</tr>"
+                                  +     "<tr>"
+                                  +       "<td class='personName'>person[i].인물이름</td>"
+                                  +		  "<input class='personNo' type='hidden' value='person[i].인물번호'>"
+                                  +     "</tr>"
+                                  +     "<tr>"
+                                  +       "<td>person[i].인물직업</td>"
+                                  +     "</tr>"
+                                  +   "</table>"
+                                  + "</div>"
+                           $(".viewPerson").append(result);
                         }
                       }else{
                         $(".viewPerson").append("검색된 인물이 없습니다.");
@@ -692,28 +699,42 @@
                 
               var count = 0; //최대 8명만 추가할 수 있는 조건
               
-              $("#personBtn").click(function(){              
+              $("#personBtn").click(function(){         
+            	  
+            	  // 현재 .viewPerson 영역내에 검색된 인물들이 있을텐데
+            	  // 그 중 checkbox가 checked된 인물만을 선택해야됨 
+            	  
+            	  // 
+            	  //let inputChecked = .viewPerson 영역내 input:checked요소객체들;
+            	  
+            	  
                 if(count < 8){
 
                 let result = "";
+                  //inputChecked.each(function(){
                   result += "<table class='person-table'>"
                           +   "<tr>"
-                          +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
+                          +     "<td><img src='순차적으로접근하는요소(input)의 하위에 .personImg인 요소의 src속성값'></td>"
                           +   "</tr>"
                           +   "<tr>"
-                          +     "<td>고경표</td>"
+                          +     "<td>순차적으로접근하는요소(input)의 하위에 .personName인 요소의 innerText속성값</td>"
                           +   "</tr>"
                           +   "<tr>"
                           +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
                           +   "</tr>"
-                          +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
+                          +   '<input type="hidden" name="personNo" value="순차적으로접근하는요소(input)의 하위에 .personNo인 요소의 value속성값">'
                           + "</table>";
-
+                  //})
                     $(".person-div").append(result);
                     count++;
+                    
+                    //$("modal Div요소").modal("hide");
                 }else{
                   alert("8명이상 추가할 수 없습니다.");
                 }
+                
+                
+                
               });
 
               $("#personRemoveBtn").click(function(){
