@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.movie.model.vo.SearchFilter;
@@ -289,6 +290,7 @@ public class MovieDao {
 							, rset.getInt("COUNT_DISAGREE")
 							, rset.getString("MEM_IMGPATH")
 							, rset.getString("MEM_COLOR")
+							, rset.getInt("MEM_NO")
 						));
 			}
 		} catch (SQLException e) {
@@ -466,7 +468,7 @@ public class MovieDao {
 		
 		return list;
 	}
-
+//	리뷰 더보기를 위한 메소드 [기웅]
 	public int insertReview(Connection conn, int movieNo, int userNo, double likePoint, String reviewContent) {
 		String query = prop.getProperty("insertReview");
 		PreparedStatement pstmt = null;
@@ -487,6 +489,69 @@ public class MovieDao {
 		}
 	
 		return result;
+	}
+
+//	다른 사용자의 정보를 불러오는 메소드[기웅]
+	public Member selectOtherUser(Connection conn, int otherUserNo) {
+		String query = prop.getProperty("selectOtherUserInfo");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member();
+				m.setMemLevel(rset.getInt("MEM_LEVEL"));
+				m.setMemImgPath(rset.getString("MEM_IMGPATH"));
+				m.setMemColor(rset.getString("MEM_COLOR"));
+				m.setReviewContentCnt(rset.getInt("COUNT_STAR_RATING"));
+				m.setAvgLikePoint(rset.getDouble("COUNT_STAR_RATING"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+	}
+
+	public ArrayList<Review> selectOtherUserReview(Connection conn, int otherUserNo) {
+		String query = prop.getProperty("selectReviewOtherUser");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> rList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Review r = new Review();
+				r.setMvReviewNo(rset.getInt("MV_REVIEW_NO"));
+				r.setReviewContent(rset.getString("REVIEW_CONTENT"));
+				r.setReviewDate(rset.getString("REVIEW_DATE"));
+				r.setLikePoint(rset.getString("LIKE_POINT"));
+				r.setAgreeCount(rset.getInt("AGREE_COUNT"));
+				r.setDisagreeCount(rset.getInt("DISAGREE_COUNT"));
+				
+				rList.add(r);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return rList;
 	}
 
 
