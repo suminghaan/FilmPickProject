@@ -32,11 +32,19 @@ public class mainPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String no1 = "1";
+		String no2 = "2";
+		String no3 = "3";
+		
 		List<Movie> vlist = new MovieService().selectMainListv();
-		List<Movie> plist = new MovieService().selectMainListp();
+		List<Movie> plist1 = new MovieService().selectMainListp(no1);
+		List<Movie> plist2 = new MovieService().selectMainListp(no2);
+		List<Movie> plist3 = new MovieService().selectMainListp(no3);
 		
 		request.setAttribute("vlist", vlist);
-		request.setAttribute("plist", plist);
+		request.setAttribute("plist1", plist1);
+		request.setAttribute("plist2", plist2);
+		request.setAttribute("plist3", plist3);
 		
 		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
 		

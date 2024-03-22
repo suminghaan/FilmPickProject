@@ -168,9 +168,6 @@
 	
 	<!-- 메인페이지 영화포스터 조회 [용훈] -->
 	<entry key="selectMainListp">
-	<![CDATA[
-		SELECT P.*
-		FROM (
 		    SELECT DISTINCT M.MV_NO
             , MV_POSTER
             , MV_NAME
@@ -181,10 +178,6 @@
 		FROM MOVIE M
 		LEFT JOIN MOVIE_CATEGORY C ON (M.MV_NO = C.MV_NO)
 		WHERE MV_STATUS = 'Y'
-		ORDER BY MV_OPENDATE DESC
-		) P
-		WHERE ROWNUM <= 10
-	]]>
 	</entry>
 	
 	<!-- 리뷰 등록하는 쿼리 [기웅] -->

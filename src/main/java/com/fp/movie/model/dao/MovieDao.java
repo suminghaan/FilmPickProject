@@ -406,12 +406,21 @@ public class MovieDao {
 		return vlist;
 	}
 	// 메인페이지 영화포스터 조회 [용훈]
-	public List<Movie> selectMainListp(Connection conn) {
+	public List<Movie> selectMainListp(Connection conn, String no) {
 		List<Movie> plist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectMainListp");
 		
+		// ORDERBY 관련 IF문 [용훈]
+				if(no.equals("1")) {
+					sql += " ORDER BY MV_OPENDATE DESC";
+				}else if(no.equals("2")) {
+					sql += " ORDER BY LIKECOUNT DESC";
+				}else if(no.equals("3")) {
+					sql += " ORDER BY LIKE_POINT";
+				}
+				sql = "SELECT P.* FROM (" + sql + ") P WHERE ROWNUM <= 10";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();

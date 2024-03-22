@@ -129,9 +129,9 @@ public class MovieService {
 	}
 	
 // 메인페이지 영화예고편 조회 메소드
-	public List<Movie> selectMainListp() {
+	public List<Movie> selectMainListp(String no) {
 		Connection conn = getConnection();
-		List<Movie> plist = mDao.selectMainListp(conn);
+		List<Movie> plist = mDao.selectMainListp(conn, no);
 		close(conn);
 		return plist;
 	}
