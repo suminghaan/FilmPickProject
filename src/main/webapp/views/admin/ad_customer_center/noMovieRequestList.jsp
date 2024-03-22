@@ -86,13 +86,27 @@ table{
     padding: 0px;
 }
 
-.recognize{
-    color: rgb(41, 128, 185);
-}
+/* ---------------------- */
+<style>
+    .approval {
+        font-weight: bold;
+        color: black;
+    }
 
-.refuse{
-    color: rgb(192, 57, 43);
-}
+    /* 승인일 때의 색상 */
+    .approval[data-approval="승인"] {
+        color: rgb(41, 128, 185);
+    }
+
+    /* 거절일 때의 색상 */
+    .approval[data-approval="거절"] {
+        color: red;
+    }
+
+    /* 미확인일 때의 색상 */
+    .approval[data-approval="미확인"] {
+        color: gray;
+    }
 </style>
 </head>
 <body>
@@ -125,13 +139,21 @@ table{
                     <div class="container item2">
                         <div class="regist-date">
                             <span style="font-size: 15px;"><span class="title">작성일&nbsp;</span><%= nm.getNmEnrollDate() %></span>
-                            <span class="no-check" style="justify-content: end;" id="approval"><b>
+                            <span class="no-check approval" style="justify-content: end;" id="approval" data-approval="<%= 
+							    nm.getNmApproval() == null ? " " : 
+							    nm.getNmApproval().equals("Y") ? "승인" : 
+							    nm.getNmApproval().equals("N") ? "거절" : 
+							    nm.getNmApproval().equals("D") ? "미확인" : " " 
+							%>">
+                            <b>
                             <%= 
 	                            nm.getNmApproval() == null ? " " : 
 							    nm.getNmApproval().equals("Y") ? "승인" : 
 							    nm.getNmApproval().equals("N") ? "거절" : 
 							    nm.getNmApproval().equals("D") ? "미확인" : " " 
-						    %></b></span>
+						    %>
+						    </b>
+						    </span>
                         </div>
                         <div class="story-writer">
                             <div class="container story">
