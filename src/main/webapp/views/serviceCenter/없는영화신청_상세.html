@@ -626,41 +626,70 @@
           <!-- /.container-fluid -->
 
               <!-- 인물검색 Modal -->
-              <div class="modal" id="searchModal">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                  
-                          <!-- Modal Header -->
-                          <div class="modal-header">
-                              <h4 class="modal-title">배우 검색</h4>
-                              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                          </div>
-                  
-                          <!-- Modal body -->
-                          <div class="modal-body">
-                              <input type="text" name="runningTime" class="form-control">
-                              <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
-                              <hr>
-                              <div>
-                                  검색된 인물 나오는 공간
-                              </div>
-                          </div>
-                  
-                          <!-- Modal footer -->
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
-                              <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtn">제거</button>
-                              <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">닫기</button>
-                          </div>
-                  
-                      </div>
-                  </div>
+              <div class="modal" id="searchModal" style="color:black;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">배우 검색</h4>
+                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        </div>
+                
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <input type="text" name="inputPerson" class="form-control inputPerson">
+                            <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                            <hr>
+                            <div class="viewPerson">
+                                검색된 인물 나오는 공간
+                            </div>
+                        </div>
+                
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
+                            <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtn">제거</button>
+                            <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">닫기</button>
+                        </div>
+                
+                    </div>
+                </div>
               </div>
 
         </section>
 
         <script>
- 
+
+          
+          function searchPerson(){
+              let result = "";
+                  $.ajax({
+                    url:"<%=contextPath%>/search.pe",
+                    data:{
+                      name:$(".inputPerson").val()
+                    },
+                    type:"post",
+                    success:function(person){
+                      if(person != null){
+                        for(let i=0; i<person.length; i++){
+                          result += "<table>"
+                                  +   "<tr>"
+                                  +     "<td><img src='person[i].인물얼굴경로'></td>"
+                                  +   "</tr>"
+                                  +   "<tr>"
+                                  +     "<td>person[i].인물이름 / person[i].인물직업</td>"
+                                  +   "</tr>"
+                                  + "</table>"
+                                $(".viewPerson").append(result);
+                        }
+                      }else{
+                        $(".viewPerson").append("검색된 인물이 없습니다.");
+                      }
+                    }
+                  })
+                }
+                
               var count = 0; //최대 8명만 추가할 수 있는 조건
               
               $("#personBtn").click(function(){              

@@ -251,7 +251,7 @@
                                   <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
                               </div>
                                       <!-- 영화등록 Modal -->
-                                      <div class="modal" id="submitModal">
+                                      <div class="modal" id="submitModal" style="color:black;">
                                           <div class="modal-dialog">
                                               <div class="modal-content">
                                           
@@ -288,7 +288,7 @@
           <!-- /.container-fluid -->
 
               <!-- 인물검색 Modal -->
-              <div class="modal" id="searchModal">
+              <div class="modal" id="searchModal" style="color:black;">
                   <div class="modal-dialog">
                       <div class="modal-content">
                   
@@ -324,7 +324,7 @@
         <script>
  
               var count = 0; //최대 8명만 추가할 수 있는 조건
-              
+              // 없는영화 출연진 추가하는 스크립트
               $("#personBtn").click(function(){              
                 if(count < 8){
 
@@ -348,7 +348,7 @@
                   alert("8명이상 추가할 수 없습니다.");
                 }
               });
-
+			  //인물 빼는 스크립트
               $("#personRemoveBtn").click(function(){
                 $(".person-div").find("table").last().remove();
                   if(count > 0){
