@@ -14,13 +14,13 @@ import com.fp.admin.model.service.CommunityService;
  * Servlet implementation class CommuReportBlindController
  */
 @WebServlet("/reportBlind.co")
-public class CommuReportBlindController extends HttpServlet {
+public class ComuReportBlindController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommuReportBlindController() {
+    public ComuReportBlindController() {
         super();
         // TODO Auto-generated constructor stub
     }
