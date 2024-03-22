@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.member.model.vo.Member;
 import com.fp.movie.model.dao.MovieDao;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
@@ -144,6 +145,28 @@ public class MovieService {
 		
 		close(conn);
 		return result;
+	}
+
+
+//	다른 사용자의 정보를 불러오는 메소드
+	public Member selectOtherUser(int otherUserNo) {
+		Connection conn = getConnection();
+		
+		Member m = mDao.selectOtherUser(conn, otherUserNo);
+		
+		close(conn);
+		return m;
+	}
+
+
+//	다른 사용자의 리뷰 정보를 불러오는 메소드
+	public ArrayList<Review> selectOtherUserReview(int otherUserNo) {
+		Connection conn = getConnection();
+		
+		ArrayList<Review> reviewList = mDao.selectOtherUserReview(conn, otherUserNo);
+		
+		close(conn);
+		return reviewList;
 	}
 
 
