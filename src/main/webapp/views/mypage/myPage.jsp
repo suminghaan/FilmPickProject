@@ -32,7 +32,7 @@
     .mypage_profile_pic{
       width: 150px;
       height: 150px;
-      border: 3px solid;
+      border: 2px solid;
       border-radius: 10.0em;
       overflow: hidden;
       margin: auto;
