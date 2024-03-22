@@ -266,6 +266,7 @@
             height: 78%;
             display: flex;
             flex-direction: row;
+            justify-content: space-around
         }
 
         .movie_review_el {
@@ -273,7 +274,6 @@
             position: relative;
             background-color: rgb(20, 20, 20);
             border-radius: 15px;
-            margin: 30px
         }
 
         .movie_review_part {
@@ -293,7 +293,7 @@
         }
 
         .user_img_info {
-            height: 15%;
+            height: 35%;
             display: flex;
             justify-content: flex-start;
         }
@@ -305,7 +305,7 @@
         }
 
         .review_content {
-            height: 65%;
+            height: 45%;
             position: relative;
             margin-left: 10px;
             border-radius: 15px;
@@ -317,7 +317,7 @@
             height: 110%;
             position: absolute;
             padding-left: 10px;
-            top: 137px;
+            top: 247px;
             font-size: 15px;
             background-color: rgb(20, 20, 20);
             border-radius: 15px;
@@ -377,7 +377,7 @@
 
         /* 유저 정보 */
         .user_img {
-            width: 20%;
+            width: 40%;
             display: flex;
             border-radius: 50%;
             justify-content: center;
@@ -388,10 +388,12 @@
 
         .user_info {
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             font-size: 12px;
             width: 60%;
-            margin-left: 15px;
+            margin-left: 10px;
         }
 
         /* 리뷰 별점, 등록일 */
@@ -400,9 +402,10 @@
         }
 
         .user_review_date {
-            width: 30%;
+            width: 90%;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             justify-content: center;
             font-size: 12px;
         }
@@ -428,6 +431,10 @@
             cursor: pointer;
         }
 
+        .star_img {
+            height: 20px;
+        }
+
         /* 사용자 리뷰 정보 끝 */
         .both_interest_title {
             height: 10%;
@@ -443,6 +450,16 @@
 
         .thumbnail {
             width: 25%;
+            cursor: pointer;
+            display: flex;
+            padding-bottom: 10px;
+            justify-content: center;
+            /* 위치를 표시할 기준이 되는 부모 요소에 relative */
+            position: relative;
+        }
+
+        .thumbnail_inReview {
+            width: 40%;
             cursor: pointer;
             display: flex;
             padding-bottom: 10px;
@@ -820,83 +837,31 @@
                                         </div>
                                     </div>
                                     <div class="user_img_info">
-                                        <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                        <div class="thumbnail_inReview">
+                                            <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
                                         </div>
                                         <div class="user_info">
-                                            <span>LV. 사용자 등급</span>
-                                            <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                            <div class="user_level_nickname">
+                                                <span>LV. 사용자 등급</span><br>
+                                                <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                            </div>
+                                            <div class="starRating">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰반별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰빈별.png" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="user_review_info">
-                                        <div class="user_review_star">
-                                            <div class="star-wrap">
-                                                <div class="rating_small readonly" readonly>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="starhalf_3">
-                                                        <input type="radio" id="starhalf_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star1_3">
-                                                        <input type="radio" id="star_31" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star1half_3">
-                                                        <input type="radio" id="star1half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star2_3">
-                                                        <input type="radio" id="star2_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star2half_3">
-                                                        <input type="radio" id="star2half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star3_3">
-                                                        <input type="radio" id="star3_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star3half_3">
-                                                        <input type="radio" id="star3half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star4_3">
-                                                        <input type="radio" id="star4_3" class="rating__input_small"
-                                                            name="rating" checked value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__labe_smalll rating__label--half"
-                                                        for="star4half_3">
-                                                        <input type="radio" id="star4half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star5_3">
-                                                        <input type="radio" id="star5_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="user_review_date">
-                                            <span>2024-03-15</span>
+                                            <div>
+                                                <span>듄2</span>
+                                            </div>
+                                            <div>
+                                                <span>작성일 : 2024-03-15</span>
+                                            </div> 
                                         </div>
                                     </div>
                                     <div class="review_content">
@@ -904,8 +869,6 @@
                                         Excepturi
                                         alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
                                         nesciunt
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blandit
                                         <div class="more_info">
                                             <a class="more_info_btn">더보기</a>
                                         </div>
@@ -971,83 +934,36 @@
                                         </div>
                                     </div>
                                     <div class="user_img_info">
-                                        <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                        <div class="thumbnail_inReview">
+                                            <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                            <div class="thumbnail_title">
+                                                <span>영화제목</span><br>
+                                                <span>영화별점</span><br>
+                                                <span>개봉연도, 국가</span>
+                                            </div>
                                         </div>
                                         <div class="user_info">
-                                            <span>LV. 사용자 등급</span>
-                                            <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                            <div class="user_level_nickname">
+                                                <span>LV. 사용자 등급</span><br>
+                                                <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                            </div>
+                                            <div class="starRating">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰반별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰빈별.png" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="user_review_info">
-                                        <div class="user_review_star">
-                                            <div class="star-wrap">
-                                                <div class="rating_small readonly" readonly>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="starhalf_3">
-                                                        <input type="radio" id="starhalf_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star1_3">
-                                                        <input type="radio" id="star_31" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star1half_3">
-                                                        <input type="radio" id="star1half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star2_3">
-                                                        <input type="radio" id="star2_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star2half_3">
-                                                        <input type="radio" id="star2half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star3_3">
-                                                        <input type="radio" id="star3_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star3half_3">
-                                                        <input type="radio" id="star3half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star4_3">
-                                                        <input type="radio" id="star4_3" class="rating__input_small"
-                                                            name="rating" checked value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__labe_smalll rating__label--half"
-                                                        for="star4half_3">
-                                                        <input type="radio" id="star4half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star5_3">
-                                                        <input type="radio" id="star5_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="user_review_date">
-                                            <span>2024-03-15</span>
+                                            <div>
+                                                <span>듄2</span>
+                                            </div>
+                                            <div>
+                                                <span>작성일 : 2024-03-15</span>
+                                            </div> 
                                         </div>
                                     </div>
                                     <div class="review_content">
@@ -1055,8 +971,6 @@
                                         Excepturi
                                         alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
                                         nesciunt
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blandit
                                         <div class="more_info">
                                             <a class="more_info_btn">더보기</a>
                                         </div>
@@ -1122,83 +1036,36 @@
                                         </div>
                                     </div>
                                     <div class="user_img_info">
-                                        <div class="user_img"><i class="fa-solid fa-user" style="color: #F72798;;"></i>
+                                        <div class="thumbnail_inReview">
+                                            <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                            <div class="thumbnail_title">
+                                                <span>영화제목</span><br>
+                                                <span>영화별점</span><br>
+                                                <span>개봉연도, 국가</span>
+                                            </div>
                                         </div>
                                         <div class="user_info">
-                                            <span>LV. 사용자 등급</span>
-                                            <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                            <div class="user_level_nickname">
+                                                <span>LV. 사용자 등급</span><br>
+                                                <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                            </div>
+                                            <div class="starRating">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰반별.png" alt="">
+                                                <img class="star_img" src="../../resources/img/리뷰빈별.png" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="user_review_info">
-                                        <div class="user_review_star">
-                                            <div class="star-wrap">
-                                                <div class="rating_small readonly" readonly>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="starhalf_3">
-                                                        <input type="radio" id="starhalf_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star1_3">
-                                                        <input type="radio" id="star_31" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star1half_3">
-                                                        <input type="radio" id="star1half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star2_3">
-                                                        <input type="radio" id="star2_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star2half_3">
-                                                        <input type="radio" id="star2half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star3_3">
-                                                        <input type="radio" id="star3_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--half"
-                                                        for="star3half_3">
-                                                        <input type="radio" id="star3half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star4_3">
-                                                        <input type="radio" id="star4_3" class="rating__input_small"
-                                                            name="rating" checked value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__labe_smalll rating__label--half"
-                                                        for="star4half_3">
-                                                        <input type="radio" id="star4half_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                    <label class="rating__label_small rating__label--full"
-                                                        for="star5_3">
-                                                        <input type="radio" id="star5_3" class="rating__input_small"
-                                                            name="rating" value="" disabled>
-                                                        <span class="star-icon_small"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                         <div class="user_review_date">
-                                            <span>2024-03-15</span>
+                                            <div>
+                                                <span>듄2</span>
+                                            </div>
+                                            <div>
+                                                <span>작성일 : 2024-03-15</span>
+                                            </div> 
                                         </div>
                                     </div>
                                     <div class="review_content">
@@ -1206,8 +1073,6 @@
                                         Excepturi
                                         alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
                                         nesciunt
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blandit
                                         <div class="more_info">
                                             <a class="more_info_btn">더보기</a>
                                         </div>
