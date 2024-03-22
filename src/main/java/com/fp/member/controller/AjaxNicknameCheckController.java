@@ -29,6 +29,7 @@ public class AjaxNicknameCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
 		String checkNickname = request.getParameter("checkNickname");
 		System.out.println(checkNickname);
 		int count = new MemberService().nicknameCheck(checkNickname);

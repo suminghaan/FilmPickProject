@@ -15,6 +15,7 @@ public class MemberService {
 
 	private MemberDao mDao = new MemberDao();
 	
+	// 로그인
 	public Member loginMember(String memId, String memPwd) {
 		
 		Connection conn = getConnection();
@@ -24,6 +25,7 @@ public class MemberService {
 		return loginUser;
 	}
 	
+	// 회원가입
 	public int insertMember(Member m) {
 		Connection conn = getConnection();
 		int result = mDao.insertMember(conn,m);
@@ -38,6 +40,7 @@ public class MemberService {
 		return result;
 	}
 	
+	// 아이디 중복확인
 	public int idCheck(String checkId) {
 		Connection conn = getConnection();
 		int count = mDao.idCheck(conn, checkId);
@@ -46,6 +49,7 @@ public class MemberService {
 		return count;
 	}
 	
+	// 비밀번호 중복확인
 	public int nicknameCheck(String checkNickname) {
 		Connection conn = getConnection();
 		int count = mDao.nicknameCheck(conn, checkNickname);
@@ -54,6 +58,7 @@ public class MemberService {
 		return count;
 	}
 	
+	// 회원탈퇴
 	public int deleteMember(String memId, String memPwd) {
 		Connection conn = getConnection();
 		int result = mDao.deleteMember(conn, memId, memPwd);
@@ -68,6 +73,7 @@ public class MemberService {
 		return result;
 	}
 	
+	// 비밀번호 수정
 	public Member updatePwdMember(String memId, String memPwd, String newPwd) {
 		Connection conn = getConnection();
 		int result = mDao.updatePwdMember(conn, memId, memPwd, newPwd);
@@ -84,6 +90,7 @@ public class MemberService {
 		return updateMem;
 	}
 	
+	// 작성글목록
 	public int selectMyPostListCount(int memNo) {
 		Connection conn = getConnection();
 		int listCount = mDao.selectMyPostListCount(conn, memNo);
@@ -98,7 +105,7 @@ public class MemberService {
 		return list;
 	}
 	
-	/* 작성댓글목록 */
+	// 작성댓글목록
 	public int selectMyCommentListCount(int memNo) {
 		Connection conn = getConnection();
 		int listCount = mDao.selectMyCommentListCount(conn, memNo);
