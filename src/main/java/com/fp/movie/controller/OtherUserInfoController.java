@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.service.MovieService;
+import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 
 /**
@@ -37,6 +38,8 @@ public class OtherUserInfoController extends HttpServlet {
 		
 		Member otherUser = new MovieService().selectOtherUser(otherUserNo);
 		ArrayList<Review> otherUserReview = new MovieService().selectOtherUserReview(otherUserNo);
+		ArrayList<Movie> bothInterestMovieList = new MovieService().bothInterestMovie(userNo, otherUserNo);
+		
 		if(otherUser != null) {
 			request.setAttribute("otherUser", otherUser);
 			request.setAttribute("otherUserReview", otherUserReview);
