@@ -8,6 +8,7 @@ import java.util.List;
 import com.fp.admin.model.dao.CommunityDao;
 import com.fp.admin.model.vo.Notice;
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Reply;
 import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
@@ -198,6 +199,22 @@ public class CommunityService {
 		
 		int result = result1 + result2;
 		return result;
+	}
+
+	// 신고된 댓글 페이징처리
+	public int reportCommentListCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int listCount = coDao.reportCommentListCount(conn);
+		close(conn);
+		return listCount;
+	}
+
+	// 신고된 댓글 조회
+	public List<Reply> selectReportCommentList(PageInfo pi) {
+		Connection conn = getConnection();
+		List<Reply> list = coDao.selectReportCommentList(conn, pi);
+		close(conn);
+		return list;
 	}
 
 	
