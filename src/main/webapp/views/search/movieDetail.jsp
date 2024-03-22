@@ -819,7 +819,7 @@
                                         </div>
                                     </div>
                                     <div class="thumb_count">
-                                        <span style="font-size: 8px; padding-left: 0px;">공감 수 : <%= reviewList.get(i).getAgreeCount() %></span>
+                                        <span style="font-size: 8px; padding-left: 0px;">공감 : <%= reviewList.get(i).getAgreeCount() %></span>
                                     </div>
                                     <div class="thumb_down">
                                         <div class="ag_disag_wrap">
@@ -838,12 +838,12 @@
                                         </div>
                                     </div>
                                     <div class="thumb_count">
-                                        <span style="font-size: 8px; padding-left: 0px;">비공감 수 : <%= reviewList.get(i).getDisagreeCount() %></span>
+                                        <span style="font-size: 8px; padding-left: 0px;">비공감 : <%= reviewList.get(i).getDisagreeCount() %></span>
                                     </div>
                                 </div>
                                 <div class="user_img_info">
                                 <% if(reviewList.get(i).getMemImgPath() == null) { %>
-                                    <div class="user_img" style="border: 2px solid <%= reviewList.get(i).getMemColor() %>"><i class="fa-solid fa-user" style="color: <%= reviewList.get(i).getMemColor() %>;"></i>
+                                    <div class="user_img" style="border: 2px solid <%= reviewList.get(i).getMemColor() %>" onclick="otherUser(<%= reviewList.get(i).getMemNo() %>)" ><i class="fa-solid fa-user" style="color: <%= reviewList.get(i).getMemColor() %>;"></i>
                                     </div>
                                 <% } %>
                                     <div class="user_info">
@@ -886,7 +886,7 @@
                                     <div class="more_info_long">
                                         <a class="more_info_btn_long">접기</a>
                                     </div>
-                                <% } %>    
+                                <% } %>   
                                 </div>
                             </div>
                         </div>
@@ -955,13 +955,22 @@
             $(this).parent().prev().css("display", "block");
         })
         
+        function otherUser(memNo) {
+        	<% if(loginMember != null) {%>
+        		location.href ="<%= contextPath %>/otherUser.fp?userNo=<%= loginMember.getMemNo() %>&&otherUserNo=" + memNo;
+        	<% } else {%>
+        		alert("로그인 후 이용 가능한 서비스입니다.");
+        	<% } %>
+        }
+        
+        
 		// 좋아요 표시, 제거 함수
 		function heartUpdate(mvNo) {
         	<% if(loginMember != null) { %>
         	console.log($("#mainHeart").is(':checked'));
         		$.ajax({
         			url:"<%= contextPath %>/updateheart.fp"
-        			, method:"post"
+        			, method:"get"
         			, data: {
         				movieNo: mvNo
         				, userNo: <%= loginMember.getMemNo()%>

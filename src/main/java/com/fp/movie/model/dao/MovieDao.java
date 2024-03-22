@@ -507,10 +507,11 @@ public class MovieDao {
 			if(rset.next()) {
 				m = new Member();
 				m.setMemLevel(rset.getInt("MEM_LEVEL"));
+				m.setNickname(rset.getString("NICKNAME"));
 				m.setMemImgPath(rset.getString("MEM_IMGPATH"));
 				m.setMemColor(rset.getString("MEM_COLOR"));
 				m.setReviewContentCnt(rset.getInt("COUNT_STAR_RATING"));
-				m.setAvgLikePoint(rset.getDouble("COUNT_STAR_RATING"));
+				m.setAvgLikePoint(rset.getDouble("AVG_STAR_RATING"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

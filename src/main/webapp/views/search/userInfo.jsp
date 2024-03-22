@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="com.fp.movie.model.vo.Review" %>
+    <% 
+		Member otherUser = (Member)request.getAttribute("otherUser");
+		ArrayList<Review> otherUserReviewList = ((ArrayList<Review>)request.getAttribute("otherUserReview"));
+    %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
@@ -141,11 +147,11 @@
             margin-left: 10px;
             border-radius: 15px;
             font-size: 15px;
+            word-break: break-all
         }
 
         .review_content_long {
             width: 100%;
-            height: 110%;
             position: absolute;
             padding-left: 10px;
             top: 247px;
@@ -154,6 +160,7 @@
             border-radius: 15px;
             z-index: 20;
             display: none;
+            word-break: break-all
         }
 
         .user_icon_wrap {
@@ -448,13 +455,17 @@
                 <div class="user_info_wrap">
                     <div class="user_info_large">
                         <div class="user_icon">
-                            <div class="user_icon_wrap">
-                                <i class="fa-solid fa-user fa-3x" style="color: #F72798;"></i>
+                            <div class="user_icon_wrap" style="border: 2px solid <%= otherUser.getMemColor() %>">
+                            	<% if(otherUser.getMemImgPath() == null) {%>
+                                	<i class="fa-solid fa-user fa-3x" style="color: <%= otherUser.getMemColor() %>;"></i>
+                                <% } else {%>
+                                	<img src="<%= otherUser.getMemImgPath() %>">
+                                <% } %>
                             </div>
                         </div>
                         <div class="user_nickname">
-                            <span>LV.사용자 등급</span>
-                            <span> 사용자 닉네임</span>
+                            <span>LV.<%= otherUser.getMemLevel() %></span>
+                            <span style="margin-left: 10px;"><%= otherUser.getNickname() %></span>
                         </div>
                     </div>
                     <div class="user_reviews">
@@ -462,10 +473,11 @@
                             <h4>리뷰</h4>
                         </div>
                         <div class="review_total_info">
-                            <span>별점 남긴 횟수</span> <br>
-                            <span>별점 평균</span>
+                            <span>별점 남긴 횟수 : <%= otherUser.getReviewContentCnt() %></span> <br>
+                            <span>별점 평균 : <%= otherUser.getAvgLikePoint() %></span>
                         </div>
                         <div class="reviews_wrap">
+                        <% for(int i = 0; i < (otherUserReviewList.size() > 3 ? 3 : otherUserReviewList.size()); i++) {%>
                             <div class="movie_review_el">
                                 <div class="movie_review_part">
                                     <div class="thumb_btn">
@@ -475,18 +487,18 @@
                                                     <div class="ag_filled filled_wrap">
                                                         <button type="button" class="ag_disag_btn ag_filled_btn"><img
                                                                 class="ag_filled_img ag_disag_img"
-                                                                src="../../resources/img/좋아요.png" alt=""></button>
+                                                                src="<%= contextPath %>/resources/img/좋아요.png" alt=""></button>
                                                     </div>
                                                     <div class="ag_empty empty_wrap">
                                                         <button type="button" class="ag_disag_btn ag_empty_btn"><img
                                                                 class="ag_empty_img ag_disag_img"
-                                                                src="../../resources/img/빈좋아요.png" alt=""></button>
+                                                                src="<%= contextPath %>/resources/img/빈좋아요.png" alt=""></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="thumb_count">
-                                            <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+                                            <span style="font-size: 8px; padding-left: 0px;">공감 : <%= otherUserReviewList.get(i).getAgreeCount() %></span>
                                         </div>
                                         <div class="thumb_down">
                                             <div class="ag_disag_wrap">
@@ -494,18 +506,18 @@
                                                     <div class="disag_filled filled_wrap">
                                                         <button type="button" class="ag_disag_btn disag_filled_btn"><img
                                                                 class="ag_filled_img ag_disag_img"
-                                                                src="../../resources/img/싫어요.png" alt=""></button>
+                                                                src="<%= contextPath %>/resources/img/싫어요.png" alt=""></button>
                                                     </div>
                                                     <div class="disag_empty empty_wrap">
                                                         <button type="button" class="ag_disag_btn disag_empty_btn"><img
                                                                 class="ag_empty_img ag_disag_img"
-                                                                src="../../resources/img/빈싫어요.png" alt=""></button>
+                                                                src="<%= contextPath %>/resources/img/빈싫어요.png" alt=""></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="thumb_count">
-                                            <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
+                                            <span style="font-size: 8px; padding-left: 0px;">비공감 : <%= otherUserReviewList.get(i).getDisagreeCount() %></span>
                                         </div>
                                     </div>
                                     <div class="user_img_info">
@@ -514,15 +526,19 @@
                                         </div>
                                         <div class="user_info">
                                             <div class="user_level_nickname">
-                                                <span>LV. 사용자 등급</span><br>
-                                                <span style="margin-left: 10px;"> 사용자 닉네임</span>
+                                                <span>LV.<%= otherUser.getMemLevel() %></span><br>
+                                                <span><%= otherUser.getNickname() %></span>
                                             </div>
                                             <div class="starRating">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰반별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰빈별.png" alt="">
+                                                <% for(int j = 0; j < 5; j++) {%>
+		                                        <% if (j < (int)Double.parseDouble(otherUserReviewList.get(j).getLikePoint())) { %>
+		                                            <img class="star_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
+		                                        <% } else if(j < Math.ceil((Double.parseDouble(otherUserReviewList.get(j).getLikePoint()))) ) {%>
+		                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
+		                                        <% } else { %>
+		                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
+		                                        <% } %>
+		                                        <% } %>
                                             </div>
                                         </div>
                                     </div>
@@ -537,236 +553,26 @@
                                         </div>
                                     </div>
                                     <div class="review_content">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi
-                                        alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
-                                        nesciunt
-                                        <div class="more_info">
-                                            <a class="more_info_btn">더보기</a>
-                                        </div>
+                                <% if(otherUserReviewList.get(i).getReviewContent().length() > 200) { %>
+                                    <%= otherUserReviewList.get(i).getReviewContent().substring(0, 200) + "..." %>
+                                    <div class="more_info">
+                                        <a class="more_info_btn">더보기</a>
                                     </div>
-                                    <div class="review_content_long">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi alias temporibus sequi similique, obcaecati inventore est cum
-                                        perspiciatis
-                                        nesciunt
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blandit
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi
-                                        alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
-                                        nesciunt
-                                        alidasfasdfsdafsdafsadasds
-                                        <div class="more_info_long">
-                                            <a class="more_info_btn_long">접기</a>
-                                        </div>
+                                <% } else {%>
+                                    <%= otherUserReviewList.get(i).getReviewContent() %>
+                                <% } %>
+                                </div>
+                                <div class="review_content_long">
+                                <% if(otherUserReviewList.get(i).getReviewContent().length() > 200) { %>
+                                    <%= otherUserReviewList.get(i).getReviewContent() %>
+                                    <div class="more_info_long">
+                                        <a class="more_info_btn_long">접기</a>
                                     </div>
+                                <% } %>   
+                                </div>
                                 </div>
                             </div>
-                            <div class="movie_review_el">
-                                <div class="movie_review_part">
-                                    <div class="thumb_btn">
-                                        <div class="thumb_up">
-                                            <div class="ag_disag_wrap">
-                                                <div class="ag">
-                                                    <div class="ag_filled filled_wrap">
-                                                        <button type="button" class="ag_disag_btn ag_filled_btn"><img
-                                                                class="ag_filled_img ag_disag_img"
-                                                                src="../../resources/img/좋아요.png" alt=""></button>
-                                                    </div>
-                                                    <div class="ag_empty empty_wrap">
-                                                        <button type="button" class="ag_disag_btn ag_empty_btn"><img
-                                                                class="ag_empty_img ag_disag_img"
-                                                                src="../../resources/img/빈좋아요.png" alt=""></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="thumb_count">
-                                            <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
-                                        </div>
-                                        <div class="thumb_down">
-                                            <div class="ag_disag_wrap">
-                                                <div class="disag">
-                                                    <div class="disag_filled filled_wrap">
-                                                        <button type="button" class="ag_disag_btn disag_filled_btn"><img
-                                                                class="ag_filled_img ag_disag_img"
-                                                                src="../../resources/img/싫어요.png" alt=""></button>
-                                                    </div>
-                                                    <div class="disag_empty empty_wrap">
-                                                        <button type="button" class="ag_disag_btn disag_empty_btn"><img
-                                                                class="ag_empty_img ag_disag_img"
-                                                                src="../../resources/img/빈싫어요.png" alt=""></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="thumb_count">
-                                            <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
-                                        </div>
-                                    </div>
-                                    <div class="user_img_info">
-                                        <div class="thumbnail_inReview">
-                                            <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                                            <div class="thumbnail_title">
-                                                <span>영화제목</span><br>
-                                                <span>영화별점</span><br>
-                                                <span>개봉연도, 국가</span>
-                                            </div>
-                                        </div>
-                                        <div class="user_info">
-                                            <div class="user_level_nickname">
-                                                <span>LV. 사용자 등급</span><br>
-                                                <span style="margin-left: 10px;"> 사용자 닉네임</span>
-                                            </div>
-                                            <div class="starRating">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰반별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰빈별.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="user_review_info">
-                                        <div class="user_review_date">
-                                            <div>
-                                                <span>듄2</span>
-                                            </div>
-                                            <div>
-                                                <span>작성일 : 2024-03-15</span>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                    <div class="review_content">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi
-                                        alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
-                                        nesciunt
-                                        <div class="more_info">
-                                            <a class="more_info_btn">더보기</a>
-                                        </div>
-                                    </div>
-                                    <div class="review_content_long">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi alias temporibus sequi similique, obcaecati inventore est cum
-                                        perspiciatis
-                                        nesciunt
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blandit
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi
-                                        alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
-                                        nesciunt
-                                        alidasfasdfsdafsdafsadasds
-                                        <div class="more_info_long">
-                                            <a class="more_info_btn_long">접기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="movie_review_el">
-                                <div class="movie_review_part">
-                                    <div class="thumb_btn">
-                                        <div class="thumb_up">
-                                            <div class="ag_disag_wrap">
-                                                <div class="ag">
-                                                    <div class="ag_filled filled_wrap">
-                                                        <button type="button" class="ag_disag_btn ag_filled_btn"><img
-                                                                class="ag_filled_img ag_disag_img"
-                                                                src="../../resources/img/좋아요.png" alt=""></button>
-                                                    </div>
-                                                    <div class="ag_empty empty_wrap">
-                                                        <button type="button" class="ag_disag_btn ag_empty_btn"><img
-                                                                class="ag_empty_img ag_disag_img"
-                                                                src="../../resources/img/빈좋아요.png" alt=""></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="thumb_count">
-                                            <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
-                                        </div>
-                                        <div class="thumb_down">
-                                            <div class="ag_disag_wrap">
-                                                <div class="disag">
-                                                    <div class="disag_filled filled_wrap">
-                                                        <button type="button" class="ag_disag_btn disag_filled_btn"><img
-                                                                class="ag_filled_img ag_disag_img"
-                                                                src="../../resources/img/싫어요.png" alt=""></button>
-                                                    </div>
-                                                    <div class="disag_empty empty_wrap">
-                                                        <button type="button" class="ag_disag_btn disag_empty_btn"><img
-                                                                class="ag_empty_img ag_disag_img"
-                                                                src="../../resources/img/빈싫어요.png" alt=""></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="thumb_count">
-                                            <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
-                                        </div>
-                                    </div>
-                                    <div class="user_img_info">
-                                        <div class="thumbnail_inReview">
-                                            <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                                            <div class="thumbnail_title">
-                                                <span>영화제목</span><br>
-                                                <span>영화별점</span><br>
-                                                <span>개봉연도, 국가</span>
-                                            </div>
-                                        </div>
-                                        <div class="user_info">
-                                            <div class="user_level_nickname">
-                                                <span>LV. 사용자 등급</span><br>
-                                                <span style="margin-left: 10px;"> 사용자 닉네임</span>
-                                            </div>
-                                            <div class="starRating">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰반별.png" alt="">
-                                                <img class="star_img" src="../../resources/img/리뷰빈별.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="user_review_info">
-                                        <div class="user_review_date">
-                                            <div>
-                                                <span>듄2</span>
-                                            </div>
-                                            <div>
-                                                <span>작성일 : 2024-03-15</span>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                    <div class="review_content">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi
-                                        alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
-                                        nesciunt
-                                        <div class="more_info">
-                                            <a class="more_info_btn">더보기</a>
-                                        </div>
-                                    </div>
-                                    <div class="review_content_long">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi alias temporibus sequi similique, obcaecati inventore est cum
-                                        perspiciatis
-                                        nesciunt
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blanditiis!
-                                        aliquam nobis illum dolorem molestiae incidunt cumque blandit
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, iure quos.
-                                        Excepturi
-                                        alias temporibus sequi similique, obcaecati inventore est cum perspiciatis
-                                        nesciunt
-                                        alidasfasdfsdafsdafsadasds
-                                        <div class="more_info_long">
-                                            <a class="more_info_btn_long">접기</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <% } %>
                         </div>
                     </div>
                     <div class="both_interest">

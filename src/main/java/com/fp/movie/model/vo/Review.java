@@ -54,7 +54,7 @@ public class Review {
 	}
 
 	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, String nickname, int memLevel,
-			int agreeCount, int disagreeCount, String memImgPath, String memColor) {
+			int agreeCount, int disagreeCount, String memImgPath, String memColor, int memNo) {
 		super();
 		this.mvReviewNo = mvReviewNo;
 		this.reviewContent = reviewContent;
@@ -66,6 +66,7 @@ public class Review {
 		this.disagreeCount = disagreeCount;
 		this.memImgPath = memImgPath;
 		this.memColor = memColor;
+		this.memNo = memNo;
 	}
 
 	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, int memNo, int mvNo,

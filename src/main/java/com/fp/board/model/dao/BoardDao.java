@@ -668,6 +668,32 @@ public class BoardDao {
 		}
 		return result;
 	}
+
+	public List<Board> selectMainPageList(Connection conn) {
+		List<Board> b = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainPageList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				b.add(new Board(rset.getInt("B_NO"),
+								rset.getString("B_TITLE"),
+								rset.getString("B_REGIST_DATE"),
+								rset.getString("NICKNAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return b;
+	}
 	
 }
 

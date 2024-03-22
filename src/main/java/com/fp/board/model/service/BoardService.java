@@ -292,6 +292,13 @@ public class BoardService {
 		return result;
 	}
 
+	public List<Board> selectMainPageList() {
+		Connection conn = getConnection();
+		List<Board> b = bDao.selectMainPageList(conn);
+		close(conn);
+		return b;
+	}
+
 }
 
 
