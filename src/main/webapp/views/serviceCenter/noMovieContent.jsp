@@ -114,50 +114,51 @@
               <div class="background2">
                       <div class="container-fluid"><br>
                           <h1 style="color:black;">없는영화신청</h1> <br>
-                          <form action="" method="">
+                          <form action="<%=contextPath%>/insertNoMovie.mv" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="memNo" value="<%=loginMember.getMemNo()%>">
                               <div class="form-group">
-                                  <label for="exampleFormControlInput1" style="color:black;">영화제목</label> <br>
-                                  <input type="text" class="form-control" id="exampleFormControlInput1" name="" style="width: 600px;">
+                                  <label for="exampleFormControlInput1" style="color:black;">영화제목(필수)</label> <br>
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" name="movieName" style="width: 600px;" required>
                               </div>
 
                               <br>
 
                               <div class="form-group">
-                                  <label for="exampleFormControlSelect1" style="color:black;">영화관람등급</label>
-                                  <select class="form-control" id="exampleFormControlSelect1" name="" style="width: 600px;">
-                                      <option value="전체">전체관람</option>
-                                      <option value="12세">12</option>
-                                      <option value="15세">15</option>
-                                      <option value="청불">청소년관람불가</option>
+                                  <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
+                                  <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
+                                      <option value="1">전체관람</option>
+                                      <option value="2">12</option>
+                                      <option value="3">15</option>
+                                      <option value="4">청소년관람불가</option>
                                   </select>
                               </div>
 
                               <br>
 
                               <div class="form-group">
-                                  <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리</label> <br>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="" style="width: 600px;"></textarea>
+                                  <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리(필수)</label> <br>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required></textarea>
                               </div>
                               
 
                               <br>
                               <div class="form-group dr">
                                 <div class="form-group" style="color:black;">
-                                    개봉일
-                                    <input type="date" name="dateIn" class="form-control" style="width: 300px;">
+                                    개봉일(필수)
+                                    <input type="date" name="releaseDate" class="form-control" style="width: 300px;" required>
                                 </div><br><br><br><br>
                                 
 
                                 <div class="form-group" style="color:black;">
-                                    러닝타임
-                                    <input type="text" name="runningTime" class="form-control" style="width: 300px;">
+                                    러닝타임(필수)
+                                    <input type="text" name="runTime" class="form-control" style="width: 300px;" required>
                                 </div><br>
                               </div>
                               
 
                               <div class="form-group psButton-body" style="color:black;">
-                                  출연/제작
-                                  <input type="text" name="" class="form-control" style="width: 600px;">
+                                  출연/제작(필수 최대 8인)
+                                  <input type="text"  class="form-control" style="width: 600px;">
                                   <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
                               </div><br>
 
@@ -170,37 +171,37 @@
 
                               <br><br>
                               <div class="form-group form-category" style="color:black;">
-                              영화 장르 선택 <br>
+                              영화 장르 선택(필수) <br>
                               
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="category">
                                       <label class="form-check-label" for="inlineCheckbox1">SF</label>
                                   
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="스릴러" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2" name="category">
                                       <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
                                       
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="로맨스" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3" name="category">
                                       <label class="form-check-label" for="inlineCheckbox3">로맨스</label>
                                       
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="액션" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="4" name="category">
                                       <label class="form-check-label" for="inlineCheckbox4">액션</label>
 
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="판타지" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="5" name="category">
                                       <label class="form-check-label" for="inlineCheckbox5">판타지</label>
 
                                   
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="코미디" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="6" name="category">
                                       <label class="form-check-label" for="inlineCheckbox6">코미디</label>
 
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="에로" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="7" name="category">
                                       <label class="form-check-label" for="inlineCheckbox7">에로</label>
 
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="범죄" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="8" name="category">
                                       <label class="form-check-label" for="inlineCheckbox8">범죄</label>
 
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="애니메이션" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="9" name="category">
                                       <label class="form-check-label" for="inlineCheckbox9">애니메이션</label>
 
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="느와르" name="category">
+                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="10" name="category">
                                       <label class="form-check-label" for="inlineCheckbox10">느와르</label>
                               </div>
                               <br><br>
@@ -220,18 +221,18 @@
                               <br>
 
 
-                              <p style="color:black;">영화포스터</p>
+                              <p style="color:black;">영화포스터(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile1" name="">
+                                  <input type="file" class="custom-file-input" id="customFile1" name="moviePoster" required>
                                   <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
 
                               <br>
 
-                              <p style="color:black;">예고편영상</p>
+                              <p style="color:black;">예고편영상(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile2" name="">
+                                  <input type="file" class="custom-file-input" id="customFile2" name="moviePreview" required>
                                   <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -240,9 +241,9 @@
 
 
                               <div class="form-group" style="color:black;">
-                              기타 추가 희망 이미지 또는 동영상
+                              기타 추가 희망 이미지 또는 동영상(선택)
                                   <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile3" name="">
+                                      <input type="file" class="custom-file-input" id="customFile3" name="serveFile">
                                       <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
                                       <img src="" alt="미리보기이미지">
                                   </div>
@@ -253,11 +254,11 @@
 
                               <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
-                                  <textarea name="" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
+                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
                               </div>
 
                               <div style="color:black;">
-                                  <input type="checkbox" id="idCheck" value="동의" name="" style="margin-left: 1000px;">
+                                  <input type="checkbox" id="idCheck" value="Y" name="nicknameStatus" style="margin-left: 1000px;">
                                   <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
                                   
                                   <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">업로드</button> <br>
@@ -383,25 +384,33 @@
          // 없는영화 출연진 추가하는 스크립트
          $("#personBtn").click(function(){
         	
-       		let inputChecked = $(".viewPerson input:checked");
+       		var inputChecked = $(".viewPerson input:checked");
        		console.log(inputChecked);
         	 
            if(count < 8){
 
            let result = "";
-             result += "<table class='person-table'>"
+           inputChecked.each(function(){
+        	 let pNo = $(this).closest('.check').find('.personNo').val(); // 체크된 인물의 pNo 값 가져오기
+        	 let pFile = $(this).closest('.check').find('.personImg').attr('src'); // 체크된 인물의 이미지 경로 가져오기
+        	 let pName = $(this).closest('.check').find('.personName').text(); // 체크된 인물의 이름 가져오기
+        	 result += "<table class='person-table'>"
                      +   "<tr>"
-                     +     "<td><img src='../../resources/img/고경표.jpeg'></td>"
+                     +     "<td><img src='" + pFile + "'></td>" // 이미지 소스에 pFile는 이미지 저장경로
                      +   "</tr>"
                      +   "<tr>"
-                     +     "<td>고경표</td>"
+                     +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
                      +   "</tr>"
                      +   "<tr>"
-                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob"></td>'
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
                      +   "</tr>"
-                     +   '<input type="hidden" name="personNo" value="인물테이블인물번호">'
+                     +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
                      + "</table>"
                      + "<br><br>"
+                     console.log(pFile);
+                     console.log(pName);
+                     console.log(pNo);
+           })
                $(".person-div").append(result);
                count++;
            }else{
