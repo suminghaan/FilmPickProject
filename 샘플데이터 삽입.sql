@@ -1,4 +1,46 @@
-INSERT INTO MEMBER (MEM_NO, MEM_ID, MEM_PWD, MEM_NAME, MEM_BD, MEM_GENDER, MEM_EMAIL, MEM_PHONE, PREF_GENRE, NICKNAME, MEM_STATUS, SIGNIN_DATE, MEM_LEVEL, MEM_COLOR, MEM_IMGPATH, MEM_FILE, DORMANT_STATUS)
+INSERT INTO
+    TASTE_ANALYSIS
+VALUES
+    (
+        SEQ_TASTE_ANALYSIS_NO.NEXTVAL,
+        '대체로 작품을 즐기지만 때론 혹평도 마다치 않는 이성파'
+    );
+    
+INSERT INTO
+    TASTE_ANALYSIS
+VALUES
+    (
+        SEQ_TASTE_ANALYSIS_NO.NEXTVAL,
+        '편식 없이 골고루 보는 균형파'
+    );
+    
+INSERT INTO
+    TASTE_ANALYSIS
+VALUES
+    (
+        SEQ_TASTE_ANALYSIS_NO.NEXTVAL,
+        '작품을 정말로 즐길 줄 아는 현명파'
+    );
+
+INSERT INTO
+    TASTE_ANALYSIS
+VALUES
+    (
+        SEQ_TASTE_ANALYSIS_NO.NEXTVAL,
+        '평가에 있어 주관이 뚜렷한 소나무파'
+    );
+
+INSERT INTO
+    TASTE_ANALYSIS
+VALUES
+    (
+        SEQ_TASTE_ANALYSIS_NO.NEXTVAL,
+        '대중의 평가에 잘 휘둘리지 않는 지조파'
+    );
+
+
+
+INSERT INTO MEMBER (MEM_NO, MEM_ID, MEM_PWD, MEM_NAME, MEM_BD, MEM_GENDER, MEM_EMAIL, MEM_PHONE, PREF_GENRE, NICKNAME, MEM_STATUS, SIGNIN_DATE, MEM_LEVEL, MEM_COLOR, MEM_IMGPATH, MEM_FILE, TA_NO, DORMANT_STATUS)
 SELECT 
   SEQ_MEMBER_NO.NEXTVAL,
   'user' || LPAD(ROWNUM, 3, '0'), -- 아이디를 'user001', 'user002', ... 형식으로 생성
@@ -7,15 +49,16 @@ SELECT
   TO_CHAR(TO_DATE('1980-01-01', 'YYYY-MM-DD') + DBMS_RANDOM.VALUE(1, 15000), 'YYYY-MM-DD'), -- 랜덤한 생년월일 생성
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'M' ELSE 'F' END, -- 랜덤한 성별 생성
   'user' || LPAD(ROWNUM, 3, '0') || '@example.com', -- 이메일 생성
-  '1234567890', -- 랜덤한 전화번호 생성
+  '010-1234-5678', -- 랜덤한 전화번호 생성
   CASE WHEN MOD(ROWNUM, 3) = 0 THEN '액션' WHEN MOD(ROWNUM, 3) = 1 THEN '코미디' ELSE '로맨스' END, -- 랜덤한 선호장르 생성
   'Nickname' || LPAD(ROWNUM, 3, '0'), -- 닉네임을 'Nickname001', 'Nickname002', ... 형식으로 생성
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'Y' ELSE 'N' END, -- 랜덤한 회원상태 생성
   SYSDATE - DBMS_RANDOM.VALUE(1, 365), -- 랜덤한 회원정보수정일 생성
-  CASE WHEN ROWNUM <= 5 THEN 1 WHEN ROWNUM <= 15 THEN 2 ELSE 3 END, -- 회원등급을 1, 2, 3 중에서 랜덤하게 생성
+  MOD(ROWNUM, 5) + 1, -- 회원등급을 1, 2, 3 중에서 랜덤하게 생성
   '#FFFFFF', -- 기본 회원정보색깔
   NULL, -- 기본 회원정보 이미지 경로
   NULL, -- NULL 값으로 MEM_FILE 생성
+  MOD(ROWNUM, 5) + 1,
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'Y' ELSE 'N' END
 FROM 
   DUAL
