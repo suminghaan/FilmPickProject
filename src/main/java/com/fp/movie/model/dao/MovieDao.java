@@ -523,6 +523,7 @@ public class MovieDao {
 		return m;
 	}
 
+//	다른 유저의 리뷰 정보를 불러오는 메소드 [기웅]
 	public ArrayList<Review> selectOtherUserReview(Connection conn, int otherUserNo) {
 		String query = prop.getProperty("selectReviewOtherUser");
 		PreparedStatement pstmt = null;
@@ -553,6 +554,29 @@ public class MovieDao {
 		}
 		
 		return rList;
+	}
+
+//	
+	public ArrayList<Movie> bothInterestMovie(Connection conn, int userNo, int otherUserNo) {
+		String query = prop.getProperty("bothInterestMovieList");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Movie> movieList = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			pstmt.setInt(2, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 

@@ -220,4 +220,27 @@
         ON M.MEM_NO = R.MEM_NO
         WHERE M.MEM_NO = ?
 	</entry>
+	
+	<!-- 둘 다 재밌게 본 작품 조회하는 쿼리 -->
+	<entry key="bothInterestMovieList">
+	SELECT 
+    M.MV_NO AS "MV_NO", 
+    MV_NAME, 
+    MV_OPENDATE, 
+    MV_POSTER,
+    (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW R WHERE R.MV_NO = M.MV_NO) AS "AVG_STAR_RATING"
+    , LIKE_POINT
+	FROM MOVIE M
+	JOIN REVIEW R
+	ON M.MV_NO = R.MV_NO
+	WHERE MEM_NO = ?
+	AND LIKE_POINT >= 4
+	AND M.MV_NO IN (
+	        SELECT MV_NO
+	        FROM REVIEW
+	        WHERE MEM_NO = ?
+	        AND LIKE_POINT >= 4
+        )
+	
+	</entry>
 </properties>

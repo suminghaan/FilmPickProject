@@ -148,7 +148,7 @@ public class MovieService {
 	}
 
 
-//	다른 사용자의 정보를 불러오는 메소드
+//	다른 사용자의 정보를 불러오는 메소드 [기웅]
 	public Member selectOtherUser(int otherUserNo) {
 		Connection conn = getConnection();
 		
@@ -159,7 +159,7 @@ public class MovieService {
 	}
 
 
-//	다른 사용자의 리뷰 정보를 불러오는 메소드
+//	다른 사용자의 리뷰 정보를 불러오는 메소드 [기웅]
 	public ArrayList<Review> selectOtherUserReview(int otherUserNo) {
 		Connection conn = getConnection();
 		
@@ -167,6 +167,16 @@ public class MovieService {
 		
 		close(conn);
 		return reviewList;
+	}
+
+
+//	다른 사용자와 같이 재밌게 본 영화 정보 불러오는 메소드 [기웅]
+	public ArrayList<Movie> bothInterestMovie(int userNo, int otherUserNo) {
+		Connection conn = getConnection();
+		ArrayList<Movie> movieList = mDao.bothInterestMovie(conn, userNo, otherUserNo);
+		
+		close(conn);
+		return movieList;
 	}
 
 
