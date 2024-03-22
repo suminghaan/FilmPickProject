@@ -338,6 +338,8 @@
         <script>
  
         function searchPerson(){
+        	
+        	$(".viewPerson").html("");
             let result = "";
             $.ajax({
                 url:"<%=contextPath%>/search.pe",
@@ -347,7 +349,6 @@
                 	console.log(person.length);
                     if(person.length != 0){ // 받아온 person에 값이 담겨있을 때
                         for(let i=0; i<person.length; i++){
-                            result = " ";
                             result =  "<div class='check'>"
                                     +       "<table>"
                                     +           "<tr>"
@@ -382,11 +383,8 @@
          // 없는영화 출연진 추가하는 스크립트
          $("#personBtn").click(function(){
         	
-       		let inputChecked = [];	 
-        	 
-        //   $(".viewPerson input:checked").each(function(){
-       // 	   inputChecked.push($(this));
-        //   }); 
+       		let inputChecked = $(".viewPerson input:checked");
+       		console.log(inputChecked);
         	 
            if(count < 8){
 
