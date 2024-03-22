@@ -514,7 +514,7 @@ public class CommunityDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				rlist.add(new Report(rset.getInt("board_no"),
+				rlist.add(new Report(rset.getInt("report_ref_no"),
 								   rset.getInt("report_no"),
 								   rset.getString("report_type"),									  								   
 								   rset.getString("report_content"),
@@ -687,7 +687,7 @@ public class CommunityDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				rlist.add(new Report(rset.getInt("board_no"),
+				rlist.add(new Report(rset.getInt("report_ref_no"),
 								   rset.getInt("report_no"),
 								   rset.getString("report_type"),									  								   
 								   rset.getString("report_content"),

@@ -397,7 +397,7 @@
 				   , REPORT_MEM_NO
 				   , REPORT_CONTENT 
 				FROM REPORT
-			   WHERE BOARD_NO_TYPE = 1			
+			   WHERE BOARD_NO_TYPE = 2			
 			  		) A
 			)
 		WHERE RNUM BETWEEN ? AND ?

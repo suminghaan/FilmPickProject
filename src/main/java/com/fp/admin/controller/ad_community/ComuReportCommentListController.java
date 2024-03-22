@@ -63,7 +63,7 @@ public class ComuReportCommentListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("rlist", rlist);
-		request.getRequestDispatcher("/views/admin/ad_community/commuReportBoardList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/ad_community/commuReportCommentList.jsp").forward(request, response);
 		
 			
 	}
