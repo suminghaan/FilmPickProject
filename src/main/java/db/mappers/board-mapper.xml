@@ -429,4 +429,18 @@
    		  )
    </entry>
    
+   <entry key="selectMainPageList">
+   <![CDATA[ 
+    	SELECT A.*
+        FROM (
+        SELECT B_NO, B_TITLE, B_REGIST_DATE, NICKNAME
+    	FROM BOARD 
+    	JOIN MEMBER USING (MEM_NO)
+    	WHERE B_B_STATUS = 'N' AND B_D_STATUS = 'N' AND B_CATEGORY = 1
+        ORDER BY B_REGIST_DATE DESC
+        ) A
+        WHERE ROWNUM <= 3
+    ]]>
+   </entry>
+   
 </properties>
