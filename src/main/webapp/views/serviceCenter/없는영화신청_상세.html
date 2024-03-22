@@ -673,14 +673,17 @@
                     success:function(person){
                       if(person != null){
                         for(let i=0; i<person.length; i++){
-                          result += "<table>"
-                                  +   "<tr>"
-                                  +     "<td><img src='person[i].인물얼굴경로'></td>"
-                                  +   "</tr>"
-                                  +   "<tr>"
-                                  +     "<td>person[i].인물이름 / person[i].인물직업</td>"
-                                  +   "</tr>"
-                                  + "</table>"
+                          result += "<div class='check'>"
+                                  +  "<input type='checkbox'>"
+                                  +   "<table>"
+                                  +     "<tr>"
+                                  +       "<td><img src='person[i].인물얼굴경로'></td>"
+                                  +     "</tr>"
+                                  +     "<tr>"
+                                  +       "<td>person[i].인물이름 / person[i].인물직업</td>"
+                                  +     "</tr>"
+                                  +   "</table>"
+                                  + "</div>"
                                 $(".viewPerson").append(result);
                         }
                       }else{
