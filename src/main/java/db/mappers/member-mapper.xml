@@ -278,7 +278,7 @@
 				)
 				VALUES
 				(
-				SEQ_UNO.NEXTVAL
+				SEQ_MEMBER_NO.NEXTVAL
 				, ?
 				, ?
 				, ?
