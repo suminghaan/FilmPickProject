@@ -668,4 +668,42 @@ public class CommunityDao {
 		return list;
 	}
 
+	// 신고된 댓글의 신고내용 상세조회
+	public List<Report> selectDetailReporCommentList(Connection conn, PageInfo pi) {
+		List<Report> rlist = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDetailReportCommentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				rlist.add(new Report(rset.getInt("board_no"),
+								   rset.getInt("report_no"),
+								   rset.getString("report_type"),									  								   
+								   rset.getString("report_content"),
+								   rset.getString("report_mem_no")
+								   ));				
+			}
+			System.out.print(rlist);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return rlist;
+	}
+
 }

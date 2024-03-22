@@ -217,6 +217,14 @@ public class CommunityService {
 		return list;
 	}
 
+	// 신고된 댓글 신고내역 상세 조회
+	public List<Report> selectDetailReportCommentList(PageInfo pi) {
+		Connection conn = getConnection();
+		List<Report> rlist = coDao.selectDetailReporCommentList(conn, pi);
+		close(conn);
+		return rlist;
+	}
+
 	
 
 }

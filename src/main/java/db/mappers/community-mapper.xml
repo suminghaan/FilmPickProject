@@ -384,5 +384,24 @@
 				WHERE RNUM BETWEEN ? AND ?
 		</entry>
 		
+		<!-- 관리자 신고댓글 신고내역 조회 [수민] -->
+		<entry key="selectDetailReportCommentList">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM, A.*
+			  FROM (
+			  	SELECT
+			  		 REPORT_REF_NO
+				   , REPORT_NO
+				   , REPORT_TYPE
+				   , REPORT_MEM_NO
+				   , REPORT_CONTENT 
+				FROM REPORT
+			   WHERE BOARD_NO_TYPE = 1			
+			  		) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+		</entry>
+		
 
 </properties>

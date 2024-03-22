@@ -58,7 +58,7 @@ public class ComuReportCommentListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, noticeLimit, maxPage, startPage, endPage);
 		
 		List<Reply> list = new CommunityService().selectReportCommentList(pi);
-		List<Report> rlist = new CommunityService().selectDetailReportBoardList(pi);
+		List<Report> rlist = new CommunityService().selectDetailReportCommentList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
