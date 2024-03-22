@@ -267,7 +267,7 @@ select>option {
 										+ "<img class='poster_img' src='" + jobj.mlist[i].mvPoster  +"'>"
 			                       		+ "<div class='box_context'>"
 				                        +   "<div class='poster_context'>" + jobj.mlist[i].mvName + "</div>"
-				                        +   "<div class='poster_context'>" + "평균별점 : " + jobj.mlist[i].starRatingAvg + "</div>"
+				                        +   "<div class='poster_context'>" + "평균 별점 : " + jobj.mlist[i].starRatingAvg + "</div>"
 				                        +   "<div class='poster_context'>" + "개봉일 : " + jobj.mlist[i].mvOpenDate + "</div>"  
 			                       		+ "</div>"
 		                   			+ "</a>";

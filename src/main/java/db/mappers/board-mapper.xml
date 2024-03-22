@@ -442,6 +442,7 @@
    		  )
    </entry>
    
+    <!-- 메인페이지에 호출할 게시물 조회 [용훈] -->
    <entry key="selectMainPageList">
    <![CDATA[ 
     	SELECT A.*

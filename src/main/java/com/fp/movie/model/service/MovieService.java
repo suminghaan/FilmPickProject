@@ -178,6 +178,12 @@ public class MovieService {
 		close(conn);
 		return movieList;
 	}
+	public ArrayList<Review> selectMainReviewList() {
+		Connection conn = getConnection();
+		ArrayList<Review> reviewList = mDao.selectMainReviewList(conn);
+		close(conn);
+		return reviewList;
+	}
 
 
 }

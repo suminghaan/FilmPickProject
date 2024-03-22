@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Reply;
 import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
@@ -600,6 +601,75 @@ public class CommunityDao {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	// 신고된 댓글 페이징처리
+	public int reportCommentListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("reportCommentListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	
+	// 신고된 댓글 조회 
+	public List<Reply> selectReportCommentList(Connection conn, PageInfo pi) {
+		List<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReportCommentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+						
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			/*
+			while(rset.next()) {
+				list.add(new Board(rset.getInt("b_no"),
+								   rset.getString("b_title"),
+								   rset.getString("b_content"),
+								   rset.getString("b_regist_date"),
+								   rset.getInt("b_read_count"),
+								   rset.getString("b_category"),								   
+								   rset.getString("mem_id"),
+								   rset.getInt("report"),
+								   rset.getString("origin_name"),
+								   rset.getString("change_name"),
+								   rset.getString("file_path"),
+								   rset.getString("b_b_status")
+								   ));				
+			}
+			 */
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		
+		return list;
 	}
 
 }
