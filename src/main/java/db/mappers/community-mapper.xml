@@ -216,7 +216,17 @@
 		
 		<!-- 관리자 블라인드게시글 검색기능 [수민] -->
 		<entry key="searchBlindBoard">
-			SELECT  *
+			SELECT  
+				B_NO
+		  	  , B_REGIST_DATE
+		  	  , MEM_ID
+		  	  , B_TITLE
+		  	  , B_READ_COUNT
+		  	  , (SELECT COUNT(*) 
+		  	  	 FROM REPLY R 
+		  	  	 WHERE BOARD_NO = B_NO) REPLY
+		  	  , B_CATEGORY
+		  	  , B_CONTENT
 			FROM BOARD
 			JOIN MEMBER USING (MEM_NO)
 			WHERE B_B_STATUS = 'Y'
@@ -265,6 +275,25 @@
 					  		) A
 					)
 				WHERE RNUM BETWEEN ? AND ?
+		</entry>
+		
+		
+		<!-- 관리자 신고된게시글 검색기능 [수민] -->
+		<entry key="searchReportBoard">
+			SELECT  
+				B_NO
+		      , B_REGIST_DATE
+		      , MEM_ID
+		      , B_TITLE
+		      , B_READ_COUNT
+		      , (SELECT COUNT(*) 
+		         FROM REPORT R 
+		         WHERE BOARD_NO = B_NO) REPORT
+		      , B_CATEGORY
+			FROM BOARD
+			JOIN MEMBER USING (MEM_NO)
+			JOIN REPORT ON BOARD_NO = B_NO
+			WHERE B_TITLE LIKE '%' || ? || '%'
 		</entry>
 
 </properties>

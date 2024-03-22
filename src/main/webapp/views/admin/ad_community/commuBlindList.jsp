@@ -217,11 +217,11 @@
 	    						value += "<tr>"
 	    								+ "<td>" + list[i].bNo + "</td>"
 	    								+ "<td>" + list[i].bRegistDate + "</td>"
-	    								+ "<td>" + list[i].MemId() + "</td>"
-	    								+ "<td>" + list[i].bTitle() + "</td>"
-	    								+ "<td>" + list[i].bReadCount() + "</td>"
-	    								+ "<td>" + list[i].ReplyCount() + "</td>"
-	    								+ "<td>" + list[i].bCategory() + "</td>"
+	    								+ "<td>" + list[i].MemId + "</td>"
+	    								+ "<td>" + list[i].bTitle + "</td>"
+	    								+ "<td>" + list[i].bReadCount + "</td>"
+	    								+ "<td>" + list[i].ReplyCount + "</td>"
+	    								+ "<td>" + list[i].bCategory + "</td>"
 	    		                        +"</tr>";
 	    					}
 	    				}else{

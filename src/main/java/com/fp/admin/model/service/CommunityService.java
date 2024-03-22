@@ -164,4 +164,12 @@ public class CommunityService {
 		return list;
 	}
 
+	// 신고글 검색
+	public List<Board> searchReportBoard(String keyword) {
+		Connection conn = getConnection();
+		List<Board> list = coDao.searchReportBoard(conn, keyword);
+		close(conn);
+		return list;
+	}
+
 }
