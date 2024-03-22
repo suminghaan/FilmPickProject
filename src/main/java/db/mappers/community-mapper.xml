@@ -357,9 +357,9 @@
 		<!-- 관리자 신고된 댓글 목록 조회 [수민] -->
 		<entry key="selectReportCommentList">
 			SELECT *
-				FROM(
+			FROM(
 					SELECT ROWNUM RNUM, A.*
-					  FROM (
+					FROM (
 					  	SELECT
 					        REPLY_NO
 					      , ENROLL_DATE
@@ -370,10 +370,11 @@
 					         WHERE REPLY_NO = RP.REPLY_NO) REPORT
 					      , B_CATEGORY
 					      , REPLY_B_STATUS
+					      , B_NO
 					    FROM REPLY RP
 					    JOIN MEMBER USING (MEM_NO)
 					    JOIN BOARD  ON B_NO = RP.BOARD_NO
-                        JOIN REPORT USING (BOARD_NO)
+                        JOIN REPORT ON RP.BOARD_NO = REPORT_REF_NO
                         WHERE BOARD_NO_TYPE = '2'
                             )
 						    ORDER

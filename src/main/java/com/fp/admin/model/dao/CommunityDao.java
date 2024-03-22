@@ -645,23 +645,19 @@ public class CommunityDao {
 			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
-			/*
+			
 			while(rset.next()) {
-				list.add(new Board(rset.getInt("b_no"),
-								   rset.getString("b_title"),
-								   rset.getString("b_content"),
-								   rset.getString("b_regist_date"),
-								   rset.getInt("b_read_count"),
-								   rset.getString("b_category"),								   
+				list.add(new Reply(rset.getInt("reply_no"),
+								   rset.getString("reply_content"),
+								   rset.getString("enroll_date"),
+								   rset.getString("reply_b_status"),
+								   rset.getInt("b_no"),
 								   rset.getString("mem_id"),
 								   rset.getInt("report"),
-								   rset.getString("origin_name"),
-								   rset.getString("change_name"),
-								   rset.getString("file_path"),
-								   rset.getString("b_b_status")
+								   rset.getString("b_category")
 								   ));				
 			}
-			 */
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
