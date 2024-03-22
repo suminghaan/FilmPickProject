@@ -116,14 +116,23 @@ table{
         <div id="title" class="title">
             <h1 id="select-user-title">없는영화 신청 목록</h1>
         </div>
-        <hr>
-        <div class="d-flex justify-content-end container" style="margin: 20px;">
-            <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
-            <select class="form-control" style="width: 100px">
-                <option>승인</option>
-                <option>거절</option>
-                <option>미확인</option>
-            </select>
+         <div class="d-flex justify-content-end container" style="margin: 20px;">
+	            <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
+				<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input approvalSwitch" id="approvalSwitch" value="Y">
+				  <label class="custom-control-label" for="approvalSwitch" style="margin-right: 50px;">승인</label>
+				</div>
+				
+				<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input approvalSwitch" id="rejectionSwitch" value="N">
+				  <label class="custom-control-label" for="rejectionSwitch" style="margin-right: 50px;">거절</label>
+				</div>
+				
+				<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input approvalSwitch" id="unconfirmedSwitch" value="D">
+				  <label class="custom-control-label" for="unconfirmedSwitch" style="margin-right: 50px;">미확인</label>
+				</div>
+        </div>
         </div>
         <div class="container">
             <div class="container">
@@ -195,11 +204,16 @@ table{
         </div>
         </div>
     </div>
-   </div>	
    <script>
    		function moveWrite(){
    			location.href = "../ad_customer_center/noMovieRequestList.jsp";
    		}
+   		
+   		$(function(){
+	   		 $('.approvalSwitch').on('change', function(){  // 클릭된 스위치를 제외한 나머지 스위치 비활성화
+	   			 $('.approvalSwitch').not(this).prop('checked', false);
+	   	     });
+   		});
    </script>
 </body>
 </html>
