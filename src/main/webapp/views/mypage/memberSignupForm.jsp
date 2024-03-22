@@ -291,7 +291,7 @@
               						$(".signup_content :submit").removeAttr("disabled");
               						
               						// 아이디 입력하는 input요소 수정불가능한 속성 추가
-              						$idInput.attr("readonly", true);
+              						// $idInput.attr("readonly", true);
               					}else{
               						$idInput.select();
               					}
@@ -327,7 +327,7 @@
               						$(".signup_content :submit").removeAttr("disabled");
               						
               						// 닉네임 입력하는 input요소 수정불가능한 속성 추가
-              						$nicknameInput.attr("readonly", true);
+              						// $nicknameInput.attr("readonly", true);
               					}else{
               						$nicknameInput.select();
               					}
