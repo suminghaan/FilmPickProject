@@ -185,6 +185,8 @@
 	height: 120px;
 	justify-content: space-between;
 	align-items: center;
+	margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .commu_list {
