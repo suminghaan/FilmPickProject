@@ -103,7 +103,7 @@
 		                    <td><%=bo.getReplyCount() %></td>
 		                    <td><%=bo.getbCategory() %></td>
 		                    <td>                      	
-	                        	<a href="<%=contextPath %>/removeBlind.co?bNo=<%=bo.getbNo() %>" class="btn btn-outline-warning" onclick="removeBlind();">블라인드해제</button>
+	                        	<a href="<%=contextPath %>/removeBlind.co?b_No=<%=bo.getbNo() %>" class="btn btn-outline-warning" onclick="removeBlind();">블라인드해제</a>
 	                    	</td>
 		                </tr>
 		                <%} %>

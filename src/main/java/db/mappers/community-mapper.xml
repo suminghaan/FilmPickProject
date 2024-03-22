@@ -228,7 +228,7 @@
 		<entry key="removeBlind">
 			UPDATE
 				  BOARD
-			  SET B_B_STATUS = 'Y'
+			  SET B_B_STATUS = 'N'
 			WHERE B_NO = ?
 			
 		</entry>
