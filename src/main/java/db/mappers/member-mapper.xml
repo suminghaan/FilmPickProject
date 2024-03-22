@@ -346,6 +346,15 @@
 		 WHERE MEM_ID = ?
 	</entry>
 	
+	<!-- 닉네임중복체크 -->
+	<entry key="nicknameCheck">
+		SELECT
+			   COUNT(*) COUNT
+		  FROM MEMBER
+		 WHERE NICKNAME = ?
+		 AND MEM_STATUS = 'Y'
+	</entry>
+	
 	<!-- 회원탈퇴 -->
 	<entry key="deleteMember">
 		UPDATE

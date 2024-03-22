@@ -46,6 +46,14 @@ public class MemberService {
 		return count;
 	}
 	
+	public int nicknameCheck(String checkNickname) {
+		Connection conn = getConnection();
+		int count = mDao.nicknameCheck(conn, checkNickname);
+		
+		close(conn);
+		return count;
+	}
+	
 	public int deleteMember(String memId, String memPwd) {
 		Connection conn = getConnection();
 		int result = mDao.deleteMember(conn, memId, memPwd);

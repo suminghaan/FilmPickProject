@@ -147,7 +147,30 @@ public class MemberDao {
 			
 				if(rset.next()) {
 					count =rset.getInt("count");
-					}
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return count;	
+	}
+	
+	public int nicknameCheck(Connection conn, String nicknameCheck) {
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("nicknameCheck");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,nicknameCheck);
+			rset=pstmt.executeQuery();
+			
+				if(rset.next()) {
+					count =rset.getInt("count");
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
