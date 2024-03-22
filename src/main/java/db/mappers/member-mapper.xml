@@ -308,36 +308,6 @@
 		WHERE MEM_ID = ?
 	</entry>
 	
-	<entry key="insertMember">
-		INSERT 
-			INTO MEMBER
-			(
-			  MEM_NO
-			, MEM_ID
-			, MEM_PWD
-			, MEM_EMAIL
-			, NICKNAME
-			, MEM_NAME
-			, MEM_BD
-			, MEM_GENDER
-			, MEM_PHONE
-			, PREF_GENRE
-			)
-			VALUES
-			(
-			SEQ_MEMBER_NO.NEXTVAL
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			, ?
-			)
-	</entry>
-	
 	<!-- 아이디중복체크 -->
 	<entry key="idCheck">
 		SELECT
