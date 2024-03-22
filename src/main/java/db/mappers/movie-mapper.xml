@@ -220,4 +220,29 @@
         ON M.MEM_NO = R.MEM_NO
         WHERE M.MEM_NO = ?
 	</entry>
+	<!-- 메인페이지 최근리뷰 조회 [용훈] -->
+	<entry key="selectMainReviewList">
+	<![CDATA[
+		SELECT R.*
+    FROM (
+    SELECT 
+    MV_REVIEW_NO
+    , REVIEW_CONTENT
+    , REVIEW_DATE
+    , LIKE_POINT
+    , NICKNAME
+    , MEM_LEVEL
+    , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 1) AS "COUNT_AGREE"
+    , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 2) AS "COUNT_DISAGREE"
+    , MEM_IMGPATH
+    , MEM_COLOR
+    , R.MEM_NO AS "MEM_NO"
+	FROM REVIEW R
+	JOIN MEMBER M
+	ON M.MEM_NO = R.MEM_NO
+	ORDER BY REVIEW_DATE) R
+    WHERE ROWNUM <= 8
+	]]>
+	</entry>
+	
 </properties>

@@ -668,7 +668,8 @@ public class BoardDao {
 		}
 		return result;
 	}
-
+	
+	// 메인페이지에 호출할 게시물 조회 [용훈]
 	public List<Board> selectMainPageList(Connection conn) {
 		List<Board> b = new ArrayList<>();
 		PreparedStatement pstmt = null;

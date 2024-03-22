@@ -170,4 +170,13 @@ public class MovieService {
 	}
 
 
+
+	public ArrayList<Review> selectMainReviewList() {
+		Connection conn = getConnection();
+		ArrayList<Review> reviewList = mDao.selectMainReviewList(conn);
+		close(conn);
+		return reviewList;
+	}
+
+
 }

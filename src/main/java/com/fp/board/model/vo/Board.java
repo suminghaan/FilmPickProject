@@ -93,7 +93,7 @@ public class Board {
 
 
 
-
+	// 메인페이지에 호출할 게시물 조회 [용훈]
 	public Board(int bNo, String bTitle, String bRegistDate, String memNickname) {
 		super();
 		this.bNo = bNo;

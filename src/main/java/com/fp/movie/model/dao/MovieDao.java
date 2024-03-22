@@ -555,6 +555,41 @@ public class MovieDao {
 		return rList;
 	}
 
+	public ArrayList<Review> selectMainReviewList(Connection conn) {
+		ArrayList<Review> reviewList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMainReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				reviewList.add(new Review(
+						rset.getInt("MV_REVIEW_NO")
+						, rset.getString("REVIEW_CONTENT")
+						, rset.getString("REVIEW_DATE")
+						, rset.getString("LIKE_POINT")
+						, rset.getString("NICKNAME")
+						, rset.getInt("MEM_LEVEL")
+						, rset.getInt("COUNT_AGREE")
+						, rset.getInt("COUNT_DISAGREE")
+						, rset.getString("MEM_IMGPATH")
+						, rset.getString("MEM_COLOR")
+						, rset.getInt("MEM_NO")
+					));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return reviewList;
+	}
+
 
 
 

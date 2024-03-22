@@ -1,6 +1,7 @@
 package com.fp.common.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import com.fp.board.model.service.BoardService;
 import com.fp.board.model.vo.Board;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.Review;
 
 /**
  * Servlet implementation class mainPageController
@@ -44,12 +46,14 @@ public class mainPageController extends HttpServlet {
 		List<Movie> plist3 = new MovieService().selectMainListp(no3);
 		
 		List<Board> b = new BoardService().selectMainPageList();
+		ArrayList<Review> reviewList = new MovieService().selectMainReviewList();
 		
 		request.setAttribute("vlist", vlist);
 		request.setAttribute("plist1", plist1);
 		request.setAttribute("plist2", plist2);
 		request.setAttribute("plist3", plist3);
 		request.setAttribute("b", b);
+		request.setAttribute("reviewList", reviewList);
 		
 		request.getRequestDispatcher("/views/common/mainPage.jsp").forward(request, response);
 		
