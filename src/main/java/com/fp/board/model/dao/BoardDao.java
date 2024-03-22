@@ -52,7 +52,9 @@ public class BoardDao {
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
 								 , rset.getString("TITLEIMG_URL")
-								 , rset.getInt("REPLY_COUNT")));
+								 , rset.getInt("REPLY_COUNT")
+								 , rset.getString("B_B_STATUS")
+								 , rset.getString("B_D_STATUS")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,7 +86,9 @@ public class BoardDao {
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
 								 , rset.getString("TITLEIMG_URL")
-								 , rset.getInt("REPLY_COUNT")));
+								 , rset.getInt("REPLY_COUNT")
+								 , rset.getString("B_B_STATUS")
+								 , rset.getString("B_D_STATUS")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -116,7 +120,9 @@ public class BoardDao {
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
 								 , rset.getString("TITLEIMG_URL")
-								 , rset.getInt("REPLY_COUNT")));
+								 , rset.getInt("REPLY_COUNT")
+								 , rset.getString("B_B_STATUS")
+								 , rset.getString("B_D_STATUS")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -233,7 +239,9 @@ public class BoardDao {
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
 								 , rset.getString("TITLEIMG_URL")
-								 , rset.getInt("REPLY_COUNT")));
+								 , rset.getInt("REPLY_COUNT")
+								 , rset.getString("B_B_STATUS")
+								 , rset.getString("B_D_STATUS")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -271,7 +279,9 @@ public class BoardDao {
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
 								 , rset.getString("TITLEIMG_URL")
-								 , rset.getInt("REPLY_COUNT")));
+								 , rset.getInt("REPLY_COUNT")
+								 , rset.getString("B_B_STATUS")
+								 , rset.getString("B_D_STATUS")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -309,7 +319,9 @@ public class BoardDao {
 								 , rset.getString("B_CATEGORY")
 								 , rset.getString("NICKNAME")
 								 , rset.getString("TITLEIMG_URL")
-								 , rset.getInt("REPLY_COUNT")));
+								 , rset.getInt("REPLY_COUNT")
+								 , rset.getString("B_B_STATUS")
+								 , rset.getString("B_D_STATUS")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -619,7 +631,7 @@ public class BoardDao {
 		String sql = prop.getProperty("reportBoard");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, re.getType());
+			pstmt.setString(1, re.getReportType());
 			pstmt.setString(2, re.getReportContent());
 			pstmt.setInt(3, re.getReportBoardNo());
 			pstmt.setString(4, re.getReportMemNo());
@@ -643,7 +655,7 @@ public class BoardDao {
 		String sql = prop.getProperty("replyReportBoard");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, re.getType());
+			pstmt.setString(1, re.getReportType());
 			pstmt.setString(2, re.getReportContent());
 			pstmt.setInt(3, re.getReportBoardNo());
 			pstmt.setString(4, re.getReportMemNo());

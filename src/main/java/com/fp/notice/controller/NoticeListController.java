@@ -54,7 +54,6 @@ public class NoticeListController extends HttpServlet {
 		pageLimit = 5;
 		// boardLimit : 공지사항의 최대 갯수(게시글 노출 단위)
 		boardLimit = 10;
-		
 		//  ↑↑↑↑위 4개를 가지고 start, end, max 페이지 구하면 페이징바 구현 가능
 		// -------------------------------------------------------------
 		
