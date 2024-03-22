@@ -37,7 +37,7 @@ public class BoardPublicMovieController extends HttpServlet {
 		// 페이징바에 있는 페이지번호 클릭시 /list.no?page=클릭한번호	=> 클릭한페이지 요청
 		
 		// --------------- 페이징처리 ---------------
-		int listCount;		// 현재 공지사항 총 갯수
+		int listCount;		// 현재 게시글 총 갯수
 		int currentPage;	// 현재 페이지 (즉, 사용자가 요청한 페이지)
 		int pageLimit;		// 페이징바의 페이지 최대갯수 (몇개 단위씩 표현할지) 우리는 5개로 하기로 함
 		int boardLimit;		// 한 페이지에 보여질 공지사항 최대갯수 (몇개 단위씩 게시글 보여질지) 우리는 10개 단위로 보여지게끔 하기로 함

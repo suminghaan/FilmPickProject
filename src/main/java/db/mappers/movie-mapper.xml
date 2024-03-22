@@ -168,7 +168,7 @@
 	
 	<!-- 메인페이지 영화포스터 조회 [용훈] -->
 	<entry key="selectMainListp">
-		    SELECT DISTINCT M.MV_NO
+	    SELECT DISTINCT M.MV_NO
             , MV_POSTER
             , MV_NAME
             , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW WHERE MV_NO = M.MV_NO) "LIKE_POINT"

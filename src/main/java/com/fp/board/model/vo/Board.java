@@ -25,13 +25,49 @@ public class Board {
 	private String replyContent; // 댓글내용
 	// ** 2024.03.22 (관리자 : 한수민) 신고된 게시글 페이지에서 쓸 필드 추가
 	private int reportCount; // 신고수
+	private String fileOriginName; // 기존파일명
+	private String fileChangeName; // 바뀐파일명
+	private String filePath;	// 파일경로
 	
 	public Board() {}
 	
-	
-
 	/**
 	 * (관리자) 신고게시글 조회용
+	 * @param bNo
+	 * @param bTitle
+	 * @param bContent
+	 * @param bRegistDate
+	 * @param bReadCount
+	 * @param bCategory
+	 * @param memId
+	 * @param reportCount
+	 * @param fileOriginName
+	 * @param fileChangeName
+	 * @param filePath
+	 * 
+	 * @author 수민
+	 */
+
+	public Board(int bNo, String bTitle, String bContent, String bRegistDate, int bReadCount, String bCategory,
+			String memId, int reportCount, String fileOriginName, String fileChangeName, String filePath) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bRegistDate = bRegistDate;
+		this.bReadCount = bReadCount;
+		this.bCategory = bCategory;
+		this.memId = memId;
+		this.reportCount = reportCount;
+		this.fileOriginName = fileOriginName;
+		this.fileChangeName = fileChangeName;
+		this.filePath = filePath;
+	}
+
+	
+	
+	/**
+	 * (관리자) 신고게시글 검색기능
 	 * @param bNo
 	 * @param bTitle
 	 * @param bRegistDate
@@ -40,8 +76,9 @@ public class Board {
 	 * @param memId
 	 * @param reportCount
 	 * 
-	 * @author 한수민
+	 * @author 수민
 	 */
+
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, String bCategory, String memId,
 			int reportCount) {
 		super();
@@ -53,9 +90,6 @@ public class Board {
 		this.memId = memId;
 		this.reportCount = reportCount;
 	}
-
-
-
 
 	/**
 	 * (관리자) 블라인드게시글의 댓글 조회용도
@@ -186,7 +220,7 @@ public class Board {
 	 * @호용
 	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, int bRecommendCount, String bCategory,
-			String memNo, String titleImgUrl, int replyCount) {
+			String memNo, String titleImgUrl, int replyCount, String bStatus, String dSatus) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -197,6 +231,8 @@ public class Board {
 		this.memNo = memNo;
 		this.titleImgUrl = titleImgUrl;
 		this.replyCount = replyCount;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
 		
 	}
 
@@ -504,6 +540,42 @@ public class Board {
 		this.reportCount = reportCount;
 	}
 
+
+
+
+	public String getFileOriginName() {
+		return fileOriginName;
+	}
+
+
+
+	public void setFileOriginName(String fileOriginName) {
+		this.fileOriginName = fileOriginName;
+	}
+
+
+
+	public String getFileChangeName() {
+		return fileChangeName;
+	}
+
+
+
+	public void setFileChangeName(String fileChangeName) {
+		this.fileChangeName = fileChangeName;
+	}
+
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 
 
 

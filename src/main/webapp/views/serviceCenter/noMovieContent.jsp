@@ -46,7 +46,7 @@
 	      margin-left: 1250px;
     }
     
-        /* 뒤늦게 추가함*/
+    /* 뒤늦게 추가함*/
     .dr{
       display: flex;
     }
@@ -99,17 +99,17 @@
           <div class="background">
               <div class="background2">
                       <div class="container-fluid"><br>
-                          <h1>없는영화신청</h1> <br>
+                          <h1 style="color:black;">없는영화신청</h1> <br>
                           <form action="" method="">
                               <div class="form-group">
-                                  <label for="exampleFormControlInput1">영화제목</label> <br>
+                                  <label for="exampleFormControlInput1" style="color:black;">영화제목</label> <br>
                                   <input type="text" class="form-control" id="exampleFormControlInput1" name="" style="width: 600px;">
                               </div>
 
                               <br>
 
                               <div class="form-group">
-                                  <label for="exampleFormControlSelect1">영화관람등급</label>
+                                  <label for="exampleFormControlSelect1" style="color:black;">영화관람등급</label>
                                   <select class="form-control" id="exampleFormControlSelect1" name="" style="width: 600px;">
                                       <option value="전체">전체관람</option>
                                       <option value="12세">12</option>
@@ -121,27 +121,27 @@
                               <br>
 
                               <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">영화줄거리</label> <br>
+                                  <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리</label> <br>
                                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="" style="width: 600px;"></textarea>
                               </div>
                               
 
                               <br>
                               <div class="form-group dr">
-                                <div class="form-group">
+                                <div class="form-group" style="color:black;">
                                     개봉일
                                     <input type="date" name="dateIn" class="form-control" style="width: 300px;">
                                 </div><br><br><br><br>
                                 
 
-                                <div class="form-group">
+                                <div class="form-group" style="color:black;">
                                     러닝타임
                                     <input type="text" name="runningTime" class="form-control" style="width: 300px;">
                                 </div><br>
                               </div>
                               
 
-                              <div class="form-group psButton-body">
+                              <div class="form-group psButton-body" style="color:black;">
                                   출연/제작
                                   <input type="text" name="" class="form-control" style="width: 600px;">
                                   <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
@@ -155,7 +155,7 @@
                               
 
                               <br><br>
-                              <div class="form-group form-category">
+                              <div class="form-group form-category" style="color:black;">
                               영화 장르 선택 <br>
                               
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="SF" name="category">
@@ -192,7 +192,7 @@
                               <br><br>
 
 
-                              <div class="form-group">
+                              <div class="form-group" style="color:black;">
                               국가
                               <br>
                                   <div class="form-check form-check-inline">
@@ -206,30 +206,30 @@
                               <br>
 
 
-                              영화포스터
-                              <div class="custom-file">
+                              <p style="color:black;">영화포스터</p>
+                              <div class="custom-file" style="color:black;">
                                   <input type="file" class="custom-file-input" id="customFile1" name="">
-                                  <label class="custom-file-label" for="customFile1">파일추가</label>
+                                  <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
 
                               <br>
 
-                              예고편영상
-                              <div class="custom-file">
+                              <p style="color:black;">예고편영상</p>
+                              <div class="custom-file" style="color:black;">
                                   <input type="file" class="custom-file-input" id="customFile2" name="">
-                                  <label class="custom-file-label" for="customFile2">파일추가</label>
+                                  <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
 
                               <br>
 
 
-                              <div class="form-group">
+                              <div class="form-group" style="color:black;">
                               기타 추가 희망 이미지 또는 동영상
                                   <div class="custom-file">
                                       <input type="file" class="custom-file-input" id="customFile3" name="">
-                                      <label class="custom-file-label" for="customFile3">파일추가</label>
+                                      <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
                                       <img src="" alt="미리보기이미지">
                                   </div>
                               </div>
@@ -237,12 +237,12 @@
 
                               <br>
 
-                              <div class="form-group">
+                              <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
                                   <textarea name="" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."></textarea>
                               </div>
 
-                              <div>
+                              <div style="color:black;">
                                   <input type="checkbox" id="idCheck" value="동의" name="" style="margin-left: 1000px;">
                                   <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
                                   
