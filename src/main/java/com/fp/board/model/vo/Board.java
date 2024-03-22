@@ -158,7 +158,7 @@ public class Board {
 	 * @호용
 	 */
 	public Board(int bNo, String bTitle, String bRegistDate, int bReadCount, int bRecommendCount, String bCategory,
-			String memNo, String titleImgUrl, int replyCount) {
+			String memNo, String titleImgUrl, int replyCount, String bStatus, String dSatus) {
 		super();
 		this.bNo = bNo;
 		this.bTitle = bTitle;
@@ -169,6 +169,8 @@ public class Board {
 		this.memNo = memNo;
 		this.titleImgUrl = titleImgUrl;
 		this.replyCount = replyCount;
+		this.bStatus = bStatus;
+		this.dSatus = dSatus;
 		
 	}
 
