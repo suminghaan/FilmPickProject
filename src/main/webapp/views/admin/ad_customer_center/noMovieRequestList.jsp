@@ -200,22 +200,6 @@ table{
    		function moveWrite(){
    			location.href = "../ad_customer_center/noMovieRequestList.jsp";
    		}
-   		
-   		$(document).ready(function() {
-   		    let approvalText = $('#approvalText');
-   		    let text = approvalText.text().trim();
-   		    console.log(text);
-   		    switch(text) {
-   		        case '승인':
-   		            approvalText.css('color', 'rgb(41, 128, 185)'); // 파란색
-   		            break;
-   		        case '거절':
-   		            approvalText.css('color', 'rgb(192, 57, 43)'); // 빨간색
-   		            break;
-   		        default:
-   		            break;
-   		    }
-   		});
    </script>
 </body>
 </html>
