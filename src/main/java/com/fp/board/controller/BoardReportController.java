@@ -56,6 +56,7 @@ public class BoardReportController extends HttpServlet {
 			
 		}
 		
+		
 	}
 
 	/**

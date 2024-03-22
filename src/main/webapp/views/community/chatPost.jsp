@@ -163,18 +163,22 @@
                         <tbody>
                             <!-- for(){ 반복문 시작 @@@@@@@@@@@@@@@@@@@@@@@@@@-->
                             <% for(Board b : chatList){ %>
-                            <tr>
-                                <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%=b.getbNo() + " [잡담]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
-                                <td rowspan="3" class="img">
-                                    <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
-                            </tr>
+                            	<%if(b.getbStatus().equalsIgnoreCase("N") && b.getdSatus().equalsIgnoreCase("N")){ %>
+	                            <tr>
+	                                <td colspan="2" class="title" onclick="community_check(<%= b.getbNo()%>);"><%=b.getbNo() + " [잡담]" + b.getbTitle() + " [" + b.getReplyCount() + "]" %></td>
+	                                <td rowspan="3" class="img">
+	                                	<%if(b.getTitleImgUrl() != null){ %>
+	                                    <img src="<%=contextPath+ "/" + b.getTitleImgUrl()%>">
+	                                	<%} %>
+	                                </td>
+	                            </tr>
+	                            <tr>
+	                                <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                            </tr>
+	                            <tr>
+	                                <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
+	                            </tr>
+                            	<%} %>
                             <%} %>
                             <!-- } 반복문 끝 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                         </tbody>
