@@ -58,18 +58,17 @@ public class Inquiry {
 	 * @param inqryADate 답변일
 	 * @param adminId 관리자아이디
 	 */
-	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryDate, int memNo, int adminNo,
-			String inqryAContent, String inqryADate, String adminId) {
+	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryDate, int memNo/*, int adminNo*/, String inqryAContent/*, String inqryADate, String adminId*/) {
 		super();
 		this.inqryNo = inqryNo;
 		this.inqryTitle = inqryTitle;
 		this.inqryContent = inqryContent;
 		this.inqryDate = inqryDate;
 		this.memNo = memNo;
-		this.adminNo = adminNo;
+//		this.adminNo = adminNo;
 		this.inqryAContent = inqryAContent;
-		this.inqryADate = inqryADate;
-		this.adminId = adminId;
+//		this.inqryADate = inqryADate;
+//		this.adminId = adminId;
 	}
 
 	public int getInqryNo() {
