@@ -36,6 +36,12 @@ public class CustomerCenterDao {
 	}
 
 
+	/** 없는영화 신청 목록 조회, 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @return listCount
+	 */
 	public int selectnoMovieRequestListCount(Connection conn) {
 		int listCount = 0;
 
@@ -59,6 +65,13 @@ public class CustomerCenterDao {
 		return listCount;
 	}
 
+	/** 없는영화 신청 목록 조회, 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @param pi 
+	 * @return list
+	 */
 	public List<NoMovie> selectnoMovieRequestList(Connection conn, PageInfo pi) {
 		List<NoMovie> list = new ArrayList<>();
 
@@ -93,4 +106,44 @@ public class CustomerCenterDao {
 		return list;
 
 	}
+
+
+	/** 승인여부 필터 용도
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @param approval 
+	 * @return list 
+	 */
+	public List<NoMovie> selectApprovalFilter(Connection conn, String approval) {
+		List<NoMovie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("selectApprovalFilter");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, approval);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new NoMovie(rset.getString("NM_TITLE")
+						, rset.getString("NM_POSTER")
+						, rset.getString("NM_ENROLL_DATE")
+						, rset.getString("NM_APPROVAL")
+						, rset.getString("NM_STORY")
+						, rset.getInt("MEM_NO")
+						, rset.getString("NICKNAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+
 }

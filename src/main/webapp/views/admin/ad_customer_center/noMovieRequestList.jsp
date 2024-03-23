@@ -86,27 +86,25 @@ table{
     padding: 0px;
 }
 
-/* ---------------------- */
-<style>
-    .approval {
-        font-weight: bold;
-        color: black;
-    }
+.approval {
+    font-weight: bold;
+    color: black;
+}
 
-    /* 승인일 때의 색상 */
-    .approval[data-approval="승인"] {
-        color: rgb(41, 128, 185);
-    }
+/* 승인일 때의 색상 */
+.approval[data-approval="승인"] {
+    color: rgb(41, 128, 185);
+}
 
-    /* 거절일 때의 색상 */
-    .approval[data-approval="거절"] {
-        color: red;
-    }
+/* 거절일 때의 색상 */
+.approval[data-approval="거절"] {
+    color: red;
+}
 
-    /* 미확인일 때의 색상 */
-    .approval[data-approval="미확인"] {
-        color: gray;
-    }
+/* 미확인일 때의 색상 */
+.approval[data-approval="미확인"] {
+    color: gray;
+}
 </style>
 </head>
 <body>
@@ -135,12 +133,12 @@ table{
         </div>
         </div>
         <div class="container">
-            <div class="container">
+            <div class="container" id="noMovieList">
                 	<% if(pageList.isEmpty()){ %>
                 		<b>신청 목록이 존재하지 않습니다.</b>
                 	<% } else {  %>
                 	<% for(NoMovie nm : pageList){ %>
-                <div class="no-movie-list all-list" onclick="moveWrite();">
+                <div class="no-movie-list all-list">
                     <div class="container item1">
                         <h4 class="title"><%= nm.getNmTitle() %></h4>
                         <img src="<%= contextPath + "/" + nm.getNmPoster() %>" class="img-fluid" style="width: 130px;">
@@ -205,15 +203,72 @@ table{
         </div>
     </div>
    <script>
-   		function moveWrite(){
-   			location.href = "../ad_customer_center/noMovieRequestList.jsp";
-   		}
-   		
-   		$(function(){
-	   		 $('.approvalSwitch').on('change', function(){  // 클릭된 스위치를 제외한 나머지 스위치 비활성화
-	   			 $('.approvalSwitch').not(this).prop('checked', false);
-	   	     });
-   		});
+	   	/* 필터 선택 시 실행될 코드 작성 */		
+	   	$(function(){
+		    $('.custom-control-input').click(function(){  
+		        $('.custom-control-input').not(this).prop('checked', false);
+		    });
+		    
+		    let $originalTable;
+		    $('.approvalSwitch').click(function(){
+		        if($(this).prop('checked')) {
+		            $originalTable =  $('#noMovieList').html();
+		            $('#noMovieList').html(''); // 테이블 내용 초기화
+		            const $value = $(this).val();
+		            console.log($value);
+		            
+		            $.ajax({
+		                url: '<%=contextPath%>/approvalfilter.nm',
+		                data: {approval: $value},
+		                success: function(list){
+		                    console.log('ajax 통신 성공');
+		                    $('#noMovieList').html(''); // 테이블 내용 초기화
+		
+		                    for (let i = 0; i < list.length; i++) {
+		                        let nm = list[i];
+		                        let approvalStatus = '';
+		                        
+		                        if (nm.nmApproval == 'Y') {
+		                            approvalStatus = '승인';
+		                        } else if (nm.nmApproval == 'N') {
+		                            approvalStatus = '거절';
+		                        } else if (nm.nmApproval == 'D') {
+		                            approvalStatus = '미확인';
+		                        }
+		                        
+		                         let movieHTML = '<div class="no-movie-list all-list">' +
+		                            '<div class="container item1">' +
+		                            '<h4 class="title">' + nm.nmTitle + '</h4>' +
+		                            '<img src="' + '<%=contextPath%>' + '/' + nm.nmPoster + '" class="img-fluid" style="width: 130px;">' +
+		                            '</div>' +
+		                            '<div class="container item2">' +
+		                            '<div class="regist-date">' +
+		                            '<span style="font-size: 15px;"><span class="title">작성일&nbsp;</span>' + nm.nmEnrollDate + '</span>' +
+		                            '<span class="no-check approval" style="justify-content: end;" id="approval" data-approval="' + approvalStatus + '">' +
+		                            '<b>' + approvalStatus + '</b>' +
+		                            '</span>' +
+		                            '</div>' +
+		                            '<div class="story-writer">' +
+		                            '<div class="container story">' + nm.nmStory + '</div>' +
+		                            '<div class="container writer" style="text-align: right;">' +
+		                            '<b>작성자</b> ' + nm.MemNickname +
+		                            '</div>' +
+		                            '</div>' +
+		                            '</div>' +
+		                            '</div>';
+		                        
+		                        $('#noMovieList').append(movieHTML);
+		                    }
+		                }, 
+		                error: function(){
+		                    console.log('ajax 통신 실패');
+		                }
+		            });
+		        } else {
+		            $('#noMovieList').html($originalTable);
+		        } 
+		    });
+	});
    </script>
 </body>
 </html>
