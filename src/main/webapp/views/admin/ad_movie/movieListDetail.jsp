@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+<%@ page import="com.fp.common.model.vo.Attachment" %>
+<%@ page import="com.fp.movie.model.vo.Movie" %>
+<%@ page import="java.util.List" %>
+    
+<% List<Movie> list = (List<Movie>)request.getAttribute("list"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,7 +139,8 @@
         </div>
         
         <form action="" method="">
-            <div class="all">                
+            <div class="all">       
+            <% for(Movie m : list) { %>         
                 <div class="form-group">
                     <label for="movieTitle">영화제목</label> <br>
                     <input type="text" class="form-control" id="mTitle" name="" placeholder="제목입력" style="width: 500px;">
@@ -314,10 +323,11 @@
                 </div>
                 
                 <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('내용이 수정되었습니다.')">수정하기</button>
-                
+                <%} %>
             </div>
         </form>
-    </div>
+   	 </div>
+    </section>
 
     
 

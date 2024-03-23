@@ -1,11 +1,16 @@
 package com.fp.admin.controller.ad_movie;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fp.admin.model.service.MovieService;
+import com.fp.movie.model.vo.Movie;
 
 /**
  * Servlet implementation class MovieListDetail
@@ -27,8 +32,15 @@ public class MovieListDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("/views/admin/ad_movie/movieListDetail.jsp").forward(request, response);
+		
 
+		int mvNo = Integer.parseInt(request.getParameter("mvNo"));
+		
+		List<Movie> list = new MovieService().MovieListDetail(mvNo);
+
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("/views/admin/ad_movie/movieListDetail.jsp").forward(request, response);
 	}
 
 	/**
