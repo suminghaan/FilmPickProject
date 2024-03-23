@@ -158,5 +158,45 @@ public class MovieDao {
 		return result;
 	}
 
+	// 영화 관리버튼 => 영화 정보 상세보기 
+	public List<Movie> MovieListDetail(Connection conn, int mvNo) {
+		List<Movie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("MovieListDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mvNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Movie(rset.getInt("mv_no"),
+									rset.getString("mv_name"),
+									rset.getString("mv_opendate"),
+									rset.getString("mv_nation"),
+									rset.getString("mv_rtime"),
+									rset.getString("mv_story"),
+									rset.getString("fpage_exposed"),
+									rset.getString("view_rating"),
+									rset.getString("current_screening"),
+									rset.getString("mv_poster"),
+									rset.getString("mv_preview"),
+									rset.getString("category_name"),
+									rset.getString("casting"),
+									rset.getString("nm_user_request"),
+									rset.getString("mem_no"),
+									rset.getString("admin_no")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 	
 }
