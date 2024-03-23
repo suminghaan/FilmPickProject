@@ -190,6 +190,7 @@
 	    , ?
 	    , ?
 	    , ?
+	    , DEFAULT
 	)
 	</entry>
 	
@@ -215,9 +216,13 @@
             , LIKE_POINT
             , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 1) AS "AGREE_COUNT"
             , (SELECT COUNT(*) FROM APPROVAL A WHERE R.MV_REVIEW_NO = A.MV_REVIEW_NO AND APPROVAL_TYPE = 2) AS "DISAGREE_COUNT"
+            , MV_NAME
+            , MV_POSTER
         FROM REVIEW R
         JOIN MEMBER M
         ON M.MEM_NO = R.MEM_NO
+        JOIN MOVIE MV
+        ON MV.MV_NO = R.MV_NO
         WHERE M.MEM_NO = ?
 	</entry>
 	
@@ -229,7 +234,6 @@
     MV_OPENDATE, 
     MV_POSTER,
     (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW R WHERE R.MV_NO = M.MV_NO) AS "AVG_STAR_RATING"
-    , LIKE_POINT
 	FROM MOVIE M
 	JOIN REVIEW R
 	ON M.MV_NO = R.MV_NO
@@ -241,8 +245,40 @@
 	        WHERE MEM_NO = ?
 	        AND LIKE_POINT >= 4
         )
-	
 	</entry>
+	<!-- 평가가 엇갈린 작품을 위한 쿼리 [기웅] -->
+	<!-- 사용자가 남긴 별점 정호와 해당 영화의 정보 -->
+	<entry key="myStarRating">
+	SELECT
+	    M.MEM_NO
+	    , R.MV_NO
+	    , LIKE_POINT
+	    , MV.MV_NAME
+	    , MV.MV_POSTER
+	    , MV.MV_OPENDATE
+	    , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW WHERE MV.MV_NO = MV_NO) AS "AVG_STAR_RATING"
+	FROM MEMBER M
+	JOIN REVIEW R
+	ON M.MEM_NO = R.MEM_NO
+	JOIN MOVIE MV
+	ON MV.MV_NO = R.MV_NO
+	WHERE M.MEM_NO = ?
+	ORDER BY LIKE_POINT
+	</entry>
+	
+	<!-- 다른 유저의 별점 분석 정보를 가져오는 쿼리 [기웅] -->
+	<entry key="starRatingAnalysis">
+	SELECT 
+	    DISTINCT LIKE_POINT
+	    , (SELECT COUNT(*) FROM REVIEW WHERE LIKE_POINT = R.LIKE_POINT AND MEM_NO = ?) AS "COUNT_LIKE_POINT"
+	    , TA_NO
+	FROM REVIEW R
+	JOIN MEMBER M
+	ON M.MEM_NO = R.MEM_NO
+	WHERE M.MEM_NO = ?
+	ORDER BY LIKE_POINT
+	</entry>
+	
 	<!-- 메인페이지 최근리뷰 조회 [용훈] -->
 	<entry key="selectMainReviewList">
 	<![CDATA[

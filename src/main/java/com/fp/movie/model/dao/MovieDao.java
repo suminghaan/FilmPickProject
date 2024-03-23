@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
@@ -625,7 +626,74 @@ public class MovieDao {
 		
 		return reviewList;
 	}
-	
+
+	// 사용자의 리뷰 정보를 가져오는 메소드[기웅]
+	public ArrayList<Movie> conflictingMovie(Connection conn, int userNo) {
+		ArrayList<Movie> movieList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = prop.getProperty("myStarRating");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("MV_NO"));
+				m.setMvName(rset.getString("MV_NAME"));
+				m.setMvPoster(rset.getString("MV_POSTER"));
+				m.setMvOpenDate(rset.getString("MV_OPENDATE"));
+				m.setStarRatingAvg(rset.getString("AVG_STAR_RATING"));
+				m.setStarRating(rset.getString("LIKE_POINT"));
+				
+				movieList.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return movieList;
+	}
+
+	// 다른 사용자의 별점 분석 정보 가져오는 메소드 [기웅]
+	public ArrayList<HashMap<String, String>> starRatingAnalysis(Connection conn, int otherUserNo) {
+		ArrayList<HashMap<String, String>> starRatingAnalyList = new ArrayList<>();
+		String query = prop.getProperty("starRatingAnalysis");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, otherUserNo);
+			pstmt.setInt(2, otherUserNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				HashMap<String, String> h = new HashMap<>();
+				h.put("LIKE_POINT", rset.getString("LIKE_POINT"));
+				h.put("COUNT_LIKE_POINT", rset.getString("COUNT_LIKE_POINT"));
+				h.put("TA_NO", rset.getString("TA_NO"));
+				
+				starRatingAnalyList.add(h);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return starRatingAnalyList;
+	}
+
 
 
 }

@@ -957,7 +957,7 @@
         
         function otherUser(memNo) {
         	<% if(loginMember != null) {%>
-        		location.href ="<%= contextPath %>/otherUser.fp?userNo=<%= loginMember.getMemNo() %>&&otherUserNo=" + memNo;
+        		location.href ="<%= contextPath %>/otherUser.fp?movieNo=<%= movie.getMvNo() %>&&userNo=<%= loginMember.getMemNo() %>&&otherUserNo=" + memNo;
         	<% } else {%>
         		alert("로그인 후 이용 가능한 서비스입니다.");
         	<% } %>

@@ -2,9 +2,14 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="com.fp.movie.model.vo.Review" %>
+    <%@ page import="com.fp.movie.model.vo.Movie" %>
+    <%@ page import="java.util.HashMap" %>
     <% 
 		Member otherUser = (Member)request.getAttribute("otherUser");
 		ArrayList<Review> otherUserReviewList = ((ArrayList<Review>)request.getAttribute("otherUserReview"));
+		ArrayList<Movie> bothInterestMovieList = (ArrayList<Movie>)request.getAttribute("bothInterestMovieList");
+		Movie conflictingMovie = (Movie)request.getAttribute("conflictingMovie");
+		ArrayList<HashMap<String, String>> starRatingAnalyList = (ArrayList<HashMap<String, String>>)request.getAttribute("starRatingAnalyList");
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -376,6 +381,7 @@
             font-size: 13px;
             justify-content: center;
             align-items: center;
+            margin-left: 20px;
         }
 
         .user_info_other,
@@ -455,6 +461,7 @@
                 <div class="user_info_wrap">
                     <div class="user_info_large">
                         <div class="user_icon">
+                        	<% if(otherUser != null) { %>
                             <div class="user_icon_wrap" style="border: 2px solid <%= otherUser.getMemColor() %>">
                             	<% if(otherUser.getMemImgPath() == null) {%>
                                 	<i class="fa-solid fa-user fa-3x" style="color: <%= otherUser.getMemColor() %>;"></i>
@@ -462,6 +469,7 @@
                                 	<img src="<%= otherUser.getMemImgPath() %>">
                                 <% } %>
                             </div>
+                            <% } %>
                         </div>
                         <div class="user_nickname">
                             <span>LV.<%= otherUser.getMemLevel() %></span>
@@ -477,7 +485,9 @@
                             <span>별점 평균 : <%= otherUser.getAvgLikePoint() %></span>
                         </div>
                         <div class="reviews_wrap">
-                        <% for(int i = 0; i < (otherUserReviewList.size() > 3 ? 3 : otherUserReviewList.size()); i++) {%>
+                        <% if(otherUserReviewList != null)  {%>
+                        <% if(!otherUserReviewList.isEmpty()) {%>
+                        	<% for(int i = 0; i < (otherUserReviewList.size() > 3 ? 3 : otherUserReviewList.size()); i++) {%>
                             <div class="movie_review_el">
                                 <div class="movie_review_part">
                                     <div class="thumb_btn">
@@ -522,7 +532,7 @@
                                     </div>
                                     <div class="user_img_info">
                                         <div class="thumbnail_inReview">
-                                            <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                            <img class="thumbnail_img" src="<%= otherUserReviewList.get(i).getMvPoster() %>" alt="">
                                         </div>
                                         <div class="user_info">
                                             <div class="user_level_nickname">
@@ -531,9 +541,9 @@
                                             </div>
                                             <div class="starRating">
                                                 <% for(int j = 0; j < 5; j++) {%>
-		                                        <% if (j < (int)Double.parseDouble(otherUserReviewList.get(j).getLikePoint())) { %>
+		                                        <% if (j < (int)Double.parseDouble(otherUserReviewList.get(i).getLikePoint())) { %>
 		                                            <img class="star_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
-		                                        <% } else if(j < Math.ceil((Double.parseDouble(otherUserReviewList.get(j).getLikePoint()))) ) {%>
+		                                        <% } else if(j < Math.ceil((Double.parseDouble(otherUserReviewList.get(i).getLikePoint()))) ) {%>
 		                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
 		                                        <% } else { %>
 		                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
@@ -545,7 +555,7 @@
                                     <div class="user_review_info">
                                         <div class="user_review_date">
                                             <div>
-                                                <span>듄2</span>
+                                                <span><%= otherUserReviewList.get(i).getMvName() %></span>
                                             </div>
                                             <div>
                                                 <span>작성일 : 2024-03-15</span>
@@ -553,13 +563,18 @@
                                         </div>
                                     </div>
                                     <div class="review_content">
-                                <% if(otherUserReviewList.get(i).getReviewContent().length() > 200) { %>
-                                    <%= otherUserReviewList.get(i).getReviewContent().substring(0, 200) + "..." %>
-                                    <div class="more_info">
-                                        <a class="more_info_btn">더보기</a>
-                                    </div>
-                                <% } else {%>
-                                    <%= otherUserReviewList.get(i).getReviewContent() %>
+                                <% if (otherUserReviewList.get(i).getReviewContent() != null) { %>
+                                    
+	                                <% if(otherUserReviewList.get(i).getReviewContent().length() > 200) { %>
+	                                    <%= otherUserReviewList.get(i).getReviewContent().substring(0, 200) + "..." %>
+	                                    <div class="more_info">
+	                                        <a class="more_info_btn">더보기</a>
+	                                    </div>
+	                                <% } else {%>
+	                                    <%= otherUserReviewList.get(i).getReviewContent() %>
+	                                <% } %>
+                                <% } else { %>
+                                	코멘트를 남기지 않았습니다.
                                 <% } %>
                                 </div>
                                 <div class="review_content_long">
@@ -573,37 +588,34 @@
                                 </div>
                             </div>
                             <% } %>
+                        <% } else { %>
+                        <h4>리뷰 정보가 없습니다.</h4>
+                        <% } %>
+       					<% } %>
                         </div>
                     </div>
                     <div class="both_interest">
                         <div class="both_interest_title">
                             <h4>둘 다 재밌게 본 작품</h4>
                         </div>
+                        
                         <div class="thumbnail_wrap">
+                        <% if(bothInterestMovieList != null) { %>
+                        <% if (!bothInterestMovieList.isEmpty()) {%>
+                        	<% for (int i = 0; i < (bothInterestMovieList.size() > 3 ? 3 : bothInterestMovieList.size()); i++) {%>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                <img class="thumbnail_img" src="<%= bothInterestMovieList.get(0).getMvPoster() %>" alt="">
                                 <div class="thumbnail_title">
-                                    <span>영화제목</span><br>
-                                    <span>영화별점</span><br>
-                                    <span>개봉연도, 국가</span>
+                                    <span><%= bothInterestMovieList.get(0).getMvName() %></span><br>
+                                    <span><%= bothInterestMovieList.get(0).getStarRatingAvg() %></span><br>
+                                    <span><%= bothInterestMovieList.get(0).getMvOpenDate() %></span>
                                 </div>
                             </div>
-                            <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                                <div class="thumbnail_title">
-                                    <span>영화제목</span><br>
-                                    <span>영화별점</span><br>
-                                    <span>개봉연도, 국가</span>
-                                </div>
-                            </div>
-                            <div class="thumbnail">
-                                <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                                <div class="thumbnail_title">
-                                    <span>영화제목</span><br>
-                                    <span>영화별점</span><br>
-                                    <span>개봉연도, 국가</span>
-                                </div>
-                            </div>
+                        	<% } %>
+                        <% } else {%>
+                        	<h5>같이 높게 평가한 작품이 없습니다.</h5>
+                        <% } %>
+                        <% } %>
                         </div>
                     </div>
                     <div class="diff_eval">
@@ -611,18 +623,19 @@
                             <h4>평가가 엇갈린 작품</h4>
                         </div>
                         <div class="diff_eval_info">
+                        <% if(conflictingMovie != null) { %>
                             <div class="diff_eval_movie">
                                 <div class="diff_thumbnail">
-                                    <img class="diff_thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
+                                    <img class="diff_thumbnail_img" src="<%= conflictingMovie.getMvPoster() %>" alt="">
                                     <div class="diff_thumbnail_title">
                                         <div>
-                                            <span>영화제목</span>
+                                            <span><%= conflictingMovie.getMvName() %></span>
                                         </div>
                                         <div>
-                                            <span>영화별점</span>
+                                            <span>평균별점 : <%= conflictingMovie.getStarRatingAvg() %></span>
                                         </div>
                                         <div>
-                                            <span>개봉연도, 국가</span>
+                                            <span>개봉연도 : <%= conflictingMovie.getMvOpenDate() %></span>
                                         </div>
                                     </div>
                                 </div>
@@ -636,15 +649,19 @@
                                     </div>
                                     <div class="user_info_nickname">
                                         <div class="user_info_nickname_info">
-                                            <span>LV. 사용자 등급</span>
-                                            <span> 사용자 닉네임</span>
+                                            <span>LV. <%= otherUser.getMemLevel() %></span>
+                                            <span style="margin-left: 10px"> <%= otherUser.getNickname() %></span>
                                         </div>
                                         <div class="user_info_starRating">
-                                            <img class="starRating_img" src="../../resources/img/별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/빈별.png" alt="">
+                                            <% for(int j = 0; j < 5; j++) {%>
+	                                        <% if (j < (int)Double.parseDouble(conflictingMovie.getOtherUserStarRating())) { %>
+	                                            <img class="star_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
+	                                        <% } else if(j < Math.ceil((Double.parseDouble(conflictingMovie.getOtherUserStarRating()))) ) {%>
+	                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
+	                                        <% } else { %>
+	                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
+	                                        <% } %>
+	                                        <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -656,22 +673,30 @@
                                     </div>
                                     <div class="user_info_nickname">
                                         <div class="user_info_nickname_info">
-                                            <span>LV. 사용자 등급</span>
-                                            <span> 사용자 닉네임</span>
+                                            <span>LV. <%= loginMember.getMemLevel() %></span>
+                                            <span style="margin-left: 10px"> <%=loginMember.getNickname() %></span>
                                         </div>
                                         <div class="user_info_starRating">
-                                            <img class="starRating_img" src="../../resources/img/별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/빈별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/빈별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/빈별.png" alt="">
-                                            <img class="starRating_img" src="../../resources/img/빈별.png" alt="">
+                                            <% for(int j = 0; j < 5; j++) {%>
+	                                        <% if (j < (int)Double.parseDouble(conflictingMovie.getStarRating())) { %>
+	                                            <img class="star_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
+	                                        <% } else if(j < Math.ceil((Double.parseDouble(conflictingMovie.getStarRating()))) ) {%>
+	                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
+	                                        <% } else { %>
+	                                        	<img class="star_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
+	                                        <% } %>
+	                                        <% } %>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <% } else { %>
+                            <h5>평가가 엇갈린 작품이 없습니다.</h5>
+                            <% } %>
                         </div>
                     </div>
                     <div class="taste_analysis">
+                     <% if(starRatingAnalyList.size() > 5) { %>
                         <div class="taste_analysis_title">
                             <h4>취향 분석</h4>
                         </div>
@@ -683,6 +708,9 @@
                         <div class="taste_analysis_graph">
                             <canvas id="starRating_chart" style="height: 200px;"></canvas>
                         </div>
+                    <% } else { %>
+                    <h5>충분한 별점 데이터가 존재하지 않습니다.</h5>
+                    <% } %>
                     </div>
                 </div>
             </div>
@@ -721,6 +749,7 @@
                 labels: ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'], // x축에 나올 값
                 datasets: [{
                     label: '# of starRatings',
+                    data: []
                     data: [0, 5, 8, 6, 7, 9, 18, 19, 20, 41], // x축 각각에 해당하는 값
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.8)',
