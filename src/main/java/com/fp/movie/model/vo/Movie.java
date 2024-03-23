@@ -20,9 +20,39 @@ public class Movie {
 	
 //	별점 매긴 사람 수 추가
 	private int numberOfStarRating;
-		
+	
+	// ** 2024.03.23 (관리자 : 한수민) 전체 영화조회시 필요한 필드(영화등록일, 영화에대한 카테고리) 추가
+	private String mvRegistDate;
+	private String categoryNames;	
+	
+	
 	public Movie() {
 	}
+
+	
+	/**
+	 * (관리자) 전체 영화 조회
+	 * @param mvNo
+	 * @param mvName
+	 * @param mvOpenDate
+	 * @param viewRating
+	 * @param mvRegistDate
+	 * @param categoryNames
+	 * 
+	 * @author 수밍
+	 */
+	public Movie(int mvNo, String mvName, String mvOpenDate, String viewRating, String mvRegistDate,
+			String categoryNames) {
+		super();
+		this.mvNo = mvNo;
+		this.mvName = mvName;
+		this.mvOpenDate = mvOpenDate;
+		this.viewRating = viewRating;
+		this.mvRegistDate = mvRegistDate;
+		this.categoryNames = categoryNames;
+	}
+
+
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
@@ -218,6 +248,23 @@ public class Movie {
 
 	public void setStarRatingAvg(String starRatingAvg) {
 		this.starRatingAvg = starRatingAvg;
+	}
+
+	
+	public String getMvRegistDate() {
+		return mvRegistDate;
+	}
+
+	public void setMvRegistDate(String mvRegistDate) {
+		this.mvRegistDate = mvRegistDate;
+	}
+
+	public String getCategoryNames() {
+		return categoryNames;
+	}
+
+	public void setCategoryNames(String categoryNames) {
+		this.categoryNames = categoryNames;
 	}
 
 	@Override
