@@ -84,9 +84,9 @@
 			 , TO_CHAR(INQRY_A_DATE, 'YY/MM/DD') INQRY_A_DATE <!-- 답변일 -->
 			 , I.ADMIN_NO <!-- 관리자번호 -->
 			 , ADMIN_ID <!-- 관리자id, ADMIN테이블과 조인 -->
-			 , I.MEM_NO <!-- 회원번호 -->
+			 , I.MEM_NO MEM_NO <!-- 회원번호 -->
 	      FROM INQUIRY I
-	 	  JOIN ADMIN A ON (I.ADMIN_NO = A.ADMIN_NO)
+	 	  LEFT JOIN ADMIN A ON (I.ADMIN_NO = A.ADMIN_NO)
 	     WHERE INQRY_NO = ? <!-- 현재 넘겨받은 글번호와 일치하는 -->
 	</entry>
 	

@@ -3,13 +3,11 @@
 <%@ page import="com.fp.inquiry.model.vo.*" %>
 <%@ page import="com.fp.common.model.vo.*" %>
 <%
-	Inquiry in = (Inquiry)request.getAttribute("in");
+	Inquiry inqu = (Inquiry)request.getAttribute("inqu");
 	// 글번호,제목,내용,질문일,답변,답변일,관리자번호,관리자id,회원번호
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
-	System.out.println("겟으로 받아온 jsp에 Inquiry : " + in);
-	System.out.println("겟으로 받아온 jsp에 iAttachmentn : " + at);
 %>
 <!DOCTYPE html>
 <html>
@@ -113,20 +111,20 @@
 
             <div class="content_name">
                 <div class="content_first">
-                    <div class="question_title"><%=in.getInqryTitle()%></div>
+                    <div class="question_title"><%=inqu.getInqryTitle()%></div>
                 </div>
                 <div class="content_second">
-                    <div class="upload_date"><%=in.getInqryDate() + "  문의"%></div>
+                    <div class="upload_date"><%=inqu.getInqryDate() + "  문의"%></div>
                 </div>
             </div>
             <span class="question_q">Q</span>
-            <div class="question_que"><%=in.getInqryContent()%><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %></div>
+            <div class="question_que"><%=inqu.getInqryContent()%><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %><br><br></div>
             
             <span class="question_a">A</span>
             <!-- 답변이 없을 경우 -->
             <!-- <div class="question_ans">아직 답변이 없습니다.</div> -->
-			<%if(in.getInqryAContent() != null){ %>
-            <div class="question_ans"><%=in.getInqryAContent()%>문의사항답변~~~~~~~~~~~~~~~~~~~~~~</div>
+			<%if(inqu.getInqryAContent() != null){ %>
+            <div class="question_ans"><%=inqu.getInqryAContent()%></div>
             <%}else{ %>
             <div class="question_ans">아직 답변이 없습니다.</div>
             <%} %>
