@@ -17,6 +17,7 @@ public class Member {
 	private String memColor; // 회원정보 색깔
 	private String memImgPath; // 프로필 이미지 경로
 	private int memFile; // 회원정보 사진파일 번호
+	private int taNo;
 	private String dormantStatus; // 휴면회원 여부
 	private int reviewContentCnt; // 리뷰횟수 ( (관리자) 회원조회 페이지에서 사용할 필드 )
 	private double avgLikePoint; // 별점평균 ( (관리자) 회원조회 페이지에서 사용할 필드)
@@ -100,11 +101,11 @@ public class Member {
 	public Member() {
 
 	}
-
+	
 	public Member(int memNo, String memId, String memPwd, String memName, String memBirth, String memGender,
 			String memEmail, String memPhone, String prefGenre, String nickname, String memStatus, String signInDate,
-			int memLevel, String memColor, String memImgPath, int memFile, String dormantStatus, int reviewContentCnt,
-			double avgLikePoint) {
+			int memLevel, String memColor, String memImgPath, int memFile, int taNo, String dormantStatus,
+			int reviewContentCnt, double avgLikePoint, int memBoardCnt) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -122,11 +123,23 @@ public class Member {
 		this.memColor = memColor;
 		this.memImgPath = memImgPath;
 		this.memFile = memFile;
+		this.taNo = taNo;
 		this.dormantStatus = dormantStatus;
 		this.reviewContentCnt = reviewContentCnt;
 		this.avgLikePoint = avgLikePoint;
+		this.memBoardCnt = memBoardCnt;
 	}
+
 	
+	
+	public int getTaNo() {
+		return taNo;
+	}
+
+	public void setTaNo(int taNo) {
+		this.taNo = taNo;
+	}
+
 	public int getMemNo() {
 		return memNo;
 	}
@@ -293,8 +306,10 @@ public class Member {
 				+ ", memBirth=" + memBirth + ", memGender=" + memGender + ", memEmail=" + memEmail + ", memPhone="
 				+ memPhone + ", prefGenre=" + prefGenre + ", nickname=" + nickname + ", memStatus=" + memStatus
 				+ ", signInDate=" + signInDate + ", memLevel=" + memLevel + ", memColor=" + memColor + ", memImgPath="
-				+ memImgPath + ", memFile=" + memFile + ", dormantStatus=" + dormantStatus + ", reviewContentCnt="
-				+ reviewContentCnt + ", avgLikePoint=" + avgLikePoint + ", memBoardCnt=" + memBoardCnt + "]";
+				+ memImgPath + ", memFile=" + memFile + ", taNo=" + taNo + ", dormantStatus=" + dormantStatus
+				+ ", reviewContentCnt=" + reviewContentCnt + ", avgLikePoint=" + avgLikePoint + ", memBoardCnt="
+				+ memBoardCnt + "]";
 	}
+
 	
 }
