@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.inquiry.model.vo.*" %>
+<%@ page import="com.fp.common.model.vo.*" %>
+<%
+	Inquiry in = (Inquiry)request.getAttribute("in");
+	// 글번호,제목,내용,질문일,답변,답변일,관리자번호,관리자id,회원번호
+	Attachment at = (Attachment)request.getAttribute("at");
+	// null (첨부파일이 없을경우)
+	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
+	System.out.println("겟으로 받아온 jsp에 Inquiry : " + in);
+	System.out.println("겟으로 받아온 jsp에 iAttachmentn : " + at);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,20 +113,23 @@
 
             <div class="content_name">
                 <div class="content_first">
-                    <div class="question_title">내 문의사항 제목2</div>
+                    <div class="question_title"><%=in.getInqryTitle()%></div>
                 </div>
                 <div class="content_second">
-                    <div class="upload_date">2024/02/20 문의</div>
+                    <div class="upload_date"><%=in.getInqryDate() + "  문의"%></div>
                 </div>
             </div>
             <span class="question_q">Q</span>
-            <div class="question_que">내 문의사항 내용 ~~~~~~~~~~~~~~~~~~~~~~</div>
+            <div class="question_que"><%=in.getInqryContent()%><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %></div>
             
             <span class="question_a">A</span>
             <!-- 답변이 없을 경우 -->
             <!-- <div class="question_ans">아직 답변이 없습니다.</div> -->
-
-            <div class="question_ans">문의사항답변~~~~~~~~~~~~~~~~~~~~~~</div>
+			<%if(in.getInqryAContent() != null){ %>
+            <div class="question_ans"><%=in.getInqryAContent()%>문의사항답변~~~~~~~~~~~~~~~~~~~~~~</div>
+            <%}else{ %>
+            <div class="question_ans">아직 답변이 없습니다.</div>
+            <%} %>
 
             <button type="button" class="btn btn-secondary btnback" onclick="history.back();">뒤로가기</button>
         

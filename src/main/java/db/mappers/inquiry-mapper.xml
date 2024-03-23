@@ -45,5 +45,63 @@
    		  , ? <!-- (저장경로) -->
    		  )
 	</entry>
+	
+	<!-- 총 문의사항(게시글) 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM INQUIRY
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<!-- 고객센터 메인페이지에 보여질 값을 담고, 페이징바 구현을 위한 sql문 BY 호용 -->
+	<entry key="selectList">
+	 SELECT *
+	   FROM (
+		    SELECT ROWNUM RNUM, A.*
+			  FROM (
+					SELECT 
+						   INQRY_NO
+						 , INQRY_TITLE
+						 , TO_CHAR(INQRY_DATE, 'YYYY/MM/DD') INQRY_DATE
+						 , INQRY_STATUS
+					  FROM INQUIRY
+					 WHERE MEM_NO = ?
+					 ORDER
+					    BY INQRY_NO DESC
+					) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 1대1문의 상세페이지를 띄우기위한 sql문 by호용 -->
+	<entry key="selectInquiry">
+		SELECT
+			   INQRY_NO <!-- 문의사항 번호 -->
+			 , INQRY_TITLE <!-- 제목 -->
+			 , INQRY_CONTENT <!-- 내용 -->
+			 , TO_CHAR(INQRY_DATE, 'YY/MM/DD') INQRY_DATE <!-- 질문일 -->
+			 , INQRY_A_CONTENT <!-- 답변 -->
+			 , TO_CHAR(INQRY_A_DATE, 'YY/MM/DD') INQRY_A_DATE <!-- 답변일 -->
+			 , I.ADMIN_NO <!-- 관리자번호 -->
+			 , ADMIN_ID <!-- 관리자id, ADMIN테이블과 조인 -->
+			 , I.MEM_NO <!-- 회원번호 -->
+	      FROM INQUIRY I
+	 	  JOIN ADMIN A ON (I.ADMIN_NO = A.ADMIN_NO)
+	     WHERE INQRY_NO = ? <!-- 현재 넘겨받은 글번호와 일치하는 -->
+	</entry>
+	
+	<!-- 1대1문의 상세페이지를 띄우기위한 sql문(첨부파일) by호용 -->
+	<entry key="selectInquiryAttachment">
+		SELECT 
+   			   FILE_NO
+   			 , ORIGIN_NAME
+   			 , CHANGE_NAME
+   			 , FILE_PATH
+   	  	  FROM ATTACHMENT
+   	  	 WHERE REF_NO = ? <!-- 참조하는 문의사항 번호가 현재 넘겨받은 글번호와 일치하는지? -->
+   	  	   AND REF_TYPE = 7
+   	  	 ORDER
+		    BY FILE_LEVEL ASC
+	</entry>
 
 </properties>

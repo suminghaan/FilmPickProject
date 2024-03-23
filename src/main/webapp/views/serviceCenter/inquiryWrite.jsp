@@ -88,7 +88,11 @@
             <div class="content_link"">
             	<!-- 추후 링크 수정 @@@@@@@@@@ -->
                 <a href="<%=contextPath%>/list.no?page=1" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
-                <a href="inquiryList.jsp" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
+                <%if(loginMember != null){ %>
+                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <%}else{ %>
+                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <%} %>
             </div>
             <br> 
             <table class="tableback table" id="question_list">
@@ -144,7 +148,7 @@
     <script>
 
         function question_list(){
-            location.href="inquiryList.jsp"; // 추후 수정
+            location.href="<%=contextPath%>/list.in?page=1";
         }
         
         function nomv(){

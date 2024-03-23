@@ -68,7 +68,7 @@ public class InquiryInsertController extends HttpServlet {
 			
 			if(result > 0) {
 				session.setAttribute("alertMsg", "1대1문의가 등록되었습니다.");
-				response.sendRedirect(request.getContextPath() + "/views/serviceCenter/inquiryList.jsp");
+				response.sendRedirect(request.getContextPath() + "/list.in?page=1");
 			}else {
 				if(at != null) {
 					new File(savePath + at.getChangeName()).delete();

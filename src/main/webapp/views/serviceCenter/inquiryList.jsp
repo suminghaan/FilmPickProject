@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.common.model.vo.PageInfo" %>
+<%@ page import="com.fp.inquiry.model.vo.Inquiry" %>
+<%@ page import="java.util.List" %>
+<%
+	// NoticeListController Servlet에서 setAttribute로 담아 보낸것들을 jsp에서 꺼내는 구문
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	List<Inquiry> list = (List<Inquiry>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +76,11 @@
                 <div class="content_link"">
                 	<!-- 추후 링크 수정 @@@@@@@@@@ -->
                     <a href="<%=contextPath%>/list.no?page=1" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
-                    <a href="inquiryList.jsp" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
+                    <%if(loginMember != null){ %>
+	                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+	                <%}else{ %>
+	                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+	                <%} %>
                 </div>
                 <br>
                 <table class="tableback table table-hover" id="question_list">
@@ -85,29 +97,47 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>내 문의사항제목 2</td>
-                            <td>2024/02/22</td>
-                            <td>N</td>
-                        </tr>
-                        <tr>
-                            <td>내 문의사항제목 1</td>
-                            <td>2024/02/20</td>
-                            <td>Y</td>
-                        </tr>
+                        	<%if(list.isEmpty()){ %>
+	                        <tr>
+	                            <td colspan="3">작성하신 문의사항이 없습니다.</td>
+	                        </tr>
+	                        <%}else{ %>
+	                        	<%for(Inquiry in : list){ %>
+		                        <tr onclick="inquiryDetail(<%=in.getInqryNo()%>);">
+		                            <td><%=in.getInqryTitle() %></td>
+		                            <td><%=in.getInqryDate() %></td>
+		                            <td><%=in.getInqryStatus() %></td>
+	                        	</tr>
+	                        	<%} %>
+                        	<%} %>
                     </tbody>
                 </table>
  
                 <br><br><br><br>
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
+                <%if(loginMember != null){ %>
+	           <ul class="pagination justify-content-center" style="margin-top: 10px;">
+	           	<% if(pi.getCurrentPage() == 1){ %>
+	           		<!-- 현재 내가 보고있는 페이지가 1페이지와 일치할경우 클릭불가능 -->
+	               	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	               <% }else{ %>
+	               	<!-- 클릭시 내가 보고있는 페이지의 이전페이지로 이동하기위한 구문 -->
+	               	<li class="page-item"><a class="page-link" href="<%= contextPath %>/list.in?page=<%= pi.getCurrentPage() - 1%>">Previous</a></li>
+	               <% } %>
+	               <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+	              		<%if(p == pi.getCurrentPage()){ %>
+	              		<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	              		<%}else{ %>
+	              		<li class="page-item"><a class="page-link" href="<%= contextPath %>/list.in?page=<%= p %>"><%= p %></a></li>
+	              		<% } %>
+	               <% } %>
+	               <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+	               <!-- 현재 내가 보고있는 페이지가 마지막페이지와 일치할 경우 클릭 불가능 -->
+	               <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+					<%}else{ %>
+	               <li class="page-item"><a class="page-link" href="<%= contextPath%>/list.in?page=<%=pi.getCurrentPage()+1%>">Next</a></li>
+					<%} %>
+	           </ul>
+	           <%} %>
 
                 <div class="notice_search">
                     <form action="" method="">
@@ -121,22 +151,21 @@
         <!-- Section end -->
 
         <script>
-            $(function(){
-                $("#question_list>tbody>tr").click(function(){
-                    location.href="inquiryContent.jsp";
-                })
-            })
+        
+        	function inquiryDetail(no){
+        		location.href="<%=contextPath%>/detail.in?no=" + no;
+        	}
 
             function question_list(){
-                location.href="inquiryList.jsp"; // 추후수정
+                location.href="<%=contextPath%>/list.in?page=1";
             }
             
             function nomv(){
-                location.href="noMovieList.jsp"; // 추후수정
+                location.href="views/serviceCenter/inquiryWrite.jsp"; // 추후수정
             }
 
             function mantoman(){
-                location.href="inquiryWrite.jsp"; // 추후수정
+                location.href="views/serviceCenter/inquiryWrite.jsp";
             }
             
         </script>

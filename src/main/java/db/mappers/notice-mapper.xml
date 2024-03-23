@@ -58,7 +58,7 @@
 	
 	<!-- 공지사항 상세페이지를 띄우기위한 sql문(첨부파일) by호용 -->
 	<entry key="selectNoticeAttachment">
-		   		SELECT 
+		SELECT 
    			   FILE_NO
    			 , ORIGIN_NAME
    			 , CHANGE_NAME
