@@ -1,5 +1,6 @@
 package com.fp.inquiry.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.template.MyFileRenamePolicy;
+import com.fp.inquiry.model.service.InquiryService;
 import com.fp.inquiry.model.vo.Inquiry;
 import com.fp.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
@@ -52,6 +55,28 @@ public class InquiryInsertController extends HttpServlet {
 			in.setInqryTitle(inqryTitle);
 			in.setInqryContent(inqryContent);
 			in.setMemNo(memNo);
+			
+			Attachment at = null;
+			if(multiRequest.getOriginalFileName("upfile") != null) {
+				at = new Attachment();
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setFilePath("resources/upfiles/");
+			}
+			
+			int result = new InquiryService().insertInquiry(in, at);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "1대1문의가 등록되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/views/serviceCenter/inquiryList.jsp");
+			}else {
+				if(at != null) {
+					new File(savePath + at.getChangeName()).delete();
+				}
+				session.setAttribute("alertMsg", "1대1문의 등록을 실패하였습니다.");
+				response.sendRedirect(request.getContextPath() + "/views/serviceCenter/inquiryList.jsp");
+			}
+			
 		}
 	}
 

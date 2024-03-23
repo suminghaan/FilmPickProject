@@ -1,4 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	
+	<!-- 1대1문의 신청을 위한 메소드 [호용] -->
+	<entry key="insertInquiry">
+		INSERT
+		  INTO INQUIRY
+		  (
+		  	INQRY_NO
+		  , INQRY_TITLE
+		  , INQRY_CONTENT
+		  , MEM_NO
+		  )
+		  VALUES
+		  (
+		  	SEQ_INQUIRY_NO.NEXTVAL
+		  , ? <!-- 사용자가 입력한 제목 -->
+		  , ? <!-- 사용자가 입력한 내용 -->
+		  , ? <!-- 1대1문의 신청한 회원번호 -->
+		  )
+	</entry>
+	
+	<!-- 1대1문의 신청을 위한 sql문(첨부파일 있을경우) [호용] -->
+	<entry key="insertAttachment">
+	   	INSERT
+   		  INTO ATTACHMENT
+   		  (
+   		  	FILE_NO
+		  ,	REF_NO
+		  , REF_TYPE
+		  , FILE_TYPE
+		  ,	ORIGIN_NAME
+		  ,	CHANGE_NAME
+		  ,	FILE_PATH
+   		  )
+   		  VALUES
+   		  (
+   		  	SEQ_ATTACHMENT_NO.NEXTVAL
+   		  , SEQ_INQUIRY_NO.CURRVAL <!--바로 이전의 NEXTVAL로 발생된 번호(하나의 트랜잭션으로 관리해야됨)-->
+   		  , '7'
+   		  , '1'
+   		  , ? <!-- (전달된 첨부파일의 원본명) -->
+   		  , ? <!-- (해당 첨부파일의 수정명 == 실제 업로드된 파일명) -->
+   		  , ? <!-- (저장경로) -->
+   		  )
+	</entry>
+
 </properties>

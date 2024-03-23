@@ -114,7 +114,9 @@
                                 <input type="file" class="form-control-file" name="upfile" style="margin-left: 25px; width: 250px;">
                                 <p class="bt">
                                     <button type="button" class="btn btn-secondary content-btn" onclick="history.back();">취소</button>
+                                    <%if(loginMember != null){ %>
                                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">등록</button>
+                               		<%} %>
                                 </p>
 
                             <!-- The Modal -->
