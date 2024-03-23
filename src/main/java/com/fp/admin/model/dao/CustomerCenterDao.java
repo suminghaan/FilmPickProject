@@ -145,5 +145,4 @@ public class CustomerCenterDao {
 		return list;
 	}
 
-
 }

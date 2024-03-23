@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<!-- ======================== 김지우 =========================================== -->
+	<!-- 탈퇴회원 조회, 페이징 용도 -->
+	<entry key="selectCancelMemberListCount">
+		SELECT COUNT(*) COUNT
+		FROM CANCELED_MEM
+	</entry>
+	
+	<!-- 탈퇴회원 조회, 페이징 용도 -->
+	<entry key="selectCancelMemberList">
+		SELECT *
+			FROM(
+			    SELECT ROWNUM RNUM, A.*
+			    FROM (
+			            SELECT MEM_ID
+                             , ADMIN_NO
+                             , CANCEL_DATE
+                        FROM CANCELED_MEM
+                        JOIN MEMBER USING (MEM_NO)
+                        ORDER BY CANCEL_DATE DESC, MEM_ID DESC
+			    ) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+<!-- ======================== 김지우 =========================================== -->
+</properties>

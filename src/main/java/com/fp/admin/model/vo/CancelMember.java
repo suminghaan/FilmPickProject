@@ -4,6 +4,7 @@ public class CancelMember { // 탈퇴회원 테이블
 	private String memNo; // 회원번호
 	private String adminNo; // 관리자번호
 	private String cancelDate; // 탈퇴일
+	private String memId; // 회원아이디
 	
 	public CancelMember() {}
 
@@ -38,11 +39,18 @@ public class CancelMember { // 탈퇴회원 테이블
 		this.cancelDate = cancelDate;
 	}
 
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
 	@Override
 	public String toString() {
-		return "CancelMember [memNo=" + memNo + ", adminNo=" + adminNo + ", cancelDate=" + cancelDate + "]";
+		return "CancelMember [memNo=" + memNo + ", adminNo=" + adminNo + ", cancelDate=" + cancelDate + ", memId="
+				+ memId + "]";
 	}
-	
-	
 
 }
