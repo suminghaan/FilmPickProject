@@ -1,4 +1,4 @@
-INSERT INTO
+    INSERT INTO
     TASTE_ANALYSIS
 VALUES
     (
@@ -2088,6 +2088,682 @@ VALUES (
     , '미국'
     , 'resources/upfiles/20121111155232_77189.webp'
 );
+------------------------------- [용훈] 인물 데이터 추가---------------------------------------------
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '장재현'
+    , '감독'
+    , '1981-00-00'
+    , '한국'
+    , 'resources/upfiles/20221212125232_72122.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '최민식'
+    , '배우'
+    , '1962-04-27'
+    , '한국'
+    , 'resources/upfiles/20221212122242_82112.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김고은'
+    , '배우'
+    , '1991-07-02'
+    , '한국'
+    , 'resources/upfiles/20221115172448_84176.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '유해진'
+    , '배우'
+    , '1970-01-04'
+    , '한국'
+    , 'resources/upfiles/20230202041440_98451.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이도현'
+    , '배우'
+    , '1995-04-11'
+    , '한국'
+    , 'resources/upfiles/20230408071165_15117.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '신카이 마코토'
+    , '감독'
+    , '1973-02-09'
+    , '일본'
+    , 'resources/upfiles/20230409071046_12345.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '하라 나노카'
+    , '배우'
+    , '2003-08-26'
+    , '일본'
+    , 'resources/upfiles/20230101011244_23345.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '마츠무라 호쿠토'
+    , '배우, 가수'
+    , '1995-06-18'
+    , '일본'
+    , 'resources/upfiles/20230202021223_14615.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '후카츠 에리'
+    , '배우'
+    , '1973-01-11'
+    , '일본'
+    , 'resources/upfiles/20230303033165_18416.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김성수'
+    , '감독'
+    , '1961-07-31'
+    , '한국'
+    , 'resources/upfiles/20230304051514_19151.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '황정민'
+    , '배우'
+    , '1970-09-01'
+    , '한국'
+    , 'resources/upfiles/20230305051615_21042.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '정우성'
+    , '배우'
+    , '1973-04-22'
+    , '한국'
+    , 'resources/upfiles/20230305061711_22189.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이성민'
+    , '배우'
+    , '1968-10-15'
+    , '한국'
+    , 'resources/upfiles/20230306070102_23489.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '박해준'
+    , '배우'
+    , '1976-06-14'
+    , '한국'
+    , 'resources/upfiles/20230307080203_13579.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이상용'
+    , '감독'
+    , '1980-00-00'
+    , '한국'
+    , 'resources/upfiles/20230308090304_23689.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '마동석'
+    , '배우, 제작자'
+    , '1971-03-01'
+    , '미국'
+    , 'resources/upfiles/20230309090305_32180.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이준혁'
+    , '배우'
+    , '1984-03-13'
+    , '한국'
+    , 'resources/upfiles/20230309100405_32982.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '아오키 무네타카'
+    , '배우, 제작자'
+    , '1980-03-14'
+    , '일본'
+    , 'resources/upfiles/20230309110101_12053.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이범수'
+    , '배우'
+    , '1969-11-25'
+    , '한국'
+    , 'resources/upfiles/20230309120202_43251.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '최귀화'
+    , '배우'
+    , '1978-03-03'
+    , '한국'
+    , 'resources/upfiles/20230309120404_14236.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '최귀화'
+    , '배우'
+    , '1978-03-03'
+    , '한국'
+    , 'resources/upfiles/20230309120404_14236.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김한민'
+    , '감독'
+    , '1969-11-05'
+    , '한국'
+    , 'resources/upfiles/20230309120501_21357.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '박해일'
+    , '배우'
+    , '1977-01-26'
+    , '한국'
+    , 'resources/upfiles/20230309120502_18754.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '변요한'
+    , '배우'
+    , '1986-04-29'
+    , '한국'
+    , 'resources/upfiles/20230309120503_28754.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '안성기'
+    , '배우'
+    , '1952-01-01'
+    , '한국'
+    , 'resources/upfiles/20230309120504_62754.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '손현주'
+    , '배우'
+    , '1965-06-24'
+    , '한국'
+    , 'resources/upfiles/20230309120505_68754.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이석훈'
+    , '감독'
+    , '1972-01-05'
+    , '한국'
+    , 'resources/upfiles/20230309120506_51954.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '현빈'
+    , '배우'
+    , '1982-09-25'
+    , '한국'
+    , 'resources/upfiles/20230309120507_51951.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '임윤아'
+    , '배우, 가수'
+    , '1990-05-30'
+    , '한국'
+    , 'resources/upfiles/20230309120508_33551.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '다니엘 헤니'
+    , '배우'
+    , '1979-11-28'
+    , '미국'
+    , 'resources/upfiles/20230309120509_43892.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이정재'
+    , '배우, 감독'
+    , '1972-12-15'
+    , '한국'
+    , 'resources/upfiles/20230309120509_41122.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '전혜진'
+    , '배우'
+    , '1976-08-10'
+    , '한국'
+    , 'resources/upfiles/20230309120510_28899.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '허성태'
+    , '배우'
+    , '1977-10-20'
+    , '한국'
+    , 'resources/upfiles/20230309120512_31599.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '안태진'
+    , '감독'
+    , '1972-00-00'
+    , '한국'
+    , 'resources/upfiles/20230309120512_31454.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '류준열'
+    , '배우'
+    , '1986-09-25'
+    , '한국'
+    , 'resources/upfiles/20230309120513_25161.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '존 왓츠'
+    , '감독'
+    , '1981-06-28'
+    , '미국'
+    , 'resources/upfiles/20230309120514_32877.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '젠데이아 콜먼'
+    , '배우, 가수'
+    , '1996-09-01'
+    , '미국'
+    , 'resources/upfiles/20230309120515_16828.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '베네딕트 컴버배치'
+    , '배우'
+    , '1976-07-19'
+    , '영국'
+    , 'resources/upfiles/20230309120515_35875.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '류승완'
+    , '감독'
+    , '1973-12-15'
+    , '한국'
+    , 'resources/upfiles/20230309120516_55875.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김윤석'
+    , '배우, 감독'
+    , '1967-01-21'
+    , '한국'
+    , 'resources/upfiles/20230309120517_51584.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '조인성'
+    , '배우'
+    , '1981-07-28'
+    , '한국'
+    , 'resources/upfiles/20230309120517_23584.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '허준호'
+    , '배우'
+    , '1964-04-14'
+    , '한국'
+    , 'resources/upfiles/20230309120518_68474.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '케이트 쇼트랜드'
+    , '감독, 작가'
+    , '1968-08-10'
+    , '오스트레일리아'
+    , 'resources/upfiles/20230309120519_65651.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '스칼릿 조핸슨'
+    , '배우, 가수'
+    , '1984-11-22'
+    , '미국'
+    , 'resources/upfiles/20230309120519_98754.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '플로렌스 퓨'
+    , '배우'
+    , '1996-01-03'
+    , '영국'
+    , 'resources/upfiles/20230309120520_01532.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '레이첼 와이즈'
+    , '배우'
+    , '1970-03-07'
+    , '영국'
+    , 'resources/upfiles/20230309120520_02532.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '저스틴 린'
+    , '감독'
+    , '1971-00-00'
+    , '대만'
+    , 'resources/upfiles/20230309120520_10101.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '빈 디젤'
+    , '배우, 감독'
+    , '1967-07-18'
+    , '미국'
+    , 'resources/upfiles/20230309120520_10102.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '존 시나'
+    , '배우, 프로레슬링선수'
+    , '1977-04-23'
+    , '미국'
+    , 'resources/upfiles/20230309120520_10103.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '피트 닥터'
+    , '감독'
+    , '1968-10-09'
+    , '미국'
+    , 'resources/upfiles/20230309120520_10113.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '제이미 폭스'
+    , '배우, 가수'
+    , '1967-12-13'
+    , '미국'
+    , 'resources/upfiles/20230309120520_10114.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '스티븐 개건'
+    , '감독, 작가'
+    , '1965-05-06'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20111.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '로버트 다우니 주니어'
+    , '배우'
+    , '1965-04-04'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20112.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '라미 말렉'
+    , '배우'
+    , '1981-05-12'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20113.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '안소니 루소'
+    , '감독, PD'
+    , '1970-02-03'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20114.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '조 루소'
+    , '감독, PD'
+    , '1971-07-08'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20115.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '크리스 에반스'
+    , '배우'
+    , '1981-06-13'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20166.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '크리스 헴스워스'
+    , '배우'
+    , '1983-08-11'
+    , '오스트레일리아'
+    , 'resources/upfiles/20230309120520_20167.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '마크 러팔로'
+    , '배우, 감독'
+    , '1967-11-22'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20168.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '제레미 레너'
+    , '배우'
+    , '1971-01-07'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20169.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '폴 러드'
+    , '배우'
+    , '1969-04-06'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20170.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '돈 치들'
+    , '배우'
+    , '1964-11-29'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20171.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '브리 라슨'
+    , '배우, 가수'
+    , '1989-10-01'
+    , '미국'
+    , 'resources/upfiles/20230309120520_20172.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '드니 빌뇌브'
+    , '감독, 작가'
+    , '1967-10-03'
+    , '캐나다'
+    , 'resources/upfiles/20230309120521_10172.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '티모시 샬라메'
+    , '배우'
+    , '1995-12-27'
+    , '미국'
+    , 'resources/upfiles/20230309120521_10173.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '레베카 퍼거슨'
+    , '배우'
+    , '1983-10-19'
+    , '스웨덴'
+    , 'resources/upfiles/20230309120521_10174.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '그레타 거윅'
+    , '배우, 감독'
+    , '1983-08-04'
+    , '미국'
+    , 'resources/upfiles/20230309120522_10111.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '시얼샤 로넌'
+    , '배우'
+    , '1994-04-12'
+    , '미국'
+    , 'resources/upfiles/20230309120522_10112.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '엠마 왓슨'
+    , '배우'
+    , '1990-04-15'
+    , '프랑스'
+    , 'resources/upfiles/20230309120522_10113.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '엘리자 스캔런'
+    , '배우'
+    , '1999-01-06'
+    , '오스트레일리아'
+    , 'resources/upfiles/20230309120522_10114.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '우민호'
+    , '감독'
+    , '1971-00-00'
+    , '한국'
+    , 'resources/upfiles/20230309120523_65487.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이병헌'
+    , '배우'
+    , '1970-07-12'
+    , '한국'
+    , 'resources/upfiles/20230309120523_65489.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '곽도원'
+    , '배우'
+    , '1973-05-17'
+    , '한국'
+    , 'resources/upfiles/20230309120523_65490.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이희준'
+    , '배우'
+    , '1979-06-29'
+    , '한국'
+    , 'resources/upfiles/20230309120523_65491.jpg'
+);
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김소진'
+    , '배우'
+    , '1979-12-12'
+    , '한국'
+    , 'resources/upfiles/20230309120523_65492.jpg'
+);
 
 ------------------ CASTING 데이터 추가
 INSERT INTO CASTING
@@ -2126,6 +2802,636 @@ VALUES (
     , '웨이드 오웬 와츠'
     , 28
     , 5
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 1
+    , 6
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '김상덕'
+    , 1
+    , 7
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '이화림'
+    , 1
+    , 8
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '고영근'
+    , 1
+    , 9
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '윤봉길'
+    , 1
+    , 10
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 2
+    , 11
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '이와토 스즈메'
+    , 2
+    , 12
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '무나카타 소타'
+    , 2
+    , 13
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '이와토 타마키'
+    , 2
+    , 14
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 4
+    , 15
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '전두광'
+    , 4
+    , 16
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '이태신'
+    , 4
+    , 17
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '정상호'
+    , 4
+    , 18
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '노태건'
+    , 4
+    , 18
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 5
+    , 19
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '마석도'
+    , 5
+    , 20
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '주성철'
+    , 5
+    , 21
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '리키'
+    , 5
+    , 22
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '장태수'
+    , 5
+    , 23
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 6
+    , 19
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '마석도'
+    , 6
+    , 20
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '강해상'
+    , 6
+    , 24
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '전일만'
+    , 6
+    , 25
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '전일만'
+    , 6
+    , 25
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 7
+    , 26
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '이순신'
+    , 7
+    , 27
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '와키자카 야스하루'
+    , 7
+    , 28
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '어영담'
+    , 7
+    , 29
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '원균'
+    , 7
+    , 30
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 8
+    , 31
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '림철령'
+    , 8
+    , 32
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '강진태'
+    , 8
+    , 9
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '박민영'
+    , 8
+    , 33
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '잭'
+    , 8
+    , 34
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 9
+    , 35
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '박평호'
+    , 9
+    , 35
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '김정도'
+    , 9
+    , 17
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '방주경'
+    , 9
+    , 36
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '장철성'
+    , 9
+    , 37
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 10
+    , 38
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '천경수'
+    , 10
+    , 39
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '인조'
+    , 10
+    , 9
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 11
+    , 40
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '피터 파커'
+    , 11
+    , 41
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , 'MJ'
+    , 11
+    , 42
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '닥터 스트레인지'
+    , 11
+    , 43
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 12
+    , 44
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '한신성'
+    , 12
+    , 45
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '강대진'
+    , 12
+    , 46
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '림용수'
+    , 12
+    , 47
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 13
+    , 48
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '나타샤 로마노프'
+    , 13
+    , 49
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '옐레나 벨로바'
+    , 13
+    , 50
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '멜리나 보스토코프'
+    , 13
+    , 51
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 14
+    , 52
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '도미닉 토레토'
+    , 14
+    , 53
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '제이콥 토레토'
+    , 14
+    , 54
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 15
+    , 55
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '조 가드너'
+    , 15
+    , 56
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 16
+    , 57
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '닥터 두리틀'
+    , 16
+    , 58
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '지프'
+    , 16
+    , 41
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '치치'
+    , 16
+    , 59
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 23
+    , 60
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 23
+    , 61
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '토니 스타크'
+    , 23
+    , 57
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '스티브 로저스'
+    , 23
+    , 62
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '토르'
+    , 23
+    , 63
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '브루스 배너'
+    , 23
+    , 64
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '나타샤 로마노프'
+    , 23
+    , 49
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '클린트 바튼'
+    , 23
+    , 65
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '스캇 랭'
+    , 23
+    , 66
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '제임스 로즈'
+    , 23
+    , 67
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '캐럴 댄버스'
+    , 23
+    , 68
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 38
+    , 69
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '폴'
+    , 38
+    , 70
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '챠니'
+    , 38
+    , 42
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '레이디 제시카'
+    , 38
+    , 71
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 19
+    , 72
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '조 마치'
+    , 19
+    , 73
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '멕 마치'
+    , 19
+    , 74
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '에이미 마치'
+    , 19
+    , 50
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '베스 마치'
+    , 19
+    , 75
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '로리 로렌스'
+    , 19
+    , 70
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 33
+    , 76
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '김규평'
+    , 33
+    , 77
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '박통'
+    , 33
+    , 18
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '박용각'
+    , 33
+    , 78
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '곽상천'
+    , 33
+    , 79
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '데보라 심'
+    , 33
+    , 80
 );
 
 -- 없는영화신청 테이블에 샘플데이터 삽입 (김지우)
