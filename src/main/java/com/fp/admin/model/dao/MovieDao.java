@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 import com.fp.notice.model.dao.NoticeDao;
 
@@ -196,6 +197,56 @@ public class MovieDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	// 영화 카테고리 조회
+	public List<Category> movieCategoryList(Connection conn) {
+		List<Category> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("movieCategoryList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+	
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Category(rset.getInt("category_no"),
+									rset.getString("category_name"),
+									rset.getString("category_status")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	// 인물 조회 리스트 페이징
+	public int selectCastingListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectCastingListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
 	}
 
 	

@@ -126,5 +126,20 @@
 			WHERE M.MV_NO = ?;
 				
 		</entry>
+		
+		<!-- 관리자 영화 카테고리 관리탭 조회 [수민] -->
+		<entry key="movieCategoryList">
+			SELECT
+				  CATEGORY_NO
+				, CATEGORY_NAME
+				, CATEGORY_STATUS
+			FROM CATEGORY
+		</entry>
+		
+		<!-- 관리자 인물 조회 페이징처리 [수민]-->
+		<entry key="selectCastingListCount">
+			SELECT COUNT(*) COUNT
+			  FROM CASTING
+		</entry>
 
 </properties>

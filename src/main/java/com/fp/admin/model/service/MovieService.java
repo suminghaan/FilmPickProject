@@ -13,6 +13,7 @@ import com.fp.admin.model.dao.MovieDao;
 import com.fp.admin.model.vo.Notice;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.common.template.JDBCTemplate;
+import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 
 
@@ -68,6 +69,22 @@ public class MovieService {
 		List<Movie> list = mDao.MovieListDetail(conn, mvNo);
 		close(conn);
 		return list;
+	}
+
+	// 영화카테고리관리 조회 
+	public List<Category> movieCategoryList() {
+		Connection conn = getConnection();
+		List<Category> list = mDao.movieCategoryList(conn);
+		close(conn);
+		return list;
+	}
+
+	// 영화 인물 관리 목록 조회 페이징
+	public int selectCastingListCount() {
+		Connection conn = JDBCTemplate.getConnection();
+		int listCount = mDao.selectCastingListCount(conn);
+		close(conn);
+		return listCount;
 	}
 	
 	
