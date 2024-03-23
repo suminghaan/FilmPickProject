@@ -186,16 +186,68 @@ public class BoardDao {
 		return allMovie;
 	}
 	
-	/**
+    /**
 	 * 
 	 * @param 호용
-	 * @return 총 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 * @return 총 영화카테고 리게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
 	 */
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery(); // 완성형 SELECT문이라서 바로 rset에 담을 수 있음
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT"); // 조회문은 변수.next()로 한행 밀어야됨
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;	
+	}
+	
+	/**
+	 * 
+	 * @param 호용
+	 * @return 총 잠담카테고리 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int chatSelectListCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("chatSelectListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery(); // 완성형 SELECT문이라서 바로 rset에 담을 수 있음
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT"); // 조회문은 변수.next()로 한행 밀어야됨
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;	
+	}
+	
+	/**
+	 * 
+	 * @param 호용
+	 * @return 총 인기게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int publicSelectListCount(Connection conn) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("publicSelectListCount");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery(); // 완성형 SELECT문이라서 바로 rset에 담을 수 있음

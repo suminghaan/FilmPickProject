@@ -42,12 +42,23 @@ public class OtherUserInfoController extends HttpServlet {
 		
 		if(otherUser != null) {
 			request.setAttribute("otherUser", otherUser);
-			request.setAttribute("otherUserReview", otherUserReview);
-			
-			request.getRequestDispatcher("/views/search/userInfo.jsp").forward(request, response);;
 		} else {
 			System.out.println("다른 유저 정보가 null입니다.");
 		}
+		
+		if(otherUserReview != null) {
+			request.setAttribute("otherUserReview", otherUserReview);
+		} else {
+			System.out.println("유저가 평가한 리뷰가 null입니다");
+		}
+		
+		if (bothInterestMovieList != null) {
+			request.setAttribute("bothInterestMovieList", bothInterestMovieList);
+		} else {
+			System.out.println("둘 다 재밌게 본 영화가 null입니다.");
+		}
+		
+		request.getRequestDispatcher("/views/search/userInfo.jsp").forward(request, response);
 
 	}
 

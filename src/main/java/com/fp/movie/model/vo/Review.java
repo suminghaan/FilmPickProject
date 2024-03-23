@@ -11,6 +11,7 @@ public class Review {
 	
 	
 	// 리뷰 정보를 볼 때 필수적인 요소 추가
+	private String mvPoster;
 	private String nickname;
 	private int memLevel;
 	private int agreeCount;
@@ -70,7 +71,7 @@ public class Review {
 	}
 
 	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, int memNo, int mvNo,
-			String nickname, int memLevel, int agreeCount, int disagreeCount, String memImgPath, String memColor,
+			String mvPoster, String nickname, int memLevel, int agreeCount, int disagreeCount, String memImgPath, String memColor,
 			String mvName) {
 		super();
 		this.mvReviewNo = mvReviewNo;
@@ -79,6 +80,7 @@ public class Review {
 		this.likePoint = likePoint;
 		this.memNo = memNo;
 		this.mvNo = mvNo;
+		this.mvPoster = mvPoster;
 		this.nickname = nickname;
 		this.memLevel = memLevel;
 		this.agreeCount = agreeCount;
@@ -87,6 +89,16 @@ public class Review {
 		this.memColor = memColor;
 		this.mvName = mvName;
 	}
+
+	public String getMvPoster() {
+		return mvPoster;
+	}
+
+
+	public void setMvPoster(String mvPoster) {
+		this.mvPoster = mvPoster;
+	}
+
 
 	public String getNickname() {
 		return nickname;
@@ -192,12 +204,15 @@ public class Review {
 		this.mvName = mvName;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Review [mvReviewNo=" + mvReviewNo + ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate
-				+ ", likePoint=" + likePoint + ", memNo=" + memNo + ", mvNo=" + mvNo + ", nickname=" + nickname
-				+ ", memLevel=" + memLevel + ", agreeCount=" + agreeCount + ", disagreeCount=" + disagreeCount
-				+ ", memImgPath=" + memImgPath + ", memColor=" + memColor + ", mvName=" + mvName + "]";
+				+ ", likePoint=" + likePoint + ", memNo=" + memNo + ", mvNo=" + mvNo + ", mvPoster=" + mvPoster
+				+ ", nickname=" + nickname + ", memLevel=" + memLevel + ", agreeCount=" + agreeCount
+				+ ", disagreeCount=" + disagreeCount + ", memImgPath=" + memImgPath + ", memColor=" + memColor
+				+ ", mvName=" + mvName + "]";
 	}
+
 
 }

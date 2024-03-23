@@ -131,7 +131,7 @@
                                 </td>
                             </tr>
                             <% for(Report r : rlist) { %>
-                            <% if(re.getReplyNo() == r.getReportBoardNo()) { %>
+                            <% if(re.getReBoNo() == r.getReportBoardNo()) { %>
                             <tr>
                                 <th>신고 내용</th>
                                 <td colspan="3">                            

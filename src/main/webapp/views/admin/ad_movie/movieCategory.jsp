@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.fp.movie.model.vo.Category" %>
+<%@ page import="java.util.List" %>
+<% List<Category> list = (List<Category>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,20 +60,8 @@
 	<!-- section start -->
 	<div class="bodyBox">
 		<h1>영화 카테고리 관리</h1>
-        
-        <hr>
-        
-        <div class="d-flex justify-content-center container">
-            <span>검색</span>&nbsp;&nbsp;&nbsp;
-            <input type="text" placeholder="검색어를 입력해주세요">
-            <button type="button">
-                <img src="../img/icon_search.png">
-            </button>          
-        </div>
-        
-        <br><br>
-        
-        
+		<br>
+                
 		<table class="table table-hover">
             <thead>
                 <tr>
@@ -78,11 +70,14 @@
             </thead>
 
             <tbody>
+            <% for(Category c :list){ %>
                 <tr>
                     <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1">SF</label>
+                        <label class="form-check-label" for="inlineCheckbox1"><%=c.getCategoryName() %></label>
                     </td>
+            <% } %>
+            <!--  
                     <td>
                         <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
@@ -128,7 +123,7 @@
                     </td>
                 </tr>
             </tbody>
-        
+        -->
 
         </table>
 

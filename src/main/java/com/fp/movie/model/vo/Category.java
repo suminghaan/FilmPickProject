@@ -17,11 +17,22 @@ public class Category {
 		this.categoryDate = categoryDate;
 		this.categoryStatus = categoryStatus;
 	}
+	
+	// (관리자) 카테고리 관리 탭 조회 [수민]
+	
+	public Category(int categoryNo, String categoryName, String categoryStatus) {
+		super();
+		this.categoryNo = categoryNo;
+		this.categoryName = categoryName;
+		this.categoryStatus = categoryStatus;
+	}
 
+	
 	public int getCategoryNo() {
 		return categoryNo;
 	}
 
+	
 	public void setCategoryNo(int categoryNo) {
 		this.categoryNo = categoryNo;
 	}

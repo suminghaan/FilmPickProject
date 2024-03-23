@@ -76,11 +76,33 @@ public class BoardService {
 	
 	/**
 	 * @param 호용
-	 * @return 총 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 * @return 총 영화카테고리 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
 	 */
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = bDao.selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @param 호용
+	 * @return 총 잡담카테고리 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int chatSelectListCount() {
+		Connection conn = getConnection();
+		int listCount = bDao.chatSelectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @param 호용
+	 * @return 총 인기게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int publicSelectListCount() {
+		Connection conn = getConnection();
+		int listCount = bDao.publicSelectListCount(conn);
 		close(conn);
 		return listCount;
 	}

@@ -5,7 +5,7 @@ public class Reply {
 	private int replyNo; // 댓글번호
 	private String replyContent; // 댓글내용
 	private String enrollDate; //작성일
-	private String bStatus; // 신고여부(Y|N)
+	private String bStatus; // 블라인드처리여부(Y|N)
 	private String dStatus; // 삭제여부(Y|N)
 	private int reBoNo; // 게시글번호
 	private String reMemNo; // insert시 회원번호 | select시 회원아이디 

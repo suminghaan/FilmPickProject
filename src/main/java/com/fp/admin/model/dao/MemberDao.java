@@ -18,6 +18,7 @@ import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Review;
+import com.fp.noMovie.model.vo.NoMovie;
 
 public class MemberDao {
 	private Properties prop = new Properties();
@@ -553,4 +554,5 @@ public class MemberDao {
 		}
 		return listCount;
 	}
+	
 }

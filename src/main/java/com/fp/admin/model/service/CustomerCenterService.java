@@ -27,6 +27,7 @@ public class CustomerCenterService {
 	}
 
 	/** 없는 영화 신청 목록 페이징, 조회 용도
+	 * 
 	 * @author 김지우
 	 * @param pi
 	 * @return list
@@ -35,6 +36,19 @@ public class CustomerCenterService {
 		Connection conn = getConnection();
 
 		List<NoMovie> list = cDao.selectnoMovieRequestList(conn, pi);
+		close(conn);
+		return list;
+	}
+
+	/** 승인여부 필터 용도
+	 * 
+	 * @author 김지우
+	 * @param approval 승인여부
+	 * @return list 
+	 */
+	public List<NoMovie> selectApprovalFilter(String approval) {
+		Connection conn = getConnection();
+		List<NoMovie> list = cDao.selectApprovalFilter(conn, approval);
 		close(conn);
 		return list;
 	}

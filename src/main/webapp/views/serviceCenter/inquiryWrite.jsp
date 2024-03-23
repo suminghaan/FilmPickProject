@@ -87,8 +87,12 @@
         <div class="background">
             <div class="content_link"">
             	<!-- 추후 링크 수정 @@@@@@@@@@ -->
-                <a href="../notice/noticeList.jsp" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
-                <a href="inquiryList.jsp" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
+                <a href="<%=contextPath%>/list.no?page=1" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
+                <%if(loginMember != null){ %>
+                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <%}else{ %>
+                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <%} %>
             </div>
             <br> 
             <table class="tableback table" id="question_list">
@@ -102,19 +106,21 @@
                 <tbody>
                     <tr>
                         <td colspan="3" class="mantoman_background">
-                            <form action="test.do" method="">
+                            <form action="<%= contextPath %>/inquiry.no" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                   <div style="margin-left: 30px; margin-bottom: 5px; font-size: large;">제목</div>
-                                  <textarea class="form-control comment" rows="1" placeholder="제목을 입력해주세요" name=""></textarea>  
+                                  <textarea class="form-control comment" rows="1" placeholder="제목을 입력해주세요" name="title"></textarea>  
                                 </div>
                                 <div class="form-group"> 
                                   <div style="margin-left: 30px; margin-bottom: 5px; font-size: large;">문의내용</div>
-                                  <textarea class="form-control comment" rows="15" placeholder="내용을 입력해주세요" name=""></textarea>
+                                  <textarea class="form-control comment" rows="15" placeholder="내용을 입력해주세요" name="content"></textarea>
                                 </div> <br>
-                                <input type="file" class="form-control-file" name="" style="margin-left: 25px; width: 250px;">
+                                <input type="file" class="form-control-file" name="upfile" style="margin-left: 25px; width: 250px;">
                                 <p class="bt">
                                     <button type="button" class="btn btn-secondary content-btn" onclick="history.back();">취소</button>
+                                    <%if(loginMember != null){ %>
                                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">등록</button>
+                               		<%} %>
                                 </p>
 
                             <!-- The Modal -->
@@ -142,7 +148,7 @@
     <script>
 
         function question_list(){
-            location.href="inquiryList.jsp"; // 추후 수정
+            location.href="<%=contextPath%>/list.in?page=1";
         }
         
         function nomv(){

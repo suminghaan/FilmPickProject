@@ -361,23 +361,32 @@
 					SELECT ROWNUM RNUM, A.*
 					FROM (
 					  	SELECT
-					        REPLY_NO
-					      , ENROLL_DATE
-					      , MEM_ID
-                          , REPLY_CONTENT
-					      , (SELECT COUNT(*) 
-					         FROM REPLY
-					         WHERE REPLY_NO = RP.REPLY_NO) REPORT
-					      , B_CATEGORY
-					      , REPLY_B_STATUS
-					      , B_NO
-					    FROM REPLY RP
-					    JOIN MEMBER USING (MEM_NO)
-					    JOIN BOARD ON B_NO = RP.BOARD_NO
-                        JOIN REPORT ON RP.BOARD_NO = REPORT_REF_NO
-                        WHERE BOARD_NO_TYPE = '2'
-						    ORDER
-						        BY B_NO DESC
+						    RP.REPLY_NO,
+						    RP.ENROLL_DATE,
+						    M.MEM_ID,
+						    RP.REPLY_CONTENT,
+						    (SELECT COUNT(*) 
+						     FROM REPORT
+						     WHERE BOARD_NO_TYPE= 2
+						       AND REPORT_REF_NO = RP.BOARD_NO) AS REPORT,
+						    B.B_CATEGORY,
+						    RP.REPLY_B_STATUS,
+						    B.B_NO
+						FROM 
+						    REPLY RP
+						JOIN 
+						    MEMBER M ON M.MEM_NO = RP.MEM_NO
+						JOIN 
+						    BOARD B ON B.B_NO = RP.BOARD_NO
+						WHERE 
+						    RP.BOARD_NO IN(
+						                SELECT REPORT_REF_NO
+						                FROM REPORT
+						                WHERE BOARD_NO_TYPE = 2
+						                AND RP.MEM_NO = REPORTED_MEM_NO
+						                ) 
+						ORDER BY 
+						    B.B_NO DESC
 					  		) A
 					)
 				WHERE RNUM BETWEEN ? AND ?

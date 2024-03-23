@@ -122,7 +122,10 @@
     .movie_name>tr>td{
         padding: 10px;
     }
-
+    .viewsImg{
+    	width: 25px;
+    	height: 25px;
+    }
     /* *{border: 1px solid white;} */
 </style>
 </head>
@@ -136,13 +139,14 @@
         <div class="background">
 
             <span class="community_logo" onclick="community_go();">커뮤니티</span>
+            <!-- 
             <div class="community_search">
                 <form action="" method="">
                         <input type="text" class="community_search_input" style="width: 400px; height: 40px;">
                         <button type="image" class="community_search_btn" alt="검색">검색</button> 
                 </form>
             </div>
-            
+             -->
             <br><br><br>
             <%if(loginMember != null){ %>
             	<a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
@@ -170,7 +174,7 @@
 	                            </td>
 	                        </tr>
 	                        <tr>
-	                            <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                            <td colspan="2" class="view_count"><img class="viewsImg" src="<%=contextPath%>/resources/img/조회수아이콘2.png"> <%= b.getbReadCount() %> <br> <img class="viewsImg" src="<%=contextPath%>/resources/img/빈좋아요.png"> <%=b.getbRecommendCount() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
@@ -218,7 +222,7 @@
 	                            </td>
 	                        </tr>
 	                        <tr>
-	                            <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                            <td colspan="2" class="view_count"><img class="viewsImg" src="<%=contextPath%>/resources/img/조회수아이콘2.png"> <%= b.getbReadCount() %> <br> <img class="viewsImg" src="<%=contextPath%>/resources/img/빈좋아요.png"> <%=b.getbRecommendCount() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>
@@ -249,7 +253,7 @@
 	                            </td>
 	                        </tr>
 	                        <tr>
-	                            <td colspan="2" class="view_count"><%= b.getbReadCount()+" "+b.getbRecommendCount() %></td>
+	                            <td colspan="2" class="view_count"><img class="viewsImg" src="<%=contextPath%>/resources/img/조회수아이콘2.png"> <%= b.getbReadCount() %> <br> <img class="viewsImg" src="<%=contextPath%>/resources/img/빈좋아요.png"> <%=b.getbRecommendCount() %></td>
 	                        </tr>
 	                        <tr>
 	                            <td colspan="2" class="writer"><%= b.getMemNo() + " / " + b.getbRegistDate() %></td>

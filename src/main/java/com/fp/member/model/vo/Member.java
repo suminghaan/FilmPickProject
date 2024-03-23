@@ -21,7 +21,7 @@ public class Member {
 	private int reviewContentCnt; // 리뷰횟수 ( (관리자) 회원조회 페이지에서 사용할 필드 )
 	private double avgLikePoint; // 별점평균 ( (관리자) 회원조회 페이지에서 사용할 필드)
 	private int memBoardCnt; // 회원이 작성한 게시글 개수 ( (관리자) 회원 작성 게시글 조회하는 페이지에서 사용할 필드 )
-
+	
 	// 회원 작성 게시글 조회하는 페이지에서 사용할 매개변수 생성자 (김지우)
 	public Member(String memId, String memImgPath, String memColor, String nickname, int memLevel, int memBoardCnt) {
 		super();

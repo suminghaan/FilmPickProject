@@ -229,7 +229,7 @@ background-color: black!important;
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<%=contextPath%>/selectlist.me?page=1">회원조회</a>
-                        <a class="collapse-item" href="../ad_member/cancelMemberList.jsp">탈퇴회원조회</a>
+                        <a class="collapse-item" href="<%=contextPath%>/cclist.me?page=1">탈퇴회원조회</a>
                         <a class="collapse-item" href="../ad_member/reportMemberList.jsp">신고회원관리</a>
                         <a class="collapse-item" href="../ad_member/restrictedMemberList.jsp">이용제한회원조회</a>
                     </div>
@@ -246,10 +246,10 @@ background-color: black!important;
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../ad_movie/movieEnrollForm.jsp">신규영화 등록</a>
-                        <a class="collapse-item" href="../ad_movie/movieList.jsp">등록된영화 조회</a>
-                        <a class="collapse-item" href="../ad_movie/movieCategory.jsp">영화 카테고리 관리</a>
+                        <a class="collapse-item" href="<%=contextPath%>/list.admo?page=1">등록된영화 조회</a>
+                        <a class="collapse-item" href="<%=contextPath%>/movieCategoryForm.admo">영화 카테고리 관리</a>
                         <a class="collapse-item" href="../ad_movie/movieSelect.jsp">메인페이지 노출영화 선택</a>
-                        <a class="collapse-item" href="../ad_movie/movieCasting.jsp">인물관리</a>
+                        <a class="collapse-item" href="<%=contextPath%>/movieCastingList.admo?page=1">인물관리</a>
                     </div>
                 </div>
             </li>
