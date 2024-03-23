@@ -21,6 +21,9 @@ public class Movie {
 //	별점 매긴 사람 수 추가
 	private int numberOfStarRating;
 	
+//  영화에 대한 리뷰 개별 별점 추가
+	private int starRating;
+	
 	// ** 2024.03.23 (관리자 : 한수민) 전체 영화조회시 필요한 필드(영화등록일, 영화에대한 카테고리) 추가
 	private String mvRegistDate;
 	private String categoryNames;	
@@ -56,7 +59,7 @@ public class Movie {
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
-			String mvPreview, String mvStatus, String starRatingAvg, int numberOfStarRating) {
+			String mvPreview, String mvStatus, String starRatingAvg, int numberOfStarRating, int starRating) {
 		super();
 		this.mvNo = mvNo;
 		this.mvName = mvName;
@@ -73,11 +76,10 @@ public class Movie {
 		this.mvStatus = mvStatus;
 		this.starRatingAvg = starRatingAvg;
 		this.numberOfStarRating = numberOfStarRating;
+		this.starRating = starRating;
 	}
 	
-	
 
-	
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvStory, String fPageExposed, String mPageExposed,
 			String mvPoster, String mvPreview, String mvStatus) {
@@ -101,6 +103,17 @@ public class Movie {
 		this.mvPoster = mvPoster;
 		this.starRatingAvg = starRatingAvg;
 	}
+	
+	
+	public int getStarRating() {
+		return starRating;
+	}
+
+
+	public void setStarRating(int starRating) {
+		this.starRating = starRating;
+	}
+
 	
 	public int getNumberOfStarRating() {
 		return numberOfStarRating;
@@ -267,14 +280,17 @@ public class Movie {
 		this.categoryNames = categoryNames;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Movie [mvNo=" + mvNo + ", mvName=" + mvName + ", mvOpenDate=" + mvOpenDate + ", mvNation=" + mvNation
 				+ ", mvRTime=" + mvRTime + ", mvStory=" + mvStory + ", fPageExposed=" + fPageExposed + ", viewRating="
 				+ viewRating + ", currentScreening=" + currentScreening + ", mPageExposed=" + mPageExposed
 				+ ", mvPoster=" + mvPoster + ", mvPreview=" + mvPreview + ", mvStatus=" + mvStatus + ", starRatingAvg="
-				+ starRatingAvg + ", numberOfStarRating=" + numberOfStarRating + "]";
+				+ starRatingAvg + ", numberOfStarRating=" + numberOfStarRating + ", starRating=" + starRating
+				+ ", mvRegistDate=" + mvRegistDate + ", categoryNames=" + categoryNames + "]";
 	}
+
 	
 }
 
