@@ -199,7 +199,7 @@ h1{
     
     	// 영화 상세조회
    		function movieListDetail(){
-   			location.href = "<%=contextPath %>/movieListDetail.admo";
+   			location.href = "<%=contextPath %>/movieListDetail.admo?no=" + mvNo;
    		}
    		
    		

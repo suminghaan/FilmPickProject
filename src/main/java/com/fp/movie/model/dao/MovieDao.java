@@ -468,7 +468,7 @@ public class MovieDao {
 		
 		return list;
 	}
-//	리뷰 더보기를 위한 메소드 [기웅]
+//	리뷰 남기기를 위한 메소드 [기웅]
 	public int insertReview(Connection conn, int movieNo, int userNo, double likePoint, String reviewContent) {
 		String query = prop.getProperty("insertReview");
 		PreparedStatement pstmt = null;
@@ -543,7 +543,8 @@ public class MovieDao {
 				r.setLikePoint(rset.getString("LIKE_POINT"));
 				r.setAgreeCount(rset.getInt("AGREE_COUNT"));
 				r.setDisagreeCount(rset.getInt("DISAGREE_COUNT"));
-				
+				r.setMvName(rset.getString("MV_NAME"));
+				r.setMvPoster(rset.getString("MV_POSTER"));
 				rList.add(r);
 			}
 		} catch (SQLException e) {
@@ -556,7 +557,7 @@ public class MovieDao {
 		return rList;
 	}
 
-//	
+//	같이 재밌게 본 영화
 	public ArrayList<Movie> bothInterestMovie(Connection conn, int userNo, int otherUserNo) {
 		String query = prop.getProperty("bothInterestMovieList");
 		PreparedStatement pstmt = null;
@@ -570,13 +571,25 @@ public class MovieDao {
 			
 			rset = pstmt.executeQuery();
 			
-			
+			while(rset.next()) {
+				movieList.add(new Movie(
+							rset.getInt("MV_NO")
+							, rset.getString("MV_NAME")
+							, rset.getString("MV_OPENDATE")
+							, rset.getString("MV_POSTER")
+							, rset.getString("AVG_STAR_RATING")
+						));
+				
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
-		return null;
+		return movieList;
 	}
 	public ArrayList<Review> selectMainReviewList(Connection conn) {
 		ArrayList<Review> reviewList = new ArrayList<>();
@@ -612,11 +625,6 @@ public class MovieDao {
 		
 		return reviewList;
 	}
-
-
-
-
-
 	
 
 

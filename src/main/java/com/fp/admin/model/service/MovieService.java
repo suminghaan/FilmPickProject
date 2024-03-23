@@ -61,6 +61,14 @@ public class MovieService {
 		int result = result1 + result2;
 		return result;
 	}
+
+	// 영화 관리버튼 => 영화 정보 상세보기 
+	public List<Movie> MovieListDetail(int mvNo) {
+		Connection conn = getConnection();
+		List<Movie> list = mDao.MovieListDetail(conn, mvNo);
+		close(conn);
+		return list;
+	}
 	
 	
 	

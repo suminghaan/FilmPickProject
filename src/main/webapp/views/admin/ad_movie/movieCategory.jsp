@@ -56,20 +56,8 @@
 	<!-- section start -->
 	<div class="bodyBox">
 		<h1>영화 카테고리 관리</h1>
-        
-        <hr>
-        
-        <div class="d-flex justify-content-center container">
-            <span>검색</span>&nbsp;&nbsp;&nbsp;
-            <input type="text" placeholder="검색어를 입력해주세요">
-            <button type="button">
-                <img src="../img/icon_search.png">
-            </button>          
-        </div>
-        
-        <br><br>
-        
-        
+		<br>
+                
 		<table class="table table-hover">
             <thead>
                 <tr>
