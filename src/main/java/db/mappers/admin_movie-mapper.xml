@@ -15,5 +15,70 @@
 		FROM MOVIE
 		WHERE MV_STATUS = 'Y'
 	</entry>
+	
+	<!-- 관리자 영화 조회 페이징처리 [수민]-->
+		<entry key="selectMovieListCount">
+			SELECT COUNT(*) COUNT
+			  FROM MOVIE
+			 WHERE MV_STATUS = 'Y'
+		</entry>
+		
+				
+	<!-- 관리자 영화 조회  [수민] -->
+		<entry key="selectMovieList">
+			SELECT *
+				FROM(
+					SELECT ROWNUM RNUM, A.*
+					  FROM (
+					  	SELECT
+						    M.MV_NO,
+						    M.MV_NAME,
+						    M.MV_DATE,
+						    M.VIEW_RATING,
+						    M.MV_OPENDATE,
+						    LISTAGG(C.CATEGORY_NAME, ', ') WITHIN GROUP (ORDER BY C.CATEGORY_NAME) AS CATEGORY_NAMES
+						FROM 
+						    MOVIE M
+						LEFT JOIN 
+						    MOVIE_CATEGORY MC ON MC.MV_NO = M.MV_NO
+						LEFT JOIN 
+						    CATEGORY C ON MC.CATEGORY_NO = C.CATEGORY_NO
+						WHERE 
+						    M.MV_STATUS = 'Y'
+						GROUP BY 
+						    M.MV_NO, M.MV_NAME, M.MV_DATE, M.VIEW_RATING, M.MV_OPENDATE
+						ORDER BY 
+						    M.MV_NO DESC
+					  		) A
+					)
+				WHERE RNUM BETWEEN ? AND ?
+				  
+		</entry>
+
+		<!-- 관리자 영화조회 검색기능 [수민] -->
+		<entry key="searchMovie">
+			SELECT  *
+			FROM MOVIE M
+			WHERE MV_STATUS = 'Y'
+			  AND MV_NAME LIKE '%' || ? || '%'
+		</entry>
+		
+		<!-- 관리자 영화 삭제 [수민] -->
+		<entry key="deleteMovie">
+			UPDATE
+				   MOVIE
+			   SET MV_STATUS = 'N'
+			 WHERE MV_NO = ?
+			 
+		</entry>
+		
+		<!-- 관리자 영화 삭제 시 같이 등록한 이미지 status값 변경 [수민] -->
+		<entry key="deleteMovieAttachment">
+			UPDATE
+				  ATTACHMENT
+			  SET FILE_STATUS = 'N'
+			WHERE REF_TYPE IN (1 ,2)
+			  AND REF_NO = ?
+		</entry>
 
 </properties>
