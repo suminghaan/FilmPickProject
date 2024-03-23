@@ -47,7 +47,7 @@ public class BoardChatController extends HttpServlet {
 		int maxPage;		// 가장 마지막 페이지(총 페이지수)
 		
 		// listCount : 총 공지사항 갯수 (db로부터 조회)
-		listCount = new BoardService().selectListCount();
+		listCount = new BoardService().chatSelectListCount();
 		// currentPage : 사용자가 요청한(클릭) 페이지 수 (현재 띄워줄 페이지 번호)
 		currentPage = Integer.parseInt(request.getParameter("page"));
 		// pageLimit : 페이징바의 페이지 최대 갯수 (페이징바의 목록수  단위)

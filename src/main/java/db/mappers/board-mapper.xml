@@ -104,13 +104,33 @@
 	              FROM MOVIE
 	</entry>
 	
-	<!-- 총 게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<!-- 총 영화카테고리 게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
 	<entry key="selectListCount">
 		SELECT COUNT(*) COUNT
 		  FROM BOARD
 		 WHERE B_D_STATUS = 'N'
 		   AND B_B_STATUS = 'N'
+		   AND B_CATEGORY = '1'
 	</entry>
+	
+	<!-- 총 잡담카테고리 게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<entry key="chatSelectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM BOARD
+		 WHERE B_D_STATUS = 'N'
+		   AND B_B_STATUS = 'N'
+		   AND B_CATEGORY = '2'
+	</entry>
+
+	<!-- 총 인기 게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<entry key="publicSelectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM BOARD
+		 WHERE B_D_STATUS = 'N'
+		   AND B_B_STATUS = 'N'
+		   AND B_CATEGORY = '1'
+		   AND B_RECOMMEND_COUNT > 3
+	</entry>	
 	
 	<!-- 커뮤니티 영화카테고리 인기게시글 페이지에 띄울 값들을 출력 및 페이징바 적용을 위한 sql문 by호용 -->
 	<entry key="selectPublicList">
