@@ -33,7 +33,6 @@ public class noMovieListFilterController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String approval = request.getParameter("approval");
-		System.out.println(approval);
 
 		List<NoMovie> list = new CustomerCenterService().selectApprovalFilter(approval);
 		
