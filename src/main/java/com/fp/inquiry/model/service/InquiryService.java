@@ -65,9 +65,9 @@ public class InquiryService {
 	 */
 	public Inquiry selectInquiry(int inqryNo) {
 		Connection conn = getConnection();
-		Inquiry in = iDao.selectInquiry(conn, inqryNo);
+		Inquiry inqu = iDao.selectInquiry(conn, inqryNo);
 		close(conn);
-		return in;
+		return inqu;
 	}
 	
 	/**

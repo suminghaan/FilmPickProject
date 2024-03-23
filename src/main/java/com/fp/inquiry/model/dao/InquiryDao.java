@@ -139,7 +139,7 @@ public class InquiryDao {
 	 * @param inqryNo 문의사항번호
 	 */
 	public Inquiry selectInquiry(Connection conn, int inqryNo) {
-		Inquiry in = null;
+		Inquiry inqu = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectInquiry");
@@ -148,15 +148,15 @@ public class InquiryDao {
 			pstmt.setInt(1, inqryNo);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				in = new Inquiry(rset.getInt("INQRY_NO")
+				inqu = new Inquiry(rset.getInt("INQRY_NO")
 						 	   , rset.getString("INQRY_TITLE")
 						 	   , rset.getString("INQRY_CONTENT")
 						 	   , rset.getString("INQRY_DATE")
-						 	   , rset.getInt("I.MEM_NO") 
-						 	   , rset.getInt("I.ADMIN_NO")
-						 	   , rset.getString("INQRY_A_CONTENT")
-						 	   , rset.getString("INQRY_A_DATE")
-						 	   , rset.getString("ADMIN_ID")); // admin 테이블과조인
+						 	   , rset.getInt("MEM_NO")
+//						 	   , rset.getInt("I.ADMIN_NO") 이 친구들 안죽이면 오류남
+						 	   , rset.getString("INQRY_A_CONTENT"));
+//						 	   , rset.getString("INQRY_A_DATE") 이 친구들 안죽이면 오류남
+//						 	   , rset.getString("ADMIN_ID")); // admin 테이블과조인 이 친구들 안죽이면 오류남
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -164,8 +164,8 @@ public class InquiryDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("dao에서 db와 연결해서 가지고 온 문의사항값 : " + in);
-		return in;
+//		System.out.println("dao에서 db와 연결해서 가지고 온 문의사항값 : " + inqu);
+		return inqu;
 	}
 	
 	/**
@@ -194,7 +194,7 @@ public class InquiryDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("dao에서 db와 연결해서 가지고 온 첨부파일 : " + at);
+//		System.out.println("dao에서 db와 연결해서 가지고 온 첨부파일 : " + at);
 		return at;
 	}
 	

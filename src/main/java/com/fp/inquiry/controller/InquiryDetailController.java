@@ -35,11 +35,11 @@ public class InquiryDetailController extends HttpServlet {
 		InquiryService iService = new InquiryService();
 		System.out.println("문의사항번호 : " + inqryNo);
 		
-		Inquiry in = iService.selectInquiry(inqryNo);
+		Inquiry inqu = iService.selectInquiry(inqryNo);
 		Attachment at = iService.selectAttachment(inqryNo);
-		System.out.println("서비스, dao단에서 전부 처리해서 받아온 Inquiry : " + in);
-		System.out.println("서비스, dao단에서 전부 처리해서 받아온 Attachment : " + at);
-		request.setAttribute("in", in);
+//		System.out.println("서비스, dao단에서 전부 처리해서 받아온 Inquiry : " + inqu);
+//		System.out.println("서비스, dao단에서 전부 처리해서 받아온 Attachment : " + at);
+		request.setAttribute("inqu", inqu);
 		request.setAttribute("at", at);
 		request.getRequestDispatcher("/views/serviceCenter/inquiryContent.jsp").forward(request, response);
 	}
