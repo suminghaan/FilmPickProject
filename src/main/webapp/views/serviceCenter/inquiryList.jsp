@@ -67,7 +67,7 @@
             <div class="background">
                 <div class="content_link"">
                 	<!-- 추후 링크 수정 @@@@@@@@@@ -->
-                    <a href="../notice/noticeList.jsp" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
+                    <a href="<%=contextPath%>/list.no?page=1" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
                     <a href="inquiryList.jsp" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
                 </div>
                 <br>
