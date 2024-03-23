@@ -57,10 +57,24 @@
 
 		<!-- 관리자 영화조회 검색기능 [수민] -->
 		<entry key="searchMovie">
-			SELECT  *
+			SELECT  
+				M.MV_NO,
+			    M.MV_NAME,
+			    M.MV_DATE,
+			    M.VIEW_RATING,
+			    M.MV_OPENDATE,
+			    LISTAGG(C.CATEGORY_NAME, ', ') WITHIN GROUP (ORDER BY C.CATEGORY_NAME) AS CATEGORY_NAMES
 			FROM MOVIE M
+			LEFT JOIN 
+			    MOVIE_CATEGORY MC ON MC.MV_NO = M.MV_NO
+			LEFT JOIN 
+			    CATEGORY C ON MC.CATEGORY_NO = C.CATEGORY_NO
 			WHERE MV_STATUS = 'Y'
 			  AND MV_NAME LIKE '%' || ? || '%'
+			GROUP BY 
+			    M.MV_NO, M.MV_NAME, M.MV_DATE, M.VIEW_RATING, M.MV_OPENDATE
+			ORDER BY 
+			    M.MV_NO DESC
 		</entry>
 		
 		<!-- 관리자 영화 삭제 [수민] -->
