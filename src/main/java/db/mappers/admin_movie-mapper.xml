@@ -153,5 +153,13 @@
 			SELECT COUNT(*) COUNT
 			  FROM CASTING
 		</entry>
+		
+		<!-- 관리자 영화 카테고리 삭제 [수민] -->
+		<entry key="deleteCategory">
+			UPDATE
+				  CATEGORY
+			  SET CATEGORY_STATUS = 'N'
+			WHERE CATEGORY_NO = ?
+		</entry>
 
 </properties>

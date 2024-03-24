@@ -285,5 +285,24 @@ public class MovieDao {
 		return listCount;
 	}
 
+	// 영화 카테고리 삭제
+	public int deleteCategory(Connection conn, int cNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 }
