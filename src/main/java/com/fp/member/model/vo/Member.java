@@ -22,7 +22,22 @@ public class Member {
 	private int reviewContentCnt; // 리뷰횟수 ( (관리자) 회원조회 페이지에서 사용할 필드 )
 	private double avgLikePoint; // 별점평균 ( (관리자) 회원조회 페이지에서 사용할 필드)
 	private int memBoardCnt; // 회원이 작성한 게시글 개수 ( (관리자) 회원 작성 게시글 조회하는 페이지에서 사용할 필드 )
+	private int memReplyCnt; // 회원 작성 댓글 개수
+	private int memReportCnt; // 회원이 신고받은 횟수
 	
+	// 신고회원관리 조회용으로 사용할 매개변수 생성자 (김지우)
+	public Member(String memId, String nickname, int memReportCnt, String signInDate, int memBoardCnt,
+			int memReplyCnt) {
+		super();
+		this.memId = memId;
+		this.nickname = nickname;
+		this.memReportCnt = memReportCnt;
+		this.signInDate = signInDate;
+		this.memBoardCnt = memBoardCnt;
+		this.memReplyCnt = memReplyCnt;
+	}
+	
+
 	// 회원 작성 게시글 조회하는 페이지에서 사용할 매개변수 생성자 (김지우)
 	public Member(String memId, String memImgPath, String memColor, String nickname, int memLevel, int memBoardCnt) {
 		super();
@@ -310,6 +325,22 @@ public class Member {
 
 	public void setMemBoardCnt(int memBoardCnt) {
 		this.memBoardCnt = memBoardCnt;
+	}
+
+	public int getMemReplyCnt() {
+		return memReplyCnt;
+	}
+
+	public void setMemReplyCnt(int memReplyCnt) {
+		this.memReplyCnt = memReplyCnt;
+	}
+
+	public int getMemReportCnt() {
+		return memReportCnt;
+	}
+
+	public void setMemReportCnt(int memReportCnt) {
+		this.memReportCnt = memReportCnt;
 	}
 
 	@Override

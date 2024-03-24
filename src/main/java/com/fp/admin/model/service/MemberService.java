@@ -10,8 +10,10 @@ import java.util.List;
 
 import com.fp.admin.model.dao.CancelMemberDao;
 import com.fp.admin.model.dao.MemberDao;
+import com.fp.admin.model.dao.ReportMemberDao;
 import com.fp.admin.model.vo.CancelMember;
 import com.fp.board.model.vo.Board;
+import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Review;
@@ -20,6 +22,7 @@ public class MemberService {
 
 	private MemberDao mDao = new MemberDao();
 	private CancelMemberDao cDao = new CancelMemberDao();
+	private ReportMemberDao rDao = new ReportMemberDao();
 
 	/**
 	 * '회원조회' 페이지에서 회원의 등급을 수정 (Update)
@@ -293,6 +296,34 @@ public class MemberService {
 		Connection conn = getConnection();
 
 		List<CancelMember> list = cDao.selectCancelMemberList(conn, pi);
+		close(conn);
+		return list;
+	}
+
+	/** 신고회원 조회, 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @return listCount
+	 */
+	public int selectReportMemberListCount() {
+		Connection conn = getConnection();
+
+		int listCount = rDao.selectReportMemberListCount(conn);
+		close(conn);
+
+		return listCount;
+	}
+
+	/** 신고회원 조회, 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @param pi
+	 * @return list
+	 */
+	public List<Member> selectReportMemberList(PageInfo pi) {
+		Connection conn = getConnection();
+
+		List<Member> list = rDao.selectReportMemberList(conn, pi);
 		close(conn);
 		return list;
 	}

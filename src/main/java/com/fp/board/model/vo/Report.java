@@ -10,6 +10,7 @@ public class Report {
 	private String reportMemNo; //신고한 회원번호
 	private String reportedMemNo; //신고받은 회원번호
 	private String type; // 신고타입(1게시글신고 | 2댓글신고)
+	
 
 	public Report() {}
 	

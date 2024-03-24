@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectReportMemberListCount">
+		SELECT COUNT(*) COUNT
+		FROM REPORT
+	</entry>
+	
+	<entry key="selectReportMemberList">
+		SELECT *
+			FROM(
+			    SELECT ROWNUM RNUM, A.*
+			    FROM (
+			             SELECT M.MEM_ID AS MEM_ID
+			             , M.NICKNAME AS NICKNAME
+			             , (SELECT COUNT(*) FROM REPORT WHERE REPORTED_MEM_NO = M.MEM_NO) AS REPORTCOUNT
+			             , M.SIGNIN_DATE AS SIGNIN_DATE
+			             , (SELECT COUNT(*) FROM BOARD WHERE MEM_NO = M.MEM_NO) AS BOARDCOUNT
+			             , (SELECT COUNT(*) FROM REPLY WHERE MEM_NO = M.MEM_NO) AS REPLYCOUNT
+			        FROM MEMBER M
+			        ORDER BY MEM_ID DESC
+			    ) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+</properties>

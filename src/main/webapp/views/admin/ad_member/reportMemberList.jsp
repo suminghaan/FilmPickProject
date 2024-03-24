@@ -1,5 +1,13 @@
+<%@page import="com.fp.member.model.vo.Member"%>
+<%@page import="com.fp.common.model.vo.PageInfo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	List<Member> pageList = (List<Member>) request.getAttribute("pageList");
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,37 +64,25 @@ table{
             </tr>
             </thead>
             <tbody>
+          	<% if(pageList.isEmpty()){ %>
+           	<tr>
+           		<td colspan="8" style="text-align: center;">존재하는 회원이 없습니다.</td>
+           	</tr>
+           	<% } else { %>
+           	<% for(Member m : pageList){ %>
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td id="userName">익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
+                <td><%=m.getMemId()%></td>
+                <td id="userName"><%=m.getNickname()%></td>
+                <td><%=m.getMemReportCnt()%></td>
+                <td><%=m.getSignInDate()%></td>
+                <td><%=m.getMemBoardCnt()%></td>
+                <td><%=m.getMemReplyCnt()%></td>
                 <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
+             <% } %>
+             <% } %>
+            <!-- <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
                 <td>user999</td>
                 <td>익명원</td>
@@ -156,6 +152,26 @@ table{
                 <td>52</td>
                 <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
+            <tr>
+                <td><div class="form-check"><input type="checkbox"></div></td>
+                <td>user999</td>
+                <td>익명원</td>
+                <td>1</td>
+                <td>2024-01-11</td>
+                <td>22</td>
+                <td>52</td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
+            </tr>
+            <tr>
+                <td><div class="form-check"><input type="checkbox"></div></td>
+                <td>user999</td>
+                <td>익명원</td>
+                <td>1</td>
+                <td>2024-01-11</td>
+                <td>22</td>
+                <td>52</td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
+            </tr> -->
             </tbody>
         </table>
         </div>
@@ -284,25 +300,28 @@ table{
     </div>
 
     <div class="d-flex justify-content-center container">
-        <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
-        </nav>
-    </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+	                <% if(pi.getCurrentPage() == 1){ %>
+	                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	                <% } else { %>
+	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/list.rp?page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
+	                <% } %>    
+                    <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+	                    <% if(p == pi.getCurrentPage()){ %>
+	                    	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                    <% } else { %>
+	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/list.rp?page=<%= p %>"><%= p %></a></li>
+	                    <% } %>
+                    <% } %>
+                    <% if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+                    	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    <% } else { %>
+                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/list.rp?page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
+                  	<% } %>
+                  </ul>
+            </nav>
+        </div>
 </div>
 
 <script>

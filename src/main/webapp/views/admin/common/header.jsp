@@ -230,7 +230,7 @@ background-color: black!important;
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<%=contextPath%>/selectlist.me?page=1">회원조회</a>
                         <a class="collapse-item" href="<%=contextPath%>/cclist.me?page=1">탈퇴회원조회</a>
-                        <a class="collapse-item" href="../ad_member/reportMemberList.jsp">신고회원관리</a>
+                        <a class="collapse-item" href="<%=contextPath%>/list.rp?page=1">신고회원관리</a>
                         <a class="collapse-item" href="../ad_member/restrictedMemberList.jsp">이용제한회원조회</a>
                     </div>
                 </div>

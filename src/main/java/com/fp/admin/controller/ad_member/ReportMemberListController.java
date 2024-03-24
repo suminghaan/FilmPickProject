@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fp.admin.model.service.MemberService;
-import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.member.model.vo.Member;
 
 /**
  * Servlet implementation class ReportMemberListController
@@ -60,7 +60,7 @@ public class ReportMemberListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		List<Report> pageList = new MemberService().selectReportMemberList(pi);
+		List<Member> pageList = new MemberService().selectReportMemberList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("pageList", pageList);
