@@ -11,6 +11,7 @@
     	ArrayList<Person> personList = ((ArrayList<Person>)request.getAttribute("personList"));
     	ArrayList<Review> reviewList = ((ArrayList<Review>)request.getAttribute("reviewList"));
     	ArrayList<Movie> movieList = ((ArrayList<Movie>)request.getAttribute("movieList"));
+    	Review review = (Review)request.getAttribute("review");
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -1016,7 +1017,15 @@
         
         // 리뷰 페이지로 이동
         $(".ToReview").click(function() {
-        	location.href="<%= contextPath %>/reviewEnrollForm.fp?movieNo=<%= movie.getMvNo() %>"
+        	<% if(loginMember != null) { %>
+        		<% if(review != null && review.getReviewContent() != null) { %>
+        			alert("이미 리뷰를 등록한 영화입니다.")
+        		<% } else { %>
+        			location.href="<%= contextPath %>/reviewEnrollForm.fp?movieNo=<%= movie.getMvNo() %>"
+        		<% } %>
+        	<% } else { %>
+        		alert("로그인 후 이용 가능한 서비스입니다.");
+        	<% } %>
         })
         
     </script>
