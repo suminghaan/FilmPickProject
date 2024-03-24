@@ -206,10 +206,12 @@
                 
                 <% for(Person p : plist){ %>
                 	<div class="castingList">
+                	<% if(m.getMvNo() == Integer.parseInt(p.getMovieNo())){ %>
                 		<div class="person">
 	                    <img src="<%=p.getpFile() %>" alt=""> <%=p.getpName() %> <br>
 	                    <input type="text" name="person_role" value="<%=p.getCasting()%>">
 	                    </div>
+	                 <% } %>
 	                    <!-- 
 	                    <div class="person">
 	                    <img src="../img/김우빈.PNG" alt=""> 김우빈 <br>

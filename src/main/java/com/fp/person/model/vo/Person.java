@@ -127,6 +127,17 @@ public class Person {
 		this.pFile = pFile;
 	}
 
+	
+
+	public String getMovieNo() {
+		return movieNo;
+	}
+
+
+	public void setMovieNo(String movieNo) {
+		this.movieNo = movieNo;
+	}
+
 
 	@Override
 	public String toString() {
