@@ -387,6 +387,19 @@ public class BoardService {
 		close(conn);
 		return b;
 	}
+	
+	// 댓글삭제를 위한 메소드[호용]
+	public int deleteReply(int replyNo) {
+		Connection conn = getConnection();
+		int result = bDao.deleteReply(conn, replyNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 
 }
 

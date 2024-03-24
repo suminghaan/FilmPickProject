@@ -15,7 +15,7 @@
 	                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 	                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 	                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL<!-- ATTACHMENT 테이블과 조인  -->
-	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT <!-- 댓글갯수 -->
+	                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT <!-- 댓글갯수 -->
 	                 , B_B_STATUS
 					 , B_D_STATUS
 	              FROM BOARD B
@@ -43,7 +43,7 @@
 		                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 		                 , B_B_STATUS
 						 , B_D_STATUS
 		              FROM BOARD B
@@ -70,7 +70,7 @@
 		                 , NICKNAME <!-- MEMBER 테이블과 조인 -->
 		                 , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+		                 , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 		                 , B_B_STATUS
 						 , B_D_STATUS
 		              FROM BOARD B
@@ -189,7 +189,7 @@
 					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
 					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 					     , B_B_STATUS
 					     , B_D_STATUS
 					  FROM BOARD B
@@ -220,7 +220,7 @@
 					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
 					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 					     , B_B_STATUS
 					     , B_D_STATUS
 					  FROM BOARD B
@@ -252,7 +252,7 @@
 					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
 					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 					     , B_B_STATUS
 					     , B_D_STATUS
 					  FROM BOARD B
@@ -283,7 +283,7 @@
 					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
 					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 					     , B_B_STATUS
 					     , B_D_STATUS
 					  FROM BOARD B
@@ -314,7 +314,7 @@
 					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
 					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 		                 , B_B_STATUS
 						 , B_D_STATUS
 					  FROM BOARD B
@@ -344,7 +344,7 @@
 					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
 					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
 		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
-					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO AND REPLY_D_STATUS = 'N') REPLY_COUNT
 		                 , B_B_STATUS
 						 , B_D_STATUS
 					  FROM BOARD B
@@ -611,6 +611,14 @@
         ) A
         WHERE ROWNUM <= 3
     ]]>
+   </entry>
+   
+   <!-- 댓글 삭제을 위한 sql문 by호용 -->
+   <entry key="deleteReply">
+   		UPDATE
+   			   REPLY
+   		   SET REPLY_D_STATUS = 'Y'
+   		 WHERE REPLY_NO = ? 
    </entry>
    
 </properties>

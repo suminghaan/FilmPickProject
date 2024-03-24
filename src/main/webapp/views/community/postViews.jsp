@@ -210,7 +210,7 @@
     				           	  <%if(loginMember != null){%>
     				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='replyHidden(" + list[i].replyNo + ", <%=loginMember.getMemNo()%>, " + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
     				          	  <%}%>
-    				           +  "<td><img class='img' src='<%=contextPath%>/resources/img/삭제버튼.png'></td>"
+    				           +  "<td><img class='img' src='<%=contextPath%>/resources/img/삭제버튼.png' onclick='return deleteReply(" + list[i].replyNo + ");'></td>"
     				           + "</tr>";
     				}
     			}else{
@@ -222,7 +222,31 @@
     			console.log("댓글목록 조회용 ajax실패")
     		}
     	})
-    } 
+    }
+	
+	function deleteReply(no){
+		if(confirm("댓글을 삭제하시겠습니까?")){
+			deleteRe(no);
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	function deleteRe(no){
+		$.ajax({
+			url:"<%=contextPath%>/delete.re",
+			data:{no:no},
+			success:function(result){
+				if(result > 0){
+					alert("댓글을 삭제하였습니다.");
+					selectReplyList();
+				}
+			},error:function(){
+				console.log("댓글삭제 ajax실패")
+			}
+		})
+	}
     				
     function community_go(){
         location.href="<%= contextPath %>/main.bo";
