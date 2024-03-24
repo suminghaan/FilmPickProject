@@ -3530,7 +3530,9 @@ INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관�
 ALTER TABLE REPORTED_MEM ADD(ACTIVITY_STATUS CHAR(1));
 
 -- 활동제한 테이블 샘플데이터 (김지우)
+ALTER TABLE REPORTED_MEM MODIFY(END_DATE NULL);
+
 INSERT INTO REPORTED_MEM VALUES(25, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
-INSERT INTO REPORTED_MEM VALUES(24, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', '-', 'B');
+INSERT INTO REPORTED_MEM VALUES(24, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B');
 
 commit;
