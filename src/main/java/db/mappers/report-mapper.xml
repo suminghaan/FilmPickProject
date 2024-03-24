@@ -2,25 +2,39 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<entry key="selectReportMemberListCount">
-		SELECT COUNT(*) COUNT
-		FROM REPORT
+	<![CDATA[
+		SELECT COUNT(*) AS COUNT
+		FROM (
+		    SELECT M.MEM_ID AS MEM_ID,
+		           M.NICKNAME AS NICKNAME,
+		           (SELECT COUNT(*) FROM REPORT WHERE REPORTED_MEM_NO = M.MEM_NO) AS REPORTCOUNT,
+		           M.SIGNIN_DATE AS SIGNIN_DATE,
+		           (SELECT COUNT(*) FROM BOARD WHERE MEM_NO = M.MEM_NO) AS BOARDCOUNT,
+		           (SELECT COUNT(*) FROM REPLY WHERE MEM_NO = M.MEM_NO) AS REPLYCOUNT
+		    FROM MEMBER M
+		    WHERE (SELECT COUNT(*) FROM REPORT WHERE REPORTED_MEM_NO = M.MEM_NO) >= 1
+		    ORDER BY MEM_ID DESC) B
+		]]>
 	</entry>
 	
 	<entry key="selectReportMemberList">
+	<![CDATA[
 		SELECT *
 			FROM(
 			    SELECT ROWNUM RNUM, A.*
 			    FROM (
-			             SELECT M.MEM_ID AS MEM_ID
+			              SELECT M.MEM_ID AS MEM_ID
 			             , M.NICKNAME AS NICKNAME
 			             , (SELECT COUNT(*) FROM REPORT WHERE REPORTED_MEM_NO = M.MEM_NO) AS REPORTCOUNT
 			             , M.SIGNIN_DATE AS SIGNIN_DATE
 			             , (SELECT COUNT(*) FROM BOARD WHERE MEM_NO = M.MEM_NO) AS BOARDCOUNT
 			             , (SELECT COUNT(*) FROM REPLY WHERE MEM_NO = M.MEM_NO) AS REPLYCOUNT
 			        FROM MEMBER M
+                    WHERE (SELECT COUNT(*) FROM REPORT WHERE REPORTED_MEM_NO = M.MEM_NO) >= 1
 			        ORDER BY MEM_ID DESC
 			    ) A
 		)
 		WHERE RNUM BETWEEN ? AND ?
+		]]>
 	</entry>
 </properties>
