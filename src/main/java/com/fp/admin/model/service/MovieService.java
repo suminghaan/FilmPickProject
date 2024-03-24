@@ -110,6 +110,14 @@ public class MovieService {
 		
 		return result;
 	}
+
+	// 인물관리_조회
+	public List<Person> selectPersonList(PageInfo pi) {
+		Connection conn = getConnection();
+		List<Person> list = mDao.selectPersonList(conn);		
+		close(conn);
+		return list;
+	}
 	
 	
 	

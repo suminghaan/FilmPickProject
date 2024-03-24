@@ -304,5 +304,34 @@ public class MovieDao {
 		return result;
 	}
 
+	// 인물관리_조회
+	public List<Person> selectPersonList(Connection conn) {
+		List<Person> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectPersonList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+	
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Person(rset.getInt("p_no"),
+									rset.getString("p_name"),
+									rset.getString("p_job"),
+									rset.getString("p_bd"),
+									rset.getString("p_nation"),
+									rset.getString("p_file")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 	
 }

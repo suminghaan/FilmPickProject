@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.fp.common.model.vo.PageInfo" %>
+<%@ page import="com.fp.person.model.vo.Person" %>
+<%@ page import="java.util.List" %>
+<% List<Person> list = (List<Person>)request.getAttribute("list"); %>
+<% PageInfo pi = (PageInfo)request.getAttribute("pi"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,16 +70,16 @@ h1{
 
     <div class="d-flex justify-content-center container">
         <span>검색</span>&nbsp;&nbsp;&nbsp;
-        <input type="text" placeholder="검색어를 입력해주세요">
-        <button type="button">
-            <img src="../img/icon_search.png">
-        </button>          
+        <input type="text" id="searchInput" class="input" placeholder="제목으로 검색어를 입력해주세요" name="keyword">
+        <button type="button" onclick="search();">
+            <img src="<%=contextPath %>/views/admin/img/icon_search.png">
+        </button>
     </div>
     
     <br><br>
 
     <div class="list">
-        <button class="btn btn-outline-secondary listBtn" data-toggle="modal" data-target="#addCasting">신규등록</button>
+        <a href="<%= contextPath %>/enrollForm.co" class="btn btn-outline-secondary listBtn">신규등록</a>
     </div>
     
     <br>
@@ -101,19 +108,33 @@ h1{
             </thead>
             
             <tbody>
-                <tr>
-                    <td>3</td>
-                    <td>류준열</td>
-                    <td>배우</td>
-                    <td>1988.02.30</td>
-                    <td>한국</td>
+            	<!-- case1. 등록한 공지글이 없을 경우 -->
+            	<% if(list.isEmpty()) {  %>
+            	<tr>
+            		<td colspan="7" style="text-align: center;">등록된 인물이 없습니다.</td>
+            	</tr>
+            	<% }else {%>
+            	<!-- case2. 등록된 공지글이 있을 경우 -->
+	            	<% for(Person p: list) { %>
+	                <tr>
+                    <td><%=p.getpNo() %></td>
+                    <td><%=p.getpName() %></td>
+                    <td><%=p.getpJob() %></td>
+                    <td><%=p.getpBD() %></td>
+                    <td><%=p.getpNation() %></td>
+                    <% if(p.getpFile() != null){ %>
                     <td>Y</td>
+                    <%} else{ %>
+                    <td>Y</td>
+                    <%} %>
                     <td>
                         <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting">수정</button>
                         <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
                     </td>
                 </tr>
-
+					<%} %>
+				<%} %>
+                <!--  
                 <tr>
                     <td>2</td>
                     <td>김태리</td>
@@ -126,45 +147,48 @@ h1{
                         <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
                     </td>
                 </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>최동훈</td>
-                    <td>감독</td>
-                    <td>1976.06.04</td>
-                    <td>한국</td>
-                    <td>Y</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting">관리</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
-                    </td>
-                </tr>
-
+				-->               
             </tbody>
 
         </table>
 
     
 
-    <div class="d-flex justify-content-center container">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
-            </ul>
-        </nav>
+    <!-- 페이징바 영역 -->
+        <div class="d-flex justify-content-center container">
+	        <nav aria-label="Page navigation example">
+	            <ul class="pagination">
+	            	
+	            	<% if(pi.getCurrentPage() == 1) { %>
+	                <li class="page-item disabled">
+	                <a class="page-link" href="#" aria-label="Previous">
+	                    <span aria-hidden="true">&laquo;</span>
+	                </a>
+	                </li>
+	                <% }else { %>
+	                <li class="page-item"><a class="page-link" href="<%=contextPath%>/movieCastingList.admo?page=<%=pi.getCurrentPage() -1%>">Previous</a></li>
+	                <% } %>
+	                
+	                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
+	                	<% if(p == pi.getCurrentPage()) { %>
+	                	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                	<%}else { %>
+	                	<li class="page-item"><a class="page-link" href="<%=contextPath%>/movieCastingList.admo?page=<%=p%>"><%= p %></a></li>
+	                	<% } %>
+	                <% } %>
+	                
+	                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
+	                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                <% }else { %>
+	                <li class="page-item">
+	                <a class="page-link" href="<%=contextPath %>/movieCastingList.admo?page=<%=pi.getCurrentPage() +1 %>" aria-label="Next">
+	                    <span aria-hidden="true">&raquo;</span>
+	                </a>
+	                </li>
+	                <% } %>
+	            </ul>
+	        </nav>
+	    </div>
     </div>
 
     <!-- 인물추가 Modal -->

@@ -161,5 +161,18 @@
 			  SET CATEGORY_STATUS = 'N'
 			WHERE CATEGORY_NO = ?
 		</entry>
+		
+		<!-- 관리자 인물 조회 [수민] -->
+		<entry key="selectPersonList">
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+		</entry>
+
 
 </properties>

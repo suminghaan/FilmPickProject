@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.admin.model.service.CommunityService;
 import com.fp.admin.model.service.MovieService;
-import com.fp.admin.model.vo.Notice;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.person.model.vo.Person;
 
 /**
  * Servlet implementation class MovieCastingListController
@@ -55,11 +54,11 @@ public class MovieCastingListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, noticeLimit, maxPage, startPage, endPage);
 		
-		//List<Casting> list = new CommunityService().selectComuNoticeList(pi);
+		List<Person> list = new MovieService().selectPersonList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/admin/ad_community/commuNoticeList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/ad_movie/movieCasting.jsp").forward(request, response);
 				
 	}
 
