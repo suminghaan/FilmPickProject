@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	<!-- 신고회원 조회, 페이징용 쿼리 -->
 	<entry key="selectReportMemberListCount">
 	<![CDATA[
 		SELECT COUNT(*) AS COUNT
@@ -17,6 +18,7 @@
 		]]>
 	</entry>
 	
+	<!-- 신고회원 조회, 페이징용 쿼리 -->
 	<entry key="selectReportMemberList">
 	<![CDATA[
 		SELECT *
@@ -36,5 +38,28 @@
 		)
 		WHERE RNUM BETWEEN ? AND ?
 		]]>
+	</entry>
+	
+	<entry key="selectRestrictedMemberListCount">
+		SELECT COUNT(*) AS COUNT
+		FROM REPORTED_MEM
+	</entry>
+	
+	<!-- 이용제한회원 조회, 페이징용 쿼리 -->
+	<entry key="selectRestrictedMemberList">
+		SELECT MEM_NO
+		     , MEM_ID
+		     , LIMIT_REASON
+		     , CASE
+		           WHEN ACTIVITY_STATUS = 'B' THEN '강제탈퇴'
+		           WHEN ACTIVITY_STATUS = 'S' THEN '활동중지 ' || NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '-') || '일'
+		       END AS ACTIVITY_STATUS
+		     , CASE
+		           WHEN ACTIVITY_STATUS = 'B' THEN '-'
+		           ELSE START_DATE || ' - ' || END_DATE
+		       END AS SUSPEND_DATE
+		     FROM MEMBER 
+		     JOIN REPORTED_MEM USING (MEM_NO)
+		     ORDER BY MEM_NO DESC
 	</entry>
 </properties>
