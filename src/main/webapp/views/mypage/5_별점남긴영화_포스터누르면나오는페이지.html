@@ -33,7 +33,7 @@
 
     .content_wrap {
       padding-top: 100px;
-      margin:auto;
+      margin: auto;
       height: 1500px;
       width: 1500px;
     }
@@ -41,13 +41,14 @@
     .content {
       height: 100%;
     }
+
     /* main{
       background-color: black;
     } */
 
     #footer {
       height: 100px;
-      
+
     }
 
     .bd-placeholder-img {
@@ -67,17 +68,21 @@
         font-size: 3.5rem;
       }
     }
+
     @media (max-width: 990px) {
       #header {
         height: 250px;
       }
+
       .content_wrap {
         padding-top: 250px;
       }
+
       .search_bar {
         width: 600px;
       }
     }
+
     .b-example-divider {
       width: 100%;
       height: 3rem;
@@ -154,7 +159,7 @@
       display: none;
     }
 
-    .menu_buttons:hover + .menu_buttons_co {
+    .menu_buttons:hover+.menu_buttons_co {
       display: block;
     }
 
@@ -171,93 +176,131 @@
 
 
     /* 영화 포스터 눌렀을때 나오는 페이지 스타일 */
-    
-    .test1{
-        border: 5px solid red;
-        width: 720px;
-        height: 600px;
+
+    .test1 {
+      background-color: rgb(15, 15, 15);
+      border-radius: 10px;
+      width: 80%;
+      height: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
     }
+
     /* 포스터, 영화정보 */
-    .test2, .test3{
-        border: 5px solid green;
-        height: 100%;
-        width: 50%;
-        box-sizing: border-box;
-        float: left;
+    .test2,
+    .test3 {
+      background-color: black;
+      border-radius: 10px;
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
     }
-    .test2>div{
-        border: 5px solid blue;
-        width: 100%;
-        box-sizing: border-box;
+
+    .moviePoster {
+      height: 50%;
     }
-    .moviePoster{
-        height: 40%;
+
+    .movieExplanation {
+      height: 45%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .movieExplanation{
-        height: 60%;
+
+    .thumbnail_title {
+      height: 15%;
+      border-radius: 10px;
+      background-color: rgb(0, 0, 0)
+    }
+
+    .movieStory {
+      height: 80%;
+      border-radius: 10px;
+      background-color: black
     }
 
     /* 별점, 공감비공감, 리뷰 */
-    .test3>div{
-        border: 5px solid yellow;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .movieStarRating, .movieLikeDislike{
-        height: 20%;
-    }
-    .movieRewiew{
-        height: 60%;
-    }
-    .movieReviewDetail{
-        border: 2px solid white;
-        background-color: white;
-        height: 80%;
-        margin: auto;
+    .movieStarRating,
+    .movieLikeDislike {
+      height: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* 좋아요 */
-    .ag, .disag {
-        height: 65px;
-        width: 65px;
-        position: relative;
+    .movieRewiew {
+      height: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .filled_wrap, .empty_wrap {
-        height: 100%;
-        width: 100%;
-        position: absolute;
+    .movieReviewDetail {
+      width: 100%;
+      height: 80%;
+      margin: auto;
     }
 
-    .ag_disag_img {
-        height: 50px;
+    .thumb_btn {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
     }
 
-    .ag_disag_btn {
-        cursor: pointer;
-        background: none;
-        border: none;
+    .thumb_up,
+    .thumb_down {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
     }
 
-    .ag_filled, .disag_filled {
-        display: none;
+    .thumb_count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 10%;
     }
-    .btnEdit{
-      border : 1px solid transparent;
-      background-color: white;
-      color: black;
-      border-radius: 0.5em;
+
+    #reviewContent {
+      height: 100%;
+      width: 100%;
+    }
+
+
+    /* 영화 포스터 */
+    .thumbnail {
+      height: 100%;
+      cursor: pointer;
+      display: flex;
+      padding-bottom: 10px;
+      justify-content: center;
+      /* 위치를 표시할 기준이 되는 부모 요소에 relative */
       position: relative;
     }
 
+    .thumbnail_img {
+      height: 100%;
+      border-radius: 10px;
+    }
 
+    /* 영화 별점 */
+    .wrap {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 
 
   <!-- Custom styles for this template -->
-  <link href="../../resources/css/headers.css" rel="stylesheet">
   <link href="../../resources/css/starRating.css" rel="stylesheet">
-  <link href="../../resources/css/like&dislike_movieReviewDetail.css" rel="stylesheet">
 </head>
 
 <body>
@@ -281,7 +324,7 @@
     </symbol>
   </svg>
 
-   <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+  <!-- <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
       aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
@@ -370,13 +413,17 @@
             <img style="height: 65px;" src="../../resources/img/logo.png" alt="">
           </a>
 
-          <ul style="display: flex; align-items: center;" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <ul style="display: flex; align-items: center;"
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <!-- <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li> -->
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-film fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-film fa-2x"></i></a></li>
             <li class="menu_buttons_co">영화탐색</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-message fa-2x"></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-message fa-2x"></i></a></li>
             <li class="menu_buttons_co">커뮤니티</li>
-            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i class="fa-solid fa-headphones fa-2x"></i></i></a></li>
+            <li class="menu_buttons"><a href="#" class="nav-link px-2 text-white"><i
+                  class="fa-solid fa-headphones fa-2x"></i></i></a></li>
             <li class="menu_buttons_co">고객센터</li>
           </ul>
 
@@ -399,206 +446,164 @@
               --bs-btn-hover-bg: RGB(247, 39, 140);
               --bs-btn-hover-border-color: #000;">Sign-up</button>
           </div>-->
-          <!-- 로그인 시 보여질 내용--> 
+          <!-- 로그인 시 보여질 내용-->
           <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
-              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-              </a>
-              <ul class="dropdown-menu text-small" >
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-          </div> 
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
 
-      
+
         </div>
       </div>
     </header>
 
     <div class="content_wrap" style="background-color: black;">
-      <div class="content">
+      <div class="content" style="display: flex;
+      align-items: center;
+      justify-content: center;">
 
         <div class="test1">
-            <div class="test2">
-                <div class="moviePoster"></div>
-                <div class="movieExplanation"></div>
+          <div class="test2">
+            <div class="moviePoster">
+              <div class="thumbnail">
+                <a><img class="thumbnail_img" src="../../resources/img/다크나이트.webp" alt=""></a>
+              </div>
             </div>
-        
-            <div class="test3">
+            <div class="movieExplanation">
+              <div class="thumbnail_title">
+                <span>영화제목</span><br>
+                <span>영화별점</span><br>
+                <span>개봉연도, 국가</span>
+              </div>
+              <div class="movieStory">
+                영화 줄거리
+              </div>
+
+            </div>
+          </div>
+
+          <div class="test3">
 
 
 
-                <!-- 별점 -->
-                <div class="movieStarRating">    
-                  <div class="wrap">
-                    <div class="rating">
-                        <label class="rating__label rating__label--half" for="starhalf">
-                            <input type="radio" id="starhalf" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--full" for="star1">
-                            <input type="radio" id="star1" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--half" for="star1half">
-                            <input type="radio" id="star1half" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--full" for="star2">
-                            <input type="radio" id="star2" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--half" for="star2half">
-                            <input type="radio" id="star2half" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--full" for="star3">
-                            <input type="radio" id="star3" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--half" for="star3half">
-                            <input type="radio" id="star3half" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--full" for="star4">
-                            <input type="radio" id="star4" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--half" for="star4half">
-                            <input type="radio" id="star4half" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
-                        <label class="rating__label rating__label--full" for="star5">
-                            <input type="radio" id="star5" class="rating__input" name="rating" value="">
-                            <span class="star-icon"></span>
-                        </label>
+            <!-- 별점 -->
+            <div class="movieStarRating">
+              <div class="wrap">
+                <div class="rating" style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                  <label class="rating__label rating__label--half" for="starhalf">
+                    <input type="radio" id="starhalf" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--full" for="star1">
+                    <input type="radio" id="star1" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--half" for="star1half">
+                    <input type="radio" id="star1half" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--full" for="star2">
+                    <input type="radio" id="star2" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--half" for="star2half">
+                    <input type="radio" id="star2half" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--full" for="star3">
+                    <input type="radio" id="star3" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--half" for="star3half">
+                    <input type="radio" id="star3half" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--full" for="star4">
+                    <input type="radio" id="star4" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--half" for="star4half">
+                    <input type="radio" id="star4half" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                  <label class="rating__label rating__label--full" for="star5">
+                    <input type="radio" id="star5" class="rating__input" name="rating" value="">
+                    <span class="star-icon"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- 별점 -->
+
+            <!-- 공감/비공감 -->
+            <div class="movieLikeDislike">
+              <div class="thumb_btn" style="display: flex;">
+                <!-- 공감 -->
+                <div class="thumb_up">
+                  <div class="ag_disag_wrap">
+                    <div class="ag">
+                      <div class="ag_filled filled_wrap">
+                        <button type="button" class="ag_disag_btn ag_filled_btn"><img class="ag_filled_img ag_disag_img"
+                            src="../../resources/img/좋아요.png" alt=""></button>
+                      </div>
+                      <div class="ag_empty empty_wrap">
+                        <button type="button" class="ag_disag_btn ag_empty_btn"><img class="ag_empty_img ag_disag_img"
+                            src="../../resources/img/빈좋아요.png" alt=""></button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <!-- 별점 -->
+                <div class="thumb_count">
+                  <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
+                </div>
+                <!-- 공감 -->
 
-                <!-- 공감/비공감 -->
-                <div class="movieLikeDislike">
-                    <div class="thumb_btn" style="display: flex;">
-                        <!-- 공감 -->
-                        <div class="thumb_up">
-                            <div class="ag_disag_wrap">
-                                <div class="ag">
-                                    <div class="ag_filled filled_wrap">
-                                        <button type="button" class="ag_disag_btn ag_filled_btn"><img class="ag_filled_img ag_disag_img"
-                                                src="../../resources/img/좋아요.png" alt=""></button>
-                                    </div>
-                                    <div class="ag_empty empty_wrap">
-                                        <button type="button" class="ag_disag_btn ag_empty_btn"><img class="ag_empty_img ag_disag_img"
-                                                src="../../resources/img/빈좋아요.png" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumb_count">
-                            <span style="font-size: 8px; padding-left: 0px;">공감 수</span>
-                        </div>
-                        <!-- 공감 -->
-                      
-                        <!-- 비공감 -->
-                        <div class="thumb_down">
-                            <div class="ag_disag_wrap">
-                                <div class="disag">
-                                    <div class="disag_filled filled_wrap">
-                                        <button type="button" class="ag_disag_btn disag_filled_btn"><img
-                                                class="ag_filled_img ag_disag_img" src="../../resources/img/싫어요.png" alt=""></button>
-                                    </div>
-                                    <div class="disag_empty empty_wrap">
-                                        <button type="button" class="ag_disag_btn disag_empty_btn"><img
-                                                class="ag_empty_img ag_disag_img" src="../../resources/img/빈싫어요.png" alt=""></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumb_count">
-                            <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
-                        </div>
-                        <!-- 비공감 -->
+                <!-- 비공감 -->
+                <div class="thumb_down">
+                  <div class="ag_disag_wrap">
+                    <div class="disag">
+                      <div class="disag_filled filled_wrap">
+                        <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                            class="ag_filled_img ag_disag_img" src="../../resources/img/싫어요.png" alt=""></button>
+                      </div>
+                      <div class="disag_empty empty_wrap">
+                        <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                            class="ag_empty_img ag_disag_img" src="../../resources/img/빈싫어요.png" alt=""></button>
+                      </div>
                     </div>
+                  </div>
                 </div>
-
-                <script>
-                    $(".ag_empty_btn").each(function (index, el) {
-                        $(el).click(function () {
-                            // 누른 버튼 display none으로
-                            $(el).parent().css("display", "none");
-                            // 숨겨진 버튼 display block
-                            $(el).parent().prev().css("display", "block");
-                
-                            // 빈 좋아요 버튼을 눌러서 좋아요 표시를 하면 싫어요 버튼을 비활성화로
-                            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
-                                $(e).addClass("disabled");
-                                $(e).css("pointer-events", "none")
-                            })
-                        })
-                    })
-                
-                    $(".ag_filled_btn").each(function (index, el) {
-                        console.log($(el));
-                        $(el).click(function () {
-                            // 누른 버튼 display none으로
-                            $(el).parent().css("display", "none");
-                            // 숨겨진 버튼 display block
-                            $(el).parent().next().css("display", "block");
-                
-                            // 꽉찬 좋아요 버튼을 눌러서 좋아요 표시를 제거하면 싫어요 버튼을 활성화로
-                            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
-                                $(e).removeClass("disabled");
-                                $(e).css("pointer-events", "auto")
-                            })
-                        })
-                    })
-                
-                    $(".disag_empty_btn").each(function (index, el) {
-                        $(el).click(function () {
-                            // 누른 버튼 display none으로
-                            $(el).parent().css("display", "none");
-                            // 숨겨진 버튼 display block
-                            $(el).parent().prev().css("display", "block");
-                
-                            // 빈 싫어요 버튼을 눌러서 싫어요 표시를 하면 좋아요 버튼을 비활성화로
-                            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
-                                $(e).addClass("disabled");
-                                $(e).css("pointer-events", "none")
-                            })
-                        })
-                    })
-                
-                    
-                    $(".disag_filled_btn").each(function (index, el) {
-                        $(el).click(function () {
-                            // 누른 버튼 display none으로
-                            $(el).parent().css("display", "none");
-                            // 숨겨진 버튼 display block
-                            $(el).parent().next().css("display", "block");
-                
-                            // 꽉찬 싫어요 버튼을 눌러서 싫어요 표시를 제거하면 좋아요 버튼을 활성화로
-                            $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
-                                $(e).removeClass("disabled");
-                                $(e).css("pointer-events", "auto")
-                            })
-                        })
-                    })
-                
-                
-                </script>
-                <!-- 공감/비공감 -->
-
-                <!-- 내가 남긴 리뷰 -->
-                <div class="movieRewiew">
-                    <div class="movieReviewDetail">리뷰남기는곳 리뷰리뷰!!</div>
-                    <button class="btnEdit" id="btnEdit">수정하기</button> 
+                <div class="thumb_count">
+                  <span style="font-size: 8px; padding-left: 0px;">비공감 수</span>
                 </div>
-
+                <!-- 비공감 -->
+              </div>
             </div>
+
+            <!-- 내가 남긴 리뷰 -->
+            <div class="movieRewiew">
+              <div class="movieReviewDetail">
+                <textarea name="reviewContent" id="reviewContent" resize="none" placeholder="리뷰를 작성해주세요"></textarea>
+              </div>
+              <button class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
+              --bs-btn-color: RGB(247, 39, 140);
+              --bs-btn-hover-color: #000;
+              --bs-btn-hover-bg: RGB(247, 39, 140);
+              --bs-btn-hover-border-color: #000;">수정하기</button>
+            </div>
+
+          </div>
         </div>
 
       </div>
@@ -633,6 +638,7 @@
   </main>
   <script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../resources/assets/js/starRating.js"></script>
+  <script src="../../resources/assets/js/like&dislike.js"></script>
 
 </body>
 

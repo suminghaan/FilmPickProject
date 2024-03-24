@@ -739,7 +739,7 @@
                                 </div>
                                 <div class="review_btn_wrap">
                                     <div class="review_btn">
-                                        <button type="button"><i class="fa-solid fa-pen-to-square fa-4x"
+                                        <button type="button" class="ToReview"><i class="fa-solid fa-pen-to-square fa-4x"
                                                 style="color: #F72798;"></i></button>
                                     </div>
                                     <div style="margin-right: 10px;">
@@ -1012,6 +1012,11 @@
 	        		$(".heart_checkbox").attr("disabled", true);
 	        	<% } %>
         	})
+        })
+        
+        // 리뷰 페이지로 이동
+        $(".ToReview").click(function() {
+        	location.href="<%= contextPath %>/reviewEnrollForm.fp?movieNo=<%= movie.getMvNo() %>"
         })
         
     </script>
