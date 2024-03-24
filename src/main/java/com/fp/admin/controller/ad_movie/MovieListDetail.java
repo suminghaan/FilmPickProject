@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fp.admin.model.service.MovieService;
+import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.vo.Movie;
+import com.fp.person.model.vo.Person;
 
 /**
  * Servlet implementation class MovieListDetail
@@ -32,13 +34,16 @@ public class MovieListDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		System.out.println(request.getParameter("no"));
+		int mvNo = Integer.parseInt(request.getParameter("no"));
 		
-
-		int mvNo = Integer.parseInt(request.getParameter("mvNo"));
-		
-		List<Movie> list = new MovieService().MovieListDetail(mvNo);
-
-		request.setAttribute("list", list);
+		Movie m = new MovieService().MovieListDetail(mvNo);
+		List<Person> plist = new MovieService().MovieListDetailPerson(mvNo);
+		List<Attachment> alist = new com.fp.movie.model.service.MovieService().selectAddiMovie(mvNo);
+		request.setAttribute("m", m);
+		request.setAttribute("plist", plist);
+		request.setAttribute("alist", alist);
 		
 		request.getRequestDispatcher("/views/admin/ad_movie/movieListDetail.jsp").forward(request, response);
 	}

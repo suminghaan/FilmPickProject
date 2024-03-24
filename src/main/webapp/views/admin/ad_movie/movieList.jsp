@@ -95,7 +95,7 @@ h1{
 	                        <td><%=m.getMvOpenDate() %></td>
 	                        <td><%=m.getCategoryNames() %></td>
 	                        <td>
-	                        	<button type="button" class="btn btn-outline-secondary" onclick="movieListDetail();">관리</button>
+	                        	<button type="button" class="btn btn-outline-secondary" onclick="movieListDetail(<%=m.getMvNo()%>);">관리</button>
 	                        	<a href="<%=contextPath %>/delete.admo?mvNo=<%=m.getMvNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
 	                        </td>
 	                    </tr>
@@ -198,7 +198,8 @@ h1{
     	}
     
     	// 영화 상세조회
-   		function movieListDetail(){
+   		function movieListDetail(mvNo) {
+    		console.log(mvNo);
    			location.href = "<%=contextPath %>/movieListDetail.admo?no=" + mvNo;
    		}
    		
