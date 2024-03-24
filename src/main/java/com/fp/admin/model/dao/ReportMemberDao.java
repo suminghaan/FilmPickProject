@@ -14,6 +14,7 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.fp.admin.model.vo.ReportedMember;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 
@@ -79,6 +80,61 @@ public class ReportMemberDao {
 									, rset.getString("SIGNIN_DATE")
 									, rset.getInt("BOARDCOUNT")
 									, rset.getInt("REPLYCOUNT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int selectRestrictedMemberListCount(Connection conn) {
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectRestrictedMemberListCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	public List<ReportedMember> selectRestrictedMemberList(Connection conn, PageInfo pi) {
+		List<ReportedMember> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectRestrictedMemberList");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new ReportedMember(rset.getInt("MEM_NO")
+									, rset.getString("MEM_ID")
+									, rset.getString("LIMIT_REASON")
+									, rset.getString("ACTIVITY_STATUS")
+									, rset.getString("SUSPEND_DATE")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

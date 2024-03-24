@@ -47,19 +47,26 @@
 	
 	<!-- 이용제한회원 조회, 페이징용 쿼리 -->
 	<entry key="selectRestrictedMemberList">
-		SELECT MEM_NO
-		     , MEM_ID
-		     , LIMIT_REASON
-		     , CASE
-		           WHEN ACTIVITY_STATUS = 'B' THEN '강제탈퇴'
-		           WHEN ACTIVITY_STATUS = 'S' THEN '활동중지 ' || NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '-') || '일'
-		       END AS ACTIVITY_STATUS
-		     , CASE
-		           WHEN ACTIVITY_STATUS = 'B' THEN '-'
-		           ELSE START_DATE || ' - ' || END_DATE
-		       END AS SUSPEND_DATE
-		     FROM MEMBER 
-		     JOIN REPORTED_MEM USING (MEM_NO)
-		     ORDER BY MEM_NO DESC
+		SELECT *
+		    FROM(
+		        SELECT ROWNUM RNUM, A.*
+		        FROM (
+		                  SELECT   MEM_NO
+		                         , MEM_ID
+		                         , LIMIT_REASON
+		                         , CASE
+		                               WHEN ACTIVITY_STATUS = 'B' THEN '강제탈퇴'
+		                               WHEN ACTIVITY_STATUS = 'S' THEN '활동중지 ' || NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '-') || '일'
+		                           END AS ACTIVITY_STATUS
+		                         , CASE
+		                               WHEN ACTIVITY_STATUS = 'B' THEN '-'
+		                               ELSE START_DATE || ' - ' || END_DATE
+		                           END AS SUSPEND_DATE
+		                         FROM MEMBER 
+		                         JOIN REPORTED_MEM USING (MEM_NO)
+		                         ORDER BY MEM_NO DESC
+		        ) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 </properties>

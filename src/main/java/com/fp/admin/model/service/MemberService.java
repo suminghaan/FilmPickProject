@@ -12,6 +12,7 @@ import com.fp.admin.model.dao.CancelMemberDao;
 import com.fp.admin.model.dao.MemberDao;
 import com.fp.admin.model.dao.ReportMemberDao;
 import com.fp.admin.model.vo.CancelMember;
+import com.fp.admin.model.vo.ReportedMember;
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.PageInfo;
@@ -324,6 +325,23 @@ public class MemberService {
 		Connection conn = getConnection();
 
 		List<Member> list = rDao.selectReportMemberList(conn, pi);
+		close(conn);
+		return list;
+	}
+
+	public int selectRestrictedMemberListCount() {
+		Connection conn = getConnection();
+
+		int listCount = rDao.selectRestrictedMemberListCount(conn);
+		close(conn);
+
+		return listCount;
+	}
+
+	public List<ReportedMember> selectRestrictedMemberList(PageInfo pi) {
+		Connection conn = getConnection();
+
+		List<ReportedMember> list = rDao.selectRestrictedMemberList(conn, pi);
 		close(conn);
 		return list;
 	}

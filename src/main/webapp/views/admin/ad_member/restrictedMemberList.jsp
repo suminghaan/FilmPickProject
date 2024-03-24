@@ -1,5 +1,13 @@
+<%@page import="com.fp.admin.model.vo.ReportedMember"%>
+<%@page import="java.util.List"%>
+<%@page import="com.fp.common.model.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	List<ReportedMember> pageList = (List<ReportedMember>) request.getAttribute("pageList");
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,15 +51,23 @@ table{
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>999</td>
-                    <td>user999</td>
-                    <td>사유1</td>
-                    <td>활동중지 3일</td>
-                    <td>2024/02/15 - 2024/02/17</td>
-                    <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#suspendModal">변경</button></td>
-                </tr>
-                <tr>
+                	<% if(pageList.isEmpty()){ %>
+                	<tr>
+                		<td colspan="7" style="text-align: center;">존재하는 회원이 없습니다.</td>
+                	</tr>
+                	<% } else { %>
+                	<% for(ReportedMember rm : pageList){ %>
+	                <tr>
+	                    <td><%=rm.getMemNo()%></td>
+	                    <td><%=rm.getMemId()%></td>
+	                    <td><%=rm.getLimitReason()%></td>
+	                    <td><%=rm.getActivityStatus()%></td>
+	                    <td><%=rm.getSuspendDate()%></td>
+	                    <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#suspendModal">변경</button></td>
+	                </tr>
+	                <% } %>
+	                <% } %>
+                <!-- <tr>
                     <td>999</td>
                     <td>user999</td>
                     <td>사유1</td>
@@ -122,7 +138,7 @@ table{
                     <td>활동중지 3일</td>
                     <td>2024/02/15 - 2024/02/17</td>
                     <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#suspendModal">변경</button></td>
-                </tr>
+                </tr> -->
                 </tbody>
             </table>
         </div>
@@ -168,22 +184,25 @@ table{
 
         <div class="d-flex justify-content-center container">
             <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
+                <ul class="pagination justify-content-center">
+	                <% if(pi.getCurrentPage() == 1){ %>
+	                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	                <% } else { %>
+	                    <li class="page-item"><a class="page-link" href="<%= contextPath %>/rslist.me?page=<%=pi.getCurrentPage() - 1%>">Previous</a></li>
+	                <% } %>    
+                    <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+	                    <% if(p == pi.getCurrentPage()){ %>
+	                    	<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+	                    <% } else { %>
+	                    	<li class="page-item"><a class="page-link" href="<%=contextPath%>/rslist.me?page=<%= p %>"><%= p %></a></li>
+	                    <% } %>
+                    <% } %>
+                    <% if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+                    	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    <% } else { %>
+                    	<li class="page-item"><a class="page-link" href="<%= contextPath %>/rslist.me?page=<%= pi.getCurrentPage() + 1%>">Next</a></li>
+                  	<% } %>
+                  </ul>
             </nav>
         </div>
     </div>
