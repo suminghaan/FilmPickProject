@@ -198,6 +198,7 @@ String alertMsg = (String)session.getAttribute("alertMsg");
     	border: 2px solid #F72798;
     	height: 50px; 
     	width: 50px;
+    	border-radius: 10.0em;
     }
 
   </style>
