@@ -209,10 +209,12 @@
     				           +  "<td></td>"
     				           	  <%if(loginMember != null){%>
     				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='replyHidden(" + list[i].replyNo + ", <%=loginMember.getMemNo()%>, " + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
-    				          	  <%}%>
-    				           +  "<td><img class='img' src='<%=contextPath%>/resources/img/삭제버튼.png' onclick='return deleteReply(" + list[i].replyNo + ");'></td>"
+    				           	   	 if(list[i].reMemberNo == <%=loginMember.getMemNo()%>){
+    				           			value +=  "<td><img class='img' src='<%=contextPath%>/resources/img/삭제버튼.png' onclick='return deleteReply(" + list[i].replyNo + ");'></td>"
+    				           	  	 }
+    				           	  <%}%>
     				           + "</tr>";
-    				}
+    					}
     			}else{
     				value += "<tr><td colspan='4'>존재하는 댓글이 없습니다.</td></tr>";
     			}

@@ -198,7 +198,17 @@ public class Reply {
 	@Override
 	public String toString() {
 		return "Reply [replyNo=" + replyNo + ", replyContent=" + replyContent + ", enrollDate=" + enrollDate
-				+ ", bStatus=" + bStatus + ", dStatus=" + dStatus + ", reBoNo=" + reBoNo + ", reMemNo=" + reMemNo + "]";
+				+ ", bStatus=" + bStatus + ", dStatus=" + dStatus + ", reBoNo=" + reBoNo + ", reMemNo=" + reMemNo
+				+ ", reMemberNo=" + reMemberNo + ", report=" + report + ", boCategory=" + boCategory + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "Reply [replyNo=" + replyNo + ", replyContent=" + replyContent + ", enrollDate=" + enrollDate
+//				+ ", bStatus=" + bStatus + ", dStatus=" + dStatus + ", reBoNo=" + reBoNo + ", reMemNo=" + reMemNo + "]";
+//	}
+
+	
+	
 	
 }

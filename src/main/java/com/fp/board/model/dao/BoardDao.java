@@ -829,7 +829,7 @@ public class BoardDao {
 								 , rset.getString("REPLY_CONTENT")
 								 , rset.getString("ENROLL_DATE")
 								 , rset.getString("MEM_ID")
-								 , rset.getInt("MEM_NO")));
+								 , rset.getInt("MEM_NO"))); 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -837,6 +837,7 @@ public class BoardDao {
 			close(rset);
 			close(pstmt);
 		}
+
 		return list;
 	}
 	
