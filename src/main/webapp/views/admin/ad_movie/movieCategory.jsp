@@ -83,7 +83,7 @@
 		<div class="allBtn">
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#addModal">추가</button>
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#changeModal">수정</button>
-        	<a href="<%=contextPath %>/delete.admo?categoryNo=<%=c.getCategoryNo() %>" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</a>
+        	<a href="<%=contextPath %>/deleteCategory.admo?categoryNo=<%=c.getCategoryNo() %>" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</a>
         </div>
         <% } %>
     </div>

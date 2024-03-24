@@ -14,7 +14,7 @@ import com.fp.admin.model.service.MovieService;
 /**
  * Servlet implementation class MovieCategoryDeleteController
  */
-@WebServlet("/delete.admo")
+@WebServlet("/deleteCategory.admo")
 public class MovieCategoryDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
