@@ -131,7 +131,7 @@
 		
 		<!-- 관리자 영화 상세조회 시 인물관련 쿼리 [수민] -->
 		<entry key="moiveListDetailPerson">
-			SELECT P_NO, P_NAME, CASTING, P_JOB, P_BD, P_NATION, P_FILE
+			SELECT P_NO, P_NAME, CASTING, P_JOB, P_BD, P_NATION, P_FILE, MOVIE_NO
 	        FROM PERSON
 	        JOIN CASTING
 	        ON P_NO = PERSON_NO

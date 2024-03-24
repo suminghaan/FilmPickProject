@@ -10,11 +10,41 @@ public class Person {
 	
 //	배역 추가
 	private String casting;
+// 영화 번호 추가 
+	private String movieNo;
 	
 	public Person() {}
 
 
+	/**
+	 * (관리자) 영화 상세 조회 시 사용
+	 * @param pNo
+	 * @param pName
+	 * @param pJob
+	 * @param pBD
+	 * @param pNation
+	 * @param pFile
+	 * @param casting
+	 * @param movieNo
+	 * @author 수밍
+	 */
 	
+	public Person(int pNo, String pName, String pJob, String pBD, String pNation, String pFile, String casting,
+			String movieNo) {
+		super();
+		this.pNo = pNo;
+		this.pName = pName;
+		this.pJob = pJob;
+		this.pBD = pBD;
+		this.pNation = pNation;
+		this.pFile = pFile;
+		this.casting = casting;
+		this.movieNo = movieNo;
+	}
+
+
+
+
 	public Person(int pNo, String pName, String pJob, String pBD, String pNation, String pFile) {
 		super();
 		this.pNo = pNo;

@@ -222,6 +222,7 @@ public class MovieDao {
 						, rset.getString("P_NATION")
 						, rset.getString("P_FILE")
 						, rset.getString("CASTING")
+						, rset.getString("MOVIE_NO")
 						));
 			}
 		} catch (SQLException e) {

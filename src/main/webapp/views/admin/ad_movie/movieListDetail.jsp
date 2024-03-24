@@ -204,24 +204,20 @@
                     <input type="text" name="casting" class="form-control" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 
+                <% for(Person p : plist){ %>
                 	<div class="castingList">
                 		<div class="person">
-	                    <img src="../img/최동훈감독.PNG" alt=""> 최동훈 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
+	                    <img src="<%=p.getpFile() %>" alt=""> <%=p.getpName() %> <br>
+	                    <input type="text" name="person_role" value="<%=p.getCasting()%>">
 	                    </div>
+	                    <!-- 
 	                    <div class="person">
 	                    <img src="../img/김우빈.PNG" alt=""> 김우빈 <br>
 	                    <input type="text" name="person_role" placeholder="해당영화 역할">
 	                    </div>
-	                    <div class="person">
-	                    <img src="../img/김태리.PNG" alt=""> 김태리 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-	                    </div>
-	                    <div class="person">
-	                    <img src="../img/류준열.PNG" alt=""> 류준열 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-						</div>
+	                     -->
 					</div>
+				<% } %>
                 	
                 </div>
                 <br>
