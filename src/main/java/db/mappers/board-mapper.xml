@@ -152,6 +152,16 @@
 		   AND B_CATEGORY = '1'
 		   AND B_TITLE LIKE ?
 	</entry>
+	
+	<!-- 총 키워드에 맞는 잡담카테고리 전체게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<entry key="keywordSelectChatListCount">
+		SELECT COUNT(*) COUNT
+		  FROM BOARD
+		 WHERE B_D_STATUS = 'N'
+		   AND B_B_STATUS = 'N'
+		   AND B_CATEGORY = '2'
+		   AND B_TITLE LIKE ?
+	</entry>
 		
 	<!-- 총 키워드에 맞는 영화카테고리 인기게시글 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
 	<entry key="publicKeywordSelectListCount">
@@ -250,6 +260,37 @@
 					  LEFT JOIN ATTACHMENT A ON (REF_TYPE = '3' and A.REF_NO = B.B_NO)
 					 WHERE B_D_STATUS = 'N'
 					   AND B_CATEGORY = '1'
+					   AND B_TITLE LIKE ?
+					 ORDER
+					    BY B_NO DESC
+					) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>	
+	
+	<!-- 커뮤니티 키워드에 맞는 잡담카테고리 전체게시글 페이지에 띄울 값들을 출력 및 페이징바 적용을 위한 sql문 by호용 -->
+	<entry key="selectKeywordChatList">
+	 SELECT *
+	   FROM (
+		    SELECT ROWNUM RNUM, A.*
+			  FROM (
+					SELECT
+					       B_NO
+					     , B_CATEGORY
+					     , B_TITLE
+					     , B_READ_COUNT
+					     , B_RECOMMEND_COUNT
+					     , NICKNAME <!-- MEMBER 테이블과 조인 -->
+					     , TO_CHAR(B_REGIST_DATE, 'YY/MM/DD HH:MI:SS') B_REGIST_DATE
+		                 , FILE_PATH || CHANGE_NAME TITLEIMG_URL <!-- ATTACHMENT 테이블과 조인  -->
+					     , (SELECT COUNT(*) FROM REPLY WHERE B_NO = BOARD_NO) REPLY_COUNT
+					     , B_B_STATUS
+					     , B_D_STATUS
+					  FROM BOARD B
+					  JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
+					  LEFT JOIN ATTACHMENT A ON (REF_TYPE = '3' and A.REF_NO = B.B_NO)
+					 WHERE B_D_STATUS = 'N'
+					   AND B_CATEGORY = '2'
 					   AND B_TITLE LIKE ?
 					 ORDER
 					    BY B_NO DESC

@@ -321,6 +321,34 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 
+	 * @param 호용
+	 * @return 총 키워드에 맞는 잡담카테고리 전체게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectChatListCount(Connection conn, String keyword) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		keyword = '%' + keyword + '%';
+		String sql = prop.getProperty("keywordSelectChatListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			rset = pstmt.executeQuery(); // 
+			
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT"); // 조회문은 변수.next()로 한행 밀어야됨
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;	
+	}
+	
+	/**
 	 * 커뮤니티 영화카테고리 인기게시글에 띄울 값들을 구하기위한 메소드
 	 * @호용
 	 */
@@ -412,6 +440,48 @@ public class BoardDao {
 		ResultSet rset = null;
 		keyword = '%' + keyword + '%';
 		String sql = prop.getProperty("selectKeywordList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setString(1, keyword);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				publicList.add(new Board(rset.getInt("B_NO")
+						, rset.getString("B_TITLE")
+						, rset.getString("B_REGIST_DATE")
+						, rset.getInt("B_READ_COUNT")
+						, rset.getInt("B_RECOMMEND_COUNT")
+						, rset.getString("B_CATEGORY")
+						, rset.getString("NICKNAME")
+						, rset.getString("TITLEIMG_URL")
+						, rset.getInt("REPLY_COUNT")
+						, rset.getString("B_B_STATUS")
+						, rset.getString("B_D_STATUS")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return publicList;
+	}
+	
+	/**
+	 * 커뮤니티 잡담카테고리 키워드에 맞는 전체게시글에 띄울 값들을 구하기위한 메소드
+	 * @호용
+	 */
+	public List<Board> selectKeywordChatList(Connection conn, PageInfo pi, String keyword){
+		List<Board> publicList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		keyword = '%' + keyword + '%';
+		String sql = prop.getProperty("selectKeywordChatList");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
