@@ -9,7 +9,20 @@
 		ArrayList<Review> otherUserReviewList = ((ArrayList<Review>)request.getAttribute("otherUserReview"));
 		ArrayList<Movie> bothInterestMovieList = (ArrayList<Movie>)request.getAttribute("bothInterestMovieList");
 		Movie conflictingMovie = (Movie)request.getAttribute("conflictingMovie");
-		ArrayList<HashMap<String, String>> starRatingAnalyList = (ArrayList<HashMap<String, String>>)request.getAttribute("starRatingAnalyList");
+		HashMap<String, String> starRatingAnaly = (HashMap<String, String>)request.getAttribute("starRatingAnaly");
+		int[] starRatingInfo = new int[10];
+		
+		for(int i = 1; i <= 10; i++) {
+			String starRating = null;
+			if ((0.5 * i) % 1 == 0) {
+				starRating = String.valueOf((int)(0.5 * i));
+			} else {
+				starRating = String.valueOf(0.5 * i);
+			}
+			
+			starRatingInfo[i - 1] = (starRatingAnaly.containsKey(starRating) ? Integer.parseInt(starRatingAnaly.get(starRating)) : 0);
+			System.out.println(starRating);
+		}
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -696,21 +709,22 @@
                         </div>
                     </div>
                     <div class="taste_analysis">
-                     <% if(starRatingAnalyList.size() > 5) { %>
                         <div class="taste_analysis_title">
                             <h4>취향 분석</h4>
                         </div>
                         <div class="taste_analysis_info">
+                        <% if(starRatingAnaly.get("TA_CONTENT") != null) { %>
                             <span>
-                                취향이 한결같은 '소나무파'
+                                <%= starRatingAnaly.get("TA_CONTENT") %>
+	
                             </span>
                         </div>
                         <div class="taste_analysis_graph">
                             <canvas id="starRating_chart" style="height: 200px;"></canvas>
                         </div>
-                    <% } else { %>
-                    <h5>충분한 별점 데이터가 존재하지 않습니다.</h5>
-                    <% } %>
+	                    <% } else { %>
+	                    <h5>충분한 별점 데이터가 존재하지 않습니다.</h5>
+	                    <% } %>
                     </div>
                 </div>
             </div>
@@ -749,8 +763,9 @@
                 labels: ['0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5'], // x축에 나올 값
                 datasets: [{
                     label: '# of starRatings',
-                    data: []
-                    data: [0, 5, 8, 6, 7, 9, 18, 19, 20, 41], // x축 각각에 해당하는 값
+                    data: [<% for(int i = 0; i < 10; i++) { %> 
+                    			<%= starRatingInfo[i] %> <%= i != 9 ? "," : "" %>
+                    	   <% } %>], // x축 각각에 해당하는 값
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.8)',
                         'rgba(54, 162, 235, 0.8)',

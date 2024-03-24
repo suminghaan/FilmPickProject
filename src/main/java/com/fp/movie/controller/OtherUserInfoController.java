@@ -45,7 +45,7 @@ public class OtherUserInfoController extends HttpServlet {
 			ArrayList<Review> otherUserReview = ms.selectOtherUserReview(otherUserNo);
 			ArrayList<Movie> bothInterestMovieList = ms.bothInterestMovie(userNo, otherUserNo);
 			Movie conflictingMovie = ms.conflictingMovie(userNo, otherUserNo);
-			ArrayList<HashMap<String, String>> starRatingAnaly = ms.starRatingAnalysis(otherUserNo);
+			HashMap<String, String> starRatingAnaly = ms.starRatingAnalysis(otherUserNo);
 			
 			if(otherUser != null) {
 				request.setAttribute("otherUser", otherUser);

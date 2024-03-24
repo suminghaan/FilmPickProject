@@ -238,14 +238,14 @@ public class MovieService {
 
 
 //  다른 유저의 별점 분석
-	public ArrayList<HashMap<String, String>> starRatingAnalysis(int otherUserNo) {
+	public HashMap<String, String> starRatingAnalysis(int otherUserNo) {
 		Connection conn = getConnection();
 		
-		ArrayList<HashMap<String, String>> starRatingAnalyList = mDao.starRatingAnalysis(conn, otherUserNo);
+		HashMap<String, String> starRatingAnaly = mDao.starRatingAnalysis(conn, otherUserNo);
 		
 		close(conn);
 		
-		return starRatingAnalyList;
+		return starRatingAnaly;
 	}
 
 

@@ -662,8 +662,8 @@ public class MovieDao {
 	}
 
 	// 다른 사용자의 별점 분석 정보 가져오는 메소드 [기웅]
-	public ArrayList<HashMap<String, String>> starRatingAnalysis(Connection conn, int otherUserNo) {
-		ArrayList<HashMap<String, String>> starRatingAnalyList = new ArrayList<>();
+	public HashMap<String, String> starRatingAnalysis(Connection conn, int otherUserNo) {
+		HashMap<String, String> starRatingAnaly = new HashMap<>();
 		String query = prop.getProperty("starRatingAnalysis");
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -676,12 +676,8 @@ public class MovieDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				HashMap<String, String> h = new HashMap<>();
-				h.put("LIKE_POINT", rset.getString("LIKE_POINT"));
-				h.put("COUNT_LIKE_POINT", rset.getString("COUNT_LIKE_POINT"));
-				h.put("TA_NO", rset.getString("TA_NO"));
-				
-				starRatingAnalyList.add(h);
+				starRatingAnaly.put(rset.getString("LIKE_POINT"), rset.getString("COUNT_LIKE_POINT"));
+				starRatingAnaly.put("TA_CONTENT", rset.getString("TA_CONTENT"));
 			}
 			
 		} catch (SQLException e) {
@@ -691,7 +687,7 @@ public class MovieDao {
 			close(pstmt);
 		}
 		
-		return starRatingAnalyList;
+		return starRatingAnaly;
 	}
 
 
