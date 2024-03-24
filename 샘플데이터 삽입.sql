@@ -3519,7 +3519,11 @@ INSERT INTO CANCELED_MEM VALUES(19, 2, '2018-09-22');
 INSERT INTO CANCELED_MEM VALUES(21, 2, '2021-11-30');
 INSERT INTO CANCELED_MEM VALUES(23, 2, '2021-12-19');
 
--- 신고 테이블 샘플데이터
+-- 신고 테이블 샘플데이터 (김지우)
 INSERT INTO REPORT VALUES(SEQ_REPORT_NO.NEXTVAL, '1', '게시판에 욕설 남김', '2024-03-22', 1, 2, '1', 1);
+
+-- 문의 테이블 샘플데이터 (김지우)
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원가입 관련 문제.', '분명히 회원가입을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-21', 'N', 30, 1, NULL, NULL);
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'Y', 29, 1, '아직 없지만 곧 만들어서 배포할 계획입니다.', '2024-03-20');
 
 commit;
