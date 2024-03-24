@@ -94,6 +94,22 @@ public class MovieService {
 		close(conn);
 		return listCount;
 	}
+
+	// 영화 카테고리 삭제
+	public int deleteCategory(int cNo) {
+		Connection conn = getConnection();
+		int result = mDao.deleteCategory(conn, cNo);
+		
+		
+		if(result > 0 ) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
 	
 	
 	

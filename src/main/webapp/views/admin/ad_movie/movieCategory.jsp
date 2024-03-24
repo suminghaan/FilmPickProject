@@ -76,62 +76,16 @@
                         <input class="genre" type="checkbox" id="inlineCheckbox1" value="option1">
                         <label class="form-check-label" for="inlineCheckbox1"><%=c.getCategoryName() %></label>
                     </td>
-            <% } %>
-            <!--  
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
-                    </td>
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">로맨스</label>
-                    </td>
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">액션</label>
-                    </td>
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">판타지</label>
-                    </td>
-				</tr>
-				
-				<tr>
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">코미디</label>
-                    </td>
-
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">에로</label>
-                    </td>
-
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">범죄</label>
-                    </td>
-
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">애니메이션</label>
-                    </td>
-
-                    <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox2" value="option2">
-                        <label class="form-check-label" for="inlineCheckbox2">느와르</label>
-                    </td>
-                </tr>
-            </tbody>
-        -->
+            
 
         </table>
 
 		<div class="allBtn">
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#addModal">추가</button>
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#changeModal">수정</button>
-        	<button type="button" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</button>
+        	<a href="<%=contextPath %>/delete.admo?categoryNo=<%=c.getCategoryNo() %>" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</a>
         </div>
+        <% } %>
     </div>
     
 
@@ -217,7 +171,7 @@
 			let d = prompt("선택한 분류를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
 			
 			if(d=="삭제"){
-	            alert("삭제되었습니다.")
+	            alert("해당 카테고리를 삭제하겠습니다.")
 	        }else{
 	            alert("잘못입력하셨습니다. 다시 확인해주세요")
 	        }
