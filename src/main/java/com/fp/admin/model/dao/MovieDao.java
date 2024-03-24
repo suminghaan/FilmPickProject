@@ -184,8 +184,7 @@ public class MovieDao {
 									rset.getString("current_screening"),
 									rset.getString("mv_poster"),
 									rset.getString("mv_preview"),
-									rset.getString("category_name"),
-									rset.getString("casting"),
+									rset.getString("category_names"),
 									rset.getString("nm_user_request"),
 									rset.getString("mem_no"),
 									rset.getString("admin_no")));

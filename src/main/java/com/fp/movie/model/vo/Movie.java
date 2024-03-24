@@ -92,7 +92,7 @@ public class Movie {
 	 */
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mvPoster,
-			String mvPreview, String categoryNames, String casting, String nmUserRequest, String memNo,
+			String mvPreview, String categoryNames, String nmUserRequest, String memNo,
 			String adminNo) {
 		super();
 		this.mvNo = mvNo;
@@ -107,7 +107,6 @@ public class Movie {
 		this.mvPoster = mvPoster;
 		this.mvPreview = mvPreview;
 		this.categoryNames = categoryNames;
-		this.casting = casting;
 		this.nmUserRequest = nmUserRequest;
 		this.memNo = memNo;
 		this.adminNo = adminNo;
