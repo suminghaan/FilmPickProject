@@ -8,6 +8,7 @@
 <style>
 	.signup_content{
       background-color: white;
+      color: black;
       width: 600px;
       height: 500px;
       border-radius: 0.7em;
@@ -133,10 +134,10 @@
       <div class="content">
         <div class="signup_content">
           <div>
-          <input type='checkbox' name='agree' value='selectall'onclick='selectAll(this)'> <b>전체 동의하기</b>
+          <input type='checkbox' name='agree' id="selectAll" value='selectall'onclick='selectAll(this)'> <b>전체 동의하기</b>
           <hr>
           <div>
-          <input type='checkbox' name='agree' value='agree1'> [필수] FILM PICK 이용약관
+          <input type='checkbox' class="agree" name='agree' id='agree1' value='agree1'> [필수] FILM PICK 이용약관
           <textarea name="termsOfUse" id="termsOfUse" cols="70" rows="5" style="background-color:transparent; color: black;">
 환영합니다!
 필름픽 서비스 및 제품(이하 '서비스')를 이용해 주셔서 감사합니다. 본 약관은 다양한 필름픽의 이용과 관련하여 필름픽 서비스를 제공하는 필름픽과 이를 이용하는 필름픽 서비스 회원(이하 '회원') 또는 비회원과의 관계를 설명하며, 아울러 여러분
@@ -148,7 +149,7 @@
           </div>
           <br>
           <div>
-          <input type='checkbox' name='agree' value='agree2'> [필수] 개인정보 수집 및 이용 동의
+          <input type='checkbox' class="agree" name='agree' id='agree2' value='agree2'> [필수] 개인정보 수집 및 이용 동의
           <textarea name="privacyPolicy" id="privacyPolicy" cols="70" rows="5" style="background-color:transparent; color: black;">
 개인정보보호법에 따라 필름픽에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 1. 수집하는 개인정보
@@ -164,12 +165,17 @@
           </div>
             <div>
                 <form action="">
-                  <button type="submit" class="btn btn-outline-light" style="width: 300px;
+                  <button type="submit" class="btn btn-outline-light" onclick="location.href='<%=contextPath%>/insert.me'" disabled 
+                  													style="width: 300px;
                                                                            --bs-btn-border-color: RGB(247, 39, 140);
                                                                            --bs-btn-color:RGB(247, 39, 140);
                                                                            --bs-btn-hover-color: #ffffff;
                                                                            --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                           --bs-btn-hover-border-color: #ffffff;">확인</button>
+                                                                           --bs-btn-hover-border-color: #ffffff;
+                                                                           
+                                                                           --bs-btn-disabled-color: RGB(247, 39, 140);
+    																	   --bs-btn-disabled-bg: #ffffff;
+   																		   --bs-btn-disabled-border-color: RGB(247, 39, 140);">확인</button>
                 </form>
             </div>
           </div>
@@ -181,6 +187,7 @@
               })
             }
           </script>
+
 
         </div>
       </div> 
