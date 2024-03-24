@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fp.member.model.vo.Member;
+import com.fp.movie.model.service.MovieService;
+import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.Review;
+
 /**
  * Servlet implementation class ReviewEnrollFormController
  */
@@ -27,8 +32,19 @@ public class ReviewEnrollFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		Movie m = new MovieService().selectMovieInfo(movieNo);
+		Review review = new MovieService().selectUserReview(movieNo, userNo);
 		
 		
+	
+		if (m != null) {
+			request.setAttribute("movie", m);
+		} else {
+			System.out.println("영화 조회 실패");
+		}
+		
+		request.setAttribute("review", review);
 		
 		request.getRequestDispatcher("/views/search/reviewEnrollForm.jsp").forward(request, response);
 	}

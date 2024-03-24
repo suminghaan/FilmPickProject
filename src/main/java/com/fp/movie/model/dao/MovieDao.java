@@ -690,6 +690,39 @@ public class MovieDao {
 		return starRatingAnaly;
 	}
 
+	// 리뷰 작성 시에 사용자의 리뷰 정보를 조회하는 메소드
+	public Review selectUserReview(Connection conn, int movieNo, int userNo) {
+		String query = prop.getProperty("selectUserReview");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Review review = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			pstmt.setInt(2, userNo);;
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				review = new Review(
+							rset.getInt("MV_REVIEW_NO")
+							, rset.getString("REVIEW_CONTENT")
+							, rset.getString("REVIEW_DATE")
+							, rset.getString("LIKE_POINT")
+							, rset.getInt("COUNT_AGREE")
+							, rset.getInt("COUNT_DISAGREE")
+						);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return review;
+	}
 
+	
 
 }

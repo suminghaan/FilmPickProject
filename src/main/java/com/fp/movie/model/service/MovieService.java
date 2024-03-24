@@ -250,5 +250,16 @@ public class MovieService {
 
 
 
+	public Review selectUserReview(int movieNo, int userNo) {
+		Connection conn = getConnection();
+		
+		Review review = mDao.selectUserReview(conn, movieNo, userNo);
+		
+		close(conn);
+		return review;
+	}
+
+
+
 
 }
