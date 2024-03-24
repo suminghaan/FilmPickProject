@@ -11,6 +11,7 @@
     	ArrayList<Person> personList = ((ArrayList<Person>)request.getAttribute("personList"));
     	ArrayList<Review> reviewList = ((ArrayList<Review>)request.getAttribute("reviewList"));
     	ArrayList<Movie> movieList = ((ArrayList<Movie>)request.getAttribute("movieList"));
+    	Review review = (Review)request.getAttribute("review");
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -739,7 +740,7 @@
                                 </div>
                                 <div class="review_btn_wrap">
                                     <div class="review_btn">
-                                        <button type="button"><i class="fa-solid fa-pen-to-square fa-4x"
+                                        <button type="button" class="ToReview"><i class="fa-solid fa-pen-to-square fa-4x"
                                                 style="color: #F72798;"></i></button>
                                     </div>
                                     <div style="margin-right: 10px;">
@@ -957,7 +958,7 @@
         
         function otherUser(memNo) {
         	<% if(loginMember != null) {%>
-        		location.href ="<%= contextPath %>/otherUser.fp?userNo=<%= loginMember.getMemNo() %>&&otherUserNo=" + memNo;
+        		location.href ="<%= contextPath %>/otherUser.fp?movieNo=<%= movie.getMvNo() %>&&userNo=<%= loginMember.getMemNo() %>&&otherUserNo=" + memNo;
         	<% } else {%>
         		alert("로그인 후 이용 가능한 서비스입니다.");
         	<% } %>
@@ -1012,6 +1013,19 @@
 	        		$(".heart_checkbox").attr("disabled", true);
 	        	<% } %>
         	})
+        })
+        
+        // 리뷰 페이지로 이동
+        $(".ToReview").click(function() {
+        	<% if(loginMember != null) { %>
+        		<% if(review != null && review.getReviewContent() != null) { %>
+        			alert("이미 리뷰를 등록한 영화입니다.")
+        		<% } else { %>
+        			location.href="<%= contextPath %>/reviewEnrollForm.fp?movieNo=<%= movie.getMvNo() %>"
+        		<% } %>
+        	<% } else { %>
+        		alert("로그인 후 이용 가능한 서비스입니다.");
+        	<% } %>
         })
         
     </script>

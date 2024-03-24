@@ -229,37 +229,37 @@
               <br><br>
               <div class="mypage_content">
               <!-- 회원정보 -->
-              <form action="">
+              <form action="<%= contextPath %>/update.me" method="post">
                   <table class="table">
                       <tr>
                           <th>* 아이디</th>
-                          <td><input type="text" class="form-control" placeholder="아이디를 입력하세요" readonly value="<%=loginMember.getMemId()%>"></td>
+                          <td><input type="text" class="form-control" placeholder="아이디를 입력하세요" name="memId" value="<%=loginMember.getMemId()%>"readonly></td>
                       </tr>
                       <tr>
                           <th>* 이름</th>
-                          <td><input type="text" class="form-control" placeholder="이름을 입력하세요" required value="<%=loginMember.getMemName()%>"></td>
+                          <td><input type="text" class="form-control" placeholder="이름을 입력하세요" name="memName" value="<%=loginMember.getMemName()%>" required></td>
                       </tr>
                       <tr>
                           <th>* 닉네임</th>
-                          <td><input type="text" class="form-control" placeholder="닉네임을 입력하세요" required value="<%=loginMember.getNickname()%>"></td>
+                          <td><input type="text" class="form-control" placeholder="닉네임을 입력하세요" name="nickname" value="<%=loginMember.getNickname()%>" required></td>
                       </tr>
                       <tr>
                           <th>* 비밀번호</th>
-                          <td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" required value="<%=loginMember.getMemPwd()%>"></td>
+                          <td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" name="memPwd" value="<%=loginMember.getMemPwd()%>" required></td>
                       </tr> 
                       <tr>
                           <th>* 휴대전화번호</th>
-                          <td><input type="text" class="form-control" placeholder="휴대전화번호를 입력하세요(-포함)" value="<%=loginMember.getMemPhone()%>"></td>
+                          <td><input type="text" class="form-control" placeholder="휴대전화번호를 입력하세요(-포함)" name="memPhone" value="<%=loginMember.getMemPhone()%>" required></td>
                       </tr>
                       <tr>
                           <th>* 이메일</th>
-                          <td><input type="email" class="form-control" placeholder="이메일을 입력하세요(@포함)" value="<%=loginMember.getMemEmail()%>"></td>
+                          <td><input type="email" class="form-control" placeholder="이메일을 입력하세요(@포함)" name="memEmail" value="<%=loginMember.getMemEmail()%>" required></td>
                       </tr>
   
                       <tr>
                           <th>&nbsp;&nbsp;선호장르</th>
                           <td>
-                            <select name="genre" id="prefgenre">
+                            <select name="prefGenre" id="prefgenre">
                               <option name="genre" value="genre">선호장르</option>
                               <option name="sf" value="sf">SF</option>
                               <option name="thriller" value="thriller">스릴러</option>

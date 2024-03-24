@@ -4,6 +4,7 @@ import static com.fp.common.template.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.fp.common.model.vo.Attachment;
@@ -109,6 +110,7 @@ public class MovieService {
 			rollback(conn);
 		}
 		
+		close(conn);
 		return result;
 	}
 // 첫페이지 영화 포스터 조회 메소드 [용훈]
@@ -178,12 +180,86 @@ public class MovieService {
 		close(conn);
 		return movieList;
 	}
+	
+	
 	public ArrayList<Review> selectMainReviewList() {
 		Connection conn = getConnection();
 		ArrayList<Review> reviewList = mDao.selectMainReviewList(conn);
 		close(conn);
 		return reviewList;
 	}
+
+
+//	다른 사용자와 평가가 엇갈린 영화를 알아내는 메소드 [기웅]
+	public Movie conflictingMovie(int userNo, int otherUserNo) {
+		Connection conn = getConnection();
+		
+		ArrayList<Movie> userMovieList = mDao.conflictingMovie(conn, userNo);
+		ArrayList<Movie> otherUserMovieList = mDao.conflictingMovie(conn, otherUserNo);
+		
+		// 평가가 엇갈려야하므로 두 별점 간의 차이는 최소 2.5는 되어야함
+		double max = 2.5;
+		
+		Movie conflictingMovie = null;
+		
+		// 사용자와 다른 유저가 리뷰 남긴 영화 중 별점 차이가 가장 큰 영화를 선택
+		// 사용자와 다른 유저 모두 리뷰 남긴 영화가 있을 경우에만 실행
+		if(!userMovieList.isEmpty() && !otherUserMovieList.isEmpty()) {
+			for(int i = 0; i < userMovieList.size(); i++) {
+				// 영화와 해당 영화의 별점
+				Double userLikePoint = Double.parseDouble(userMovieList.get(i).getStarRating());
+				int userMovie = userMovieList.get(i).getMvNo();
+				
+				for (int j = 0; j < otherUserMovieList.size(); j++) {
+					// 영화와 해당 영화의 별점
+					Double otherUserLikePoint = Double.parseDouble(otherUserMovieList.get(j).getStarRating());
+					int otherUserMovie = otherUserMovieList.get(j).getMvNo();
+					
+					// 영화가 동일할 경우
+					if (userMovie == otherUserMovie)	{
+						//별점 간의 차이
+						Double gap = Math.abs(userLikePoint - otherUserLikePoint);
+						
+						// 별점 간의 차이가 최대일 경우
+						if(gap > max) {
+							conflictingMovie = userMovieList.get(i);
+							conflictingMovie.setOtherUserStarRating(String.valueOf(otherUserLikePoint));
+						}
+					}
+					
+				}
+			}
+		}
+		
+		close(conn);
+		// null일 경우 2가지. 엇갈린 영화가 없는 경우, 리뷰 남긴 영화가 없는 경우
+		return conflictingMovie;
+	}
+
+
+//  다른 유저의 별점 분석
+	public HashMap<String, String> starRatingAnalysis(int otherUserNo) {
+		Connection conn = getConnection();
+		
+		HashMap<String, String> starRatingAnaly = mDao.starRatingAnalysis(conn, otherUserNo);
+		
+		close(conn);
+		
+		return starRatingAnaly;
+	}
+
+
+
+	public Review selectUserReview(int movieNo, int userNo) {
+		Connection conn = getConnection();
+		
+		Review review = mDao.selectUserReview(conn, movieNo, userNo);
+		
+		close(conn);
+		return review;
+	}
+
+
 
 
 }

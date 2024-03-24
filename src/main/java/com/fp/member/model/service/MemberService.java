@@ -73,6 +73,24 @@ public class MemberService {
 		return result;
 	}
 	
+	// 회원정보 변경
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		int result = mDao.updateMember(conn, m);
+		
+		Member updateMem = null;
+		if(result > 0) {
+			commit(conn);
+			// 최신 데이터를 다시 조회해서 session에 변경
+			updateMem = mDao.selectMember(conn,m.getMemId());
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return updateMem;
+	}
+	
 	// 비밀번호 수정
 	public Member updatePwdMember(String memId, String memPwd, String newPwd) {
 		Connection conn = getConnection();

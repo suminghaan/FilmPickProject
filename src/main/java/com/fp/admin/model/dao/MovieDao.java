@@ -13,10 +13,12 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.admin.model.vo.Notice;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 import com.fp.notice.model.dao.NoticeDao;
+import com.fp.person.model.vo.Person;
 
 public class MovieDao {
 	
@@ -159,9 +161,10 @@ public class MovieDao {
 		return result;
 	}
 
-	// 영화 관리버튼 => 영화 정보 상세보기 
-	public List<Movie> MovieListDetail(Connection conn, int mvNo) {
-		List<Movie> list = new ArrayList<>();
+	// 영화 관리버튼 
+	// => 영화 정보 상세보기_영화관련 내용 
+	public Movie MovieListDetail(Connection conn, int mvNo) {
+		Movie m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("MovieListDetail");
@@ -173,7 +176,7 @@ public class MovieDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Movie(rset.getInt("mv_no"),
+				m = new Movie(rset.getInt("mv_no"),
 									rset.getString("mv_name"),
 									rset.getString("mv_opendate"),
 									rset.getString("mv_nation"),
@@ -184,11 +187,10 @@ public class MovieDao {
 									rset.getString("current_screening"),
 									rset.getString("mv_poster"),
 									rset.getString("mv_preview"),
-									rset.getString("category_name"),
-									rset.getString("casting"),
+									rset.getString("category_names"),
 									rset.getString("nm_user_request"),
 									rset.getString("mem_no"),
-									rset.getString("admin_no")));
+									rset.getString("admin_no"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -196,8 +198,41 @@ public class MovieDao {
 			close(rset);
 			close(pstmt);
 		}
-		return list;
+		return m;
 	}
+	// => 영화 상세보기에서 등장하는 인물의 정보와 배역을 불러오기
+	public List<Person> moiveListDetailPerson(Connection conn, int mvNo){
+		List<Person> pList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("moiveListDetailPerson");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mvNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				pList.add(new Person(
+						rset.getInt("P_NO")
+						, rset.getString("P_NAME")
+						, rset.getString("P_JOB")
+						, rset.getString("P_BD")
+						, rset.getString("P_NATION")
+						, rset.getString("P_FILE")
+						, rset.getString("CASTING")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return pList;
+	}
+	
 
 	// 영화 카테고리 조회
 	public List<Category> movieCategoryList(Connection conn) {

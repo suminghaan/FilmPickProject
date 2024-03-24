@@ -168,21 +168,21 @@
               <div class="form-group form-check" style="float: right;">
               </div>
               <br><br>
-              <center><button type="submit" class="btn btn-outline-light" style="width: 300px;
+              <button type="submit" class="btn btn-outline-light" style="width: 300px;
                                                                                 --bs-btn-border-color: RGB(247, 39, 140);
                                                                                 --bs-btn-color:RGB(247, 39, 140);
                                                                                 --bs-btn-hover-color: #ffffff;
                                                                                 --bs-btn-hover-bg: RGB(247, 39, 140);
-                                                                                --bs-btn-hover-border-color: #ffffff;">로그인</button></center>
+                                                                                --bs-btn-hover-border-color: #ffffff;">로그인</button>
 
               
               <br>
               
 
               <!-- border 추가하기 -->
-              <a href="2_비밀번호찾기.html" class="btn btn-search-pass">비밀번호찾기</a>|
-              <a href="2_아이디찾기.html" class="btn btn-search-id">아이디찾기</a>|
-              <a href="3_회원가입1.html" class="btn btn-join">회원가입</a>
+              <button type="button" class="btn btn-search-pass" onclick="location.href='<%=contextPath%>/findPwd.me'">비밀번호찾기</button>|
+              <button type="button" class="btn btn-search-id" onclick="location.href='<%= contextPath%>/findId.me'">아이디찾기</button>|
+              <button type="button" class="btn btn-join" onclick="location.href='<%= contextPath%>/signupCheckForm.me'">회원가입</button>
               <br>
               <br>
               <br>

@@ -22,10 +22,15 @@ public class Movie {
 	private int numberOfStarRating;
 	
 //  영화에 대한 리뷰 개별 별점 추가
-	private int starRating;
+	private String starRating;
+
+//  다른 유저 별점 추가...
+	private String otherUserStarRating;
 	
 	// ** 2024.03.23 (관리자 : 한수민) 전체 영화조회시 필요한 필드(영화등록일, 영화에대한 카테고리) 추가
 	private String mvRegistDate;
+
+
 	private String categoryNames;	
 	// ** 2024.03.23 (관리자 : 한수민) 영화상세조회시 필요한 필드(배역, 등록요청한사용자, 등록요청자요청사항, 관리자번호 카테고리) 추가
 	private String casting;
@@ -87,7 +92,7 @@ public class Movie {
 	 */
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mvPoster,
-			String mvPreview, String categoryNames, String casting, String nmUserRequest, String memNo,
+			String mvPreview, String categoryNames, String nmUserRequest, String memNo,
 			String adminNo) {
 		super();
 		this.mvNo = mvNo;
@@ -102,7 +107,6 @@ public class Movie {
 		this.mvPoster = mvPoster;
 		this.mvPreview = mvPreview;
 		this.categoryNames = categoryNames;
-		this.casting = casting;
 		this.nmUserRequest = nmUserRequest;
 		this.memNo = memNo;
 		this.adminNo = adminNo;
@@ -111,7 +115,7 @@ public class Movie {
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
-			String mvPreview, String mvStatus, String starRatingAvg, int numberOfStarRating, int starRating) {
+			String mvPreview, String mvStatus, String starRatingAvg, int numberOfStarRating, String starRating, String otherUserStarRating) {
 		super();
 		this.mvNo = mvNo;
 		this.mvName = mvName;
@@ -129,6 +133,7 @@ public class Movie {
 		this.starRatingAvg = starRatingAvg;
 		this.numberOfStarRating = numberOfStarRating;
 		this.starRating = starRating;
+		this.otherUserStarRating = otherUserStarRating;
 	}
 	
 
@@ -156,13 +161,22 @@ public class Movie {
 		this.starRatingAvg = starRatingAvg;
 	}
 	
+	public String getOtherUserStarRating() {
+		return otherUserStarRating;
+	}
+
+
+	public void setOtherUserStarRating(String otherUserStarRating) {
+		this.otherUserStarRating = otherUserStarRating;
+	}
 	
-	public int getStarRating() {
+	
+	public String getStarRating() {
 		return starRating;
 	}
 
 
-	public void setStarRating(int starRating) {
+	public void setStarRating(String starRating) {
 		this.starRating = starRating;
 	}
 

@@ -14,6 +14,7 @@ import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
+
 import static com.fp.common.template.JDBCTemplate.*;
 
 public class MemberDao {
@@ -200,6 +201,31 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 회원정보 변경
+	public int updateMember(Connection conn, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,m.getMemName());
+			pstmt.setString(2,m.getNickname());
+			pstmt.setString(3,m.getMemPwd());
+			pstmt.setString(4,m.getMemPhone());
+			pstmt.setString(5,m.getMemEmail());
+			pstmt.setString(6,m.getPrefGenre());
+			pstmt.setString(7,m.getMemId());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			close(pstmt);
 		}
 		return result;

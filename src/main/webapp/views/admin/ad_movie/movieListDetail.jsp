@@ -4,9 +4,25 @@
     
 <%@ page import="com.fp.common.model.vo.Attachment" %>
 <%@ page import="com.fp.movie.model.vo.Movie" %>
+<%@ page import="com.fp.person.model.vo.Person" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
     
-<% List<Movie> list = (List<Movie>)request.getAttribute("list"); %>
+<% Movie m = (Movie)request.getAttribute("m"); %>
+<% List<Person> plist = (List<Person>)request.getAttribute("plist"); %>
+<% List<Attachment> alist = (List<Attachment>)request.getAttribute("mlist"); %>
+<%
+	ArrayList<String> categoryList = new ArrayList<>();
+	if(m.getCategoryNames() != null){
+		String[] category = m.getCategoryNames().split(", ");
+	
+		for(int i = 0; i < category.length; i++) {
+			categoryList.add(category[i]);
+		}
+	};
+%>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -139,30 +155,29 @@
         </div>
         
         <form action="" method="">
-            <div class="all">       
-            <% for(Movie m : list) { %>         
+            <div class="all">               
                 <div class="form-group">
                     <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="" placeholder="제목입력" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=m.getMvName() %>" style="width: 500px;">
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="mGrade">영화관람등급</label>
-                    <select class="form-control" id="mGrade" name="" style="width: 400px;">
-                        <option value="1">전체관람</option>
-                        <option selected value="2">12세 관람가</option>
-                        <option value="3">15세 관람가</option>
-                        <option value="4">청소년관람불가</option>
-                    </select>
+                    <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;">
+					    <option value="1" <%= (m.getViewRating() != null && m.getViewRating().equals("전체관람가")) ? "selected" : "" %>>전체관람</option>
+					    <option value="2" <%= (m.getViewRating() != null && m.getViewRating().equals("12세 관람가")) ? "selected" : "" %>>12세 관람가</option>
+					    <option value="3" <%= (m.getViewRating() != null && m.getViewRating().equals("15세 관람가")) ? "selected" : "" %>>15세 관람가</option>
+					    <option value="4" <%= (m.getViewRating() != null && m.getViewRating().equals("청소년 관람불가")) ? "selected" : "" %>>청소년관람불가</option>
+					</select>
                 </div>
                     
                 <br>
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;"></textarea>                
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getMvStory() %></textarea>                
                 </div>
                 
 
@@ -172,11 +187,11 @@
                 
                 	<div>
                     	<label>개봉일</label>
-                    	<input type="date" name="dateIn" class="form-control" style="width: 300px;">
+                    	<input type="date" name="dateIn" value="<%=m.getMvOpenDate() %>" class="form-control" style="width: 300px;">
                     </div>
                     <div>
                     	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" class="form-control" style="width: 300px;">
+                    	<input type="text" name="runningTime" value="<%=m.getMvRTime() %>" class="form-control" style="width: 300px;">
                 	</div>
                 </div>
                 <br>
@@ -218,35 +233,50 @@
 
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="cbox1" name="category" value="SF">
-                        <label class="form-check-label" for="cbox1">SF</label>
+                        <label class="form-check-label" for="cbox1">액션</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox2" name="category" value="스릴러">
-                        <label class="form-check-label" for="cbox2">스릴러</label>
+                        <label class="form-check-label" for="cbox2">코미디</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox3" name="category" value="로맨스">
                         <label class="form-check-label" for="cbox3">로맨스</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox4" name="category" value="액션">
-                        <label class="form-check-label" for="cbox4">액션</label>
+                        <label class="form-check-label" for="cbox4">스릴러</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox5" name="category" value="판타지">
-                        <label class="form-check-label" for="cbox5">판타지</label>
+                        <label class="form-check-label" for="cbox5">공포</label>
 
         
                         <input class="form-check-input" type="checkbox" id="cbox6" name="category" value="코미디">
-                        <label class="form-check-label" for="cbox6">코미디</label>
+                        <label class="form-check-label" for="cbox6">판타지</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox7" name="category" value="에로">
-                        <label class="form-check-label" for="cbox7">에로</label>
+                        <label class="form-check-label" for="cbox7">어드벤처</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox8" name="category" value="범죄">
-                        <label class="form-check-label" for="cbox8">범죄</label>
+                        <label class="form-check-label" for="cbox8">드라마</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox9" name="category" value="애니메이션">
                         <label class="form-check-label" for="cbox9">애니메이션</label>
 
                         <input class="form-check-input" type="checkbox" id="cbox10" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">느와르</label>
+                        <label class="form-check-label" for="cbox10">SF</label>
+                        
+                        <input class="form-check-input" type="checkbox" id="cbox11" name="category" value="느와르">
+                        <label class="form-check-label" for="cbox10">범죄</label>
+                        
+                        <input class="form-check-input" type="checkbox" id="cbox12" name="category" value="느와르">
+                        <label class="form-check-label" for="cbox10">모험</label>
+                        
+                        <input class="form-check-input" type="checkbox" id="cbox13" name="category" value="느와르">
+                        <label class="form-check-label" for="cbox10">다큐멘터리</label>
+                        
+                        <input class="form-check-input" type="checkbox" id="cbox14" name="category" value="느와르">
+                        <label class="form-check-label" for="cbox10">가족</label>
+                        
+                        <input class="form-check-input" type="checkbox" id="cbox15" name="category" value="느와르">
+                        <label class="form-check-label" for="cbox10">뮤지컬</label>
                     </div>
                 </div>
                 <br>
@@ -255,12 +285,10 @@
                 <div class="form-group">
                 <label>국가</label>
                 <br>
-                
                 <div class="form-check form-check-inline">
-                    <input type="radio" id="radio1" name="nation" value="1" checked style="margin-top: 10px;"> 
+                    <input type="radio" id="radio1" name="nation" class="nation" value="1" checked style="margin-top: 10px;"> 
                     <label for="radio1">국내</label>
-
-                    <input type="radio" id="radio2" name="nation" value="2">
+                    <input type="radio" id="radio2" name="nation" class="nation" value="2">
                     <label for="radio2">해외</label>
                 </div>
                 
@@ -299,17 +327,17 @@
                 <div class="form-group">
                     <label>첫 페이지 노출 선택여부 : </label>
                     <br>
-                    <input type="radio" id="radioX" name="gender" value="X" checked> 
+                    <input type="radio" id="radioX" class="gender" name="gender" value="X" checked> 
                     <label for="radioX">선택안함</label>
 
-                    <input type="radio" id="radioM" name="gender" value="M">
+                    <input type="radio" id="radioM" class="gender" name="gender" value="M">
                     <label for="radioM">첫페이지 노출</label>
                 	
                 </div>
                 
                 <div class="form-group">
                     <label>사용자 요청사항</label>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">사용자가 입력한 요청사항</textarea>       
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getNmUserRequest() %></textarea>       
                 </div>
                 <br>
                 
@@ -317,13 +345,12 @@
                 <div class="form-group inputUser">
                     <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
                     <div class="userInfo">
-                        <p><label>등록한 사용자 ID : </label>user01</p>
-                        <p><label>등록한 영화 갯수 : </label>13번</p>
+                        <p><label>등록한 사용자 ID : </label><%=m.getMemNo() %></p>
                     </div>
                 </div>
                 
                 <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('내용이 수정되었습니다.')">수정하기</button>
-                <%} %>
+                
             </div>
         </form>
    	 </div>
@@ -361,7 +388,25 @@
         </div>
     </div>
 	
+	<script>
+	// 장르 선택
+	$(".form-check-input").each(function(index, el) {
+		<% for(int i = 0; i < categoryList.size(); i++) { %>
+			if($(el).next().text() == "<%= categoryList.get(i) %>" ) {
+				$(el).attr('checked', true);
+			}
+			
+		<% } %>
+	})
 	
+	// 국가 선택
+	$(".nation").each(function(index, el){
+		if(<%=m.getMvNation() %> == $(el).val()){
+			$(el).attr('checked', true);
+		}
+	})
+	
+	</script>
 	
 
 </body>

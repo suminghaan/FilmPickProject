@@ -15,6 +15,7 @@ import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.person.model.service.PersonService;
 import com.fp.person.model.vo.Person;
+import com.fp.member.model.vo.Member;
 
 /**
  * Servlet implementation class MovieDetailController
@@ -36,12 +37,14 @@ public class MovieDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		
 		Movie m = new MovieService().selectMovieInfo(movieNo);
 		ArrayList<Attachment> attList = new MovieService().selectAddiMovie(movieNo);
 		ArrayList<Person> personList = new PersonService().selectPersonInfo(movieNo);
 		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
 		ArrayList<Movie> movieList = new MovieService().selectRelMovieList(movieNo);
+		Review review = new MovieService().selectUserReview(movieNo, userNo);
 		
 		if(m != null) {
 			request.setAttribute("movie", m);
@@ -73,6 +76,7 @@ public class MovieDetailController extends HttpServlet {
 			System.out.println("movieList == null");
 		}
 		
+		request.setAttribute("review", review);
 		request.getRequestDispatcher("/views/search/movieDetail.jsp").forward(request, response);
 	}
 

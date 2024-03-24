@@ -15,6 +15,7 @@ import com.fp.common.model.vo.PageInfo;
 import com.fp.common.template.JDBCTemplate;
 import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
+import com.fp.person.model.vo.Person;
 
 
 public class MovieService {
@@ -63,18 +64,25 @@ public class MovieService {
 		return result;
 	}
 
-	// 영화 관리버튼 => 영화 정보 상세보기 
-	public List<Movie> MovieListDetail(int mvNo) {
+	// 영화 관리버튼 => 영화 정보 상세보기_영화
+	public Movie MovieListDetail(int mvNo) {
 		Connection conn = getConnection();
-		List<Movie> list = mDao.MovieListDetail(conn, mvNo);
+		Movie m = mDao.MovieListDetail(conn, mvNo);
 		close(conn);
-		return list;
+		return m;
+	}
+	// 영화 관리버튼 => 영화 정보 상세보기_인물
+	public List<Person> MovieListDetailPerson(int mvNo){
+		Connection conn = getConnection();
+		List<Person> plist = mDao.moiveListDetailPerson(conn, mvNo);
+		close(conn);
+		return plist;
 	}
 
 	// 영화카테고리관리 조회 
 	public List<Category> movieCategoryList() {
 		Connection conn = getConnection();
-		List<Category> list = mDao.movieCategoryList(conn);
+		List<Category> list = mDao.movieCategoryList(conn);		
 		close(conn);
 		return list;
 	}

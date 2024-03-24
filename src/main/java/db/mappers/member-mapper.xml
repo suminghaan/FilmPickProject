@@ -335,6 +335,19 @@
 		   AND MEM_PWD = ?
 	</entry>
 	
+	<!-- 회원정보 변경 -->
+	<entry key="updateMember">
+		UPDATE
+				MEMBER
+		   SET MEM_NAME = ?
+		   	 , NICKNAME = ?
+		   	 , MEM_PWD = ?
+		   	 , MEM_PHONE = ?
+		   	 , MEM_EMAIL = ?
+		   	 , PREF_GENRE = ?
+		 WHERE MEM_ID = ?   	 
+	</entry>	
+	
 	<!-- 비밀번호 변경 -->
 	<entry key="updatePwdMember">
 		UPDATE

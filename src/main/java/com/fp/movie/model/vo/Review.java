@@ -89,6 +89,19 @@ public class Review {
 		this.memColor = memColor;
 		this.mvName = mvName;
 	}
+	
+
+	public Review(int mvReviewNo, String reviewContent, String reviewDate, String likePoint, int agreeCount,
+			int disagreeCount) {
+		super();
+		this.mvReviewNo = mvReviewNo;
+		this.reviewContent = reviewContent;
+		this.reviewDate = reviewDate;
+		this.likePoint = likePoint;
+		this.agreeCount = agreeCount;
+		this.disagreeCount = disagreeCount;
+	}
+
 
 	public String getMvPoster() {
 		return mvPoster;

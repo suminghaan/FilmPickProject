@@ -2,6 +2,7 @@ package com.fp.movie.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,30 +36,42 @@ public class OtherUserInfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		int otherUserNo = Integer.parseInt(request.getParameter("otherUserNo"));
+		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
 		
-		Member otherUser = new MovieService().selectOtherUser(otherUserNo);
-		ArrayList<Review> otherUserReview = new MovieService().selectOtherUserReview(otherUserNo);
-		ArrayList<Movie> bothInterestMovieList = new MovieService().bothInterestMovie(userNo, otherUserNo);
-		
-		if(otherUser != null) {
-			request.setAttribute("otherUser", otherUser);
+		if(userNo != otherUserNo) {
+			MovieService ms = new MovieService();
+			
+			Member otherUser = ms.selectOtherUser(otherUserNo);
+			ArrayList<Review> otherUserReview = ms.selectOtherUserReview(otherUserNo);
+			ArrayList<Movie> bothInterestMovieList = ms.bothInterestMovie(userNo, otherUserNo);
+			Movie conflictingMovie = ms.conflictingMovie(userNo, otherUserNo);
+			HashMap<String, String> starRatingAnaly = ms.starRatingAnalysis(otherUserNo);
+			
+			if(otherUser != null) {
+				request.setAttribute("otherUser", otherUser);
+			} else {
+				System.out.println("다른 유저 정보가 null입니다.");
+			}
+			
+			if(otherUserReview != null) {
+				request.setAttribute("otherUserReview", otherUserReview);
+			} else {
+				System.out.println("유저가 평가한 리뷰가 null입니다");
+			}
+			
+			if (bothInterestMovieList != null) {
+				request.setAttribute("bothInterestMovieList", bothInterestMovieList);
+			} else {
+				System.out.println("둘 다 재밌게 본 영화가 null입니다.");
+			}
+			
+			request.setAttribute("starRatingAnaly", starRatingAnaly);
+			request.setAttribute("conflictingMovie", conflictingMovie);
+			request.getRequestDispatcher("/views/search/userInfo.jsp").forward(request, response);
 		} else {
-			System.out.println("다른 유저 정보가 null입니다.");
+			request.getSession().setAttribute("alertMsg", "자기 자신의 정보를 조회할 수 없습니다." );
+			response.sendRedirect(request.getContextPath() + "/movieDetail.fp?movieNo=" + movieNo);
 		}
-		
-		if(otherUserReview != null) {
-			request.setAttribute("otherUserReview", otherUserReview);
-		} else {
-			System.out.println("유저가 평가한 리뷰가 null입니다");
-		}
-		
-		if (bothInterestMovieList != null) {
-			request.setAttribute("bothInterestMovieList", bothInterestMovieList);
-		} else {
-			System.out.println("둘 다 재밌게 본 영화가 null입니다.");
-		}
-		
-		request.getRequestDispatcher("/views/search/userInfo.jsp").forward(request, response);
 
 	}
 
