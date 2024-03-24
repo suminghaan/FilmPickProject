@@ -285,12 +285,10 @@
                 <div class="form-group">
                 <label>국가</label>
                 <br>
-                
                 <div class="form-check form-check-inline">
-                    <input type="radio" id="radio1" name="nation" value="1" checked style="margin-top: 10px;"> 
+                    <input type="radio" id="radio1" name="nation" class="nation" value="1" checked style="margin-top: 10px;"> 
                     <label for="radio1">국내</label>
-
-                    <input type="radio" id="radio2" name="nation" value="2">
+                    <input type="radio" id="radio2" name="nation" class="nation" value="2">
                     <label for="radio2">해외</label>
                 </div>
                 
@@ -329,10 +327,10 @@
                 <div class="form-group">
                     <label>첫 페이지 노출 선택여부 : </label>
                     <br>
-                    <input type="radio" id="radioX" name="gender" value="X" checked> 
+                    <input type="radio" id="radioX" class="gender" name="gender" value="X" checked> 
                     <label for="radioX">선택안함</label>
 
-                    <input type="radio" id="radioM" name="gender" value="M">
+                    <input type="radio" id="radioM" class="gender" name="gender" value="M">
                     <label for="radioM">첫페이지 노출</label>
                 	
                 </div>
@@ -391,6 +389,7 @@
     </div>
 	
 	<script>
+	// 장르 선택
 	$(".form-check-input").each(function(index, el) {
 		<% for(int i = 0; i < categoryList.size(); i++) { %>
 			if($(el).next().text() == "<%= categoryList.get(i) %>" ) {
@@ -399,6 +398,14 @@
 			
 		<% } %>
 	})
+	
+	// 국가 선택
+	$(".nation").each(function(index, el){
+		if(<%=m.getMvNation() %> == $(el).val()){
+			$(el).attr('checked', true);
+		}
+	})
+	
 	</script>
 	
 
