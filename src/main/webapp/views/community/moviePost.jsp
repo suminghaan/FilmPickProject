@@ -9,6 +9,8 @@
 	List<Board> list = (List<Board>)request.getAttribute("list");
 	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
 	List<Movie> allMovie = (List<Movie>)request.getAttribute("allMovie");
+	System.out.println("pi에는 :  "+ pi);
+	System.out.println("list에는 : " + list);
 %>
 <!DOCTYPE html>
 <html>
@@ -233,8 +235,8 @@
             </ul>
 
             <div class="notice_search" align="center">
-                <form action="" method="">
-                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;">
+                <form action="<%=contextPath%>/searchMovie.bo?page=1" method="post">
+                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;" name="searchKeyword">
                     <button type="image" class="notice_search_btn" alt="검색">검색</button>
                 </form>
             </div>

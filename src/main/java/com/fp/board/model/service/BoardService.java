@@ -109,11 +109,55 @@ public class BoardService {
 	
 	/**
 	 * @param 호용
+	 * @return 총 키워드에 맞는 인기게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int publicKeywordSelectListCount(String keyword) {
+		Connection conn = getConnection();
+		int listCount = bDao.publicKeywordSelectListCount(conn, keyword);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @param 호용
+	 * @return 총 키워드에 맞는 영화카테고리 전체게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectListCount(String keyword) {
+		Connection conn = getConnection();
+		int listCount = bDao.keywordSelectListCount(conn, keyword);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @param 호용
 	 * 커뮤니티 영화카테고리의 인기게시글페이지에 담을 값을 구하기위한 메소드
 	 */
 	public List<Board> selectPublicList(PageInfo pi){
 		Connection conn = getConnection();
 		List<Board> publicList = bDao.selectPublicList(conn, pi);
+		close(conn);
+		return publicList;
+	}
+	
+	/**
+	 * @param 호용
+	 * 커뮤니티 영화카테고리의 키워드에 맞는 인기게시글페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Board> selectKeywordPublicList(PageInfo pi, String keyword){
+		Connection conn = getConnection();
+		List<Board> publicList = bDao.selectKeywordPublicList(conn, pi, keyword);
+		close(conn);
+		return publicList;
+	}
+	
+	/**
+	 * @param 호용
+	 * 커뮤니티 영화카테고리의 키워드에 맞는 전체게시글페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Board> selectKeywordList(PageInfo pi, String keyword){
+		Connection conn = getConnection();
+		List<Board> publicList = bDao.selectKeywordList(conn, pi, keyword);
 		close(conn);
 		return publicList;
 	}

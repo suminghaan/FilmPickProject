@@ -236,8 +236,8 @@
             </ul>
 
             <div class="notice_search" align="center">
-                <form action="" method="">
-                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;">
+                <form action="<%=contextPath%>/searchPublic.bo?page=1" method="post">
+                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;" name="searchKeyword">
                     <button type="image" class="notice_search_btn" alt="검색">검색</button>
                 </form>
             </div>
