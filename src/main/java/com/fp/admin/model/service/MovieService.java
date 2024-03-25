@@ -87,13 +87,6 @@ public class MovieService {
 		return list;
 	}
 
-	// 영화 인물 관리 목록 조회 페이징
-	public int selectCastingListCount() {
-		Connection conn = JDBCTemplate.getConnection();
-		int listCount = mDao.selectCastingListCount(conn);
-		close(conn);
-		return listCount;
-	}
 
 	// 영화 카테고리 삭제
 	public int deleteCategory(String[] cateList) {
@@ -139,11 +132,18 @@ public class MovieService {
 		return result;
 	}
 
+	// 영화 인물 관리 목록 조회 페이징
+		public int selectCastingListCount() {
+			Connection conn = JDBCTemplate.getConnection();
+			int listCount = mDao.selectCastingListCount(conn);
+			close(conn);
+			return listCount;
+		}
 
 	// 인물관리_조회
 	public List<Person> selectPersonList(PageInfo pi) {
 		Connection conn = getConnection();
-		List<Person> list = mDao.selectPersonList(conn);		
+		List<Person> list = mDao.selectPersonList(conn, pi);		
 		close(conn);
 		return list;
 	}

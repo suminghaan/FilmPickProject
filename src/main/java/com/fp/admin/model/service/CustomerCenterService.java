@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.fp.admin.model.dao.CustomerCenterDao;
+import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.inquiry.model.vo.Inquiry;
 import com.fp.noMovie.model.vo.NoMovie;
 
 public class CustomerCenterService {
@@ -49,6 +51,34 @@ public class CustomerCenterService {
 	public List<NoMovie> selectApprovalFilter(String approval) {
 		Connection conn = getConnection();
 		List<NoMovie> list = cDao.selectApprovalFilter(conn, approval);
+		close(conn);
+		return list;
+	}
+
+	/** 1대1문의 조회, 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @return listCount
+	 */
+	public int selectInquiryListCount() {
+		Connection conn = getConnection();
+		
+		int listCount = cDao.selectInquiryListCount(conn);
+		close(conn);
+
+		return listCount;
+	}
+
+	/** 1대1문의 조회, 페이징 용도
+	 * 
+	 * @author 김지우
+	 * @param pi
+	 * @return list
+	 */
+	public List<Inquiry> selectInquiryList(PageInfo pi) {
+		Connection conn = getConnection();
+
+		List<Inquiry> list = cDao.selectInquiryList(conn, pi);
 		close(conn);
 		return list;
 	}

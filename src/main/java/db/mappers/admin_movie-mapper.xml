@@ -148,11 +148,7 @@
 			FROM CATEGORY
 		</entry>
 		
-		<!-- 관리자 인물 조회 페이징처리 [수민]-->
-		<entry key="selectCastingListCount">
-			SELECT COUNT(*) COUNT
-			  FROM CASTING
-		</entry>
+		
 		
 		<!-- 관리자 영화 카테고리 삭제 [수민] -->
 		<entry key="deleteCategory">
@@ -189,17 +185,29 @@
 			  WHERE CATEGORY_NO = ?
 		</entry>
 		
+		<!-- 관리자 인물 조회 페이징처리 [수민]-->
+		<entry key="selectCastingListCount">
+			SELECT COUNT(*) COUNT
+			  FROM PERSON
+		</entry>
 		
 		<!-- 관리자 인물 조회 [수민] -->
 		<entry key="selectPersonList">
-			SELECT
-				  P_NO
-				, P_NAME
-				, P_JOB
-				, P_BD
-				, P_NATION
-				, P_FILE
-			FROM PERSON
+			SELECT *
+				FROM(
+					SELECT ROWNUM RNUM, A, *
+					FROM(
+						SELECT
+							  P_NO
+							, P_NAME
+							, P_JOB
+							, P_BD
+							, P_NATION
+							, P_FILE
+						FROM PERSON
+						)A
+					)
+			WHERE RNUM BETWEEN ? AND ?
 		</entry>
 		
 		

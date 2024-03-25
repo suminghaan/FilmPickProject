@@ -79,13 +79,13 @@ h1{
     <br><br>
 
     <div class="list">
-        <a href="<%= contextPath %>/enrollForm.co" class="btn btn-outline-secondary listBtn">신규등록</a>
+        <a href="<%= contextPath %>/enrollCastingForm.admo" class="btn btn-outline-secondary listBtn">신규등록</a>
     </div>
     
     <br>
    
     <div class="d-flex justify-content-end container" style="margin: 20px;">                      
-        <img src="../img/icon_filter.png" style="margin-right: 10px;">
+        <img src="<%=contextPath %>/img/icon_filter.png" style="margin-right: 10px;">
         <select class="form-control" style="width: 130px">
             <option>배우</option>
             <option>감독</option>
@@ -151,7 +151,7 @@ h1{
             </tbody>
 
         </table>
-
+	
     
 
     <!-- 페이징바 영역 -->

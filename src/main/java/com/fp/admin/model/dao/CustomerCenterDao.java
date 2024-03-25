@@ -16,6 +16,7 @@ import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
 import com.fp.common.model.vo.PageInfo;
+import com.fp.inquiry.model.vo.Inquiry;
 import com.fp.member.model.vo.Member;
 import com.fp.noMovie.model.vo.NoMovie;
 
@@ -25,7 +26,7 @@ public class CustomerCenterDao {
 	public CustomerCenterDao() {
 		try {
 			prop.loadFromXML(
-					new FileInputStream(MemberDao.class.getResource("/db/mappers/noMovie-mapper.xml").getPath()));
+					new FileInputStream(MemberDao.class.getResource("/db/mappers/admin-cusotmercenter-mapper.xml").getPath()));
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -144,5 +145,74 @@ public class CustomerCenterDao {
 		}
 		return list;
 	}
+
+
+	/** 1대1문의 조회, 페이징 용도
+	 * 
+	 * @param conn
+	 * @return listCount
+	 */
+	public int selectInquiryListCount(Connection conn) {
+		int listCount = 0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectInquiryListCount");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+
+	/** 1대1문의 조회, 페이징 용도
+	 * @param conn
+	 * @param pi
+	 * @return list
+	 */
+	public List<Inquiry> selectInquiryList(Connection conn, PageInfo pi) {
+		List<Inquiry> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectInquiryList");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(new Inquiry(rset.getInt("INQRY_NO")
+									, rset.getString("INQRY_TITLE")
+									, rset.getString("INQRY_CONTENT")
+									, rset.getString("INQRY_STATUS")
+									, rset.getString("INQRY_DATE")
+									, rset.getString("INQRY_A_CONTENT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 
 }
