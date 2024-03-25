@@ -70,7 +70,7 @@ h1{
 
     <div class="d-flex justify-content-center container">
         <span>검색</span>&nbsp;&nbsp;&nbsp;
-        <input type="text" id="searchInput" class="input" placeholder="제목으로 검색어를 입력해주세요" name="keyword">
+        <input type="text" id="searchInput" class="input" placeholder="이름으로 검색어를 입력해주세요" name="keyword">
         <button type="button" onclick="search();">
             <img src="<%=contextPath %>/views/admin/img/icon_search.png">
         </button>
@@ -85,7 +85,7 @@ h1{
     <br>
    
     <div class="d-flex justify-content-end container" style="margin: 20px;">                      
-        <img src="<%=contextPath %>/img/icon_filter.png" style="margin-right: 10px;">
+        <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
         <select class="form-control" style="width: 130px">
             <option>배우</option>
             <option>감독</option>
@@ -94,7 +94,7 @@ h1{
 
     <div>
     
-        <table class="table table-hover" >
+        <table class="table table-hover" id="casting">
             <thead class="thead-dark">
                 <tr>
                     <th>번호</th>
@@ -134,20 +134,7 @@ h1{
                 </tr>
 					<%} %>
 				<%} %>
-                <!--  
-                <tr>
-                    <td>2</td>
-                    <td>김태리</td>
-                    <td>배우</td>
-                    <td>1999.07.22</td>
-                    <td>한국</td>
-                    <td>Y</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting">관리</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
-                    </td>
-                </tr>
-				-->               
+                       
             </tbody>
 
         </table>
@@ -314,7 +301,43 @@ h1{
 	</div>
 
     <script>
+    
+    // 검색기능
+    function search(){
+    		$.ajax({
+    			type:'post',
+    			url : "<%=contextPath%>/castingSearch.admo",
+    			data:{
+    				keyword:$("#searchInput").val()
+    			},
+    			success:function(list){
+    				
+    				let value = ""
+    				
+    				if(list.length > 0){
+    					for(let i=0; i<list.length; i++){
+    						value += "<tr>"
+    								+ "<td>" + list[i].pNo + "</td>"
+    								+ "<td>" + list[i].pName + "</td>"
+    								+ "<td>" + list[i].pJob + "</td>"
+    								+ "<td>" + list[i].pBD + "</td>"
+    								+ "<td>" + list[i].pNation + "</td>"
+    								+ "<td>" + (list[i].pFile != null ? "Y" : "N")+ "</td>"
+    		                        +"</tr>";
+    					}
+    				}else{
+    					value += "<tr><td colspan='5'>해당하는 공지사항이 없습니다,</td></tr>";
+    				}
+    				
+    				$("#casting tbody").html(value);
+    			},
+    			error:function(){
+    				console.log("목록 조회 ajax 실패");
+    			}
+    		})
+    	}
 
+    // 삭제할 경우 
     	function deleted(){
     		let d = prompt("등록된 영화를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
     		

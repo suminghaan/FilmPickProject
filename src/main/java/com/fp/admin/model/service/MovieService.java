@@ -148,6 +148,14 @@ public class MovieService {
 		return list;
 	}
 
+	// 인물관리_검색
+	public List<Person> searchCasting(String keyword) {
+		Connection conn = getConnection();
+		List<Person> list = mDao.searchCasting(conn, keyword);
+		close(conn);
+		return list;
+	}
+
 	
 	
 	

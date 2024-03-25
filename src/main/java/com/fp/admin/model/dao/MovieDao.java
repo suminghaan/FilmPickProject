@@ -394,6 +394,37 @@ public class MovieDao {
 		return list;
 	}
 
+	// 인물관리_검색
+	public List<Person> searchCasting(Connection conn, String keyword) {
+		List<Person> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchCasting");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, keyword);
+
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Person(rset.getInt("p_no"),
+									rset.getString("p_name"),
+									rset.getString("p_job"),
+									rset.getString("p_bd"),
+									rset.getString("p_nation"),
+									rset.getString("p_file")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 	
 
 	
