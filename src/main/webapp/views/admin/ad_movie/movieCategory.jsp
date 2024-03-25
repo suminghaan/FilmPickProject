@@ -105,14 +105,17 @@
                 </div>
         
                 <!-- Modal body -->
+                <form action="<%=contextPath%>/insertCate.admo" method="post">
                 <div class="modal-body">
                     <input type="text" name="genreAdd" class="form-control" placeholder="추가할 장르 입력">
                 </div>
+                
         
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
+                <button type="submit" class="btn btn-outline-secondary" style="float: right;" >추가</button>
                 </div>
+                </form>
     
             </div>
         </div>

@@ -111,6 +111,21 @@ public class MovieService {
 		return result;
 	}
 	
+	// 카테고리 추가 
+	public int addCategory(String genreAdd) {
+		Connection conn = getConnection();
+		int result = mDao.addCategory(conn, genreAdd);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	
 
 	// 인물관리_조회
 	public List<Person> selectPersonList(PageInfo pi) {
@@ -120,6 +135,7 @@ public class MovieService {
 		return list;
 	}
 
+	
 	
 	
 	

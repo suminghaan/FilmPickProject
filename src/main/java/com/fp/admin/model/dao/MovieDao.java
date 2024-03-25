@@ -341,5 +341,25 @@ public class MovieDao {
 		return list;
 	}
 
+	public int addCategory(Connection conn, String genreAdd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("addCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, genreAdd);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return result;
+	}
+
 	
 }

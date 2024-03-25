@@ -162,6 +162,25 @@
 			WHERE  CATEGORY_NAME = ?
 		</entry>
 		
+		<!-- 관리자 카테고리 등록 [수민]-->
+		<entry key="addCategory">
+			INSERT
+				INTO CATEGORY
+				(
+					CATEGORY_NO
+				  , CATEGORY_NAME
+				  , CATEGORY_DATE
+				  , CATEGORY_STATUS
+				)
+				VALUES
+				(
+					SEQ_CATEGORY_NO.NEXTVAL
+				  , ?
+				  , DEFAULT
+				  , DEFAULT
+				)
+		</entry>
+		
 		<!-- 관리자 인물 조회 [수민] -->
 		<entry key="selectPersonList">
 			SELECT
@@ -173,6 +192,8 @@
 				, P_FILE
 			FROM PERSON
 		</entry>
+		
+		
 
 
 </properties>
