@@ -2901,56 +2901,56 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '노태건'
     , 4
-    , 18
+    , 19
 );
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '감독'
     , 5
-    , 19
-);
-INSERT INTO CASTING
-VALUES (
-    SEQ_CASTING_NO.NEXTVAL
-    , '마석도'
-    , 5
     , 20
 );
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
-    , '주성철'
+    , '마석도'
     , 5
     , 21
 );
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
-    , '리키'
+    , '주성철'
     , 5
     , 22
 );
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
-    , '장태수'
+    , '리키'
     , 5
     , 23
 );
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
+    , '장태수'
+    , 5
+    , 24
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
     , '감독'
     , 6
-    , 19
+    , 20
 );
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '마석도'
     , 6
-    , 20
+    , 21
 );
 INSERT INTO CASTING
 VALUES (
@@ -2966,13 +2966,7 @@ VALUES (
     , 6
     , 25
 );
-INSERT INTO CASTING
-VALUES (
-    SEQ_CASTING_NO.NEXTVAL
-    , '전일만'
-    , 6
-    , 25
-);
+
 INSERT INTO CASTING
 VALUES (
     SEQ_CASTING_NO.NEXTVAL
@@ -3111,7 +3105,7 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '피터 파커'
     , 11
-    , 80
+    , 26
 );
 INSERT INTO CASTING
 VALUES (
@@ -3237,7 +3231,7 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '지프'
     , 16
-    , 80
+    , 26
 );
 INSERT INTO CASTING
 VALUES (
