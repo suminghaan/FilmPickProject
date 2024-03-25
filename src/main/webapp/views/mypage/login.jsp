@@ -12,16 +12,13 @@
       height: 350px;
       border-radius: 0.7em;
       color: black;
+      margin: auto;
     }
 
-    .btn-login {
-      background-color: rgb(247, 39, 152);
-      color: white;
-      border: white;
+    #btn-login {
       border-radius: 0.3em;
-      width: 200px;
-      height: 38px;
-      justify-content: center;
+	  margin: auto;
+	  display: block;
     }
 
     .btn-search-pass,
@@ -168,7 +165,7 @@
               <div class="form-group form-check" style="float: right;">
               </div>
               <br><br>
-              <button type="submit" class="btn btn-outline-light" style="width: 300px;
+              <button type="submit" class="btn btn-outline-light" id="btn-login" style="width: 300px;
                                                                                 --bs-btn-border-color: RGB(247, 39, 140);
                                                                                 --bs-btn-color:RGB(247, 39, 140);
                                                                                 --bs-btn-hover-color: #ffffff;
