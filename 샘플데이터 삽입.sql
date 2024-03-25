@@ -3102,7 +3102,7 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '감독'
     , 11
-    , 40
+    , 41
 );
 INSERT INTO CASTING
 VALUES (
@@ -3263,7 +3263,7 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '토니 스타크'
     , 23
-    , 57
+    , 58
 );
 INSERT INTO CASTING
 VALUES (
@@ -3432,6 +3432,84 @@ VALUES (
     , '데보라 심'
     , 33
     , 80
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 29
+    , 60
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 29
+    , 61
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '토니 스타크'
+    , 29
+    , 58
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '스티브 로저스'
+    , 29
+    , 62
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '토르'
+    , 29
+    , 63
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '브루스 배너'
+    , 29
+    , 64
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '나타샤 로마노프'
+    , 29
+    , 49
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '클린트 바튼'
+    , 29
+    , 65
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '스캇 랭'
+    , 29
+    , 66
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '제임스 로즈'
+    , 29
+    , 67
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '닥터 스트레인지'
+    , 29
+    , 43
 );
 
 -- 없는영화신청 테이블에 샘플데이터 삽입 (김지우)
