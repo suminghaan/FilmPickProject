@@ -154,5 +154,20 @@ public class MemberService {
 		close(conn);
 		return list;
 	}
+	
+	// 별점 남긴 영화 목록
+	public int MovieStarRatingListCount( int memNo) {
+		Connection conn = getConnection();
+		int listCount = mDao.selectMovieLikeListCount(conn, memNo);
+		close(conn);
+		return listCount;
+	}
+		
+	public List<Movie> selectMovieStarRatingList(int memNo, PageInfo pi){
+		Connection conn =getConnection();
+		List<Movie> list = mDao.selectMovieStarRatingList(conn, memNo,pi);
+		close(conn);
+		return list;
+	}
 
 }

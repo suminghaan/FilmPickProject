@@ -376,8 +376,6 @@ public class MemberDao {
 	}
 	
 	// 좋아요 누른 영화 목록
-	
-	
 	public int selectMovieLikeListCount(Connection conn, int memNo) {
 		int listCount = 0;
 		
@@ -431,6 +429,73 @@ public class MemberDao {
 								 , rset.getString("mv_poster")
 								 , rset.getString("star_rating_avg")
 								 )); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	// 별점 남긴 영화 목록
+	public int selectMovieStarRatingListCount(Connection conn, int memNo) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMovieStarRatingListCount");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	public List<Movie> selectMovieStarRatingList(Connection conn, int memNo, PageInfo pi){
+		
+		List<Movie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMovieStarRatingList");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			/*
+			* int startRow = (pi.getCurrentPage()-1)* pi.getBoardLimit()+ 1;
+			* int endRow = startRow + pi.getBoardLimit() - 1;
+			*/
+			
+			pstmt.setInt(1, memNo);
+			/*
+			* pstmt.setInt(2, startRow);
+			* pstmt.setInt(3, endRow);
+			 */
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Movie m = new Movie();
+				m.setMvNo(rset.getInt("mv_no"));
+				m.setMvName(rset.getString("mv_name"));
+				m.setMvOpenDate(rset.getString("mv_opendate"));
+				m.setMvPoster(rset.getString("mv_poster"));
+				m.setStarRatingAvg(rset.getString("star_rating_avg"));
+				m.setStarRating(rset.getString("star_rating"));
+					
+				list.add(m);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
