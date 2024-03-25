@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+<!-- =============================== 김지우 ====================================================== -->
 	<!-- 신고회원 조회, 페이징용 쿼리 -->
 	<entry key="selectReportMemberListCount">
 	<![CDATA[
@@ -69,6 +70,8 @@
 		)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+<!-- =============================== 김지우 ====================================================== -->
+
 <!-- ======================== [용훈] 탈퇴회원조회 =========================================== -->
 	<entry key="cancelMemberList">
 		SELECT MEM_ID, ADMIN_NO, CANCEL_DATE
