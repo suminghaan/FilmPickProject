@@ -346,6 +346,15 @@ public class MemberService {
 		return list;
 	}
 
+	// 탈퇴회원 필터 조회 구문 [용훈]
+	public List<CancelMember> cancelMemList(String userId, String sDate, String eDate) {
+		Connection conn = getConnection();
+		
+		List<CancelMember> cml = rDao.cancelMemberList(conn, userId, sDate, eDate);
+		close(conn);
+		return cml;
+	}
+
 
 
 }

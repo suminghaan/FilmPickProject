@@ -14,6 +14,7 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import com.fp.admin.model.vo.CancelMember;
 import com.fp.admin.model.vo.ReportedMember;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
@@ -143,6 +144,56 @@ public class ReportMemberDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	// 탈퇴회원 필터 조회 구문 [용훈]
+	public List<CancelMember> cancelMemberList(Connection conn, String userId, String sDate, String eDate) {
+		List<CancelMember> cml = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("cancelMemberList");
+		System.out.println(userId);
+		System.out.println(sDate);
+		System.out.println(eDate);
+		if(!userId.equals("") || !sDate.equals("") || !eDate.equals("")) {
+			sql += " WHERE ";
+			if(!userId.equals("")) {
+				sql += "MEM_ID LIKE '%" + userId + "%'";
+			}
+			if(!sDate.equals("") || !eDate.equals("")) {
+				if(!userId.equals("")) {
+					sql += " AND ";
+				}
+				if(!sDate.equals("") && !eDate.equals("")) {
+					sql += "CANCEL_DATE >= '" + sDate + "' AND CANCEL_DATE <= '" + eDate + "'";
+				}else if(!eDate.equals("")) {
+					sql += "CANCEL_DATE <= '" + eDate + "'";
+				}else {
+					sql += "CANCEL_DATE >= '" + sDate + "'";
+				}
+			}
+		}
+		sql = sql + " ORDER BY CANCEL_DATE DESC, MEM_ID DESC";
+		
+		System.out.println(sql);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				cml.add(new CancelMember(rset.getString("MEM_ID"),
+										rset.getString("ADMIN_NO"),
+										rset.getString("CANCEL_DATE")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return cml;
 	}
 
 }

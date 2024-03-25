@@ -69,4 +69,11 @@
 		)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
+<!-- ======================== [용훈] 탈퇴회원조회 =========================================== -->
+	<entry key="cancelMemberList">
+		SELECT MEM_ID, ADMIN_NO, CANCEL_DATE
+		FROM CANCELED_MEM C
+		JOIN MEMBER M USING (MEM_NO)
+	</entry>
+<!-- ======================== 용훈 =========================================== -->
 </properties>
