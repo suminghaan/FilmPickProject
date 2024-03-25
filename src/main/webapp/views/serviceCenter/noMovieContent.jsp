@@ -223,7 +223,7 @@
 
                               <p style="color:black;">영화포스터(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile1" name="moviePoster" required>
+                                  <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required>
                                   <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -232,7 +232,7 @@
 
                               <p style="color:black;">예고편영상(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile2" name="moviePreview" required>
+                                  <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required>
                                   <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -243,7 +243,7 @@
                               <div class="form-group" style="color:black;">
                               기타 추가 희망 이미지 또는 동영상(선택)
                                   <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile3" name="serveFile">
+                                      <input type="file" class="custom-file-input" id="customFile3" name="upfile3">
                                       <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
                                       <img src="" alt="미리보기이미지">
                                   </div>
