@@ -128,11 +128,12 @@
 
     <div class="container">
 
-        <h3>댓글조회</h3>
-        <button href="<%=contextPath%>/myPlist.me?page=1">글</button>
-        <button href="<%=contextPath%>/myClist.me?page=1">댓글</button>
-
-        <table class="table table-hover" id="myContentList">
+        <h3>작성댓글 목록</h3>
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button onclick="location.href='<%=contextPath%>/myPlist.me?page=1'" type="button" class="btn btn-outline-light me-2" id="plist_btn" style="width:100px; margin-right:-8px;">글</button>
+        <button onclick="location.href='<%=contextPath%>/myClist.me?page=1'" type="button" class="btn btn-outline-light me-2" id="clist_btn" style="width:100px; margin-left:-8px;">댓글</button>
+		</div>
+        <table class="table table-hover" id="myContentLis.t">
           <thead>
             <tr>
               <th width="100px">댓글번호</th>
