@@ -2269,15 +2269,17 @@ VALUES (
     , '한국'
     , 'resources/upfiles/20230309120404_14236.jpg'
 );
+
 INSERT INTO PERSON
 VALUES (
     SEQ_PERSON_NO.NEXTVAL
-    , '최귀화'
+    , '톰 홀란드'
     , '배우'
-    , '1978-03-03'
-    , '한국'
-    , 'resources/upfiles/20230309120404_14236.jpg'
+    , '1996-06-01'
+    , '영국'
+    , 'resources/upfiles/20230309120515_16817.jpg'
 );
+
 INSERT INTO PERSON
 VALUES (
     SEQ_PERSON_NO.NEXTVAL
@@ -3109,7 +3111,7 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '피터 파커'
     , 11
-    , 41
+    , 80
 );
 INSERT INTO CASTING
 VALUES (
@@ -3235,7 +3237,7 @@ VALUES (
     SEQ_CASTING_NO.NEXTVAL
     , '지프'
     , 16
-    , 41
+    , 80
 );
 INSERT INTO CASTING
 VALUES (
