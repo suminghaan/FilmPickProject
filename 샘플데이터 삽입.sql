@@ -477,9 +477,12 @@ INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FP
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '가여운 것들', '2024-03-06', '2', '141분', '천재적이지만 특이한 과학자 갓윈 백스터(윌렘 대포)에 의해 새롭게 되살아난 벨라 백스터(엠마 스톤).', 'N', '청소년 관람불가', 'Y', 'N', 'resources/upfiles/20240320135128_11483.jpeg', 'resources/upfiles/20240320135128_15883.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '시민덕희', '2024-01-24', '1', '114분', '내 돈을 사기 친 그 놈이 구조 요청을 해왔다! 세탁소 화재로 인해 대출상품을 알아보던 생활력 만렙 덕희에게 어느 날, 거래은행의 손대리가 합리적인 대출상품을 제안하겠다며 전화를 걸어온다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135130_85133.jpeg', 'resources/upfiles/20240320135130_12345.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '귀멸의 칼날: 인연의 기적, 그리고 합동 강화 훈련으로', '2024-02-14', '2', '103분', '‘탄지로’와 상현 4 ‘한텐구’의 목숨을 건 혈투와, ‘무잔’과의 최종 국면을 앞둔 귀살대원들의 마지막 훈련을 그린 영화', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135135_84741.jpeg', 'resources/upfiles/20240320135135_99175.mp4', 'Y', SYSDATE);
-
-
-
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '고질라 X 콩 : 뉴 엠파이어', '2024-03-27', '2', '115분', '고질라 X 콩, 이번에는 한 팀이다! "고질라" VS "콩", 두 타이탄의 전설적인 대결 이후 할로우 어스에 남은 "콩"은 드디어 애타게 찾던 동족을 발견하지만 그 뒤에 도사리고 있는 예상치 못한 위협에 맞닥뜨린다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135135_84742.jpg', 'resources/upfiles/20240320135135_84743.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '댓글부대', '2024-03-27', '1', '109분', '실력 있지만 허세 가득한 사회부 기자 ‘임상진’ 대기업 ‘만전’의 비리를 취재하지만 오보로 판명되며 정직당한다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_84743.jpg', 'resources/upfiles/20240320135136_84744.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '남은 인생 10년', '2024-04-03', '2', '125분', '매일 밤, 눈 감기가 두려웠던 난치병 환자 ‘마츠리’ 매일 아침, 눈 뜨기가 두려웠던 외톨이 ‘카즈토’ 운명은 정반대에 있던 두 사람을 마주 보게 한다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240322135135_84751.jpg', 'resources/upfiles/20240322135135_84752.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '비키퍼', '2024-04-03', '2', '105분', '법 위에 있는 비밀 기관 "비키퍼" 그곳의 전설로 남은 탑티어 에이전트 "애덤 클레이"는 기관의 눈을 피해 자취를 감추고 양봉가로 살아간다.', 'N', '청소년 관람불가', 'N', 'N', 'resources/upfiles/20240320135135_94742.jpg', 'resources/upfiles/20240320135135_94743.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '라스트 썸머', '2024-04-03', '2', '104분', '남편 "피에르"와 함께 입양한 두 딸을 키우며 완벽한 삶을 살고 있는 청소년 전문 변호사 "안느" 어느 날, 남편이 전처와 낳은 아들 ‘테오’가 학교에서 사고를 치며 ‘안느’와 ‘테오’는 한집에 살게 된다.', 'N', '청소년 관람불가', 'N', 'N', 'resources/upfiles/20240320135135_94744.jpg', 'resources/upfiles/20240320135135_94745.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오멘: 저주의 시작', '2024-04-03', '2', '119분', '수녀가 되기 위해 로마에 가게 된 ‘마거릿’(넬 타이거 프리). 그곳에서 새로운 삶을 시작하려는 그때, 믿음을 뒤흔드는 어둠의 그림자를 마주한다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_04744.jpg', 'resources/upfiles/20240320135136_04745.mp4', 'Y', SYSDATE);
 
 
 --------파일 추가--------
@@ -1517,7 +1520,67 @@ VALUES (
     '8',
     5
 );
-
+---------------------------------------------------- 영화 첨부파일 [용훈] ----------------------------------------------------------
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '고질라 X 콩 : 뉴 엠파이어.jpg',
+    '20240320135135_84742.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    42
+);
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '고질라 X 콩 : 뉴 엠파이어.mp4',
+    '20240320135135_84743.mp4',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    42
+);
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '댓글부대.jpg',
+    '20240320135136_84743.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    1,
+    'Y',
+    '1',
+    43
+);
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '댓글부대.mp4',
+    '20240320135136_84744.mp4',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    43
+);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '남은 인생 10년.jpg', '20240322135135_84751.jpg', SYSDATE, 1, 'resources/upfiles/', 1, 'Y', '1', 44);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '남은 인생 10년.mp4', '20240322135135_84752.mp4', SYSDATE, 1, 'resources/upfiles/', 2, 'Y', '1', 44);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '비키퍼.jpg', '20240320135135_94742.jpg', SYSDATE, 1, 'resources/upfiles/', 1, 'Y', '1', 45);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '비키퍼.mp4', '20240320135135_94743.mp4', SYSDATE, 1, 'resources/upfiles/', 2, 'Y', '1', 45);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '라스트 썸머.jpg', '20240320135135_94744.jpg', SYSDATE, 1, 'resources/upfiles/', 1, 'Y', '1', 46);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '라스트 썸머.mp4', '20240320135135_94745.mp4', SYSDATE, 1, 'resources/upfiles/', 2, 'Y', '1', 46);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '오멘: 저주의 시작.jpg', '20240320135136_04744.jpg', SYSDATE, 1, 'resources/upfiles/', 1, 'Y', '1', 47);
+INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENT_NO.NEXTVAL, '오멘: 저주의 시작.mp4', '20240320135136_04745.mp4', SYSDATE, 1, 'resources/upfiles/', 2, 'Y', '1', 47);
 
 
 
