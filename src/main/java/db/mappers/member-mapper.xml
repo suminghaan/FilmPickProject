@@ -417,4 +417,31 @@
 		        )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	<!-- 좋아요 누른 영화 목록 조회 -->
+	<entry key="selectMovieLikeListCount">
+		SELECT COUNT(*) COUNT
+		  FROM MOVIE_LIKE
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="selectMovieList">      
+		SELECT *
+		  FROM(
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		               SELECT
+		               		   M.MV_NO
+		                     , M.MV_NAME
+                             , M.MV_OPENDATE
+                             , (SELECT ROUND(AVG(LIKE_POINT), 1) FROM REVIEW R WHERE R.MV_NO = M.MV_NO) AS "STAR_RATING_AVG"
+                             , M.MV_POSTER
+		                  FROM MOVIE M, MOVIE_LIKE MK
+                         WHERE M.MV_NO=MK.MV_NO
+                           AND MK.MEM_NO=?
+                      ORDER BY MK.LIKE_DATE DESC
+		                ) A
+		        )
+		 WHERE RNUM BETWEEN 1 AND 10
+	</entry>
 </properties>
