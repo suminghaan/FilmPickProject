@@ -311,6 +311,50 @@ public class MovieDao {
 		}
 		return result;
 	}
+	
+	// 카테고리 추가 
+		public int addCategory(Connection conn, String genreAdd) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("addCategory");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, genreAdd);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+				close(rset);
+			}
+			return result;
+		}
+
+		
+	// 카테고리 수정
+	public int updateCategory(Connection conn, String genreChange, String categoryNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("updateCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, genreChange);
+			pstmt.setInt(2, Integer.parseInt(categoryNo));
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return result;
+	}
 
 	// 인물관리_조회
 	public List<Person> selectPersonList(Connection conn) {
@@ -341,25 +385,8 @@ public class MovieDao {
 		return list;
 	}
 
-	public int addCategory(Connection conn, String genreAdd) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("addCategory");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, genreAdd);
-			
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-			close(rset);
-		}
-		return result;
-	}
+	
 
+	
 	
 }

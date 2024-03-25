@@ -125,7 +125,20 @@ public class MovieService {
 		return result;
 	}
 
-	
+	// 카테고리 수정
+	public int updateCategory(String genreChange, String categoryNo) {
+		Connection conn = getConnection();
+		int result = mDao.updateCategory(conn, genreChange, categoryNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 
 	// 인물관리_조회
 	public List<Person> selectPersonList(PageInfo pi) {
@@ -135,6 +148,7 @@ public class MovieService {
 		return list;
 	}
 
+	
 	
 	
 	
