@@ -60,7 +60,7 @@ h1{
         <h4 class="modal-title">인물 추가</h4>
         <hr>
            
-      <form action="" method="post" enctype="multipart/form-data">
+      <form action="<%=contextPath %>/insertCasting.admo" method="post" enctype="multipart/form-data">
       <div class="table">
           <table class="addCasting">
               <tr>
@@ -70,7 +70,7 @@ h1{
       
               <tr>
                   <th><label for="pFile">사진</label></th>
-                  <td><input type="file" id="pFile"></td>
+                  <td><input type="file" id="pFile" name="pFile" required></td>
               </tr>
       
               <tr>
@@ -84,19 +84,8 @@ h1{
               </tr>
       
               <tr>
-                  <th>직업</th>
-                  <td>
-                      <input type="checkbox" id="actor" name="casting" value="actor">
-                      <label for="actor">배우</label>
-                      <input type="checkbox" id="director" name="casting" value="director">
-                      <label for="director">연출자</label>
-                  </td>
-              </tr>
-              <tr>
-              	<div style="display: none;">
-			    	<!-- 이미지 파일 -->
-			    	<input type="file" name="upfile1" onchange="loadImg(0);" required>
-			    </div>
+                  <th><label for="pJob">직업</label></th>
+                  <td><input type="text" id="pJob" name="pJob" required></td>
               </tr>
               
               <tr>
@@ -107,7 +96,8 @@ h1{
 
           </table>
       </div>
-</form>
+	</form>
+</div>
     
 	<!-- section end -->
 

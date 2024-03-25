@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.fp.admin.model.dao.MovieDao;
 import com.fp.admin.model.vo.Notice;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.common.template.JDBCTemplate;
 import com.fp.movie.model.vo.Category;
@@ -154,6 +155,11 @@ public class MovieService {
 		List<Person> list = mDao.searchCasting(conn, keyword);
 		close(conn);
 		return list;
+	}
+
+	// 인물관리_추가
+	public int insertPerson(Person p, Attachment at) {
+		return 0;
 	}
 
 	

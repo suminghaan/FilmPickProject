@@ -13,6 +13,7 @@ import com.fp.board.model.vo.Report;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.common.template.JDBCTemplate;
+import com.fp.person.model.vo.Person;
 
 public class CommunityService {
 	
