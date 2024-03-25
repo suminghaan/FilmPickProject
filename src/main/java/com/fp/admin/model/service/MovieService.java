@@ -192,6 +192,24 @@ public class MovieService {
 		return list;
 	}
 
+	// 인물 삭제
+	public int deletePerson(int pno) {
+		Connection conn = getConnection();
+		int result1 = mDao.deletePerson(conn, pno);
+		int result2 = mDao.deletePersonAttachment(conn, pno);
+		
+		
+		if(result1 > 0 && result2 >= 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		int result = result1 + result2;
+		return result;
+	}
+
 	
 	
 	

@@ -134,7 +134,7 @@ h1{
                     <%} %>
                     <td>
                         <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting">수정</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
+                        <a href="<%=contextPath %>/deletePerson.admo?pno=<%=p.getpNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
                     </td>
                 </tr>
 					<%} %>
@@ -358,10 +358,10 @@ h1{
 
     // 삭제할 경우 
     	function deleted(){
-    		let d = prompt("등록된 영화를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
+    		let d = prompt("등록된 인물을 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
     		
     		if(d=="삭제"){
-                alert("영화가 삭제되었습니다.")
+                alert("해당인물을 삭제하겠습니다.")
             }else{
                 alert("잘못입력하셨습니다. 다시 확인해주세요")
             }

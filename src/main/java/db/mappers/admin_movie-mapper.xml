@@ -297,6 +297,24 @@
 			FROM PERSON
 			WHERE P_JOB LIKE '%감독%'
 		</entry>
+		
+		<!-- 관리자 인물 삭제 [수민] -->
+		<entry key="deleteMovie">
+			UPDATE
+				   PERSON
+			   SET P_STATUS = 'N' <!-- P_STATUS컬럼이없음.. -->
+			 WHERE P_NO = ?
+			 
+		</entry>
+		
+		<!-- 관리자 인물 삭제 시 같이 등록한 이미지 status값 변경 [수민] -->
+		<entry key="deleteMovieAttachment">
+			UPDATE
+				  ATTACHMENT
+			  SET FILE_STATUS = 'N'
+			WHERE REF_TYPE = 8
+			  AND REF_NO = ?
+		</entry>
 
 
 </properties>
