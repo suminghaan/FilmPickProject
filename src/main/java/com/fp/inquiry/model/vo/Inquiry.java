@@ -14,7 +14,28 @@ public class Inquiry {
 	private String adminId; //답변한 관리자 아이디
 	
 	public Inquiry() {}
+
 	
+	/**
+	 * @author 김지우
+	 * @param inqryNo 문의사항번호
+	 * @param inqryTitle 문의사항제목
+	 * @param inqryStatus 답변여부
+	 * @param inqryDate 작성일
+	 * @param inqryAContent 답변내용
+	 */
+	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryStatus, String inqryDate, String inqryAContent) {
+		super();
+		this.inqryNo = inqryNo;
+		this.inqryTitle = inqryTitle;
+		this.inqryContent = inqryContent;
+		this.inqryStatus = inqryStatus;
+		this.inqryDate = inqryDate;
+		this.inqryAContent = inqryAContent;
+	}
+
+
+
 	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryDate, String inqryStatus, int memNo,
 			int adminNo, String inqryAContent, String inqryADate, String adminId) {
 		super();
@@ -29,7 +50,7 @@ public class Inquiry {
 		this.inqryADate = inqryADate;
 		this.adminId = adminId;
 	}
-	
+
 	/**
 	 * @author 호용 - 1대1문의현황 메인페이지에 보여질 값을 담을 매개변수생성자
 	 * @param inqryNo 문의사항번호

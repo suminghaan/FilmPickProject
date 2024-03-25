@@ -3523,7 +3523,7 @@ INSERT INTO CANCELED_MEM VALUES(23, 2, '2021-12-19');
 INSERT INTO REPORT VALUES(SEQ_REPORT_NO.NEXTVAL, '1', '게시판에 욕설 남김', '2024-03-22', 1, 2, '1', 1);
 
 -- 문의 테이블 샘플데이터 (김지우)
-INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원가입 관련 문제.', '분명히 회원가입을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-21', 'N', 30, 1, NULL, NULL);
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원가입 관련 문제', '분명히 회원가입을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-21', 'N', 30, 1, NULL, NULL);
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'Y', 29, 1, '아직 없지만 곧 만들어서 배포할 계획입니다.', '2024-03-20');
 
 -- 활동제한 테이블 강제탈퇴인지 활동제한인지 여부에 대한 컬럼 추가 (김지우)
@@ -3534,5 +3534,9 @@ ALTER TABLE REPORTED_MEM MODIFY(END_DATE NULL);
 
 INSERT INTO REPORTED_MEM VALUES(25, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
 INSERT INTO REPORTED_MEM VALUES(24, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B');
+
+-- -- 문의 테이블 샘플데이터 (김지우)
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원탈퇴 관련 문제', '분명히 회원탈퇴을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-20', 'N', 27, 1, NULL, NULL);
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'N', 28, 1, NULL, NULL);
 
 commit;
