@@ -799,6 +799,7 @@
                         <a style="border: none; color: white;" href="<%= contextPath %>/moreReview.fp?movieNo=<%= movie.getMvNo() %>">더보기</a>
                     </div>
                     <div class="movie_review_info">
+                    <% if(reviewList != null) { %>
                    	<% for(int i = 0; i < (reviewList.size() > 4 ? 4 : reviewList.size()); i++) { %>
                         <div class="movie_review_el">
                             <div class="movie_review_part">
@@ -872,25 +873,28 @@
                                     </div>
                                 </div>
                                 <div class="review_content">
-                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
-                                    <%= reviewList.get(i).getReviewContent().substring(0, 300) + "..." %>
-                                    <div class="more_info">
-                                        <a class="more_info_btn">더보기</a>
-                                    </div>
-                                <% } else {%>
-                                    <%= reviewList.get(i).getReviewContent() %>
-                                <% } %>
-                                </div>
-                                <div class="review_content_long">
-                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
-                                    <%= reviewList.get(i).getReviewContent() %>
-                                    <div class="more_info_long">
-                                        <a class="more_info_btn_long">접기</a>
-                                    </div>
-                                <% } %>   
+                                <% if(reviewList.get(i).getReviewContent() != null) { %>
+	                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
+	                                    <%= reviewList.get(i).getReviewContent().substring(0, 300) + "..." %>
+	                                    <div class="more_info">
+	                                        <a class="more_info_btn">더보기</a>
+	                                    </div>
+	                                <% } else {%>
+	                                    <%= reviewList.get(i).getReviewContent() %>
+	                                <% } %>
+	                                </div>
+	                                <div class="review_content_long">
+	                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
+	                                    <%= reviewList.get(i).getReviewContent() %>
+	                                    <div class="more_info_long">
+	                                        <a class="more_info_btn_long">접기</a>
+	                                    </div>
+	                                <% } %> 
+                                <% } %>  
                                 </div>
                             </div>
                         </div>
+                        <% } %>
                         <% } %>
                     </div>
                 </div>
@@ -992,6 +996,7 @@
         // 별점 매기기 함수
         $(".rating__input").each(function(index, el) {
         	$(this).click(function() {
+        		console.log("클릭!")
         		<% if(loginMember != null) { %>
 	        		$.ajax({
 	        			url:"<%= contextPath %>/insertReview.fp"
@@ -1000,6 +1005,10 @@
 	        				movieNo: <%= movie.getMvNo() %>
 	        				, userNo: <%= loginMember.getMemNo()%>
 	        				, likePoint: $(el).val()
+	        				, alreadyReview : <% if (review != null) { %> <%= "1" %> <%} else { %> <%= "0" %> <% } %>
+	        				<% if(review != null && review.getReviewContent() != null) { %>
+	        				, reviewContent : review.getReviewContent()
+	        				<% } %>
 	        			}
 	        			, success: function(msg) {
 	        				alert(msg);

@@ -6,20 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.fp.member.model.vo.Member;
 import com.fp.movie.model.service.MovieService;
 
 /**
- * Servlet implementation class AjaxUpdateReviewPoint
+ * Servlet implementation class ReviewEnrollController
  */
-@WebServlet("/insertReview.fp")
-public class AjaxUpdateReviewPoint extends HttpServlet {
+@WebServlet("/reviewEnroll.fp")
+public class ReviewEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxUpdateReviewPoint() {
+    public ReviewEnrollController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,34 +33,31 @@ public class AjaxUpdateReviewPoint extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
-		String likePoint = request.getParameter("likePoint");
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		String likePoint = request.getParameter("rating");
+		String reviewContent = request.getParameter("reviewContent");
 		
-		// 1이면 update, 0이면 insert
-		String alreadyReview = request.getParameter("alreadyReview");
-		
-		// 이미 review한 정보가 있다면 reviewContent에 해당 정보 저장
-		String reviewContent = null;
-
-		if(request.getParameter("reviewContent") != null ) {
-			reviewContent = request.getParameter("reviewContent");
-		}
+		// 0이면 insert, 1이면 update
+		int alreadyReview = Integer.parseInt(request.getParameter("alreadyReview"));
 		
 		int result = 0;
 		
-		if(alreadyReview.equals("0")) {
+		if(alreadyReview == 0) {
 			result = new MovieService().insertReview(movieNo, userNo, likePoint, reviewContent);
-		} else {
+		} else if (alreadyReview == 1) {
 			result = new MovieService().updateReview(movieNo, userNo, likePoint, reviewContent);
 		}
 		
+		HttpSession session = request.getSession();
 		
-		response.setContentType("text/html; chartset=utf-8");
-		if(result > 0) {
-			response.getWriter().print("등록 성공!");
+		if (result > 0) {
+			session.setAttribute("alertMsg", "리뷰 등록에 성공했습니다.");
 		} else {
-			response.getWriter().print("등록 실패!");
+			session.setAttribute("alertMsg", "리뷰 등록에 실패했습니다.");
 		}
+		
+		response.sendRedirect(request.getContextPath() + "//movieDetail.fp?movieNo=" + movieNo);
+		
 	}
 
 	/**

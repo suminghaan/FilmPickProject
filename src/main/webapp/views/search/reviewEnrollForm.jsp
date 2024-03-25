@@ -176,7 +176,7 @@
 
           <div class="test3">
 
-			<!-- <form action="" method="post" class="reviewForm"> -->
+			<form id="reviewForm" action="<%= contextPath %>/reviewEnroll.fp?movieNo=<%= movie.getMvNo() %>&&alreadyReview=<%= review != null ? "1" : "0" %>" method="post" class="reviewForm">
 				<!-- 별점 -->
 	            <div class="movieStarRating">
 	              <div class="wrap">
@@ -274,15 +274,15 @@
 	            <!-- 내가 남긴 리뷰 -->
 	            <div class="movieRewiew">
 	              <div class="movieReviewDetail">
-	                <textarea name="reviewContent" id="reviewContent" resize="none" placeholder="리뷰를 작성해주세요"><% if(review.getReviewContent() != null) { %><%= review.getReviewContent() %><% } %></textarea>
+	                <textarea name="reviewContent" id="reviewContent" resize="none" placeholder="리뷰를 작성해주세요"><% if(review != null) { %><%= review.getReviewContent() != null ? review.getReviewContent() : "" %><% } %></textarea>
 	              </div>
-	              <button class="btn btn-outline-light" style="--bs-btn-border-color: RGB(247, 39, 140);
+	              <button type="submit" class="btn btn-outline-light" id="formSubmit" style="--bs-btn-border-color: RGB(247, 39, 140);
 	              --bs-btn-color: RGB(247, 39, 140);
 	              --bs-btn-hover-color: #000;
 	              --bs-btn-hover-bg: RGB(247, 39, 140);
-	              --bs-btn-hover-border-color: #000;" onclick="reviewEnroll();">등록하기</button>
+	              --bs-btn-hover-border-color: #000;">등록하기</button>
 	            </div>
-			<!-- </form> -->
+			</form>
 
             
           </div>
@@ -295,29 +295,39 @@
       <script>
       var ischecked = false;
       
-      function reviewEnroll() {
+      $("#reviewForm").submit(function(event) {
+    	  console.log("서브밋");
+    	  event.preventDefault();
+    	  
     	  $(".rating__input").each(function(index, el) {
     		  if($(el).is(":checked")) {
     			  ischecked = true;
     		  } 
-    		  
-    		  
-    		
     	  })
-    	  
-    	  if (ischecked) {
-    			  
+    	  if (!ischecked) {
+    		  alert("별점을 매겨주세요!");
    		  } else {
-   			  alert("별점을 매겨주세요!");
+   			  this.submit();
    		  }
-      }
-      
-      $(".rating__input").each(function(index, el) {
-	      	$(this).click(function() {
-	      		console.log($(el).val());
-	      	})	
       })
       
+      $(".rating__input").each(function(index, el) {
+    	  console.log($(el).val())
+    	  <% if(review != null)  {%>
+	    	  <% if(review.getLikePoint() != null) { %>
+	    	  	
+	    	  <% } %>
+    	  <% } %>
+      })
+      
+/*
+ *       $(".rating__input").each(function(index, el) {
+   	$(this).click(function() {
+  		console.log($(el).val());
+  	})	
+})
+
+ */
       </script>
 
 </body>

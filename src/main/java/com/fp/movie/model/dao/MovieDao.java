@@ -471,7 +471,7 @@ public class MovieDao {
 		return list;
 	}
 //	리뷰 남기기를 위한 메소드 [기웅]
-	public int insertReview(Connection conn, int movieNo, int userNo, double likePoint, String reviewContent) {
+	public int insertReview(Connection conn, int movieNo, int userNo, String likePoint, String reviewContent) {
 		String query = prop.getProperty("insertReview");
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -479,7 +479,7 @@ public class MovieDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, reviewContent);
-			pstmt.setString(2, String.valueOf(likePoint));
+			pstmt.setString(2, likePoint);
 			pstmt.setInt(3, userNo);
 			pstmt.setInt(4, movieNo);
 			
@@ -722,6 +722,28 @@ public class MovieDao {
 			close(pstmt);
 		}
 		return review;
+	}
+
+	public int updateReview(Connection conn, int movieNo, int userNo, String likePoint, String reviewContent) {
+		String query = prop.getProperty("updateReview");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, likePoint);
+			pstmt.setString(2, reviewContent);
+			pstmt.setInt(3, userNo);
+			pstmt.setInt(4, movieNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	

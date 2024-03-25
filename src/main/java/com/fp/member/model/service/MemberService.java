@@ -10,6 +10,8 @@ import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.dao.MemberDao;
 import com.fp.member.model.vo.Member;
+import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.MovieLike;
 
 public class MemberService {
 
@@ -137,4 +139,20 @@ public class MemberService {
 		close(conn);
 		return list;
 	}
+	
+	// 좋아요 누른 영화 목록
+	public int MovieLikeListCount( int memNo) {
+		Connection conn = getConnection();
+		int listCount = mDao.selectMovieLikeListCount(conn, memNo);
+		close(conn);
+		return listCount;
+	}
+	
+	public List<Movie> selectMovieList( int memNo, PageInfo pi){
+		Connection conn =getConnection();
+		List<Movie> list = mDao.selectMovieList(conn, memNo,pi);
+		close(conn);
+		return list;
+	}
+
 }
