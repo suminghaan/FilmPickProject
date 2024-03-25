@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -124,6 +126,25 @@ public class NoMovieDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	/**
+	 * 없는영화신청 현황에 띄울 값들을 담기위한 메소드
+	 * @param memNo 회원번호
+	 * @author 호용 
+	 */
+	public List<NoMovie> selectNoMovie(Connection conn, int memNo){
+		List<NoMovie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoMovie");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
