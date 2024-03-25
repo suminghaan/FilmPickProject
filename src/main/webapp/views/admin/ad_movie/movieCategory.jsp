@@ -3,6 +3,7 @@
     
 <%@ page import="com.fp.movie.model.vo.Category" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <% List<Category> list = (List<Category>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
@@ -70,22 +71,25 @@
             </thead>
 
             <tbody>
+            
             <% for(Category c :list){ %>
+            	<% if(c.getCategoryStatus().equals("Y")){ %>
                 <tr>
                     <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"><%=c.getCategoryName() %></label>
+                        <input class="genre" type="checkbox" id="inlineCheckbox<%= c.getCategoryNo() %>" value="<%=c.getCategoryName() %>">
+                        <label class="form-check-label" for="inlineCheckbox<%= c.getCategoryNo() %>"><%=c.getCategoryName() %></label>
                     </td>
-            
+                 <% } %>
+            <% } %>
 
         </table>
 
 		<div class="allBtn">
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#addModal">추가</button>
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#changeModal">수정</button>
-        	<a href="<%=contextPath %>/deleteCategory.admo?categoryNo=<%=c.getCategoryNo() %>" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</a>
+        	<button type="button" <%-- href="<%=contextPath %>/deleteCategory.admo" --%> class="btn btn-outline-danger modifyBtn deleteCate" onclick="deleted();">삭제</a>
         </div>
-        <% } %>
+        
     </div>
     
 
@@ -165,14 +169,27 @@
         </div>
     </div>
 
-    <!-- 삭제확인 -->
+
     <script>
+    //삭제확인
+    	
+    
     	function deleted(){
 			let d = prompt("선택한 분류를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
 			
 			if(d=="삭제"){
 	            alert("해당 카테고리를 삭제하겠습니다.")
-	        }else{
+	        	let categoryList = [];
+	            $(".genre").each(function(index, el) {
+		    		if ($(el).is(":checked")) {
+		    			categoryList.push($(el).val());
+		    			
+		    		}
+    			})
+    			console.log(categoryList);
+	            location.href= "<%=contextPath%>/deleteCategory.admo?cateList=" + categoryList;
+	            
+			}else{
 	            alert("잘못입력하셨습니다. 다시 확인해주세요")
 	        }
 		}

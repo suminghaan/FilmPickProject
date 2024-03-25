@@ -159,7 +159,7 @@
 			UPDATE
 				  CATEGORY
 			  SET CATEGORY_STATUS = 'N'
-			WHERE CATEGORY_NO = ?
+			WHERE  CATEGORY_NAME = ?
 		</entry>
 		
 		<!-- 관리자 인물 조회 [수민] -->
