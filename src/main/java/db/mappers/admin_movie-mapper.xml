@@ -271,6 +271,32 @@
 				)
 				
 		</entry>
+		
+		<!-- 관리자 인물조회_배우 필터 [수민] -->
+		<entry key='selectActorFilter'>
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+			WHERE P_JOB LIKE '%배우%'
+		</entry>
+		
+		<!-- 관리자 인물조회_감독 필터 [수민] -->
+		<entry key='selectDirectorFilter'>
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+			WHERE P_JOB LIKE '%감독%'
+		</entry>
 
 
 </properties>

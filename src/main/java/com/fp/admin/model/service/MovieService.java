@@ -176,6 +176,22 @@ public class MovieService {
 		return result1 * result2;
 	}
 
+	// 인물조회시 _ 배우 필터
+	public List<Person> selectActorFilter() {
+		Connection conn = getConnection();
+		List<Person> list = mDao.selectActorFilter(conn);
+		close(conn);
+		return list;
+	}
+
+	// 인물조회시_감독 필터
+	public List<Person> selectDirectorFilter() {
+		Connection conn = getConnection();
+		List<Person> list = mDao.selectDirectorFilter(conn);
+		close(conn);
+		return list;
+	}
+
 	
 	
 	

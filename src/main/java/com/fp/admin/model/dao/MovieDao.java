@@ -473,6 +473,62 @@ public class MovieDao {
 		
 	}
 
+	// 인물조회시_배우 필터
+	public List<Person> selectActorFilter(Connection conn) {
+		List<Person> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectActorFilter");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Person(rset.getInt("p_no"),
+							rset.getString("p_name"),
+							rset.getString("p_job"),
+							rset.getString("p_bd"),
+							rset.getString("p_nation"),
+							rset.getString("p_file")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	// 인물조회시_감독 필터
+	public List<Person> selectDirectorFilter(Connection conn) {
+		List<Person> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectDirectorFilter");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Person(rset.getInt("p_no"),
+							rset.getString("p_name"),
+							rset.getString("p_job"),
+							rset.getString("p_bd"),
+							rset.getString("p_nation"),
+							rset.getString("p_file")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 	
 
 	
