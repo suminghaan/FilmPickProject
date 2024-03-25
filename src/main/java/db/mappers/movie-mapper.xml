@@ -321,8 +321,8 @@
 	]]>
 	</entry>
 	
-	<!-- 리뷰 등록 시에 사용자의 리뷰 정보를 조회하는 메소드  -->
-		<entry key="selectUserReview">
+	<!-- 리뷰 등록 시에 사용자의 리뷰 정보를 조회하는 쿼리 [기웅]  -->
+	<entry key="selectUserReview">
 	SELECT 
     MV_REVIEW_NO
     , REVIEW_CONTENT
@@ -335,6 +335,14 @@
 	ON M.MEM_NO = R.MEM_NO
 	WHERE R.MV_NO = ?
 	AND R.MEM_NO = ?
+	</entry>
+	
+	<!-- 사용자의 좋아요 정보를 조회하는 쿼리 [기웅] -->
+	<entry key="selectMovieLike">
+	SELECT COUNT(*) AS "COUNT"
+	FROM MOVIE_LIKE
+	WHERE MV_NO = ?
+	AND MEM_NO = ?
 	</entry>
 	
 </properties>

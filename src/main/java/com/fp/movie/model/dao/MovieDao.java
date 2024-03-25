@@ -746,6 +746,33 @@ public class MovieDao {
 		return result;
 	}
 
+	// 사용자가 해당 영화에 대해 좋아요 표시를 한지 확인하는 메소드
+	public int selectMovieLike(Connection conn, int movieNo, int userNo) {
+		String query = prop.getProperty("selectMovieLike");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			pstmt.setInt(2, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 	
 
 }

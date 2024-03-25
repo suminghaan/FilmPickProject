@@ -12,6 +12,7 @@
     	ArrayList<Review> reviewList = ((ArrayList<Review>)request.getAttribute("reviewList"));
     	ArrayList<Movie> movieList = ((ArrayList<Movie>)request.getAttribute("movieList"));
     	Review review = (Review)request.getAttribute("review");
+    	int countMovieLike = (int)request.getAttribute("countMovieLike");
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -723,7 +724,7 @@
                         <div class="like_review_btn_wrap">
 							<div class="like_btn_wrap" style="margin-left: 30px;">
 	                                    <div class="heart">
-										    <label class="heart_label" for="mainHeart")>
+										    <label class="heart_label" for="mainHeart">
 										        <input type="checkbox" class="heart_checkbox" id="mainHeart" hidden>
 										        <svg t="1689815540548" class="heart_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
 										            p-id="2271" onclick="heartUpdate(<%= movie.getMvNo() %>)">
@@ -968,6 +969,10 @@
         	<% } %>
         }
         
+        // 회원이 이미 좋아요 표시한 경우 화면에 표시
+        <% if(countMovieLike > 0) {%>
+        	$("#mainHeart").attr("checked", "checked");
+        <% } %>
         
 		// 좋아요 표시, 제거 함수
 		function heartUpdate(mvNo) {
@@ -996,7 +1001,6 @@
         // 별점 매기기 함수
         $(".rating__input").each(function(index, el) {
         	$(this).click(function() {
-        		console.log("클릭!")
         		<% if(loginMember != null) { %>
 	        		$.ajax({
 	        			url:"<%= contextPath %>/insertReview.fp"
@@ -1005,6 +1009,7 @@
 	        				movieNo: <%= movie.getMvNo() %>
 	        				, userNo: <%= loginMember.getMemNo()%>
 	        				, likePoint: $(el).val()
+	        				// 이미 남긴 리뷰 정보가 있을 경우 alreadyReview = 1, 없을 경우 0
 	        				, alreadyReview : <% if (review != null) { %> <%= "1" %> <%} else { %> <%= "0" %> <% } %>
 	        				<% if(review != null && review.getReviewContent() != null) { %>
 	        				, reviewContent : review.getReviewContent()

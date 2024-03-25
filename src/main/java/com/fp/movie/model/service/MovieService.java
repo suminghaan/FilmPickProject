@@ -277,6 +277,16 @@ public class MovieService {
 	}
 
 
+//	사용자가 해당 영화에 좋아요 표시를 했는지 확인하기 위한 메소드
+	public int selectMovieLike(int movieNo, int userNo) {
+		Connection conn = getConnection();
+		
+		int countMovieLike = mDao.selectMovieLike(conn, movieNo, userNo);
+		close(conn);
+		return countMovieLike;
+	}
+
+
 
 
 }
