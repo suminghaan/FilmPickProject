@@ -567,6 +567,105 @@ public class MovieDao {
 		return result;
 	}
 
+	// 인물 수정모달에서 정보 보기
+	public List<Person> updateCastingForm(Connection conn, String pno) {
+		List<Person> uplist = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("updateCastingForm");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				uplist.add(new Person(rset.getInt("p_no"),
+										rset.getString("p_name"),
+										rset.getString("p_job"),
+										rset.getString("p_bd"),
+										rset.getString("p_nation"),
+										rset.getString("p_file")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return uplist;
+	}
+
+	// 인물 수정 
+	public int updatePerson(Connection conn, Person p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePerson");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getpName());
+			pstmt.setString(2, p.getpJob());
+			pstmt.setString(3, p.getpBD());
+			pstmt.setString(4, p.getpNation());
+			pstmt.setInt(5, p.getpNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 인물 수정시 기존 파일 있을경우
+	public int updatepAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatepAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setInt(4, at.getFileNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// 인물 수정시 기존 파일 없을 경우 
+	public int insertpNewAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertpNewAttachment");
+		System.out.print(at);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, at.getRefNo());
+			pstmt.setString(2, at.getOriginName());
+			pstmt.setString(3, at.getChangeName());
+			pstmt.setString(4, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+
 	
 
 	

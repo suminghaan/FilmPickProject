@@ -315,6 +315,68 @@
 			WHERE REF_TYPE = 8
 			  AND REF_NO = ?
 		</entry>
+		
+		<!-- 관리자 인물 수정버튼 시 보여지는 목록 [수민] -->
+		<entry key="updateCastingForm">
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+			WHERE P_NO = ?
+		</entry>
+		
+		<!-- 관리자 인물 수정 [수민] -->
+		<entry key="updatePerson">
+			UPDATE
+				PERSON
+			  SET P_NAME = ?
+				, P_JOB = ?
+				, P_BD = ?
+				, P_NATION = ?
+			WHERE P_NO = ?
+				
+		</entry>
+		
+		<!-- 관리자 인물 수정 시 파일이 이미 업로드 되어있을 경우 [수민] -->
+		<entry key="updatepAttachment">
+			UPDATE
+				  ATTACHMENT
+			  SET ORIGIN_NAME = ?
+			    , CHANGE_NAME = ?
+			    , FILE_PATH = ?
+			WHERE REF_TYPE = 8
+			  AND FILE_NO = ?
+		
+		</entry>
+		
+		<!-- 관리자 인물 수정 시 파일이 없을 경우 [수민] -->
+		<entry key="insertpNewAttachment">
+			INSERT
+				INTO ATTACHMENT
+				(
+				   FILE_NO
+				 , REF_TYPE 
+				 , REF_NO
+				 , ORIGIN_NAME
+				 , CHANGE_NAME
+				 , FILE_PATH
+				 , FILE_TYPE
+				)
+				VALUES
+				(
+				   SEQ_ATTACHMENT_NO.NEXTVAL
+				 , 8
+				 , ?
+				 , ?
+				 , ?
+				 , ?
+				 , 1
+				)
+		</entry>
 
 
 </properties>

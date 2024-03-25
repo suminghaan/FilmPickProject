@@ -133,7 +133,7 @@ h1{
                     <td>Y</td>
                     <%} %>
                     <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting">수정</button>
+                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting" onclick="update(<%=p.getpNo()%>);">수정</button>
                         <a href="<%=contextPath %>/deletePerson.admo?pno=<%=p.getpNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
                     </td>
                 </tr>
@@ -204,46 +204,49 @@ h1{
         
                 <!-- Modal body -->
                 <div class="modal-body">
+                  <form action="<%=contextPath%>/updateCasting.admo" method="post" enctype="multipart/form-data" id="update_form">
+                    <input type="hidden" id="pNo" name="pno" value="">                   
                     <table class="changeC">
                         <tr>
                             <th><label for="pName">이름</label></th>
-                            <td><input type="text" id="pName" placeholder="입력되어있는 인물명"></td>
+                            <td><input type="text" id="pName" reuired name="pName"></td>
                         </tr>
                 
                         <tr>
                             <th><label for="pFile">사진</label></th>
-                            <td><input type="file" id="pFile"></td>
+                            <td>
+                            	<!-- 기존에 등록한 사진이 있을경우 보여지는 첨부파일 명 -->
+                            	<a id="pFileOrigin"></a>
+                            	<!-- 새로운 첨부파일 업로드 시 -->
+                            	<input type="file" class="form-control-file" name="upfile" id="pFile"></td>
                         </tr>
                 
                         <tr>
                             <th><label for="pDate">출생연도</label></th>
-                            <td><input type="date" id="pDate"></td>
+                            <td><input type="date" id="pDate" name="pDate"></td>
                         </tr>
                 
                         <tr>
                             <th><label for="pNation">국적</label></th>
-                            <td><input type="text" id="pNation"></td>
+                            <td><input type="text" id="pNation" name="pNation"></td>
                         </tr>
                 
                         <tr>
                             <th>직업</th>
-                            <td>
-                                <input type="checkbox" id="actor">
-                                <label for="actor">배우</label>
-                                <input type="checkbox" id="director">
-                                <label for="director">연출자</label>
-                            </td>
+                            <td><input type="text" id="pJob" name="pJob" ></td>
                         </tr>
 
                     </table>
+                    <!-- Modal footer -->
+		                <div class="modal-footer">
+		                    <button type="submit" class="btn btn-outline-secondary modifyBtn" style="float: right;">수정</button>
+		                </div>
+                </form>
                 </div>
         
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary modifyBtn" style="float: right;" data-dismiss="modal">수정</button>
-                </div>
+                
             </div>
-
+			
             
         </div>
     </div>
@@ -368,7 +371,32 @@ h1{
     	}
     
     	
-    
+    // 수정
+    function update(pno){
+    	$.ajax({
+    		type:'post',
+    		url: "<%=contextPath%>/castingDetail.admo",
+    		data:{
+    			pno: pno
+    		},
+    		success:function(uplist){
+    			$("#pNo").val(uplist[0].pNo);
+    			$("#pName").val(uplist[0].pName);
+    			$("#pDate").val(uplist[0].pBD);
+    			$("#pNation").val(uplist[0].pNation);
+    			$("#pJob").val(uplist[0].pJob);
+    			
+    			if(uplist[0].pFile != null){
+    				$("#pFileOrigin").html(uplist[0].pFile);
+    				$("#pFileOrigin").attr('download', uplist[0].pFile);
+    			}
+    			
+    		},
+    		error:function(){
+    			console.log("조회 ajax 실패");
+    		}
+    	})
+    }
    		
    		
    		

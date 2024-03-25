@@ -210,6 +210,37 @@ public class MovieService {
 		return result;
 	}
 
+	// 인물 수정모달에서 정보 보기
+	public List<Person> updateCastingForm(String pno) {
+		Connection conn = getConnection();
+		List<Person> uplist = mDao.updateCastingForm(conn, pno);
+		close(conn);
+		return uplist;
+	}
+
+	// 인물 수정 
+	public int updatePerson(Person p, Attachment at) {
+		Connection conn = getConnection();
+		int result1 = mDao.updatePerson(conn, p);
+		
+		int result2 = 1;
+		if(at != null) {
+			if(at.getFileNo() != 0) {
+				result2 = mDao.updatepAttachment(conn,at);
+			}else {
+				result2 = mDao.insertpNewAttachment(conn, at);
+			}
+		}
+		
+		if(result1 > 0 && result2 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
+	}
+
 	
 	
 	
