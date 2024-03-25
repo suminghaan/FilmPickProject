@@ -245,7 +245,7 @@ background-color: black!important;
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../ad_movie/movieEnrollForm.jsp">신규영화 등록</a>
+                        <a class="collapse-item" href="<%=contextPath%>/movieEnrollForm.admo">신규영화 등록</a>
                         <a class="collapse-item" href="<%=contextPath%>/list.admo?page=1">등록된영화 조회</a>
                         <a class="collapse-item" href="<%=contextPath%>/movieCategoryForm.admo">영화 카테고리 관리</a>
                         <a class="collapse-item" href="../ad_movie/movieSelect.jsp">메인페이지 노출영화 선택</a>
