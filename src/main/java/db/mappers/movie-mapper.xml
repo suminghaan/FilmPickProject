@@ -70,6 +70,7 @@
 	AND FILE_LEVEL = 2
 	AND FILE_STATUS = 'Y'
 	AND REF_TYPE = 1
+	AND REF_TYPE = 2
 	</entry>
 	<!-- 영화 상세보기에서 리뷰 정보를 불러오는 쿼리 -->
 	<entry key="selectReviewInfo">
@@ -192,6 +193,17 @@
 	    , ?
 	    , DEFAULT
 	)
+	</entry>
+	
+	<!-- 기존 리뷰를 수정하기 위한 쿼리 [기웅] -->
+	<entry key="updateReview">
+	UPDATE REVIEW
+	SET
+		LIKE_POINT = ?
+		, REVIEW_CONTENT = ?
+	WHERE
+		MEM_NO = ?
+		MV_NO = ?
 	</entry>
 	
 	<!-- 다른 유저의 정보를 조회하는 쿼리 [기웅] -->
