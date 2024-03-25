@@ -31,17 +31,25 @@ public class MovieCategoryDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int cNo = Integer.parseInt(request.getParameter("categoryNo"));
-		
-		int result = new MovieService().deleteCategory(cNo);
+		String categoryList = request.getParameter("cateList");
+		String[] cateList = new String[1];
+		int result = 0;
+		System.out.println(categoryList);
+		if(categoryList.indexOf(",") == -1) {
+			cateList[0] = categoryList;
+			result = new MovieService().deleteCategory(cateList);
+		}else {
+			cateList = categoryList.split(",");
+			result = new MovieService().deleteCategory(cateList);
+		}
 		
 		HttpSession session = request.getSession();
 		if(result >0) {
 			session.setAttribute("alertMsg", "해당 카테고리가 성공적으로 삭제되었습니다");
-			response.sendRedirect(request.getContextPath()+"/list.co?page=1");
+			response.sendRedirect(request.getContextPath()+"/movieCategoryForm.admo");
 		}else {
 			session.setAttribute("alertMsg", "카테고리 삭제 실패");
-			response.sendRedirect(request.getContextPath()+"/list.co?page=1");
+			response.sendRedirect(request.getContextPath()+"/movieCategoryForm.admo");
 		}
 	}
 

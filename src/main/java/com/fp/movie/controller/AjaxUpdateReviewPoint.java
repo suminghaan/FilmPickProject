@@ -32,19 +32,32 @@ public class AjaxUpdateReviewPoint extends HttpServlet {
 		
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
-		double likePoint = Double.parseDouble(request.getParameter("likePoint"));
-		String reviewContent = null;
+		String likePoint = request.getParameter("likePoint");
 		
+		// 1이면 update, 0이면 insert
+		String alreadyReview = request.getParameter("alreadyReview");
+		
+		// 이미 review한 정보가 있다면 reviewContent에 해당 정보 저장
+		String reviewContent = null;
+
 		if(request.getParameter("reviewContent") != null ) {
 			reviewContent = request.getParameter("reviewContent");
 		}
 		
-		int result = new MovieService().insertReview(movieNo, userNo, likePoint, reviewContent);
+		int result = 0;
+		
+		if(alreadyReview.equals("0")) {
+			result = new MovieService().insertReview(movieNo, userNo, likePoint, reviewContent);
+		} else {
+			result = new MovieService().updateReview(movieNo, userNo, likePoint, reviewContent);
+		}
+		
+		
 		response.setContentType("text/html; chartset=utf-8");
 		if(result > 0) {
-			response.getWriter().print("등록 성공!");
+			response.getWriter().print("등록 성공");
 		} else {
-			response.getWriter().print("등록 실패!");
+			response.getWriter().print("등록 실패");
 		}
 	}
 

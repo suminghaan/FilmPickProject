@@ -215,7 +215,10 @@
                     <h5><span>검색결과</span> 리뷰</h5>
                 </div>
                 <div class="reviews_wrap">
+                <% if(reviewList != null) { %>
                     	<% for(int i = 0; i < reviewList.size(); i++) { %>
+                    	<!-- reviewContent가 있는 리뷰만 조회 -->
+                    	<% if(reviewList.get(i).getReviewContent() != null) {%>
                         <div class="movie_review_el">
                             <div class="movie_review_part">
                                 <div class="thumb_btn">
@@ -307,7 +310,9 @@
                                 </div>
                             </div>
                         </div>
-                        <% } %>                    
+                        <% } %>
+                        <% } %> 
+                    <% } %>                  
                 </div>
             </div>
         </div>

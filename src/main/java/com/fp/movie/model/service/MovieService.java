@@ -140,7 +140,7 @@ public class MovieService {
 
 
 //	영화 리뷰 추가하는 메소드 [기웅]
-	public int insertReview(int movieNo, int userNo, double likePoint, String reviewContent) {
+	public int insertReview(int movieNo, int userNo, String likePoint, String reviewContent) {
 		Connection conn = getConnection();
 		
 		int result = mDao.insertReview(conn, movieNo, userNo, likePoint, reviewContent);
@@ -237,7 +237,7 @@ public class MovieService {
 	}
 
 
-//  다른 유저의 별점 분석
+//  다른 유저의 별점 분석 [기웅]
 	public HashMap<String, String> starRatingAnalysis(int otherUserNo) {
 		Connection conn = getConnection();
 		
@@ -249,7 +249,7 @@ public class MovieService {
 	}
 
 
-
+//	사용자가 리뷰 버튼을 누르기 전 해당 영화에 대해 리뷰를 남겼는지 확인하기 위한 메소드 [기웅]
 	public Review selectUserReview(int movieNo, int userNo) {
 		Connection conn = getConnection();
 		
@@ -257,6 +257,33 @@ public class MovieService {
 		
 		close(conn);
 		return review;
+	}
+
+
+//	기존 리뷰를 업데이트하기 위한 메소드
+	public int updateReview(int movieNo, int userNo, String likePoint, String reviewContent) {
+		Connection conn = getConnection();
+		
+		int result = mDao.updateReview(conn, movieNo, userNo, likePoint, reviewContent);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+
+//	사용자가 해당 영화에 좋아요 표시를 했는지 확인하기 위한 메소드
+	public int selectMovieLike(int movieNo, int userNo) {
+		Connection conn = getConnection();
+		
+		int countMovieLike = mDao.selectMovieLike(conn, movieNo, userNo);
+		close(conn);
+		return countMovieLike;
 	}
 
 
