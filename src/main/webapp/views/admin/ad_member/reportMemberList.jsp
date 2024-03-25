@@ -46,7 +46,6 @@ table{
             <thead>
             <tr class="table-active">
                 <td colspan="7">
-                    <input type="checkbox" style="margin-right: 10px;" checked>
                     <span style="margin-right: 30px;">선택한 회원</span>
                     <button type="button" class="btn btn-secondary" style="margin-right: 10px;" data-toggle="modal" data-target="#suspendModal">활동중지</button>
                     <button type="button" class="btn btn-secondary" onclick="withdrawal();">강제탈퇴</button></td>
