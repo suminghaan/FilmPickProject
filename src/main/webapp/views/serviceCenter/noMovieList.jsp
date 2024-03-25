@@ -82,9 +82,9 @@
                 	<!-- 추후 링크 수정 @@@@@@@@@@ -->
                     <a href="<%=contextPath%>/list.no?page=1" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
                     <%if(loginMember != null){ %>
-	                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+	                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
 	                <%}else{ %>
-	                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+	                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
 	                <%} %>
                 </div>
                 <br>
@@ -179,7 +179,7 @@
                                 <%}else{ %>
                                 <textarea class="form-control comment" rows="6" readonly>처리중입니다.</textarea> <br><br>
                                 <%} %>
-                                <a href="http://www.naver.com" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
+                                <a href="<%=contextPath%>/updateForm.noMo=no<%=nm.getNmEnrollNo()%>" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
                             </td>
                         </tr>
                         <%} %>
@@ -188,7 +188,7 @@
                 </table>
                 <br>
                 <!-- 추후 수정 -->
-                <a href="noMovieContent.jsp" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
+                <a href="<%=contextPath%>/views/serviceCenter/noMovieContent.jsp" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
 
             </div> <br><br>
         </section>
@@ -208,11 +208,11 @@
             }
             
             function nomv(){
-                location.href="noMovieList.jsp"; // 추후 수정
+                location.href="<%=contextPath%>/list.noMv";
             }
 
             function mantoman(){
-                location.href="inquiryWrite.jsp"; // 추후 수정
+                location.href="<%=contextPath%>/views/serviceCenter/inquiryWrite.jsp";
             }
 
     

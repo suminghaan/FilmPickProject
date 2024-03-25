@@ -2,11 +2,52 @@ package com.fp.movie.model.vo;
 
 public class Category {
 	
-	private int categoryNo;
+	private int categoryNo; // 장르번호
 	private String categoryName;
 	private String categoryDate;
 	private String categoryStatus;
 	
+	private int noMovieCNo; //없는영화장르번호[호용]
+	private int noMovieNo; // 없는영화신청번호[호용]
+	
+	// 없는영화 수정때 필요한 매개변수생성자 [호용]
+	public Category(int categoryNo, String categoryName, String categoryDate, String categoryStatus, int noMovieCNo,
+			int noMovieNo) {
+		super();
+		this.categoryNo = categoryNo;
+		this.categoryName = categoryName;
+		this.categoryDate = categoryDate;
+		this.categoryStatus = categoryStatus;
+		this.noMovieCNo = noMovieCNo;
+		this.noMovieNo = noMovieNo;
+	}
+	
+	
+	// 없는영화 수정때 필요한 게터세터 [호용]
+	public int getNoMovieCNo() {
+		return noMovieCNo;
+	}
+
+
+	// 없는영화 수정때 필요한 게터세터 [호용]
+	public void setNoMovieCNo(int noMovieCNo) {
+		this.noMovieCNo = noMovieCNo;
+	}
+
+
+	// 없는영화 수정때 필요한 게터세터 [호용]
+	public int getNoMovieNo() {
+		return noMovieNo;
+	}
+
+	
+	// 없는영화 수정때 필요한 게터세터 [호용]
+	public void setNoMovieNo(int noMovieNo) {
+		this.noMovieNo = noMovieNo;
+	}
+
+
+
 	public Category() {
 	}
 

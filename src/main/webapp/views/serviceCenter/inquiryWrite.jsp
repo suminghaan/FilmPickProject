@@ -89,9 +89,9 @@
             	<!-- 추후 링크 수정 @@@@@@@@@@ -->
                 <a href="<%=contextPath%>/list.no?page=1" style="color: rgb(158, 158, 158);"><h2>공지사항</h2></a> <h2 class="division" style="color: rgb(158, 158, 158);">|</h2>
                 <%if(loginMember != null){ %>
-                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <a href="<%=contextPath%>/list.in?page=1" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
                 <%}else{ %>
-                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(158, 158, 158);"><h2>고객센터</h2></a>
+                <a href="<%=contextPath%>/loginForm.me" style="color: rgb(255, 255, 255);"><h2>고객센터</h2></a>
                 <%} %>
             </div>
             <br> 
@@ -99,7 +99,7 @@
                 <thead>
                     <tr class="notice_title" align="center" id="head">
                         <th style="color: rgb(158, 158, 158);" onclick="question_list();">문의현황확인</th>
-                        <th style="color: rgb(158, 158, 158);" onclick="nomv();">없는영화신청</th>
+                        <th style="color: rgb(158, 158, 158);" onclick="nomv(<%=loginMember.getMemNo()%>);">없는영화신청</th>
                         <th onclick="mantoman();">1대1 문의</th>
                     </tr>
                 </thead>
@@ -151,8 +151,8 @@
             location.href="<%=contextPath%>/list.in?page=1";
         }
         
-        function nomv(){
-            location.href="noMovieList.jsp"; // 추후 수정
+        function nomv(memNo){
+            location.href="<%=contextPath%>/list.noMv?memNo=" + memNo;
         }
 
         function mantoman(){

@@ -161,7 +161,7 @@
             }
             
             function nomv(memNo){
-                location.href="<%=contextPath%>/list.noMv?memNo=" + memNo; // 추후수정
+                location.href="<%=contextPath%>/list.noMv?memNo=" + memNo;
             }
 
             function mantoman(){

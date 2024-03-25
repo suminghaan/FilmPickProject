@@ -54,4 +54,48 @@ public class NoMovieService {
 		return list;
 	}
 	
+	/**
+	 * 없는영화 수정페이지에서 띄울 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<NoMovie> selectNoMovieAll(int noMovieNo){
+		Connection conn = getConnection();
+		List<NoMovie> nlist = nMDao.selectNoMovieAll(conn, noMovieNo);
+		close(conn);
+		return nlist;
+	}
+	
+	/**
+	 * 없는영화 수정페이지에서 띄울 인물 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<Person> selectNoMoviePerson(int noMovieNo){
+		Connection conn = getConnection();
+		List<Person> pList = nMDao.selectNoMoviePerson(conn, noMovieNo);
+		close(conn);
+		return pList;
+	}
+	
+	/**
+	 * 없는영화 수정페이지에서 띄울 카테고리 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<Category> selectNoMovieCategory(int noMovieNo){
+		Connection conn = getConnection();
+		List<Category> cList = nMDao.selectNoMovieCategory(conn, noMovieNo);
+		close(conn);
+		return cList;
+	}
+	
+	/**
+	 * 없는영화 수정페이지에서 띄울 추가 첨부파일 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public Attachment selectAttachment(int noMovieNo) {
+		Connection conn = getConnection();
+		Attachment at = nMDao.selectAttachment(conn, noMovieNo);
+		close(conn);
+		return at;
+	}
+	
 }

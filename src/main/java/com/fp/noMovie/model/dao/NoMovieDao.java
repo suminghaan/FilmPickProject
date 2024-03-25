@@ -159,4 +159,134 @@ public class NoMovieDao {
 		return list;
 	}
 	
+	/**
+	 * 없는영화 수정페이지에서 띄울 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<NoMovie> selectNoMovieAll(Connection conn, int noMovieNo){
+		NoMovie nm = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<NoMovie> nList = new ArrayList<>();
+		String sql = prop.getProperty("selectNoMovieAll");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noMovieNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				nm = new NoMovie();
+				nm.setNmTitle(rset.getString("NM_TITLE"));
+				nm.setNmViewGrade(rset.getString("NM_VIEW_GRADE"));
+				nm.setNmStory(rset.getString("NM_STORY"));
+				nm.setNmReleaseDate(rset.getString("NM_RELEASE_DATE"));
+				nm.setNmRunTime(rset.getString("NM_RUN_TIME"));
+				nm.setNmNation(rset.getString("NM_NATION"));
+				nm.setNmPoster(rset.getString("NM_POSTER"));
+				nm.setNmPreview(rset.getString("NM_PREVIEW"));
+				nm.setNmUserRequest(rset.getString("NM_USER_REQUEST"));
+				nm.setNmNicknameStatus(rset.getString("NM_NICKNAME_STATUS"));
+				nm.setMemNo(rset.getInt("MEM_NO"));
+				nList.add(nm);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return nList;
+	}
+	
+	/**
+	 * 없는영화 수정페이지에서 띄울 인물 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<Person> selectNoMoviePerson(Connection conn, int noMovieNo){
+		Person p = null;
+		List<Person> pList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoMoviePerson");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noMovieNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				p = new Person();
+				p.setNoMoviePNo(rset.getInt("NM_CAST_NO"));
+				p.setpNo(rset.getInt("PERSON_NO"));
+				p.setNoMovieNo(rset.getInt("NM_ENROLL_NO"));
+				p.setpJob(rset.getString("NM_CASTING"));
+				pList.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return pList;
+		
+	}
+	
+	/**
+	 * 없는영화 수정페이지에서 띄울 카테고리 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public List<Category> selectNoMovieCategory(Connection conn, int noMovieNo){
+		Category c = null;
+		List<Category> cList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoMovieCategory");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noMovieNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				c = new Category();
+				c.setNoMovieCNo(rset.getInt("NM_GENRE_NO"));
+				c.setCategoryNo(rset.getInt("CATEGORY_NO"));
+				c.setNoMovieNo(rset.getInt("NM_ENROLL_NO"));
+				cList.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cList;
+	}
+	
+	/**
+	 * 없는영화 수정페이지에서 띄울 추가 첨부파일 값들을 담기위한 메소드
+	 * @author 호용
+	 */
+	public Attachment selectAttachment(Connection conn, int noMovieNo) {
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noMovieNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				at = new Attachment();
+				at.setFileNo(rset.getInt("FILE_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setFilePath(rset.getString("FILE_PATH"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return at;
+	}
+	
 }

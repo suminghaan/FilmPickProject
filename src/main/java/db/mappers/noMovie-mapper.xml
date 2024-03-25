@@ -144,6 +144,7 @@
 		  )
 	</entry>
 	
+	<!-- 없는영화신청 메인페이지에 보여져야될 값을 담은 sql문 [호용] -->
 	<entry key="selectNoMovie">
 		SELECT
 			   NM_ENROLL_NO
@@ -154,6 +155,58 @@
 			 , MEM_NO
 		  FROM NO_MOVIE_ENROLL
 		 WHERE MEM_NO = ? <!-- 넘겨받은 회원번호 -->
+	</entry>
+	
+	<!-- 없는영화 수정페이지에 띄울 값들을 조회하는 sql문 [호용] -->
+	<entry key="selectNoMovieAll">
+		SELECT
+			   NM_TITLE 
+			 , NM_VIEW_GRADE
+			 , NM_STORY
+			 , TO_CHAR(NM_RELEASE_DATE, 'YY-MM-DD') NM_RELEASE_DATE
+			 , NM_RUN_TIME
+			 , NM_NATION
+			 , NM_POSTER
+			 , NM_PREVIEW
+			 , NM_USER_REQUEST
+			 , NM_NICKNAME_STATUS
+			 , MEM_NO
+		  FROM NO_MOVIE_ENROLL
+		 WHERE NM_ENROLL_NO = ?
+	</entry>
+	
+	<!-- 없는영화 수정페이지에 띄울 인물 값들을 조회하는 sql문 [호용] -->
+	<entry key="selectNoMoviePerson">	
+		SELECT
+			   NM_CAST_NO
+			 , PERSON_NO
+			 , NM_ENROLL_NO
+			 , NM_CASTING
+		  FROM NO_MOVIE_CAST
+		 WHERE NM_ENROLL_NO = ?
+	</entry>
+	
+	<!-- 없는영화 수정페이지에 띄울 카테고리 값들을 조회하는 sql문 [호용] -->
+	<entry key="selectNoMovieCategory">
+		SELECT
+			   NM_GENRE_NO
+			 , CATEGORY_NO
+			 , NM_ENROLL_NO
+		  FROM NO_MOVIE_GENRE
+		 WHERE NM_ENROLL_NO = ?
+	</entry>
+	
+	<!-- 없는영화 수정페이지에 띄울 추가 첨부파일 값들을 조회하는 sql문 [호용] -->
+	<entry key="selectAttachment">
+		SELECT 
+   			   FILE_NO
+   			 , ORIGIN_NAME
+   			 , CHANGE_NAME
+   			 , FILE_PATH
+   	  	  FROM ATTACHMENT
+   	  	 WHERE REF_NO = ?
+   	  	   AND REF_TYPE = 4
+   	  	   AND FILE_LEVEL = 2
 	</entry>
 </properties>
 
