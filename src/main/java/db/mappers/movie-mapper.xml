@@ -62,15 +62,15 @@
 	</entry>
 	<!-- 영화 상세보기에서 영화 추가 파일을 불러오는 쿼리 -->
 	<entry key="selectAddiMovie">
-	SELECT FILE_NO, FILE_PATH || CHANGE_NAME AS "FILEPATH"
+	SELECT FILE_NO, FILE_PATH || CHANGE_NAME AS "FILEPATH", REF_TYPE
 	FROM ATTACHMENT
 	JOIN MOVIE
 	ON REF_NO = MV_NO
 	WHERE MV_NO = ?
 	AND FILE_LEVEL = 2
 	AND FILE_STATUS = 'Y'
-	AND REF_TYPE = 1
-	AND REF_TYPE = 2
+	AND (REF_TYPE = 1
+	OR REF_TYPE = 2)
 	</entry>
 	<!-- 영화 상세보기에서 리뷰 정보를 불러오는 쿼리 -->
 	<entry key="selectReviewInfo">
@@ -90,6 +90,7 @@
 	JOIN MEMBER M
 	ON M.MEM_NO = R.MEM_NO
 	WHERE R.MV_NO = ?
+	ORDER BY COUNT_AGREE DESC
 	</entry>
 	<!-- 영화 상세보기에서 관련 영화 정보를 가져오는 쿼리 -->
 	<entry key="selectRelMovieList">
@@ -201,8 +202,10 @@
 	SET
 		LIKE_POINT = ?
 		, REVIEW_CONTENT = ?
+		, REVIEW_DATE = SYSDATE
 	WHERE
 		MEM_NO = ?
+	AND
 		MV_NO = ?
 	</entry>
 	
@@ -318,8 +321,8 @@
 	]]>
 	</entry>
 	
-	<!-- 리뷰 등록 시에 사용자의 리뷰 정보를 조회하는 메소드  -->
-		<entry key="selectUserReview">
+	<!-- 리뷰 등록 시에 사용자의 리뷰 정보를 조회하는 쿼리 [기웅]  -->
+	<entry key="selectUserReview">
 	SELECT 
     MV_REVIEW_NO
     , REVIEW_CONTENT
@@ -332,6 +335,14 @@
 	ON M.MEM_NO = R.MEM_NO
 	WHERE R.MV_NO = ?
 	AND R.MEM_NO = ?
+	</entry>
+	
+	<!-- 사용자의 좋아요 정보를 조회하는 쿼리 [기웅] -->
+	<entry key="selectMovieLike">
+	SELECT COUNT(*) AS "COUNT"
+	FROM MOVIE_LIKE
+	WHERE MV_NO = ?
+	AND MEM_NO = ?
 	</entry>
 	
 </properties>

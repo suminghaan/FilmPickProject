@@ -174,35 +174,35 @@
                               영화 장르 선택(필수) <br>
                               
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox1">SF</label>
+                                      <label class="form-check-label" for="inlineCheckbox1">액션</label>
                                   
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox2">스릴러</label>
+                                      <label class="form-check-label" for="inlineCheckbox2">코미디</label>
                                       
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3" name="category">
                                       <label class="form-check-label" for="inlineCheckbox3">로맨스</label>
                                       
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="4" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox4">액션</label>
+                                      <label class="form-check-label" for="inlineCheckbox4">스릴러</label>
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="5" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox5">판타지</label>
+                                      <label class="form-check-label" for="inlineCheckbox5">공포</label>
 
                                   
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="6" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox6">코미디</label>
+                                      <label class="form-check-label" for="inlineCheckbox6">판타지</label>
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="7" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox7">에로</label>
+                                      <label class="form-check-label" for="inlineCheckbox7">어드벤처</label>
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="8" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox8">범죄</label>
+                                      <label class="form-check-label" for="inlineCheckbox8">드라마</label>
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="9" name="category">
                                       <label class="form-check-label" for="inlineCheckbox9">애니메이션</label>
 
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="10" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox10">느와르</label>
+                                      <label class="form-check-label" for="inlineCheckbox10">SF</label>
                               </div>
                               <br><br>
 
@@ -223,7 +223,7 @@
 
                               <p style="color:black;">영화포스터(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile1" name="moviePoster" required>
+                                  <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required>
                                   <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -232,7 +232,7 @@
 
                               <p style="color:black;">예고편영상(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile2" name="moviePreview" required>
+                                  <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required>
                                   <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -243,7 +243,7 @@
                               <div class="form-group" style="color:black;">
                               기타 추가 희망 이미지 또는 동영상(선택)
                                   <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile3" name="serveFile">
+                                      <input type="file" class="custom-file-input" id="customFile3" name="upfile3">
                                       <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
                                       <img src="" alt="미리보기이미지">
                                   </div>

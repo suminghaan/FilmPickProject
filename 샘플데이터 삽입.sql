@@ -373,7 +373,7 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    'resources/upfiles/20240314153026_57889.jpeg',
+    'resources/upfiles/20240314153026_57889.webp',
     'resources/upfiles/20240314103026_87842.mp4',
     DEFAULT,
     DEFAULT
@@ -417,7 +417,7 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    'resources/upfiles/20210624154832_12889.jpeg',
+    'resources/upfiles/20210624154832_12889.webp',
     'resources/upfiles/20210814101026_11242.mp4',
     DEFAULT,
     DEFAULT
@@ -436,7 +436,7 @@ VALUES (
     '12세 이상',
     DEFAULT,
     DEFAULT,
-    'resources/upfiles/20190714154832_12481.jpeg',
+    'resources/upfiles/20190714154832_12481.webp',
     'resources/upfiles/20230614101626_77842.mp4',
     DEFAULT,
     DEFAULT
@@ -926,8 +926,8 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '안시성.jpeg',
-    '20240314153026_57889.jpeg',
+    '안시성.webp',
+    '20240314153026_57889.webp',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -982,8 +982,8 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '어벤져스인피니티워.jpeg',
-    '20210624154832_12889.jpeg',
+    '어벤져스인피니티워.webp',
+    '20210624154832_12889.webp',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -1010,8 +1010,8 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '블랙팬서.jpeg',
-    '20190714154832_12481.jpeg',
+    '블랙팬서.webp',
+    '20190714154832_12481.webp',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -3523,7 +3523,7 @@ INSERT INTO CANCELED_MEM VALUES(23, 2, '2021-12-19');
 INSERT INTO REPORT VALUES(SEQ_REPORT_NO.NEXTVAL, '1', '게시판에 욕설 남김', '2024-03-22', 1, 2, '1', 1);
 
 -- 문의 테이블 샘플데이터 (김지우)
-INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원가입 관련 문제.', '분명히 회원가입을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-21', 'N', 30, 1, NULL, NULL);
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원가입 관련 문제', '분명히 회원가입을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-21', 'N', 30, 1, NULL, NULL);
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'Y', 29, 1, '아직 없지만 곧 만들어서 배포할 계획입니다.', '2024-03-20');
 
 -- 활동제한 테이블 강제탈퇴인지 활동제한인지 여부에 대한 컬럼 추가 (김지우)
@@ -3534,5 +3534,9 @@ ALTER TABLE REPORTED_MEM MODIFY(END_DATE NULL);
 
 INSERT INTO REPORTED_MEM VALUES(25, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
 INSERT INTO REPORTED_MEM VALUES(24, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B');
+
+-- -- 문의 테이블 샘플데이터 (김지우)
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원탈퇴 관련 문제', '분명히 회원탈퇴을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-20', 'N', 27, 1, NULL, NULL);
+INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'N', 28, 1, NULL, NULL);
 
 commit;

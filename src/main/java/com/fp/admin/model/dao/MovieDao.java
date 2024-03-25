@@ -261,39 +261,25 @@ public class MovieDao {
 		return list;
 	}
 
-	// 인물 조회 리스트 페이징
-	public int selectCastingListCount(Connection conn) {
-		int listCount = 0;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectCastingListCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				listCount = rset.getInt("COUNT");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		return listCount;
-	}
+	
 
 	// 영화 카테고리 삭제
-	public int deleteCategory(Connection conn, int cNo) {
+	public int deleteCategory(Connection conn, String[] cateList) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteCategory");
 		
+		if(cateList.length != 1) {
+			for (int i = 1; i < cateList.length; i++) {
+				sql += " OR CATEGORY_NAME = ?";
+			}
+		} 
+				
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, cNo);
+			for(int i = 1; i <= cateList.length; i++) {
+				pstmt.setString(i, cateList[i - 1]);
+			}
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -303,9 +289,77 @@ public class MovieDao {
 		}
 		return result;
 	}
+	
+	// 카테고리 추가 
+		public int addCategory(Connection conn, String genreAdd) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("addCategory");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, genreAdd);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+				close(rset);
+			}
+			return result;
+		}
+
+		
+	// 카테고리 수정
+	public int updateCategory(Connection conn, String genreChange, String categoryNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("updateCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, genreChange);
+			pstmt.setInt(2, Integer.parseInt(categoryNo));
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return result;
+	}
+	
+	// 인물 조회 리스트 페이징
+		public int selectCastingListCount(Connection conn) {
+			int listCount = 0;
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("selectCastingListCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					listCount = rset.getInt("COUNT");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return listCount;
+		}
 
 	// 인물관리_조회
-	public List<Person> selectPersonList(Connection conn) {
+	public List<Person> selectPersonList(Connection conn, PageInfo pi) {
 		List<Person> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -314,6 +368,13 @@ public class MovieDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 	
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -333,5 +394,8 @@ public class MovieDao {
 		return list;
 	}
 
+	
+
+	
 	
 }

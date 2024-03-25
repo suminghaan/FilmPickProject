@@ -279,7 +279,7 @@ background-color: black!important;
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="../ad_customer_center/inquiryList.jsp">1대1문의 확인</a>
+                    <a class="collapse-item" href="<%=contextPath%>/list.iq?page=1">1대1문의 확인</a>
                     <a class="collapse-item" href="<%=contextPath%>/list.nm?page=1">없는 영화 신청 확인</a>
                     <div class="collapse-divider"></div>
                 </div>

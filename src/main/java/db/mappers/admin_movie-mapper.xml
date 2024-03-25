@@ -148,31 +148,69 @@
 			FROM CATEGORY
 		</entry>
 		
-		<!-- 관리자 인물 조회 페이징처리 [수민]-->
-		<entry key="selectCastingListCount">
-			SELECT COUNT(*) COUNT
-			  FROM CASTING
-		</entry>
+		
 		
 		<!-- 관리자 영화 카테고리 삭제 [수민] -->
 		<entry key="deleteCategory">
 			UPDATE
 				  CATEGORY
 			  SET CATEGORY_STATUS = 'N'
-			WHERE CATEGORY_NO = ?
+			WHERE  CATEGORY_NAME = ?
+		</entry>
+		
+		<!-- 관리자 카테고리 등록 [수민]-->
+		<entry key="addCategory">
+			INSERT
+				INTO CATEGORY
+				(
+					CATEGORY_NO
+				  , CATEGORY_NAME
+				  , CATEGORY_DATE
+				  , CATEGORY_STATUS
+				)
+				VALUES
+				(
+					SEQ_CATEGORY_NO.NEXTVAL
+				  , ?
+				  , DEFAULT
+				  , DEFAULT
+				)
+		</entry>
+		
+		<!-- 관리자 카테고리 수정 [수민] -->
+		<entry key="updateCategory">
+			UPDATE
+				    CATEGORY
+				SET CATEGORY_NAME = ?
+			  WHERE CATEGORY_NO = ?
+		</entry>
+		
+		<!-- 관리자 인물 조회 페이징처리 [수민]-->
+		<entry key="selectCastingListCount">
+			SELECT COUNT(*) COUNT
+			  FROM PERSON
 		</entry>
 		
 		<!-- 관리자 인물 조회 [수민] -->
 		<entry key="selectPersonList">
-			SELECT
-				  P_NO
-				, P_NAME
-				, P_JOB
-				, P_BD
-				, P_NATION
-				, P_FILE
-			FROM PERSON
+			SELECT *
+				FROM(
+					SELECT ROWNUM RNUM, A, *
+					FROM(
+						SELECT
+							  P_NO
+							, P_NAME
+							, P_JOB
+							, P_BD
+							, P_NATION
+							, P_FILE
+						FROM PERSON
+						)A
+					)
+			WHERE RNUM BETWEEN ? AND ?
 		</entry>
+		
+		
 
 
 </properties>

@@ -37,14 +37,24 @@ public class MovieDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
-		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		int userNo = 0;
+		int countMovieLike = 0;
+		if (request.getSession().getAttribute("loginUser") != null) {
+			userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		}
 		
 		Movie m = new MovieService().selectMovieInfo(movieNo);
 		ArrayList<Attachment> attList = new MovieService().selectAddiMovie(movieNo);
 		ArrayList<Person> personList = new PersonService().selectPersonInfo(movieNo);
 		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
 		ArrayList<Movie> movieList = new MovieService().selectRelMovieList(movieNo);
-		Review review = new MovieService().selectUserReview(movieNo, userNo);
+		
+		Review review = null;
+		
+		if(userNo != 0) {
+			review = new MovieService().selectUserReview(movieNo, userNo);
+			countMovieLike = new MovieService().selectMovieLike(movieNo, userNo);
+		}
 		
 		if(m != null) {
 			request.setAttribute("movie", m);
@@ -77,6 +87,7 @@ public class MovieDetailController extends HttpServlet {
 		}
 		
 		request.setAttribute("review", review);
+		request.setAttribute("countMovieLike", countMovieLike);
 		request.getRequestDispatcher("/views/search/movieDetail.jsp").forward(request, response);
 	}
 

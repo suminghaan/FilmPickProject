@@ -10,7 +10,7 @@
     
 <% Movie m = (Movie)request.getAttribute("m"); %>
 <% List<Person> plist = (List<Person>)request.getAttribute("plist"); %>
-<% List<Attachment> alist = (List<Attachment>)request.getAttribute("mlist"); %>
+<% List<Attachment> alist = (List<Attachment>)request.getAttribute("alist"); %>
 <%
 	ArrayList<String> categoryList = new ArrayList<>();
 	if(m.getCategoryNames() != null){
@@ -296,27 +296,37 @@
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile1" name="">
                     <label class="custom-file-label" for="customFile1">파일추가</label>
-                    <img src="" alt="미리보기이미지">
+                    <img src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
                 </div>
 
-                <br><br>
+                <br><br><br>
 
                 <label>예고편영상</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile2" name="">
                     <label class="custom-file-label" for="customFile2">파일추가</label>
-                    <img src="" alt="미리보기이미지">
+                    <video src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
                 </div>
                 
                 <br><br>
 
                 <div class="form-group">
                 <label>기타 추가 희망 이미지 또는 동영상</label>
+                
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="customFile3" name="">
                         <label class="custom-file-label" for="customFile3">파일추가</label>
-                        <img src="" alt="미리보기이미지">
+                        <% if(!alist.isEmpty()){ %>
+                        	<% for(Attachment a : alist){ %>                   	
+		                        <% if(Integer.parseInt(a.getRefType()) == 1){ %>
+		                        <img src="<%=contextPath + "/" + a.getFilePath() %>" alt="미리보기이미지">
+		                        <%}else if(Integer.parseInt(a.getRefType()) == 2){ %>
+								<video src="<%=contextPath + "/" + a.getFilePath()%>"></video>
+								<%} %>							
+                        	<%} %>
+                        <%} %>
                     </div>
+                
                 </div>
 
 
@@ -325,14 +335,15 @@
                 <div class="form-group">
                     <label>첫 페이지 노출 선택여부 : </label>
                     <br>
-                    <input type="radio" id="radioX" class="gender" name="gender" value="X" checked> 
+                    <input type="radio" id="radioX" class="fpage" name="fpage" value="N"> 
                     <label for="radioX">선택안함</label>
 
-                    <input type="radio" id="radioM" class="gender" name="gender" value="M">
+                    <input type="radio" id="radioM" class="fpage" name="fpage" value="Y">
                     <label for="radioM">첫페이지 노출</label>
                 	
                 </div>
                 
+                <% if(m.getNmUserRequest() != null){ %>
                 <div class="form-group">
                     <label>사용자 요청사항</label>
                     <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getNmUserRequest() %></textarea>       
@@ -346,7 +357,7 @@
                         <p><label>등록한 사용자 ID : </label><%=m.getMemNo() %></p>
                     </div>
                 </div>
-                
+                <%} %>
                 <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('내용이 수정되었습니다.')">수정하기</button>
                 
             </div>
@@ -400,6 +411,13 @@
 	// 국가 선택
 	$(".nation").each(function(index, el){
 		if(<%=m.getMvNation() %> == $(el).val()){
+			$(el).attr('checked', true);
+		}
+	})
+	
+	// 첫페이지 노출여부
+	$(".fpage").each(function(index, el){
+		if("<%=m.getfPageExposed()%>" == $(el).val()){
 			$(el).attr('checked', true);
 		}
 	})

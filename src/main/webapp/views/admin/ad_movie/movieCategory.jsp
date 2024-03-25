@@ -3,6 +3,7 @@
     
 <%@ page import="com.fp.movie.model.vo.Category" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <% List<Category> list = (List<Category>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
@@ -70,26 +71,29 @@
             </thead>
 
             <tbody>
+            
             <% for(Category c :list){ %>
+            	<% if(c.getCategoryStatus().equals("Y")){ %>
                 <tr>
                     <td>
-                        <input class="genre" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"><%=c.getCategoryName() %></label>
+                        <input class="genre" type="checkbox" id="<%= c.getCategoryNo() %>" value="<%=c.getCategoryName() %>">
+                        <label class="form-check-label" for="<%= c.getCategoryNo() %>"><%=c.getCategoryName() %></label>
                     </td>
-            
+                 <% } %>
+            <% } %>
 
         </table>
 
 		<div class="allBtn">
         	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#addModal">추가</button>
-        	<button type="button" class="btn btn-outline-secondary modifyBtn" data-toggle="modal" data-target="#changeModal">수정</button>
-        	<a href="<%=contextPath %>/deleteCategory.admo?categoryNo=<%=c.getCategoryNo() %>" class="btn btn-outline-danger modifyBtn" onclick="deleted();">삭제</a>
+        	<button type="button" class="btn btn-outline-secondary modifyBtn updateCate" data-toggle="modal" data-target="#changeModal" onclick="update();">수정</button>
+        	<button type="button" class="btn btn-outline-danger modifyBtn deleteCate" onclick="deleted();">삭제</button>
         </div>
-        <% } %>
+        
     </div>
     
 
-    <!-- 추가 Modal -->
+    <!-- 카테고리 추가 Modal -->
     <div class="modal" id="addModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -101,20 +105,23 @@
                 </div>
         
                 <!-- Modal body -->
+                <form action="<%=contextPath%>/insertCate.admo" method="post">
                 <div class="modal-body">
                     <input type="text" name="genreAdd" class="form-control" placeholder="추가할 장르 입력">
                 </div>
+                
         
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
+                <button type="submit" class="btn btn-outline-secondary" style="float: right;">추가</button>
                 </div>
+                </form>
     
             </div>
         </div>
     </div>
 
-    <!-- 수정 Modal -->
+    <!-- 카테고리 수정 Modal -->
     <div class="modal" id="changeModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -126,15 +133,17 @@
                 </div>
         
                 <!-- Modal body -->
-                <div class="modal-body">
-                    <input type="text" name="genreChange" class="form-control" placeholder="기존장르나오는공간">
-                </div>
-        
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">수정</button>
-                </div>
-    
+                <form action="<%=contextPath%>/updateCate.admo" method="post">                
+	                <input type="hidden" id="categoryNo" name="no" class="categoryNo" value="">                
+	                <div class="modal-body">
+	                    <input type="text" name="genreChange" class="form-control genreChange" value="">
+	                </div>
+	        
+	                <!-- Modal footer -->
+	                <div class="modal-footer">
+	                <button type="submit" class="btn btn-outline-secondary" style="float: right;">수정</button>
+	                </div>
+    			</form>
             </div>
         </div>
     </div>
@@ -165,14 +174,36 @@
         </div>
     </div>
 
-    <!-- 삭제확인 -->
+
     <script>
+    
+    // 카테고리 수정
+   	function update(){
+    	$(".genre").each(function(index, el){
+    		if($(el).is(":checked")){
+    			$(".genreChange").val($(el).val());
+    			$(".categoryNo").val($(el).attr("id"));
+    		}
+    	})
+    }
+    
+    //카테고리 삭제
     	function deleted(){
 			let d = prompt("선택한 분류를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
 			
 			if(d=="삭제"){
 	            alert("해당 카테고리를 삭제하겠습니다.")
-	        }else{
+	        	let categoryList = [];
+	            $(".genre").each(function(index, el) {
+		    		if ($(el).is(":checked")) {
+		    			categoryList.push($(el).val());
+		    			
+		    		}
+    			})
+    			console.log(categoryList);
+	            location.href= "<%=contextPath%>/deleteCategory.admo?cateList=" + categoryList;
+	            
+			}else{
 	            alert("잘못입력하셨습니다. 다시 확인해주세요")
 	        }
 		}

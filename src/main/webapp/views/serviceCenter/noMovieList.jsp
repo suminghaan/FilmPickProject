@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.noMovie.model.vo.NoMovie" %>
+<%@ page import="java.util.List" %>
+<%
+	List<NoMovie> list = (List<NoMovie>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +97,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <%if(list.isEmpty()){ %>
                         <tr data-toggle="collapse" data-target="#nomv_question">
                             <td colspan="3" style="font-weight: bold; cursor: pointer;">Q. 없는영화 신청이 무엇인가요??</td>
                         </tr>
@@ -116,10 +122,9 @@
                             <td>승인여부</td>
                         </tr>
                         <tr style="cursor: pointer;"  data-toggle="collapse" data-target="#nomv_check">
-                            <td>범죄도시4</td>
-                            <td>2024-03-05</td>
-                            <td>처리중/승인/반려</td>
+                            <td colspan="3">신청하신 영화가 없습니다.</td>
                         </tr>
+                        <!-- 신청한 영화가 없을땐 콜랩스속성이 안되게
                         <tr id="nomv_check" class="collapse">
                             <td colspan="3" style="border-top: 1px solid black;">
                                 <p class="ans_name">영화명</p>
@@ -131,6 +136,54 @@
                                 <a href="http://www.naver.com" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
                             </td>
                         </tr>
+                         -->
+                     <%}else{ %>
+                        <tr data-toggle="collapse" data-target="#nomv_question">
+                            <td colspan="3" style="font-weight: bold; cursor: pointer;">Q. 없는영화 신청이 무엇인가요??</td>
+                        </tr>
+                        <tr id="nomv_question" class="collapse">
+                            <td  colspan="3">
+                                <p style="min-height: 160px; text-align: left;" class="p-3">
+                                    없는 영화 신청이란 홈페이지에서 확인하고 싶은 영화가 등록되어있지 않다면<br> 홈페이지 사용자가
+                                    직접 영화의 대한 줄거리, 출연진, 장르등을 작성해 신청하는 서비스 입니다.
+                                    <br>
+                                    신청을 완료하시면 확인 후 신청하신 영화의 정보를 홈페이지에 등록시켜드리며, <br>
+                                    해당 영화 정보에 신청자분의 닉네임 기재하실 수 있습니다 (선택사항)
+                                </p>
+                                <p id="text">신청 정보에 부적절한 내용 또는 영화정보와 관련되지 않은 내용이 기재되어 있다면, 수정 또는 승인이 반려될  수 있습니다.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="font-weight: bold; border-top: 1px solid black;">없는영화 신청현황 확인</td>
+                        </tr>
+                        <tr style="font-weight: bold;">
+                            <td>영화명</td>
+                            <td>신청일</td>
+                            <td>승인여부</td>
+                        </tr>
+                        <%for(NoMovie nm : list){ %>
+                        <tr style="cursor: pointer;"  data-toggle="collapse" data-target="#nomv_check<%=nm.getNmEnrollNo()%>">
+                            <td><%=nm.getNmTitle()%></td>
+                            <td><%=nm.getNmEnrollDate()%></td>
+                            <td><%=nm.getNmApproval()%></td>
+                        </tr>
+                        <tr id="nomv_check<%=nm.getNmEnrollNo()%>" class="collapse">
+                            <td colspan="3" style="border-top: 1px solid black;">
+                                <p class="ans_name">영화명</p>
+                                <textarea class="form-control comment" rows="1" readonly><%=nm.getNmTitle()%></textarea> <br>
+                                <p class="ans_name">승인여부</p>
+                                <textarea class="form-control comment" rows="1" readonly><%=nm.getNmApproval()%></textarea> <br>
+                                <p class="ans_name">반려사유</p>
+                                <%if(nm.getNmRefuseReason() != null){ %>
+                                <textarea class="form-control comment" rows="6" readonly><%=nm.getNmRefuseReason()%></textarea> <br><br>
+                                <%}else{ %>
+                                <textarea class="form-control comment" rows="6" readonly>처리중입니다.</textarea> <br><br>
+                                <%} %>
+                                <a href="http://www.naver.com" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
+                            </td>
+                        </tr>
+                        <%} %>
+                     <%} %>
                     </tbody>
                 </table>
                 <br>

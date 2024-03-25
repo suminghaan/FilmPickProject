@@ -41,6 +41,7 @@ public class MovieListDetail extends HttpServlet {
 		Movie m = new MovieService().MovieListDetail(mvNo);
 		List<Person> plist = new MovieService().MovieListDetailPerson(mvNo);
 		List<Attachment> alist = new com.fp.movie.model.service.MovieService().selectAddiMovie(mvNo);
+		
 		request.setAttribute("m", m);
 		request.setAttribute("plist", plist);
 		request.setAttribute("alist", alist);
