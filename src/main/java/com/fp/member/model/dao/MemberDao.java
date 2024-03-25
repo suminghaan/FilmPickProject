@@ -14,6 +14,8 @@ import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
+import com.fp.movie.model.vo.Movie;
+import com.fp.movie.model.vo.MovieLike;
 
 import static com.fp.common.template.JDBCTemplate.*;
 
@@ -372,4 +374,71 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	// 좋아요 누른 영화 목록
+	
+	
+	public int selectMovieLikeListCount(Connection conn, int memNo) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMovieLikeListCount");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset=pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	public List<Movie> selectMovieList(Connection conn, int memNo, PageInfo pi){
+		
+		List<Movie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMovieList");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			/*
+			 * int startRow = (pi.getCurrentPage()-1)* pi.getBoardLimit()+ 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			 * */
+			
+			pstmt.setInt(1, memNo);
+			/*
+			 * pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			 */
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Movie(
+								 rset.getInt("mv_no")
+								 , rset.getString("mv_name")
+								 , rset.getString("mv_opendate")
+								 , rset.getString("mv_poster")
+								 , rset.getString("star_rating_avg")
+								 )); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
 }

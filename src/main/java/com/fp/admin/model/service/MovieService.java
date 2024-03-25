@@ -96,9 +96,9 @@ public class MovieService {
 	}
 
 	// 영화 카테고리 삭제
-	public int deleteCategory(int cNo) {
+	public int deleteCategory(String[] cateList) {
 		Connection conn = getConnection();
-		int result = mDao.deleteCategory(conn, cNo);
+		int result = mDao.deleteCategory(conn, cateList);
 		
 		
 		if(result > 0 ) {
@@ -110,6 +110,22 @@ public class MovieService {
 		
 		return result;
 	}
+	
+	// 카테고리 추가 
+	public int addCategory(String genreAdd) {
+		Connection conn = getConnection();
+		int result = mDao.addCategory(conn, genreAdd);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	
 
 	// 인물관리_조회
 	public List<Person> selectPersonList(PageInfo pi) {
@@ -118,6 +134,9 @@ public class MovieService {
 		close(conn);
 		return list;
 	}
+
+	
+	
 	
 	
 	

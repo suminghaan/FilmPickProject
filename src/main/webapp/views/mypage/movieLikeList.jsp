@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.List" %>
+<%@ page import = "com.fp.movie.model.vo.Movie" %>
+<%@ page import = "com.fp.movie.model.vo.MovieLike"%>
+<%
+	
+	List<Movie> movieList = (List<Movie>)request.getAttribute("likelist");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,6 +104,10 @@
     .thumbnail:hover>.thumbnail_title {
       display: block;
     }
+    
+     .thumbnail:hover> .thumbnail_img {
+        opacity: 0.8;
+     }
 
     .thumbnail_title {
       width: 240px;
@@ -236,240 +247,46 @@
       <div class="content">
 
           <div class="mp_bar">
-            좋아요 누른 영화
+          	<h3>좋아요 누른 영화</h3> 
           </div>
           <br><br>
-          <div id="carouselMovie" class="carousel slide">
+          <div id="carouselMovie" class="carousel slide" style="height: 85%;">
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="movie_list">
-  
+                <% for(int i = 0; i < movieList.size(); i++) { %>
+                <% if(i % 8 == 0) {%>
+                	<div class="carousel-item <%= i == 0 ? "active" : ""%>">
+                	<div class="movie_list">
+                <% } %>
                   <div class="thumbnail">
-                    <div>
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    </div>  
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re1" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb1">
-                          <input type="checkbox" class="checkbox" id="cb1" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
+                    <a href="<%= contextPath %>/movieDetail.fp?movieNo=<%= movieList.get(i).getMvNo() %>"><img class="thumbnail_img" src="<%= movieList.get(i).getMvPoster() %>" alt=""></a>
+                    <div class="thumbnail_title"">
+                      <span><%= movieList.get(i).getMvName() %></span><br>
+                      <span>평균 별점 : <%= movieList.get(i).getStarRatingAvg() != null ? movieList.get(i).getStarRatingAvg() : "정보없음"%></span><br>
+                      <span><%= movieList.get(i).getMvOpenDate() %></span>
                     </div>
                   </div>
-
-
-
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re2" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb2">
-                          <input type="checkbox" class="checkbox" id="cb2" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
+                  <% if(i % 8 == 7 || i == (movieList.size() - 1)) {%>
                   </div>
-                  
-
-
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re3" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb3">
-                          <input type="checkbox" class="checkbox" id="cb3" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
-                  
                   </div>
+                  <% } %>
+                <% } %>
 
-
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re4" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb4">
-                          <input type="checkbox" class="checkbox" id="cb4" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
-
-                    
-                   
-                  
-                  </div>
-
-
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re5" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb5">
-                          <input type="checkbox" class="checkbox" id="cb5" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
-                  </div>
-
-
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re6" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb6">
-                          <input type="checkbox" class="checkbox" id="cb6" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
-
-                  </div>
-
-
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re7" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb7">
-                          <input type="checkbox" class="checkbox" id="cb7" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
-                  </div>
-
-                  
-                  <div class="thumbnail">
-                    <img class="thumbnail_img" src="../../resources/img/듄2.jpeg" alt="">
-                    <div class="thumbnail_title">
-                      <span>영화제목</span><br>
-                      <span>평균별점</span><br>
-                      <span>개봉연도, 국가</span>
-                    </div>
-                    <div class="review_btn">
-                      <button class="btn-reviewEdit" id="re8" style="background: none; border: none;">
-                        <i class="fa-solid fa-pen-to-square fa-2x" style="color: #F72798;"></i></button>
-                    </div>
-
-                    <div class="heart">
-                      <label class="heart_label" for="cb8">
-                          <input type="checkbox" class="checkbox" id="cb8" hidden>
-                          <svg t="1689815540548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                              p-id="2271">
-                              <path d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-                                  fill="#231F20" p-id="2272" id="heart"></path>
-                          </svg>
-                          <span class="haert_span" ></span>
-                      </label>
-                    </div>
-                  </div>
-  
-                </div>
-              </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMovie" data-bs-slide="prev">
+              <span><i class="fa-solid fa-arrow-left fa-2x" style="color: RGB(247, 39, 152);"></i></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMovie" data-bs-slide="next">
+              <span><i class="fa-solid fa-arrow-right fa-2x" style="color: RGB(247, 39, 152);"></i></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
 
+
+
+
+
       </div>
-
-
-
     </div>
 
     <%@ include file="/views/common/footer.jsp" %>

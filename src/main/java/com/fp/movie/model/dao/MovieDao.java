@@ -254,6 +254,7 @@ public class MovieDao {
 				Attachment a = new Attachment();
 				a.setFileNo(rset.getInt("FILE_NO"));
 				a.setFilePath(rset.getString("FILEPATH"));
+				a.setRefType(rset.getString("REF_TYPE"));
 				
 				attList.add(a);
 			}

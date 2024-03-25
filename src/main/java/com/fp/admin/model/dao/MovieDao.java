@@ -286,14 +286,22 @@ public class MovieDao {
 	}
 
 	// 영화 카테고리 삭제
-	public int deleteCategory(Connection conn, int cNo) {
+	public int deleteCategory(Connection conn, String[] cateList) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteCategory");
 		
+		if(cateList.length != 1) {
+			for (int i = 1; i < cateList.length; i++) {
+				sql += " OR CATEGORY_NAME = ?";
+			}
+		} 
+				
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, cNo);
+			for(int i = 1; i <= cateList.length; i++) {
+				pstmt.setString(i, cateList[i - 1]);
+			}
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -331,6 +339,26 @@ public class MovieDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public int addCategory(Connection conn, String genreAdd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("addCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, genreAdd);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return result;
 	}
 
 	
