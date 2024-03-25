@@ -159,7 +159,21 @@ public class MovieService {
 
 	// 인물관리_추가
 	public int insertPerson(Person p, Attachment at) {
-		return 0;
+		Connection conn = getConnection();
+		int result1 = mDao.insertPerson(conn, p);
+		
+		int result2 = 1;
+		if(at != null) {
+			result2 = mDao.insertAttachment(conn, at);
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
 	}
 
 	

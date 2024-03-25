@@ -425,6 +425,54 @@ public class MovieDao {
 		return list;
 	}
 
+	// 인물관리_등록
+	public int insertPerson(Connection conn, Person p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertPerson");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getpName());
+			pstmt.setString(2, p.getpJob());
+			pstmt.setString(3, p.getpBD());
+			pstmt.setString(4, p.getpNation());
+			pstmt.setString(5, p.getpFile());
+
+			result = pstmt.executeUpdate();
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 인물등록 시 파일 첨부
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertPersonAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+
 	
 
 	

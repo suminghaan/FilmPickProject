@@ -222,6 +222,55 @@
 			FROM PERSON
 			WHERE P_NAME LIKE '%' || ? || '%'
 		</entry>
+		
+		<!-- 관리자 인물관리_등록 [수민]-->
+		<entry key="insertPerson">
+			INSERT
+				INTO PERSON
+				(
+					P_NO
+				  , P_NAME
+				  , P_JOB
+				  , P_BD
+				  , P_NATION
+				  , P_FILE
+				)
+				VALUES
+				(
+					SEQ_PERSON_NO.NEXTVAL
+				  , ?
+				  , ?
+				  , ?
+				  , ?
+				  , ?
+				)
+		</entry>
+		
+		<!-- 관리자 인물관리_등록_파일등록 [수민] -->
+		<entry key="insertPersonAttachment">
+			INSERT
+				INTO ATTACHMENT
+				(
+					  FILE_NO
+					, REF_NO
+					, REF_TYPE
+					, ORIGIN_NAME
+					, CHANGE_NAME 
+					, FILE_PATH	
+					, FILE_TYPE			
+				)
+				VALUES
+				(
+					  SEQ_ATTACHMENT_NO.NEXTVAL
+					, SEQ_PERSON_NO.CURRVAL
+					, 8
+					, ?
+					, ?
+					, ?
+					, 1
+				)
+				
+		</entry>
 
 
 </properties>
