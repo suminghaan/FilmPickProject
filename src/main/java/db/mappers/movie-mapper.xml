@@ -90,6 +90,7 @@
 	JOIN MEMBER M
 	ON M.MEM_NO = R.MEM_NO
 	WHERE R.MV_NO = ?
+	ORDER BY COUNT_AGREE DESC
 	</entry>
 	<!-- 영화 상세보기에서 관련 영화 정보를 가져오는 쿼리 -->
 	<entry key="selectRelMovieList">
@@ -201,8 +202,10 @@
 	SET
 		LIKE_POINT = ?
 		, REVIEW_CONTENT = ?
+		, REVIEW_DATE = SYSDATE
 	WHERE
 		MEM_NO = ?
+	AND
 		MV_NO = ?
 	</entry>
 	
