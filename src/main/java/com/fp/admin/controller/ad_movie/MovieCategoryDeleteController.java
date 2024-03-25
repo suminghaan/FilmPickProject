@@ -32,7 +32,7 @@ public class MovieCategoryDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String categoryList = request.getParameter("cateList");
-		String[] cateList = null;
+		String[] cateList = new String[1];
 		int result = 0;
 		System.out.println(categoryList);
 		if(categoryList.indexOf(",") == -1) {
