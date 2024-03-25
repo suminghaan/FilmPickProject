@@ -77,7 +77,6 @@ public class NoMovieInsertController extends HttpServlet {
 			String changeName2 = multiRequest.getFilesystemName("upfile2");
 			String nmPreview = "resources/upfiles/" + changeName2;
 			nm.setNmPreview(nmPreview);
-			int result1 = new NoMovieService().insertNoMovie(nm);
 			
 			HttpSession session = request.getSession();
 			
@@ -98,8 +97,6 @@ public class NoMovieInsertController extends HttpServlet {
 				// pList[1] : [인물번호, 배역명]
 				// pList[2] : [인물번호, 배역명]
 			}
-			int result2 = new NoMovieService().insertNoMoviePerson(pList);
-			
 			// pList[i]에는 출연인물번호 및 배역이 담겨있음
 			/*-------------------------------------------------------------------------------------------------------*/
 			// NO_MOVIE_GENRE 테이블에 데이터 기록 (Category vo 객체에 담아서)
@@ -117,14 +114,20 @@ public class NoMovieInsertController extends HttpServlet {
 			/*-------------------------------------------------------------------------------------------------------*/
 			// ATACHMENT 테이블에 데이터 기록 (Attachment Vo 객체에 담아서)
 			Attachment at = null;
-			if(multiRequest.getOriginalFileName("upfile3") != null) {
+			int ext = 1;
+			if(multiRequest.getOriginalFileName("upfile3") != null) {	
 				at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("upfile3"));
 				at.setChangeName(multiRequest.getFilesystemName("upfile3"));
 				at.setFilePath("resources/upfiles/");
+				if(at.getChangeName().substring(at.getChangeName().lastIndexOf(".")).equals("mp4")) {
+					ext = 2;
+				}
 			}
+			/*-------------------------------------------------------------------------------------------------------*/
+			int result = new NoMovieService().insertNoMovie(nm, pList, cList, at, ext);
 			
-			if(result1 > 0) {
+			if(result > 0) {
 				session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
 				response.sendRedirect(request.getContextPath() + "/views/serviceCenter/noMovieList.jsp");
 			}

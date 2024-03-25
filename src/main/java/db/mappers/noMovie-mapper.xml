@@ -46,7 +46,7 @@
 	
 <!--===================================================== 김지우 : 절취선 끝 ===================================================================================================== -->
 
-	<!-- 없는영화 신청을 위한 sql문 -->
+	<!-- 없는영화 신청을 위한 sql문 [호용]-->
 	<entry key="insertNoMovie">
 		INSERT
 		  INTO NO_MOVIE_ENROLL
@@ -81,7 +81,7 @@
 		  )
 	</entry>
 	
-	<!-- 없는영화신청시 출연인물들의 insert를 위한 sql문 -->
+	<!-- 없는영화신청시 출연인물들의 insert를 위한 sql문 [호용]-->
 	<entry key="insertNoMoviePerson">
 		INSERT
 		  INTO NO_MOVIE_CAST
@@ -97,6 +97,50 @@
 		  , ? <!-- 인물번호 -->
 		  , SEQ_NO_MOVIE_ENROLL_NO.CURRVAL <!-- 없는 영화 신청 번호 -->
 		  , ? <!-- 배역 -->
+		  )
+	</entry>
+	
+	<!-- 없는영화신청시 영화의 장르를 insert하는 sql문[호용] -->
+	<entry key="insertNoMovieCategory">
+		INSERT
+		  INTO NO_MOVIE_GENRE
+		  (
+		  	NM_GENRE_NO <!-- 없는영화 장르번호 -->
+		  , CATEGORY_NO <!-- 장르번호 -->
+		  , NM_ENROLL_NO <!-- 없는영화 신청번호 -->
+		  )
+		  VALUES
+		  (
+		  	SEQ_NO_MOVIE_GENRE_NO.NEXTVAL <!-- 없는영화 장르번호 -->
+		  , ? <!-- 장르번호 -->
+		  , SEQ_NO_MOVIE_ENROLL_NO.CURRVAL <!-- 없는영화 신청번호 -->
+		  )
+	</entry>
+	
+	<!-- 없는영화 신청을 위한 sql문 ATTACHMENT 인설트(추가적인 파일이 있을 경우) [호용] -->
+	<entry key="insertNoMovieAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	FILE_NO <!-- 첨부파일 번호 -->
+		  , REF_NO <!-- 영화번호(없는영화 번호)  -->
+		  , REF_TYPE <!-- 첨부파일 타입(없는영화 4번임) -->
+		  , FILE_TYPE <!-- 사진1 | 영상2 -->
+		  , ORIGIN_NAME <!-- 원본명 -->
+		  , CHANGE_NAME <!-- 수정명 -->
+		  , FILE_PATH <!-- 저장경로 -->
+		  , FILE_LEVEL
+		  )
+		  VALUES
+		  (
+		  	SEQ_ATTACHMENT_NO.NEXTVAL <!-- 첨부파일 번호 -->
+		  , SEQ_NO_MOVIE_ENROLL_NO.CURRVAL <!-- 영화번호(없는영화 번호)  -->
+		  , '4'
+		  , ? <!-- 사진1 | 영상2 -->
+		  , ? <!-- 원본명 -->
+		  , ? <!-- 수정명 -->
+		  , ? <!-- 저장경로 -->
+		  , 2
 		  )
 	</entry>
 </properties>
