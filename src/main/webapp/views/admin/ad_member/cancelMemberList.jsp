@@ -23,6 +23,9 @@ table{
 .title>h1{
     font-weight: bold;
 }
+.table-active{
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -38,13 +41,13 @@ table{
                 <thead>
                     <tr>
                         <th class="table-active"><span style="font-weight: bold;">아이디</span></th>
-                        <td><input type="text" placeholder="아이디를 입력해주세요" id="userId"></td>
+                        <td><input type="text" name="userId" placeholder="아이디를 입력해주세요" id="userId" style="width: 300px;"></td>
                     </tr>
                 </thead>
                     <tbody>
-                        <th class="table-active">탈퇴일</th>
+                        <th class="table-active" style="padding-top: 18px;">탈퇴일</th>
                         <td>
-                            <input type="date">  -  <input type="date">&nbsp;&nbsp;&nbsp;
+                            <input type="date" name="start_date" id="start_date">  -  <input type="date" name="end_date" id="end_date">&nbsp;&nbsp;&nbsp;
                             <div class="btn-group">
                                 <button type="button" class="btn btn-outline-dark date" value="1d">오늘</button>
                                 <button type="button" class="btn btn-outline-dark date" value="1w">일주일</button>
@@ -55,10 +58,35 @@ table{
                         </td>
                     </tbody>
             </table>
+            
         </div>
         <div class="d-flex justify-content-center container">
-            <button type="button" class="btn btn-secondary btn-lg" style="margin-bottom: 10px;">검색</button>
+            <button type="button" onclick="selectMem(1);" class="btn btn-secondary btn-lg" style="margin-bottom: 10px;">검색</button>
         </div>
+        <script>
+            	document.querySelectorAll('.date').forEach(button => {
+            		button.addEventListener('click', function(){
+            			const value = this.value;
+            			const endDate = new Date();
+            			let startDate = new Date();
+            			if(value == "1d"){
+            				startDate.setDate(endDate.getDate());
+            			}else if(value == "1w"){
+            				startDate.setDate(endDate.getDate() - 7);
+            			}else if(value == '1m'){
+            				startDate.setDate(endDate.getMonth() - 1);
+            			}else if(value == '3m'){
+            				startDate.setMonth(endDate.getMonth() - 3);
+            			}else if(value == 'all'){
+            				document.getElementById('start_date').value = "";
+                            document.getElementById('end_date').value = "";
+                            return;
+            			}
+            			document.getElementById('start_date').valueAsDate = startDate;
+                        document.getElementById('end_date').valueAsDate = endDate;
+            		})
+            	})
+            </script>
         <div class="container">
             <table class="table table-bordered">
                 <thead>
@@ -69,22 +97,21 @@ table{
                         <th>탈퇴일</th>
                     </tr>
                 </thead>
-                <tbody>
-                	<% if(pageList.isEmpty()){ %>
-                	<tr>
-                		<td colspan="7" style="text-align: center;">존재하는 회원이 없습니다.</td>
-                	</tr>
-                    <% } else { %>
-                	<% for(CancelMember cm : pageList){ %>
-                	<tr>
-                        <!-- <td>999</td> -->
-                        <td><%= cm.getMemNo() %></td>
-                        <td><%= cm.getAdminNo() %></td>
-                        <td><%= cm.getCancelDate() %></td>
-                    </tr>
-                    <% } %>
-                    <% } %>
-                </tbody>
+                <tbody class="selectText">
+						<%if(pageList.isEmpty()) {%>
+							<tr>
+								<td colspan="7" style="text-align: center;">존재하는 회원이 없습니다.</td>
+							</tr>
+						<%} else {%>
+							<%for (CancelMember cm : pageList) {%>
+								<tr>
+									<td><%=cm.getMemNo()%></td>
+									<td><%=cm.getAdminNo()%></td>
+									<td><%=cm.getCancelDate()%></td>
+								</tr>
+							<%}%>
+						<%}%>
+				</tbody>
             </table>
         </div>
         <div class="d-flex justify-content-center container">
@@ -122,6 +149,40 @@ table{
     		
     		// 
     	});
+    </script>
+    <script>
+    // 회원 조회 필터 ajax
+    	function selectMem(page){
+    		$.ajax({
+    			url: "<%= contextPath %>/cmlist.me",
+    			type: "post",
+    			data: {
+    				userId: $("#userId").val(),
+    	            start_date: $("#start_date").val(),
+    	            end_date: $("#end_date").val(),
+    	            page: page
+    				},
+    			success:function(cml){
+    				let value = "";
+    				if(cml == null) {
+	                	value = "<tr><td colspan='7' style='text-align: center;'>" + "존재하는 회원이 없습니다." + "</td></tr>"
+                    } else {
+	                	for (let i = 0; i < cml.length; i++) {
+	                		console.log(cml);
+		                	value += "<tr>"
+		                        + "<td>" + cml[i].memNo + "</td>"
+		                        + "<td>" + cml[i].adminNo + "</td>"
+		                        + "<td>" + cml[i].cancelDate + "</td>"
+		                    + "</tr>";
+	                    }
+                    }
+                    $(".selectText").html(value);
+    			},
+    			error:function(){
+    				console.log("목록 조회 ajax 실패");
+    			}
+    		})
+    	}
     </script>
 </body>
 </html>
