@@ -142,9 +142,21 @@ public class NoMovieDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memNo);
 			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new NoMovie(rset.getInt("NM_ENROLL_NO")
+						           , rset.getString("NM_TITLE")
+						           , rset.getString("NM_APPROVAL")
+						           , rset.getString("NM_ENROLL_DATE")
+						           , rset.getString("NM_REFUSE_REASON")
+						           , rset.getInt("MEM_NO")));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
+		return list;
 	}
 	
 }

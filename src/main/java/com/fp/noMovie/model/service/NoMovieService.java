@@ -3,6 +3,7 @@ package com.fp.noMovie.model.service;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
 import static com.fp.common.template.JDBCTemplate.rollback;
+import static com.fp.common.template.JDBCTemplate.close;
 
 import java.sql.Connection;
 import java.util.List;
@@ -39,6 +40,18 @@ public class NoMovieService {
 		}
 		
 		return result1 * result2 * result3 * result4;
+	}
+	
+	/**
+	 * 없는영화신청 현황에 띄울 값들을 담기위한 메소드
+	 * @param memNo 회원번호
+	 * @author 호용 
+	 */
+	public List<NoMovie> selectNoMovie(int memNo){
+		Connection conn = getConnection();
+		List<NoMovie> list = nMDao.selectNoMovie(conn, memNo);
+		close(conn);
+		return list;
 	}
 	
 }

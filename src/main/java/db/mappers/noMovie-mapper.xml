@@ -143,6 +143,18 @@
 		  , 2
 		  )
 	</entry>
+	
+	<entry key="selectNoMovie">
+		SELECT
+			   NM_ENROLL_NO
+			 , NM_TITLE
+			 , TO_CHAR(NM_ENROLL_DATE, 'YY-MM-DD') NM_ENROLL_DATE
+			 , NM_APPROVAL
+			 , NM_REFUSE_REASON
+			 , MEM_NO
+		  FROM NO_MOVIE_ENROLL
+		 WHERE MEM_NO = ? <!-- 넘겨받은 회원번호 -->
+	</entry>
 </properties>
 
 

@@ -59,9 +59,32 @@ public class NoMovie {
 		this.memNickname = memNickname;
 	}
 
+	/**
+	 * 고객센터 없는영화신청 현황 조회시 띄울 값들을 담은 매개변수 생성자
+	 * @author 호용
+	 * @param nmEnrollNo 없는영화 신청 번호
+	 * @param nmTitle 영화 제목
+	 * @param nmApproval 승인여부
+	 * @param nmEnrollDate 작성일
+	 * @param nmRefuseReason 거절 및 반려 사유
+	 * @param memNo 글 작성한 회원번호
+	 */
+	public NoMovie(int nmEnrollNo, String nmTitle, String nmApproval, String nmEnrollDate, String nmRefuseReason,
+			int memNo) {
+		super();
+		this.nmEnrollNo = nmEnrollNo;
+		this.nmTitle = nmTitle;
+		this.nmApproval = nmApproval;
+		this.nmEnrollDate = nmEnrollDate;
+		this.nmRefuseReason = nmRefuseReason;
+		this.memNo = memNo;
+	}
+	
+
 	public int getNmEnrollNo() {
 		return nmEnrollNo;
 	}
+
 
 	public void setNmEnrollNo(int nmEnrollNo) {
 		this.nmEnrollNo = nmEnrollNo;
