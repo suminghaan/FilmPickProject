@@ -318,4 +318,13 @@ public class MovieService {
 	}
 
 
+
+	public int selectReviewCount(int movieNo) {
+		Connection conn = getConnection();
+		int result = mDao.selectReviewCount(conn, movieNo);
+		close(conn);
+		return result;
+	}
+
+
 }

@@ -799,7 +799,7 @@
                 <div class="movie_review">
                     <div class="movie_review_title">
                         <h4 style="margin-left: 50px;">리뷰</h4>
-                        <a style="border: none; color: white;" href="<%= contextPath %>/moreReview.fp?movieNo=<%= movie.getMvNo() %>">더보기</a>
+                        <a style="border: none; color: white;" href="<%= contextPath %>/moreReview.fp?movieNo=<%= movie.getMvNo() %>?page=1">더보기</a>
                     </div>
                     <div class="movie_review_info">
                     <% if(reviewList != null) { %>

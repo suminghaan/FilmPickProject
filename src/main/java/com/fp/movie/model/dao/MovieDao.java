@@ -847,6 +847,30 @@ public class MovieDao {
 		
 		return apprList;
 	}
+
+	public int selectReviewCount(Connection conn, int movieNo) {
+		String query = prop.getProperty("selectReviewCount");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 
 }

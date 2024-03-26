@@ -345,6 +345,7 @@
 	AND MEM_NO = ?
 	</entry>
 	
+	<!-- 리뷰 공감|비공감 표시 [기웅] -->
 	<entry key="insertApproval">
 	INSERT INTO APPROVAL
 	VALUES (
@@ -355,6 +356,7 @@
 	)
 	</entry>
 	
+	<!-- 리뷰 공감|비공감 삭제 [기웅] -->
 	<entry key="deleteApproval">
 	DELETE FROM
 	    APPROVAL
@@ -366,13 +368,20 @@
 		APPROVAL_TYPE = ?
 	</entry>
 	
-		<!-- 로그인 시 공감|비공감 리스트를 조회하는 쿼리 -->
+		<!-- 공감|비공감 리스트를 조회하는 쿼리 [기웅]-->
 	<entry key="selectApproval">
 		SELECT 
 		    APPROVAL_TYPE, MV_REVIEW_NO
 		FROM APPROVAL
 		WHERE
 		    MEM_NO = ?
+	</entry>
+	
+	<!-- 리뷰 더보기에서 총 리뷰 개수를 조회하는 쿼리 [기웅]-->
+	<entry key="selectReviewCount">
+	SELECT COUNT(*) AS "COUNT"
+	FROM REVIEW 
+	WHERE MV_NO = ?
 	</entry>
 	
 </properties>
