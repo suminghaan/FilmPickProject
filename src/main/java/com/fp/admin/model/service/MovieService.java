@@ -255,13 +255,14 @@ public class MovieService {
 			}			
 		}
 		
-		if(result1 > 0 && result2 >0 && result3 >0 && result4 >0) {
+		if(result1 > 0 && result2 >0 && result3 >0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
-
-		return result1 * result2 * result3 * result4;
+		
+		int result = result1 * result2 * result3 + result4;
+		return result;
 	}
 
 	

@@ -86,6 +86,51 @@
             color: black;
     }
     
+    /*미리보기 사이즈*/
+
+    #preview {
+        max-width: 300px; /* 원하는 최대 너비 */
+        max-height: 200px; /* 원하는 최대 높이 */
+        width: auto; /* 너비 자동 조정 */
+        height: auto; /* 높이 자동 조정 */
+    }
+    
+    #previewVideo{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
+    #previews1{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+
+	#previews2{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+	
+	
+	#previews3{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+	
+	#previewVideo1{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
     
    /*모달 스타일*/
    
@@ -93,6 +138,7 @@
    		color: black;
    		font-weight: bold !important;
    }
+	
 	
 </style>
 </head>
@@ -205,18 +251,18 @@
  
                 <label>영화포스터</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="mposter">
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" onchange="previewImage(event)">
                     <label class="custom-file-label" for="customFile1">파일추가</label>
-                    <img src="" alt="미리보기이미지">
+                    <img id="preview" alt="미리보기이미지">
                 </div>
 
                 <br><br>
 
                 <label>예고편영상</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview">
+                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" onchange="previewVideo(event)">
                     <label class="custom-file-label" for="customFile2">파일추가</label>
-                    <img src="" alt="미리보기이미지">
+                    <video id="previewVideo" controls alt="미리보기예고편"></video>
                 </div>
                 
                 <br><br>
@@ -224,14 +270,33 @@
                 <div class="form-group">
                 <label>기타 추가 희망 이미지 또는 동영상</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="upfile">
+                        <input type="file" class="custom-file-input" id="customFile3" name="upfile" onchange="previewImages1(event)">
                         <label class="custom-file-label" for="customFile3">파일추가</label>
-                        <img src="" alt="미리보기이미지">
+                        <img id="previews1" alt="미리보기이미지" style="margin-bottom:200px">
+                    </div>
+                    
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile34" name="upfile" onchange="previewImages2(event)">
+                        <label class="custom-file-label" for="customFile4">파일추가</label>
+                        <img id="previews2" alt="미리보기이미지" style="margin-bottom:200px">
+                    </div>
+                    
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile5" name="upfile" onchange="previewImages3(event)">
+                        <label class="custom-file-label" for="customFile5">파일추가</label>
+                        <img id="previews3" alt="미리보기이미지" style="margin-bottom:200px">
+                    </div>
+                    
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile6" name="upfile" onchange="previewVideo1(event)">
+                        <label class="custom-file-label" for="customFile6">파일추가</label>
+                        <video id="previewVideo1" alt="미리보기영상"></video>
                     </div>
                 </div>
 
 
-                <br>
+                <br><br><br><br><br>
+                
 
                 <div class="form-group">
                     <label>현재 상영여부 : </label>
@@ -367,6 +432,89 @@
          });
 	</script>
 	
+	<script>
+	// 이미지 미리보기
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('preview');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	// 동영상 미리보기
+	function previewVideo(event) {
+        var input = event.target;
+        var preview = document.getElementById('previewVideo');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	// 그외 첨부파일 미리보기
+	function previewImages1(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews1');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	function previewImages2(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews2');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	function previewImages3(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews3');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	function previewVideo1(event) {
+        var input = event.target;
+        var preview = document.getElementById('previewVideo1');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	</script>
+
 
 </body>
 </html>

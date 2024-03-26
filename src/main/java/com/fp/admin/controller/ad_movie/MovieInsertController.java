@@ -158,7 +158,7 @@ public class MovieInsertController extends HttpServlet {
 					for(int i=0; i<atList.size(); i++) {
 						new File(savePath + atList.get(i).getChangeName()).delete();
 					}
-					session.setAttribute("alertMsg", "영화등록 실패 \n다시 입력해주세요.");
+					session.setAttribute("alertMsg", "영화등록 실패. 다시 입력해주세요.");
 					response.sendRedirect(request.getContextPath() + "/movieEnrollForm.admo");
 				}
 			}
