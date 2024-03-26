@@ -79,7 +79,7 @@ table{
                 <td><%=m.getMemBoardCnt()%></td>
                 <td><%=m.getMemReplyCnt()%></td>
                 <td class="reportContent" style="display: none;"><%=m.getReportContent()%></td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal" onclick="selectReportlist();">확인</button></td>
             </tr>
              <% } %>
              <% } %>
@@ -133,78 +133,16 @@ table{
             <div class="modal-header">
             <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">신고내역 확인</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body reportModalBody">
                 <div class="container" style="margin-bottom: 10px;">
                     <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
+                    <span class="reportModalNickname">익명원</span>
                 </div>
                 <div class="container" style="margin-bottom: 10px;">
                     <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
+                    <span class="reportModalReason">욕설</span>
                 </div>
                 <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
-                <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
-                <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
-                <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
-                <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
-                <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
-                <hr>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
-                </div>
-                <div class="container" style="margin-bottom: 10px;">
-                    <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
-                </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">확인</button>
@@ -268,6 +206,38 @@ table{
    		});
    		
    	};
+   	
+   	function selectReportlist(){
+   		console.log('funciton 실행됨');
+   		 $.ajax({
+   	   		url: '<%=contextPath%>/reportlistmodal.me',
+   	   		data: {userId: $('input:checked').parent().parent().next().text()},
+   	   		success: function(list){
+   	   			let htmlContent = '';
+   	   			
+	   	   		for(let i = 0; i < list.length; i++){
+		   	   		 let row = '<div class="container" style="margin-bottom: 10px;">' +
+	                 '<span class="modal-text">닉네임</span>' +
+	                 '<span class="reportModalNickname">' + list[i].memId + '</span>' +
+	                 '</div>' +
+	                 '<div class="container" style="margin-bottom: 10px;">' +
+	                 '<span class="modal-text">신고사유</span>' +
+	                 '<span class="reportModalReason">' + list[i].reportContent + '</span>' +
+	                 '</div>' +
+	                 '<hr>';
+	                 
+	                htmlContent += row;
+	                console.log(list[i].reportContent);
+	   	   		}
+	   	   		$('.reportModalBody').html(htmlContent); 
+   	   			
+   	   		},
+   	   		error: function(){
+   	   			console.log('ajax 통신 실패');
+   	   		}
+   	   	}); 
+   	};
+   	
   </script>
     </div>
 </body>

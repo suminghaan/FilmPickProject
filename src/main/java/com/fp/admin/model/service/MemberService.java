@@ -1,9 +1,5 @@
 package com.fp.admin.model.service;
 
-import static com.br.common.template.JDBCTemplate.close;
-import static com.br.common.template.JDBCTemplate.commit;
-import static com.br.common.template.JDBCTemplate.getConnection;
-import static com.br.common.template.JDBCTemplate.rollback;
 import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
@@ -379,6 +375,16 @@ public class MemberService {
 		close(conn);
 
 		return result;
+	}
+
+	/** 신고내역 모달 조회
+	 * @return
+	 */
+	public List<Member> selectReportListModal(String userId) {
+		Connection conn = getConnection();
+		List<Member> list = rDao.selectReportListModal(conn, userId);
+		close(conn);
+		return list;
 	}
 
 

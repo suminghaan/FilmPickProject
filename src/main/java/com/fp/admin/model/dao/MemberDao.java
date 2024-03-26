@@ -554,5 +554,6 @@ public class MemberDao {
 		}
 		return listCount;
 	}
+
 	
 }

@@ -222,4 +222,37 @@ public class ReportMemberDao {
 		return result;
 	}
 
-}
+
+	/** 신고내역 확인 모달 
+	 * @param conn
+	 * @return
+	 */
+	public List<Member> selectReportListModal(Connection conn, String userId) {
+			List<Member> list = new ArrayList<>();
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+
+			String sql = prop.getProperty("selectReportListModal");
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, userId);
+				rset = pstmt.executeQuery();
+
+				while (rset.next()) {
+					Member m = new Member();
+					m.setMemId(rset.getString("NICKNAME"));
+					m.setReportContent(rset.getString("REPORT_CONTENT"));
+					list.add(m);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return list;
+		}
+	}
+
+
