@@ -378,13 +378,38 @@ public class MemberService {
 	}
 
 	/** 신고내역 모달 조회
-	 * @return
+	 * 
+	 * @author 김지우
+	 * @return list
 	 */
 	public List<Member> selectReportListModal(String userId) {
 		Connection conn = getConnection();
 		List<Member> list = rDao.selectReportListModal(conn, userId);
 		close(conn);
 		return list;
+	}
+
+	
+	/** 강제탈퇴
+	 * 
+	 * @author 김지우
+	 * @param userId
+	 * @return result
+	 */
+	public int updateKickMember(String userId) {
+		Connection conn = getConnection();
+
+		int result = rDao.updateKickMember(conn, userId);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
 	}
 
 

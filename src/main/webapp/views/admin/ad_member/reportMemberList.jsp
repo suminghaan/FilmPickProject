@@ -177,17 +177,15 @@ table{
 </div>
 
 <script>
-    function withdrawal(){
-        const userName = $('#userName').text();
+    function withdrawal(){ // 강제탈퇴 버튼 클릭시 실행될 function
+        const userId = $('input:checked').parent().parent().next().text();
 
-        if(confirm(userName + '님의 회원탈퇴를 진행하시겠습니까?')) {
-            alert(userName + '님의 회원탈퇴가 완료되었습니다.');
-        } else {
-            alert(userName + '님의 회원탈퇴가 취소되었습니다.');
-        }
+        if(confirm(userId + '님의 회원탈퇴를 진행하시겠습니까?')) { // confirm창에서 확인 버튼 눌렀을 때 : MEM_STATUS 값을 N으로 
+            location.href = '<%=contextPath%>/reportkick.me?userId=' + userId;
+        } 
     };
     
-   	function userSuspend(){
+   	function userSuspend(){ // 이건 뭐하는 function이더라
    		const userId = $('input:checked').parent().parent().next().text(); // 체크박스에 checked된 유저 아이디 값
    		const userNickname = $('input:checked').parent().parent().next().next().text(); // 닉네임
    		const reportContent = $('input:checked').parent().parent().next().next().next().next().next().next().next().text(); // 신고사유
@@ -207,7 +205,7 @@ table{
    		
    	};
    	
-   	function selectReportlist(){
+   	function selectReportlist(){ // 신고내역 확인 modal
    		console.log('funciton 실행됨');
    		 $.ajax({
    	   		url: '<%=contextPath%>/reportlistmodal.me',

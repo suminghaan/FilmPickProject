@@ -84,6 +84,12 @@
         JOIN REPORT R ON (M.MEM_NO = R.REPORTED_MEM_NO)
         WHERE M.MEM_ID = ?
 	</entry>
+	
+	<entry key="updateKickMember">
+		UPDATE MEMBER
+		SET MEM_STATUS = 'N'
+		WHERE MEM_ID = ?
+	</entry>
 <!-- =============================== 김지우 ====================================================== -->
 
 <!-- ======================== [용훈] 탈퇴회원조회 =========================================== -->

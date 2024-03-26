@@ -34,7 +34,13 @@ public class ReportMemberDao {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/** 신고회원조회, 페이징
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @return listCount
+	 */
 	public int selectReportMemberListCount(Connection conn) {
 		int listCount = 0;
 
@@ -44,7 +50,7 @@ public class ReportMemberDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				listCount = rset.getInt("COUNT");
@@ -58,6 +64,13 @@ public class ReportMemberDao {
 		return listCount;
 	}
 
+	/** 신고회원조회, 페이징
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @param pi
+	 * @return list
+	 */
 	public List<Member> selectReportMemberList(Connection conn, PageInfo pi) {
 		List<Member> list = new ArrayList<>();
 
@@ -75,15 +88,10 @@ public class ReportMemberDao {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				list.add(new Member(rset.getString("MEM_ID")
-									, rset.getString("NICKNAME")
-									, rset.getInt("REPORTCOUNT")
-									, rset.getString("SIGNIN_DATE")
-									, rset.getInt("BOARDCOUNT")
-									, rset.getInt("REPLYCOUNT")
-									, rset.getString("REPORT_CONTENT")
-									, rset.getInt("MEM_NO")));
-				
+				list.add(new Member(rset.getString("MEM_ID"), rset.getString("NICKNAME"), rset.getInt("REPORTCOUNT"),
+						rset.getString("SIGNIN_DATE"), rset.getInt("BOARDCOUNT"), rset.getInt("REPLYCOUNT"),
+						rset.getString("REPORT_CONTENT"), rset.getInt("MEM_NO")));
+
 				System.out.println(rset.getString("MEM_NO"));
 			}
 		} catch (SQLException e) {
@@ -95,6 +103,10 @@ public class ReportMemberDao {
 		return list;
 	}
 
+	/**	이용제한회원 조회, 페이징 
+	 * @param conn
+	 * @return listCount
+	 */
 	public int selectRestrictedMemberListCount(Connection conn) {
 		int listCount = 0;
 
@@ -104,7 +116,7 @@ public class ReportMemberDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				listCount = rset.getInt("COUNT");
@@ -118,6 +130,13 @@ public class ReportMemberDao {
 		return listCount;
 	}
 
+	/** 이용제한회원 조회, 페이징 
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @param pi
+	 * @return list
+	 */
 	public List<ReportedMember> selectRestrictedMemberList(Connection conn, PageInfo pi) {
 		List<ReportedMember> list = new ArrayList<>();
 
@@ -135,11 +154,9 @@ public class ReportMemberDao {
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
-				list.add(new ReportedMember(rset.getInt("MEM_NO")
-									, rset.getString("MEM_ID")
-									, rset.getString("LIMIT_REASON")
-									, rset.getString("ACTIVITY_STATUS")
-									, rset.getString("SUSPEND_DATE")));
+				list.add(new ReportedMember(rset.getInt("MEM_NO"), rset.getString("MEM_ID"),
+						rset.getString("LIMIT_REASON"), rset.getString("ACTIVITY_STATUS"),
+						rset.getString("SUSPEND_DATE")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -159,44 +176,43 @@ public class ReportMemberDao {
 		System.out.println(userId);
 		System.out.println(sDate);
 		System.out.println(eDate);
-		if(!userId.equals("") || !sDate.equals("") || !eDate.equals("")) {
+		if (!userId.equals("") || !sDate.equals("") || !eDate.equals("")) {
 			sql += " WHERE ";
-			if(!userId.equals("")) {
+			if (!userId.equals("")) {
 				sql += "MEM_ID LIKE '%" + userId + "%'";
 			}
-			if(!sDate.equals("") || !eDate.equals("")) {
-				if(!userId.equals("")) {
+			if (!sDate.equals("") || !eDate.equals("")) {
+				if (!userId.equals("")) {
 					sql += " AND ";
 				}
-				if(!sDate.equals("") && !eDate.equals("")) {
+				if (!sDate.equals("") && !eDate.equals("")) {
 					sql += "CANCEL_DATE >= '" + sDate + "' AND CANCEL_DATE <= '" + eDate + "'";
-				}else if(!eDate.equals("")) {
+				} else if (!eDate.equals("")) {
 					sql += "CANCEL_DATE <= '" + eDate + "'";
-				}else {
+				} else {
 					sql += "CANCEL_DATE >= '" + sDate + "'";
 				}
 			}
 		}
 		sql = sql + " ORDER BY CANCEL_DATE DESC, MEM_ID DESC";
-		
+
 		System.out.println(sql);
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				cml.add(new CancelMember(rset.getString("MEM_ID"),
-										rset.getString("ADMIN_NO"),
-										rset.getString("CANCEL_DATE")));
+
+			while (rset.next()) {
+				cml.add(new CancelMember(rset.getString("MEM_ID"), rset.getString("ADMIN_NO"),
+						rset.getString("CANCEL_DATE")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
+
 		return cml;
 	}
 
@@ -222,37 +238,63 @@ public class ReportMemberDao {
 		return result;
 	}
 
-
-	/** 신고내역 확인 모달 
+	/**
+	 * 신고내역 확인 모달
+	 * 
+	 * @author 김지우
 	 * @param conn
-	 * @return
+	 * @return list
 	 */
 	public List<Member> selectReportListModal(Connection conn, String userId) {
-			List<Member> list = new ArrayList<>();
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
+		List<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 
-			String sql = prop.getProperty("selectReportListModal");
+		String sql = prop.getProperty("selectReportListModal");
 
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, userId);
-				rset = pstmt.executeQuery();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
 
-				while (rset.next()) {
-					Member m = new Member();
-					m.setMemId(rset.getString("NICKNAME"));
-					m.setReportContent(rset.getString("REPORT_CONTENT"));
-					list.add(m);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(pstmt);
+			while (rset.next()) {
+				Member m = new Member();
+				m.setMemId(rset.getString("NICKNAME"));
+				m.setReportContent(rset.getString("REPORT_CONTENT"));
+				list.add(m);
 			}
-			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
+		return list;
 	}
 
+	/** 강제탈퇴 
+	 * 
+	 * @author 김지우
+	 * @param conn
+	 * @param userId
+	 * @return result
+	 */
+	public int updateKickMember(Connection conn, String userId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateKickMember");
 
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+}
