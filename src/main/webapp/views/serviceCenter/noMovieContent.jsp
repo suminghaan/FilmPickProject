@@ -318,13 +318,13 @@
                           <!-- Modal body -->
                           <div class="modal-body">
                               <input type="text" name="inputPerson" class="form-control inputPerson"">
-                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                               <hr>
                               <div class="viewPerson">
                                   
                               </div>
                           </div>
-                  		
+                  		<!--  onclick="searchPerson();" -->
                   		<script>
                 				$(".inputPerson").on("input", function(){
                 					

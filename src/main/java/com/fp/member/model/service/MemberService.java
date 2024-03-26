@@ -143,14 +143,14 @@ public class MemberService {
 	}
 	
 	// 좋아요 누른 영화 목록
-	public int MovieLikeListCount( int memNo) {
+	public int MovieLikeListCount(int memNo) {
 		Connection conn = getConnection();
 		int listCount = mDao.selectMovieLikeListCount(conn, memNo);
 		close(conn);
 		return listCount;
 	}
 	
-	public List<Movie> selectMovieList( int memNo, PageInfo pi){
+	public List<Movie> selectMovieList(int memNo, PageInfo pi){
 		Connection conn =getConnection();
 		List<Movie> list = mDao.selectMovieList(conn, memNo,pi);
 		close(conn);
@@ -158,7 +158,7 @@ public class MemberService {
 	}
 	
 	// 별점 남긴 영화 목록
-	public int MovieStarRatingListCount( int memNo) {
+	public int MovieStarRatingListCount(int memNo) {
 		Connection conn = getConnection();
 		int listCount = mDao.selectMovieLikeListCount(conn, memNo);
 		close(conn);
@@ -170,6 +170,14 @@ public class MemberService {
 		List<Movie> list = mDao.selectMovieStarRatingList(conn, memNo,pi);
 		close(conn);
 		return list;
+	}
+	
+	// 선호장르
+	public ArrayList<String> selectPrefGenre(){
+		Connection conn = getConnection();
+		ArrayList<String> prefGenre = mDao.selectPrefGenre(conn);
+		close(conn);
+		return prefGenre;
 	}
 
 }

@@ -79,4 +79,26 @@ public class NoticeService {
 		return at;
 	}
 	
+	/**
+	 * @param 호용
+	 * @return 총 키워드에 맞는 공지사항 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectListCount(String keyword) {
+		Connection conn = getConnection();
+		int listCount = nDao.keywordSelectListCount(conn, keyword);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @author 호용
+	 * 키워드에 맞는 공지사항 페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Notice> selectKeywordList(PageInfo pi, String keyword){
+		Connection conn = getConnection();
+		List<Notice> list = nDao.selectKeywordList(conn, pi, keyword);
+		close(conn);
+		return list;
+	}
+	
 }

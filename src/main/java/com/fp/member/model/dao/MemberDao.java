@@ -506,5 +506,27 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	// 선호장르
+	public ArrayList<String> selectPrefGenre(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<String> prefGenre = new ArrayList<>();
+		String sql = prop.getProperty("selectPrefGenre");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				prefGenre.add(rset.getString("category_name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return prefGenre;
+	}
 
 }
