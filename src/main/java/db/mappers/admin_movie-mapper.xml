@@ -378,5 +378,99 @@
 				)
 		</entry>
 
+		<!-- 관리자 영화 신청 [수민] -->
+		<!-- 	영화신청_영화 -->
+		<entry key="insertMovie">
+			INSERT
+				INTO MOVIE
+				(
+					  MV_NO
+					, MV_NAME
+					, MV_OPENDATE
+					, MV_NATION
+					, MV_RTIME
+					, MV_STORY
+					, VIEW_RATING
+					, CURRENT_SCREENING
+					, MV_POSTER
+					, MV_PREVIEW
+				)
+				VALUES
+				(
+					  SEQ_MOVIE_NO.NEXTVAL
+					, ?
+					, ?
+					, ?
+					, ?
+					, ?
+					, ?
+					, ?
+					, ?
+					, ?					
+				)
+		</entry>
+		
+		<!-- 영화신청_인물 -->
+		<entry key="insertMoviePerson">
+			INSERT
+				INTO CASTING
+				(
+					  CASTING_NO
+					, CASTING
+					, MOVIE_NO
+					, PERSON_NO
+				)
+				VALUES
+				(
+					  SEQ_CASTING_NO.NEXTVAL
+					, ? <!-- 배역 -->
+					, SEQ_MOVIE_NO.CURRVAL
+					, ? <!-- 인물번호 -->
+				)
+		</entry>
+		
+		<!-- 영화신청_카테고리 -->
+		<entry key="insertMovieCategory">
+			INSERT
+				INTO MOVIE_CATEGORY
+				(
+					  MV_CATEGORY_NO
+					, MV_NO
+					, CATEGORY_NO
+				)
+				VALUES
+				(
+					  SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+					, SEQ_MOVIE_NO.CURRVAL
+					, ? <!-- 장르번호 -->
+				)
+		</entry>
+		
+		<!-- 영화신청_첨부파일 -->
+		<entry key="insertMovieAttachment">
+			INSERT
+				INTO ATTACHMENT
+				(
+					FILE_NO <!-- 첨부파일 번호 -->
+				  , REF_NO <!-- 영화번호(영화번호)  -->
+				  , REF_TYPE <!-- 첨부파일 타입 -->
+				  , FILE_TYPE <!-- 사진1 | 영상2 -->
+				  , FILE_LEVEL
+				  , ORIGIN_NAME <!-- 원본명 -->
+				  , CHANGE_NAME <!-- 수정명 -->
+				  , FILE_PATH <!-- 저장경로 -->
+				)
+				VALUES
+				(
+					SEQ_ATTACHMENT_NO.NEXTVAL <!-- 첨부파일 번호 -->
+				  , SEQ_MOVIE_NO.CURRVAL <!-- 영화번호(영화 번호)  -->
+				  , ? <!-- 첨부파일타입 -->
+				  , ? <!-- 사진1 | 영상2 -->
+				  , ? <!-- 파일레벨 -->
+				  , ? <!-- 원본명 -->
+				  , ? <!-- 수정명 -->
+				  , ? <!-- 저장경로 -->
+				)
+		</entry>
 
 </properties>

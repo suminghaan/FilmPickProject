@@ -664,6 +664,105 @@ public class MovieDao {
 		}
 		return result;
 	}
+
+	// 영화 신청 관련 3개의 dao
+	// 영화신청_영화
+	public int insertMovie(Connection conn, Movie m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMovie");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMvName());
+			pstmt.setString(2, m.getMvOpenDate());
+			pstmt.setString(3, m.getMvNation());
+			pstmt.setString(4, m.getMvRTime());
+			pstmt.setString(5, m.getMvStory());
+			pstmt.setString(6, m.getViewRating());
+			pstmt.setString(7, m.getCurrentScreening());
+			pstmt.setString(8, m.getMvPoster());
+			pstmt.setString(9, m.getMvPreview());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 영화신청_인물
+	public int insertMoivePerson(Connection conn, List<Person> pList) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMoviePerson");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			for(int i=0; i<pList.size(); i++) {
+				pstmt.setString(1, pList.get(i).getpJob());
+				pstmt.setInt(2, pList.get(i).getpNo());
+				result += pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+
+	// 영화신청_카테고리
+	public int insertMovieCategory(Connection conn, List<Category> cList) {
+		int result = 0; 
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMovieCategory");
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			for(int i =0; i<cList.size(); i++) {
+				pstmt.setInt(1, cList.get(i).getCategoryNo());
+				result += pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// TYPE 매개변수를 하나 받을 것
+	public int insertMovieAttachment(Connection conn, Attachment attachment, int type) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMovieAttachment");
+		
+		
+		try {
+			// type이 1일 경우 메인 포스터 
+			// 첫번째 ?를 1, 두번째 ?를 1 ? 
+			
+			// type이 2일 경우 메인 예고편
+			// 첫번째 ?를 2, 두번째 ?를 2
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, type);
+			pstmt.setString(2, attachment.getOriginName());
+			pstmt.setString(3, attachment.getChangeName());
+			pstmt.setString(4, attachment.getFilePath());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 
 	
