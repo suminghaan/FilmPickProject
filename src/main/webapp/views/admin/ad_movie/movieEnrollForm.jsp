@@ -210,7 +210,7 @@
 
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
-                    <input type="text" name="casting" class="form-control" style="width: 300px;" required>
+                    <input type="text" name="casting" class="form-control" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 </div>
                 <br>
@@ -226,7 +226,7 @@
                     <div class="form-check form-check-inline">
                     <% for(Category c :list){ %>
             			<% if(c.getCategoryStatus().equals("Y")){ %>
-            				<input class="category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>" required value="<%=c.getCategoryNo() %>">
+            				<input class="category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>"  value="<%=c.getCategoryNo() %>">
                         	<label class="form-check-label" for="<%= c.getCategoryNo() %>"><%=c.getCategoryName() %></label>
             			<% } %>
             		<% } %>           		

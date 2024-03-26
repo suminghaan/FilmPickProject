@@ -1,9 +1,5 @@
 package com.fp.admin.model.service;
 
-import static com.br.common.template.JDBCTemplate.close;
-import static com.br.common.template.JDBCTemplate.commit;
-import static com.br.common.template.JDBCTemplate.getConnection;
-import static com.br.common.template.JDBCTemplate.rollback;
 import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
@@ -369,6 +365,41 @@ public class MemberService {
 		Connection conn = getConnection();
 
 		int result = rDao.insertReportedMem(conn, rp);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+
+	/** 신고내역 모달 조회
+	 * 
+	 * @author 김지우
+	 * @return list
+	 */
+	public List<Member> selectReportListModal(String userId) {
+		Connection conn = getConnection();
+		List<Member> list = rDao.selectReportListModal(conn, userId);
+		close(conn);
+		return list;
+	}
+
+	
+	/** 강제탈퇴
+	 * 
+	 * @author 김지우
+	 * @param userId
+	 * @return result
+	 */
+	public int updateKickMember(String userId) {
+		Connection conn = getConnection();
+
+		int result = rDao.updateKickMember(conn, userId);
 
 		if (result > 0) {
 			commit(conn);

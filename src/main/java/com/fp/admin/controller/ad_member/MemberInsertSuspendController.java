@@ -49,7 +49,7 @@ public class MemberInsertSuspendController extends HttpServlet {
 		
 		if(result > 0) {
 			session.setAttribute("alertMsg", "활동중지 처리가 완료되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/rplist.me/page=1");
+			response.sendRedirect(request.getContextPath() + "/rplist.me?page=1");
 		} else {
 			
 		}

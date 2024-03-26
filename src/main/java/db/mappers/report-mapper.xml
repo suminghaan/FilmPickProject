@@ -76,6 +76,20 @@
 	<entry key="insertReportedMem">
 		INSERT INTO REPORTED_MEM VALUES(?, ?, ?, SYSDATE, SYSDATE + ?, 'S')
 	</entry>
+	
+	<entry key="selectReportListModal">
+		SELECT M.NICKNAME, DECODE(R.REPORT_TYPE, 1, '욕설', 2, '도배', 3, '선정', '기타') AS REPORT_CONTENT 
+		FROM MEMBER M 
+        JOIN REPORTED_MEM RM ON (M.MEM_NO = RM.MEM_NO)
+        JOIN REPORT R ON (M.MEM_NO = R.REPORTED_MEM_NO)
+        WHERE M.MEM_ID = ?
+	</entry>
+	
+	<entry key="updateKickMember">
+		UPDATE MEMBER
+		SET MEM_STATUS = 'N'
+		WHERE MEM_ID = ?
+	</entry>
 <!-- =============================== 김지우 ====================================================== -->
 
 <!-- ======================== [용훈] 탈퇴회원조회 =========================================== -->
