@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fp.common.model.vo.Approval;
+import com.fp.member.model.vo.Member;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Review;
 
@@ -32,15 +34,24 @@ public class SelectReviewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
 		
 		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
+		ArrayList<Approval> apprList = new MovieService().selectApproval(userNo);
 		
 		if(reviewList != null) {
 			request.setAttribute("reviewList", reviewList);
-			request.getRequestDispatcher("/views/search/moreReview.jsp").forward(request, response);
 		} else {
 			System.out.println("reviewList가 null");
 		}
+		
+		if(apprList != null) {
+			request.setAttribute("apprList", apprList);
+		} else {
+			System.out.println("apprList가 null");
+		}
+		
+		request.getRequestDispatcher("/views/search/moreReview.jsp").forward(request, response);
 	}
 
 	/**

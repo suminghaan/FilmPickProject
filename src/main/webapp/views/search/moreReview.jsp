@@ -2,8 +2,10 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="com.fp.movie.model.vo.Review" %>
+    <%@ page import="com.fp.common.model.vo.Approval" %>
     <%
     	ArrayList<Review> reviewList = ((ArrayList<Review>)request.getAttribute("reviewList"));
+    	ArrayList<Approval> apprList = (ArrayList<Approval>)request.getAttribute("apprList");
     %>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -226,12 +228,12 @@
                                         <div class="ag_disag_wrap">
                                             <div class="ag">
                                                 <div class="ag_filled filled_wrap">
-                                                    <button type="button" class="ag_disag_btn ag_filled_btn"><img
+                                                    <button type="button" class="ag_disag_btn ag_filled_btn" id="filled_agree<%= reviewList.get(i).getMvReviewNo() %>" onclick="agreeDelete(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
                                                             class="ag_filled_img ag_disag_img"
                                                             src="<%= contextPath %>/resources/img/좋아요.png" alt=""></button>
                                                 </div>
                                                 <div class="ag_empty empty_wrap">
-                                                    <button type="button" class="ag_disag_btn ag_empty_btn"><img
+                                                    <button type="button" class="ag_disag_btn ag_empty_btn" id="empty_agree<%= reviewList.get(i).getMvReviewNo() %>" onclick="agreeInsert(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
                                                             class="ag_empty_img ag_disag_img"
                                                             src="<%= contextPath %>/resources/img/빈좋아요.png" alt=""></button>
                                                 </div>
@@ -239,18 +241,18 @@
                                         </div>
                                     </div>
                                     <div class="thumb_count">
-                                        <span style="font-size: 8px; padding-left: 0px;">공감 수 : <%= reviewList.get(i).getAgreeCount() %></span>
+                                        <span style="font-size: 8px; padding-left: 0px;">공감 : <%= reviewList.get(i).getAgreeCount() %></span>
                                     </div>
                                     <div class="thumb_down">
                                         <div class="ag_disag_wrap">
                                             <div class="disag">
                                                 <div class="disag_filled filled_wrap">
-                                                    <button type="button" class="ag_disag_btn disag_filled_btn"><img
+                                                    <button type="button" class="ag_disag_btn disag_filled_btn" id="filled_disagree<%= reviewList.get(i).getMvReviewNo() %>" onclick="disagreeDelete(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
                                                             class="ag_filled_img ag_disag_img"
                                                             src="<%= contextPath %>/resources/img/싫어요.png" alt=""></button>
                                                 </div>
                                                 <div class="disag_empty empty_wrap">
-                                                    <button type="button" class="ag_disag_btn disag_empty_btn"><img
+                                                    <button type="button" class="ag_disag_btn disag_empty_btn" id="empty_disagree<%= reviewList.get(i).getMvReviewNo() %>" onclick="disagreeInsert(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
                                                             class="ag_empty_img ag_disag_img"
                                                             src="<%= contextPath %>/resources/img/빈싫어요.png" alt=""></button>
                                                 </div>
@@ -258,12 +260,12 @@
                                         </div>
                                     </div>
                                     <div class="thumb_count">
-                                        <span style="font-size: 8px; padding-left: 0px;">비공감 수 : <%= reviewList.get(i).getDisagreeCount() %></span>
+                                        <span style="font-size: 8px; padding-left: 0px;">비공감 : <%= reviewList.get(i).getDisagreeCount() %></span>
                                     </div>
                                 </div>
                                 <div class="user_img_info">
                                 <% if(reviewList.get(i).getMemImgPath() == null) { %>
-                                    <div class="user_img" style="border: 2px solid <%= reviewList.get(i).getMemColor() %>"><i class="fa-solid fa-user" style="color: <%= reviewList.get(i).getMemColor() %>;"></i>
+                                    <div class="user_img" style="border: 2px solid <%= reviewList.get(i).getMemColor() %>" onclick="otherUser(<%= reviewList.get(i).getMemNo() %>)"><i class="fa-solid fa-user" style="color: <%= reviewList.get(i).getMemColor() %>;"></i>
                                     </div>
                                 <% } %>
                                     <div class="user_info">
@@ -312,6 +314,8 @@
                         </div>
                         <% } %>
                         <% } %> 
+                    <% } else {%>
+                    	조회된 리뷰가 없습니다.
                     <% } %>                  
                 </div>
             </div>
@@ -341,6 +345,167 @@
                 $(el).parent().parent(".review_content_long").css("display", "none");
             })
         })
+        
+               	//리뷰 공감|비공감
+      	// 0일 경우 리뷰에 대해 공감 표시, 1일 경우 리뷰에 대해 공감 제거, 2일 경우 리뷰에 대해 비공감 표시, 3일 경우 리뷰에 대해 비공감 제거
+       	<% if(loginMember != null) { %>
+       	
+     // 회원이 공감|비공감한 리뷰 표시
+    	<% if(reviewList != null) {%>
+	    	<% for(int i = 0; i < reviewList.size(); i++) { %>
+		    	<% if(apprList != null)  { %>
+			    	<% for(int j = 0; j < apprList.size(); j++) { %>
+			    		<% if(reviewList.get(i).getMvReviewNo() == apprList.get(j).getMvReviewNo()) {%>
+			    			// 해당 리뷰에 이미 공감 표시한 경우
+			    			<% if(apprList.get(j).getApprovalType() == 1) { %>
+			    					$("#empty_agree<%= reviewList.get(i).getMvReviewNo() %>").parent().css("display", "none");
+			    					$("#filled_agree<%= reviewList.get(i).getMvReviewNo() %>").parent().css("display", "block");
+			    					
+			    					// 비공감 버튼 비활성화
+			    					$("#empty_agree<%= reviewList.get(i).getMvReviewNo() %>").parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+			    						$(e).addClass("disabled");
+			    			            $(e).css("pointer-events", "none")
+			    			        })
+			    			// 해당 리뷰에 이미 비공감 표시한 경우
+			    			<% } else if (apprList.get(j).getApprovalType() == 2) {%>
+			    					$("#empty_disagree<%= reviewList.get(i).getMvReviewNo() %>").parent().css("display", "none");
+			    					$("#filled_disagree<%= reviewList.get(i).getMvReviewNo() %>").parent().css("display", "block");
+			    					
+			    					// 공감 버튼 비활성화
+			    					$("#empty_disagree<%= reviewList.get(i).getMvReviewNo() %>").parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+			    			            $(e).addClass("disabled");
+			    			            $(e).css("pointer-events", "none")
+			    			        })
+			    			<% } %>
+			    		<% } %>
+			    	<% } %>
+		    	<% } %>
+	    	<% } %>
+    	<% } %>
+       	
+      	function agreeInsert(reviewNo, el) {        	
+        	$(el).parent().css("display", "none");
+	        // 숨겨진 버튼 display block
+	        $(el).parent().prev().css("display", "block");
+	
+	        // 빈 좋아요 버튼을 눌러서 좋아요 표시를 하면 싫어요 버튼을 비활성화로
+	        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+	            $(e).addClass("disabled");
+	            $(e).css("pointer-events", "none")
+	        })
+	        
+	        $.ajax({
+        			url:"<%= contextPath %>/agDisagInsert.fp"
+        			, method:"post"
+        			, data: {
+        				reviewNo: reviewNo
+        				, userNo: <%= loginMember.getMemNo()%>
+        				, type: "0"
+        			}
+        			, success: function(msg) {
+        			}
+        			, error: function() {
+        				console.log("AJAX 통신 실패");
+        			}
+        	})
+        }
+        
+        function agreeDelete(reviewNo, el) {
+	        // 누른 버튼 display none으로
+	        $(el).parent().css("display", "none");
+	        // 숨겨진 버튼 display block
+	        $(el).parent().next().css("display", "block");
+	
+	        // 꽉찬 좋아요 버튼을 눌러서 좋아요 표시를 제거하면 싫어요 버튼을 활성화로
+	        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
+	            $(e).removeClass("disabled");
+	            $(e).css("pointer-events", "auto")
+	        })
+	        $.ajax({
+        			url:"<%= contextPath %>/agDisagInsert.fp"
+        			, method:"post"
+        			, data: {
+        				reviewNo: reviewNo
+        				, userNo: <%= loginMember.getMemNo()%>
+        				, type: "1"
+        			}
+        			, success: function(msg) {
+        			}
+        			, error: function() {
+        				console.log("AJAX 통신 실패");
+        			}
+        	})
+        }
+       	        
+		function disagreeInsert(reviewNo, el) {
+	        // 누른 버튼 display none으로
+	        $(el).parent().css("display", "none");
+	        // 숨겨진 버튼 display block
+	        $(el).parent().prev().css("display", "block");
+	
+	        // 빈 싫어요 버튼을 눌러서 싫어요 표시를 하면 좋아요 버튼을 비활성화로
+	        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+	            $(e).addClass("disabled");
+	            $(e).css("pointer-events", "none")
+	        })
+	        $.ajax({
+        			url:"<%= contextPath %>/agDisagInsert.fp"
+        			, method:"post"
+        			, data: {
+        				reviewNo: reviewNo
+        				, userNo: <%= loginMember.getMemNo()%>
+        				, type: "2"
+        			}
+        			, success: function(msg) {
+        			}
+        			, error: function() {
+        				console.log("AJAX 통신 실패");
+        			}
+        	})
+		}
+		
+		function disagreeDelete(reviewNo, el) {
+	        // 누른 버튼 display none으로
+	        $(el).parent().css("display", "none");
+	        // 숨겨진 버튼 display block
+	        $(el).parent().next().css("display", "block");
+	
+	        // 꽉찬 싫어요 버튼을 눌러서 싫어요 표시를 제거하면 좋아요 버튼을 활성화로
+	        $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_up").find(".ag_disag_btn").each(function (i, e) {
+	            $(e).removeClass("disabled");
+	            $(e).css("pointer-events", "auto")
+	        })
+	        $.ajax({
+        			url:"<%= contextPath %>/agDisagInsert.fp"
+        			, method:"post"
+        			, data: {
+        				reviewNo: reviewNo
+        				, userNo: <%= loginMember.getMemNo()%>
+        				, type: "3"
+        			}
+        			, success: function(msg) {
+        			}
+        			, error: function() {
+        				console.log("AJAX 통신 실패");
+        			}
+        	})
+		}
+		<% } %>
+		//리뷰 공감|비공감
+        
+        // 다른 회원 정보보기
+        function otherUser(memNo) {        	
+        	<% if(loginMember != null) {%>
+        		if(memNo != <%= loginMember.getMemNo() %> ) {
+        		location.href ="<%= contextPath %>/otherUser.fp?&&userNo=<%= loginMember.getMemNo() %>&&otherUserNo=" + memNo;
+        		} else {
+        			alert("자기 자신의 정보를 조회할 수 없습니다.");
+        		}
+        	<% } else {%>
+        		alert("로그인 후 이용 가능한 서비스입니다.");
+        	<% } %>
+
+        }
 
     </script>
     <!-- 추가 끝 -->
