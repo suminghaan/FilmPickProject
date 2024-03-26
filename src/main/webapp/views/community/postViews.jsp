@@ -154,6 +154,8 @@
                 </thead>
     <script>
     
+
+    
     $(function(){
     	selectReplyList();
     })
@@ -316,6 +318,7 @@
                         <div class="modal-content"> 
                             <div class="modal-body">
                            	 <form action="<%=contextPath%>/boReReport.bo" method="post">
+                           	    <input type="hidden"  name="bNo" value="<%=b.getbNo()%>">
                                 <input type="hidden" id="replyNo" name="replyNo" value="">
                                 <input type="hidden" id="replyReportNo" name="replyReportNo" value="">
                                 <input type="hidden" id="replyReportedNo" name="replyReportedNo" value="">

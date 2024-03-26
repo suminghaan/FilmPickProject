@@ -35,7 +35,7 @@ public class NoMovieUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int noMovieNo = Integer.parseInt(request.getParameter("no"));
-		System.out.println("업데이트폼컨트롤러에서의 noMovieNo는 영화번호임 : " + noMovieNo);
+//		System.out.println("업데이트폼컨트롤러에서의 noMovieNo는 영화번호임 : " + noMovieNo);
 		NoMovie nm = new NoMovie();
 		// 없는영화 테이블에 값들 가져오는 구문
 		nm = new NoMovieService().selectNoMovieAll(noMovieNo);

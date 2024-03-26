@@ -1,6 +1,7 @@
 package com.fp.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fp.member.model.service.MemberService;
 
 /**
  * Servlet implementation class MemberSignupFormController
@@ -28,6 +31,8 @@ public class MemberSignupFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<String> prefGenre = new MemberService().selectPrefGenre();
+		request.setAttribute("prefGenre",prefGenre);
 		RequestDispatcher view = request.getRequestDispatcher("/views/mypage/memberSignupForm.jsp");
 		view.forward(request, response);
 	}

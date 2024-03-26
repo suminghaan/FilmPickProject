@@ -32,6 +32,7 @@ public class NoticeDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int p = Integer.parseInt(request.getParameter("p"));
 		int noticeNo = Integer.parseInt(request.getParameter("no"));
 		NoticeService nService = new NoticeService();
 		// 1) 조회수 증가 (update)
@@ -49,6 +50,7 @@ public class NoticeDetailController extends HttpServlet {
 			Attachment at = nService.selectAttachment(noticeNo);
 			request.setAttribute("n", n);
 			request.setAttribute("at", at);
+			request.setAttribute("p", p);
 			request.getRequestDispatcher("/views/notice/noticeContent.jsp").forward(request, response);
 		}
 	}

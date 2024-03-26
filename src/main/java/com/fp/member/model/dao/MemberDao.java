@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
+import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Movie;
@@ -504,6 +505,28 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	// 선호장르
+	public ArrayList<String> selectPrefGenre(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<String> prefGenre = new ArrayList<>();
+		String sql = prop.getProperty("selectPrefGenre");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				prefGenre.add(rset.getString("category_name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return prefGenre;
 	}
 
 }

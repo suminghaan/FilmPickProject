@@ -102,6 +102,8 @@
             $(el).parent().next().css("display", "block");
 
             // 꽉찬 좋아요 버튼을 눌러서 좋아요 표시를 제거하면 싫어요 버튼을 활성화로
+            console.log( $(el).parentsUntil(".thumb_btn"));
+
             $(el).parentsUntil(".thumb_btn").eq(3).siblings(".thumb_down").find(".ag_disag_btn").each(function (i, e) {
                 $(e).removeClass("disabled");
                 $(e).css("pointer-events", "auto")

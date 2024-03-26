@@ -1600,41 +1600,85 @@ UPDATE MEMBER SET MEM_LEVEL=5 WHERE MEM_NO BETWEEN 26 AND 28;
 
 
 -- REVIEW 테이블에 샘플 데이터 삽입
+--INSERT INTO REVIEW (MV_REVIEW_NO, REVIEW_CONTENT, REVIEW_DATE, LIKE_POINT, MEM_NO, MV_NO)
+--SELECT SEQ_REVIEW_NO.NEXTVAL,
+--       dbms_random.string('L', floor(dbms_random.value(200, 401))), -- 랜덤한 길이의 문자열 생성 (200~400자)
+--       SYSDATE - floor(dbms_random.value(0, 30)),                   -- 랜덤한 날짜 생성 (최근 30일 내)
+--       floor(dbms_random.value(1, 11))/2,                           -- 0.5의 배수인 별점 생성 (1~5)
+--       floor(dbms_random.value(1, 31)),                             -- 1~30 사이의 회원 번호
+--       floor(dbms_random.value(1, 38))                              -- 1~37 사이의 영화 번호
+--FROM dual
+--CONNECT BY LEVEL <= 300;  -- 300개의 샘플 데이터 생성
+
 INSERT INTO REVIEW (MV_REVIEW_NO, REVIEW_CONTENT, REVIEW_DATE, LIKE_POINT, MEM_NO, MV_NO)
 SELECT SEQ_REVIEW_NO.NEXTVAL,
        dbms_random.string('L', floor(dbms_random.value(200, 401))), -- 랜덤한 길이의 문자열 생성 (200~400자)
        SYSDATE - floor(dbms_random.value(0, 30)),                   -- 랜덤한 날짜 생성 (최근 30일 내)
        floor(dbms_random.value(1, 11))/2,                           -- 0.5의 배수인 별점 생성 (1~5)
-       floor(dbms_random.value(1, 31)),                             -- 1~30 사이의 회원 번호
-       floor(dbms_random.value(1, 38))                              -- 1~37 사이의 영화 번호
-FROM dual
-CONNECT BY LEVEL <= 300;  -- 300개의 샘플 데이터 생성
+       MEM.MEM_NO,
+       MOV.MV_NO
+FROM (SELECT LEVEL AS MEM_NO FROM dual CONNECT BY LEVEL <= 30) MEM,
+     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 41) MOV
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM REVIEW
+    WHERE MEM_NO = MEM.MEM_NO AND MV_NO = MOV.MV_NO
+)
+AND ROWNUM <= 400;  -- 400개의 샘플 데이터 생성
+
+
 
 -- APPROVAL 테이블에 샘플 데이터 삽입
+--INSERT INTO APPROVAL (APPROVAL_NO, APPROVAL_TYPE, MEM_NO, MV_REVIEW_NO)
+--SELECT SEQ_APPROVAL_NO.NEXTVAL,
+--       CASE WHEN MOD(ROWNUM, 2) = 0 THEN 1 ELSE 2 END,  -- 공감 또는 비공감 타입 선택
+--       MEM_NO,
+--       MV_REVIEW_NO
+--FROM (
+--    SELECT MEM_NO, MV_REVIEW_NO
+--    FROM (
+--        SELECT DISTINCT MEM_NO, MV_REVIEW_NO
+--        FROM (
+--            SELECT MEM_NO,
+--                   MV_REVIEW_NO,
+--                   ROW_NUMBER() OVER (PARTITION BY MEM_NO, MV_REVIEW_NO ORDER BY dbms_random.value) AS RN
+--            FROM (
+--                SELECT DISTINCT floor(dbms_random.value(1, 31)) AS MEM_NO,  -- 1~30 사이의 회원 번호
+--                                floor(dbms_random.value(1, 401)) AS MV_REVIEW_NO  -- 1~400 사이의 리뷰 번호
+--                FROM dual
+--                CONNECT BY LEVEL <= 2000  -- 2500개의 샘플 데이터 생성
+--            )
+--        )
+--        WHERE RN = 1
+--    )
+--)
+--WHERE ROWNUM <= 2000;  -- 최종 2500개의 샘플 데이터 생성
+
+-- 공감/비공감을 표시하는 샘플 데이터 생성
 INSERT INTO APPROVAL (APPROVAL_NO, APPROVAL_TYPE, MEM_NO, MV_REVIEW_NO)
 SELECT SEQ_APPROVAL_NO.NEXTVAL,
-       CASE WHEN MOD(ROWNUM, 2) = 0 THEN 1 ELSE 2 END,  -- 공감 또는 비공감 타입 선택
+       CASE WHEN dbms_random.value(0, 1) < 0.5 THEN 1 ELSE 2 END, -- 50% 확률로 공감(1) 또는 비공감(2) 지정
        MEM_NO,
        MV_REVIEW_NO
 FROM (
-    SELECT MEM_NO, MV_REVIEW_NO
+    SELECT MEM_NO,
+           MV_NO AS MV_REVIEW_NO
     FROM (
-        SELECT DISTINCT MEM_NO, MV_REVIEW_NO
-        FROM (
-            SELECT MEM_NO,
-                   MV_REVIEW_NO,
-                   ROW_NUMBER() OVER (PARTITION BY MEM_NO, MV_REVIEW_NO ORDER BY dbms_random.value) AS RN
-            FROM (
-                SELECT DISTINCT floor(dbms_random.value(1, 31)) AS MEM_NO,  -- 1~30 사이의 회원 번호
-                                floor(dbms_random.value(1, 301)) AS MV_REVIEW_NO  -- 1~300 사이의 리뷰 번호
-                FROM dual
-                CONNECT BY LEVEL <= 1500  -- 1500개의 샘플 데이터 생성
-            )
-        )
-        WHERE RN = 1
-    )
+        SELECT LEVEL AS MEM_NO
+        FROM dual
+        CONNECT BY LEVEL <= 30
+    ) m,
+    (
+        SELECT LEVEL AS MV_NO
+        FROM dual
+        CONNECT BY LEVEL <= 400
+    ) r
 )
-WHERE ROWNUM <= 1500;  -- 최종 1500개의 샘플 데이터 생성
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM APPROVAL a
+    WHERE a.MEM_NO = MEM_NO AND a.MV_REVIEW_NO = MV_REVIEW_NO
+) AND ROWNUM <= 2000;  -- 2000개의 샘플 데이터 생성
 
 INSERT INTO MOVIE_CATEGORY
 VALUES (

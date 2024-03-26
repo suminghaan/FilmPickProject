@@ -28,7 +28,7 @@ public class Member {
 	
 	// 신고회원관리 조회용으로 사용할 매개변수 생성자 (김지우)
 	public Member(String memId, String nickname, int memReportCnt, String signInDate, int memBoardCnt,
-			int memReplyCnt, String reportContent) {
+			int memReplyCnt, String reportContent, int memNo) {
 		super();
 		this.memId = memId;
 		this.nickname = nickname;
@@ -37,6 +37,7 @@ public class Member {
 		this.memBoardCnt = memBoardCnt;
 		this.memReplyCnt = memReplyCnt;
 		this.reportContent = reportContent;
+		this.memNo = memNo;
 	}
 	
 

@@ -296,7 +296,6 @@
       var ischecked = false;
       
       $("#reviewForm").submit(function(event) {
-    	  console.log("서브밋");
     	  event.preventDefault();
     	  
     	  $(".rating__input").each(function(index, el) {

@@ -96,6 +96,8 @@
    	}
    	.viewPerson{
    	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
    	}
 </style>
 </head>
@@ -316,13 +318,25 @@
                           <!-- Modal body -->
                           <div class="modal-body">
                               <input type="text" name="inputPerson" class="form-control inputPerson"">
-                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                               <hr>
                               <div class="viewPerson">
                                   
                               </div>
                           </div>
-                  
+                  		<!--  onclick="searchPerson();" -->
+                  		<script>
+                				$(".inputPerson").on("input", function(){
+                					
+                					if ($(this).val().trim() === "") {
+                						$(".viewPerson").html("");
+                					} else {
+                						searchPerson();
+                					}
+                					
+                				})
+                  		</script>
+                  		
                           <!-- Modal footer -->
                           <div class="modal-footer">
                               <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
@@ -335,7 +349,7 @@
               </div>
 
         </section>
-
+		 <label class="form-check-label" for="inlineCheckbox10">SF</label>
         <script>
  
         function searchPerson(){
@@ -353,7 +367,7 @@
                             result =  "<div class='check'>"
                                     +       "<table>"
                                     +           "<tr>"
-                                    +               "<td><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></td>"
+                                    +               "<td><label for='boxbox" + i + "'><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></label></td>"
                                     +           "</tr>"
                                     +           "<tr>"
                                     +               "<td class='personName'>" + person[i].pName + "</td>"
@@ -362,7 +376,7 @@
                                     +           "<tr>"
                                     +               "<td>" + person[i].pJob + "</td>"
                                     +           "</tr>"
-                                    +       "<input class='checkboxbox' type='checkbox'>"
+                                    +       "<input class='checkboxbox' type='checkbox' id='boxbox" + i + "'>"
                                     +       "</table>"
                                     +   "</div>";
                             $(".viewPerson").append(result);
@@ -424,6 +438,7 @@
                count--;
              }
          });
+		
 
         </script>
     

@@ -22,24 +22,24 @@ public class NoMovieService {
 	 * @author 호용
 	 * 없는영화신청을 위한 메소드
 	 */
-	public int insertNoMovie(NoMovie nm, List<Person> pList, List<Category> cList, Attachment at, int ext) {
+	public int insertNoMovie(NoMovie nm, List<Person> pList, List<Category> cList, Attachment at, int ext, Attachment at1, Attachment at2) {
 		Connection conn = getConnection();
-		int result1 = nMDao.insertNoMovie(conn, nm);
+		int result1 = nMDao.insertNoMovie(conn, nm); 
 		int result2 = nMDao.insertNoMoviePerson(conn, pList);
 		int result3 = nMDao.insertNoMovieCategory(conn, cList);
-		int result4 = 1;
-		
+		int result4 = 1; 
+		int result5 = nMDao.insertAttachment(conn, at1, at2); // 메인포스터, 메인예고편영상을 Attachment 테이블에 인설트
 		if(at != null) {
-			result4 = nMDao.insertNoMovieAttachment(conn, at, ext);
+			result4 = nMDao.insertNoMovieAttachment(conn, at, ext); // 추가첨부파일을 Attachment 테이블에 인설트
 		}
 		
-		if(result1 > 0 && result2 > 0 && result3 > 0 && result4 > 0) {
+		if(result1 > 0 && result2 > 0 && result3 > 0 && result4 > 0 && result5 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		
-		return result1 * result2 * result3 * result4;
+		return result1 * result2 * result3 * result4 * result5;
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class NoMovieService {
 		Connection conn = getConnection();
 		NoMovie nm = nMDao.selectNoMovieAll(conn, noMovieNo);
 		close(conn);
-		System.out.println("서비스단에서의 nm : " + nm);
+//		System.out.println("서비스단에서의 nm : " + nm);
 		return nm;
 	}
 	

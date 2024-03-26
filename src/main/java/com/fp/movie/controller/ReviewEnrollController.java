@@ -56,7 +56,7 @@ public class ReviewEnrollController extends HttpServlet {
 			session.setAttribute("alertMsg", "리뷰 등록에 실패했습니다.");
 		}
 		
-		response.sendRedirect(request.getContextPath() + "//movieDetail.fp?movieNo=" + movieNo);
+		response.sendRedirect(request.getContextPath() + "/movieDetail.fp?movieNo=" + movieNo);
 		
 	}
 

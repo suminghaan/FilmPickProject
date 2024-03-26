@@ -241,6 +241,54 @@ public class MovieService {
 		return result1 * result2;
 	}
 
+	// 영화 등록 
+	public int insertMovie(Movie m, List<Person> pList, List<Category> cList, List<Attachment> atList) {
+		Connection conn = getConnection();
+		int result1 = mDao.insertMovie(conn, m);
+		int result2 = mDao.insertMoivePerson(conn, pList);
+		int result3 = mDao.insertMovieCategory(conn, cList);
+		int result4 = 0;
+		
+		if(atList != null) {
+			for(int i=0; i<atList.size(); i++) {
+				result4 += mDao.insertMovieAttachment(conn, atList.get(i));				
+			}			
+		}
+		
+		if(result1 > 0 && result2 >0 && result3 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		int result = result1 * result2 * result3 + result4;
+		return result;
+	}
+
+	// 영화 수정
+	public int updateMovie(Movie m, List<Person> pList, List<Category> cList, List<Attachment> atList) {
+		Connection conn = getConnection();
+		int result1 = mDao.updateMovie(conn, m);
+		int result2 = mDao.updateMoivePerson(conn, pList, m);
+		int result3 = mDao.updateMovieCategory(conn, cList, m);
+		int result4 = 0;
+		
+		if(atList != null) {
+			for(int i=0; i<atList.size(); i++) {
+				result4 += mDao.updateMovieAttachment(conn, atList.get(i));				
+			}			
+		}
+		
+		if(result1 > 0 && result2 >0 && result3 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		int result = result1 * result2 * result3 + result4;
+		return result;
+	}
+
 	
 	
 	

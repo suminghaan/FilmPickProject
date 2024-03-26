@@ -7,7 +7,9 @@
 <%@ page import="com.fp.person.model.vo.Person" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-    
+<%@ page import="com.fp.movie.model.vo.Category" %>
+<%@ page import="java.util.List" %>
+<% List<Category> clist = (List<Category>)request.getAttribute("clist"); %>        
 <% Movie m = (Movie)request.getAttribute("m"); %>
 <% List<Person> plist = (List<Person>)request.getAttribute("plist"); %>
 <% List<Attachment> alist = (List<Attachment>)request.getAttribute("alist"); %>
@@ -154,22 +156,23 @@
             <hr>
         </div>
         
-        <form action="" method="">
-            <div class="all">               
+        <form action="<%=contextPath %>/updateMovie.admo" method="post" enctype="multipart/form-data" id="updateMovie">
+            <div class="all">  
+            	<input type="hidden" id="movieNo" name="mNo" value="<%=m.getMvNo()%>">             
                 <div class="form-group">
                     <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=m.getMvName() %>" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="mTitle" required value="<%=m.getMvName() %>" style="width: 500px;">
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="mGrade">영화관람등급</label>
-                    <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;">
-					    <option value="1" <%= (m.getViewRating() != null && m.getViewRating().equals("전체관람가")) ? "selected" : "" %>>전체관람</option>
-					    <option value="2" <%= (m.getViewRating() != null && m.getViewRating().equals("12세 관람가")) ? "selected" : "" %>>12세 관람가</option>
-					    <option value="3" <%= (m.getViewRating() != null && m.getViewRating().equals("15세 관람가")) ? "selected" : "" %>>15세 관람가</option>
-					    <option value="4" <%= (m.getViewRating() != null && m.getViewRating().equals("청소년 관람불가")) ? "selected" : "" %>>청소년관람불가</option>
+                    <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;" required>
+					    <option value="전체관람가" <%= (m.getViewRating() != null && m.getViewRating().equals("전체관람가")) ? "selected" : "" %>>전체관람</option>
+					    <option value="12세 관람가" <%= (m.getViewRating() != null && m.getViewRating().equals("12세 관람가")) ? "selected" : "" %>>12세 관람가</option>
+					    <option value="15세 관람가" <%= (m.getViewRating() != null && m.getViewRating().equals("15세 관람가")) ? "selected" : "" %>>15세 관람가</option>
+					    <option value="청소년 관람불가" <%= (m.getViewRating() != null && m.getViewRating().equals("청소년 관람불가")) ? "selected" : "" %>>청소년관람불가</option>
 					</select>
                 </div>
                     
@@ -177,7 +180,7 @@
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getMvStory() %></textarea>                
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;" required><%=m.getMvStory() %></textarea>                
                 </div>
                 
 
@@ -187,11 +190,11 @@
                 
                 	<div>
                     	<label>개봉일</label>
-                    	<input type="date" name="dateIn" value="<%=m.getMvOpenDate() %>" class="form-control" style="width: 300px;">
+                    	<input type="date" name="dateIn" value="<%=m.getMvOpenDate() %>" class="form-control" style="width: 300px;" required>
                     </div>
                     <div>
                     	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" value="<%=m.getMvRTime() %>" class="form-control" style="width: 300px;">
+                    	<input type="text" name="runningTime" value="<%=m.getMvRTime() %>" class="form-control" style="width: 300px;" required>
                 	</div>
                 </div>
                 <br>
@@ -201,15 +204,20 @@
 
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
-                    <input type="text" name="casting" class="form-control" style="width: 300px;">
+                    <input type="text" name="casting" class="form-control casting" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
+                </div>
+                <div class="person-div">
+                 <!-- 인물정보 들어갈 테이블 생성될 공간 -->
+                </div>
                 
                 <% for(Person p : plist){ %>
                 	<div class="castingList">
                 	<% if(m.getMvNo() == Integer.parseInt(p.getMovieNo())){ %>
                 		<div class="person">
+                		<input type="hidden" name="personNo" value="<%=p.getpNo()%>">
 	                    <img src="<%=p.getpFile() %>"> <%=p.getpName() %> <br>
-	                    <input type="text" name="person_role" value="<%=p.getCasting()%>">
+	                    <input type="text" name="movieJob" class="casting" value="<%=p.getCasting()%>">
 	                    </div>
 	                 <% } %>
 	                    <!-- 
@@ -221,7 +229,9 @@
 					</div>
 				<% } %>
                 	
-                </div>
+                
+                
+                
                 <br>
 
 
@@ -230,51 +240,12 @@
                     <br>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbox1" name="category" value="SF">
-                        <label class="form-check-label" for="cbox1">액션</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox2" name="category" value="스릴러">
-                        <label class="form-check-label" for="cbox2">코미디</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox3" name="category" value="로맨스">
-                        <label class="form-check-label" for="cbox3">로맨스</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox4" name="category" value="액션">
-                        <label class="form-check-label" for="cbox4">스릴러</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox5" name="category" value="판타지">
-                        <label class="form-check-label" for="cbox5">공포</label>
-
-        
-                        <input class="form-check-input" type="checkbox" id="cbox6" name="category" value="코미디">
-                        <label class="form-check-label" for="cbox6">판타지</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox7" name="category" value="에로">
-                        <label class="form-check-label" for="cbox7">어드벤처</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox8" name="category" value="범죄">
-                        <label class="form-check-label" for="cbox8">드라마</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox9" name="category" value="애니메이션">
-                        <label class="form-check-label" for="cbox9">애니메이션</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox10" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">SF</label>
-                        
-                        <input class="form-check-input" type="checkbox" id="cbox11" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">범죄</label>
-                        
-                        <input class="form-check-input" type="checkbox" id="cbox12" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">모험</label>
-                        
-                        <input class="form-check-input" type="checkbox" id="cbox13" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">다큐멘터리</label>
-                        
-                        <input class="form-check-input" type="checkbox" id="cbox14" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">가족</label>
-                        
-                        <input class="form-check-input" type="checkbox" id="cbox15" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">뮤지컬</label>
+                    <% for(Category c :clist){ %>
+            			<% if(c.getCategoryStatus().equals("Y")){ %>
+            				<input class="form-check-input category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>" value="<%=c.getCategoryNo() %>">
+                        	<label class="form-check-label" for="<%= c.getCategoryNo() %>"><%=c.getCategoryName() %></label>
+            			<% } %>
+            		<% } %>           	                   
                     </div>
                 </div>
                 <br>
@@ -289,12 +260,13 @@
                     <input type="radio" id="radio2" name="nation" class="nation" value="2">
                     <label for="radio2">해외</label>
                 </div>
+                </div>
                 
                 <br><br>
  
                 <label>영화포스터</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="">
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" > 
                     <label class="custom-file-label" for="customFile1">파일추가</label>
                     <img src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
                 </div>
@@ -303,7 +275,7 @@
 
                 <label>예고편영상</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="">
+                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" >
                     <label class="custom-file-label" for="customFile2">파일추가</label>
                     <video src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
                 </div>
@@ -314,7 +286,7 @@
                 <label>기타 추가 희망 이미지 또는 동영상</label>
                 
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="">
+                        <input type="file" class="custom-file-input" id="customFile3" name="upfile">
                         <label class="custom-file-label" for="customFile3">파일추가</label>
                         <% if(!alist.isEmpty()){ %>
                         	<% for(Attachment a : alist){ %>                   	
@@ -333,38 +305,37 @@
                 <br>
 
                 <div class="form-group">
-                    <label>첫 페이지 노출 선택여부 : </label>
+                    <label>현재 상영여부 : </label>
                     <br>
-                    <input type="radio" id="radioX" class="fpage" name="fpage" value="N"> 
-                    <label for="radioX">선택안함</label>
+                    <input type="radio" id="radioX" name="currentScreening" value="N" checked> 
+                    <label for="radioX">현재 미상영</label>
 
-                    <input type="radio" id="radioM" class="fpage" name="fpage" value="Y">
-                    <label for="radioM">첫페이지 노출</label>
+                    <input type="radio" id="radioM" name="currentScreening" value="Y">
+                    <label for="radioM">상영중</label>
                 	
                 </div>
                 
                 <% if(m.getNmUserRequest() != null){ %>
                 <div class="form-group">
                     <label>사용자 요청사항</label>
-                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getNmUserRequest() %></textarea>       
+                    <textarea class="form-control" id="userRequest" rows="5" name="userRequest" style="width: 500px;"><%=m.getNmUserRequest() %></textarea>       
                 </div>
                 <br>
                 
                 <!-- 사용자가 등록한 영화일 경우 -->
                 <div class="form-group inputUser">
-                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
                     <div class="userInfo">
                         <p><label>등록한 사용자 ID : </label><%=m.getMemNo() %></p>
                     </div>
                 </div>
                 <%} %>
-                <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('내용이 수정되었습니다.')">수정하기</button>
+                <button type="submit" class="btn btn-outline-secondary" style="float: right;">수정하기</button>
                 
             </div>
         </form>
-        <br><br><br><br><br><br><br>
-   	 </div>
+        <br><br><br><br><br><br><br> 	 
     </section>
+    </div>
 
     
 
@@ -381,17 +352,19 @@
         
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <input type="text" id="name" name="name" class="form-control">
-                    <button type="button" class="btn btn-secondary btn-sm psModal" onclick="searchActor();">검색</button>
+                    <input type="text" name="inputPerson" class="form-control inputPerson">
+                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
                     <hr>
-                    <div id="searchResults">
-                        검색된 인물 나오는 공간
+                    <div class="viewPerson">
+                        
                     </div>
                 </div>
         
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">추가</button>
+                    <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
+                    <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtn">제거</button>
+                    <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">닫기</button>
                 </div>
         
             </div>
@@ -457,6 +430,139 @@
 			$(el).attr('checked', true);
 		}
 	})
+	
+	</script>
+	
+	<script>
+	// 인물 검색 
+		function searchPerson(){
+			$(".viewPerson").html("");
+            let result = "";
+            $.ajax({
+                url:"<%=contextPath%>/search.pe",
+                data:{name:$(".inputPerson").val()},
+                type:"post",
+                success:function(person){ // 인물번호, 인물이미지경로, 인물이름, 인물직업 조회
+                	console.log(person.length);
+                    if(person.length != 0){ // 받아온 person에 값이 담겨있을 때
+                        for(let i=0; i<person.length; i++){
+                            result =  "<div class='check'>"
+                                    +       "<table>"
+                                    +           "<tr>"
+                                    +               "<td><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></td>"
+                                    +           "</tr>"
+                                    +           "<tr>"
+                                    +               "<td class='personName'>" + person[i].pName + "</td>"
+                                    +               "<input name='personNo' class='personNo' type='hidden' value='" + person[i].pNo + "'>"
+                                    +           "</tr>"
+                                    +           "<tr>"
+                                    +               "<td>" + person[i].pJob + "</td>"
+                                    +           "</tr>"
+                                    +       "<input class='checkboxbox' type='checkbox'>"
+                                    +       "</table>"
+                                    +   "</div>";
+                            $(".viewPerson").append(result);
+                        }
+                    } else if (person.length == 0){ // 받아온 person이 비어있을 때
+                        result = " ";
+                    	console.log("length는 0");
+                        $(".viewPerson").html("검색된 인물이 없습니다.");
+                    }
+                },
+                error:function() {
+                	console.log("AJAX 통신 실패");
+                }
+                
+            });
+		}
+	
+	// 인물 등록
+         // 없는영화 출연진 추가하는 스크립트
+         $("#personBtn").click(function(){
+        	
+       		var inputChecked = $(".viewPerson input:checked");
+       		console.log(inputChecked);
+       		
+           let result = "";
+           inputChecked.each(function(){
+        	 let pNo = $(this).closest('.check').find('.personNo').val(); // 체크된 인물의 pNo 값 가져오기
+        	 let pFile = $(this).closest('.check').find('.personImg').attr('src'); // 체크된 인물의 이미지 경로 가져오기
+        	 let pName = $(this).closest('.check').find('.personName').text(); // 체크된 인물의 이름 가져오기
+        	 result += "<table class='person-table'>"
+                     +   "<tr>"
+                     +     "<td><img src='" + pFile + "'></td>" // 이미지 소스에 pFile는 이미지 저장경로
+                     +   "</tr>"
+                     +   "<tr>"
+                     +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
+                     +   "</tr>"
+                     +   "<tr>"
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
+                     +   "</tr>"
+                     +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
+                     + "</table>"
+                     + "<br><br>"
+                     console.log(pFile);
+                     console.log(pName);
+                     console.log(pNo);
+           })
+               $(".person-div").append(result);
+         });
+	
+	// 인물 삭제 
+	$("#personRemoveBtn").click(function(){
+           $(".person-div").find("table").last().remove();            
+         });
+	
+	// 제출 시 카테고리 체크 여부 검사
+	$("#updateMovie").submit(function(event) {
+		let categoryChecked = false;
+		
+		event.preventDefault();
+		
+		$(".category").each(function(index, el) {
+			if($(el).is("checked")) {
+				categoryChecked = true;
+			}
+		})
+		
+		if(categoryChecked) {
+			this.submit();
+		} else {
+			alert("카테고리를 체크해주세요!");
+		}
+		
+	})
+	
+	// 제출 시 인물 등록여부 검사
+	$("#updateMovie").submit(function(event)){
+		let castingChecked = false
+		
+		event.preventDefault();
+		
+		$(".casting").each(function(index, el){
+			if($(el) != null){
+				castingChecked = true;
+			}
+		}}
+		if(castingChecked){
+			this.submit();
+		}else{
+			alert("인물등록이 안되었습니다!")
+		}
+	}
+	
+	// 제출 시 메인포스터와 예고편 등록 여부 검사
+	$("#updateMovie").submit(function(event)){
+
+		event.preventDefault();
+		
+		if($(".mposter").val() != null && $(".mpreview").val() != null){
+			this.submit();
+		}else{
+			alert("메인 포스터와 메인예고편은 필수 등록입니다 ! ")
+		}
+		
+	}
 	
 	</script>
 	

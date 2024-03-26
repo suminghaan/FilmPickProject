@@ -11,6 +11,7 @@
 	List<Movie> mList = (List<Movie>)request.getAttribute("mList");
 	List<Movie> allMovie = (List<Movie>)request.getAttribute("allMovie");
 	Attachment at = (Attachment)request.getAttribute("at");
+	
 %>
 <!DOCTYPE html>
 <html>

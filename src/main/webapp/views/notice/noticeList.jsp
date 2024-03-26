@@ -94,7 +94,7 @@
                     </tr>
                 <% } else{%>
                 	<% for(Notice n : list){ %>
-                    <tr onclick="noticeDetail(<%=n.getNoticeNo()%>);">
+                    <tr onclick="noticeDetail(<%=n.getNoticeNo()%>, <%=pi.getCurrentPage()%>);">
                         <td><%= n.getNoticeNo() %></td>
                         <td><%= n.getCategory() %></td>
                         <td><%= n.getNoticeTitle() %></td>
@@ -131,8 +131,8 @@
             </ul>
 
             <div class="notice_search">
-                <form action="" method="">
-                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;">
+                <form action="<%=contextPath%>/searchNotice.no?page=1" method="post">
+                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;" name="searchKeyword">
                     <button type="image" class="notice_search_btn" alt="검색">검색</button>
                 </form>
             </div>
@@ -144,8 +144,8 @@
       
     <!-- Section Script start-->
     <script>
-		function noticeDetail(no){
-			location.href="<%=contextPath%>/detail.no?no=" + no;
+		function noticeDetail(no, p){
+			location.href="<%=contextPath%>/detail.no?no=" + no + "&p=" + p;
 		}
 		
 

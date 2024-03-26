@@ -664,6 +664,220 @@ public class MovieDao {
 		}
 		return result;
 	}
+
+	// 영화 신청 관련 3개의 dao
+	// 영화신청_영화
+	public int insertMovie(Connection conn, Movie m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMovie");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMvName());
+			pstmt.setString(2, m.getMvOpenDate());
+			pstmt.setString(3, m.getMvNation());
+			pstmt.setString(4, m.getMvRTime());
+			pstmt.setString(5, m.getMvStory());
+			pstmt.setString(6, m.getViewRating());
+			pstmt.setString(7, m.getCurrentScreening());
+			pstmt.setString(8, m.getMvPoster());
+			pstmt.setString(9, m.getMvPreview());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 영화신청_인물
+	public int insertMoivePerson(Connection conn, List<Person> pList) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMoviePerson");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			for(int i=0; i<pList.size(); i++) {
+				pstmt.setString(1, pList.get(i).getpJob());
+				pstmt.setInt(2, pList.get(i).getpNo());
+				result += pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+	}
+
+	// 영화신청_카테고리
+	public int insertMovieCategory(Connection conn, List<Category> cList) {
+		int result = 0; 
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMovieCategory");
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			for(int i =0; i<cList.size(); i++) {
+				pstmt.setInt(1, cList.get(i).getCategoryNo());
+				result += pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// TYPE 매개변수를 하나 받을 것
+	public int insertMovieAttachment(Connection conn, Attachment attachment) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMovieAttachment");
+		
+		
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, attachment.getRefType());
+			pstmt.setInt(2, attachment.getFileType());
+			pstmt.setInt(3, attachment.getFileLevel());
+			pstmt.setString(4, attachment.getOriginName());
+			pstmt.setString(5, attachment.getChangeName());
+			pstmt.setString(6, attachment.getFilePath());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 영화수정_영화
+	public int updateMovie(Connection conn, Movie m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMovie");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getMvName());
+			pstmt.setString(2, m.getMvOpenDate());
+			pstmt.setString(3, m.getMvNation());
+			pstmt.setString(4, m.getMvRTime());
+			pstmt.setString(5, m.getMvStory());
+			pstmt.setString(6, m.getViewRating());
+			pstmt.setString(7, m.getCurrentScreening());
+			pstmt.setString(8, m.getMvPoster());
+			pstmt.setString(9, m.getMvPreview());
+			pstmt.setInt(10, m.getMvNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 영화수정_인물
+	public int updateMoivePerson(Connection conn, List<Person> pList, Movie m) {
+		int result = 0;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		String sql1 = prop.getProperty("updateMoivePersonDelete");
+		// 과정1. delete문 실행
+		try {
+			pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, m.getMvNo());
+			pstmt1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt1);
+		}
+		// 과정2. insert문 실행
+		String sql2 = prop.getProperty("updateMoivePersonInsert");
+		try {
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(2, m.getMvNo());
+			for(int i=0; i<pList.size(); i++) {
+				pstmt2.setInt(1, pList.get(i).getpNo());
+				pstmt2.setString(3, pList.get(i).getpJob());
+				result += pstmt2.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt2);
+		}
+		return result;
+	}
+
+	// 영화수정_카테고리
+	public int updateMovieCategory(Connection conn, List<Category> cList, Movie m) {
+		int result = 0;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		String sql1 = prop.getProperty("updateMovieCategoryDelete");
+		try {
+			pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, m.getMvNo());
+			pstmt1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt1);
+		}
+		String sql2 = prop.getProperty("updateMovieCategoryInsert");
+		try {
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(2, m.getMvNo());
+			for(int i=0; i<cList.size(); i++) {
+				pstmt2.setInt(1, cList.get(i).getCategoryNo());
+				result += pstmt2.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt2);
+		}
+		return result;
+	}
+
+	public int updateMovieAttachment(Connection conn, Attachment attachment) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMovieAttachment");		
+		
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(6, attachment.getRefType());
+			pstmt.setInt(1, attachment.getFileType());
+			pstmt.setInt(2, attachment.getFileLevel());
+			pstmt.setString(3, attachment.getOriginName());
+			pstmt.setString(4, attachment.getChangeName());
+			pstmt.setString(5, attachment.getFilePath());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 
 	

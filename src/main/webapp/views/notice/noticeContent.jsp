@@ -9,6 +9,7 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
+	int p = (int)request.getAttribute("p");
 %>
 <!DOCTYPE html>
 <html>
@@ -112,14 +113,20 @@
                         </div>
                         <div class="notice_content"><%=n.getNoticeContent()%><br><br><%if(at != null){ %><img style="width: 300px; height: 300px;" src="<%=contextPath+ "/" + at.getFilePath() + at.getChangeName()%>"><%} %></div>
                         
-                        <button type="button" class="btn btn-secondary backbtn" onclick="history.back();">뒤로가기</button>
+                        <button type="button" class="btn btn-secondary backbtn" onclick="back(<%=p%>);">뒤로가기</button>
                     
                     </div> <br><br>
                 </section>
                 <!-- Section end -->
       </div>
     </div>	
-		
+	
+	<script>
+		function back(p){
+			location.href="<%=contextPath%>/list.no?page=" + p;
+		}
+	</script>
+	
 	<!-- 컨텐츠 부분 종료 -->
 		
 	<%@ include file="/views/common/footer.jsp" %>

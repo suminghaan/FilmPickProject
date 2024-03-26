@@ -14,9 +14,9 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
-	System.out.println(nm);
-	System.out.println(pList);
-	System.out.println(cList);
+	//System.out.println(nm);
+	//System.out.println(pList);
+	//System.out.println(cList);
 %>
 <!DOCTYPE html>
 <html>
@@ -114,6 +114,8 @@
    	}
    	.viewPerson{
    	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
    	}
 </style>
 </head>
@@ -155,8 +157,8 @@
                               <!-- 기존 없는영화신청글 카테고리명 option 찾아서 selected 속성 부여하도록 script -->
                               <script>
 	                   			$(function(){
-	                 				$("#update_form option").each(function(){
-	                 					if($(this).val() == "<%= cList.get(0).getCategoryNo() %>"){
+	                 				$("#exampleFormControlSelect1 option").each(function(){
+	                 					if($(this).val() == "<%= nm.getNmViewGrade() %>"){
 	                 						$(this).attr("selected", true);
 	                 					}
 	                 				})
@@ -167,7 +169,7 @@
 
                               <div class="form-group">
                                   <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리(필수)</label> <br>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required value="<%=nm.getNmStory()%>"></textarea>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required><%=nm.getNmStory()%></textarea>
                               </div>
                               
 
@@ -200,7 +202,7 @@
                               
 
                               <br><br>
-                              <div class="form-group form-category" style="color:black;">
+                              <div class="form-group form-category" style="color:black;" id="catecate">
                               영화 장르 선택(필수) <br>
                               
                                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="category">
@@ -235,12 +237,15 @@
                                       <label class="form-check-label" for="inlineCheckbox10">SF</label>
                               </div>
                               <br><br>
+                             
                               <script>
 	                   			$(function(){
-	                 				$(".form-category input").each(function(){
-	                 					if($(this).val() == "<%= cList.get(0).getCategoryNo() %>"){
+	                 				$("#catecate input").each(function(){
+	                 				<%for(int i=0; i<cList.size(); i++){%>
+	                 					if($(this).val() == "<%= cList.get(i).getCategoryNo() %>"){
 	                 						$(this).attr("checked", true);
 	                 					}
+	                 				<%}%>
 	                 				})
 	                 			})
                               </script>
@@ -308,27 +313,28 @@
 
                               <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
-                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요." value="<%=nm.getNmUserRequest()%>"></textarea>
+                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest()%></textarea>
                               </div>
 
-                              <div style="color:black;">
+                              <div style="color:black;" id="nickNameRequest">
                                   <input type="checkbox" id="idCheck" value="Y" name="nicknameStatus" style="margin-left: 1000px;">
                                   <label class="form-check-label" for="idCheck">닉네임 정보제공 동의(선택)</label> 
                                   
-                                  <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">업로드</button> <br>
+                                  <button type="button" class="btn btn-outline-secondary" style="float: right;" data-toggle="modal" data-target="#submitModal">수정하기</button> <br>
                                   
                                   <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
                               </div>
                               
                            <script>
                      			$(function(){
-                     				$("#idCheck").each(function(){
+                     				$("#nickNameRequest input").each(function(){
                      					if($(this).val() == "<%= nm.getNmUserRequest() %>"){
                      						$(this).attr("checked", true);
                      					}
                      				})
                      			})
                      		</script>
+
                               
                                       <!-- 영화등록 Modal -->
                                       <div class="modal" id="submitModal" style="color:black;">
@@ -343,7 +349,7 @@
                                           
                                                   <!-- Modal body -->
                                                   <div class="modal-body">
-                                                      신청하시겠습니까?
+                                                      수정하시겠습니까?
                                                   </div>
                                           
                                                   <!-- Modal footer -->
@@ -381,12 +387,24 @@
                           <!-- Modal body -->
                           <div class="modal-body">
                               <input type="text" name="inputPerson" class="form-control inputPerson"">
-                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                              <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" >검색</button>
                               <hr>
                               <div class="viewPerson">
                                   
                               </div>
                           </div>
+                          <!-- onclick="searchPerson();" -->
+                        <script>
+                				$(".inputPerson").on("input", function(){
+                					
+                					if ($(this).val().trim() === "") {
+                						$(".viewPerson").html("");
+                					} else {
+                						searchPerson();
+                					}
+                					
+                				})
+                  		</script>
                   
                           <!-- Modal footer -->
                           <div class="modal-footer">
