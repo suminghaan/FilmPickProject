@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
+import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Movie;
