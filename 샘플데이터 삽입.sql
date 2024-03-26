@@ -3658,6 +3658,8 @@ INSERT INTO CANCELED_MEM VALUES(23, 2, '2021-12-19');
 
 -- 신고 테이블 샘플데이터 (김지우)
 INSERT INTO REPORT VALUES(SEQ_REPORT_NO.NEXTVAL, '1', '게시판에 욕설 남김', '2024-03-22', 1, 2, '1', 1);
+INSERT INTO REPORT VALUES(SEQ_REPORT_NO.NEXTVAL, '2', '게시판에 도배함', '2024-03-22', 1, 2, '1', 1);
+INSERT INTO REPORT VALUES(SEQ_REPORT_NO.NEXTVAL, '1', '게시판에 욕설 남김', '2024-03-22', 1, 2, '1', 1);
 
 -- 문의 테이블 샘플데이터 (김지우)
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원가입 관련 문제', '분명히 회원가입을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-21', 'N', 30, 1, NULL, NULL);

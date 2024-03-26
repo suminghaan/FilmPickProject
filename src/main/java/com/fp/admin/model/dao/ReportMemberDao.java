@@ -80,7 +80,9 @@ public class ReportMemberDao {
 									, rset.getInt("REPORTCOUNT")
 									, rset.getString("SIGNIN_DATE")
 									, rset.getInt("BOARDCOUNT")
-									, rset.getInt("REPLYCOUNT")));
+									, rset.getInt("REPLYCOUNT")
+									, rset.getString("REPORT_CONTENT")));
+				System.out.println(rset.getString("REPORT_CONTENT"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

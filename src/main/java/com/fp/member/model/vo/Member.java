@@ -24,10 +24,11 @@ public class Member {
 	private int memBoardCnt; // 회원이 작성한 게시글 개수 ( (관리자) 회원 작성 게시글 조회하는 페이지에서 사용할 필드 )
 	private int memReplyCnt; // 회원 작성 댓글 개수
 	private int memReportCnt; // 회원이 신고받은 횟수
+	private String reportContent; // 회원이 신고받은 내용(사유)
 	
 	// 신고회원관리 조회용으로 사용할 매개변수 생성자 (김지우)
 	public Member(String memId, String nickname, int memReportCnt, String signInDate, int memBoardCnt,
-			int memReplyCnt) {
+			int memReplyCnt, String reportContent) {
 		super();
 		this.memId = memId;
 		this.nickname = nickname;
@@ -35,6 +36,7 @@ public class Member {
 		this.signInDate = signInDate;
 		this.memBoardCnt = memBoardCnt;
 		this.memReplyCnt = memReplyCnt;
+		this.reportContent = reportContent;
 	}
 	
 
@@ -341,6 +343,15 @@ public class Member {
 
 	public void setMemReportCnt(int memReportCnt) {
 		this.memReportCnt = memReportCnt;
+	}
+
+	public String getReportContent() {
+		return reportContent;
+	}
+
+
+	public void setReportContent(String reportContent) {
+		this.reportContent = reportContent;
 	}
 
 	@Override
