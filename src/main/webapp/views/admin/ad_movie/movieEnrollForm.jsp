@@ -175,10 +175,10 @@
                 <div class="form-group">
                     <label for="mGrade">영화관람등급</label>
                     <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;" required>
-                        <option value="1">전체관람</option>
-                        <option value="2">12세 관람가</option>
-                        <option value="3">15세 관람가</option>
-                        <option value="4">청소년관람불가</option>
+                        <option value="전체관람">전체관람</option>
+                        <option value="12세 관람가">12세 관람가</option>
+                        <option value="15세 관람가">15세 관람가</option>
+                        <option value="청소년관람불가">청소년관람불가</option>
                     </select>
                 </div>
                     
@@ -210,7 +210,7 @@
 
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
-                    <input type="text" name="casting" class="form-control" style="width: 300px;">
+                    <input type="text" name="casting" class="form-control" style="width: 300px;" required>
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 </div>
                 <br>
@@ -226,7 +226,7 @@
                     <div class="form-check form-check-inline">
                     <% for(Category c :list){ %>
             			<% if(c.getCategoryStatus().equals("Y")){ %>
-            				<input class="category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>" value="<%=c.getCategoryNo() %>">
+            				<input class="category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>" required value="<%=c.getCategoryNo() %>">
                         	<label class="form-check-label" for="<%= c.getCategoryNo() %>"><%=c.getCategoryName() %></label>
             			<% } %>
             		<% } %>           		
@@ -251,7 +251,7 @@
  
                 <label>영화포스터</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" onchange="previewImage(event)">
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" onchange="previewImage(event)" required>
                     <label class="custom-file-label" for="customFile1">파일추가</label>
                     <img id="preview" alt="미리보기이미지">
                 </div>
@@ -260,7 +260,7 @@
 
                 <label>예고편영상</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" onchange="previewVideo(event)">
+                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" onchange="previewVideo(event)" required>
                     <label class="custom-file-label" for="customFile2">파일추가</label>
                     <video id="previewVideo" controls alt="미리보기예고편"></video>
                 </div>

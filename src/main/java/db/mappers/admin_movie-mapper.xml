@@ -472,5 +472,87 @@
 				  , ? <!-- 저장경로 -->
 				)
 		</entry>
-
+		
+		<!-- 영화수정 [수민] -->
+		<!--  영화수정_영화 -->
+		<entry key="updateMovie">
+			UPDATE
+				MOVIE				
+			 SET  MV_NAME = ?
+				, MV_OPENDATE = ?
+				, MV_NATION = ?
+				, MV_RTIME = ?
+				, MV_STORY = ?
+				, VIEW_RATING = ?
+				, CURRENT_SCREENING = ?
+				, MV_POSTER = ?
+				, MV_PREVIEW = ?
+			WHERE MV_NO = ?
+				
+		</entry>
+		
+		<!-- 영화수정_인물_삭제 -->
+		<entry key="updateMoivePersonDelete">
+		DELETE
+		  FROM CASTING
+		 WHERE MOVIE_NO = ?
+		</entry>
+		
+		<!-- 영화수정_인물_등록 -->
+		<entry key="updateMoivePersonInsert">
+		INSERT
+		  INTO CASTING
+		  (
+		  	CASTING_NO <!-- 출연정보번호 -->
+		  , PERSON_NO <!-- 인물번호 -->
+		  , MOVIE_NO <!-- 영화번호 -->
+		  , CASTING <!-- 배역 -->
+		  )
+		  VALUES
+		  (
+		  	SEQ_CASTING_NO.NEXTVAL <!-- 없는 영화 인물 번호 -->
+		  , ? <!-- 인물번호 -->
+		  , ? <!-- 영화번호 -->
+		  , ? <!-- 배역 -->
+		  )
+		</entry>
+		
+		<!-- 영화수정_카테고리_삭제 -->
+		<entry key="updateMovieCategoryDelete">
+			DELETE
+		  		FROM MOVIE_CATEGORY
+		 	WHERE MV_NO = ?
+		</entry>
+		
+		<!-- 영화수정_카테고리_등록 -->
+		<entry key="updateMovieCategoryInsert">
+			INSERT
+			  INTO MOVIE_CATEGORY
+			  (
+			  	MV_CATEGORY_NO <!-- 영화 장르번호 -->
+			  , CATEGORY_NO <!-- 장르번호 -->
+			  , MV_NO <!-- 영화번호 -->
+			  )
+			  VALUES
+			  (
+			  	SEQ_MOVIE_CATEGORY_NO.NEXTVAL <!-- 영화 장르번호 -->
+			  , ? <!-- 장르번호 -->
+			  , ? <!-- 영화번호 -->
+			  )
+		</entry>
+		
+		<!-- 영화수정_첨부파일_수정 -->
+		<entry key="updateMovieAttachment">
+			UPDATE
+				ATTACHMENT
+			  SET <!--FILE_NO = ?  첨부파일 번호 -->
+				    REF_TYPE = ? <!-- 첨부파일 타입 -->
+				  , FILE_TYPE = ? <!-- 사진1 | 영상2 -->
+				  , FILE_LEVEL = ? <!-- 파일레벨 -->
+				  , ORIGIN_NAME = ? <!-- 원본명 -->
+				  , CHANGE_NAME = ? <!-- 수정명 -->
+				  , FILE_PATH = ? <!-- 저장경로 -->
+			WHER REF_NO = ? <!-- 영화번호 -->
+				)
+		</entry>
 </properties>

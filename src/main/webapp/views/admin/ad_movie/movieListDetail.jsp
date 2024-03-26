@@ -156,22 +156,23 @@
             <hr>
         </div>
         
-        <form action="" method="">
-            <div class="all">               
+        <form action="<%=contextPath %>/updateMovie.admo" method="post" enctype="multipart/form-data" id="updateMovie">
+            <div class="all">  
+            	<input type="hidden" id="movieNo" name="mNo" value="<%=m.getMvNo()%>">             
                 <div class="form-group">
                     <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=m.getMvName() %>" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="mTitle" required value="<%=m.getMvName() %>" style="width: 500px;">
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="mGrade">영화관람등급</label>
-                    <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;">
-					    <option value="1" <%= (m.getViewRating() != null && m.getViewRating().equals("전체관람가")) ? "selected" : "" %>>전체관람</option>
-					    <option value="2" <%= (m.getViewRating() != null && m.getViewRating().equals("12세 관람가")) ? "selected" : "" %>>12세 관람가</option>
-					    <option value="3" <%= (m.getViewRating() != null && m.getViewRating().equals("15세 관람가")) ? "selected" : "" %>>15세 관람가</option>
-					    <option value="4" <%= (m.getViewRating() != null && m.getViewRating().equals("청소년 관람불가")) ? "selected" : "" %>>청소년관람불가</option>
+                    <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;" required>
+					    <option value="전체관람가" <%= (m.getViewRating() != null && m.getViewRating().equals("전체관람가")) ? "selected" : "" %>>전체관람</option>
+					    <option value="12세 관람가" <%= (m.getViewRating() != null && m.getViewRating().equals("12세 관람가")) ? "selected" : "" %>>12세 관람가</option>
+					    <option value="15세 관람가" <%= (m.getViewRating() != null && m.getViewRating().equals("15세 관람가")) ? "selected" : "" %>>15세 관람가</option>
+					    <option value="청소년 관람불가" <%= (m.getViewRating() != null && m.getViewRating().equals("청소년 관람불가")) ? "selected" : "" %>>청소년관람불가</option>
 					</select>
                 </div>
                     
@@ -179,7 +180,7 @@
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getMvStory() %></textarea>                
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;" required><%=m.getMvStory() %></textarea>                
                 </div>
                 
 
@@ -189,11 +190,11 @@
                 
                 	<div>
                     	<label>개봉일</label>
-                    	<input type="date" name="dateIn" value="<%=m.getMvOpenDate() %>" class="form-control" style="width: 300px;">
+                    	<input type="date" name="dateIn" value="<%=m.getMvOpenDate() %>" class="form-control" style="width: 300px;" required>
                     </div>
                     <div>
                     	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" value="<%=m.getMvRTime() %>" class="form-control" style="width: 300px;">
+                    	<input type="text" name="runningTime" value="<%=m.getMvRTime() %>" class="form-control" style="width: 300px;" required>
                 	</div>
                 </div>
                 <br>
@@ -203,7 +204,7 @@
 
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
-                    <input type="text" name="casting" class="form-control" style="width: 300px;">
+                    <input type="text" name="casting" class="form-control casting" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 </div>
                 <div class="person-div">
@@ -214,8 +215,9 @@
                 	<div class="castingList">
                 	<% if(m.getMvNo() == Integer.parseInt(p.getMovieNo())){ %>
                 		<div class="person">
+                		<input type="hidden" name="personNo" value="<%=p.getpNo()%>">
 	                    <img src="<%=p.getpFile() %>"> <%=p.getpName() %> <br>
-	                    <input type="text" name="person_role" value="<%=p.getCasting()%>">
+	                    <input type="text" name="movieJob" class="casting" value="<%=p.getCasting()%>">
 	                    </div>
 	                 <% } %>
 	                    <!-- 
@@ -258,12 +260,13 @@
                     <input type="radio" id="radio2" name="nation" class="nation" value="2">
                     <label for="radio2">해외</label>
                 </div>
+                </div>
                 
                 <br><br>
  
                 <label>영화포스터</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="">
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" > 
                     <label class="custom-file-label" for="customFile1">파일추가</label>
                     <img src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
                 </div>
@@ -272,7 +275,7 @@
 
                 <label>예고편영상</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="">
+                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" >
                     <label class="custom-file-label" for="customFile2">파일추가</label>
                     <video src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
                 </div>
@@ -283,7 +286,7 @@
                 <label>기타 추가 희망 이미지 또는 동영상</label>
                 
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="">
+                        <input type="file" class="custom-file-input" id="customFile3" name="upfile">
                         <label class="custom-file-label" for="customFile3">파일추가</label>
                         <% if(!alist.isEmpty()){ %>
                         	<% for(Attachment a : alist){ %>                   	
@@ -302,38 +305,37 @@
                 <br>
 
                 <div class="form-group">
-                    <label>첫 페이지 노출 선택여부 : </label>
+                    <label>현재 상영여부 : </label>
                     <br>
-                    <input type="radio" id="radioX" class="fpage" name="fpage" value="N"> 
-                    <label for="radioX">선택안함</label>
+                    <input type="radio" id="radioX" name="currentScreening" value="N" checked> 
+                    <label for="radioX">현재 미상영</label>
 
-                    <input type="radio" id="radioM" class="fpage" name="fpage" value="Y">
-                    <label for="radioM">첫페이지 노출</label>
+                    <input type="radio" id="radioM" name="currentScreening" value="Y">
+                    <label for="radioM">상영중</label>
                 	
                 </div>
                 
                 <% if(m.getNmUserRequest() != null){ %>
                 <div class="form-group">
                     <label>사용자 요청사항</label>
-                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;"><%=m.getNmUserRequest() %></textarea>       
+                    <textarea class="form-control" id="userRequest" rows="5" name="userRequest" style="width: 500px;"><%=m.getNmUserRequest() %></textarea>       
                 </div>
                 <br>
                 
                 <!-- 사용자가 등록한 영화일 경우 -->
                 <div class="form-group inputUser">
-                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
                     <div class="userInfo">
                         <p><label>등록한 사용자 ID : </label><%=m.getMemNo() %></p>
                     </div>
                 </div>
                 <%} %>
-                <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('내용이 수정되었습니다.')">수정하기</button>
+                <button type="submit" class="btn btn-outline-secondary" style="float: right;">수정하기</button>
                 
             </div>
         </form>
-        <br><br><br><br><br><br><br>
-   	 </div>
+        <br><br><br><br><br><br><br> 	 
     </section>
+    </div>
 
     
 
@@ -510,6 +512,58 @@
 	$("#personRemoveBtn").click(function(){
            $(".person-div").find("table").last().remove();            
          });
+	
+	// 제출 시 카테고리 체크 여부 검사
+	$("#updateMovie").submit(function(event) {
+		let categoryChecked = false;
+		
+		event.preventDefault();
+		
+		$(".category").each(function(index, el) {
+			if($(el).is("checked")) {
+				categoryChecked = true;
+			}
+		})
+		
+		if(categoryChecked) {
+			this.submit();
+		} else {
+			alert("카테고리를 체크해주세요!");
+		}
+		
+	})
+	
+	// 제출 시 인물 등록여부 검사
+	$("#updateMovie").submit(function(event)){
+		let castingChecked = false
+		
+		event.preventDefault();
+		
+		$(".casting").each(function(index, el){
+			if($(el) != null){
+				castingChecked = true;
+			}
+		}}
+		if(castingChecked){
+			this.submit();
+		}else{
+			alert("인물등록이 안되었습니다!")
+		}
+	}
+	
+	// 제출 시 메인포스터와 예고편 등록 여부 검사
+	$("#updateMovie").submit(function(event)){
+
+		event.preventDefault();
+		
+		if($(".mposter").val() != null && $(".mpreview").val() != null){
+			this.submit();
+		}else{
+			alert("메인 포스터와 메인예고편은 필수 등록입니다 ! ")
+		}
+		
+	}
+	
 	</script>
 	
 
