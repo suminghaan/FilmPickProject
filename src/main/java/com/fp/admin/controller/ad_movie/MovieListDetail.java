@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fp.admin.model.service.MovieService;
 import com.fp.common.model.vo.Attachment;
+import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 import com.fp.person.model.vo.Person;
 
@@ -41,7 +42,9 @@ public class MovieListDetail extends HttpServlet {
 		Movie m = new MovieService().MovieListDetail(mvNo);
 		List<Person> plist = new MovieService().MovieListDetailPerson(mvNo);
 		List<Attachment> alist = new com.fp.movie.model.service.MovieService().selectAddiMovie(mvNo);
+		List<Category> clist = new MovieService().movieCategoryList();
 		
+		request.setAttribute("clist", clist);
 		request.setAttribute("m", m);
 		request.setAttribute("plist", plist);
 		request.setAttribute("alist", alist);
