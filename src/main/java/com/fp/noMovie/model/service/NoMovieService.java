@@ -43,6 +43,29 @@ public class NoMovieService {
 	}
 	
 	/**
+	 * @author 호용
+	 * 신청한 영화 수정을 위한 메소드
+	 */
+	public int updateNoMovie(NoMovie nm, List<Person> pList, List<Category> cList, Attachment at, int ext) {
+		Connection conn = getConnection();
+		int result1 = nMDao.updateNoMovie(conn, nm);
+		int result2 = nMDao.updateNoMoviePerson(conn, pList, nm);
+		int result3 = nMDao.updateNoMovieCategory(conn, cList, nm);
+		int result4 = 1;
+		
+		if(at != null) {
+			result4 = nMDao.updateNoMovieAttachment(conn, at, ext, nm);
+		}
+		
+		if(result1 > 0 && result2 > 0 && result3 > 0 && result4 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result1 * result2 * result3 * result4;
+	}
+	
+	/**
 	 * 없는영화신청 현황에 띄울 값들을 담기위한 메소드
 	 * @param memNo 회원번호
 	 * @author 호용 
@@ -58,11 +81,12 @@ public class NoMovieService {
 	 * 없는영화 수정페이지에서 띄울 값들을 담기위한 메소드
 	 * @author 호용
 	 */
-	public List<NoMovie> selectNoMovieAll(int noMovieNo){
+	public NoMovie selectNoMovieAll(int noMovieNo){
 		Connection conn = getConnection();
-		List<NoMovie> nlist = nMDao.selectNoMovieAll(conn, noMovieNo);
+		NoMovie nm = nMDao.selectNoMovieAll(conn, noMovieNo);
 		close(conn);
-		return nlist;
+		System.out.println("서비스단에서의 nm : " + nm);
+		return nm;
 	}
 	
 	/**

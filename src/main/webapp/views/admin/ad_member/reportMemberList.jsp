@@ -6,6 +6,7 @@
 <%
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	List<Member> pageList = (List<Member>) request.getAttribute("pageList");
+	String reportContent = "";
 	
 %>
 <!DOCTYPE html>
@@ -47,7 +48,7 @@ table{
             <tr class="table-active">
                 <td colspan="7">
                     <span style="margin-right: 30px;">선택한 회원</span>
-                    <button type="button" class="btn btn-secondary" style="margin-right: 10px;" data-toggle="modal" data-target="#suspendModal">활동중지</button>
+                    <button type="button" class="btn btn-secondary" onclick="userSuspend();" style="margin-right: 10px;" data-toggle="modal" data-target="#suspendModal">활동중지</button>
                     <button type="button" class="btn btn-secondary" onclick="withdrawal();">강제탈퇴</button></td>
                 <td>
             </tr>
@@ -72,11 +73,12 @@ table{
             <tr>
                 <td><div class="form-check"><input type="checkbox"></div></td>
                 <td><%=m.getMemId()%></td>
-                <td id="userName"><%=m.getNickname()%></td>
+                <td id="userNickname"><%=m.getNickname()%></td>
                 <td><%=m.getMemReportCnt()%></td>
                 <td><%=m.getSignInDate()%></td>
                 <td><%=m.getMemBoardCnt()%></td>
                 <td><%=m.getMemReplyCnt()%></td>
+                <td id="reportContent" style="display: none;"><%=m.getReportContent()%></td>
                 <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
              <% } %>
@@ -174,6 +176,7 @@ table{
             </tbody>
         </table>
         </div>
+    <form method="<%=contextPath%>/updatesuspend.me">
         <!-- Modal -->
     <div class="modal fade" id="suspendModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -187,31 +190,31 @@ table{
             <div class="modal-body">
                 <div class="container" style="margin-bottom: 20px;">
                     <span class="modal-text">닉네임</span>
-                    <span>익명원</span>
+                    <span id="suspend-modal-nickname">익명원</span>
                 </div>
                 <div class="container" style="margin-bottom: 20px;">
                     <span class="modal-text">신고사유</span>
-                    <span>욕설</span>
+                    <span id="suspend-modal-reason">욕설</span>
                 </div>
                 <div class="container" style="margin-bottom: 20px;">
                     <span class="modal-text">활동중지 기간</span>
                     <span>
-                        <select>
-                            <option value="">3일</option>
-                            <option value="">7일</option>
-                            <option value="">15일</option>
-                            <option value="">30일</option>
+                        <select id="suspendDate">
+                            <option value="3">3일</option>
+                            <option value="7">7일</option>
+                            <option value="15">15일</option>
+                            <option value="30">30일</option>
                         </select>
                     </span>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center ">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">수정</button>
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">수정</button>
             </div>
         </div>
         </div>
     </div>
-
+	</form>
     <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content report-modal-content">
@@ -333,7 +336,20 @@ table{
             alert(userName + '님의 회원탈퇴가 취소되었습니다.');
         }
     };
-</script>
+    
+   	function userSuspend(){
+   		const userId = $('input:checked').parent().parent().next().text(); // 체크박스에 checked된 유저 아이디 값
+   		const userNickname = $('input:checked').parent().parent().next().next().text(); // 닉네임
+   		const reportContent = $('#reportContent').text(); // 신고사유
+   		//console.log(reportContent);
+   		$('#suspend-modal-nickname').text(userNickname);
+   		$('#suspend-modal-reason').text(reportContent);
+  		
+   		$('#suspendDate').on('change', function(){ // 사용자가 선택한 value값 가져오기
+   			console.log($(this).val());	
+   		});
+   	};
+  </script>
     </div>
 </body>
 </html>

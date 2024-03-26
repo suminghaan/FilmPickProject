@@ -92,7 +92,7 @@
                     <thead>
                         <tr class="notice_title" align="center" id="head">
                             <th style="color: rgb(158, 158, 158);" onclick="question_list();">문의현황확인</th>
-                            <th onclick="nomv();">없는영화신청</th>
+                            <th onclick="nomv(<%=loginMember.getMemNo()%>);">없는영화신청</th>
                             <th style="color: rgb(158, 158, 158);" onclick="mantoman();">1대1 문의</th>
                         </tr>
                     </thead>
@@ -179,7 +179,7 @@
                                 <%}else{ %>
                                 <textarea class="form-control comment" rows="6" readonly>처리중입니다.</textarea> <br><br>
                                 <%} %>
-                                <a href="<%=contextPath%>/updateForm.noMo=no<%=nm.getNmEnrollNo()%>" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
+                                <a href="<%=contextPath%>/updateForm.noMo?no=<%=nm.getNmEnrollNo()%>" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
                             </td>
                         </tr>
                         <%} %>
@@ -207,8 +207,8 @@
             	location.href="<%=contextPath%>/list.in?page=1";
             }
             
-            function nomv(){
-                location.href="<%=contextPath%>/list.noMv";
+            function nomv(memNo){
+                location.href="<%=contextPath%>/list.noMv?memNo=" + memNo;
             }
 
             function mantoman(){
