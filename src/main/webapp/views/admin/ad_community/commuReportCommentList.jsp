@@ -203,7 +203,7 @@
 
     <script>
         function reportBoard(){
-   			location.href = "../ad_member/reportMemberList.jsp";
+   			location.href = "<%=contextPath%>/rplist.me?page=1";
    		}
     </script>
 

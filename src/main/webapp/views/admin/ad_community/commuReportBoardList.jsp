@@ -266,7 +266,7 @@
   
 	  // 신고회원관리 버튼 지우가 페이지 구현하면 링크 연결 예정 
         function reportBoard(){
-   			location.href = "../ad_member/reportMemberList.jsp";
+   			location.href = "<%=contextPath%>/rplist.me?page=1";
    		}
     </script>
 
