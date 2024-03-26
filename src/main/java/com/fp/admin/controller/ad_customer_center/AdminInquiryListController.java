@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fp.admin.model.service.CustomerCenterService;
-import com.fp.admin.model.service.MemberService;
-import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.inquiry.model.vo.Inquiry;
 
@@ -61,13 +60,16 @@ public class AdminInquiryListController extends HttpServlet {
 		if (endPage > maxPage) {
 			endPage = maxPage;
 		}
-
+		
+		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-
+		
 		List<Inquiry> pageList = new CustomerCenterService().selectInquiryList(pi);
+		
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("pageList", pageList);
+		
 
 		request.getRequestDispatcher("/views/admin/ad_customer_center/inquiryList.jsp").forward(request, response);
 	}

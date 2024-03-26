@@ -13,6 +13,10 @@ public class Inquiry {
 	private String inqryADate; // 답변 작성일
 	private String adminId; //답변한 관리자 아이디
 	
+	private String originName;
+	private String atUrl;
+	
+	
 	public Inquiry() {}
 
 	
@@ -34,6 +38,38 @@ public class Inquiry {
 		this.inqryAContent = inqryAContent;
 	}
 
+
+
+	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryStatus, String inqryAContent,
+			String inqryDate, String originName, String atUrl) {
+		super();
+		this.inqryNo = inqryNo;
+		this.inqryTitle = inqryTitle;
+		this.inqryContent = inqryContent;
+		this.inqryStatus = inqryStatus;
+		this.inqryAContent = inqryAContent;
+		this.inqryDate = inqryDate;
+		this.originName = originName;
+		this.atUrl = atUrl;
+	}
+
+
+	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryDate, String inqryStatus, int memNo,
+			int adminNo, String inqryAContent, String inqryADate, String adminId, String originName, String atUrl) {
+		super();
+		this.inqryNo = inqryNo;
+		this.inqryTitle = inqryTitle;
+		this.inqryContent = inqryContent;
+		this.inqryDate = inqryDate;
+		this.inqryStatus = inqryStatus;
+		this.memNo = memNo;
+		this.adminNo = adminNo;
+		this.inqryAContent = inqryAContent;
+		this.inqryADate = inqryADate;
+		this.adminId = adminId;
+		this.originName = originName;
+		this.atUrl = atUrl;
+	}
 
 
 	public Inquiry(int inqryNo, String inqryTitle, String inqryContent, String inqryDate, String inqryStatus, int memNo,
@@ -91,6 +127,26 @@ public class Inquiry {
 //		this.inqryADate = inqryADate;
 //		this.adminId = adminId;
 	}
+
+	public String getOriginName() {
+		return originName;
+	}
+
+
+	public void setOriginName(String originName) {
+		this.originName = originName;
+	}
+
+
+	public String getAtUrl() {
+		return atUrl;
+	}
+
+
+	public void setAtUrl(String atUrl) {
+		this.atUrl = atUrl;
+	}
+
 
 	public int getInqryNo() {
 		return inqryNo;
@@ -172,12 +228,15 @@ public class Inquiry {
 		this.adminId = adminId;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Inquiry [inqryNo=" + inqryNo + ", inqryTitle=" + inqryTitle + ", inqryContent=" + inqryContent
 				+ ", inqryDate=" + inqryDate + ", inqryStatus=" + inqryStatus + ", memNo=" + memNo + ", adminNo="
-				+ adminNo + ", inqryAContent=" + inqryAContent + ", inqryADate=" + inqryADate + "]";
+				+ adminNo + ", inqryAContent=" + inqryAContent + ", inqryADate=" + inqryADate + ", adminId=" + adminId
+				+ ", originName=" + originName + ", atUrl=" + atUrl + "]";
 	}
+
 	
 	
 	

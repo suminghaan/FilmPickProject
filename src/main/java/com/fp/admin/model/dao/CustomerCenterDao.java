@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
+import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.inquiry.model.vo.Inquiry;
 import com.fp.member.model.vo.Member;
@@ -202,8 +203,10 @@ public class CustomerCenterDao {
 									, rset.getString("INQRY_TITLE")
 									, rset.getString("INQRY_CONTENT")
 									, rset.getString("INQRY_STATUS")
+									, rset.getString("INQRY_A_CONTENT")
 									, rset.getString("INQRY_DATE")
-									, rset.getString("INQRY_A_CONTENT")));
+									, rset.getString("ORIGIN_NAME")
+									, rset.getString("AT_URL")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -213,6 +216,31 @@ public class CustomerCenterDao {
 		}
 		return list;
 	}
+
+
+	public int updateInquiryAnswer(Connection conn, String inquiryAnswer, int adminNo, int inqryNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateInquiryAnswer");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inquiryAnswer);
+			pstmt.setInt(2, adminNo);
+			pstmt.setInt(3, inqryNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+	
 
 
 }

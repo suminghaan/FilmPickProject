@@ -47,24 +47,34 @@
 	<!-- 문의사항 조회, 페이징 용도 -->
 	<entry key="selectInquiryList">
 		SELECT *
-			FROM(
-			    SELECT ROWNUM RNUM, A.*
-			    FROM (
-			           SELECT INQRY_NO
-                             , INQRY_TITLE
-                             , INQRY_CONTENT
-                             , CASE WHEN INQRY_STATUS = 'Y' THEN '답변완료'
-                                    WHEN INQRY_STATUS = 'N' THEN '답변대기'
-                                END AS INQRY_STATUS
-                             , INQRY_DATE
-                             , NVL(INQRY_A_CONTENT, '없음') INQRY_A_CONTENT
-                             FROM INQUIRY
-                             ORDER BY INQRY_STATUS, INQRY_NO DESC
-                        ) A
+		FROM(
+		    SELECT ROWNUM RNUM, A.*
+		    FROM (
+		           SELECT DISTINCT INQRY_NO
+					             , INQRY_TITLE
+					             , INQRY_CONTENT
+					             , CASE WHEN INQRY_STATUS = 'Y' THEN '답변완료'
+					                    WHEN INQRY_STATUS = 'N' THEN '답변대기'
+					                END AS INQRY_STATUS
+					             , INQRY_DATE
+					             , NVL(INQRY_A_CONTENT, '없음') INQRY_A_CONTENT
+					             , ATT.ORIGIN_NAME
+					             , ATT.AT_URL
+		            FROM INQUIRY
+		            LEFT JOIN (
+		                        SELECT REF_NO,
+		                           MAX(ORIGIN_NAME) AS ORIGIN_NAME,
+		                           MAX(FILE_PATH || CHANGE_NAME) AS AT_URL
+		                        FROM ATTACHMENT
+		                        WHERE REF_TYPE = '7'
+		                        GROUP BY REF_NO
+		                        ) ATT ON INQRY_NO = ATT.REF_NO
+            ORDER BY INQRY_STATUS, INQRY_NO DESC
+                       ) A
 		)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
-	
+		
 	<entry key="selectInquiryListCount">
 		SELECT COUNT(*) COUNT
 		FROM INQUIRY
@@ -180,6 +190,15 @@
 		  FROM NO_MOVIE_ENROLL
 		 WHERE MEM_NO = ? <!-- 넘겨받은 회원번호 -->
 	</entry>
+	
+	<entry key="updateInquiryAnswer">
+		UPDATE INQUIRY
+		SET INQRY_A_CONTENT = ?
+			, INQRY_STATUS = 'Y'
+			, ADMIN_NO = ?
+		WHERE INQRY_NO = ?
+	</entry>
+	
 </properties>
 
 
