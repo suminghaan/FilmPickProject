@@ -81,6 +81,23 @@
 		  )
 	</entry>
 	
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_ENROLL 업데이트 sql문 [호용]  -->
+	<entry key="updateNoMovie">
+		UPDATE
+			   NO_MOVIE_ENROLL
+		   SET NM_TITLE = ? <!-- 제목 -->
+			 , NM_STORY = ? <!-- 줄거리 -->
+			 , NM_RELEASE_DATE = ? <!-- 개봉일 -->
+			 , NM_RUN_TIME = ? <!-- 러닝타임 -->
+			 , NM_USER_REQUEST = ? <!-- 사용자 요청사항 -->
+			 , NM_NICKNAME_STATUS = ? <!-- 닉네임 제공여부 -->
+			 , NM_NATION = ? <!-- 국내 | 해외 -->
+			 , NM_VIEW_GRADE = ? <!-- 관람등급 -->
+			 , NM_POSTER = ? <!-- 메인포스터 -->
+			 , NM_PREVIEW = ? <!-- 메인예고편 -->
+		 WHERE NM_ENROLL_NO = ? <!-- 매칭되는 없는영화 번호 -->
+	</entry>
+	
 	<!-- 없는영화신청시 출연인물들의 insert를 위한 sql문 [호용]-->
 	<entry key="insertNoMoviePerson">
 		INSERT
@@ -100,6 +117,15 @@
 		  )
 	</entry>
 	
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_CAST 업데이트 sql문 [호용] -->
+	<entry key="updateNoMoviePerson">
+		UPDATE
+			   NO_MOVIE_CAST
+		   SET PERSON_NO = ? <!-- 인물번호 -->
+		     , NM_CASTING = ? <!-- 배역 -->
+		 WHERE NM_ENROLL_NO = ? <!-- 없는영화신청번호 -->
+	</entry>
+	
 	<!-- 없는영화신청시 영화의 장르를 insert하는 sql문[호용] -->
 	<entry key="insertNoMovieCategory">
 		INSERT
@@ -116,6 +142,15 @@
 		  , SEQ_NO_MOVIE_ENROLL_NO.CURRVAL <!-- 없는영화 신청번호 -->
 		  )
 	</entry>
+	
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE 업데이트 sql문 [호용] -->
+	<entry key="updateNoMovieCategory">
+		UPDATE
+			   NO_MOVIE_GENRE
+		   SET CATEGORY_NO = ? <!-- 장르번호 -->
+		 WHERE NM_ENROLL_NO = ? <!-- 없는영화 신청번호 -->
+	</entry>
+	
 	
 	<!-- 없는영화 신청을 위한 sql문 ATTACHMENT 인설트(추가적인 파일이 있을 경우) [호용] -->
 	<entry key="insertNoMovieAttachment">
@@ -142,6 +177,17 @@
 		  , ? <!-- 저장경로 -->
 		  , 2
 		  )
+	</entry>
+	
+	<!-- 신청한 없는영화 수정을 위한 ATTACHMENT 업데이트 sql문 [호용] -->
+	<entry key="selectAttachment">
+		UPDATE
+			   ATTACHMENT
+		   SET FILE_TYPE = ? <!-- 사진1 | 영상2 -->
+		     , ORIGIN_NAME = ? <!-- 원본명 -->
+		     , CHANGE_NAME = ? <!-- 수정명 -->
+		 	 , FILE_PATH = ? <!-- 저장경로 -->
+		 WHERE REF_NO = ? <!-- 없는영화번호 -->
 	</entry>
 	
 	<!-- 없는영화신청 메인페이지에 보여져야될 값을 담은 sql문 [호용] -->
@@ -208,6 +254,7 @@
    	  	   AND REF_TYPE = 4
    	  	   AND FILE_LEVEL = 2
 	</entry>
+	
 </properties>
 
 

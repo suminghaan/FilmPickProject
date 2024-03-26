@@ -61,6 +61,36 @@ public class NoMovieDao {
 	
 	/**
 	 * @author 호용
+	 * 신청한 없는영화 수정을 위한 NO_MOVIE_ENROLL 업데이트
+	 */
+	public int updateNoMovie(Connection conn, NoMovie nm) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNoMovie");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nm.getNmTitle());
+			pstmt.setString(2, nm.getNmStory());
+			pstmt.setString(3, nm.getNmReleaseDate());
+			pstmt.setString(4, nm.getNmRunTime());
+			pstmt.setString(5, nm.getNmUserRequest());
+			pstmt.setString(6, nm.getNmNicknameStatus());
+			pstmt.setString(7, nm.getNmNation());
+			pstmt.setString(8, nm.getNmViewGrade());
+			pstmt.setString(9, nm.getNmPoster());
+			pstmt.setString(10, nm.getNmPreview());
+			pstmt.setInt(11, nm.getNmEnrollNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * @author 호용
 	 * 없는영화 신청을 위한 메소드 NO_MOVIE_CAST 인설트
 	 */
 	public int insertNoMoviePerson(Connection conn, List<Person> pList) {
@@ -74,6 +104,31 @@ public class NoMovieDao {
 				pstmt.setString(2, pList.get(i).getpJob());
 				result += pstmt.executeUpdate();
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * @author 호용
+	 * 신청한 없는영화 수정을 위한 NO_MOVIE_CAST 업데이트
+	 */
+	public int updateNoMoviePerson(Connection conn, List<Person> pList, NoMovie nm) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNoMoviePerson");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(3, nm.getNmEnrollNo());
+			for(int i=0; i<pList.size(); i++) {
+				pstmt.setInt(1, pList.get(i).getpNo());
+				pstmt.setString(2, pList.get(i).getpJob());
+				result += pstmt.executeUpdate();
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -107,6 +162,29 @@ public class NoMovieDao {
 	
 	/**
 	 * @author 호용
+	 * 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE 업데이트
+	 */
+	public int updateNoMovieCategory(Connection conn, List<Category> cList, NoMovie nm) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNoMovieCategory");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(2, nm.getNmEnrollNo());
+			for(int i=0; i<cList.size(); i++) {
+				pstmt.setInt(1, cList.get(i).getCategoryNo());
+				result += pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * @author 호용
 	 * 없는영화 신청을 위한 메소드 ATTACHMENT 인설트(추가적인 파일이 있을 경우)
 	 */
 	public int insertNoMovieAttachment(Connection conn, Attachment at, int ext) {
@@ -119,6 +197,30 @@ public class NoMovieDao {
 			pstmt.setString(2, at.getOriginName());
 			pstmt.setString(3, at.getChangeName());
 			pstmt.setString(4, at.getFilePath());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
+	 * @author 호용
+	 * 신청한 없는영화 수정을 위한 Attachment 업데이트
+	 */
+	public int updateNoMovieAttachment(Connection conn, Attachment at, int ext, NoMovie nm) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateNoMovieAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ext);
+			pstmt.setString(2, at.getOriginName());
+			pstmt.setString(3, at.getChangeName());
+			pstmt.setString(4, at.getFilePath());
+			pstmt.setInt(5, nm.getNmEnrollNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -163,7 +265,7 @@ public class NoMovieDao {
 	 * 없는영화 수정페이지에서 띄울 값들을 담기위한 메소드
 	 * @author 호용
 	 */
-	public List<NoMovie> selectNoMovieAll(Connection conn, int noMovieNo){
+	public NoMovie selectNoMovieAll(Connection conn, int noMovieNo){
 		NoMovie nm = null;
 		
 		PreparedStatement pstmt = null;
@@ -187,7 +289,8 @@ public class NoMovieDao {
 				nm.setNmUserRequest(rset.getString("NM_USER_REQUEST"));
 				nm.setNmNicknameStatus(rset.getString("NM_NICKNAME_STATUS"));
 				nm.setMemNo(rset.getInt("MEM_NO"));
-				nList.add(nm);
+				nm.setNmEnrollNo(noMovieNo);
+//				nList.add(nm);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -195,7 +298,8 @@ public class NoMovieDao {
 			close(rset);
 			close(pstmt);
 		}
-		return nList;
+		System.out.println("dao단에서의 nm : " + nm);
+		return nm;
 	}
 	
 	/**

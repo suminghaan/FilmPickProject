@@ -6,7 +6,7 @@
 <%@ page import="com.fp.common.model.vo.Attachment" %>
 <%@ page import="java.util.List" %>
 <%
-	List<NoMovie> nList = (List<NoMovie>)request.getAttribute("nList");
+	NoMovie nm = (NoMovie)request.getAttribute("nm");
 	List<Person> pList = (List<Person>)request.getAttribute("pList");
 	List<Category> cList = (List<Category>)request.getAttribute("cList");
 
@@ -14,6 +14,9 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
+	System.out.println(nm);
+	System.out.println(pList);
+	System.out.println(cList);
 %>
 <!DOCTYPE html>
 <html>
@@ -130,11 +133,11 @@
                       <div class="container-fluid"><br>
                           <h1 style="color:black;">없는영화신청 수정</h1> <br>
                           <form action="<%=contextPath%>/update.noMv" method="post" enctype="multipart/form-data" id="update_form">
-                          <input type="hidden" name="noMovieNo" value="<%=nList.get(0).getNmEnrollNo()%>">
+                          <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
                           <input type="hidden" name="memNo" value="<%=loginMember.getMemNo()%>">
                               <div class="form-group">
                                   <label for="exampleFormControlInput1" style="color:black;">영화제목(필수)</label> <br>
-                                  <input type="text" class="form-control" id="exampleFormControlInput1" name="movieName" style="width: 600px;" required value="<%=nList.get(0).getNmTitle()%>">
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" name="movieName" style="width: 600px;" required value="<%=nm.getNmTitle()%>">
                               </div>
 
                               <br>
@@ -164,7 +167,7 @@
 
                               <div class="form-group">
                                   <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리(필수)</label> <br>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required value="<%=nList.get(0).getNmStory()%>"></textarea>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required value="<%=nm.getNmStory()%>"></textarea>
                               </div>
                               
 
@@ -172,13 +175,13 @@
                               <div class="form-group dr">
                                 <div class="form-group" style="color:black;">
                                     개봉일(필수)
-                                    <input type="date" name="releaseDate" class="form-control" style="width: 300px;" required value="<%=nList.get(0).getNmReleaseDate()%>">
+                                    <input type="date" name="releaseDate" class="form-control" style="width: 300px;" required value="<%=nm.getNmReleaseDate()%>">
                                 </div><br><br><br><br>
                                 
 
                                 <div class="form-group" style="color:black;">
                                     러닝타임(필수)
-                                    <input type="text" name="runTime" class="form-control" style="width: 300px;" required value="<%=nList.get(0).getNmRunTime()%>">
+                                    <input type="text" name="runTime" class="form-control" style="width: 300px;" required value="<%=nm.getNmRunTime()%>">
                                 </div><br>
                               </div>
                               
@@ -258,7 +261,7 @@
                             <script>
                      			$(function(){
                      				$("#nations input").each(function(){
-                     					if($(this).val() == "<%= nList.get(0).getNmNation() %>"){
+                     					if($(this).val() == "<%= nm.getNmNation() %>"){
                      						$(this).attr("checked", true);
                      					}
                      				})
@@ -270,7 +273,7 @@
 
                               <p style="color:black;">영화포스터(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nList.get(0).getNmPoster()%>">
+                                  <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nm.getNmPoster()%>">
                                   <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -279,7 +282,7 @@
 
                               <p style="color:black;">예고편영상(필수)</p>
                               <div class="custom-file" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nList.get(0).getNmPreview()%>">
+                                  <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nm.getNmPreview()%>">
                                   <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                                   <img src="" alt="미리보기이미지">
                               </div>
@@ -305,7 +308,7 @@
 
                               <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
-                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요." value="<%=nList.get(0).getNmUserRequest()%>"></textarea>
+                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요." value="<%=nm.getNmUserRequest()%>"></textarea>
                               </div>
 
                               <div style="color:black;">
@@ -316,6 +319,17 @@
                                   
                                   <span style="color:  rgb(158, 158, 158); margin-left: 920px;">(동의시 영화정보에 닉네임이 기재됩니다)</span>
                               </div>
+                              
+                           <script>
+                     			$(function(){
+                     				$("#idCheck").each(function(){
+                     					if($(this).val() == "<%= nm.getNmUserRequest() %>"){
+                     						$(this).attr("checked", true);
+                     					}
+                     				})
+                     			})
+                     		</script>
+                              
                                       <!-- 영화등록 Modal -->
                                       <div class="modal" id="submitModal" style="color:black;">
                                           <div class="modal-dialog">
