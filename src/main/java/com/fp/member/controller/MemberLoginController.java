@@ -1,6 +1,8 @@
 package com.fp.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fp.common.model.vo.Approval;
 import com.fp.member.model.service.MemberService;
 import com.fp.member.model.vo.Member;
 
@@ -32,6 +35,7 @@ public class MemberLoginController extends HttpServlet {
 
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
+		
 		
 		Member m = new MemberService().loginMember(memId, memPwd);
 		HttpSession session = request.getSession();
