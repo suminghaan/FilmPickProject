@@ -8,6 +8,7 @@
 	Attachment at = (Attachment)request.getAttribute("at");
 	// null (첨부파일이 없을경우)
 	// 파일번호,원본명,실제서버에업로드된파일명,저장경로
+	int p = (int)request.getAttribute("p");
 %>
 <!DOCTYPE html>
 <html>
@@ -129,10 +130,17 @@
             <div class="question_ans">아직 답변이 없습니다.</div>
             <%} %>
 
-            <button type="button" class="btn btn-secondary btnback" onclick="history.back();">뒤로가기</button>
+            <button type="button" class="btn btn-secondary btnback" onclick="back(<%=p%>);">뒤로가기</button>
         
         </div><br><br><br>
     </section>
+    
+    <script>
+    	function back(p){
+			location.href="<%=contextPath%>/list.in?page=" + p;
+		}
+	</script>
+    
     <!-- 컨텐츠 부분 종료 -->
 
 	<%@ include file="/views/common/footer.jsp" %>

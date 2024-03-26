@@ -31,26 +31,28 @@ public class BoardDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int boardNo = Integer.parseInt(request.getParameter("no"));
-		BoardService bService = new BoardService();
-		// 1) 조회수 증가 (update)
-		int result = bService.increaseCount(boardNo);
-		
-		if(result > 0) {
-		// 조회수 증가 성공
-			Board b = bService.selectBoard(boardNo);
-			if(b.getbCategory().equals("1")) {
-				b.setbCategory("영화");
+
+			int boardNo = Integer.parseInt(request.getParameter("no"));
+			BoardService bService = new BoardService();
+			// 1) 조회수 증가 (update)
+			int result = bService.increaseCount(boardNo);
+			
+			if(result > 0) {
+			// 조회수 증가 성공
+				Board b = bService.selectBoard(boardNo);
+				if(b.getbCategory().equals("1")) {
+					b.setbCategory("영화");
+				}else {
+					b.setbCategory("잡담");
+				}
+				Attachment at = bService.selectAttachment(boardNo);
+				request.setAttribute("b", b);
+				request.setAttribute("at", at);
+				request.getRequestDispatcher("/views/community/postViews.jsp").forward(request, response);
 			}else {
-				b.setbCategory("잡담");
+			// 조회수 증가 실패
 			}
-			Attachment at = bService.selectAttachment(boardNo);
-			request.setAttribute("b", b);
-			request.setAttribute("at", at);
-			request.getRequestDispatcher("/views/community/postViews.jsp").forward(request, response);
-		}else {
-		// 조회수 증가 실패
-		}
+
 	}
 
 	/**

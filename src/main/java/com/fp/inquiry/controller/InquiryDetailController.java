@@ -31,6 +31,7 @@ public class InquiryDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int p = Integer.parseInt(request.getParameter("p"));
 		int inqryNo = Integer.parseInt(request.getParameter("no"));
 		InquiryService iService = new InquiryService();
 		System.out.println("문의사항번호 : " + inqryNo);
@@ -41,6 +42,7 @@ public class InquiryDetailController extends HttpServlet {
 //		System.out.println("서비스, dao단에서 전부 처리해서 받아온 Attachment : " + at);
 		request.setAttribute("inqu", inqu);
 		request.setAttribute("at", at);
+		request.setAttribute("p", p);
 		request.getRequestDispatcher("/views/serviceCenter/inquiryContent.jsp").forward(request, response);
 	}
 

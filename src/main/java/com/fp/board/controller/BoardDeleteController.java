@@ -29,6 +29,7 @@ public class BoardDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int boardNo = Integer.parseInt(request.getParameter("no"));
 		int result = new BoardService().deleteBoard(boardNo);
 		if(result > 0) {

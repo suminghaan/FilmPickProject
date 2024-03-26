@@ -103,7 +103,7 @@
 	                        </tr>
 	                        <%}else{ %>
 	                        	<%for(Inquiry in : list){ %>
-		                        <tr onclick="inquiryDetail(<%=in.getInqryNo()%>);">
+		                        <tr onclick="inquiryDetail(<%=in.getInqryNo()%>, <%=pi.getCurrentPage()%>);">
 		                            <td><%=in.getInqryTitle() %></td>
 		                            <td><%=in.getInqryDate() %></td>
 		                            <td><%=in.getInqryStatus() %></td>
@@ -152,8 +152,8 @@
 
         <script>
         
-        	function inquiryDetail(no){
-        		location.href="<%=contextPath%>/detail.in?no=" + no;
+        	function inquiryDetail(no, p){
+        		location.href="<%=contextPath%>/detail.in?no=" + no + "&p=" + p;
         	}
 
             function question_list(){

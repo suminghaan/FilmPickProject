@@ -349,7 +349,7 @@
               </div>
 
         </section>
-
+		 <label class="form-check-label" for="inlineCheckbox10">SF</label>
         <script>
  
         function searchPerson(){
@@ -367,7 +367,7 @@
                             result =  "<div class='check'>"
                                     +       "<table>"
                                     +           "<tr>"
-                                    +               "<td><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></td>"
+                                    +               "<td><label for='boxbox" + i + "'><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></label></td>"
                                     +           "</tr>"
                                     +           "<tr>"
                                     +               "<td class='personName'>" + person[i].pName + "</td>"
@@ -376,7 +376,7 @@
                                     +           "<tr>"
                                     +               "<td>" + person[i].pJob + "</td>"
                                     +           "</tr>"
-                                    +       "<input class='checkboxbox' type='checkbox'>"
+                                    +       "<input class='checkboxbox' type='checkbox' id='boxbox" + i + "'>"
                                     +       "</table>"
                                     +   "</div>";
                             $(".viewPerson").append(result);
@@ -438,6 +438,7 @@
                count--;
              }
          });
+		
 
         </script>
     
