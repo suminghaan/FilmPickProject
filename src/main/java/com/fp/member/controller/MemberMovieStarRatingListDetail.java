@@ -16,13 +16,13 @@ import com.fp.movie.model.vo.Review;
  * Servlet implementation class movieStarRatingListDetail
  */
 @WebServlet("/movieStarRatingListDetail")
-public class movieStarRatingListDetail extends HttpServlet {
+public class MemberMovieStarRatingListDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public movieStarRatingListDetail() {
+    public MemberMovieStarRatingListDetail() {
         super();
         // TODO Auto-generated constructor stub
     }

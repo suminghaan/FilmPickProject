@@ -6,7 +6,6 @@
 <%
 	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	List<Member> pageList = (List<Member>) request.getAttribute("pageList");
-	String reportContent = "";
 	
 %>
 <!DOCTYPE html>
@@ -71,6 +70,7 @@ table{
            	<% } else { %>
            	<% for(Member m : pageList){ %>
             <tr>
+                <td style="display: none;"><%=m.getMemNo()%>
                 <td><div class="form-check"><input type="checkbox"></div></td>
                 <td><%=m.getMemId()%></td>
                 <td id="userNickname"><%=m.getNickname()%></td>
@@ -78,106 +78,16 @@ table{
                 <td><%=m.getSignInDate()%></td>
                 <td><%=m.getMemBoardCnt()%></td>
                 <td><%=m.getMemReplyCnt()%></td>
-                <td id="reportContent" style="display: none;"><%=m.getReportContent()%></td>
+                <td class="reportContent" style="display: none;"><%=m.getReportContent()%></td>
                 <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
             </tr>
              <% } %>
              <% } %>
-            <!-- <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr>
-            <tr>
-                <td><div class="form-check"><input type="checkbox"></div></td>
-                <td>user999</td>
-                <td>익명원</td>
-                <td>1</td>
-                <td>2024-01-11</td>
-                <td>22</td>
-                <td>52</td>
-                <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#reportModal">확인</button></td>
-            </tr> -->
             </tbody>
         </table>
         </div>
-    <form method="<%=contextPath%>/updatesuspend.me">
         <!-- Modal -->
+    <form action="<%=contextPath%>/insertsuspend.me" method="post">
     <div class="modal fade" id="suspendModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -188,18 +98,20 @@ table{
             </button>
             </div>
             <div class="modal-body">
+            <input type="hidden" class="hiddenMemNo" id="hiddenMemNo" name="hiddenMemNo">
+            <input type="hidden" class="hiddenReason" id="hiddenReason" name="hiddenReason">
                 <div class="container" style="margin-bottom: 20px;">
                     <span class="modal-text">닉네임</span>
-                    <span id="suspend-modal-nickname">익명원</span>
+                    <span id="suspend-modal-nickname" name="nickname">익명원</span>
                 </div>
                 <div class="container" style="margin-bottom: 20px;">
                     <span class="modal-text">신고사유</span>
-                    <span id="suspend-modal-reason">욕설</span>
+                    <span id="suspend-modal-reason" name="reason">욕설</span>
                 </div>
                 <div class="container" style="margin-bottom: 20px;">
                     <span class="modal-text">활동중지 기간</span>
                     <span>
-                        <select id="suspendDate">
+                        <select id="suspendDate" name="suspendDate">
                             <option value="3">3일</option>
                             <option value="7">7일</option>
                             <option value="15">15일</option>
@@ -208,13 +120,13 @@ table{
                     </span>
                 </div>
             </div>
-            <div class="modal-footer d-flex justify-content-center ">
-            <button type="submit" class="btn btn-secondary" data-dismiss="modal">수정</button>
+            <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn btn-secondary">수정</button>
             </div>
         </div>
         </div>
-    </div>
-	</form>
+      </div>
+    </form>
     <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content report-modal-content">
@@ -340,14 +252,21 @@ table{
    	function userSuspend(){
    		const userId = $('input:checked').parent().parent().next().text(); // 체크박스에 checked된 유저 아이디 값
    		const userNickname = $('input:checked').parent().parent().next().next().text(); // 닉네임
-   		const reportContent = $('#reportContent').text(); // 신고사유
-   		//console.log(reportContent);
+   		const reportContent = $('input:checked').parent().parent().next().next().next().next().next().next().next().text(); // 신고사유
+   		const memNo = $('input:checked').parent().parent().prev().text();
+   		
+   		console.log(memNo);
+   		console.log(reportContent);
+   		
+   		$('#hiddenMemNo').val(memNo.trim());
+   		$('#hiddenReason').val(reportContent);
    		$('#suspend-modal-nickname').text(userNickname);
    		$('#suspend-modal-reason').text(reportContent);
   		
    		$('#suspendDate').on('change', function(){ // 사용자가 선택한 value값 가져오기
    			console.log($(this).val());	
    		});
+   		
    	};
   </script>
     </div>

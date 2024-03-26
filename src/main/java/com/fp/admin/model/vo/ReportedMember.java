@@ -2,13 +2,14 @@ package com.fp.admin.model.vo;
 
 public class ReportedMember { // reported_mem 테이블
 	private int memNo; // 회원 번호
-	private int adminMo; // 관리자 번호
+	private int adminNo; // 관리자 번호
 	private String limitReason; // 활동제한 사유
 	private String startDate; // 활동제한 시작일
 	private String endDate; // 활동제한 종료일 
 	private String activityStatus; // 활동상태
 	private String memId; // 회원 아이디
 	private String suspendDate; // 이용제한 회원 조회 페이지에서 표시할 활동중지 기간
+	private int endDateNum; // 신고회원관리 활동중지에 사용할 필드
 	
 	public ReportedMember() {}
 
@@ -21,18 +22,19 @@ public class ReportedMember { // reported_mem 테이블
 		this.activityStatus = activityStatus;
 		this.suspendDate = suspendDate;
 	}
-	
-	public ReportedMember(int memNo, int adminMo, String limitReason, String startDate, String endDate,
-			String activityStatus, String memId, String suspendDate) {
+
+	public ReportedMember(int memNo, int adminNo, String limitReason, String startDate, String endDate,
+			String activityStatus, String memId, String suspendDate, int endDateNum) {
 		super();
 		this.memNo = memNo;
-		this.adminMo = adminMo;
+		this.adminNo = adminNo;
 		this.limitReason = limitReason;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.activityStatus = activityStatus;
 		this.memId = memId;
 		this.suspendDate = suspendDate;
+		this.endDateNum = endDateNum;
 	}
 
 	public int getMemNo() {
@@ -43,12 +45,20 @@ public class ReportedMember { // reported_mem 테이블
 		this.memNo = memNo;
 	}
 
-	public int getAdminMo() {
-		return adminMo;
+	public int getAdminNo() {
+		return adminNo;
 	}
 
-	public void setAdminMo(int adminMo) {
-		this.adminMo = adminMo;
+	public void setAdminNo(int adminNo) {
+		this.adminNo = adminNo;
+	}
+
+	public int getadminNo() {
+		return adminNo;
+	}
+
+	public void setadminNo(int adminNo) {
+		this.adminNo = adminNo;
 	}
 
 	public String getLimitReason() {
@@ -99,12 +109,21 @@ public class ReportedMember { // reported_mem 테이블
 		this.suspendDate = suspendDate;
 	}
 
-	@Override
-	public String toString() {
-		return "ReportedMember [memNo=" + memNo + ", adminMo=" + adminMo + ", limitReason=" + limitReason
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", activityStatus=" + activityStatus
-				+ ", memId=" + memId + ", suspendDate=" + suspendDate + "]";
+	public int getEndDateNum() {
+		return endDateNum;
 	}
 
+	public void setEndDateNum(int endDateNum) {
+		this.endDateNum = endDateNum;
+	}
+
+	@Override
+	public String toString() {
+		return "ReportedMember [memNo=" + memNo + ", adminNo=" + adminNo + ", limitReason=" + limitReason
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", activityStatus=" + activityStatus
+				+ ", memId=" + memId + ", suspendDate=" + suspendDate + ", endDateNum=" + endDateNum + "]";
+	}
+
+	
 	
 }

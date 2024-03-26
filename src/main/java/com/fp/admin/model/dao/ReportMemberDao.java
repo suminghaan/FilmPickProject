@@ -81,8 +81,10 @@ public class ReportMemberDao {
 									, rset.getString("SIGNIN_DATE")
 									, rset.getInt("BOARDCOUNT")
 									, rset.getInt("REPLYCOUNT")
-									, rset.getString("REPORT_CONTENT")));
-				System.out.println(rset.getString("REPORT_CONTENT"));
+									, rset.getString("REPORT_CONTENT")
+									, rset.getInt("MEM_NO")));
+				
+				System.out.println(rset.getString("MEM_NO"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -196,6 +198,28 @@ public class ReportMemberDao {
 		}
 		
 		return cml;
+	}
+
+	public int insertReportedMem(Connection conn, ReportedMember rp) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReportedMem");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rp.getMemNo());
+			pstmt.setInt(2, rp.getadminNo());
+			pstmt.setString(3, rp.getLimitReason());
+			pstmt.setInt(4, rp.getEndDateNum());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
 	}
 
 }

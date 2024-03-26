@@ -1,5 +1,9 @@
 package com.fp.admin.model.service;
 
+import static com.br.common.template.JDBCTemplate.close;
+import static com.br.common.template.JDBCTemplate.commit;
+import static com.br.common.template.JDBCTemplate.getConnection;
+import static com.br.common.template.JDBCTemplate.rollback;
 import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
@@ -353,6 +357,28 @@ public class MemberService {
 		List<CancelMember> cml = rDao.cancelMemberList(conn, userId, sDate, eDate);
 		close(conn);
 		return cml;
+	}
+
+	/** 활동중지
+	 * 
+	 * @author 김지우
+	 * @param rp
+	 * @return
+	 */
+	public int insertReportedMem(ReportedMember rp) {
+		Connection conn = getConnection();
+
+		int result = rDao.insertReportedMem(conn, rp);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
 	}
 
 
