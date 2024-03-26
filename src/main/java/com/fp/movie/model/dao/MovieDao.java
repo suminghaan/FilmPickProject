@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
@@ -772,7 +773,80 @@ public class MovieDao {
 		
 		return result;
 	}
+	
+	// 리뷰에 대해 공감|비공감 표시 / 제거 메소드
+	// 0일 경우 리뷰에 대해 공감 표시, 1일 경우 리뷰에 대해 공감 제거, 2일 경우 리뷰에 대해 비공감 표시, 3일 경우 리뷰에 대해 비공감 제거
+	public int insertApproval(Connection conn, int reviewNo, int userNo, int type) {
+		String query = prop.getProperty("insertApproval");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, (type == 0 ? 1 : 2));
+			pstmt.setInt(2, userNo);
+			pstmt.setInt(3, reviewNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
+	public int deleteApproval(Connection conn, int reviewNo, int userNo, int type) {
+		String query = prop.getProperty("deleteApproval");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, reviewNo);
+			pstmt.setInt(3, (type == 1 ? 1 : 2));
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+//	사용자의 리뷰 공감|비공감 정보를 불러오는 메소드
+	public ArrayList<Approval> selectApproval(Connection conn, int memNo) {
+		String query = prop.getProperty("selectApproval");
+		ArrayList<Approval> apprList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, memNo);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Approval a = new Approval();
+				a.setApprovalType(rset.getInt("APPROVAL_TYPE"));
+				a.setMvReviewNo(rset.getInt("MV_REVIEW_NO"));
+				
+				apprList.add(a);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return apprList;
+	}
 	
 
 }

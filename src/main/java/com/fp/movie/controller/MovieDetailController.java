@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.person.model.service.PersonService;
 import com.fp.person.model.vo.Person;
+import com.fp.member.model.service.MemberService;
 import com.fp.member.model.vo.Member;
 
 /**
@@ -52,8 +54,10 @@ public class MovieDetailController extends HttpServlet {
 		Review review = null;
 		
 		if(userNo != 0) {
+			ArrayList<Approval> apprList = new MovieService().selectApproval(userNo);
 			review = new MovieService().selectUserReview(movieNo, userNo);
 			countMovieLike = new MovieService().selectMovieLike(movieNo, userNo);
+			request.setAttribute("apprList", apprList);
 		}
 		
 		if(m != null) {
