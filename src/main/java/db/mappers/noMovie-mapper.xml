@@ -117,13 +117,30 @@
 		  )
 	</entry>
 	
-	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_CAST 업데이트 sql문 [호용] -->
-	<entry key="updateNoMoviePerson">
-		UPDATE
-			   NO_MOVIE_CAST
-		   SET PERSON_NO = ? <!-- 인물번호 -->
-		     , NM_CASTING = ? <!-- 배역 -->
-		 WHERE NM_ENROLL_NO = ? <!-- 없는영화신청번호 -->
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_CAST DELETE sql문 1번과정 [호용] -->
+	<entry key="updateNoMoviePersonDelete">
+		DELETE
+		  FROM NO_MOVIE_CAST
+		 WHERE NM_ENROLL_NO = ?
+	</entry>
+	
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_CAST INSERT sql문 2번과정 [호용] -->
+	<entry key="updateNoMoviePersonInsert">
+		INSERT
+		  INTO NO_MOVIE_CAST
+		  (
+		  	NM_CAST_NO <!-- 없는영화인물번호 -->
+		  , PERSON_NO <!-- 인물번호 -->
+		  , NM_ENROLL_NO <!-- 없는영화신청번호 -->
+		  , NM_CASTING <!-- 배역 -->
+		  )
+		  VALUES
+		  (
+		  	SEQ_NO_MOVIE_CAST_NO.NEXTVAL <!-- 없는 영화 인물 번호 -->
+		  , ? <!-- 인물번호 -->
+		  , ? <!-- 없는 영화 신청 번호 -->
+		  , ? <!-- 배역 -->
+		  )
 	</entry>
 	
 	<!-- 없는영화신청시 영화의 장르를 insert하는 sql문[호용] -->
@@ -143,14 +160,29 @@
 		  )
 	</entry>
 	
-	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE 업데이트 sql문 [호용] -->
-	<entry key="updateNoMovieCategory">
-		UPDATE
-			   NO_MOVIE_GENRE
-		   SET CATEGORY_NO = ? <!-- 장르번호 -->
-		 WHERE NM_ENROLL_NO = ? <!-- 없는영화 신청번호 -->
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE DELETE sql문 1번과정 [호용] -->
+	<entry key="updateNoMovieCategoryDelete">
+		DELETE
+		  FROM NO_MOVIE_GENRE
+		 WHERE NM_ENROLL_NO = ?
 	</entry>
 	
+	<!-- 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE INSERT sql문 1번과정 [호용] -->
+	<entry key="updateNoMovieCategoryInsert">
+		INSERT
+		  INTO NO_MOVIE_GENRE
+		  (
+		  	NM_GENRE_NO <!-- 없는영화 장르번호 -->
+		  , CATEGORY_NO <!-- 장르번호 -->
+		  , NM_ENROLL_NO <!-- 없는영화 신청번호 -->
+		  )
+		  VALUES
+		  (
+		  	SEQ_NO_MOVIE_GENRE_NO.NEXTVAL <!-- 없는영화 장르번호 -->
+		  , ? <!-- 장르번호 -->
+		  , ? <!-- 없는영화 신청번호 -->
+		  )
+	</entry>
 	
 	<!-- 없는영화 신청을 위한 sql문 ATTACHMENT 인설트(추가적인 파일이 있을 경우) [호용] -->
 	<entry key="insertNoMovieAttachment">

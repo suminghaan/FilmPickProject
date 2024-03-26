@@ -167,7 +167,7 @@
 
                               <div class="form-group">
                                   <label for="exampleFormControlTextarea1" style="color:black;">영화줄거리(필수)</label> <br>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required value="<%=nm.getNmStory()%>"></textarea>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="movieStory" style="width: 600px;" required><%=nm.getNmStory()%></textarea>
                               </div>
                               
 
@@ -308,7 +308,7 @@
 
                               <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
-                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요." value="<%=nm.getNmUserRequest()%>"></textarea>
+                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest()%></textarea>
                               </div>
 
                               <div style="color:black;">

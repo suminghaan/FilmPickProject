@@ -112,34 +112,48 @@ public class NoMovieDao {
 		return result;
 	}
 	
+
 	/**
 	 * @author 호용
-	 * 신청한 없는영화 수정을 위한 NO_MOVIE_CAST 업데이트
+	 * 신청한 없는영화 수정을 위한 NO_MOVIE_CAST 업데이트(DELETE 한 후 INSERT)
 	 */
 	public int updateNoMoviePerson(Connection conn, List<Person> pList, NoMovie nm) {
 		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("updateNoMoviePerson");
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		String sql1 = prop.getProperty("updateNoMoviePersonDelete");
+		// 과정1. delete문 실행
 		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(3, nm.getNmEnrollNo());
-			for(int i=0; i<pList.size(); i++) {
-				pstmt.setInt(1, pList.get(i).getpNo());
-				pstmt.setString(2, pList.get(i).getpJob());
-				result += pstmt.executeUpdate();
-			}
-			//result += pstmt.executeUpdate();
+			pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, nm.getNmEnrollNo());
+			pstmt1.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(pstmt);
+			close(pstmt1);
+		}
+		// 과정2. insert문 실행
+		String sql2 = prop.getProperty("updateNoMoviePersonInsert");
+		try {
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(2, nm.getNmEnrollNo());
+			for(int i=0; i<pList.size(); i++) {
+				pstmt2.setInt(1, pList.get(i).getpNo());
+				pstmt2.setString(3, pList.get(i).getpJob());
+				result += pstmt2.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt2);
 		}
 		return result;
 	}
+
 	
 	/**
 	 * @author 호용
-	 * 없는영화 신청을 위한 메소드 NO_MOVIE_GENRE 인설트
+	 * 없는영화 신청을 위한 메소드 NO_MOVIE_GENRE 인설트 
 	 */
 	public int insertNoMovieCategory(Connection conn, List<Category> cList) {
 		int result = 0;
@@ -160,29 +174,43 @@ public class NoMovieDao {
 		
 	}
 	
+
 	/**
 	 * @author 호용
-	 * 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE 업데이트
+	 * 신청한 없는영화 수정을 위한 NO_MOVIE_GENRE 업데이트 (DELETE 한 후 INSERT)
 	 */
 	public int updateNoMovieCategory(Connection conn, List<Category> cList, NoMovie nm) {
 		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("updateNoMovieCategory");
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		String sql1 = prop.getProperty("updateNoMovieCategoryDelete");
 		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(2, nm.getNmEnrollNo());
+			pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, nm.getNmEnrollNo());
+			pstmt1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt1);
+		}
+		String sql2 = prop.getProperty("updateNoMovieCategoryInsert");
+		try {
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(2, nm.getNmEnrollNo());
 			for(int i=0; i<cList.size(); i++) {
-				pstmt.setInt(1, cList.get(i).getCategoryNo());
-				result += pstmt.executeUpdate();
+				pstmt2.setInt(1, cList.get(i).getCategoryNo());
+				result += pstmt2.executeUpdate();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(pstmt);
+			close(pstmt2);
 		}
 		return result;
+		
+		
 	}
-	
+
 	/**
 	 * @author 호용
 	 * 없는영화 신청을 위한 메소드 ATTACHMENT 인설트(추가적인 파일이 있을 경우)
