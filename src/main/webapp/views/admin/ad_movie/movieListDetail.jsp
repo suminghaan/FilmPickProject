@@ -370,6 +370,7 @@
             </div>
         </div>
     </div>
+    <!-- 
     <script>
     	function searchActor(){
     		$.ajax({
@@ -405,7 +406,7 @@
             $(".castingList").append(selectedActorInfo);
     	}
     </script>
-	
+	 -->
 	<script>
 	// 장르 선택
 	$(".form-check-input").each(function(index, el) {
