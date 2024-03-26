@@ -208,7 +208,7 @@
                 	<div class="castingList">
                 	<% if(m.getMvNo() == Integer.parseInt(p.getMovieNo())){ %>
                 		<div class="person">
-	                    <img src="<%=p.getpFile() %>" alt=""> <%=p.getpName() %> <br>
+	                    <img src="<%=p.getpFile() %>"> <%=p.getpName() %> <br>
 	                    <input type="text" name="person_role" value="<%=p.getCasting()%>">
 	                    </div>
 	                 <% } %>
@@ -362,6 +362,7 @@
                 
             </div>
         </form>
+        <br><br><br><br><br><br><br>
    	 </div>
     </section>
 
@@ -380,10 +381,10 @@
         
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <input type="text" name="runningTime" class="form-control">
-                    <button type="button" class="btn btn-secondary btn-sm psModal">검색</button>
+                    <input type="text" id="name" name="name" class="form-control">
+                    <button type="button" class="btn btn-secondary btn-sm psModal" onclick="searchActor();">검색</button>
                     <hr>
-                    <div>
+                    <div id="searchResults">
                         검색된 인물 나오는 공간
                     </div>
                 </div>
@@ -396,6 +397,41 @@
             </div>
         </div>
     </div>
+    <script>
+    	function searchActor(){
+    		$.ajax({
+    			url: "<%= contextPath %>/search.pe",
+    			type:"post",
+    			data: {name:$("#name").val()},
+    			success:function(person){
+    				
+    				let value = "";
+    				if(person == null){
+    					value = "";
+    				}else{
+    					for(let i = 0; i < person.length; i++){
+    						value += "<div class='person'>"
+    							+ "<img src='" + person[i].pFile + "'>" 
+    							+ person[i].pName;
+    	                     	+ "<br>"
+    	                     	+ "</div>";
+    					}
+    				}
+    				
+    				$("#searchResults").html(value);
+    			},
+    			error:function(){
+    				console.log("목록 조회 ajax 실패");
+    			}
+    		})
+    	}
+    	let selectedActor = null;
+    	function addActor(index) {
+    		selectedActor = index;
+    		let selectedActorInfo = "<div>" + person[selectedActor].pName + "</div>";
+            $(".castingList").append(selectedActorInfo);
+    	}
+    </script>
 	
 	<script>
 	// 장르 선택
