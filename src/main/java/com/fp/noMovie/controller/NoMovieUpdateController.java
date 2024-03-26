@@ -48,7 +48,7 @@ public class NoMovieUpdateController extends HttpServlet {
 			/*-------------------------------------------------------------------------------------------------------*/
 			// NO_MOVIE_ENROLL 테이블에 데이터 기록 
 			NoMovie nm = new NoMovie();
-			int nmEnrollNo = Integer.parseInt(request.getParameter("noMovieNo"));
+			int nmEnrollNo = Integer.parseInt(multiRequest.getParameter("noMovieNo"));
 			String nmTitle = multiRequest.getParameter("movieName"); // 없는영화 제목
 			String nmViewGrade = multiRequest.getParameter("viewGrade"); // 관람등급
 			String nmStory = multiRequest.getParameter("movieStory"); // 줄거리

@@ -128,7 +128,7 @@ public class NoMovieDao {
 				pstmt.setString(2, pList.get(i).getpJob());
 				result += pstmt.executeUpdate();
 			}
-			
+			//result += pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

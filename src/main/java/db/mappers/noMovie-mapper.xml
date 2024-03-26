@@ -180,7 +180,7 @@
 	</entry>
 	
 	<!-- 신청한 없는영화 수정을 위한 ATTACHMENT 업데이트 sql문 [호용] -->
-	<entry key="selectAttachment">
+	<entry key="updateNoMovieAttachment">
 		UPDATE
 			   ATTACHMENT
 		   SET FILE_TYPE = ? <!-- 사진1 | 영상2 -->
@@ -209,7 +209,7 @@
 			   NM_TITLE 
 			 , NM_VIEW_GRADE
 			 , NM_STORY
-			 , TO_CHAR(NM_RELEASE_DATE, 'YY-MM-DD') NM_RELEASE_DATE
+			 , NM_RELEASE_DATE
 			 , NM_RUN_TIME
 			 , NM_NATION
 			 , NM_POSTER
