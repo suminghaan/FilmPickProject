@@ -113,18 +113,18 @@
             <hr>
         </div>
         
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="all">                
                 <div class="form-group">
                     <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="" placeholder="제목입력" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="" placeholder="제목입력" style="width: 500px;" required>
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="mGrade">영화관람등급</label>
-                    <select class="form-control" id="mGrade" name="" style="width: 400px;">
+                    <select class="form-control" id="mGrade" name="mGrade" style="width: 400px;" required>
                         <option value="1">전체관람</option>
                         <option value="2">12세 관람가</option>
                         <option value="3">15세 관람가</option>
@@ -136,7 +136,7 @@
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;"></textarea>                
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;" required></textarea>                
                 </div>
                 
 
@@ -146,11 +146,11 @@
                 
                 	<div>
                     	<label>개봉일</label>
-                    	<input type="date" name="dateIn" class="form-control" style="width: 300px;">
+                    	<input type="date" name="openDate" class="form-control" style="width: 300px;" required>
                     </div>
                     <div>
                     	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" class="form-control" style="width: 300px;">
+                    	<input type="text" name="runTime" class="form-control" style="width: 300px;" required>
                 	</div>
                 </div>
                 <br>
@@ -164,6 +164,9 @@
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 </div>
                 <br>
+                <div class="person-div">
+                 <!-- 인물정보 들어갈 테이블 생성될 공간 -->
+                </div>
 
 
                 <div class="form-group">

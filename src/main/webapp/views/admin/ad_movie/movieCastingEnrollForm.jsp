@@ -42,8 +42,9 @@ h1{
 
 .table *{
     align-items: center;
-    text-align: center;
+    text-align: left;
 }
+
 
 
 </style>
@@ -90,7 +91,7 @@ h1{
               
               <tr>
               	<td colspan='2'>
-              		<button type="button" class="btn btn-outline-secondary modifyBtn" style="float: right;" data-dismiss="modal">추가</button>
+              		<button type="submit" class="btn btn-outline-secondary modifyBtn" style="float: right;">추가</button>
               	</td>
               </tr>
 

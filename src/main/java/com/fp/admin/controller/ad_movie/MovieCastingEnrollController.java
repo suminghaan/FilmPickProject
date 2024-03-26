@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
@@ -67,18 +68,18 @@ public class MovieCastingEnrollController extends HttpServlet {
 			
 			int result = new MovieService().insertPerson(p, at);
 			
-			/*
+			HttpSession session = request.getSession();
 			if(result > 0) {
-				session.setAttribute("alertMsg", "공지사항이 성공적으로 등록되었습니다.");
-				response.sendRedirect(request.getContextPath() + "/list.co?page=1");
+				session.setAttribute("alertMsg", "인물이 성공적으로 등록되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/movieCastingList.admo?page=1");
 			}else {
 				if(at != null) {
 					new File(savePath + at.getChangeName()).delete();
 				}
-				session.setAttribute("alertMsg", "공지사항 등록 실패. \n다시 입력해주세요.");
-				response.sendRedirect(request.getContextPath() + "/enrollForm.co");
+				session.setAttribute("alertMsg", "인물 등록 실패. \n다시 입력해주세요.");
+				response.sendRedirect(request.getContextPath() + "/enrollCastingForm.admo");
 			}
-			*/
+			
 		}
 	}
 

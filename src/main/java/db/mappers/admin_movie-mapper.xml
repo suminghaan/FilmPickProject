@@ -222,6 +222,161 @@
 			FROM PERSON
 			WHERE P_NAME LIKE '%' || ? || '%'
 		</entry>
+		
+		<!-- 관리자 인물관리_등록 [수민]-->
+		<entry key="insertPerson">
+			INSERT
+				INTO PERSON
+				(
+					P_NO
+				  , P_NAME
+				  , P_JOB
+				  , P_BD
+				  , P_NATION
+				  , P_FILE
+				)
+				VALUES
+				(
+					SEQ_PERSON_NO.NEXTVAL
+				  , ?
+				  , ?
+				  , ?
+				  , ?
+				  , ?
+				)
+		</entry>
+		
+		<!-- 관리자 인물관리_등록_파일등록 [수민] -->
+		<entry key="insertPersonAttachment">
+			INSERT
+				INTO ATTACHMENT
+				(
+					  FILE_NO
+					, REF_NO
+					, REF_TYPE
+					, ORIGIN_NAME
+					, CHANGE_NAME 
+					, FILE_PATH	
+					, FILE_TYPE			
+				)
+				VALUES
+				(
+					  SEQ_ATTACHMENT_NO.NEXTVAL
+					, SEQ_PERSON_NO.CURRVAL
+					, 8
+					, ?
+					, ?
+					, ?
+					, 1
+				)
+				
+		</entry>
+		
+		<!-- 관리자 인물조회_배우 필터 [수민] -->
+		<entry key='selectActorFilter'>
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+			WHERE P_JOB LIKE '%배우%'
+		</entry>
+		
+		<!-- 관리자 인물조회_감독 필터 [수민] -->
+		<entry key='selectDirectorFilter'>
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+			WHERE P_JOB LIKE '%감독%'
+		</entry>
+		
+		<!-- 관리자 인물 삭제 [수민] -->
+		<entry key="deleteMovie">
+			UPDATE
+				   PERSON
+			   SET P_STATUS = 'N' <!-- P_STATUS컬럼이없음.. -->
+			 WHERE P_NO = ?
+			 
+		</entry>
+		
+		<!-- 관리자 인물 삭제 시 같이 등록한 이미지 status값 변경 [수민] -->
+		<entry key="deleteMovieAttachment">
+			UPDATE
+				  ATTACHMENT
+			  SET FILE_STATUS = 'N'
+			WHERE REF_TYPE = 8
+			  AND REF_NO = ?
+		</entry>
+		
+		<!-- 관리자 인물 수정버튼 시 보여지는 목록 [수민] -->
+		<entry key="updateCastingForm">
+			SELECT
+				  P_NO
+				, P_NAME
+				, P_JOB
+				, P_BD
+				, P_NATION
+				, P_FILE
+			FROM PERSON
+			WHERE P_NO = ?
+		</entry>
+		
+		<!-- 관리자 인물 수정 [수민] -->
+		<entry key="updatePerson">
+			UPDATE
+				PERSON
+			  SET P_NAME = ?
+				, P_JOB = ?
+				, P_BD = ?
+				, P_NATION = ?
+			WHERE P_NO = ?
+				
+		</entry>
+		
+		<!-- 관리자 인물 수정 시 파일이 이미 업로드 되어있을 경우 [수민] -->
+		<entry key="updatepAttachment">
+			UPDATE
+				  ATTACHMENT
+			  SET ORIGIN_NAME = ?
+			    , CHANGE_NAME = ?
+			    , FILE_PATH = ?
+			WHERE REF_TYPE = 8
+			  AND FILE_NO = ?
+		
+		</entry>
+		
+		<!-- 관리자 인물 수정 시 파일이 없을 경우 [수민] -->
+		<entry key="insertpNewAttachment">
+			INSERT
+				INTO ATTACHMENT
+				(
+				   FILE_NO
+				 , REF_TYPE 
+				 , REF_NO
+				 , ORIGIN_NAME
+				 , CHANGE_NAME
+				 , FILE_PATH
+				 , FILE_TYPE
+				)
+				VALUES
+				(
+				   SEQ_ATTACHMENT_NO.NEXTVAL
+				 , 8
+				 , ?
+				 , ?
+				 , ?
+				 , ?
+				 , 1
+				)
+		</entry>
 
 
 </properties>

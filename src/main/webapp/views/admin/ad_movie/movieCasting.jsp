@@ -86,10 +86,15 @@ h1{
    
     <div class="d-flex justify-content-end container" style="margin: 20px;">                      
         <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
-        <select class="form-control" style="width: 130px">
-            <option>배우</option>
-            <option>감독</option>
-        </select>
+        <div class="custom-control custom-switch">
+		  <input type="checkbox" class="custom-control-input" id="actorSwitch">
+		  <label class="custom-control-label" for="actorSwitch" style="margin-right: 50px;">배우</label>
+		</div>
+		
+		<div class="custom-control custom-switch">
+		  <input type="checkbox" class="custom-control-input directorSwitch" id="directorSwitch">
+		  <label class="custom-control-label" for="directorSwitch" style="margin-right: 50px;">감독</label>
+		</div>
     </div>
 
     <div>
@@ -107,7 +112,7 @@ h1{
                 </tr>
             </thead>
             
-            <tbody>
+            <tbody id="selectPersonTable">
             	<!-- case1. 등록한 공지글이 없을 경우 -->
             	<% if(list.isEmpty()) {  %>
             	<tr>
@@ -128,8 +133,8 @@ h1{
                     <td>Y</td>
                     <%} %>
                     <td>
-                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting">수정</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleted();">삭제</button>
+                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting" onclick="update(<%=p.getpNo()%>);">수정</button>
+                        <a href="<%=contextPath %>/deletePerson.admo?pno=<%=p.getpNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
                     </td>
                 </tr>
 					<%} %>
@@ -177,64 +182,9 @@ h1{
 	        </nav>
 	    </div>
     </div>
-
-    <!-- 인물추가 Modal -->
-    <div class="modal" id="addCasting">
-        <div class="modal-dialog">
-            <div class="modal-content">
-        
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">인물 추가</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-        
-                <!-- Modal body -->
-                <form action="" method="post" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <table class="addC">
-                        <tr>
-                            <th><label for="pName">이름</label></th>
-                            <td><input type="text" id="pName" name="pName" required placeholder="인물명을 입력해주세요."></td>
-                        </tr>
-                
-                        <tr>
-                            <th><label for="pFile">사진</label></th>
-                            <td><input type="file" id="pFile"></td>
-                        </tr>
-                
-                        <tr>
-                            <th><label for="pDate">출생연도</label></th>
-                            <td><input type="date" id="pDate" name="birth" required></td>
-                        </tr>
-                
-                        <tr>
-                            <th><label for="pNation">국적</label></th>
-                            <td><input type="text" id="pNation" name="pNation" required></td>
-                        </tr>
-                
-                        <tr>
-                            <th>직업</th>
-                            <td>
-                                <input type="checkbox" id="actor" name="casting" value="actor">
-                                <label for="actor">배우</label>
-                                <input type="checkbox" id="director" name="casting" value="director">
-                                <label for="director">연출자</label>
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-        		</form>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary modifyBtn" style="float: right;" data-dismiss="modal">추가</button>
-                </div>
-            </div>
-
-            
+    
         </div>
-    </div>
+
     
     <div style="display: none;">
     	<!-- 이미지 파일 -->
@@ -254,46 +204,49 @@ h1{
         
                 <!-- Modal body -->
                 <div class="modal-body">
+                  <form action="<%=contextPath%>/updateCasting.admo" method="post" enctype="multipart/form-data" id="update_form">
+                    <input type="hidden" id="pNo" name="pno" value="">                   
                     <table class="changeC">
                         <tr>
                             <th><label for="pName">이름</label></th>
-                            <td><input type="text" id="pName" placeholder="입력되어있는 인물명"></td>
+                            <td><input type="text" id="pName" reuired name="pName"></td>
                         </tr>
                 
                         <tr>
                             <th><label for="pFile">사진</label></th>
-                            <td><input type="file" id="pFile"></td>
+                            <td>
+                            	<!-- 기존에 등록한 사진이 있을경우 보여지는 첨부파일 명 -->
+                            	<a id="pFileOrigin"></a>
+                            	<!-- 새로운 첨부파일 업로드 시 -->
+                            	<input type="file" class="form-control-file" name="upfile" id="pFile"></td>
                         </tr>
                 
                         <tr>
                             <th><label for="pDate">출생연도</label></th>
-                            <td><input type="date" id="pDate"></td>
+                            <td><input type="date" id="pDate" name="pDate"></td>
                         </tr>
                 
                         <tr>
                             <th><label for="pNation">국적</label></th>
-                            <td><input type="text" id="pNation"></td>
+                            <td><input type="text" id="pNation" name="pNation"></td>
                         </tr>
                 
                         <tr>
                             <th>직업</th>
-                            <td>
-                                <input type="checkbox" id="actor">
-                                <label for="actor">배우</label>
-                                <input type="checkbox" id="director">
-                                <label for="director">연출자</label>
-                            </td>
+                            <td><input type="text" id="pJob" name="pJob" ></td>
                         </tr>
 
                     </table>
+                    <!-- Modal footer -->
+		                <div class="modal-footer">
+		                    <button type="submit" class="btn btn-outline-secondary modifyBtn" style="float: right;">수정</button>
+		                </div>
+                </form>
                 </div>
         
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary modifyBtn" style="float: right;" data-dismiss="modal">수정</button>
-                </div>
+                
             </div>
-
+			
             
         </div>
     </div>
@@ -336,20 +289,114 @@ h1{
     			}
     		})
     	}
+    
+    // 배우 필터
+  	document.addEventListener('DOMContentLoaded', function(){
+  		const actorSwitch = document.getElementById('actorSwitch');
+  		let tableBody = document.getElementById('selectPersonTable');
+  		const originalTable = tableBody.innerHTML;
+  		
+  		actorSwitch.addEventListener('change', function(){
+  			tableBody.innerHTML = ''; // 테이블 내용 초기화
+  			if(this.checked){
+  				$.ajax({
+  					url: '<%=contextPath%>/actorfilter.admo',
+  					success: function(list){
+  						for(let i = 0; i<list.length; i++){
+  							let row = '<tr>'
+		  								+ "<td>" + list[i].pNo + "</td>"
+										+ "<td>" + list[i].pName + "</td>"
+										+ "<td>" + list[i].pJob + "</td>"
+										+ "<td>" + list[i].pBD + "</td>"
+										+ "<td>" + list[i].pNation + "</td>"
+										+ "<td>" + (list[i].pFile != null ? "Y" : "N")+ "</td>"
+				                        +"</tr>";
+				             tableBody.innerHTML += row;
+  						};
+  					},
+  					error : function(){
+  						console.log('ajax 통신 실패');
+  					}
+  				});
+  			}else{
+  				tableBody.innerHTML = originalTable;
+  			}
+  		});
+  	});
+
+    // 감독 필터
+    document.addEventListener('DOMContentLoaded', function(){
+    	const directorSwitch = document.getElementById('directorSwitch');
+    	let tableBody = document.getElementById('selectPersonTable');
+    	const originalTable = tableBody.innerHTML;
+    	
+    	directorSwitch.addEventListener('change', function(){
+    		tableBody.innerHTML = '';
+    		if(this.checked){
+    			$.ajax({
+    				url: '<%=contextPath%>/directorfilter.admo',
+    				success: function(list){
+    					for(let i =0; i<list.length; i++){
+    						let row = '<tr>'
+  								+ "<td>" + list[i].pNo + "</td>"
+								+ "<td>" + list[i].pName + "</td>"
+								+ "<td>" + list[i].pJob + "</td>"
+								+ "<td>" + list[i].pBD + "</td>"
+								+ "<td>" + list[i].pNation + "</td>"
+								+ "<td>" + (list[i].pFile != null ? "Y" : "N")+ "</td>"
+		                        +"</tr>";
+		             		tableBody.innerHTML += row;
+    					};
+    				},
+    				error: function(){
+    					console.log('ajax 통신 실패');
+    				}
+    			});
+    		}else{
+    			tableBody.innerHTML = originalTable;
+    		}
+    	});
+    });
+	
 
     // 삭제할 경우 
     	function deleted(){
-    		let d = prompt("등록된 영화를 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
+    		let d = prompt("등록된 인물을 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
     		
     		if(d=="삭제"){
-                alert("영화가 삭제되었습니다.")
+                alert("해당인물을 삭제하겠습니다.")
             }else{
                 alert("잘못입력하셨습니다. 다시 확인해주세요")
             }
     	}
     
     	
-    
+    // 수정
+    function update(pno){
+    	$.ajax({
+    		type:'post',
+    		url: "<%=contextPath%>/castingDetail.admo",
+    		data:{
+    			pno: pno
+    		},
+    		success:function(uplist){
+    			$("#pNo").val(uplist[0].pNo);
+    			$("#pName").val(uplist[0].pName);
+    			$("#pDate").val(uplist[0].pBD);
+    			$("#pNation").val(uplist[0].pNation);
+    			$("#pJob").val(uplist[0].pJob);
+    			
+    			if(uplist[0].pFile != null){
+    				$("#pFileOrigin").html(uplist[0].pFile);
+    				$("#pFileOrigin").attr('download', uplist[0].pFile);
+    			}
+    			
+    		},
+    		error:function(){
+    			console.log("조회 ajax 실패");
+    		}
+    	})
+    }
    		
    		
    		

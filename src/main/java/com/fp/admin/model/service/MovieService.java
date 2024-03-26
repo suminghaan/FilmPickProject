@@ -159,7 +159,86 @@ public class MovieService {
 
 	// 인물관리_추가
 	public int insertPerson(Person p, Attachment at) {
-		return 0;
+		Connection conn = getConnection();
+		int result1 = mDao.insertPerson(conn, p);
+		
+		int result2 = 1;
+		if(at != null) {
+			result2 = mDao.insertAttachment(conn, at);
+		}
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
+	}
+
+	// 인물조회시 _ 배우 필터
+	public List<Person> selectActorFilter() {
+		Connection conn = getConnection();
+		List<Person> list = mDao.selectActorFilter(conn);
+		close(conn);
+		return list;
+	}
+
+	// 인물조회시_감독 필터
+	public List<Person> selectDirectorFilter() {
+		Connection conn = getConnection();
+		List<Person> list = mDao.selectDirectorFilter(conn);
+		close(conn);
+		return list;
+	}
+
+	// 인물 삭제
+	public int deletePerson(int pno) {
+		Connection conn = getConnection();
+		int result1 = mDao.deletePerson(conn, pno);
+		int result2 = mDao.deletePersonAttachment(conn, pno);
+		
+		
+		if(result1 > 0 && result2 >= 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		int result = result1 + result2;
+		return result;
+	}
+
+	// 인물 수정모달에서 정보 보기
+	public List<Person> updateCastingForm(String pno) {
+		Connection conn = getConnection();
+		List<Person> uplist = mDao.updateCastingForm(conn, pno);
+		close(conn);
+		return uplist;
+	}
+
+	// 인물 수정 
+	public int updatePerson(Person p, Attachment at) {
+		Connection conn = getConnection();
+		int result1 = mDao.updatePerson(conn, p);
+		
+		int result2 = 1;
+		if(at != null) {
+			if(at.getFileNo() != 0) {
+				result2 = mDao.updatepAttachment(conn,at);
+			}else {
+				result2 = mDao.insertpNewAttachment(conn, at);
+			}
+		}
+		
+		if(result1 > 0 && result2 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
 	}
 
 	
