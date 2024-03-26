@@ -146,7 +146,7 @@
     
     <%@ include file="/views/common/header.jsp" %>
 
-    <div class="content_wrap" style="background-color: black;">
+    <div class="content_wrap" style="margin-top: 100px;"">
       <div class="content">
         <div class="login" style="background-color: white;">
           <div class="container">
