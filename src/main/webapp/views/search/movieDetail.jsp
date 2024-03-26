@@ -1165,7 +1165,7 @@
 	        				// 이미 남긴 리뷰 정보가 있을 경우 alreadyReview = 1, 없을 경우 0
 	        				, alreadyReview : <% if (review != null) { %> <%= "1" %> <%} else { %> <%= "0" %> <% } %>
 	        				<% if(review != null && review.getReviewContent() != null) { %>
-	        				, reviewContent : review.getReviewContent()
+	        				, reviewContent : "<%= review.getReviewContent() %>"
 	        				<% } %>
 	        			}
 	        			, success: function(msg) {
@@ -1195,6 +1195,14 @@
         	<% } %>
         })
         
+        //사용자가 남긴 리뷰 정보가 있다면 해당 별점을 표시
+       	<% if(review != null && review.getLikePoint() != null) {%>
+       			$(".rating__input").each(function(index, el) {
+       				if($(el).val() == <%= review.getLikePoint() %>) {
+       					$(el).prop("checked", true);
+       				}
+       			})
+       	<% } %>
     </script>
 </body>
 
