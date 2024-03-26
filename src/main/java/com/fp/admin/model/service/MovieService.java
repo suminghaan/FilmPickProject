@@ -242,7 +242,7 @@ public class MovieService {
 	}
 
 	// 영화 등록 
-	public int insertMovie(Movie m, List<Person> pList, List<Category> cList, List<Attachment> atList, int type) {
+	public int insertMovie(Movie m, List<Person> pList, List<Category> cList, List<Attachment> atList) {
 		Connection conn = getConnection();
 		int result1 = mDao.insertMovie(conn, m);
 		int result2 = mDao.insertMoivePerson(conn, pList);
@@ -251,8 +251,7 @@ public class MovieService {
 		
 		if(atList != null) {
 			for(int i=0; i<atList.size(); i++) {
-				result4 += mDao.insertMovieAttachment(conn, atList.get(i), type);
-				
+				result4 += mDao.insertMovieAttachment(conn, atList.get(i));				
 			}			
 		}
 		
@@ -261,8 +260,8 @@ public class MovieService {
 		}else {
 			rollback(conn);
 		}
-		int result = result1 * result2 * result3 + result4;
-		return result;
+
+		return result1 * result2 * result3 * result4;
 	}
 
 	

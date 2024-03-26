@@ -180,7 +180,7 @@
                     <div class="form-check form-check-inline">
                     <% for(Category c :list){ %>
             			<% if(c.getCategoryStatus().equals("Y")){ %>
-            				<input class="category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>" value="<%=c.getCategoryName() %>">
+            				<input class="category" name="category" type="checkbox" id="<%= c.getCategoryNo() %>" value="<%=c.getCategoryNo() %>">
                         	<label class="form-check-label" for="<%= c.getCategoryNo() %>"><%=c.getCategoryName() %></label>
             			<% } %>
             		<% } %>           		
@@ -242,7 +242,7 @@
                     <input type="radio" id="radioM" name="currentScreening" value="Y">
                     <label for="radioM">상영중</label>
 
-                    <button type="button" class="btn btn-outline-secondary" style="float: right;" onclick="alert('신규영화 등록이 완료되었습니다.')">업로드</button>
+                    <button type="submit" class="btn btn-outline-secondary" style="float: right;">업로드</button>
                 	
                 </div>
             </div>
@@ -285,32 +285,6 @@
         </div>
     </div>
 
-    <!-- 영화등록 Modal 
-    <div class="modal" id="submitModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-        
-                <!-- Modal Header 
-                <div class="modal-header">
-                    <h4 class="modal-title">영화등록</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-        
-                <!-- Modal body 
-                <div class="modal-body">
-                    신규영화 등록이 성공적으로 완료되었습니다.
-                </div>
-        
-                <!-- Modal footer 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" style="float: right;" data-dismiss="modal">확인</button>
-                </div>
-        
-            </div>
-        </div>
-    </div>
-    -->
-	<!-- section end -->
 	
 	<script>
 	// 인물 검색 
@@ -385,7 +359,6 @@
                      console.log(pNo);
            })
                $(".person-div").append(result);
-               count++;
          });
 	
 	// 인물 삭제 

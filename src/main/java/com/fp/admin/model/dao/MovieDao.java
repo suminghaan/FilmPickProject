@@ -737,23 +737,21 @@ public class MovieDao {
 	}
 
 	// TYPE 매개변수를 하나 받을 것
-	public int insertMovieAttachment(Connection conn, Attachment attachment, int type) {
+	public int insertMovieAttachment(Connection conn, Attachment attachment) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertMovieAttachment");
 		
 		
 		try {
-			// type이 1일 경우 메인 포스터 
-			// 첫번째 ?를 1, 두번째 ?를 1 ? 
-			
-			// type이 2일 경우 메인 예고편
-			// 첫번째 ?를 2, 두번째 ?를 2
+
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, type);
-			pstmt.setString(2, attachment.getOriginName());
-			pstmt.setString(3, attachment.getChangeName());
-			pstmt.setString(4, attachment.getFilePath());
+			pstmt.setString(1, attachment.getRefType());
+			pstmt.setInt(2, attachment.getFileType());
+			pstmt.setInt(3, attachment.getFileLevel());
+			pstmt.setString(4, attachment.getOriginName());
+			pstmt.setString(5, attachment.getChangeName());
+			pstmt.setString(6, attachment.getFilePath());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

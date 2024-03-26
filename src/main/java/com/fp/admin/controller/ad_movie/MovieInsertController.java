@@ -1,5 +1,6 @@
 package com.fp.admin.controller.ad_movie;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,12 +68,14 @@ public class MovieInsertController extends HttpServlet {
 			// 영화 메인포스터 경로
 			String changeName1 = multiRequest.getFilesystemName("mposter");
 			String mPoster = "resources/upfiles/" + changeName1;
+			m.setMvPoster(mPoster);
 			
 			// 영화 메인예고편 경로
 			String changeName2 = multiRequest.getFilesystemName("mpreview");
 			String mPreview = "resources/fupfiles/" + changeName2;
+			m.setMvPreview(mPreview);
 			
-			HttpSession sessio = request.getSession();
+			HttpSession session = request.getSession();
 			
 			/*-----------------------------------------------------*/
 			// 인물데이터 기록 
@@ -98,33 +101,32 @@ public class MovieInsertController extends HttpServlet {
 			List<Category> cList = new ArrayList<>();
 			for(int i=0; i<categoryArr.length; i++) {
 				Category c = new Category();
-				String category = categoryArr[i];
-				c.setCategoryNo(Integer.parseInt(category));
+				c.setCategoryNo(Integer.parseInt(categoryArr[i]));
 				cList.add(c);
 			}
 			/*-----------------------------------------------------*/
 			// ATTACHEMNT 테이블에 데이터 기록
 			List<Attachment> atList = new ArrayList<>();
-			int type = 0;
+
 			
 			if(multiRequest.getOriginalFileName("mPoster") != null) {
-				type = 1;
 				Attachment at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("mPoster"));
 				at.setChangeName(multiRequest.getFilesystemName("mPoster"));
 				at.setFilePath("resources/upfiles/");
 				at.setFileLevel(1);
 				at.setFileType(1);
+				at.setRefType("1");
 			}
 			
 			if(multiRequest.getOriginalFileName("mpreview") != null) {
-				type = 2;
 				Attachment at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("mpreview"));
 				at.setChangeName(multiRequest.getFilesystemName("mpreview"));
 				at.setFilePath("resources/upfiles/");
 				at.setFileLevel(1);
 				at.setFileType(2);
+				at.setRefType("2");
 			}
 			
 			
@@ -135,20 +137,30 @@ public class MovieInsertController extends HttpServlet {
 				at.setChangeName(multiRequest.getFilesystemName("upfile"));
 				at.setFilePath("resources/upfiles/");
 				at.setFileLevel(2);
-				at.setFileType(1);
-				type = 3;
+								
 				if(at.getChangeName().substring(at.getChangeName().lastIndexOf(".")).equals("mp4")) {
-					at.setFileLevel(2);
 					at.setFileType(2);
-					type = 4; 
+					at.setRefType("2");
+				}else {
+					at.setFileType(1);
+					at.setRefType("1");
 				}
 				atList.add(at);
 			}
 			/*-----------------------------------------------------*/
-			int result = new MovieService().insertMovie(m, pList, cList, atList, type);
+			int result = new MovieService().insertMovie(m, pList, cList, atList);
 			
 			if(result > 0) {
-				
+				session.setAttribute("alertMsg", "영화가 성공적으로 등록되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/list.admo?page=1");
+			}else {
+				if(atList != null) {
+					for(int i=0; i<atList.size(); i++) {
+						new File(savePath + atList.get(i).getChangeName()).delete();
+					}
+					session.setAttribute("alertMsg", "영화등록 실패 \n다시 입력해주세요.");
+					response.sendRedirect(request.getContextPath() + "/movieEnrollForm.admo");
+				}
 			}
 		}
 	}
