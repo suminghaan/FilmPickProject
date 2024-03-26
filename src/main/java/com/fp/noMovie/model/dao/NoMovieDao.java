@@ -257,10 +257,10 @@ public class NoMovieDao {
 		}
 		try {
 			pstmt2 = conn.prepareStatement(sql2);
-		pstmt2.setString(1, at2.getOriginName());
-		pstmt2.setString(2, at2.getChangeName());
-		pstmt2.setString(3, at2.getFilePath());
-		result = pstmt2.executeUpdate();
+			pstmt2.setString(1, at2.getOriginName());
+			pstmt2.setString(2, at2.getChangeName());
+			pstmt2.setString(3, at2.getFilePath());
+			result = pstmt2.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

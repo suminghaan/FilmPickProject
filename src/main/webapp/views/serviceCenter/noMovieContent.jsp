@@ -96,6 +96,8 @@
    	}
    	.viewPerson{
    	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
    	}
 </style>
 </head>
@@ -322,7 +324,19 @@
                                   
                               </div>
                           </div>
-                  
+                  		
+                  		<script>
+                				$(".inputPerson").on("input", function(){
+                					
+                					if ($(this).val().trim() === "") {
+                						$(".viewPerson").html("");
+                					} else {
+                						searchPerson();
+                					}
+                					
+                				})
+                  		</script>
+                  		
                           <!-- Modal footer -->
                           <div class="modal-footer">
                               <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
