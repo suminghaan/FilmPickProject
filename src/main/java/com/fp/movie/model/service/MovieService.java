@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
@@ -287,6 +288,34 @@ public class MovieService {
 	}
 
 
+//	리뷰에 대해 공감|비공감 표시하는 메소드
+	public int ManipulateApproval(int reviewNo, int userNo, int type) {
+		Connection conn = getConnection();
+		
+		int result = 0;
+		// 0일 경우 리뷰에 대해 공감 표시, 1일 경우 리뷰에 대해 공감 제거, 2일 경우 리뷰에 대해 비공감 표시, 3일 경우 리뷰에 대해 비공감 제거
+		if(type % 2 == 0) {
+			result = mDao.insertApproval(conn, reviewNo, userNo, type);
+		} else {
+			result = mDao.deleteApproval(conn, reviewNo, userNo, type);
+		}
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+
+	//	공감|비공감 정보 조회
+	public ArrayList<Approval> selectApproval(int memNo) {
+		Connection conn = getConnection();
+		ArrayList<Approval> apprList = mDao.selectApproval(conn, memNo);
+		close(conn);
+		return apprList;
+	}
 
 
 }

@@ -184,4 +184,65 @@ public class NoticeDao {
 		return at;
 	}
 	
+	/**
+	 * @param 호용
+	 * @return 총 키워드에 맞는 공지사항 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectListCount(Connection conn, String keyword) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		keyword = '%' + keyword + '%';
+		String sql = prop.getProperty("keywordSelectListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	/**
+	 * @author 호용
+	 * 키워드에 맞는 공지사항 페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Notice> selectKeywordList(Connection conn, PageInfo pi, String keyword){
+		List<Notice> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		keyword = '%' + keyword + '%';
+		String sql = prop.getProperty("selectKeywordList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setString(1, keyword);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Notice(rset.getInt("NOTICE_NO")
+						 , rset.getString("NOTICE_CATEGORY")
+						 , rset.getString("NOTICE_TITLE")
+						 , rset.getInt("NOTICE_READ_COUNT")
+						 , rset.getString("NOTICE_DATE")
+						 ));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
 }

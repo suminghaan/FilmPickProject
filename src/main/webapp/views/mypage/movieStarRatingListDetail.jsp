@@ -174,7 +174,7 @@
 
           <div class="test3">
 
-			<form id="reviewForm" action="<%= contextPath %>/reviewEnroll.fp?movieNo=<%= movie.getMvNo() %>&&alreadyReview=<%= review != null ? "1" : "0" %>" method="post" class="reviewForm">
+			<form id="reviewForm" action="<%= contextPath %>/movieStarRatingListDetailReturn?movieNo=<%= movie.getMvNo() %>&&alreadyReview=<%= review != null ? "1" : "0" %>" method="post" class="reviewForm">
 				<!-- 별점 -->
 	            <div class="movieStarRating">
 	              <div class="wrap">
