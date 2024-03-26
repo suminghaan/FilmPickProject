@@ -554,7 +554,7 @@
    		  , REPORT_TYPE
    		  , REPORT_CONTENT
    		  , REPORT_DATE
-   		  , BOARD_NO
+   		  , REPORT_REF_NO
    		  , REPORT_MEM_NO
    		  , REPORTED_MEM_NO
    		  , BOARD_NO_TYPE
@@ -581,7 +581,7 @@
    		  , REPORT_TYPE
    		  , REPORT_CONTENT
    		  , REPORT_DATE
-   		  , BOARD_NO
+   		  , REPORT_REF_NO
    		  , REPORT_MEM_NO
    		  , REPORTED_MEM_NO
    		  , BOARD_NO_TYPE
