@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.fp.member.model.vo.Member" %>
 <%
-String contextPath = request.getContextPath();
-Member loginMember = (Member)session.getAttribute("loginUser");
-String alertMsg = (String)session.getAttribute("alertMsg");
+	String contextPath = request.getContextPath();
+	Member loginMember = (Member)session.getAttribute("loginUser");
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
 %>
 <!DOCTYPE html>
 <html>
