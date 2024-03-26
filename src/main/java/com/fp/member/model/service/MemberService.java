@@ -3,10 +3,12 @@ package com.fp.member.model.service;
 import static com.fp.common.template.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
+import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.dao.MemberDao;
 import com.fp.member.model.vo.Member;
@@ -164,7 +166,7 @@ public class MemberService {
 	}
 		
 	public List<Movie> selectMovieStarRatingList(int memNo, PageInfo pi){
-		Connection conn =getConnection();
+		Connection conn = getConnection();
 		List<Movie> list = mDao.selectMovieStarRatingList(conn, memNo,pi);
 		close(conn);
 		return list;
