@@ -115,6 +115,7 @@ public class NoMovieInsertController extends HttpServlet {
 			// ATACHMENT 테이블에 데이터 기록 (Attachment Vo 객체에 담아서)
 			Attachment at = null;
 			int ext = 1;
+			// 이건 추가 파일에 대한 내용
 			if(multiRequest.getOriginalFileName("upfile3") != null) {	
 				at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("upfile3"));
@@ -124,8 +125,20 @@ public class NoMovieInsertController extends HttpServlet {
 					ext = 2;
 				}
 			}
+			
+			// 이건 메인 영화포스터에 대한 내용
+			Attachment at1 = new Attachment();
+			at1.setOriginName(multiRequest.getOriginalFileName("upfile1"));
+			at1.setChangeName(multiRequest.getFilesystemName("upfile1"));
+			at1.setFilePath("resources/upfiles/");
+			
+			// 이건 메인 영화예고편에 대한 내용 
+			Attachment at2 = new Attachment();
+			at2.setOriginName(multiRequest.getOriginalFileName("upfile2"));
+			at2.setChangeName(multiRequest.getFilesystemName("upfile2"));
+			at2.setFilePath("resources/upfiles/");
 			/*-------------------------------------------------------------------------------------------------------*/
-			int result = new NoMovieService().insertNoMovie(nm, pList, cList, at, ext);
+			int result = new NoMovieService().insertNoMovie(nm, pList, cList, at, ext, at1, at2);
 			
 			if(result > 0) {
 				session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");

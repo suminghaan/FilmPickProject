@@ -196,7 +196,7 @@
 		  , ORIGIN_NAME <!-- 원본명 -->
 		  , CHANGE_NAME <!-- 수정명 -->
 		  , FILE_PATH <!-- 저장경로 -->
-		  , FILE_LEVEL
+		  , FILE_LEVEL <!-- 파일레벨 1메인 | 2추가 -->
 		  )
 		  VALUES
 		  (
@@ -207,7 +207,61 @@
 		  , ? <!-- 원본명 -->
 		  , ? <!-- 수정명 -->
 		  , ? <!-- 저장경로 -->
+		  , 2 <!-- 파일레벨 1메인 | 2추가 -->
+		  )
+	</entry>
+	
+	<!-- 없는영화 신청을 위한 sql문 ATTACHMENT 인설트(메인포스터) [호용] -->
+	<entry key="insertAttachment1">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	FILE_NO <!-- 첨부파일 번호 -->
+		  , REF_NO <!-- 영화번호(없는영화 번호)  -->
+		  , REF_TYPE <!-- 첨부파일 타입(없는영화 4번임) -->
+		  , FILE_TYPE <!-- 사진1 | 영상2 -->
+		  , ORIGIN_NAME <!-- 원본명 -->
+		  , CHANGE_NAME <!-- 수정명 -->
+		  , FILE_PATH <!-- 저장경로 -->
+		  , FILE_LEVEL <!-- 파일레벨 1메인 | 2추가 -->
+		  )
+		  VALUES
+		  (
+		  	SEQ_ATTACHMENT_NO.NEXTVAL <!-- 첨부파일 번호 -->
+		  , SEQ_NO_MOVIE_ENROLL_NO.CURRVAL <!-- 영화번호(없는영화 번호)  -->
+		  , '4'
+		  , 1
+		  , ? <!-- 원본명 -->
+		  , ? <!-- 수정명 -->
+		  , ? <!-- 저장경로 -->
+		  , 1
+		  )
+	</entry>
+	
+		<!-- 없는영화 신청을 위한 sql문 ATTACHMENT 인설트(메인예고편) [호용] -->
+	<entry key="insertAttachment2">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		  	FILE_NO <!-- 첨부파일 번호 -->
+		  , REF_NO <!-- 영화번호(없는영화 번호)  -->
+		  , REF_TYPE <!-- 첨부파일 타입(없는영화 4번임) -->
+		  , FILE_TYPE <!-- 사진1 | 영상2 -->
+		  , ORIGIN_NAME <!-- 원본명 -->
+		  , CHANGE_NAME <!-- 수정명 -->
+		  , FILE_PATH <!-- 저장경로 -->
+		  , FILE_LEVEL <!-- 파일레벨 1메인 | 2추가 -->
+		  )
+		  VALUES
+		  (
+		  	SEQ_ATTACHMENT_NO.NEXTVAL <!-- 첨부파일 번호 -->
+		  , SEQ_NO_MOVIE_ENROLL_NO.CURRVAL <!-- 영화번호(없는영화 번호)  -->
+		  , '4'
 		  , 2
+		  , ? <!-- 원본명 -->
+		  , ? <!-- 수정명 -->
+		  , ? <!-- 저장경로 -->
+		  , 1
 		  )
 	</entry>
 	

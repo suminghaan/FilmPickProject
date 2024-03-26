@@ -236,6 +236,41 @@ public class NoMovieDao {
 	
 	/**
 	 * @author 호용
+	 * 없는영화 신청을 위한 메소드 ATTACHMENT 인설트(메인예고편 및 메인포스터)
+	 */
+	public int insertAttachment(Connection conn, Attachment at1, Attachment at2) {
+		int result = 0;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		String sql1 = prop.getProperty("insertAttachment1");
+		String sql2 = prop.getProperty("insertAttachment2");
+		try {
+			pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setString(1, at1.getOriginName());
+			pstmt1.setString(2, at1.getChangeName());
+			pstmt1.setString(3, at1.getFilePath());
+			pstmt1.executeUpdate();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt1);
+		}
+		try {
+			pstmt2 = conn.prepareStatement(sql2);
+		pstmt2.setString(1, at2.getOriginName());
+		pstmt2.setString(2, at2.getChangeName());
+		pstmt2.setString(3, at2.getFilePath());
+		result = pstmt2.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt2);
+		}
+		return result;
+	}
+	
+	/**
+	 * @author 호용
 	 * 신청한 없는영화 수정을 위한 Attachment 업데이트
 	 */
 	public int updateNoMovieAttachment(Connection conn, Attachment at, int ext, NoMovie nm) {
@@ -326,7 +361,7 @@ public class NoMovieDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("dao단에서의 nm : " + nm);
+//		System.out.println("dao단에서의 nm : " + nm);
 		return nm;
 	}
 	
@@ -376,7 +411,7 @@ public class NoMovieDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, noMovieNo);
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			while(rset.next()) {
 				c = new Category();
 				c.setNoMovieCNo(rset.getInt("NM_GENRE_NO"));
 				c.setCategoryNo(rset.getInt("CATEGORY_NO"));
@@ -389,6 +424,7 @@ public class NoMovieDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("cList에 담겨있는 값 : " + cList);
 		return cList;
 	}
 	
