@@ -4432,8 +4432,11 @@ ALTER TABLE REPORTED_MEM ADD(ACTIVITY_STATUS CHAR(1));
 -- 활동제한 테이블 샘플데이터 (김지우)
 ALTER TABLE REPORTED_MEM MODIFY(END_DATE NULL);
 
-INSERT INTO REPORTED_MEM VALUES(6, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
-INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B');
+--INSERT INTO REPORTED_MEM VALUES(2, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
+--INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'S');
+--INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B')
+--INSERT INTO REPORTED_MEM VALUES(6, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
+
 
 -- -- 문의 테이블 샘플데이터 (김지우)
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원탈퇴 관련 문제', '분명히 회원탈퇴을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-20', 'N', 27, 1, NULL, NULL);
