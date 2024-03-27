@@ -362,7 +362,7 @@
 		   	 , MEM_EMAIL = ?
 		   	 , PREF_GENRE = ?
 		 WHERE MEM_ID = ?   	 
-	</entry>	
+	</entry>		
 	
 	<!-- 비밀번호 변경 -->
 	<entry key="updatePwdMember">
@@ -412,15 +412,14 @@
            AND MEM_NO = ?
 	</entry>
 	
-	<entry key="selectMyCommentList">
-
-           
+	<entry key="selectMyCommentList">    
 		SELECT *
 		  FROM(
 		        SELECT ROWNUM RNUM, A.*
 		          FROM (
 		               SELECT
-		                       REPLY_NO
+		               		   BOARD_NO	
+		                     , REPLY_NO
 		                     , REPLY_CONTENT
 		                     , TO_CHAR(ENROLL_DATE, 'YY/MM/DD') ENROLL_DATE
 		                  FROM REPLY R , MEMBER M

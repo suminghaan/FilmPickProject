@@ -66,7 +66,7 @@ public class MemberMyCommentListContcoller extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		// 사용자가 요청한 페이지에 보여져야될 게시글 목록
+		// 사용자가 요청한 페이지에 보여져야될 목록
 		List<Reply> list = new MemberService().selectMyCommentList(memNo,pi);
 		
 		request.setAttribute("memNo", memNo);
