@@ -2789,6 +2789,7 @@ VALUES (
     , '1946-12-18'
     , '미국'
     , 'resources/upfiles/20080321154832_77889.webp'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2798,6 +2799,7 @@ VALUES (
     , '1960-01-18'
     , '영국'
     , 'resources/upfiles/20090321154832_77889.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2807,6 +2809,7 @@ VALUES (
     , '1970-02-14'
     , '영국'
     , 'resources/upfiles/20090321155232_77189.webp'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2816,6 +2819,7 @@ VALUES (
     , '1993-12-27'
     , '잉글랜드'
     , 'resources/upfiles/20120821155232_77189.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2825,6 +2829,7 @@ VALUES (
     , '1996-11-11'
     , '미국'
     , 'resources/upfiles/20121111155232_77189.webp'
+    , DEFAULT
 );
 ------------------------------- [용훈] 인물 데이터 추가---------------------------------------------
 INSERT INTO PERSON
@@ -2835,6 +2840,7 @@ VALUES (
     , '1981-00-00'
     , '한국'
     , 'resources/upfiles/20221212125232_72122.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2844,6 +2850,7 @@ VALUES (
     , '1962-04-27'
     , '한국'
     , 'resources/upfiles/20221212122242_82112.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2853,6 +2860,7 @@ VALUES (
     , '1991-07-02'
     , '한국'
     , 'resources/upfiles/20221115172448_84176.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2862,6 +2870,7 @@ VALUES (
     , '1970-01-04'
     , '한국'
     , 'resources/upfiles/20230202041440_98451.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2871,6 +2880,7 @@ VALUES (
     , '1995-04-11'
     , '한국'
     , 'resources/upfiles/20230408071165_15117.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2880,6 +2890,7 @@ VALUES (
     , '1973-02-09'
     , '일본'
     , 'resources/upfiles/20230409071046_12345.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2889,6 +2900,7 @@ VALUES (
     , '2003-08-26'
     , '일본'
     , 'resources/upfiles/20230101011244_23345.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2898,6 +2910,7 @@ VALUES (
     , '1995-06-18'
     , '일본'
     , 'resources/upfiles/20230202021223_14615.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2907,6 +2920,7 @@ VALUES (
     , '1973-01-11'
     , '일본'
     , 'resources/upfiles/20230303033165_18416.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2916,6 +2930,7 @@ VALUES (
     , '1961-07-31'
     , '한국'
     , 'resources/upfiles/20230304051514_19151.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2925,6 +2940,7 @@ VALUES (
     , '1970-09-01'
     , '한국'
     , 'resources/upfiles/20230305051615_21042.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2934,6 +2950,7 @@ VALUES (
     , '1973-04-22'
     , '한국'
     , 'resources/upfiles/20230305061711_22189.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2943,6 +2960,7 @@ VALUES (
     , '1968-10-15'
     , '한국'
     , 'resources/upfiles/20230306070102_23489.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2952,6 +2970,7 @@ VALUES (
     , '1976-06-14'
     , '한국'
     , 'resources/upfiles/20230307080203_13579.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2961,6 +2980,7 @@ VALUES (
     , '1980-00-00'
     , '한국'
     , 'resources/upfiles/20230308090304_23689.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2970,6 +2990,7 @@ VALUES (
     , '1971-03-01'
     , '미국'
     , 'resources/upfiles/20230309090305_32180.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2979,6 +3000,7 @@ VALUES (
     , '1984-03-13'
     , '한국'
     , 'resources/upfiles/20230309100405_32982.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2988,6 +3010,7 @@ VALUES (
     , '1980-03-14'
     , '일본'
     , 'resources/upfiles/20230309110101_12053.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2997,6 +3020,7 @@ VALUES (
     , '1969-11-25'
     , '한국'
     , 'resources/upfiles/20230309120202_43251.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3006,6 +3030,7 @@ VALUES (
     , '1978-03-03'
     , '한국'
     , 'resources/upfiles/20230309120404_14236.jpg'
+    , DEFAULT
 );
 
 INSERT INTO PERSON
@@ -3016,6 +3041,7 @@ VALUES (
     , '1996-06-01'
     , '영국'
     , 'resources/upfiles/20230309120515_16817.jpg'
+    , DEFAULT
 );
 
 INSERT INTO PERSON
@@ -3026,6 +3052,7 @@ VALUES (
     , '1969-11-05'
     , '한국'
     , 'resources/upfiles/20230309120501_21357.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3035,6 +3062,7 @@ VALUES (
     , '1977-01-26'
     , '한국'
     , 'resources/upfiles/20230309120502_18754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3044,6 +3072,7 @@ VALUES (
     , '1986-04-29'
     , '한국'
     , 'resources/upfiles/20230309120503_28754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3053,6 +3082,7 @@ VALUES (
     , '1952-01-01'
     , '한국'
     , 'resources/upfiles/20230309120504_62754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3062,6 +3092,7 @@ VALUES (
     , '1965-06-24'
     , '한국'
     , 'resources/upfiles/20230309120505_68754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3071,6 +3102,7 @@ VALUES (
     , '1972-01-05'
     , '한국'
     , 'resources/upfiles/20230309120506_51954.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3080,6 +3112,7 @@ VALUES (
     , '1982-09-25'
     , '한국'
     , 'resources/upfiles/20230309120507_51951.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3089,6 +3122,7 @@ VALUES (
     , '1990-05-30'
     , '한국'
     , 'resources/upfiles/20230309120508_33551.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3098,6 +3132,7 @@ VALUES (
     , '1979-11-28'
     , '미국'
     , 'resources/upfiles/20230309120509_43892.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3107,6 +3142,7 @@ VALUES (
     , '1972-12-15'
     , '한국'
     , 'resources/upfiles/20230309120509_41122.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3116,6 +3152,7 @@ VALUES (
     , '1976-08-10'
     , '한국'
     , 'resources/upfiles/20230309120510_28899.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3125,6 +3162,7 @@ VALUES (
     , '1977-10-20'
     , '한국'
     , 'resources/upfiles/20230309120512_31599.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3134,6 +3172,7 @@ VALUES (
     , '1972-00-00'
     , '한국'
     , 'resources/upfiles/20230309120512_31454.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3143,6 +3182,7 @@ VALUES (
     , '1986-09-25'
     , '한국'
     , 'resources/upfiles/20230309120513_25161.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3152,6 +3192,7 @@ VALUES (
     , '1981-06-28'
     , '미국'
     , 'resources/upfiles/20230309120514_32877.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3161,6 +3202,7 @@ VALUES (
     , '1996-09-01'
     , '미국'
     , 'resources/upfiles/20230309120515_16828.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3170,6 +3212,7 @@ VALUES (
     , '1976-07-19'
     , '영국'
     , 'resources/upfiles/20230309120515_35875.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3179,6 +3222,7 @@ VALUES (
     , '1973-12-15'
     , '한국'
     , 'resources/upfiles/20230309120516_55875.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3188,6 +3232,7 @@ VALUES (
     , '1967-01-21'
     , '한국'
     , 'resources/upfiles/20230309120517_51584.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3197,6 +3242,7 @@ VALUES (
     , '1981-07-28'
     , '한국'
     , 'resources/upfiles/20230309120517_23584.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3206,6 +3252,7 @@ VALUES (
     , '1964-04-14'
     , '한국'
     , 'resources/upfiles/20230309120518_68474.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3215,6 +3262,7 @@ VALUES (
     , '1968-08-10'
     , '오스트레일리아'
     , 'resources/upfiles/20230309120519_65651.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3224,6 +3272,7 @@ VALUES (
     , '1984-11-22'
     , '미국'
     , 'resources/upfiles/20230309120519_98754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3233,6 +3282,7 @@ VALUES (
     , '1996-01-03'
     , '영국'
     , 'resources/upfiles/20230309120520_01532.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3242,6 +3292,7 @@ VALUES (
     , '1970-03-07'
     , '영국'
     , 'resources/upfiles/20230309120520_02532.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3251,6 +3302,7 @@ VALUES (
     , '1971-00-00'
     , '대만'
     , 'resources/upfiles/20230309120520_10101.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3260,6 +3312,7 @@ VALUES (
     , '1967-07-18'
     , '미국'
     , 'resources/upfiles/20230309120520_10102.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3269,6 +3322,7 @@ VALUES (
     , '1977-04-23'
     , '미국'
     , 'resources/upfiles/20230309120520_10103.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3278,6 +3332,7 @@ VALUES (
     , '1968-10-09'
     , '미국'
     , 'resources/upfiles/20230309120520_10113.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3287,6 +3342,7 @@ VALUES (
     , '1967-12-13'
     , '미국'
     , 'resources/upfiles/20230309120520_10114.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3296,6 +3352,7 @@ VALUES (
     , '1965-05-06'
     , '미국'
     , 'resources/upfiles/20230309120520_20111.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3305,6 +3362,7 @@ VALUES (
     , '1965-04-04'
     , '미국'
     , 'resources/upfiles/20230309120520_20112.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3314,6 +3372,7 @@ VALUES (
     , '1981-05-12'
     , '미국'
     , 'resources/upfiles/20230309120520_20113.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3323,6 +3382,7 @@ VALUES (
     , '1970-02-03'
     , '미국'
     , 'resources/upfiles/20230309120520_20114.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3332,6 +3392,7 @@ VALUES (
     , '1971-07-08'
     , '미국'
     , 'resources/upfiles/20230309120520_20115.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3341,6 +3402,7 @@ VALUES (
     , '1981-06-13'
     , '미국'
     , 'resources/upfiles/20230309120520_20166.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3350,6 +3412,7 @@ VALUES (
     , '1983-08-11'
     , '오스트레일리아'
     , 'resources/upfiles/20230309120520_20167.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3359,6 +3422,7 @@ VALUES (
     , '1967-11-22'
     , '미국'
     , 'resources/upfiles/20230309120520_20168.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3368,6 +3432,7 @@ VALUES (
     , '1971-01-07'
     , '미국'
     , 'resources/upfiles/20230309120520_20169.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3377,6 +3442,7 @@ VALUES (
     , '1969-04-06'
     , '미국'
     , 'resources/upfiles/20230309120520_20170.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3386,6 +3452,7 @@ VALUES (
     , '1964-11-29'
     , '미국'
     , 'resources/upfiles/20230309120520_20171.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3395,6 +3462,7 @@ VALUES (
     , '1989-10-01'
     , '미국'
     , 'resources/upfiles/20230309120520_20172.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3404,6 +3472,7 @@ VALUES (
     , '1967-10-03'
     , '캐나다'
     , 'resources/upfiles/20230309120521_10172.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3413,6 +3482,7 @@ VALUES (
     , '1995-12-27'
     , '미국'
     , 'resources/upfiles/20230309120521_10173.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3422,6 +3492,7 @@ VALUES (
     , '1983-10-19'
     , '스웨덴'
     , 'resources/upfiles/20230309120521_10174.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3431,6 +3502,7 @@ VALUES (
     , '1983-08-04'
     , '미국'
     , 'resources/upfiles/20230309120522_10111.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3440,6 +3512,7 @@ VALUES (
     , '1994-04-12'
     , '미국'
     , 'resources/upfiles/20230309120522_10112.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3449,6 +3522,7 @@ VALUES (
     , '1990-04-15'
     , '프랑스'
     , 'resources/upfiles/20230309120522_10113.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3458,6 +3532,7 @@ VALUES (
     , '1999-01-06'
     , '오스트레일리아'
     , 'resources/upfiles/20230309120522_10114.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3467,6 +3542,7 @@ VALUES (
     , '1971-00-00'
     , '한국'
     , 'resources/upfiles/20230309120523_65487.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3476,6 +3552,7 @@ VALUES (
     , '1970-07-12'
     , '한국'
     , 'resources/upfiles/20230309120523_65489.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3485,6 +3562,7 @@ VALUES (
     , '1973-05-17'
     , '한국'
     , 'resources/upfiles/20230309120523_65490.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3494,6 +3572,7 @@ VALUES (
     , '1979-06-29'
     , '한국'
     , 'resources/upfiles/20230309120523_65491.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -3503,6 +3582,7 @@ VALUES (
     , '1979-12-12'
     , '한국'
     , 'resources/upfiles/20230309120523_65492.jpg'
+    , DEFAULT
 );
 
 ------------------ CASTING 데이터 추가
