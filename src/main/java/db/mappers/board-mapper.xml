@@ -545,6 +545,23 @@
    		   AND B_D_STATUS = 'N' <!-- 유요한 글번호(삭제되지않은) -->
    </entry>
    
+   <!-- 게시글 추천버튼 클릭시 게시글추천 테이블RECOMMEND의 insert 하는 sql문[호용] -->
+   <entry key="insertGood">
+   		INSERT
+   		  INTO RECOMMEND
+   		  (
+   		  	RCM_NO <!-- 추천번호 -->
+   		  , B_NO <!-- 게시글 번호 -->
+   		  , MEM_NO <!-- 회원번호 -->
+   		  )
+   		  VALUES
+   		  (
+   		  	SEQ_RECOMMEND_NO.NEXTVAL
+   		  , ? <!-- 게시글 번호 -->
+   		  , ? <!-- 회원번호 -->
+   		  )
+   </entry>
+   
    <!-- 게시글 신고를위한 sql문 by호용 -->
    <entry key="reportBoard">
    		INSERT

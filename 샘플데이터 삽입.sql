@@ -479,46 +479,46 @@ INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FP
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '귀멸의 칼날: 인연의 기적, 그리고 합동 강화 훈련으로', '2024-02-14', '2', '103분', '‘탄지로’와 상현 4 ‘한텐구’의 목숨을 건 혈투와, ‘무잔’과의 최종 국면을 앞둔 귀살대원들의 마지막 훈련을 그린 영화', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135135_84741.jpeg', 'resources/upfiles/20240320135135_99175.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '고질라 X 콩 : 뉴 엠파이어', '2024-03-27', '2', '115분', '고질라 X 콩, 이번에는 한 팀이다! "고질라" VS "콩", 두 타이탄의 전설적인 대결 이후 할로우 어스에 남은 "콩"은 드디어 애타게 찾던 동족을 발견하지만 그 뒤에 도사리고 있는 예상치 못한 위협에 맞닥뜨린다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135135_84742.jpg', 'resources/upfiles/20240320135135_84743.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '댓글부대', '2024-03-27', '1', '109분', '실력 있지만 허세 가득한 사회부 기자 ‘임상진’ 대기업 ‘만전’의 비리를 취재하지만 오보로 판명되며 정직당한다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_84743.jpg', 'resources/upfiles/20240320135136_84744.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '남은 인생 10년', '2024-04-03', '2', '125분', '매일 밤, 눈 감기가 두려웠던 난치병 환자 ‘마츠리’ 매일 아침, 눈 뜨기가 두려웠던 외톨이 ‘카즈토’ 운명은 정반대에 있던 두 사람을 마주 보게 한다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240322135135_84751.jpeg', 'resources/upfiles/20240322135135_84752.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '비키퍼', '2024-04-03', '2', '105분', '법 위에 있는 비밀 기관 "비키퍼" 그곳의 전설로 남은 탑티어 에이전트 "애덤 클레이"는 기관의 눈을 피해 자취를 감추고 양봉가로 살아간다.', 'N', '청소년 관람불가', 'N', 'N', 'resources/upfiles/20240320135135_94742.jpg', 'resources/upfiles/20240320135135_94743.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '라스트 썸머', '2024-04-03', '2', '104분', '남편 "피에르"와 함께 입양한 두 딸을 키우며 완벽한 삶을 살고 있는 청소년 전문 변호사 "안느" 어느 날, 남편이 전처와 낳은 아들 ‘테오’가 학교에서 사고를 치며 ‘안느’와 ‘테오’는 한집에 살게 된다.', 'N', '청소년 관람불가', 'N', 'N', 'resources/upfiles/20240320135135_94744.jpg', 'resources/upfiles/20240320135135_94745.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오멘: 저주의 시작', '2024-04-03', '2', '119분', '수녀가 되기 위해 로마에 가게 된 ‘마거릿’(넬 타이거 프리). 그곳에서 새로운 삶을 시작하려는 그때, 믿음을 뒤흔드는 어둠의 그림자를 마주한다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_04744.jpg', 'resources/upfiles/20240320135136_04745.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '남은 인생 10년', '2024-04-03', '2', '125분', '매일 밤, 눈 감기가 두려웠던 난치병 환자 ‘마츠리’ 매일 아침, 눈 뜨기가 두려웠던 외톨이 ‘카즈토’ 운명은 정반대에 있던 두 사람을 마주 보게 한다.', 'N', '12세 관람가', 'A', 'N', 'resources/upfiles/20240322135135_84751.jpeg', 'resources/upfiles/20240322135135_84752.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '비키퍼', '2024-04-03', '2', '105분', '법 위에 있는 비밀 기관 "비키퍼" 그곳의 전설로 남은 탑티어 에이전트 "애덤 클레이"는 기관의 눈을 피해 자취를 감추고 양봉가로 살아간다.', 'N', '청소년 관람불가', 'A', 'N', 'resources/upfiles/20240320135135_94742.jpg', 'resources/upfiles/20240320135135_94743.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '라스트 썸머', '2024-04-03', '2', '104분', '남편 "피에르"와 함께 입양한 두 딸을 키우며 완벽한 삶을 살고 있는 청소년 전문 변호사 "안느" 어느 날, 남편이 전처와 낳은 아들 ‘테오’가 학교에서 사고를 치며 ‘안느’와 ‘테오’는 한집에 살게 된다.', 'N', '청소년 관람불가', 'A', 'N', 'resources/upfiles/20240320135135_94744.jpg', 'resources/upfiles/20240320135135_94745.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오멘: 저주의 시작', '2024-04-03', '2', '119분', '수녀가 되기 위해 로마에 가게 된 ‘마거릿’(넬 타이거 프리). 그곳에서 새로운 삶을 시작하려는 그때, 믿음을 뒤흔드는 어둠의 그림자를 마주한다.', 'N', '15세 관람가', 'A', 'N', 'resources/upfiles/20240320135136_04744.jpg', 'resources/upfiles/20240320135136_04745.mp4', 'Y', SYSDATE);
 
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '메이 디셈버', '2024-03-13', '2', '117분', '“왜 날 연기하고 싶어요?” “전 이해하기 어려운 캐릭터가 좋아요” 신문 1면을 장식하며 미국을 떠들썩하게 만든 충격적인 로맨스의 주인공들인 ‘그레이시’(줄리안 무어)와 그보다 23살 어린 남편 ‘조’(찰스 멜튼). 20여 년이 흐른 어느 날, 영화에서 그레이시를 연기하게 된 인기 배우 ‘엘리자베스’(나탈리 포트만)가 캐릭터 연구를 위해 그들의 집에 머물게 된다.', 'N', '청소년 관람불가', 'Y', 'N', 'resources/upfiles/20240320135136_05744.jpg', 'resources/upfiles/20240320135136_05745.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '화녀', '2024-03-14', '1', '102분', '연기대상까지 받으며 잘 나가던 여배우 ‘수연’(박지연)은 어느 날, 음주 사고를 일으켜 긴 자숙의 시간을 갖는다 자숙 이후 에세이를 발간하며 다시 한번 복귀를 시도하지만, 세상은 그녀를 차갑게 대하고...', 'N', '청소년 관람불가', 'Y', 'N', 'resources/upfiles/20240320135136_05746.jpg', 'resources/upfiles/20240320135136_05747.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '우견니', '2024-02-14', '2', '110분', '“내 청춘은 모두 너와 연결되어 있어” 친구들에게 놀림당하지만 늘 햇살처럼 밝은 ‘자오양’. 무뚝뚝한 엘리트 전학생 ‘저우찬’. 극과 극인 두 사람은 함께 꿈을 키워 나가며 점차 가까워지고, 단 한 번뿐인 서로의 청춘에 밝은 빛이 되어준다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05748.jpg', 'resources/upfiles/20240320135136_05749.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '소녀는 졸업하지 않는다', '2024-01-24', '2', '120분', '폐교를 앞둔 고등학교. 마지막 졸업식까지 D-2 4명의 소녀 어쩔 수 없는 이별 앞에 소녀들이 간직한 애틋하고 비밀스러운 마음은…?.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05750.jpg', 'resources/upfiles/20240320135136_05751.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '노량: 죽음의 바다', '2023-12-20', '1', '153분', '임진왜란 발발로부터 7년이 지난 1598년 12월. 이순신(김윤석)은 왜군의 수장이던 도요토미 히데요시가 갑작스럽게 사망한 뒤 왜군들이 조선에서 황급히 퇴각하려 한다는 것을 알게 된다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05752.jpg', 'resources/upfiles/20240320135136_05753.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '아쿠아맨과 로스트 킹덤', '2023-12-20', '2', '124분', '아틀란티스 왕국을 이끌 왕의 자리에 오른 ‘아쿠아맨’. 그 앞에 ‘블랙 만타’가 세상을 뒤흔들 강력한 지배 아이템 ‘블랙 트라이던트’를 손에 넣게 된다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05754.jpg', 'resources/upfiles/20240320135136_05755.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '나폴레옹', '2023-12-06', '2', '158분', '스스로 황제가 된 영웅! 1793년 혁명의 불꽃이 프랑스 전역을 밝히기 시작한다. 코르시카 출신의 장교 "나폴레옹"(호아킨 피닉스)은 혼란스러운 상황 속 국가를 위해 맞서며 영웅으로 떠오른다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05756.jpg', 'resources/upfiles/20240320135136_05757.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '바비', '2023-07-19', '2', '114분', '원하는 무엇이든 될 수 있는 "바비랜드"에서 살아가던 "바비"가 현실 세계와 이어진 포털의 균열을 발견하게 되고, 이를 해결하기 위해 "켄"과 예기치 못한 여정을 떠나면서 펼쳐지는 이야기.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05758.jpg', 'resources/upfiles/20240320135136_05759.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '더 마블스', '2023-11-08', '2', '105분', '강력한 힘으로 은하계를 수호하는 최강 히어로 캡틴 마블 ‘캐럴 댄버스’ 캡틴 마블의 오랜 친구의 딸이자, 빛의 파장을 조작하는 히어로 ‘모니카 램보’ 최애 히어로 캡틴 마블의 열렬한 팬인 미즈 마블 ‘카말라 칸’ 캡틴 마블에 대한 복수를 꿈꾸는 냉혹한 크리족 리더 ‘다르-벤’의 영향으로 세 명의 히어로는 능력을 사용할 때마다 서로의 위치가 뒤바뀌게 된다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05760.jpg', 'resources/upfiles/20240320135136_05761.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '헝거게임: 노래하는 새와 뱀의 발라드', '2023-11-15', '2', '157분', '반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임. 헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의 소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을 되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과 방법을 가리지 않는데...', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05762.jpg', 'resources/upfiles/20240320135136_05763.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '사채소년', '2023-11-22', '1', '105분', '학교 서열 최하위, 고교사채왕이 되다! 존재감도, 빽도, 돈도 없는 서열 최하위 "강진". 일진들의 괴롭힘에 시달리며 최악의 학교 생활을 이어가던 중 우연한 기회로 사채업자 "랑"에게 동업을 제안받게 된다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05764.jpg', 'resources/upfiles/20240320135136_05765.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '30일', '2023-10-03', '1', '119분', '“완벽한 저에게 신은 저 여자를 던지셨죠” 지성과 외모 그리고 찌질함까지 타고난, "정열"(강하늘). “모기 같은 존재죠. 존재의 이유를 모르겠는?” 능력과 커리어 그리고 똘기까지 타고난, "나라"(정소민).', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05766.jpg', 'resources/upfiles/20240320135136_05767.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '용감한 시민', '2023-10-25', '1', '112분', '불의는 못 본 척, 성질은 없는 척, 주먹은 약한 척 먹고 살기 위해 조용히 살아 온 기간제 교사 "소시민". 법도 경찰도 무서울 것 하나 없는 안하무인 절대권력 "한수강"의 선을 넘는 행동을 목격하게 된다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05768.jpg', 'resources/upfiles/20240320135136_05769.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '화사한 그녀', '2023-10-11', '1', '121분', '인생 역전 한방을 꿈꾸는 화사한 작전꾼 ‘지혜’ 매번 허당한 실력으로 허탕만 치던 그녀에게 600억이라는 일생일대의 기회가 찾아왔다! 실패는 사치다!라는 모토 아래 영혼까지 끌어 모은 마지막 작전을 시작하는데...', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05770.jpg', 'resources/upfiles/20240320135136_05771.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '드림쏭2', '2023-10-03', '2', '90분', '더 큰 무대로 돌아왔다! 이번엔 월드 투어다! 드림쏭 이후 1년, ‘버디’와 그의 밴드 ‘트루 블루’는 팬들의 열렬한 사랑을 받으며 눈의 마을의 인기 스타가 된다.', 'N', '전체관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05772.jpg', 'resources/upfiles/20240320135136_05773.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '천박사 퇴마 연구소: 설경의 비밀', '2023-09-27', '1', '98분', '대대로 마을을 지켜 온 당주집 장손이지만 정작 귀신은 믿지 않는 가짜 퇴마사 ‘천박사’(강동원). 사람의 마음을 꿰뚫는 통찰력으로 가짜 퇴마를 하며, 의뢰받은 사건들을 해결해 오던 그에게 귀신을 보는 의뢰인 ‘유경’(이솜)이 찾아와 거액의 수임료로 거절하기 힘든 제안을 한다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05774.jpg', 'resources/upfiles/20240320135136_05775.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '거미집', '2023-09-27', '1', '132분', '“결말만 바꾸면 걸작이 된다, 딱 이틀이면 돼!” 1970년대 꿈도 예술도 검열당하던 시대 성공적이었던 데뷔작 이후, 악평과 조롱에 시달리던 김감독(송강호)은 촬영이 끝난 영화 ‘거미집’의 새로운 결말에 대한 영감을 주는 꿈을 며칠째 꾸고 있다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05776.jpg', 'resources/upfiles/20240320135136_05777.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '1947 보스톤', '2023-09-27', '1', '108분', '“나라가 독립을 했으면 당연히 우리 기록도 독립이 되어야지!” 1936년 베를린 올림픽, 세계 신기록을 세운 마라톤 금메달리스트 ‘손기정’. 기미가요가 울려 퍼지는 시상대에서 화분으로 가슴에 단 일장기를 가렸던 그는 하루아침에 민족의 영웅으로 떠올랐지만 일제의 탄압으로 더 이상 달릴 수 없게 된다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05778.jpg', 'resources/upfiles/20240320135136_05779.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오펜하이머', '2023-08-15', '2', '180분', '“나는 이제 죽음이요, 세상의 파괴자가 되었다.” 세상을 구하기 위해 세상을 파괴할 지도 모르는 선택을 해야 하는 천재 과학자의 핵개발 프로젝트.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05780.jpg', 'resources/upfiles/20240320135136_05781.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '비공식작전', '2023-08-02', '1', '132분', '비공식적으로? 알아서 해라? 여기는 하루하루가 지뢰밭이에요” 1987년, 5년째 중동과를 벗어나지 못하고 있는 외교관 ‘민준’(하정우). 어느 날 수화기 너머로 20개월 전 레바논에서 실종된 외교관의 암호 메시지가 들려온다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05782.jpg', 'resources/upfiles/20240320135136_05783.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '달짝지근해: 7510', '2023-08-15', '1', '119분', '타고난 미각 100%, 현실 감각은 0% 제과 연구원 ‘치호’(유해진). 과자밖에 모르는 ‘치호’ 앞에 직진밖에 모르는 세상 긍정 마인드 ‘일영’(김희선)이 나타나고, ‘치호’는 인생의 새로운 맛을 알아가기 시작한다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05784.jpg', 'resources/upfiles/20240320135136_05785.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '타겟', '2023-08-30', '1', '101분', '중고거래로 범죄의 표적이 된 ‘수현’의 일상 속에서 벌어지는 서스펜스를 담은 스릴러.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05786.jpg', 'resources/upfiles/20240320135136_05785.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '메가로돈 2', '2023-08-15', '2', '116분', '더 거대해진 메가로돈 VS 더 강력해진 제이슨 스타뎀 지구 역사상 가장 거대한 최상위 포식자 ‘메가로돈’과 목숨 건 사투 끝에 살아남은 다이버 ‘조나스’는 해양 연구소의 팀원들과 함께 심해 탐사에 나서던 중 예기치 못한 사고로 해저 7,620m에 고립되고 만다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05788.jpg', 'resources/upfiles/20240320135136_05789.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '엘리멘탈', '2023-06-14', '2', '109분', '불, 물, 공기, 흙 4개의 원소들이 살고 있는 ‘엘리멘트 시티’ 재치 있고 불처럼 열정 넘치는 "앰버"는 어느 날 우연히 유쾌하고 감성적이며 물 흐르듯 사는 "웨이드"를 만나 특별한 우정을 쌓으며, 지금껏 믿어온 모든 것들이 흔들리는 새로운 경험을 하게 되는데...', 'N', '전체관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05790.jpg', 'resources/upfiles/20240320135136_05791.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '플래시', '2023-06-14', '2', '144분', '시공간이 붕괴된 세계, 차원이 다른 히어로가 온다! 빛보다 빠른 스피드, 물체 투과, 전기 방출, 자체 회복, 천재적인 두뇌까지 갓벽한 능력을 자랑하지만 존재감은 제로, 저스티스 리그에서 궂은일을 도맡아 하는 히어로 ‘플래시’.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05792.jpg', 'resources/upfiles/20240320135136_05793.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '가디언즈 오브 갤럭시: Volume 3', '2023-05-03', '2', '150분', '‘가모라’를 잃고 슬픔에 빠져 있던 ‘피터 퀼’이 위기에 처한 은하계와 동료를 지키기 위해 다시 한번 가디언즈 팀과 힘을 모으고, 성공하지 못할 경우 그들의 마지막이 될지도 모르는 미션에 나서는 이야기.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05794.jpg', 'resources/upfiles/20240320135136_05795.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '인어공주', '2023-05-24', '2', '135분', '아틀란티카 바다의 왕 ‘트라이튼’의 사랑스러운 막내딸인 인어 ‘에리얼’은 늘 인간들이 사는 바다 너머 세상으로의 모험을 꿈꾼다.', 'N', '전체관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05796.jpg', 'resources/upfiles/20240320135136_05797.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '존 윅 4', '2023-04-12', '2', '169분', '죽을 위기에서 살아난 ‘존 윅’은 ‘최고 회의’를 쓰러트릴 방법을 찾아낸다. 비로소 완전한 자유의 희망을 보지만, NEW 빌런 ‘그라몽 후작’과 전 세계의 최강 연합은 ‘존 윅’의 오랜 친구까지 적으로 만들어 버리고, 새로운 위기에 놓인 ‘존 윅’은 최후의 반격을 준비하는데...', 'N', '청소년 관람불가', 'Y', 'N', 'resources/upfiles/20240320135136_05798.jpg', 'resources/upfiles/20240320135136_05799.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '더 퍼스트 슬램덩크', '2023-01-04', '2', '124분', '전국 제패를 꿈꾸는 북산고 농구부 5인방의 꿈과 열정, 멈추지 않는 도전을 그린 영화.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05800.jpg', 'resources/upfiles/20240320135136_05801.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '메간', '2023-01-25', '2', '102분', '교통사고로 부모를 잃고 혼자가 된 소녀 ‘케이디’. 로봇 엔지니어이자, ‘케이디’의 보호자가 된 ‘젬마’는 ‘케이디’를 안전하게 지켜야 하는 프로그램이 입력된 AI 로봇 ‘메간’을 선물한다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05802.jpg', 'resources/upfiles/20240320135136_05803.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '아바타: 물의 길', '2022-12-14', '2', '192분', '<아바타: 물의 길>은 판도라 행성에서 "제이크 설리"와 "네이티리"가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05804.jpg', 'resources/upfiles/20240320135136_05805.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '영웅', '2022-12-21', '1', '120분', '어머니 ‘조마리아’(나문희)와 가족들을 남겨둔 채 고향을 떠나온 대한제국 의병대장 ‘안중근’(정성화). 동지들과 함께 네 번째 손가락을 자르는 단지동맹으로 조국 독립의 결의를 다진 안중근은 조선 침략의 원흉인 ‘이토 히로부미’를 3년 내에 처단하지 못하면 자결하기로 피로 맹세한다.', 'N', '12세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05806.jpg', 'resources/upfiles/20240320135136_05807.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오펀: 천사의 탄생', '2022-10-12', '2', '98분', '엄청난 비밀을 숨긴 사이코패스가 에스토니아의 정신병동을 탈출, 부유한 가족의 실종된 딸 ‘에스더’로 사칭해 미국에 온다.', 'N', '15세 관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05808.jpg', 'resources/upfiles/20240320135136_05809.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '알라딘', '2019-05-23', '2', '128분', '머나먼 사막 속 신비의 아그라바 왕국의 시대. 좀도둑 ‘알라딘’은 마법사 ‘자파’의 의뢰로 마법 램프를 찾아 나섰다가 주인에게 세 가지 소원을 들어주는 지니를 만나게 되고, 자스민 공주의 마음을 얻으려다 생각도 못했던 모험에 휘말리게 되는데...', 'N', '전체관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05810.jpg', 'resources/upfiles/20240320135136_05811.mp4', 'Y', SYSDATE);
-INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '미니언즈2', '2022-07-20', '2', '87분', '세계 최고의 슈퍼 악당을 꿈꾸는 미니보스 ‘그루’와 그를 따라다니는 미니언들. 어느 날 그루는 최고의 악당 조직 ‘빌런6’의 마법 스톤을 훔치는데 성공하지만 뉴페이스 미니언 ‘오토’의 실수로 스톤을 잃어버리고 빌런6에게 납치까지 당한다.', 'N', '전체관람가', 'Y', 'N', 'resources/upfiles/20240320135136_05812.jpg', 'resources/upfiles/20240320135136_05813.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '소녀는 졸업하지 않는다', '2024-01-24', '2', '120분', '폐교를 앞둔 고등학교. 마지막 졸업식까지 D-2 4명의 소녀 어쩔 수 없는 이별 앞에 소녀들이 간직한 애틋하고 비밀스러운 마음은…?.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05750.jpg', 'resources/upfiles/20240320135136_05751.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '노량: 죽음의 바다', '2023-12-20', '1', '153분', '임진왜란 발발로부터 7년이 지난 1598년 12월. 이순신(김윤석)은 왜군의 수장이던 도요토미 히데요시가 갑작스럽게 사망한 뒤 왜군들이 조선에서 황급히 퇴각하려 한다는 것을 알게 된다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05752.jpg', 'resources/upfiles/20240320135136_05753.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '아쿠아맨과 로스트 킹덤', '2023-12-20', '2', '124분', '아틀란티스 왕국을 이끌 왕의 자리에 오른 ‘아쿠아맨’. 그 앞에 ‘블랙 만타’가 세상을 뒤흔들 강력한 지배 아이템 ‘블랙 트라이던트’를 손에 넣게 된다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05754.jpg', 'resources/upfiles/20240320135136_05755.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '나폴레옹', '2023-12-06', '2', '158분', '스스로 황제가 된 영웅! 1793년 혁명의 불꽃이 프랑스 전역을 밝히기 시작한다. 코르시카 출신의 장교 "나폴레옹"(호아킨 피닉스)은 혼란스러운 상황 속 국가를 위해 맞서며 영웅으로 떠오른다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05756.jpg', 'resources/upfiles/20240320135136_05757.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '바비', '2023-07-19', '2', '114분', '원하는 무엇이든 될 수 있는 "바비랜드"에서 살아가던 "바비"가 현실 세계와 이어진 포털의 균열을 발견하게 되고, 이를 해결하기 위해 "켄"과 예기치 못한 여정을 떠나면서 펼쳐지는 이야기.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05758.jpg', 'resources/upfiles/20240320135136_05759.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '더 마블스', '2023-11-08', '2', '105분', '강력한 힘으로 은하계를 수호하는 최강 히어로 캡틴 마블 ‘캐럴 댄버스’ 캡틴 마블의 오랜 친구의 딸이자, 빛의 파장을 조작하는 히어로 ‘모니카 램보’ 최애 히어로 캡틴 마블의 열렬한 팬인 미즈 마블 ‘카말라 칸’ 캡틴 마블에 대한 복수를 꿈꾸는 냉혹한 크리족 리더 ‘다르-벤’의 영향으로 세 명의 히어로는 능력을 사용할 때마다 서로의 위치가 뒤바뀌게 된다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05760.jpg', 'resources/upfiles/20240320135136_05761.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '헝거게임: 노래하는 새와 뱀의 발라드', '2023-11-15', '2', '157분', '반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임. 헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의 소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을 되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과 방법을 가리지 않는데...', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05762.jpg', 'resources/upfiles/20240320135136_05763.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '사채소년', '2023-11-22', '1', '105분', '학교 서열 최하위, 고교사채왕이 되다! 존재감도, 빽도, 돈도 없는 서열 최하위 "강진". 일진들의 괴롭힘에 시달리며 최악의 학교 생활을 이어가던 중 우연한 기회로 사채업자 "랑"에게 동업을 제안받게 된다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05764.jpg', 'resources/upfiles/20240320135136_05765.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '30일', '2023-10-03', '1', '119분', '“완벽한 저에게 신은 저 여자를 던지셨죠” 지성과 외모 그리고 찌질함까지 타고난, "정열"(강하늘). “모기 같은 존재죠. 존재의 이유를 모르겠는?” 능력과 커리어 그리고 똘기까지 타고난, "나라"(정소민).', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05766.jpg', 'resources/upfiles/20240320135136_05767.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '용감한 시민', '2023-10-25', '1', '112분', '불의는 못 본 척, 성질은 없는 척, 주먹은 약한 척 먹고 살기 위해 조용히 살아 온 기간제 교사 "소시민". 법도 경찰도 무서울 것 하나 없는 안하무인 절대권력 "한수강"의 선을 넘는 행동을 목격하게 된다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05768.jpg', 'resources/upfiles/20240320135136_05769.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '화사한 그녀', '2023-10-11', '1', '121분', '인생 역전 한방을 꿈꾸는 화사한 작전꾼 ‘지혜’ 매번 허당한 실력으로 허탕만 치던 그녀에게 600억이라는 일생일대의 기회가 찾아왔다! 실패는 사치다!라는 모토 아래 영혼까지 끌어 모은 마지막 작전을 시작하는데...', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05770.jpg', 'resources/upfiles/20240320135136_05771.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '드림쏭2', '2023-10-03', '2', '90분', '더 큰 무대로 돌아왔다! 이번엔 월드 투어다! 드림쏭 이후 1년, ‘버디’와 그의 밴드 ‘트루 블루’는 팬들의 열렬한 사랑을 받으며 눈의 마을의 인기 스타가 된다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240320135136_05772.jpg', 'resources/upfiles/20240320135136_05773.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '천박사 퇴마 연구소: 설경의 비밀', '2023-09-27', '1', '98분', '대대로 마을을 지켜 온 당주집 장손이지만 정작 귀신은 믿지 않는 가짜 퇴마사 ‘천박사’(강동원). 사람의 마음을 꿰뚫는 통찰력으로 가짜 퇴마를 하며, 의뢰받은 사건들을 해결해 오던 그에게 귀신을 보는 의뢰인 ‘유경’(이솜)이 찾아와 거액의 수임료로 거절하기 힘든 제안을 한다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05774.jpg', 'resources/upfiles/20240320135136_05775.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '거미집', '2023-09-27', '1', '132분', '“결말만 바꾸면 걸작이 된다, 딱 이틀이면 돼!” 1970년대 꿈도 예술도 검열당하던 시대 성공적이었던 데뷔작 이후, 악평과 조롱에 시달리던 김감독(송강호)은 촬영이 끝난 영화 ‘거미집’의 새로운 결말에 대한 영감을 주는 꿈을 며칠째 꾸고 있다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05776.jpg', 'resources/upfiles/20240320135136_05777.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '1947 보스톤', '2023-09-27', '1', '108분', '“나라가 독립을 했으면 당연히 우리 기록도 독립이 되어야지!” 1936년 베를린 올림픽, 세계 신기록을 세운 마라톤 금메달리스트 ‘손기정’. 기미가요가 울려 퍼지는 시상대에서 화분으로 가슴에 단 일장기를 가렸던 그는 하루아침에 민족의 영웅으로 떠올랐지만 일제의 탄압으로 더 이상 달릴 수 없게 된다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05778.jpg', 'resources/upfiles/20240320135136_05779.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오펜하이머', '2023-08-15', '2', '180분', '“나는 이제 죽음이요, 세상의 파괴자가 되었다.” 세상을 구하기 위해 세상을 파괴할 지도 모르는 선택을 해야 하는 천재 과학자의 핵개발 프로젝트.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05780.jpg', 'resources/upfiles/20240320135136_05781.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '비공식작전', '2023-08-02', '1', '132분', '비공식적으로? 알아서 해라? 여기는 하루하루가 지뢰밭이에요” 1987년, 5년째 중동과를 벗어나지 못하고 있는 외교관 ‘민준’(하정우). 어느 날 수화기 너머로 20개월 전 레바논에서 실종된 외교관의 암호 메시지가 들려온다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05782.jpg', 'resources/upfiles/20240320135136_05783.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '달짝지근해: 7510', '2023-08-15', '1', '119분', '타고난 미각 100%, 현실 감각은 0% 제과 연구원 ‘치호’(유해진). 과자밖에 모르는 ‘치호’ 앞에 직진밖에 모르는 세상 긍정 마인드 ‘일영’(김희선)이 나타나고, ‘치호’는 인생의 새로운 맛을 알아가기 시작한다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05784.jpg', 'resources/upfiles/20240320135136_05785.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '타겟', '2023-08-30', '1', '101분', '중고거래로 범죄의 표적이 된 ‘수현’의 일상 속에서 벌어지는 서스펜스를 담은 스릴러.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05786.jpg', 'resources/upfiles/20240320135136_05785.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '메가로돈 2', '2023-08-15', '2', '116분', '더 거대해진 메가로돈 VS 더 강력해진 제이슨 스타뎀 지구 역사상 가장 거대한 최상위 포식자 ‘메가로돈’과 목숨 건 사투 끝에 살아남은 다이버 ‘조나스’는 해양 연구소의 팀원들과 함께 심해 탐사에 나서던 중 예기치 못한 사고로 해저 7,620m에 고립되고 만다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05788.jpg', 'resources/upfiles/20240320135136_05789.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '엘리멘탈', '2023-06-14', '2', '109분', '불, 물, 공기, 흙 4개의 원소들이 살고 있는 ‘엘리멘트 시티’ 재치 있고 불처럼 열정 넘치는 "앰버"는 어느 날 우연히 유쾌하고 감성적이며 물 흐르듯 사는 "웨이드"를 만나 특별한 우정을 쌓으며, 지금껏 믿어온 모든 것들이 흔들리는 새로운 경험을 하게 되는데...', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240320135136_05790.jpg', 'resources/upfiles/20240320135136_05791.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '플래시', '2023-06-14', '2', '144분', '시공간이 붕괴된 세계, 차원이 다른 히어로가 온다! 빛보다 빠른 스피드, 물체 투과, 전기 방출, 자체 회복, 천재적인 두뇌까지 갓벽한 능력을 자랑하지만 존재감은 제로, 저스티스 리그에서 궂은일을 도맡아 하는 히어로 ‘플래시’.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05792.jpg', 'resources/upfiles/20240320135136_05793.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '가디언즈 오브 갤럭시: Volume 3', '2023-05-03', '2', '150분', '‘가모라’를 잃고 슬픔에 빠져 있던 ‘피터 퀼’이 위기에 처한 은하계와 동료를 지키기 위해 다시 한번 가디언즈 팀과 힘을 모으고, 성공하지 못할 경우 그들의 마지막이 될지도 모르는 미션에 나서는 이야기.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05794.jpg', 'resources/upfiles/20240320135136_05795.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '인어공주', '2023-05-24', '2', '135분', '아틀란티카 바다의 왕 ‘트라이튼’의 사랑스러운 막내딸인 인어 ‘에리얼’은 늘 인간들이 사는 바다 너머 세상으로의 모험을 꿈꾼다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240320135136_05796.jpg', 'resources/upfiles/20240320135136_05797.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '존 윅 4', '2023-04-12', '2', '169분', '죽을 위기에서 살아난 ‘존 윅’은 ‘최고 회의’를 쓰러트릴 방법을 찾아낸다. 비로소 완전한 자유의 희망을 보지만, NEW 빌런 ‘그라몽 후작’과 전 세계의 최강 연합은 ‘존 윅’의 오랜 친구까지 적으로 만들어 버리고, 새로운 위기에 놓인 ‘존 윅’은 최후의 반격을 준비하는데...', 'N', '청소년 관람불가', 'N', 'N', 'resources/upfiles/20240320135136_05798.jpg', 'resources/upfiles/20240320135136_05799.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '더 퍼스트 슬램덩크', '2023-01-04', '2', '124분', '전국 제패를 꿈꾸는 북산고 농구부 5인방의 꿈과 열정, 멈추지 않는 도전을 그린 영화.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05800.jpg', 'resources/upfiles/20240320135136_05801.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '메간', '2023-01-25', '2', '102분', '교통사고로 부모를 잃고 혼자가 된 소녀 ‘케이디’. 로봇 엔지니어이자, ‘케이디’의 보호자가 된 ‘젬마’는 ‘케이디’를 안전하게 지켜야 하는 프로그램이 입력된 AI 로봇 ‘메간’을 선물한다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05802.jpg', 'resources/upfiles/20240320135136_05803.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '아바타: 물의 길', '2022-12-14', '2', '192분', '<아바타: 물의 길>은 판도라 행성에서 "제이크 설리"와 "네이티리"가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05804.jpg', 'resources/upfiles/20240320135136_05805.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '영웅', '2022-12-21', '1', '120분', '어머니 ‘조마리아’(나문희)와 가족들을 남겨둔 채 고향을 떠나온 대한제국 의병대장 ‘안중근’(정성화). 동지들과 함께 네 번째 손가락을 자르는 단지동맹으로 조국 독립의 결의를 다진 안중근은 조선 침략의 원흉인 ‘이토 히로부미’를 3년 내에 처단하지 못하면 자결하기로 피로 맹세한다.', 'N', '12세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05806.jpg', 'resources/upfiles/20240320135136_05807.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '오펀: 천사의 탄생', '2022-10-12', '2', '98분', '엄청난 비밀을 숨긴 사이코패스가 에스토니아의 정신병동을 탈출, 부유한 가족의 실종된 딸 ‘에스더’로 사칭해 미국에 온다.', 'N', '15세 관람가', 'N', 'N', 'resources/upfiles/20240320135136_05808.jpg', 'resources/upfiles/20240320135136_05809.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '알라딘', '2019-05-23', '2', '128분', '머나먼 사막 속 신비의 아그라바 왕국의 시대. 좀도둑 ‘알라딘’은 마법사 ‘자파’의 의뢰로 마법 램프를 찾아 나섰다가 주인에게 세 가지 소원을 들어주는 지니를 만나게 되고, 자스민 공주의 마음을 얻으려다 생각도 못했던 모험에 휘말리게 되는데...', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240320135136_05810.jpg', 'resources/upfiles/20240320135136_05811.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE VALUES(SEQ_MOVIE_NO.NEXTVAL, '미니언즈2', '2022-07-20', '2', '87분', '세계 최고의 슈퍼 악당을 꿈꾸는 미니보스 ‘그루’와 그를 따라다니는 미니언들. 어느 날 그루는 최고의 악당 조직 ‘빌런6’의 마법 스톤을 훔치는데 성공하지만 뉴페이스 미니언 ‘오토’의 실수로 스톤을 잃어버리고 빌런6에게 납치까지 당한다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240320135136_05812.jpg', 'resources/upfiles/20240320135136_05813.mp4', 'Y', SYSDATE);
 
 
 
@@ -2256,7 +2256,530 @@ VALUES (
     , 37
     , 2
 );
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 38
+    , 10
+);
 
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 38
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 39
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 40
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 40
+    , 2
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 41
+    , 1
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 41
+    , 9
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 42
+    , 1
+); 
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 42
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 43
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 43
+    , 11
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 44
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 44
+    , 3
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 45
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 46
+    , 8
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 46
+    , 3
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 46
+    , 4
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 47
+    , 4
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 47
+    , 5
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 48
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 49
+    , 4
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 50
+    , 3
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 51
+    , 3
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 52
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 52
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 53
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 53
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 54
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 55
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 56
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 56
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 57
+    , 1
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 57
+    , 12
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 57
+    , 10
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 57
+    , 4
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 58
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 59
+    , 2
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 59
+    , 3
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 60
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 60
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 61
+    , 2
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 62
+    , 9
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 62
+    , 14
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 63
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 63
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 64
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 64
+    , 2
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 65
+    , 8
+);
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 66
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 67
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 68
+    , 2
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 68
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 69
+    , 4
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 70
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 71
+    , 9
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 71
+    , 3
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 72
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 73
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 74
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 74
+    , 15
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 75
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 76
+    , 9
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 76
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 77
+    , 5
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 77
+    , 4
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 78
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 78
+    , 1
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 78
+    , 10
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 79
+    , 8
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 79
+    , 15
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 80
+    , 5
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 80
+    , 4
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 81
+    , 6
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 81
+    , 15
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 82
+    , 2
+);
+
+INSERT INTO MOVIE_CATEGORY
+VALUES (
+    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
+    , 82
+    , 9
+);
 --------------- 기웅 인물 데이터 추가
 INSERT INTO PERSON
 VALUES (
@@ -2266,6 +2789,7 @@ VALUES (
     , '1946-12-18'
     , '미국'
     , 'resources/upfiles/20080321154832_77889.webp'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2275,6 +2799,7 @@ VALUES (
     , '1960-01-18'
     , '영국'
     , 'resources/upfiles/20090321154832_77889.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2284,6 +2809,7 @@ VALUES (
     , '1970-02-14'
     , '영국'
     , 'resources/upfiles/20090321155232_77189.webp'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2293,6 +2819,7 @@ VALUES (
     , '1993-12-27'
     , '잉글랜드'
     , 'resources/upfiles/20120821155232_77189.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2302,6 +2829,7 @@ VALUES (
     , '1996-11-11'
     , '미국'
     , 'resources/upfiles/20121111155232_77189.webp'
+    , DEFAULT
 );
 ------------------------------- [용훈] 인물 데이터 추가---------------------------------------------
 INSERT INTO PERSON
@@ -2312,6 +2840,7 @@ VALUES (
     , '1981-00-00'
     , '한국'
     , 'resources/upfiles/20221212125232_72122.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2321,6 +2850,7 @@ VALUES (
     , '1962-04-27'
     , '한국'
     , 'resources/upfiles/20221212122242_82112.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2330,6 +2860,7 @@ VALUES (
     , '1991-07-02'
     , '한국'
     , 'resources/upfiles/20221115172448_84176.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2339,6 +2870,7 @@ VALUES (
     , '1970-01-04'
     , '한국'
     , 'resources/upfiles/20230202041440_98451.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2348,6 +2880,7 @@ VALUES (
     , '1995-04-11'
     , '한국'
     , 'resources/upfiles/20230408071165_15117.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2357,6 +2890,7 @@ VALUES (
     , '1973-02-09'
     , '일본'
     , 'resources/upfiles/20230409071046_12345.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2366,6 +2900,7 @@ VALUES (
     , '2003-08-26'
     , '일본'
     , 'resources/upfiles/20230101011244_23345.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2375,6 +2910,7 @@ VALUES (
     , '1995-06-18'
     , '일본'
     , 'resources/upfiles/20230202021223_14615.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2384,6 +2920,7 @@ VALUES (
     , '1973-01-11'
     , '일본'
     , 'resources/upfiles/20230303033165_18416.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2393,6 +2930,7 @@ VALUES (
     , '1961-07-31'
     , '한국'
     , 'resources/upfiles/20230304051514_19151.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2402,6 +2940,7 @@ VALUES (
     , '1970-09-01'
     , '한국'
     , 'resources/upfiles/20230305051615_21042.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2411,6 +2950,7 @@ VALUES (
     , '1973-04-22'
     , '한국'
     , 'resources/upfiles/20230305061711_22189.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2420,6 +2960,7 @@ VALUES (
     , '1968-10-15'
     , '한국'
     , 'resources/upfiles/20230306070102_23489.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2429,6 +2970,7 @@ VALUES (
     , '1976-06-14'
     , '한국'
     , 'resources/upfiles/20230307080203_13579.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2438,6 +2980,7 @@ VALUES (
     , '1980-00-00'
     , '한국'
     , 'resources/upfiles/20230308090304_23689.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2447,6 +2990,7 @@ VALUES (
     , '1971-03-01'
     , '미국'
     , 'resources/upfiles/20230309090305_32180.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2456,6 +3000,7 @@ VALUES (
     , '1984-03-13'
     , '한국'
     , 'resources/upfiles/20230309100405_32982.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2465,6 +3010,7 @@ VALUES (
     , '1980-03-14'
     , '일본'
     , 'resources/upfiles/20230309110101_12053.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2474,6 +3020,7 @@ VALUES (
     , '1969-11-25'
     , '한국'
     , 'resources/upfiles/20230309120202_43251.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2483,6 +3030,7 @@ VALUES (
     , '1978-03-03'
     , '한국'
     , 'resources/upfiles/20230309120404_14236.jpg'
+    , DEFAULT
 );
 
 INSERT INTO PERSON
@@ -2493,6 +3041,7 @@ VALUES (
     , '1996-06-01'
     , '영국'
     , 'resources/upfiles/20230309120515_16817.jpg'
+    , DEFAULT
 );
 
 INSERT INTO PERSON
@@ -2503,6 +3052,7 @@ VALUES (
     , '1969-11-05'
     , '한국'
     , 'resources/upfiles/20230309120501_21357.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2512,6 +3062,7 @@ VALUES (
     , '1977-01-26'
     , '한국'
     , 'resources/upfiles/20230309120502_18754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2521,6 +3072,7 @@ VALUES (
     , '1986-04-29'
     , '한국'
     , 'resources/upfiles/20230309120503_28754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2530,6 +3082,7 @@ VALUES (
     , '1952-01-01'
     , '한국'
     , 'resources/upfiles/20230309120504_62754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2539,6 +3092,7 @@ VALUES (
     , '1965-06-24'
     , '한국'
     , 'resources/upfiles/20230309120505_68754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2548,6 +3102,7 @@ VALUES (
     , '1972-01-05'
     , '한국'
     , 'resources/upfiles/20230309120506_51954.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2557,6 +3112,7 @@ VALUES (
     , '1982-09-25'
     , '한국'
     , 'resources/upfiles/20230309120507_51951.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2566,6 +3122,7 @@ VALUES (
     , '1990-05-30'
     , '한국'
     , 'resources/upfiles/20230309120508_33551.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2575,6 +3132,7 @@ VALUES (
     , '1979-11-28'
     , '미국'
     , 'resources/upfiles/20230309120509_43892.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2584,6 +3142,7 @@ VALUES (
     , '1972-12-15'
     , '한국'
     , 'resources/upfiles/20230309120509_41122.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2593,6 +3152,7 @@ VALUES (
     , '1976-08-10'
     , '한국'
     , 'resources/upfiles/20230309120510_28899.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2602,6 +3162,7 @@ VALUES (
     , '1977-10-20'
     , '한국'
     , 'resources/upfiles/20230309120512_31599.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2611,6 +3172,7 @@ VALUES (
     , '1972-00-00'
     , '한국'
     , 'resources/upfiles/20230309120512_31454.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2620,6 +3182,7 @@ VALUES (
     , '1986-09-25'
     , '한국'
     , 'resources/upfiles/20230309120513_25161.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2629,6 +3192,7 @@ VALUES (
     , '1981-06-28'
     , '미국'
     , 'resources/upfiles/20230309120514_32877.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2638,6 +3202,7 @@ VALUES (
     , '1996-09-01'
     , '미국'
     , 'resources/upfiles/20230309120515_16828.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2647,6 +3212,7 @@ VALUES (
     , '1976-07-19'
     , '영국'
     , 'resources/upfiles/20230309120515_35875.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2656,6 +3222,7 @@ VALUES (
     , '1973-12-15'
     , '한국'
     , 'resources/upfiles/20230309120516_55875.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2665,6 +3232,7 @@ VALUES (
     , '1967-01-21'
     , '한국'
     , 'resources/upfiles/20230309120517_51584.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2674,6 +3242,7 @@ VALUES (
     , '1981-07-28'
     , '한국'
     , 'resources/upfiles/20230309120517_23584.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2683,6 +3252,7 @@ VALUES (
     , '1964-04-14'
     , '한국'
     , 'resources/upfiles/20230309120518_68474.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2692,6 +3262,7 @@ VALUES (
     , '1968-08-10'
     , '오스트레일리아'
     , 'resources/upfiles/20230309120519_65651.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2701,6 +3272,7 @@ VALUES (
     , '1984-11-22'
     , '미국'
     , 'resources/upfiles/20230309120519_98754.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2710,6 +3282,7 @@ VALUES (
     , '1996-01-03'
     , '영국'
     , 'resources/upfiles/20230309120520_01532.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2719,6 +3292,7 @@ VALUES (
     , '1970-03-07'
     , '영국'
     , 'resources/upfiles/20230309120520_02532.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2728,6 +3302,7 @@ VALUES (
     , '1971-00-00'
     , '대만'
     , 'resources/upfiles/20230309120520_10101.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2737,6 +3312,7 @@ VALUES (
     , '1967-07-18'
     , '미국'
     , 'resources/upfiles/20230309120520_10102.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2746,6 +3322,7 @@ VALUES (
     , '1977-04-23'
     , '미국'
     , 'resources/upfiles/20230309120520_10103.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2755,6 +3332,7 @@ VALUES (
     , '1968-10-09'
     , '미국'
     , 'resources/upfiles/20230309120520_10113.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2764,6 +3342,7 @@ VALUES (
     , '1967-12-13'
     , '미국'
     , 'resources/upfiles/20230309120520_10114.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2773,6 +3352,7 @@ VALUES (
     , '1965-05-06'
     , '미국'
     , 'resources/upfiles/20230309120520_20111.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2782,6 +3362,7 @@ VALUES (
     , '1965-04-04'
     , '미국'
     , 'resources/upfiles/20230309120520_20112.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2791,6 +3372,7 @@ VALUES (
     , '1981-05-12'
     , '미국'
     , 'resources/upfiles/20230309120520_20113.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2800,6 +3382,7 @@ VALUES (
     , '1970-02-03'
     , '미국'
     , 'resources/upfiles/20230309120520_20114.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2809,6 +3392,7 @@ VALUES (
     , '1971-07-08'
     , '미국'
     , 'resources/upfiles/20230309120520_20115.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2818,6 +3402,7 @@ VALUES (
     , '1981-06-13'
     , '미국'
     , 'resources/upfiles/20230309120520_20166.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2827,6 +3412,7 @@ VALUES (
     , '1983-08-11'
     , '오스트레일리아'
     , 'resources/upfiles/20230309120520_20167.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2836,6 +3422,7 @@ VALUES (
     , '1967-11-22'
     , '미국'
     , 'resources/upfiles/20230309120520_20168.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2845,6 +3432,7 @@ VALUES (
     , '1971-01-07'
     , '미국'
     , 'resources/upfiles/20230309120520_20169.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2854,6 +3442,7 @@ VALUES (
     , '1969-04-06'
     , '미국'
     , 'resources/upfiles/20230309120520_20170.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2863,6 +3452,7 @@ VALUES (
     , '1964-11-29'
     , '미국'
     , 'resources/upfiles/20230309120520_20171.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2872,6 +3462,7 @@ VALUES (
     , '1989-10-01'
     , '미국'
     , 'resources/upfiles/20230309120520_20172.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2881,6 +3472,7 @@ VALUES (
     , '1967-10-03'
     , '캐나다'
     , 'resources/upfiles/20230309120521_10172.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2890,6 +3482,7 @@ VALUES (
     , '1995-12-27'
     , '미국'
     , 'resources/upfiles/20230309120521_10173.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2899,6 +3492,7 @@ VALUES (
     , '1983-10-19'
     , '스웨덴'
     , 'resources/upfiles/20230309120521_10174.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2908,6 +3502,7 @@ VALUES (
     , '1983-08-04'
     , '미국'
     , 'resources/upfiles/20230309120522_10111.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2917,6 +3512,7 @@ VALUES (
     , '1994-04-12'
     , '미국'
     , 'resources/upfiles/20230309120522_10112.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2926,6 +3522,7 @@ VALUES (
     , '1990-04-15'
     , '프랑스'
     , 'resources/upfiles/20230309120522_10113.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2935,6 +3532,7 @@ VALUES (
     , '1999-01-06'
     , '오스트레일리아'
     , 'resources/upfiles/20230309120522_10114.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2944,6 +3542,7 @@ VALUES (
     , '1971-00-00'
     , '한국'
     , 'resources/upfiles/20230309120523_65487.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2953,6 +3552,7 @@ VALUES (
     , '1970-07-12'
     , '한국'
     , 'resources/upfiles/20230309120523_65489.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2962,6 +3562,7 @@ VALUES (
     , '1973-05-17'
     , '한국'
     , 'resources/upfiles/20230309120523_65490.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2971,6 +3572,7 @@ VALUES (
     , '1979-06-29'
     , '한국'
     , 'resources/upfiles/20230309120523_65491.jpg'
+    , DEFAULT
 );
 INSERT INTO PERSON
 VALUES (
@@ -2980,6 +3582,7 @@ VALUES (
     , '1979-12-12'
     , '한국'
     , 'resources/upfiles/20230309120523_65492.jpg'
+    , DEFAULT
 );
 
 ------------------ CASTING 데이터 추가
@@ -3829,11 +4432,19 @@ ALTER TABLE REPORTED_MEM ADD(ACTIVITY_STATUS CHAR(1));
 -- 활동제한 테이블 샘플데이터 (김지우)
 ALTER TABLE REPORTED_MEM MODIFY(END_DATE NULL);
 
-INSERT INTO REPORTED_MEM VALUES(6, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
-INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B');
+--INSERT INTO REPORTED_MEM VALUES(2, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
+--INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'S');
+--INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지', '2024-02-22', NULL, 'B')
+--INSERT INTO REPORTED_MEM VALUES(6, 1, '욕설', '2024-03-21', '2024-03-23', 'S');
+
 
 -- -- 문의 테이블 샘플데이터 (김지우)
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원탈퇴 관련 문제', '분명히 회원탈퇴을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-20', 'N', 27, 1, NULL, NULL);
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'N', 28, 1, NULL, NULL);
+
+-- 없는영화 신청 테이블 거절 사유 UPDATE (김지우)
+UPDATE NO_MOVIE_ENROLL
+SET NM_REFUSE_REASON = '정보 누락'
+WHERE NM_TITLE = '타이타닉';
 
 commit;

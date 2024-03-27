@@ -107,7 +107,7 @@
 	                    <td><%=not.getNoticeFix() %></td>
 	                    <td>
 	                        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeNotice" onclick="update(<%= not.getNoticeNo() %>);">수정</button>
-	                        <a href="<%=contextPath %>/delete.co?noticeNo=<%=not.getNoticeNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
+	                        <a href="<%=contextPath %>/delete.co?noticeNo=<%=not.getNoticeNo() %>" class="btn btn-outline-danger" onclick="return deleted();">삭제</a>
 	                    </td>
 	                </tr>
                 	<%} %>
@@ -314,10 +314,12 @@
     	function deleted(){
     		let d = prompt("삭제를 희망하시면 삭제라고 입력해주세요");
     		
-    		if(d=="삭제"){
-                alert("공지사항을 삭제하겠습니다.")
-            }else{
-                alert("잘못입력하셨습니다. 다시 확인해주세요")
+    		if (d === "삭제") {
+                alert("공지사항을 삭제하겠습니다.");
+                return true; // 링크 실행
+            } else {
+                alert("잘못입력하셨습니다. 다시 확인해주세요");
+                return false; // 링크 실행 중지
             }
     	}
     	

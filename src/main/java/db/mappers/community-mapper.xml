@@ -368,7 +368,7 @@
 						    (SELECT COUNT(*) 
 						     FROM REPORT
 						     WHERE BOARD_NO_TYPE= 2
-						       AND REPORT_REF_NO = RP.BOARD_NO) AS REPORT,
+						       AND REPORT_REF_NO = RP.REPLY_NO) AS REPORT,
 						    B.B_CATEGORY,
 						    RP.REPLY_B_STATUS,
 						    B.B_NO
@@ -379,11 +379,10 @@
 						JOIN 
 						    BOARD B ON B.B_NO = RP.BOARD_NO
 						WHERE 
-						    RP.BOARD_NO IN(
+						    RP.REPLY_NO IN(
 						                SELECT REPORT_REF_NO
 						                FROM REPORT
 						                WHERE BOARD_NO_TYPE = 2
-						                AND RP.MEM_NO = REPORTED_MEM_NO
 						                ) 
 						ORDER BY 
 						    B.B_NO DESC

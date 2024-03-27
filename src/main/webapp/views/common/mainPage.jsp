@@ -218,6 +218,9 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.commu_title>a{
+	text-decoration: none;
+}
 
 .movePage img {
 	margin: auto;
@@ -525,7 +528,7 @@
 							<img class="poster_img" src="<%= plist1.get(i).getMvPoster() %>">
 								<div class="box_context">
 									<div class="post_context"><%= plist1.get(i).getMvName() %></div>
-									<div class="post_context">평균 별점 : <%= plist1.get(i).getStarRatingAvg() %></div>
+									<div class="post_context">평균 별점 : <%= (plist1.get(i).getStarRatingAvg() != null) ? plist1.get(i).getStarRatingAvg() : "-" %></div>
 									<div class="post_context"><%= plist1.get(i).getMvOpenDate() %></div>
 								</div>
 						</a> 
@@ -543,7 +546,7 @@
 							<img class="poster_img" src="<%= plist2.get(i).getMvPoster() %>">
 								<div class="box_context">
 									<div class="post_context"><%= plist2.get(i).getMvName() %></div>
-									<div class="post_context">평균 별점 : <%= plist2.get(i).getStarRatingAvg() %></div>
+									<div class="post_context">평균 별점 : <%= (plist2.get(i).getStarRatingAvg() != null) ? plist2.get(i).getStarRatingAvg() : "-" %></div>
 									<div class="post_context"><%= plist2.get(i).getMvOpenDate() %></div>
 								</div>
 						</a> 
@@ -557,7 +560,9 @@
 					<div class="commu_box">
 						<% for(int i = 0; i < b.size(); i++){ %>
 							<div class="commu_list">
-								<div class="commu_title"><%= b.get(i).getbTitle() %></div>
+								<div class="commu_title">
+									<a href="<%=contextPath%>/detail.bo?no=<%= b.get(i).getbNo() %>"><%= b.get(i).getbTitle() %></a>
+								</div>
 								<div class="commu_wri">
 									<p style="color: rgb(52, 52, 52);"><%= b.get(i).getMemNickname() %></p>
 									<p style="color: rgb(52, 52, 52);"><%= b.get(i).getbRegistDate() %></p>
@@ -565,14 +570,13 @@
 							</div>
 						<% } %>
 						
-					
-						
 						<div class="movePage">
 							<a href="<%=contextPath%>/main.bo">
 								<img src="<%= contextPath %>/resources/img/right_icon.png">
 							</a>
 						</div>
 					</div>
+					<!--
 					<div class="box_font">
 						<a href="">최신등록 리뷰</a>
 					</div>
@@ -696,9 +700,9 @@
                                     <span class="visually-hidden">Next</span>
                                 </button>
 						</div>
+						-->
 				</div>
 
-			</div>
 			<div class="new_movie box" style="margin-bottom: 10px;">
 				<div class="box_font">
 					<a href="">영화 평점순</a>
@@ -711,7 +715,7 @@
 							<img class="poster_img" src="<%=plist3.get(i).getMvPoster()%>">
 								<div class="box_context">
 									<div class="post_context"><%=plist3.get(i).getMvName()%></div>
-									<div class="post_context">평균 별점 : <%=plist3.get(i).getStarRatingAvg()%></div>
+									<div class="post_context">평균 별점 : <%= (plist3.get(i).getStarRatingAvg() != null) ? plist3.get(i).getStarRatingAvg() : "-" %></div>
 									<div class="post_context"><%=plist3.get(i).getMvOpenDate()%></div>
 								</div>
 						</a> 
@@ -720,6 +724,8 @@
  						%>
 					</div>
 					 
+			</div>
+			
 			</div>
 			<!-- 상단으로 올라가는 버튼 -->
 			<div class="topPage" style="">

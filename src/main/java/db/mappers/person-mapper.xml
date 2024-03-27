@@ -9,7 +9,8 @@
         FROM PERSON
         JOIN CASTING
         ON P_NO = PERSON_NO
-        WHERE MOVIE_NO = ?)
+        WHERE MOVIE_NO = ?
+        AND P_STATUS = 'Y')
 	WHERE RNUM < 7
 	]]>
 	</entry>
@@ -18,6 +19,7 @@
 	SELECT P_NO, P_NAME, P_JOB, P_BD, P_NATION, P_FILE
 	FROM PERSON
 	WHERE P_NAME LIKE ?
+	AND P_STATUS = 'Y'
 	</entry>
 	
 	<!-- 없는영화 신청에서 출연진 인물 검색해서 맞는 값을 띄우기위한 sql문 by 호용 -->

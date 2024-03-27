@@ -74,7 +74,7 @@
     .person-div{
       display: flex;
       /* border: 1px solid red; */
-      width: 900px;
+      width: 1300px;
       flex-wrap:wrap
     }
 
@@ -128,10 +128,10 @@
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
                                   <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
-                                      <option value="1">전체관람</option>
-                                      <option value="2">12</option>
-                                      <option value="3">15</option>
-                                      <option value="4">청소년관람불가</option>
+                                      <option value="전체관람가">전체관람가</option>
+                                      <option value="12세 관람가">12세 관람가</option>
+                                      <option value="15세 관람가">15세 관람가</option>
+                                      <option value="청소년 관람불가">청소년 관람불가</option>
                                   </select>
                               </div>
 
@@ -165,8 +165,8 @@
                               </div><br>
 
                               <div class="person-div">
-
                                 <!--테이블이 생성될 공간-->
+
 
                               </div>
                               
@@ -317,11 +317,11 @@
                   
                           <!-- Modal body -->
                           <div class="modal-body">
-                              <input type="text" name="inputPerson" class="form-control inputPerson"">
+                              <input type="text" name="inputPerson" class="form-control inputPerson">
                               <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                               <hr>
                               <div class="viewPerson">
-                                  
+                                  <!-- 검색한 인물들이 여기 나옴 -->
                               </div>
                           </div>
                   		<!--  onclick="searchPerson();" -->
@@ -416,11 +416,10 @@
                      +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
                      +   "</tr>"
                      +   "<tr>"
-                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>'
                      +   "</tr>"
                      +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
                      + "</table>"
-                     + "<br><br>"
                      console.log(pFile);
                      console.log(pName);
                      console.log(pNo);
@@ -431,7 +430,8 @@
              alert("8명이상 추가할 수 없습니다.");
            }
          });
-		//인물 빼는 스크립트
+      
+		//인물 빼는 스크립트   
          $("#personRemoveBtn").click(function(){
            $(".person-div").find("table").last().remove();
              if(count > 0){
@@ -439,7 +439,13 @@
              }
          });
 		
-
+         $(document).ready(function() {
+             $(document).on('click', '#personRemoveBtnBtn', function() {
+                 $(this).closest('table.person-table').remove(); // 클릭된 버튼의 가장 가까운 부모 테이블을 제거
+                 count--;
+             });
+         });   		
+		
         </script>
     
       </div>

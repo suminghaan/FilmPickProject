@@ -65,8 +65,11 @@
 		                               WHEN ACTIVITY_STATUS = 'B' THEN '-'
 		                               ELSE START_DATE || ' - ' || END_DATE
 		                           END AS SUSPEND_DATE
-		                         FROM MEMBER 
-		                         JOIN REPORTED_MEM USING (MEM_NO)
+                                 , DECODE(R.REPORT_TYPE, 1, '욕설', 2, '도배', 3, '선정', '기타') AS REPORT_CONTENT 
+                                 , (NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '0')) AS ACTIVTIY_STATUS
+		                         FROM MEMBER M
+                                 JOIN REPORT R ON (M.MEM_NO = R.REPORTED_MEM_NO)
+		                         JOIN REPORTED_MEM RM USING (MEM_NO)
 		                         ORDER BY MEM_NO DESC
 		        ) A
 		)
