@@ -507,12 +507,12 @@
            $(".person-div").find("table").last().remove();            
          });
 	
-	console.log($(".person-div").html());
-	console.log($(".viewPerson").html());
+	console.log($(".castingList").val());
 	// 제출 시 카테고리 체크 여부 검사
 	$("#updateMovie").submit(function(event) {
 		//-------------카테고리체크
 		let categoryChecked = false;
+		let castingChecked = false;
 		
 		event.preventDefault();
 		
@@ -520,26 +520,25 @@
 			if($(el).is("checked")) {
 				categoryChecked = true;
 			}
-		})		
-
-		if(categoryChecked) {
-			this.submit();
-		} else {
-			alert("카테고리를 체크해주세요!");
-		}
-		//--------------인물등록체크
-		let castingChecked = false
+		})	
 		
-		if($(".person-div") != null || $(".viewPerson") != null){
+		//--------------인물등록체크
+		if($(".castingList").val() != null){
 			castingChecked = true;
 		}
 		
-		if(castingChecked){
-			this.submit();
-		}else{
+		console.log(categoryChecked);
+
+		if(!categoryChecked) {
+			alert("카테고리를 체크해주세요!");
+		}
+		if(!castingChecked) {
 			alert("인물등록이 안되었습니다!")
 		}
-
+		
+		if(castingChecked && categoryChecked){
+			this.submit();
+		}
 	})
 	/*
 	// 제출 시 인물 등록여부 검사
