@@ -139,6 +139,21 @@
    		font-weight: bold !important;
    }
 	
+
+ /*content style*/
+ .person{
+   		display:flex;
+   		flex-direction:column;
+   }
+   
+   img{
+   		width:80px;
+   		height:80px;
+   }
+   
+   .inputUser{
+   		display:flex;
+   }
 	
 </style>
 </head>
