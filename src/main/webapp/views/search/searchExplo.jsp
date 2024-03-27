@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	import="com.fp.common.model.vo.PageInfo, com.fp.movie.model.vo.Movie, java.util.List"%>
+	pageEncoding="UTF-8" import="com.fp.common.model.vo.PageInfo, com.fp.movie.model.vo.Movie, java.util.List, com.fp.movie.model.vo.Category"
+	%>
+<%
+	List<Category> ca = (List<Category>)request.getAttribute("ca");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,27 +146,16 @@ select>option {
 					<option value="Y">현재상영중인영화</option>
 					<option value="A">개봉예정영화</option>
 					<option value="N">지난영화</option>
-				</select> <select class="btn btnw" id="categorya" name="category"
+				</select> 
+				<select class="btn btnw" id="categorya" name="category"
 					style="background-color: whitesmoke; color: black;"
 					onchange="searchlist(1);">
 					<option value="categoryAll">장르</option>
-					<option value="1">액션</option>
-					<option value="2">코미디</option>
-					<option value="3">로맨스</option>
-					<option value="4">스릴러</option>
-					<option value="5">공포</option>
-					<option value="6">판타지</option>
-					<option value="7">어드벤처</option>
-					<option value="8">드라마</option>
-					<option value="9">애니메이션</option>
-					<option value="10">SF</option>
-					<option value="11">범죄</option>
-					<option value="12">모험</option>
-					<option value="13">다큐멘터리</option>
-					<option value="14">가족</option>
-					<option value="15">뮤지컬</option>
-
-				</select> <select class="btn btnw" id="viewRating" name="viewRating"
+				<% for(int i = 0; i < ca.size(); i++){ %>
+					<option value="<%=ca.get(i).getCategoryNo()%>"><%=ca.get(i).getCategoryName() %></option>
+				<% } %>
+				</select> 
+				<select class="btn btnw" id="viewRating" name="viewRating"
 					style="background-color: whitesmoke; color: black;"
 					onchange="searchlist(1);">
 					<option value="viewRatingAll">등급</option>
@@ -171,7 +163,8 @@ select>option {
 					<option value="12세 이상">12세 이상</option>
 					<option value="15세 이상">15세 이상</option>
 					<option value="청소년 관람불가">청소년 관람불가</option>
-				</select> <select class="btn btnw" id="years" name="yesrs"
+				</select> 
+				<select class="btn btnw" id="years" name="yesrs"
 					style="background-color: whitesmoke; color: black;"
 					onchange="searchlist(1);">
 					<option value="yearsAll">연대</option>
@@ -181,7 +174,8 @@ select>option {
 					<option value="200">2000년대</option>
 					<option value="199">1990년대</option>
 					<option value="198">1980년대이전</option>
-				</select> <select class="btn btnw" id="nation" name="nation"
+				</select> 
+				<select class="btn btnw" id="nation" name="nation"
 					style="background-color: whitesmoke; color: black;"
 					onchange="searchlist(1);">
 					<option value="nationAll">국가</option>
@@ -248,7 +242,7 @@ select>option {
 		//console.log(globalPage);
 		
 		$.ajax({
-			url: "<%= contextPath %>/explo.mo",
+			url: "<%=contextPath%>/explo.mo",
 			type: "post",
 			data: {currentScreen:$("#currentScreen").val(),
 				category:$("#categorya").val(),
@@ -267,7 +261,7 @@ select>option {
 										+ "<img class='poster_img' src='" + jobj.mlist[i].mvPoster  +"'>"
 			                       		+ "<div class='box_context'>"
 				                        +   "<div class='poster_context'>" + jobj.mlist[i].mvName + "</div>"
-				                        +   "<div class='poster_context'>" + "평균 별점 : " + jobj.mlist[i].starRatingAvg + "</div>"
+				                        +   "<div class='poster_context'>" + "평균 별점 : " + (jobj.mlist[i].starRatingAvg != null ? jobj.mlist[i].starRatingAvg : "-") + "</div>"
 				                        +   "<div class='poster_context'>" + "개봉일 : " + jobj.mlist[i].mvOpenDate + "</div>"  
 			                       		+ "</div>"
 		                   			+ "</a>";

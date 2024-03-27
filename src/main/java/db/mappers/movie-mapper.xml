@@ -384,4 +384,10 @@
 	WHERE MV_NO = ?
 	</entry>
 	
+	<entry key="mainCategoryList">
+	SELECT CATEGORY_NO, CATEGORY_NAME
+	FROM CATEGORY
+	WHERE CATEGORY_STATUS = 'Y'
+	</entry>
+	
 </properties>

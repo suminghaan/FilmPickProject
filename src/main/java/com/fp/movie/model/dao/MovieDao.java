@@ -17,6 +17,7 @@ import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
+import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.movie.model.vo.SearchFilter;
@@ -94,7 +95,11 @@ public class MovieDao {
 			sql += " AND MV_NATION = '" + f.getMvNation() + "'";
 		}
 		if(!f.getMvOpenDate().equals("yearsAll")) {
-			sql += " AND MV_OPENDATE LIKE '" + f.getMvOpenDate() + "%'";
+			if(f.getMvOpenDate().equals("newyear")) {
+				sql += " AND MV_OPENDATE LIKE '2024%'";
+			}else {				
+				sql += " AND MV_OPENDATE LIKE '" + f.getMvOpenDate() + "%'";
+			}
 		}
 		
 		// ORDERBY 관련 IF문 [용훈]
@@ -870,6 +875,31 @@ public class MovieDao {
 		}
 		
 		return result;
+	}
+
+	public List<Category> mainCategoryList(Connection conn) {
+		List<Category> ca = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("mainCategoryList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				ca.add(new Category(rset.getInt("CATEGORY_NO"),
+									rset.getString("CATEGORY_NAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ca;
 	}
 	
 
