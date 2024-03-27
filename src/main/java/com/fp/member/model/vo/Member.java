@@ -113,19 +113,7 @@ public class Member {
 		this.memEmail = memEmail;
 		this.prefGenre = prefGenre;
 		this.signInDate = signInDate;
-		this.memStatus = memStatus;	
-	}
-
-	public Member(String memId, String memName, String nickname, String memPwd,  String memPhone, String memEmail,  
-			String prefGenre) { // 마이페이지 - 회원정보 변경(은정)
-		super();
-		this.memId = memId;
-		this.memName = memName;
-		this.nickname = nickname;
-		this.memPwd = memPwd;
-		this.memPhone = memPhone;
-		this.memEmail = memEmail;
-		this.prefGenre = prefGenre;
+		this.memStatus = memStatus;
 	}
 
 	public Member() {
