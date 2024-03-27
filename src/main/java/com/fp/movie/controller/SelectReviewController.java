@@ -35,9 +35,14 @@ public class SelectReviewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int movieNo = Integer.parseInt(request.getParameter("movieNo"));
-		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		int userNo = 0;
+		if(request.getSession().getAttribute("loginUser") != null) {
+			userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+		}
 		
-		int reviewCount = new MovieService().selectReviewCount(movieNo);
+		/*
+		 * 
+		 *int reviewCount = new MovieService().selectReviewCount(movieNo);
 		int currentPage = Integer.parseInt(request.getParameter("page"));
 		int pageLimit = 5;
 		int reviewLimit = 12;
@@ -54,23 +59,27 @@ public class SelectReviewController extends HttpServlet {
 			endPage= maxPage;
 		}
 		
-		PageInfo pi = new PageInfo(reviewCount, currentPage, pageLimit, reviewLimit, maxPage, startPage, endPage);
-		
+		PageInfo pi = new PageInfo(reviewCount, currentPage, pageLimit, reviewLimit, maxPage, startPage, endPage); 
+		 * 
+		 * 
+		*/
 		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
-		ArrayList<Approval> apprList = new MovieService().selectApproval(userNo);
+		
+		if(userNo != 0) {
+			ArrayList<Approval> apprList = new MovieService().selectApproval(userNo);
+			if(apprList != null) {
+				request.setAttribute("apprList", apprList);
+			} else {
+				System.out.println("apprList가 null");
+			}
+		}
 		
 		if(reviewList != null) {
 			request.setAttribute("reviewList", reviewList);
 		} else {
 			System.out.println("reviewList가 null");
 		}
-		
-		if(apprList != null) {
-			request.setAttribute("apprList", apprList);
-		} else {
-			System.out.println("apprList가 null");
-		}
-		
+				
 		request.getRequestDispatcher("/views/search/moreReview.jsp").forward(request, response);
 	}
 

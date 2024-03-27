@@ -310,14 +310,29 @@
 	<!-- 없는영화 수정페이지에 띄울 인물 값들을 조회하는 sql문 [호용] -->
 	<entry key="selectNoMoviePerson">	
 		SELECT
-			   NM_CAST_NO
-			 , PERSON_NO
-			 , NM_ENROLL_NO
+			   NM_CAST_NO <!-- 없는영화 인물번호 -->
+			 , PERSON_NO <!-- 인물번호 -->
+			 , NM_ENROLL_NO <!-- 없는영화 신청번호 -->
+			 , NM_CASTING <!-- 배역(없는영화) -->
+			 , P_NAME <!-- 이름 -->
+			 , P_FILE <!-- 첨부파일경로(펄슨테이블) -->
+		  FROM NO_MOVIE_CAST NP
+		  JOIN PERSON P ON (P_NO = PERSON_NO)
+		 WHERE NM_ENROLL_NO = ?
+	</entry>
+	
+	<!-- 없는영화 수정페이지에 띄울 인물 값들을 조회하는 sql문 기존꺼임 [호용]
+	<entry key="selectNoMoviePerson">	
+		SELECT
+			   NM_CAST_NO 없는영화 인물번호
+			 , PERSON_NO 인물번호
+			 , NM_ENROLL_NO 없는영화 신청번
 			 , NM_CASTING
 		  FROM NO_MOVIE_CAST
 		 WHERE NM_ENROLL_NO = ?
 	</entry>
-	
+	 -->
+	 
 	<!-- 없는영화 수정페이지에 띄울 카테고리 값들을 조회하는 sql문 [호용] -->
 	<entry key="selectNoMovieCategory">
 		SELECT

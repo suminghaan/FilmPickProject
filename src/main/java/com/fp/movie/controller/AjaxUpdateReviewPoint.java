@@ -53,7 +53,7 @@ public class AjaxUpdateReviewPoint extends HttpServlet {
 		}
 		
 		
-		response.setContentType("text/html; chartset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		if(result > 0) {
 			response.getWriter().print("등록 성공");
 		} else {

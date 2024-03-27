@@ -91,7 +91,7 @@
                     <th>등록자 아이디</th>
                     <th>댓글내용</th>
                     <th>신고수</th>
-                    <th>구분</th>
+                    <th>블라인드여부</th>
                     <th>관리</th>
                 </tr>
             </thead>
@@ -101,7 +101,7 @@
                 <!-- case1. 조회된 게시글 없을 경우 -->
                 <% if(list.isEmpty()){ %>
                      <tr>
-                         <td colspan="8" style="text-align: center;">존재하는 게시글이 없습니다.</td>
+                         <td colspan="7" style="text-align: center;">존재하는 댓글이 없습니다.</td>
                      </tr>
 				<% }else { %>
 
@@ -113,7 +113,7 @@
                     <td><%=re.getReMemNo() %></td>
                     <td><%=re.getReplyContent() %></td>
                     <td><%=re.getReport() %></td>
-                    <td><%=re.getBoCategory() %></td>
+                    <td><%=re.getbStatus() %></td>
                     <td><button type="button" class="btn btn-outline-warning" onclick="reportBoard();">신고회원관리</button></td>
                 </tr>
 
@@ -131,7 +131,7 @@
                                 </td>
                             </tr>
                             <% for(Report r : rlist) { %>
-                            <% if(re.getReBoNo() == r.getReportBoardNo()) { %>
+                            <% if(re.getReplyNo() == r.getReportBoardNo()) { %>
                             <tr>
                                 <th>신고 내용</th>
                                 <td colspan="3">                            

@@ -45,7 +45,11 @@ public class NoMovieUpdateFormController extends HttpServlet {
 		List<Category> cList = new NoMovieService().selectNoMovieCategory(noMovieNo);
 		// 없는영화에서 추가적인 첨부파일 테이블에 값들 가져오는 구문
 		Attachment at = new NoMovieService().selectAttachment(noMovieNo);
-		
+		System.out.println("nm 값 : " + nm);
+		System.out.println("pList 값 : " + pList);
+		System.out.println("cList 값 : " + cList);
+		System.out.println("at 값 : " + at);
+
 		request.setAttribute("nm", nm);
 		request.setAttribute("pList", pList);
 		request.setAttribute("cList", cList);

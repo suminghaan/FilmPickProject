@@ -657,7 +657,6 @@ public class CommunityDao {
 								   rset.getString("b_category")
 								   ));				
 			}
-			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

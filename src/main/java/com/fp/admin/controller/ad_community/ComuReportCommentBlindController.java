@@ -36,7 +36,7 @@ public class ComuReportCommentBlindController extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(result > 0) {
 			session.setAttribute("alertMsg", "해당 댓글이 블라인드 처리 되었습니다.");
-			response.sendRedirect(request.getContextPath()+"/blindList.co?page=1");
+			response.sendRedirect(request.getContextPath()+"/reportCommentList.co?page=1");
 		}else {
 			session.setAttribute("alertMsg", "블라인드 처리 실패");
 			response.sendRedirect(request.getContextPath()+"/reportCommentList.co?page=1");

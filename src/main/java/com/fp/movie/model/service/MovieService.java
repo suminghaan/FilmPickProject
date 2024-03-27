@@ -12,6 +12,7 @@ import com.fp.common.model.vo.Attachment;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.dao.MovieDao;
+import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.movie.model.vo.SearchFilter;
@@ -309,7 +310,7 @@ public class MovieService {
 		return result;
 	}
 
-	//	공감|비공감 정보 조회
+	//	공감|비공감 정보 조회 [기웅]
 	public ArrayList<Approval> selectApproval(int memNo) {
 		Connection conn = getConnection();
 		ArrayList<Approval> apprList = mDao.selectApproval(conn, memNo);
@@ -324,6 +325,23 @@ public class MovieService {
 		int result = mDao.selectReviewCount(conn, movieNo);
 		close(conn);
 		return result;
+	}
+
+//	영화 카테고리 정보를 받아오는 메소드 [기웅]
+	public ArrayList<Category> selectCategoryList(int movieNo) {
+		Connection conn = getConnection();
+		ArrayList<Category> categoryList = mDao.selectCategoryList(conn, movieNo);
+		close(conn);
+		return categoryList;
+	}
+
+
+	// [용훈] 메인페이지 카테고리 조회 
+	public List<Category> mainCategoryList() {
+		Connection conn = getConnection();
+		List<Category> ca = mDao.mainCategoryList(conn);
+		close(conn);
+		return ca;
 	}
 
 
