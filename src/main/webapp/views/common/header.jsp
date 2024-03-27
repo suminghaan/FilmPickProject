@@ -196,10 +196,12 @@
     }
     
     .profile-area{
-    	border: 2px solid #F72798;
-    	height: 50px; 
-    	width: 50px;
-    	border-radius: 10.0em;
+   	    height: 70px;
+	    width: 70px;
+	    border-radius: 10.0em;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
     }
 
   </style>
@@ -360,10 +362,10 @@
         
           <%}else{%>
           <!-- 로그인 시 보여질 내용 -->
-          <div class="dropdown text-end" style="width: 200px; padding-left: 100px !important;">
-          	<div class="profile-area">
-              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user fa-2x" id="profile" style="color: #F72798; padding-right: 8px; padding-top: 5px; display: block;"></i>
+          <div class="dropdown" style="width: 200px; display: flex; justify-content: center; align-items: center;">
+          	<div class="profile-area" style="border: 2px solid <%= (loginMember != null ? loginMember.getMemColor() : "#F72798" )%>;">
+              <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="padding-top:10px; padding-left:10px">
+                <i class="fa-solid fa-user fa-2x" id="profile" style="color: <%= (loginMember != null ? loginMember.getMemColor() : "#F72798" )%>; padding-right: 8px; padding-top: 5px; display: block;"></i>
               </a>
               <ul class="dropdown-menu text-small">
                 <li><a class="dropdown-item" href="<%=contextPath%>/myPage.me">회원정보</a></li>
@@ -375,7 +377,8 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<%=contextPath%>/logout.me">로그아웃</a></li>
               </ul>
-          	</div>      
+          	</div>
+          	 <span style="padding-left:10px;"><%= (loginMember != null ? loginMember.getNickname() : "") %></span>
           </div> 
           <%} %>
 
