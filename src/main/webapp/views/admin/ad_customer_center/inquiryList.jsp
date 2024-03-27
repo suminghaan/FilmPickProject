@@ -109,7 +109,7 @@ tr[class^='inquiry']:hover{
 						        <input type="hidden" value="<%= pageList.get(i).getInqryNo() %>" name="inqryNo">
 						        <td colspan="5" rowspan="1" style="height: 100px;">
 						            <div class="container">
-						                <textarea id="modify-reply1" class="form-control" name="inquiryAnswer" rows="6" placeholder="답변을 작성해주세요" style="resize: none;" id="inquiryAnswer"></textarea>
+						                <textarea id="modify-reply" class="form-control" name="inquiryAnswer" rows="6" placeholder="답변을 작성해주세요" style="resize: none;" id="inquiryAnswer"></textarea>
 						            </div>
 						            <div class="d-flex justify-content-end container">
 						                <button type="submit" class="btn btn-secondary btn-sm" style="margin-top: 10px;" id="updateInQuiry">작성</button>
@@ -124,13 +124,13 @@ tr[class^='inquiry']:hover{
 						            <p style="color: rgb(41, 128, 185); font-weight: bold;">답변</p>
 					            <form action="<%= contextPath %>/adupdate.iq" method="post">
 						            <input type="hidden" value="<%= pageList.get(i).getInqryNo() %>" name="inqryNo">
-						            <p id="reply-text1" class="reply-text<%=i%>"><%= pageList.get(i).getInqryAContent() %><br><br></p>
-						            <textarea id="modify-reply2" name="inquiryAnswer" class="form-control modify-reply<%=i%>" style="height: 300px;"></textarea>
+						            <pre id="reply-text1" class="reply-text<%=i%>"><%= pageList.get(i).getInqryAContent() %><br><br></pre>
+						            <textarea id="modify-reply1" name="inquiryAnswer" class="form-control modify-reply<%=i%>" style="height: 300px;"></textarea>
 						        </div>
 						        <div class="d-flex justify-content-end container">
 						            <button type="button" class="btn btn-secondary btn-sm modifyBtn<%=i%>" style="margin-top: 10px; margin-right: 20px;" id="modifyBtn1">수정</button>
 						            <button type="submit" class="btn btn-secondary btn-sm registBtn<%=i%>" style="margin-top: 10px; margin-right: 20px; display: none;" id="registBtn1" onclick="confirm('답변을 수정하시겠습니까?')">등록</button> 
-						            <button type="button" class="btn btn-secondary btn-sm deleteBtn<%=i%>" style="margin-top: 10px;" id="deleteBtn1" onclick="confirm('답변을 삭제하시겠습니까?')">삭제</button>
+						            <button type="button" class="btn btn-secondary btn-sm deleteBtn<%=i%>" style="margin-top: 10px;" id="deleteBtn1" onclick="delteBtnCl(<%=pageList.get(i).getInqryNo()%>);">삭제</button>
 						        </div>
 						        </form>	
 						    </td>
@@ -149,9 +149,14 @@ tr[class^='inquiry']:hover{
 						            $('.deleteBtn<%=i%>').hide();
 						        });
 						    });
-						    $(function(){
-						    	// location.href = '<%=contextPath%>/xx.xx';
-						    });
+						    
+						</script>
+						<script>
+						function delteBtnCl(no){
+					    	if(confirm('답변을 삭제하시겠습니까?')){
+					    		location.href = '<%=contextPath%>/addelete.iq?no=' + no;						    		
+					    	}
+				    	};
 						</script>
 						<% } %>
 		                <% } %>
