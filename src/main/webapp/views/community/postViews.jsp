@@ -184,7 +184,11 @@
 	function good(){
     	$.ajax({
     		url:"<%=contextPath%>/good.bo",
-    		data:{no:<%=b.getbNo()%>},
+    		data:{
+	    			bNo:<%=b.getbNo()%>,
+	    			memNo:<%=loginMember != null ? loginMember.getMemNo() : null%>
+
+    		},
     		success:function(result){
     			if(result > 0){
     				alert("게시글을 추천하였습니다.");
