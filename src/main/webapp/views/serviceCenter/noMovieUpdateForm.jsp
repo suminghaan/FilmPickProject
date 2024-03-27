@@ -117,6 +117,10 @@
    	  width : 500px;
    	  flex-wrap:wrap
    	}
+   	.updateSrc img, video{
+   		width : 200px;
+   		height: 250px;
+   	}
 </style>
 </head>
 <body>
@@ -147,10 +151,10 @@
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
                                   <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
-                                      <option value="1">전체관람</option>
-                                      <option value="2">12</option>
-                                      <option value="3">15</option>
-                                      <option value="4">청소년관람불가</option>
+                                      <option value="전체관람가">전체관람가</option>
+                                      <option value="12세 관람가">12세 관람가</option>
+                                      <option value="15세 관람가">15세 관람가</option>
+                                      <option value="청소년 관람불가">청소년 관람불가</option>
                                   </select>
                               </div>
                               
@@ -195,11 +199,24 @@
                               </div><br>
 
                               <div class="person-div">
-
                                 <!--테이블이 생성될 공간-->
-
+								<%for(Person p : pList){ %>
+									<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
+										<table class='person-table'>
+											<tr>
+												<td><img src="<%=p.getpFile()%>"></td>
+											</tr>
+											<tr>
+												<td style="color:black;"><%=p.getpName()%></td>
+											</tr>
+											<tr>
+												<td><input type="text" placeholder="영화배역 입력" name="movieJob" required value="<%=p.getpJob()%>"><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>
+											</tr>
+											<input type="hidden" name=personNo value="<%=p.getpNo()%>">
+										</table>
+									<%} %>
+								<%} %>
                               </div>
-                              
 
                               <br><br>
                               <div class="form-group form-category" style="color:black;" id="catecate">
@@ -277,19 +294,19 @@
 
 
                               <p style="color:black;">영화포스터(필수)</p>
-                              <div class="custom-file" style="color:black;">
+                              <div class="custom-file updateSrc" style="color:black;">
                                   <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nm.getNmPoster()%>">
                                   <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>
-                                  <img src="" alt="미리보기이미지">
+                                  <img src="<%=contextPath + "/" + nm.getNmPoster()%>" alt="미리보기이미지">
                               </div>
 
                               <br>
 
                               <p style="color:black;">예고편영상(필수)</p>
-                              <div class="custom-file" style="color:black;">
+                              <div class="custom-file updateSrc" style="color:black;">
                                   <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nm.getNmPreview()%>">
                                   <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
-                                  <img src="" alt="미리보기이미지">
+                                  <video src="<%=contextPath + "/" + nm.getNmPreview()%>" controls alt="예고편영상미리보기"></video>
                               </div>
 
                               <br>
@@ -313,7 +330,7 @@
 
                               <div class="form-group" style="color:black;">
                                   <h4>사용자 요청사항(선택)</h4>
-                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest()%></textarea>
+                                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest() != null ? nm.getNmUserRequest() : ""%></textarea>
                               </div>
 
                               <div style="color:black;" id="nickNameRequest">
