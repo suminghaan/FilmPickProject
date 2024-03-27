@@ -150,7 +150,7 @@ tr[class^='inquiry']:hover{
 						        });
 						    });
 						    $(function(){
-						    	location.href = '<%=contextPath%>/xx.xx';
+						    	// location.href = '<%=contextPath%>/xx.xx';
 						    });
 						</script>
 						<% } %>
