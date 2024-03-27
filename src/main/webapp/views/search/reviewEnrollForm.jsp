@@ -17,8 +17,9 @@
     .test1 {
       background-color: rgb(15, 15, 15);
       border-radius: 10px;
-      width: 80%;
-      height: 80%;
+      width: 90%;
+      height: 90%;
+      padding: 30px;
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
@@ -50,13 +51,15 @@
     .thumbnail_title {
       height: 15%;
       border-radius: 10px;
-      background-color: rgb(0, 0, 0)
+      background-color: rgb(0, 0, 0);
+      padding-left: 20px;
     }
 
     .movieStory {
       height: 80%;
       border-radius: 10px;
-      background-color: black
+      background-color: black;
+      padding: 20px;
     }
 
     /* 별점, 공감비공감, 리뷰 */
@@ -113,7 +116,6 @@
     /* 영화 포스터 */
     .thumbnail {
       height: 100%;
-      cursor: pointer;
       display: flex;
       padding-bottom: 10px;
       justify-content: center;
