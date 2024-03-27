@@ -47,10 +47,12 @@ public class MovieCastingUpdateController extends HttpServlet {
 			String pJob = multiRequest.getParameter("pJob");
 			
 			String originPimg = multiRequest.getParameter("originPimg");
-			String changeNamePimg = multiRequest.getParameter("upfile");
+			String changeNamePimg = multiRequest.getFilesystemName("upfile");
+			
+			System.out.println(changeNamePimg);
 			
 			String pImg = null;
-			if(multiRequest.getFilesystemName("pImg") == null) {
+			if(multiRequest.getFilesystemName("upfile") == null) {
 				pImg = originPimg;
 			} else {
 				pImg = "resources/upfiles/" + changeNamePimg;
