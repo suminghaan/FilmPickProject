@@ -63,7 +63,9 @@ table{
 	                    <td><%=rm.getLimitReason()%></td>
 	                    <td><%=rm.getActivityStatus()%></td>
 	                    <td><%=rm.getSuspendDate()%></td>
-	                    <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#suspendModal">변경</button></td>
+	                    <td style="display: none;"><input type="hidden" class="reportReason"></td>
+	                    <td style="display: none;"><input type="hidden" class="suspendDate"></td>
+	                    <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#suspendModal" class="updateBtn" onclick="selectSuspendModal.call(this);">변경</button></td>
 	                </tr>
 	                <% } %>
 	                <% } %>
@@ -165,12 +167,11 @@ table{
                             <span class="modal-text">활동중지 기간</span>
                             <span>
                                 <select>
-                                    <option value="">없음</option>
-                                    <option value="">3일</option>
-                                    <option value="">7일</option>
-                                    <option value="">15일</option>
-                                    <option value="">30일</option>
-                                    <option value="">강제탈퇴</option>
+                                    <option value="0">없음</option>
+                                    <option value="3">3일</option>
+                                    <option value="7">7일</option>
+                                    <option value="15">15일</option>
+                                    <option value="30">30일</option>
                                 </select>
                             </span>
                         </div>
@@ -211,6 +212,11 @@ table{
  	function changeStatus(){
  		alert('변경이 완료되었습니다.');
  	}
+ 	
+ 	function selectSuspendModal(){
+ 		 let memId = $(this).closest("tr").find("td:nth-child(2)").text();
+ 	     console.log(memId);
+ 	};
  </script>
 </body>
 </html>
