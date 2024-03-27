@@ -138,9 +138,9 @@ table{
                 		<b>신청 목록이 존재하지 않습니다.</b>
                 	<% } else {  %>
                 	<% for(NoMovie nm : pageList){ %>
-                <div class="no-movie-list all-list">
+                <div class="no-movie-list all-list" onclick="mvNmListDetail(<%=nm.getNmEnrollNo()%>);">
                     <div class="container item1">
-                        <h4 class="title"><%= nm.getNmTitle() %></h4>
+                        <h4 class="title no-movie-title"><%= nm.getNmTitle() %></h4>
                         <img src="<%= contextPath + "/" + nm.getNmPoster() %>" class="img-fluid" style="width: 130px;">
                     </div>
                     <div class="container item2">
@@ -268,7 +268,13 @@ table{
 		            $('#noMovieList').html($originalTable);
 		        } 
 		    });
-	});
+	    });
+	   	
+
+	    function mvNmListDetail(no){
+	    	console.log(no);
+	    	location.href="<%=contextPath%>/movierequestlistdetail.nm?no=" + no;
+	    }
    </script>
 </body>
 </html>

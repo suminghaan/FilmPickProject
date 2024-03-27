@@ -36,6 +36,7 @@ public class MemberInsertSuspendController extends HttpServlet {
 		int memNo = Integer.parseInt(request.getParameter("hiddenMemNo"));
 		String reason = request.getParameter("hiddenReason");
 		int adminNo = ((Admin) session.getAttribute("loginAdmin")).getAdminNo();
+		System.out.println(adminNo);
 		int date = Integer.parseInt(request.getParameter("suspendDate"));
 		
 		System.out.println(memNo + " " + reason + " " + adminNo + " " + date);
@@ -45,9 +46,10 @@ public class MemberInsertSuspendController extends HttpServlet {
 		rp.setAdminNo(adminNo);
 		rp.setEndDateNum(date - 1);
 		
-		int result = new MemberService().insertReportedMem(rp);
+		int result1 = new MemberService().insertReportedMem(rp);
+		int result2 = new MemberService().updateReportMem(rp);
 		
-		if(result > 0) {
+		if(result1 > 0) {
 			session.setAttribute("alertMsg", "활동중지 처리가 완료되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/rplist.me?page=1");
 		} else {

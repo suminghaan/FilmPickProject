@@ -396,10 +396,58 @@ public class MemberService {
 	 * @param userId
 	 * @return result
 	 */
-	public int updateKickMember(String userId) {
+	public int updateKickMember(ReportedMember rp) {
 		Connection conn = getConnection();
 
-		int result = rDao.updateKickMember(conn, userId);
+		int result = rDao.updateKickMember(conn, rp);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+
+	public int updateReportMem(ReportedMember rp) {
+		Connection conn = getConnection();
+
+		int result = rDao.updateReportMem(conn, rp);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+
+	public int insertCanceledMem(ReportedMember rp) {
+		Connection conn = getConnection();
+
+		int result = rDao.insertCanceledMem(conn, rp);
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+
+	public int insertKickMem(ReportedMember rp) {
+		Connection conn = getConnection();
+
+		int result = rDao.insertKickMem(conn, rp);
 
 		if (result > 0) {
 			commit(conn);

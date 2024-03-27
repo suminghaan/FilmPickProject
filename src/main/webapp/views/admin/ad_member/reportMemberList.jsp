@@ -70,7 +70,7 @@ table{
            	<% } else { %>
            	<% for(Member m : pageList){ %>
             <tr>
-                <td style="display: none;"><%=m.getMemNo()%>
+                <td style="display: none;"><%=m.getMemNo()%></td>
                 <td><div class="form-check"><input type="checkbox"></div></td>
                 <td><%=m.getMemId()%></td>
                 <td id="userNickname"><%=m.getNickname()%></td>
@@ -179,9 +179,13 @@ table{
 <script>
     function withdrawal(){ // 강제탈퇴 버튼 클릭시 실행될 function
         const userId = $('input:checked').parent().parent().next().text();
+    	const memNo = $('input:checked').parent().parent().prev().text();
+    	const reportContent = $('input:checked').parent().parent().next().next().next().next().next().next().next().text(); // 신고사유
+    	console.log(reportContent);
+    	console.log(memNo);
 
         if(confirm(userId + '님의 회원탈퇴를 진행하시겠습니까?')) { // confirm창에서 확인 버튼 눌렀을 때 : MEM_STATUS 값을 N으로 
-            location.href = '<%=contextPath%>/reportkick.me?userId=' + userId;
+            location.href = '<%=contextPath%>/reportkick.me?userId=' + userId + '&memNo=' + memNo + '&reason=' + reportContent;
         } 
     };
     
