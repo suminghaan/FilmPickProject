@@ -4359,4 +4359,9 @@ INSERT INTO REPORTED_MEM VALUES(4, 1, '욕설 및 도배로 인해 영구정지'
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '회원탈퇴 관련 문제', '분명히 회원탈퇴을 했는데 로그인이 되지 않습니다. 확인 후 답변 부탁드리겠습니다.', '2024-03-20', 'N', 27, 1, NULL, NULL);
 INSERT INTO INQUIRY VALUES(SEQ_INQUIRY_NO.NEXTVAL, '홈페이지 사용법 관련 문제', '홈페이지 사용법 관련한 매뉴얼이 따로 있을까요?', '2024-03-19', 'N', 28, 1, NULL, NULL);
 
+-- 없는영화 신청 테이블 거절 사유 UPDATE (김지우)
+UPDATE NO_MOVIE_ENROLL
+SET NM_REFUSE_REASON = '정보 누락'
+WHERE NM_TITLE = '타이타닉';
+
 commit;
