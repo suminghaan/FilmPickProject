@@ -232,7 +232,7 @@ public class MovieDao {
 				m.setMvPoster(rset.getString("MV_POSTER"));
 				m.setMvPreview(rset.getString("MV_PREVIEW"));
 				m.setStarRatingAvg(rset.getString("AVG_STAR_RATING"));
-				m.setNumberOfStarRating(rset.getInt("NUMBER_OF_STAR_RATING"));
+				m.setNumberOfStarRating(rset.getString("NUMBER_OF_STAR_RATING"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -243,6 +243,9 @@ public class MovieDao {
 		
 		return m;
 	}
+	
+	// 영화 상세보기에서 영화 장르를 받아오는 메소드
+	
 
 	// 영화 상세보기 페이지에서 영화 추가사진 불러오는 메소드
 	public ArrayList<Attachment> selectAddiMovie(Connection conn, int movieNo) {
@@ -891,6 +894,7 @@ public class MovieDao {
 				
 				ca.add(new Category(rset.getInt("CATEGORY_NO"),
 									rset.getString("CATEGORY_NAME")));
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -898,8 +902,36 @@ public class MovieDao {
 			close(rset);
 			close(pstmt);
 		}
+		 return ca;
+	}
+	// 영화의 장르 정보를 가져오는 메소드 [기웅]
+	public ArrayList<Category> selectCategoryList(Connection conn, int movieNo) {
+		String query = prop.getProperty("selectCategoryList");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Category> categoryList = new ArrayList<>();
 		
-		return ca;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, movieNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Category category = new Category();
+				category.setCategoryNo(rset.getInt("CATEGORY_NO"));
+				category.setCategoryName(rset.getString("CATEGORY_NAME"));
+				
+				categoryList.add(category);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+	
+		return categoryList;
 	}
 	
 

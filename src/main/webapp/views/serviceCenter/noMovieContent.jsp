@@ -128,10 +128,10 @@
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
                                   <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
-                                      <option value="1">전체관람</option>
-                                      <option value="2">12</option>
-                                      <option value="3">15</option>
-                                      <option value="4">청소년관람불가</option>
+                                      <option value="전체관람가">전체관람가</option>
+                                      <option value="12세 관람가">12세 관람가</option>
+                                      <option value="15세 관람가">15세 관람가</option>
+                                      <option value="청소년 관람불가">청소년 관람불가</option>
                                   </select>
                               </div>
 

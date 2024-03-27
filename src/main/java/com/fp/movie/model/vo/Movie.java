@@ -19,7 +19,7 @@ public class Movie {
 	private String starRatingAvg;
 	
 //	별점 매긴 사람 수 추가
-	private int numberOfStarRating;
+	private String numberOfStarRating;
 	
 //  영화에 대한 리뷰 개별 별점 추가
 	private String starRating;
@@ -115,7 +115,7 @@ public class Movie {
 
 	public Movie(int mvNo, String mvName, String mvOpenDate, String mvNation, String mvRTime, String mvStory,
 			String fPageExposed, String viewRating, String currentScreening, String mPageExposed, String mvPoster,
-			String mvPreview, String mvStatus, String starRatingAvg, int numberOfStarRating, String starRating, String otherUserStarRating) {
+			String mvPreview, String mvStatus, String starRatingAvg, String numberOfStarRating, String starRating, String otherUserStarRating) {
 		super();
 		this.mvNo = mvNo;
 		this.mvName = mvName;
@@ -181,11 +181,11 @@ public class Movie {
 	}
 
 	
-	public int getNumberOfStarRating() {
+	public String getNumberOfStarRating() {
 		return numberOfStarRating;
 	}
 
-	public void setNumberOfStarRating(int numberOfStarRating) {
+	public void setNumberOfStarRating(String numberOfStarRating) {
 		this.numberOfStarRating = numberOfStarRating;
 	}
 

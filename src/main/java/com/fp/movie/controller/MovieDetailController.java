@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.Attachment;
 import com.fp.movie.model.service.MovieService;
+import com.fp.movie.model.vo.Category;
 import com.fp.movie.model.vo.Movie;
 import com.fp.movie.model.vo.Review;
 import com.fp.person.model.service.PersonService;
@@ -50,6 +51,7 @@ public class MovieDetailController extends HttpServlet {
 		ArrayList<Person> personList = new PersonService().selectPersonInfo(movieNo);
 		ArrayList<Review> reviewList = new MovieService().selectReviewInfo(movieNo);
 		ArrayList<Movie> movieList = new MovieService().selectRelMovieList(movieNo);
+		ArrayList<Category> categoryList = new MovieService().selectCategoryList(movieNo);
 		
 		Review review = null;
 		
@@ -90,6 +92,12 @@ public class MovieDetailController extends HttpServlet {
 			System.out.println("movieList == null");
 		}
 		
+		if(categoryList != null) {
+			request.setAttribute("categoryList", categoryList);
+		} else {
+			System.out.println("categoryList == null");
+		}
+				
 		request.setAttribute("review", review);
 		request.setAttribute("countMovieLike", countMovieLike);
 		request.getRequestDispatcher("/views/search/movieDetail.jsp").forward(request, response);

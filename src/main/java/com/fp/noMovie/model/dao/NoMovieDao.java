@@ -379,12 +379,14 @@ public class NoMovieDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, noMovieNo);
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			while(rset.next()) {
 				p = new Person();
 				p.setNoMoviePNo(rset.getInt("NM_CAST_NO"));
 				p.setpNo(rset.getInt("PERSON_NO"));
 				p.setNoMovieNo(rset.getInt("NM_ENROLL_NO"));
 				p.setpJob(rset.getString("NM_CASTING"));
+				p.setpName(rset.getString("P_NAME"));
+				p.setpFile(rset.getString("P_FILE"));
 				pList.add(p);
 			}
 		} catch (SQLException e) {

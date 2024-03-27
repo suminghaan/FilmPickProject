@@ -186,8 +186,8 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 		const $idInput = $(".signup_content input[name=memId]");
 		$.ajax({
 			url:"<%=contextPath%>/idCheck.me",
-			data:{checkId: $idInput.val()},				s
-			uccess: function(result){
+			data:{checkId: $idInput.val()},				
+			success: function(result){
 	              				
 						if(result == "NNNNN"){
 							// 사용불가능(NNNNN)

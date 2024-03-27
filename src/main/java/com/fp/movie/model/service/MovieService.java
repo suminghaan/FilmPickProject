@@ -310,7 +310,7 @@ public class MovieService {
 		return result;
 	}
 
-	//	공감|비공감 정보 조회
+	//	공감|비공감 정보 조회 [기웅]
 	public ArrayList<Approval> selectApproval(int memNo) {
 		Connection conn = getConnection();
 		ArrayList<Approval> apprList = mDao.selectApproval(conn, memNo);
@@ -325,6 +325,14 @@ public class MovieService {
 		int result = mDao.selectReviewCount(conn, movieNo);
 		close(conn);
 		return result;
+	}
+
+//	영화 카테고리 정보를 받아오는 메소드 [기웅]
+	public ArrayList<Category> selectCategoryList(int movieNo) {
+		Connection conn = getConnection();
+		ArrayList<Category> categoryList = mDao.selectCategoryList(conn, movieNo);
+		close(conn);
+		return categoryList;
 	}
 
 

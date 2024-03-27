@@ -180,11 +180,13 @@ public class Person {
 		this.movieNo = movieNo;
 	}
 
-
+//	private int noMoviePNo; //없는영화 인물번호 [호용]
+//	private int noMovieNo; // 없는영화 신청번호 [호용]
+	
 	@Override
 	public String toString() {
 		return "Person [pNo=" + pNo + ", pName=" + pName + ", pJob=" + pJob + ", pBD=" + pBD + ", pNation=" + pNation
-				+ ", pFile=" + pFile + ", casting=" + casting + "]";
+				+ ", pFile=" + pFile + ", casting=" + casting + ", noMovieNo=" + noMovieNo + ", noMoviePNo=" + noMoviePNo + "]";
 	}
 	
 }
