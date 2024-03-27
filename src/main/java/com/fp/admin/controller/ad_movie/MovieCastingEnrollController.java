@@ -50,12 +50,16 @@ public class MovieCastingEnrollController extends HttpServlet {
 			String birth = multiRequest.getParameter("birth");
 			String pNation = multiRequest.getParameter("pNation");
 			String pJob = multiRequest.getParameter("pJob");
+			String ChangeName = multiRequest.getFilesystemName("pFile");
+			String pImg = "resources/upfiles/" + ChangeName;
+			
 			
 			Person p = new Person();
 			p.setpName(pName);
 			p.setpBD(birth);
 			p.setpNation(pNation);
 			p.setpJob(pJob);
+			p.setpFile(pImg);
 			
 			Attachment at = null;
 			
