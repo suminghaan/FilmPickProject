@@ -134,6 +134,47 @@
    		display:flex;
    }
 
+	/* 인물검색 모달 및 추가관련 스타일*/
+	.person-table{
+      border: 1px solid black;
+      margin: 5px;
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-table *{
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-div{
+      display: flex;
+      /* border: 1px solid red; */
+      width: 1300px;
+      flex-wrap:wrap
+    }
+
+    .person-div img{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
+   	}
 </style>
 	
 </head>
@@ -348,13 +389,25 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="text" name="inputPerson" class="form-control inputPerson">
-                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                     <hr>
                     <div class="viewPerson">
                         
                     </div>
                 </div>
         
+        		<script>
+					$(".inputPerson").on("input", function(){
+						
+						if ($(this).val().trim() === "") {
+							$(".viewPerson").html("");
+						} else {
+							searchPerson();
+						}
+						
+					})
+				</script>
+				
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
@@ -365,43 +418,8 @@
             </div>
         </div>
     </div>
-    <!-- 
-    <script>
-    	function searchActor(){
-    		$.ajax({
-    			url: "<%= contextPath %>/search.pe",
-    			type:"post",
-    			data: {name:$("#name").val()},
-    			success:function(person){
-    				
-    				let value = "";
-    				if(person == null){
-    					value = "";
-    				}else{
-    					for(let i = 0; i < person.length; i++){
-    						value += "<div class='person'>"
-    							+ "<img src='" + person[i].pFile + "'>" 
-    							+ person[i].pName;
-    	                     	+ "<br>"
-    	                     	+ "</div>";
-    					}
-    				}
-    				
-    				$("#searchResults").html(value);
-    			},
-    			error:function(){
-    				console.log("목록 조회 ajax 실패");
-    			}
-    		})
-    	}
-    	let selectedActor = null;
-    	function addActor(index) {
-    		selectedActor = index;
-    		let selectedActorInfo = "<div>" + person[selectedActor].pName + "</div>";
-            $(".castingList").append(selectedActorInfo);
-    	}
-    </script>
-	 -->
+    
+    
 	<script>
 	// 장르 선택
 	$(".form-check-input").each(function(index, el) {
@@ -491,6 +509,7 @@
         		 	 +			'<input type="hidden" name="personNo" value="' + pNo +'">'
 		             +   			"<img src='" + pFile + "'>" + pName + "<br>"
 		             +     			'<input type="text" name="movieJob" class="casting" placeholder="영화배역 입력" required>'
+		             + 				'<button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button>'
 		             +  	'</div>'
 		             +  '</div>'
 		             + 	"<br><br>" 
@@ -506,6 +525,13 @@
 	$("#personRemoveBtn").click(function(){
            $(".person-div").find("table").last().remove();            
          });
+	
+	$(document).ready(function() {
+        $(document).on('click', '#personRemoveBtnBtn', function() {
+        	 $(this).closest('.person').remove();// 클릭된 버튼의 가장 가까운 부모 테이블을 제거
+            
+        });
+    });  
 	
 	console.log($(".castingList").val());
 	// 제출 시 카테고리 체크 여부 검사
