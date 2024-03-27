@@ -1491,6 +1491,48 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
+    '존윅4 추가사진1.jpeg',
+    '19900309120523_88892.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    75
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '존윅4 추가사진2.jpeg',
+    '19950309120523_88111.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    75
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '존윅4 추가사진3.jpeg',
+    '19992309120523_88621.jpeg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    75
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
     '스티븐스필버그.webp',
     '20080321154832_77889.webp',
     SYSDATE,
@@ -1726,7 +1768,7 @@ SELECT SEQ_REVIEW_NO.NEXTVAL,
        MEM.MEM_NO,
        MOV.MV_NO
 FROM (SELECT LEVEL AS MEM_NO FROM dual CONNECT BY LEVEL <= 30) MEM,
-     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 41) MOV
+     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 82) MOV
 WHERE NOT EXISTS (
     SELECT 1
     FROM REVIEW
@@ -3585,6 +3627,62 @@ VALUES (
     , DEFAULT
 );
 
+------밍 인물추가
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '키아누 찰스 리브스'
+    , '배우, 뮤지션'
+    , '1964-09-02'
+    , '캐나다'
+    , 'resources/upfiles/20190309120523_65492.png'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '견자단'
+    , '배우, 감독, 무술감독'
+    , '1963-07-27'
+    , '중국'
+    , 'resources/upfiles/20230309120527_65492.png'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '빌 스카스가드'
+    , '배우'
+    , '1990-08-09'
+    , '스웨덴'
+    , 'resources/upfiles/20220709120527_65492.png'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '로렌스 피시번'
+    , '배우'
+    , '1961-07-30'
+    , '미국'
+    , 'resources/upfiles/20120709120527_65997.png'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '스콧 에드워드 애드킨스'
+    , '배우, 스턴트감독'
+    , '1976-06-14'
+    , '영국'
+    , 'resources/upfiles/20120709120527_13876.png'
+    , DEFAULT
+);
+
 ------------------ CASTING 데이터 추가
 INSERT INTO CASTING
 VALUES (
@@ -4324,6 +4422,46 @@ VALUES (
     , '닥터 스트레인지'
     , 29
     , 43
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '존 윅'
+    , 75
+    , 81
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '케인'
+    , 75
+    , 82
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '그라몽 후작'
+    , 75
+    , 83
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '바워러 킹'
+    , 75
+    , 84
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '킬라 하르칸'
+    , 75
+    , 85
 );
 
 -- 없는영화신청 테이블에 샘플데이터 삽입 (김지우)
