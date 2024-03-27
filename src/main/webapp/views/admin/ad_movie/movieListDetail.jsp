@@ -357,7 +357,7 @@
                 <label>영화포스터</label>
                 <div class="custom-file">
                 	<input type="hidden" name="originPoster" value="<%=m.getMvPoster()%>" >
-                    <input type="file" class="custom-file-input" id="customFile1" name="mposter"> 
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" onchange="previewImage(event)"> 
                     <label class="custom-file-label" for="customFile1">파일추가</label>
                     <img id="preview" src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
                 </div>
@@ -367,7 +367,7 @@
                 <label>예고편영상</label>
                 <div class="custom-file">
                 	<input type="hidden" name="originPreview" value=" <%= m.getMvPreview() %> ">
-                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" >
+                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" onchange="previewVideo(event)">
                     <label class="custom-file-label" for="customFile2">파일추가</label>
                     <video id="previewVideo" src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
                 </div>
@@ -380,7 +380,7 @@
                     <div class="custom-file">
                     	<% if(!alist.isEmpty()){ %>
                         	<% for(Attachment a : alist){ %>   
-		                        <input type="file" class="custom-file-input" id="customFile3" name="upfile" value="">
+		                        <input type="file" class="custom-file-input" id="customFile3" name="upfile" value="" onchange="previewImages(event)">
 		                        <label class="custom-file-label" for="customFile3">파일추가</label>
                  	
 		                        <% if(Integer.parseInt(a.getRefType()) == 1){ %>
@@ -506,7 +506,7 @@
     }
 	
 	// 그외 첨부파일 미리보기
-	function previewImages3(event) {
+	function previewImages(event) {
         var input = event.target;
         var preview = document.getElementById('previews');
         
@@ -519,18 +519,6 @@
         }
     }
 	
-	function previewImages4(event) {
-        var input = event.target;
-        var preview = document.getElementById('previewsv');
-        
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
-        }
-    }	
 	
 	</script>
     
