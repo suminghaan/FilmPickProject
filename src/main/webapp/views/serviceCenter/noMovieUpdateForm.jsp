@@ -92,7 +92,7 @@
     .person-div{
       display: flex;
       /* border: 1px solid red; */
-      width: 900px;
+      width: 1300px;
       flex-wrap:wrap
     }
 
@@ -436,7 +436,7 @@
                             result =  "<div class='check'>"
                                     +       "<table>"
                                     +           "<tr>"
-                                    +               "<td><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></td>"
+                                    +               "<td><label for='boxbox" + i + "'><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></label></td>"
                                     +           "</tr>"
                                     +           "<tr>"
                                     +               "<td class='personName'>" + person[i].pName + "</td>"
@@ -445,7 +445,7 @@
                                     +           "<tr>"
                                     +               "<td>" + person[i].pJob + "</td>"
                                     +           "</tr>"
-                                    +       "<input class='checkboxbox' type='checkbox'>"
+                                    +       "<input class='checkboxbox' type='checkbox' id='boxbox" + i + "'>"
                                     +       "</table>"
                                     +   "</div>";
                             $(".viewPerson").append(result);
@@ -485,11 +485,10 @@
                      +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
                      +   "</tr>"
                      +   "<tr>"
-                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>'
                      +   "</tr>"
                      +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
                      + "</table>"
-                     + "<br><br>"
                      console.log(pFile);
                      console.log(pName);
                      console.log(pNo);
@@ -507,6 +506,13 @@
                count--;
              }
          });
+		
+         $(document).ready(function() {
+             $(document).on('click', '#personRemoveBtnBtn', function() {
+                 $(this).closest('table.person-table').remove(); // 클릭된 버튼의 가장 가까운 부모 테이블을 제거
+                 count--;
+             });
+         });   
 
         </script>
     

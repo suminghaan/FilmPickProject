@@ -207,10 +207,10 @@
                     <input type="text" name="casting" class="form-control casting" style="width: 300px;">
                     <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 </div>
+                 <%--  인물정보 들어갈 테이블 생성될 공간 
                 <div class="person-div">
-                 <!-- 인물정보 들어갈 테이블 생성될 공간 -->
                 </div>
-                
+                --%>
                 <% for(Person p : plist){ %>
                 	<div class="castingList">
                 	<% if(m.getMvNo() == Integer.parseInt(p.getMovieNo())){ %>
@@ -220,12 +220,7 @@
 	                    <input type="text" name="movieJob" class="casting" value="<%=p.getCasting()%>">
 	                    </div>
 	                 <% } %>
-	                    <!-- 
-	                    <div class="person">
-	                    <img src="../img/김우빈.PNG" alt=""> 김우빈 <br>
-	                    <input type="text" name="person_role" placeholder="해당영화 역할">
-	                    </div>
-	                     -->
+
 					</div>
 				<% } %>
                 	
@@ -489,24 +484,22 @@
         	 let pNo = $(this).closest('.check').find('.personNo').val(); // 체크된 인물의 pNo 값 가져오기
         	 let pFile = $(this).closest('.check').find('.personImg').attr('src'); // 체크된 인물의 이미지 경로 가져오기
         	 let pName = $(this).closest('.check').find('.personName').text(); // 체크된 인물의 이름 가져오기
-        	 result += "<table class='person-table'>"
-                     +   "<tr>"
-                     +     "<td><img src='" + pFile + "'></td>" // 이미지 소스에 pFile는 이미지 저장경로
-                     +   "</tr>"
-                     +   "<tr>"
-                     +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
-                     +   "</tr>"
-                     +   "<tr>"
-                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
-                     +   "</tr>"
-                     +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
-                     + "</table>"
-                     + "<br><br>"
-                     console.log(pFile);
-                     console.log(pName);
-                     console.log(pNo);
-           })
-               $(".person-div").append(result);
+       	 
+        	 
+        	 result += '<div class="castingList"> '
+        		 	 + 		'<div class="person">' 
+        		 	 +			'<input type="hidden" name="personNo" value="' + pNo +'">'
+		             +   			"<img src='" + pFile + "'>" + pName + "<br>"
+		             +     			'<input type="text" name="movieJob" class="casting" placeholder="영화배역 입력" required>'
+		             +  	'</div>'
+		             +  '</div>'
+		             + 	"<br><br>" 
+		             console.log(pFile);
+		             console.log(pName);
+		             console.log(pNo);
+		   })
+		       $(".psButton-body").after(result);
+
          });
 	
 	// 인물 삭제 
@@ -514,8 +507,11 @@
            $(".person-div").find("table").last().remove();            
          });
 	
+	console.log($(".person-div").html());
+	console.log($(".viewPerson").html());
 	// 제출 시 카테고리 체크 여부 검사
 	$("#updateMovie").submit(function(event) {
+		//-------------카테고리체크
 		let categoryChecked = false;
 		
 		event.preventDefault();
@@ -524,23 +520,37 @@
 			if($(el).is("checked")) {
 				categoryChecked = true;
 			}
-		})
-		
+		})		
+
 		if(categoryChecked) {
 			this.submit();
 		} else {
 			alert("카테고리를 체크해주세요!");
 		}
+		//--------------인물등록체크
+		let castingChecked = false
 		
+		if($(".person-div") != null || $(".viewPerson") != null){
+			castingChecked = true;
+		}
+		
+		if(castingChecked){
+			this.submit();
+		}else{
+			alert("인물등록이 안되었습니다!")
+		}
+
 	})
-	
+	/*
 	// 제출 시 인물 등록여부 검사
 	$("#updateMovie").submit(function(event)){
 		let castingChecked = false
 		
 		event.preventDefault();
 		
-		$(".casting").each(function(index, el){
+
+		
+		$(".person-div").each(function(index, el){
 			if($(el) != null){
 				castingChecked = true;
 			}
@@ -564,7 +574,7 @@
 		}
 		
 	}
-	
+	*/
 	</script>
 	
 
