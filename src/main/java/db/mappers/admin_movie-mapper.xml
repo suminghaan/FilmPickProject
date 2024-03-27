@@ -222,6 +222,7 @@
 				, P_FILE
 			FROM PERSON
 			WHERE P_NAME LIKE '%' || ? || '%'
+			AND P_STATUS = 'Y'
 		</entry>
 		
 		<!-- 관리자 인물관리_등록 [수민]-->
