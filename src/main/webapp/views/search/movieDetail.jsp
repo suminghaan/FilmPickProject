@@ -574,7 +574,59 @@
         .heart-label {
         	height: 70px;
     		width: 70px;
-        }
+        }        
+        
+        /* 모달창 */
+        .etc_poster{
+		    width: auto;
+		    border-radius: 10px;
+		    cursor: pointer;
+		    transition: 0.3s;
+	  	}
+		  /* 이미지 클릭 시, 밝기 조절 */
+		.etc_poster:hover {opacity: 0.8;}
+		
+		.modal {
+		  display: none; /* 모달창 숨겨 놓기 */
+		  position: fixed; 
+		  z-index: 1; /* 모달창을 제일 앞에 두기 */
+		  padding-top: 100px;
+		  left: 0; top: 0;
+		  width: 100%; height: 100%;
+		  overflow: auto; /* 스크롤 허용 auto */
+		  cursor: pointer; /* 마우스 손가락모양 */
+		  background-color: rgba(0, 0, 0, 0.8);
+		}
+		/* 모달창 이미지 */
+		.modal_content {
+		  margin: auto;
+		  display: block;
+		  width: 50%; height: auto;
+		  max-width: 1000px;
+		  border-radius: 10px;
+		  animation-name: zoom;
+		  animation-duration: 0.8s;
+		}
+		/* 모달창 애니메이션 추가 */
+		@keyframes zoom {
+		  from {transform: scale(0)}
+		  to {transform: scale(1)}
+		}
+		/* 닫기 버튼 꾸미기 */
+		.close {
+		  position: absolute;
+		  top: 15px;
+		  right: 35px;
+		  color: #f1f1f1;
+		  font-size: 40px;
+		  font-weight: bold;
+		  transition: 0.3s;
+		}
+		.close:hover, .close:focus{
+		  color: #bbb;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
     </style>
 	<%@ include file="/views/common/header.jsp" %>
     <!-- starRating css -->
@@ -648,6 +700,10 @@
                                         <div class="etcList_wrap">
                                     <% } %>
                                             <img class="etc_poster" src="<%= attList.get(i).getFilePath() %>" alt="">
+											<div class="modal">
+											  <span class="close">&times;</span>
+											  <img class="modal_content" id="img<%= i %>" src="<%= attList.get(i).getFilePath() %>">
+											</div>
                                     <% if(i % 2 == 1 || i == (attList.size() - 1)) {%>
                                         </div>
                                     </div>
@@ -924,7 +980,7 @@
                                 <a href="<%= contextPath %>/movieDetail.fp?movieNo=<%= movieList.get(i).getMvNo() %>"><img class="thumbnail_img" src="<%= movieList.get(i).getMvPoster() %>" alt=""></a>
                                 <div class="thumbnail_title">
                                     <span><%= movieList.get(i).getMvName() %></span><br>
-                                    <span>영화별점 : <%= movieList.get(i).getStarRatingAvg() %></span><br>
+                                    <span>영화별점 : <%= movieList.get(i).getStarRatingAvg() != null ? movieList.get(i).getStarRatingAvg() : "-" %></span><br>
                                     <span>개봉연도 : <%= movieList.get(i).getMvOpenDate() %></span>
                                 </div>
                             </div>
@@ -1210,6 +1266,25 @@
        				}
        			})
        	<% } %>
+       	
+        $(".etc_poster").each(function(index, el) {
+       	 $(el).click(function() {
+       		console.log($(el).next());
+       		$(el).next().css("display", "block");
+       	 }) 
+        })
+        
+        $(".close").each(function(index, el) {
+       	 $(el).click(function() {
+       		 $(el).parent().css("display", "none");
+       	 })
+        })
+        
+        $(".modal").each(function(index, el) {
+       	 $(el).click(function() {
+       		 $(el).css("display", "none");
+       	 })
+        })
     </script>
 </body>
 
