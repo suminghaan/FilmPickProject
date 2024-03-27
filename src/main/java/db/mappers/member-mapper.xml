@@ -335,6 +335,22 @@
 		   AND MEM_PWD = ?
 	</entry>
 	
+	<entry key="deleteMemberInsert">
+		INSERT 
+				INTO CANCELED_MEM
+				( 
+				  MEM_NO
+				, ADMIN_NO
+				, CANCEL_DATE
+				)
+		VALUES
+				(
+				?
+				, NULL
+				, SYSDATE
+				)
+	</entry>
+	
 	<!-- 회원정보 변경 -->
 	<entry key="updateMember">
 		UPDATE
@@ -461,6 +477,7 @@
 		ORDER BY R.REVIEW_DATE DESC
 	</entry>
 	
+	<!-- 선호장르 -->
 	<entry key="selectPrefGenre">
 		SELECT CATEGORY_NAME
 		  FROM CATEGORY

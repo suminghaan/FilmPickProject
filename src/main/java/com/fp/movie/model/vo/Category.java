@@ -23,6 +23,13 @@ public class Category {
 	}
 	
 	
+	public Category(int categoryNo, String categoryName) {
+		super();
+		this.categoryNo = categoryNo;
+		this.categoryName = categoryName;
+	}
+
+
 	// 없는영화 수정때 필요한 게터세터 [호용]
 	public int getNoMovieCNo() {
 		return noMovieCNo;

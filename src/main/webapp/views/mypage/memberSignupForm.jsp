@@ -40,7 +40,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 			<section class="main_content">
 			<div class="signup_content">
 			<h2>회원가입</h2>
-			<form action="<%= contextPath %>/insert.me" method="post">
+			<form action="<%= contextPath %>/insert.me" method="post" class="signUpForm">
 			<table class="table">
 				<tr>
 					<td>
@@ -58,18 +58,16 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 				</tr>
 				<tr>
 					<td>
-						<input type="password" class="form-control" name="memPwd" id="memPwd" placeholder="* 비밀번호(8~15자의 영문, 숫자, 특수문자 사용)" required>
+						<input type="password" class="form-control" name="memPwd" id="memPwd" placeholder="* 비밀번호(영문, 숫자, 특수문자 포함 8~15글자)" style="font-size: smaller;" required>
 					</td>
 					<td>
-	  
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="password" class="form-control" name="checkPwd" id="checkPwd" placeholder="* 비밀번호확인" required>
+						<input type="password" class="form-control" name="checkPwd" id="checkPwd" placeholder="* 비밀번호 확인(영문, 숫자, 특수문자 포함 8~15글자)" required>
 					</td>
 					<td>
-	  
 					</td>
 				</tr>
 				<tr>
@@ -77,7 +75,6 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 						<input type="email" class="form-control" name="memEmail" placeholder="* 이메일주소" required>
 					</td>
 					<td>
-		  
 					</td>
 				</tr>
 				<tr>
@@ -99,7 +96,6 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 						<input type="text" class="form-control" name="memName" placeholder="* 이름" required>
 					</td>
 					<td>
-	  
 					</td>
 				</tr>
 				<tr>
@@ -107,7 +103,6 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 						<input type="text" class="form-control" name="memBirth" id="memBirth" placeholder="* 생년월일 (ex. 010101)" required>
 					</td>
 					<td>
-	  
 					</td>
 				</tr>
 				<tr>
@@ -118,50 +113,30 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 						<label for="radioF">&nbsp;여자</label>
 					</td>
 					<td>
-  
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" class="form-control" name="memPhone" placeholder="* 휴대전화번호" required>
+						<input type="text" class="form-control" name="memPhone" id="memPhone" placeholder="* 휴대전화번호(-제외)" required>
 					</td>
 					<td>
-						<button type="submit" class="btn btn-outline-light" 
-								style="width: 130px;  font-size: smaller;
-									 --bs-btn-border-color: RGB(247, 39, 140);
-									 --bs-btn-color:RGB(247, 39, 140);
-									 --bs-btn-hover-color: #ffffff;
-									 --bs-btn-hover-bg: RGB(247, 39, 140);
-									 --bs-btn-hover-border-color: #ffffff;">인증번호요청</button>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" class="form-control" placeholder="* 인증번호 6자리 입력" required>
-					</td>
-					<td>
-						<button type="button" class="btn btn-outline-light" 
-								style="width: 130px;
-									 --bs-btn-border-color: RGB(247, 39, 140);
-									 --bs-btn-color:RGB(247, 39, 140);
-									 --bs-btn-hover-color: #ffffff;
-									 --bs-btn-hover-bg: RGB(247, 39, 140);
-									 --bs-btn-hover-border-color: #ffffff;">인증하기</button>
-					</td>
-				</tr>
-                      
-					<td>
-						<select name="genre" id="prefGenre">
-							<option value="action">선호장르를 선택하세요</option>
+						<select name="genre" id="prefGenre" required>
+							<option value="">* 선호장르</option>
 							<%for(int i=0; i<prefGenre.size(); i++){ %>
-							<option value="action"><%=prefGenre.get(i)%></option>
+							<option value="<%=prefGenre.get(i)%>"><%=prefGenre.get(i)%></option>
 							<%} %>
 						</select>
 					</td>
-
+					<td>
+					</td>
+				</tr>
 			</table>
                   
-				<button type="submit" class="btn btn-outline-light" 
+				<button type="submit" class="btn btn-outline-light" id="signupButton"
 						style="width: 350px;
 							 --bs-btn-border-color: RGB(247, 39, 140);
 							 --bs-btn-color:RGB(247, 39, 140);
@@ -180,7 +155,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 				alert("유효한 아이디의 형식이 아닙니다. 다시 입력해주세요");
 				document.getElementById("memId").select();
 				return false;
-			}
+		}
 	            
 		// 아이디 중복확인
 		const $idInput = $(".signup_content input[name=memId]");
@@ -197,7 +172,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 							// 사용가능(NNNNY)
 							if(confirm("사용가능한 아이디입니다. 사용하시겠습니까? : ")){
 								// 회원가입 버튼 활성화
-								$(".signup_content :submit").removeAttr("disabled");
+								//$(".signup_content :submit").removeAttr("disabled");
 								// 아이디 입력하는 input요소 수정불가능한 속성 추가
 								$idInput.attr("readonly", true);
 							}else{
@@ -212,27 +187,6 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 		}          
 		</script>
                  
-		<script>
-		$("#checkPwd").focusout(function() {
-					
-									// 비밀번호 유효성검사
-									const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*#?&]{8,15}$/;	  
-										if(!regExp.test($(".signup_content input[name=memPwd]").val())){
-											alert("유효한 비밀번호의 형식이 아닙니다. 다시 입력해주세요");
-											document.getElementById("memPwd").select();
-											return false;
-										}
-	    
-									// 비밀번호 일치 여부 검사 
-									const memPwd = document.getElementById("memPwd").value;
-									const checkPwd = document.getElementById("checkPwd").value; 
-										if(memPwd != checkPwd){
-											alert("비밀번호가 일치하지 않습니다.");
-											document.getElementById("checkPwd").select();
-											return false;	  
-										}
-								});
-		</script> 
                  
 		<script>
 		// 닉네임 중복확인
@@ -268,26 +222,65 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 		}          
 		</script>
 			
-		<script>
-		// 생년월일
-		function birthDateCheck(){
-			const regExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;	
-				if(!regExp.test($(".signup_content input[name=memBirth]").val())){
-					alert("유효한 생년월일 형식이 아닙니다. 다시 입력해주세요");
-					return false;
-				}
-		}
-		</script>
 			
 		<script>
-		// 휴대전화번호
-		function phoneCheck(){
-			const regExp = /^(010-?[2-9]{1}?[0-9]{3}-?[0-9]{4}|010[0-9]{1}[0-9]{7})$/;	
-				if(!regExp.test($(".signup_content input[name=memPhone]").val())){
-					alert("유효한 휴대전화번호 형식이 아닙니다. 다시 입력해주세요");
-					return false;
-				}
-		}	
+
+		
+		$(".signUpForm").submit(function(event) {
+			
+			event.preventDefault();
+			
+			var passValidationCheck = false;
+			var passCollCheck = false;
+			var phoneValidationCheck = false;
+			var birthValidationCheck = false;
+			
+			// 비밀번호
+			const regExpPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*#?&]{8,15}$/;	  
+			if(regExpPassword.test($(".signup_content input[name=memPwd]").val())){
+				passValidationCheck = true;
+			}
+			
+			const memPwd = document.getElementById("memPwd").value;
+			const checkPwd = document.getElementById("checkPwd").value; 
+			if(memPwd == checkPwd){
+				passCollCheck = true;	  
+			}
+			
+			// 생년월일
+			const regExpBirth = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/; // YYMMDD 형식의 유효한 날짜
+    		if (regExpBirth.test($(".signup_content input[name=memBirth]").val())) {
+				phoneValidationCheck = true;
+    		}
+			
+			//전화번호 유효성 검사
+			const regExpPhone = /^010[2-9][0-9]{7}$/;
+			if(regExpPhone.test($(".signup_content input[name=memPhone]").val())){
+				birthValidationCheck = true;
+			}
+			
+			if(!passValidationCheck) {
+				alert("유효한 비밀번호의 형식이 아닙니다. 다시 입력해주세요");
+			}
+			
+			if(!passCollCheck) {
+				alert("비밀번호가 일치하지 않습니다.");
+			}
+			
+			if(!phoneValidationCheck) {
+				alert("유효한 생년월일 형식이 아니거나 유효하지 않은 날짜입니다. 다시 입력해주세요.");
+			}
+
+			if(!birthValidationCheck) {
+				alert("유효한 휴대전화번호 형식이 아닙니다. 다시 입력해주세요");
+			}
+			
+			if( passValidationCheck && passCollCheck && phoneValidationCheck && birthValidationCheck) {
+				this.submit();
+			}
+			
+			
+		})
 		</script>
    		
    		
@@ -295,11 +288,6 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 		</section>
 		</div>              
 		</div> 
-    
-    
-
-
-
 
  </div>        
 </div>

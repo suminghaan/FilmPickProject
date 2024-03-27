@@ -1,28 +1,25 @@
-package com.fp.movie.controller;
+package com.fp.admin.controller.ad_customer_center;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.movie.model.service.MovieService;
-import com.fp.movie.model.vo.Category;
+import com.fp.admin.model.service.CustomerCenterService;
 
 /**
- * Servlet implementation class MovieOpenExploController
+ * Servlet implementation class AdminInquiryDeleteController
  */
-@WebServlet("/openexplo.mo")
-public class MovieOpenExploController extends HttpServlet {
+@WebServlet("/addelete.iq")
+public class AdminInquiryDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MovieOpenExploController() {
+    public AdminInquiryDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,11 +29,13 @@ public class MovieOpenExploController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Category> ca = new MovieService().mainCategoryList();
+		int no = Integer.parseInt(request.getParameter("no")); 
 		
-		request.setAttribute("ca", ca);
+		int result = new CustomerCenterService().deleteInquiryAnswer(no);
 		
-		request.getRequestDispatcher("/views/search/searchExplo.jsp").forward(request, response);
+		if(result > 0) {
+			response.sendRedirect(request.getContextPath() + "/list.iq?page=1");
+		} 
 	
 	}
 

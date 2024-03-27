@@ -199,6 +199,14 @@
 		WHERE INQRY_NO = ?
 	</entry>
 	
+	<entry key="deleteInquiryAnswer">
+		UPDATE INQUIRY
+		SET INQRY_A_CONTENT = DEFAULT
+			, INQRY_STATUS = 'N'
+			, ADMIN_NO = DEFAULT
+		WHERE INQRY_NO = ?
+	</entry>
+	
 </properties>
 
 

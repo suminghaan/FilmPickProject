@@ -86,6 +86,48 @@
             color: black;
     }
     
+    /* 인물 검색 관련 스타일*/
+    .person-table{
+      border: 1px solid black;
+      margin: 5px;
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-table *{
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-div{
+      display: flex;
+      /* border: 1px solid red; */
+      width: 1300px;
+      flex-wrap:wrap
+    }
+
+    .person-div img{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
+   	}
+    
     /*미리보기 사이즈*/
 
     #preview {
@@ -284,29 +326,13 @@
 
                 <div class="form-group">
                 <label>기타 추가 희망 이미지 또는 동영상</label>
+                <% for(int i = 3; i < 7; i++) { %>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="upfile" onchange="previewImages1(event)">
-                        <label class="custom-file-label" for="customFile3">파일추가</label>
-                        <img id="previews1" alt="미리보기이미지" style="margin-bottom:200px">
-                    </div>
-                    
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile34" name="upfile" onchange="previewImages2(event)">
-                        <label class="custom-file-label" for="customFile4">파일추가</label>
-                        <img id="previews2" alt="미리보기이미지" style="margin-bottom:200px">
-                    </div>
-                    
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile5" name="upfile" onchange="previewImages3(event)">
-                        <label class="custom-file-label" for="customFile5">파일추가</label>
-                        <img id="previews3" alt="미리보기이미지" style="margin-bottom:200px">
-                    </div>
-                    
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile6" name="upfile" onchange="previewVideo1(event)">
-                        <label class="custom-file-label" for="customFile6">파일추가</label>
-                        <video id="previewVideo1" alt="미리보기영상"></video>
-                    </div>
+                        <input type="file" class="custom-file-input" id="customFile<%= i %>" name="upfile<%= i %>" onchange="previewImages<%= i %>(event)">
+                        <label class="custom-file-label" for="customFile<%= i %>">파일추가</label>
+                        <img id="previews<%= i %>" alt="미리보기이미지" style="margin-bottom:200px">
+                    </div>                    
+				<% } %>
                 </div>
 
 
@@ -347,12 +373,22 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="text" name="inputPerson" class="form-control inputPerson">
-                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                     <hr>
                     <div class="viewPerson">
                         
                     </div>
                 </div>
+                
+                <script>
+       				$(".inputPerson").on("input", function(){       					
+       					if ($(this).val().trim() === "") {
+       						$(".viewPerson").html("");
+       					} else {
+       						searchPerson();
+       					}       					
+       				})
+           		</script>
         
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -429,7 +465,7 @@
                      +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
                      +   "</tr>"
                      +   "<tr>"
-                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>'
                      +   "</tr>"
                      +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
                      + "</table>"
@@ -443,8 +479,15 @@
 	
 	// 인물 삭제 
 	$("#personRemoveBtn").click(function(){
-           $(".person-div").find("table").last().remove();            
+           $(".person-div").find("table").last().remove();          
          });
+	
+	$(document).ready(function() {
+        $(document).on('click', '#personRemoveBtnBtn', function() {
+            $(this).closest('table.person-table').remove(); // 클릭된 버튼의 가장 가까운 부모 테이블을 제거
+            count--;
+        });
+    });   	
 	</script>
 	
 	<script>
@@ -477,32 +520,6 @@
     }
 	
 	// 그외 첨부파일 미리보기
-	function previewImages1(event) {
-        var input = event.target;
-        var preview = document.getElementById('previews1');
-        
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
-        }
-    }
-	
-	function previewImages2(event) {
-        var input = event.target;
-        var preview = document.getElementById('previews2');
-        
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
-        }
-    }
-	
 	function previewImages3(event) {
         var input = event.target;
         var preview = document.getElementById('previews3');
@@ -516,9 +533,35 @@
         }
     }
 	
-	function previewVideo1(event) {
+	function previewImages4(event) {
         var input = event.target;
-        var preview = document.getElementById('previewVideo1');
+        var preview = document.getElementById('previews4');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	function previewImages5(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews5');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	function previewImages6(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews6');
         
         if (input.files && input.files[0]) {
             var reader = new FileReader();

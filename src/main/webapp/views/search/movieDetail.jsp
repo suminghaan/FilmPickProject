@@ -6,6 +6,7 @@
     <%@ page import="com.fp.person.model.vo.Person" %>
     <%@ page import="com.fp.movie.model.vo.Review" %>
     <%@ page import="com.fp.common.model.vo.Approval" %>
+    <%@ page import="com.fp.movie.model.vo.Category" %>
     <%
     	Movie movie = (Movie)request.getAttribute("movie");
     	ArrayList<Attachment> attList = ((ArrayList<Attachment>)request.getAttribute("attList"));
@@ -14,6 +15,7 @@
     	ArrayList<Movie> movieList = ((ArrayList<Movie>)request.getAttribute("movieList"));
     	Review review = (Review)request.getAttribute("review");
     	ArrayList<Approval> apprList = (ArrayList<Approval>)request.getAttribute("apprList");
+    	ArrayList<Category> categoryList = (ArrayList<Category>)request.getAttribute("categoryList");
     	int countMovieLike = (int)request.getAttribute("countMovieLike");
     %>
 <!doctype html>
@@ -592,7 +594,14 @@
                 </div>
                 <div class="movie_info">
                     <span><%= movie.getMvName() %></span><br>
-                    <span> 개봉일 : <%= movie.getMvOpenDate() %></span><span>장르</span><br>
+                    <span> 개봉일 : <%= movie.getMvOpenDate() %></span>
+                    <span style="margin-left: 10px">
+                    <% if (categoryList != null) { %> 
+                    	<% for(int i = 0; i < categoryList.size(); i++) {%>
+                    		<%= categoryList.get(i).getCategoryName() %><% if(i != categoryList.size() - 1) { %>, <% } %> 
+                    	<% } %>
+                    <% } %>
+                    </span><br>
                     <span>러닝타임 : <%= movie.getMvRTime() %></span><br>
                 </div>
                 <div class="movie_poster_preview">
@@ -621,7 +630,7 @@
                         </div>
                         <div class="poster_info">
                             <span><%= movie.getMvName() %></span><br>
-                            <span>평균 별점 : <%= movie.getStarRatingAvg() %></span><br>
+                            <span>평균 별점 :  <%= movie.getStarRatingAvg() != null ? movie.getStarRatingAvg() : "-" %></span><br>
                             <span>개봉일 : <%= movie.getMvOpenDate() %></span>
                         </div>
                     </div>
@@ -665,8 +674,8 @@
                     <div class="movie_like">
                         <div class="movie_btn_wrap">
                             <div class="star-rating_info">
-                                <span class="star-rating_avg"><%= movie.getMvName() %> 평균 별점 : <%= movie.getStarRatingAvg() %></span><br>
-                                <span class="star-rating_count" style="font-size: 10px; padding-left: 10px;">별점 매긴 사람 수 : <%= movie.getNumberOfStarRating() %></span>
+                                <span class="star-rating_avg"><%= movie.getMvName() %> 평균 별점 : <%= movie.getStarRatingAvg() != null ? movie.getStarRatingAvg() : "-" %></span><br>
+                                <span class="star-rating_count" style="font-size: 10px; padding-left: 10px;">별점 매긴 사람 수 : <%= movie.getNumberOfStarRating() != null ? movie.getNumberOfStarRating() : "-" %></span>
                             </div>
                             <div class="star-wrap">
                                 <div class="rating">
@@ -799,7 +808,7 @@
                 <div class="movie_review">
                     <div class="movie_review_title">
                         <h4 style="margin-left: 50px;">리뷰</h4>
-                        <a style="border: none; color: white;" href="<%= contextPath %>/moreReview.fp?movieNo=<%= movie.getMvNo() %>?page=1">더보기</a>
+                        <a style="border: none; color: white;"  href="<%= contextPath %>/moreReview.fp?movieNo=<%= movie.getMvNo() %>">더보기</a>
                     </div>
                     <div class="movie_review_info">
                     <% if(reviewList != null) { %>
@@ -1185,11 +1194,9 @@
         // 리뷰 페이지로 이동
         $(".ToReview").click(function() {
         	<% if(loginMember != null) { %>
-        		<% if(review != null && review.getReviewContent() != null) { %>
-        			alert("이미 리뷰를 등록한 영화입니다.")
-        		<% } else { %>
-        			location.href="<%= contextPath %>/reviewEnrollForm.fp?movieNo=<%= movie.getMvNo() %>"
-        		<% } %>
+
+       			location.href="<%= contextPath %>/reviewEnrollForm.fp?movieNo=<%= movie.getMvNo() %>"
+
         	<% } else { %>
         		alert("로그인 후 이용 가능한 서비스입니다.");
         	<% } %>

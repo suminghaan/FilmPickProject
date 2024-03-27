@@ -205,6 +205,7 @@
 							, P_NATION
 							, P_FILE
 						FROM PERSON
+						WHERE P_STATUS = 'Y'
 						)A
 					)
 			WHERE RNUM BETWEEN ? AND ?
@@ -299,16 +300,16 @@
 		</entry>
 		
 		<!-- 관리자 인물 삭제 [수민] -->
-		<entry key="deleteMovie">
+		<entry key="deletePerson">
 			UPDATE
 				   PERSON
-			   SET P_STATUS = 'N' <!-- P_STATUS컬럼이없음.. -->
+			   SET P_STATUS = 'N'
 			 WHERE P_NO = ?
 			 
 		</entry>
 		
 		<!-- 관리자 인물 삭제 시 같이 등록한 이미지 status값 변경 [수민] -->
-		<entry key="deleteMovieAttachment">
+		<entry key="deletePersonAttachment">
 			UPDATE
 				  ATTACHMENT
 			  SET FILE_STATUS = 'N'
