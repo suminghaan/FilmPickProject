@@ -134,7 +134,7 @@
                     <div class="form-group" style="color: black;">
                         <input type="text" class="form-control" id="memid" value="<%=loginMember.getMemId() %>" name="memId" style="background-color:transparent; color: black;" required>
                         <input type="password" class="form-control" id="pwd" name="memPwd" placeholder="비밀번호를 입력하세요" style="background-color:transparent; color: black;" required>
-                        <input type="password" class="form-control" id="pwd-check" placeholder="비밀번호를 다시 입력하세요" style="background-color:transparent; color: black;" required>    
+                        <input type="password" class="form-control" id="pwdCheck" placeholder="비밀번호를 다시 입력하세요" style="background-color:transparent; color: black;" required>    
                     </div>
                 <p>본인확인을 위해 비밀번호를 입력하세요.</p>
                 <p>비밀번호 입력 후 탈퇴 버튼을 누르면 탈퇴가 완료됩니다.</p>
@@ -156,6 +156,21 @@
             </div>
         </div>
       </div>
+		<script>
+			function changePwd(){
+				const regExpPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*#?&]{8,15}$/;	  
+				if(regExpPassword.test($(".deleteuser input[name=pwd]").val())){
+					passValidationCheck = true;
+				}
+				
+				const memPwd = document.getElementById("pwd").value;
+				const checkPwd = document.getElementById("pwdCheck").value; 
+				if(memPwd == checkPwd){
+					passCollCheck = true;	  
+				}
+			}	
+			</script>		
+      
     </div>
 
     <%@ include file="/views/common/footer.jsp" %>
