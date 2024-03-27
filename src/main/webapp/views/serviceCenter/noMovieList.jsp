@@ -154,6 +154,8 @@
                             </td>
                         </tr>
                         <tr>
+                        </tr>
+                        <tr>
                             <td colspan="3" style="font-weight: bold; border-top: 1px solid black;">없는영화 신청현황 확인</td>
                         </tr>
                         <tr style="font-weight: bold;">
@@ -188,7 +190,7 @@
                 </table>
                 <br>
                 <!-- 추후 수정 -->
-                <a href="<%=contextPath%>/views/serviceCenter/noMovieContent.jsp" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
+                <a href="<%=contextPath%>/enrollForm.noMv" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
 
             </div> <br><br>
         </section>

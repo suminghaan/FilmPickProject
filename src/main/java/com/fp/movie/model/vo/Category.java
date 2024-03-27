@@ -105,7 +105,7 @@ public class Category {
 	@Override
 	public String toString() {
 		return "Category [categoryNo=" + categoryNo + ", categoryName=" + categoryName + ", categoryDate="
-				+ categoryDate + ", categoryStatus=" + categoryStatus + "]";
+				+ categoryDate + ", categoryStatus=" + categoryStatus + ", noMovieCNo=" + noMovieCNo + "]";
 	}
 
 	

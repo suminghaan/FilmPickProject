@@ -22,6 +22,7 @@
 	              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 	              LEFT JOIN ATTACHMENT A ON (REF_TYPE = '3' and A.REF_NO = B.B_NO)
 	             WHERE B_D_STATUS = 'N'
+	               AND B_B_STATUS = 'N'
 	               AND B_CATEGORY = '1'
 	               AND B_RECOMMEND_COUNT > 3
 	             ORDER
@@ -50,6 +51,7 @@
 		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 		              LEFT JOIN ATTACHMENT A ON (REF_TYPE = '3' and A.REF_NO = B.B_NO)
 		             WHERE B_D_STATUS = 'N'
+		               AND B_B_STATUS = 'N'
 		               AND B_CATEGORY = '1'
 		             ORDER
 		                BY B_NO DESC
@@ -77,6 +79,7 @@
 		              JOIN MEMBER M ON (B.MEM_NO = M.MEM_NO)
 		              LEFT JOIN ATTACHMENT A ON (REF_TYPE = '3' and A.REF_NO = B.B_NO)
 		             WHERE B_D_STATUS = 'N'
+		               AND B_B_STATUS = 'N'
 		               AND B_CATEGORY = '2'
 		             ORDER
 		                BY B_NO DESC
@@ -513,6 +516,7 @@
 		  JOIN MEMBER M ON (R.MEM_NO = M.MEM_NO)
 		 WHERE BOARD_NO = ?
 		   AND REPLY_D_STATUS = 'N'
+		   AND REPLY_B_STATUS = 'N'
 		 ORDER
 		    BY REPLY_NO DESC
    </entry>

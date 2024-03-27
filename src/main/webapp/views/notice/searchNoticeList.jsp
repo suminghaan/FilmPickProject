@@ -7,6 +7,7 @@
 	// NoticeSearchListController Servlet에서 setAttribute로 담아 보낸것들을 jsp에서 꺼내는 구문
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	List<Notice> list = (List<Notice>)request.getAttribute("list");
+	String keyword = (String)request.getAttribute("keyword");
 %>
 <!DOCTYPE html>
 <html>
@@ -113,26 +114,26 @@
                 	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
                 <% }else{ %>
                 	<!-- 클릭시 내가 보고있는 페이지의 이전페이지로 이동하기위한 구문 -->
-                	<li class="page-item"><a class="page-link" href="<%= contextPath %>/searchNotice.no?page=<%= pi.getCurrentPage() - 1%>">Previous</a></li>
+                	<li class="page-item"><a class="page-link" href="<%= contextPath %>/searchNotice.no?page=<%= pi.getCurrentPage() - 1%>&searchKeyword=<%=keyword%>">Previous</a></li>
                 <% } %>
                 <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
                		<%if(p == pi.getCurrentPage()){ %>
                		<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
                		<%}else{ %>
-               		<li class="page-item"><a class="page-link" href="<%= contextPath %>/searchNotice.no?page=<%= p %>"><%= p %></a></li>
+               		<li class="page-item"><a class="page-link" href="<%= contextPath %>/searchNotice.no?page=<%= p %>&searchKeyword=<%=keyword%>"><%= p %></a></li>
                		<% } %>
                 <% } %>
                 <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
                 <!-- 현재 내가 보고있는 페이지가 마지막페이지와 일치할 경우 클릭 불가능 -->
                 <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
  				<%}else{ %>
-                <li class="page-item"><a class="page-link" href="<%= contextPath%>/searchNotice.no?page=<%=pi.getCurrentPage()+1%>">Next</a></li>
+                <li class="page-item"><a class="page-link" href="<%= contextPath%>/searchNotice.no?page=<%=pi.getCurrentPage()+1%>&searchKeyword=<%=keyword%>">Next</a></li>
  				<%} %>
             </ul>
 
             <div class="notice_search">
                 <form action="<%=contextPath%>/searchNotice.no?page=1" method="post">
-                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;" name="searchKeyword">
+                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;" name="searchKeyword" value="<%=keyword%>">
                     <button type="image" class="notice_search_btn" alt="검색">검색</button>
                 </form>
             </div>

@@ -19,6 +19,8 @@ public class NoMovie {
 	private String nmPreview; // 영화 메인예고편 경로
 	private String memNickname;
 	
+	private String categoryNames; // 영화에대한 카테고리 추가
+	
 	public NoMovie() {
 		
 	}
@@ -38,7 +40,7 @@ public class NoMovie {
 	public NoMovie(int nmEnrollNo, String nmTitle, String nmStory, String nmReleaseDate, String nmRunTime,
 			String nmUserRequest, String nmNicknameStatus, String nmApproval, String nmNation, String nmViewGrade,
 			String nmEnrollDate, String nmRefuseReason, int memNo, int adminNo, String nmPoster, String nmPreview,
-			String memNickname) {
+			String memNickname, String categoryNames) {
 		super();
 		this.nmEnrollNo = nmEnrollNo;
 		this.nmTitle = nmTitle;
@@ -57,6 +59,7 @@ public class NoMovie {
 		this.nmPoster = nmPoster;
 		this.nmPreview = nmPreview;
 		this.memNickname = memNickname;
+		this.categoryNames = categoryNames;
 	}
 
 	/**
@@ -80,6 +83,13 @@ public class NoMovie {
 		this.memNo = memNo;
 	}
 	
+	public String getCategoryNames() {
+		return categoryNames;
+	}
+	
+	public void setCategoryNames(String categoryNames) {
+		this.categoryNames = categoryNames;
+	}
 
 	public int getNmEnrollNo() {
 		return nmEnrollNo;
@@ -225,7 +235,7 @@ public class NoMovie {
 				+ ", nmNicknameStatus=" + nmNicknameStatus + ", nmApproval=" + nmApproval + ", nmNation=" + nmNation
 				+ ", nmViewGrade=" + nmViewGrade + ", nmEnrollDate=" + nmEnrollDate + ", nmRefuseReason="
 				+ nmRefuseReason + ", memNo=" + memNo + ", adminNo=" + adminNo + ", nmPoster=" + nmPoster
-				+ ", nmPreview=" + nmPreview + ", memNickname=" + memNickname + "]";
+				+ ", nmPreview=" + nmPreview + ", memNickname=" + memNickname + ", categoryNames=" + categoryNames + "]";
 	}
 	
 }

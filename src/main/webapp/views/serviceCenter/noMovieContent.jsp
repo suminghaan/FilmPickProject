@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.movie.model.vo.Category" %>
+<%@ page import="com.fp.common.model.vo.Attachment" %>
+<%@ page import="java.util.List" %>
+<%
+	List<Category> cList = (List<Category>)request.getAttribute("cList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,37 +180,10 @@
                               <br><br>
                               <div class="form-group form-category" style="color:black;">
                               영화 장르 선택(필수) <br>
-                              
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox1">액션</label>
-                                  
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox2">코미디</label>
-                                      
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox3">로맨스</label>
-                                      
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="4" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox4">스릴러</label>
-
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="5" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox5">공포</label>
-
-                                  
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="6" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox6">판타지</label>
-
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="7" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox7">어드벤처</label>
-
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="8" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox8">드라마</label>
-
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="9" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox9">애니메이션</label>
-
-                                      <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="10" name="category">
-                                      <label class="form-check-label" for="inlineCheckbox10">SF</label>
+                              		<%for(Category c : cList){ %>
+                                      <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
+                                      <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName()%></label>
+                                  	<%} %>
                               </div>
                               <br><br>
 

@@ -401,11 +401,11 @@ public class NoMovieDao {
 	
 	/**
 	 * 없는영화 수정페이지에서 띄울 카테고리 값들을 담기위한 메소드
-	 * @author 호용
+	 * @author 호용 이게 문제야 ㅈ문제
 	 */
 	public List<Category> selectNoMovieCategory(Connection conn, int noMovieNo){
 		Category c = null;
-		List<Category> cList = new ArrayList<>();
+		List<Category> cMyList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectNoMovieCategory");
@@ -415,10 +415,9 @@ public class NoMovieDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				c = new Category();
-				c.setNoMovieCNo(rset.getInt("NM_GENRE_NO"));
-				c.setCategoryNo(rset.getInt("CATEGORY_NO"));
-				c.setNoMovieNo(rset.getInt("NM_ENROLL_NO"));
-				cList.add(c);
+				c.setCategoryNo(rset.getInt("NM_GENRE_NO")); // 뭔지모를 번호
+				c.setNoMovieCNo(rset.getInt("CATEGORY_NO")); // 내가 선택한 카테고리 번호
+				cMyList.add(c);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -426,8 +425,8 @@ public class NoMovieDao {
 			close(rset);
 			close(pstmt);
 		}
-		System.out.println("cList에 담겨있는 값 : " + cList);
-		return cList;
+		System.out.println("cMyList에 담겨있는 값 : " + cMyList);
+		return cMyList;
 	}
 	
 	/**
@@ -457,6 +456,35 @@ public class NoMovieDao {
 			close(pstmt);
 		}
 		return at;
+	}
+	
+	/**
+	 * 없는영화신청페이지에 들어갈 때 카테고리에 띄울 카테고리명들을 담기위한 메소드
+	 * @호용
+	 */
+	public List<Category> selectCategory(Connection conn){
+		Category c = null;
+		List<Category> cList = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectCategory");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				c = new Category();
+				c.setCategoryNo(rset.getInt("CATEGORY_NO"));
+				c.setCategoryName(rset.getString("CATEGORY_NAME"));
+				c.setNoMovieCNo(rset.getInt("NM_GENRE_NO"));
+				cList.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return cList;
 	}
 	
 }
