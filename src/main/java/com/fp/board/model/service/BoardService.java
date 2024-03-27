@@ -338,16 +338,17 @@ public class BoardService {
 	 * 게시글 추천버튼 클릭시 추천수가 1회 늘어나는 메소드
 	 * @author 호용
 	 */
-	public int good(int boardNo) {
+	public int good(int boardNo, int memNo) {
 		Connection conn = getConnection();
-		int result = bDao.good(conn, boardNo);
-		if(result > 0) {
+		int result1 = bDao.good(conn, boardNo);
+		int result2 = bDao.insertGood(conn, boardNo, memNo);
+		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		close(conn);
-		return result;
+		return result1 * result2;
 	}
 	
 	/**

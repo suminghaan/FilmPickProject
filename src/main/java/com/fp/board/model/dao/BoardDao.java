@@ -885,6 +885,27 @@ public class BoardDao {
 	}
 	
 	/**
+	 * 게시글 추천버튼 클릭시 게시글추천 테이블RECOMMEND의 insert 하는 메소드
+	 * @author 호용
+	 */
+	public int insertGood(Connection conn, int boardNo, int memNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertGood");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, memNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	/**
 	 * 게시글 신고를 위한 메소드
 	 * @author 호용
 	 */
