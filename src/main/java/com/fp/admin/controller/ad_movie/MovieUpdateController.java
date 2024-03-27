@@ -57,11 +57,32 @@ public class MovieUpdateController extends HttpServlet {
 			String currentScreening = multiRequest.getParameter("currentScreening");			
 			String mNation = multiRequest.getParameter("nation");
 			
-			String changeNameposter = multiRequest.getFilesystemName("mposter");
-			String mPoster = "resources/upfiles/" + changeNameposter;
+			String originPoster = multiRequest.getParameter("originPoster");
+			String originPreview = multiRequest.getParameter("originPreview");
 			
+			String changeNameposter = multiRequest.getFilesystemName("mposter");
 			String changeNamepreview = multiRequest.getFilesystemName("mpreview");
-			String mpreview = "resources/upfiles/" + changeNamepreview;
+			
+			String mPoster = null;
+			// null이면 원래 포스터가 등록되도록
+			if (multiRequest.getFilesystemName("mposter") == null) {
+				mPoster = originPoster;
+			// null이 아니면 새로운 포스터가 등록되도록
+			} else {
+				mPoster = "resources/upfiles/" + changeNameposter;
+			}
+			
+			String mpreview = null;
+			// null이면 원래 미리보기가 등록되도록
+			if (multiRequest.getFilesystemName("pmreivew") == null) {
+				mpreview = originPreview;
+				// null이 아니면 새로운 미리보기가 등록되도록
+			} else {
+				mpreview = "resources/upfiles/" + changeNamepreview;
+			}
+			
+
+			
 			
 			Movie m = new Movie();
 			m.setMvNo(mNo);
@@ -109,45 +130,50 @@ public class MovieUpdateController extends HttpServlet {
 			// ATTACHEMNT 테이블에 데이터 기록
 			List<Attachment> atList = new ArrayList<>();
 
-			
-			if(multiRequest.getOriginalFileName("mposter") != null) {
-				Attachment at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("mposter"));
-				at.setChangeName(multiRequest.getFilesystemName("mposter"));
-				at.setFilePath("resources/upfiles/");
-				at.setFileLevel(1);
-				at.setFileType(1);
-				at.setRefType("1");
-			}
-			
-			if(multiRequest.getOriginalFileName("mpreview") != null) {
-				Attachment at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("mpreview"));
-				at.setChangeName(multiRequest.getFilesystemName("mpreview"));
-				at.setFilePath("resources/upfiles/");
-				at.setFileLevel(1);
-				at.setFileType(2);
-				at.setRefType("2");
-			}
-			
-			
-			
-			if(multiRequest.getOriginalFileName("upfile") != null) {
-				Attachment at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				at.setChangeName(multiRequest.getFilesystemName("upfile"));
-				at.setFilePath("resources/upfiles/");
-				at.setFileLevel(2);
-								
-				if(at.getChangeName().substring(at.getChangeName().lastIndexOf(".")).equals("mp4")) {
-					at.setFileType(2);
-					at.setRefType("2");
-				}else {
+				if(multiRequest.getOriginalFileName("mposter") != null) {
+					Attachment at = new Attachment();
+					at.setOriginName(multiRequest.getOriginalFileName("mposter"));
+					at.setChangeName(multiRequest.getFilesystemName("mposter"));
+					at.setFilePath("resources/upfiles/");
+					at.setFileLevel(1);
 					at.setFileType(1);
 					at.setRefType("1");
+					at.setRefNo(mNo);
+					atList.add(at);
 				}
-				atList.add(at);
-			}
+				
+				if(multiRequest.getOriginalFileName("mpreview") != null) {
+					Attachment at = new Attachment();
+					at.setOriginName(multiRequest.getOriginalFileName("mpreview"));
+					at.setChangeName(multiRequest.getFilesystemName("mpreview"));
+					at.setFilePath("resources/upfiles/");
+					at.setFileLevel(1);
+					at.setFileType(2);
+					at.setRefType("2");
+					at.setRefNo(mNo);
+					atList.add(at);
+				}
+				
+				
+				
+				if(multiRequest.getOriginalFileName("upfile") != null) {
+					Attachment at = new Attachment();
+					at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+					at.setChangeName(multiRequest.getFilesystemName("upfile"));
+					at.setFilePath("resources/upfiles/");
+					at.setFileLevel(2);
+					at.setRefNo(mNo);
+									
+					if(at.getChangeName().substring(at.getChangeName().lastIndexOf(".")).equals("mp4")) {
+						at.setFileType(2);
+						at.setRefType("2");
+					}else {
+						at.setFileType(1);
+						at.setRefType("1");
+					}
+					atList.add(at);
+				}
+			
 			/*-----------------------------------------------------*/
 			System.out.print(m);
 			System.out.print(pList);

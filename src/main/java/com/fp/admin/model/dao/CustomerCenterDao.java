@@ -97,7 +97,8 @@ public class CustomerCenterDao {
 									, rset.getString("NM_APPROVAL")
 									, rset.getString("NM_STORY")
 									, rset.getInt("MEM_NO")
-									, rset.getString("NICKNAME")));
+									, rset.getString("NICKNAME")
+									, rset.getInt("NM_ENROLL_NO")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -136,7 +137,8 @@ public class CustomerCenterDao {
 						, rset.getString("NM_APPROVAL")
 						, rset.getString("NM_STORY")
 						, rset.getInt("MEM_NO")
-						, rset.getString("NICKNAME")));
+						, rset.getString("NICKNAME")
+						, rset.getInt("NM_ENROLL_NO")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -241,6 +241,7 @@ public class MemberDao {
 			pstmt.setString(5,m.getMemEmail());
 			pstmt.setString(6,m.getPrefGenre());
 			pstmt.setString(7,m.getMemId());
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -360,7 +361,7 @@ public class MemberDao {
 		return listCount;
 	}
 	
-	public List<Reply> selectMyCommentList(Connection conn, int memNo, PageInfo pi){
+	public List<Reply> selectMyCommentList(Connection conn,int memNo, PageInfo pi){
 		
 		List<Reply> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
@@ -379,7 +380,8 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Reply(rset.getInt("reply_no")
+				list.add(new Reply(rset.getInt("board_no")
+								 , rset.getInt("reply_no")
 								 , rset.getString("reply_content")
 								 , rset.getString("enroll_date")
 						));

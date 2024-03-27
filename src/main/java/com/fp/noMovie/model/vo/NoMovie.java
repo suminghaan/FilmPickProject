@@ -26,7 +26,7 @@ public class NoMovie {
 	}
 
 	public NoMovie(String nmTitle, String nmPoster, String nmEnrollDate, String nmApproval, String nmStory, int memNo,
-			String memNickname) { // (관리자 : 김지우) 없는영화 신청 목록 조회 페이지에서 쓰일 매개변수 생성자
+			String memNickname, int nmEnrollNo) { // (관리자 : 김지우) 없는영화 신청 목록 조회 페이지에서 쓰일 매개변수 생성자
 		super();
 		this.nmTitle = nmTitle;
 		this.nmPoster = nmPoster;
@@ -35,6 +35,7 @@ public class NoMovie {
 		this.nmStory = nmStory;
 		this.memNo = memNo;
 		this.memNickname = memNickname;
+		this.nmEnrollNo = nmEnrollNo;
 	}
 
 	public NoMovie(int nmEnrollNo, String nmTitle, String nmStory, String nmReleaseDate, String nmRunTime,

@@ -338,6 +338,7 @@
 				, P_JOB = ?
 				, P_BD = ?
 				, P_NATION = ?
+				, P_FILE =?
 			WHERE P_NO = ?
 				
 		</entry>
@@ -542,18 +543,31 @@
 			  )
 		</entry>
 		
-		<!-- 영화수정_첨부파일_수정 -->
+		<!-- 영화수정_첨부파일_수정(파일추가_insert) -->
 		<entry key="updateMovieAttachment">
-			UPDATE
-				ATTACHMENT
-			  SET <!--FILE_NO = ?  첨부파일 번호 -->
-				    REF_TYPE = ? <!-- 첨부파일 타입 -->
-				  , FILE_TYPE = ? <!-- 사진1 | 영상2 -->
-				  , FILE_LEVEL = ? <!-- 파일레벨 -->
-				  , ORIGIN_NAME = ? <!-- 원본명 -->
-				  , CHANGE_NAME = ? <!-- 수정명 -->
-				  , FILE_PATH = ? <!-- 저장경로 -->
-			WHER REF_NO = ? <!-- 영화번호 -->
+			INSERT
+				INTO ATTACHMENT
+				(
+					FILE_NO <!-- 첨부파일 번호 -->
+				  , REF_TYPE <!-- 첨부파일 타입 -->
+				  , FILE_TYPE <!-- 사진1 | 영상2 -->
+				  , FILE_LEVEL
+				  , ORIGIN_NAME <!-- 원본명 -->
+				  , CHANGE_NAME <!-- 수정명 -->
+				  , FILE_PATH <!-- 저장경로 -->
+				  , REF_NO <!-- 영화번호(영화번호)  -->
 				)
+				VALUES
+				(
+					SEQ_ATTACHMENT_NO.NEXTVAL <!-- 첨부파일 번호 -->				  
+				  , ? <!-- 첨부파일타입 -->
+				  , ? <!-- 사진1 | 영상2 -->
+				  , ? <!-- 파일레벨 -->
+				  , ? <!-- 원본명 -->
+				  , ? <!-- 수정명 -->
+				  , ? <!-- 저장경로 -->
+				  , ? <!-- 영화번호(영화 번호)  -->
+				)
+				
 		</entry>
 </properties>

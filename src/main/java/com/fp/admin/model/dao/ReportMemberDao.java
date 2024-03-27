@@ -219,10 +219,11 @@ public class ReportMemberDao {
 	public int insertReportedMem(Connection conn, ReportedMember rp) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertReportedMem");
+		String sql1 = prop.getProperty("insertReportedMem");
+		//String sql2 = prop.getProperty("updateReportMem");
 
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql1);
 			pstmt.setInt(1, rp.getMemNo());
 			pstmt.setInt(2, rp.getadminNo());
 			pstmt.setString(3, rp.getLimitReason());
@@ -279,14 +280,75 @@ public class ReportMemberDao {
 	 * @param userId
 	 * @return result
 	 */
-	public int updateKickMember(Connection conn, String userId) {
+	public int updateKickMember(Connection conn, ReportedMember rp) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateKickMember");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setInt(1, rp.getMemNo());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	public int insertKickMem(Connection conn, ReportedMember rp) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql1 = prop.getProperty("insertKickMem");
+		//String sql2 = prop.getProperty("updateReportMem");
+
+		try {
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setInt(1, rp.getMemNo());
+			pstmt.setInt(2, rp.getadminNo());
+			pstmt.setString(3, rp.getLimitReason());
+			System.out.println(rp.getLimitReason());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int updateReportMem(Connection conn, ReportedMember rp) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateReportMem");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rp.getMemNo());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int insertCanceledMem(Connection conn, ReportedMember rp) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertCanceledMem");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rp.getMemNo());
+			pstmt.setInt(2, rp.getadminNo());
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

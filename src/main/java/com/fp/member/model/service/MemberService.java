@@ -61,7 +61,7 @@ public class MemberService {
 		return count;
 	}
 	
-	// 회원탈퇴s
+	// 회원탈퇴
 	public int deleteMember(String memId, String memPwd, int memNo) {
 		Connection conn = getConnection();
 		int result1 = mDao.deleteMember(conn, memId, memPwd);

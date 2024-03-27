@@ -52,6 +52,11 @@ h1{
     text-align: center;
 }
 
+#pImg{
+	width: 80px;
+    height: 80px;
+}
+
 
 </style>
 
@@ -216,6 +221,7 @@ h1{
                             <th><label for="pFile">사진</label></th>
                             <td>
                             	<!-- 기존에 등록한 사진이 있을경우 보여지는 첨부파일 명 -->
+                            	<img id="pImg" alt="기존등록사진" src="">
                             	<a id="pFileOrigin"></a>
                             	<!-- 새로운 첨부파일 업로드 시 -->
                             	<input type="file" class="form-control-file" name="upfile" id="pFile"></td>
@@ -385,6 +391,7 @@ h1{
     			$("#pDate").val(uplist[0].pBD);
     			$("#pNation").val(uplist[0].pNation);
     			$("#pJob").val(uplist[0].pJob);
+    			$("#pImg").attr("src", uplist[0].pFile);
     			
     			if(uplist[0].pFile != null){
     				$("#pFileOrigin").html(uplist[0].pFile);
