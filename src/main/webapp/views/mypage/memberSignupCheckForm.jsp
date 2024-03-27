@@ -78,7 +78,7 @@
 			</div>
 			<div class="buttonArea">
 			<form action="">
-			<button type="button" class="btn btn-outline-light" id="signupCheckFormSubmit" onclick="location.href='<%=contextPath%>/insert.me'" disabled
+			<button type="button" class="btn btn-outline-light" id="signupCheckFormSubmit" onclick="location.href='<%=contextPath%>/signupForm.me'" disabled
 					style="width: 300px;
 						 --bs-btn-border-color: RGB(247, 39, 140);
 						 --bs-btn-color:RGB(247, 39, 140);
@@ -150,7 +150,6 @@
 	<%@ include file="/views/common/footer.jsp" %>
 
 	</main>
-	<script src="../../resources/assets/dist/js/bootstrap.bundle.min.js"></script>
 	
 </body>
 </html>

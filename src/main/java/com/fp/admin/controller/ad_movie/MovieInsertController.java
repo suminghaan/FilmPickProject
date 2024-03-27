@@ -72,7 +72,7 @@ public class MovieInsertController extends HttpServlet {
 			
 			// 영화 메인예고편 경로
 			String changeName2 = multiRequest.getFilesystemName("mpreview");
-			String mPreview = "resources/fupfiles/" + changeName2;
+			String mPreview = "resources/upfiles/" + changeName2;
 			m.setMvPreview(mPreview);
 			
 			HttpSession session = request.getSession();
@@ -109,14 +109,15 @@ public class MovieInsertController extends HttpServlet {
 			List<Attachment> atList = new ArrayList<>();
 
 			
-			if(multiRequest.getOriginalFileName("mPoster") != null) {
+			if(multiRequest.getOriginalFileName("mposter") != null) {
 				Attachment at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("mPoster"));
-				at.setChangeName(multiRequest.getFilesystemName("mPoster"));
+				at.setOriginName(multiRequest.getOriginalFileName("mposter"));
+				at.setChangeName(multiRequest.getFilesystemName("mposter"));
 				at.setFilePath("resources/upfiles/");
 				at.setFileLevel(1);
 				at.setFileType(1);
 				at.setRefType("1");
+				atList.add(at);
 			}
 			
 			if(multiRequest.getOriginalFileName("mpreview") != null) {
@@ -127,25 +128,28 @@ public class MovieInsertController extends HttpServlet {
 				at.setFileLevel(1);
 				at.setFileType(2);
 				at.setRefType("2");
+				atList.add(at);
 			}
 			
 			
 			
-			if(multiRequest.getOriginalFileName("upfile") != null) {
-				Attachment at = new Attachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				at.setChangeName(multiRequest.getFilesystemName("upfile"));
-				at.setFilePath("resources/upfiles/");
-				at.setFileLevel(2);
-								
-				if(at.getChangeName().substring(at.getChangeName().lastIndexOf(".")).equals("mp4")) {
-					at.setFileType(2);
-					at.setRefType("2");
-				}else {
-					at.setFileType(1);
-					at.setRefType("1");
+			for (int i = 3; i < 7; i++) {
+				if(multiRequest.getOriginalFileName("upfile" + i) != null) {
+					Attachment at = new Attachment();
+					at.setOriginName(multiRequest.getOriginalFileName("upfile" + i));
+					at.setChangeName(multiRequest.getFilesystemName("upfile" + i));
+					at.setFilePath("resources/upfiles/");
+					at.setFileLevel(2);
+									
+					if(at.getChangeName().substring(at.getChangeName().lastIndexOf(".")).equals("mp4")) {
+						at.setFileType(2);
+						at.setRefType("2");
+					}else {
+						at.setFileType(1);
+						at.setRefType("1");
+					}
+					atList.add(at);
 				}
-				atList.add(at);
 			}
 			/*-----------------------------------------------------*/
 			int result = new MovieService().insertMovie(m, pList, cList, atList);

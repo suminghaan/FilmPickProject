@@ -96,7 +96,7 @@ public class MovieDao {
 		}
 		if(!f.getMvOpenDate().equals("yearsAll")) {
 			if(f.getMvOpenDate().equals("newyear")) {
-				sql += " AND MV_OPENDATE LIKE '2024%'";
+				sql += " AND MV_OPENDATE LIKE TO_CHAR(SYSDATE, 'YYYY') || '%'";
 			}else {				
 				sql += " AND MV_OPENDATE LIKE '" + f.getMvOpenDate() + "%'";
 			}

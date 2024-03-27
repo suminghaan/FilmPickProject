@@ -106,8 +106,9 @@ public class Reply {
 	 * @param enrollDate 작성일자
 	 * @author 은정
 	 */
-	public Reply(int replyNo, String replyContent, String enrollDate) {
+	public Reply(int reBoNo, int replyNo, String replyContent, String enrollDate) {
 		super();
+		this.reBoNo = reBoNo;
 		this.replyNo = replyNo;
 		this.replyContent = replyContent;
 		this.enrollDate = enrollDate;

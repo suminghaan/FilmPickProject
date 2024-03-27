@@ -250,6 +250,7 @@ public class MovieService {
 		int result4 = 0;
 		
 		if(atList != null) {
+			System.out.println("atList가  null 아님");
 			for(int i=0; i<atList.size(); i++) {
 				result4 += mDao.insertMovieAttachment(conn, atList.get(i));				
 			}			

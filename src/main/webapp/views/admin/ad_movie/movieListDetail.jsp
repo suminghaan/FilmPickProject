@@ -134,6 +134,101 @@
    		display:flex;
    }
 
+	/* 인물검색 모달 및 추가관련 스타일*/
+	.person-table{
+      border: 1px solid black;
+      margin: 5px;
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-table *{
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-div{
+      display: flex;
+      /* border: 1px solid red; */
+      width: 1300px;
+      flex-wrap:wrap
+    }
+
+    .person-div img{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
+   	}
+   	
+   	
+   	/*미리보기 사이즈*/
+
+    #preview {
+        max-width: 300px; /* 원하는 최대 너비 */
+        max-height: 200px; /* 원하는 최대 높이 */
+        width: auto; /* 너비 자동 조정 */
+        height: auto; /* 높이 자동 조정 */
+    }
+    
+    #previewVideo{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
+    #previews{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
+    #previews3{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+
+	#previews4{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+	
+	
+	#previews5{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+	
+	#previews6{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
 </style>
 	
 </head>
@@ -261,18 +356,20 @@
  
                 <label>영화포스터</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" > 
+                	<input type="hidden" name="originPoster" value="<%=m.getMvPoster()%>" >
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" onchange="previewImage(event)"> 
                     <label class="custom-file-label" for="customFile1">파일추가</label>
-                    <img src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
+                    <img id="preview" src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
                 </div>
 
                 <br><br><br>
 
                 <label>예고편영상</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" >
+                	<input type="hidden" name="originPreview" value=" <%= m.getMvPreview() %> ">
+                    <input type="file" class="custom-file-input" id="customFile2" name="mpreview" onchange="previewVideo(event)">
                     <label class="custom-file-label" for="customFile2">파일추가</label>
-                    <video src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
+                    <video id="previewVideo" src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
                 </div>
                 
                 <br><br>
@@ -281,14 +378,15 @@
                 <label>기타 추가 희망 이미지 또는 동영상</label>
                 
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="upfile">
-                        <label class="custom-file-label" for="customFile3">파일추가</label>
-                        <% if(!alist.isEmpty()){ %>
-                        	<% for(Attachment a : alist){ %>                   	
+                    	<% if(!alist.isEmpty()){ %>
+                        	<% for(Attachment a : alist){ %>   
+		                        <input type="file" class="custom-file-input" id="customFile3" name="upfile" value="" onchange="previewImages(event)">
+		                        <label class="custom-file-label" for="customFile3">파일추가</label>
+                 	
 		                        <% if(Integer.parseInt(a.getRefType()) == 1){ %>
-		                        <img src="<%=contextPath + "/" + a.getFilePath() %>" alt="미리보기이미지">
+		                        	<img id="previews" src="<%=contextPath + "/" + a.getFilePath() %>" alt="미리보기이미지">
 		                        <%}else if(Integer.parseInt(a.getRefType()) == 2){ %>
-								<video src="<%=contextPath + "/" + a.getFilePath()%>"></video>
+									<video id="previewsv" src="<%=contextPath + "/" + a.getFilePath()%>"></video>
 								<%} %>							
                         	<%} %>
                         <%} %>
@@ -297,7 +395,7 @@
                 </div>
 
 
-                <br>
+                <br><br><br><br><br><br>
 
                 <div class="form-group">
                     <label>현재 상영여부 : </label>
@@ -348,13 +446,25 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="text" name="inputPerson" class="form-control inputPerson">
-                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                     <hr>
                     <div class="viewPerson">
                         
                     </div>
                 </div>
         
+        		<script>
+					$(".inputPerson").on("input", function(){
+						
+						if ($(this).val().trim() === "") {
+							$(".viewPerson").html("");
+						} else {
+							searchPerson();
+						}
+						
+					})
+				</script>
+				
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" style="float: right;" id="personBtn">추가</button>
@@ -365,43 +475,54 @@
             </div>
         </div>
     </div>
-    <!-- 
+    
     <script>
-    	function searchActor(){
-    		$.ajax({
-    			url: "<%= contextPath %>/search.pe",
-    			type:"post",
-    			data: {name:$("#name").val()},
-    			success:function(person){
-    				
-    				let value = "";
-    				if(person == null){
-    					value = "";
-    				}else{
-    					for(let i = 0; i < person.length; i++){
-    						value += "<div class='person'>"
-    							+ "<img src='" + person[i].pFile + "'>" 
-    							+ person[i].pName;
-    	                     	+ "<br>"
-    	                     	+ "</div>";
-    					}
-    				}
-    				
-    				$("#searchResults").html(value);
-    			},
-    			error:function(){
-    				console.log("목록 조회 ajax 실패");
-    			}
-    		})
-    	}
-    	let selectedActor = null;
-    	function addActor(index) {
-    		selectedActor = index;
-    		let selectedActorInfo = "<div>" + person[selectedActor].pName + "</div>";
-            $(".castingList").append(selectedActorInfo);
-    	}
-    </script>
-	 -->
+	// 이미지 미리보기
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('preview');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	// 동영상 미리보기
+	function previewVideo(event) {
+        var input = event.target;
+        var preview = document.getElementById('previewVideo');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	// 그외 첨부파일 미리보기
+	function previewImages(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	
+	</script>
+    
+    
 	<script>
 	// 장르 선택
 	$(".form-check-input").each(function(index, el) {
@@ -491,6 +612,7 @@
         		 	 +			'<input type="hidden" name="personNo" value="' + pNo +'">'
 		             +   			"<img src='" + pFile + "'>" + pName + "<br>"
 		             +     			'<input type="text" name="movieJob" class="casting" placeholder="영화배역 입력" required>'
+		             + 				'<button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button>'
 		             +  	'</div>'
 		             +  '</div>'
 		             + 	"<br><br>" 
@@ -506,6 +628,15 @@
 	$("#personRemoveBtn").click(function(){
            $(".person-div").find("table").last().remove();            
          });
+	
+	$(document).ready(function() {
+        $(document).on('click', '#personRemoveBtnBtn', function() {
+        	 $(this).closest('.person').remove();// 클릭된 버튼의 가장 가까운 부모 테이블을 제거
+            
+        });
+    });  
+	
+	
 	
 	console.log($(".castingList").val());
 	// 제출 시 카테고리 체크 여부 검사

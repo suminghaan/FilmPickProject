@@ -292,18 +292,18 @@
 	<!-- 없는영화 수정페이지에 띄울 값들을 조회하는 sql문 [호용] -->
 	<entry key="selectNoMovieAll">
 		SELECT
-			   NM_TITLE 
-			 , NM_VIEW_GRADE
-			 , NM_STORY
-			 , NM_RELEASE_DATE
-			 , NM_RUN_TIME
-			 , NM_NATION
-			 , NM_POSTER
-			 , NM_PREVIEW
-			 , NM_USER_REQUEST
-			 , NM_NICKNAME_STATUS
-			 , MEM_NO
-		  FROM NO_MOVIE_ENROLL
+			   NM.NM_TITLE 
+			 , NM.NM_VIEW_GRADE
+			 , NM.NM_STORY
+			 , NM.NM_RELEASE_DATE
+			 , NM.NM_RUN_TIME
+			 , NM.NM_NATION
+			 , NM.NM_POSTER
+			 , NM.NM_PREVIEW
+			 , NM.NM_USER_REQUEST
+			 , NM.NM_NICKNAME_STATUS
+			 , NM.MEM_NO
+		  FROM NO_MOVIE_ENROLL NM
 		 WHERE NM_ENROLL_NO = ?
 	</entry>
 	
@@ -336,10 +336,9 @@
 	<!-- 없는영화 수정페이지에 띄울 카테고리 값들을 조회하는 sql문 [호용] -->
 	<entry key="selectNoMovieCategory">
 		SELECT
-			   NM_GENRE_NO
-			 , CATEGORY_NO
-			 , NM_ENROLL_NO
-		  FROM NO_MOVIE_GENRE
+			   NM.NM_GENRE_NO
+			 , NM.CATEGORY_NO
+		  FROM NO_MOVIE_GENRE NM
 		 WHERE NM_ENROLL_NO = ?
 	</entry>
 	
@@ -354,6 +353,17 @@
    	  	 WHERE REF_NO = ?
    	  	   AND REF_TYPE = 4
    	  	   AND FILE_LEVEL = 2
+	</entry>
+	
+	<!-- 없는영화신청페이지에 들어갈 때 카테고리에 띄울 카테고리명들을 담기위한 메소드 [호용] -->
+	<entry key="selectCategory">
+		SELECT 
+			   C.CATEGORY_NO
+			 , C.CATEGORY_NAME
+			 , NM.NM_GENRE_NO NM_GENRE_NO
+	      FROM CATEGORY C 
+         LEFT JOIN NO_MOVIE_GENRE NM ON (NM.NM_GENRE_NO = C.CATEGORY_NO)
+	     WHERE CATEGORY_STATUS = 'Y'
 	</entry>
 	
 </properties>

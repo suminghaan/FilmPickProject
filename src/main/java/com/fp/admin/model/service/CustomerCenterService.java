@@ -99,6 +99,18 @@ public class CustomerCenterService {
 		return result;
 	}
 
+	public int deleteInquiryAnswer(int no) {
+		Connection conn = getConnection();
+		int result = cDao.deleteInquiryAnswer(conn, no);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 	
 
 

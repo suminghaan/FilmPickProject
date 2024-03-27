@@ -35,6 +35,9 @@ public class NoMovieUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int noMovieNo = Integer.parseInt(request.getParameter("no"));
+		
+		
+		List<Category> cMyList = new NoMovieService().selectNoMovieCategory(noMovieNo);
 //		System.out.println("업데이트폼컨트롤러에서의 noMovieNo는 영화번호임 : " + noMovieNo);
 		NoMovie nm = new NoMovie();
 		// 없는영화 테이블에 값들 가져오는 구문
@@ -42,14 +45,15 @@ public class NoMovieUpdateFormController extends HttpServlet {
 		// 없는영화에서 출연진 테이블에 값들 가져오는 구문
 		List<Person> pList = new NoMovieService().selectNoMoviePerson(noMovieNo);
 		// 없는영화에서 카테고리 테이블에 값들 가져오는 구문
-		List<Category> cList = new NoMovieService().selectNoMovieCategory(noMovieNo);
+		List<Category> cList = new NoMovieService().selectCategory();
 		// 없는영화에서 추가적인 첨부파일 테이블에 값들 가져오는 구문
 		Attachment at = new NoMovieService().selectAttachment(noMovieNo);
-		System.out.println("nm 값 : " + nm);
-		System.out.println("pList 값 : " + pList);
+//		System.out.println("nm 값 : " + nm);
+//		System.out.println("pList 값 : " + pList);
 		System.out.println("cList 값 : " + cList);
-		System.out.println("at 값 : " + at);
-
+//		System.out.println("at 값 : " + at);
+		
+		request.setAttribute("cMyList", cMyList);
 		request.setAttribute("nm", nm);
 		request.setAttribute("pList", pList);
 		request.setAttribute("cList", cList);

@@ -1,9 +1,9 @@
 package com.fp.noMovie.model.service;
 
+import static com.fp.common.template.JDBCTemplate.close;
 import static com.fp.common.template.JDBCTemplate.commit;
 import static com.fp.common.template.JDBCTemplate.getConnection;
 import static com.fp.common.template.JDBCTemplate.rollback;
-import static com.fp.common.template.JDBCTemplate.close;
 
 import java.sql.Connection;
 import java.util.List;
@@ -106,9 +106,9 @@ public class NoMovieService {
 	 */
 	public List<Category> selectNoMovieCategory(int noMovieNo){
 		Connection conn = getConnection();
-		List<Category> cList = nMDao.selectNoMovieCategory(conn, noMovieNo);
+		List<Category> cMyList = nMDao.selectNoMovieCategory(conn, noMovieNo);
 		close(conn);
-		return cList;
+		return cMyList;
 	}
 	
 	/**
@@ -120,6 +120,17 @@ public class NoMovieService {
 		Attachment at = nMDao.selectAttachment(conn, noMovieNo);
 		close(conn);
 		return at;
+	}
+	
+	/**
+	 * 없는영화신청페이지에 들어갈 때 카테고리에 띄울 카테고리명들을 담기위한 메소드
+	 * @return
+	 */
+	public List<Category> selectCategory(){
+		Connection conn = getConnection();
+		List<Category> cList = nMDao.selectCategory(conn);
+		close(conn);
+		return cList;
 	}
 	
 }

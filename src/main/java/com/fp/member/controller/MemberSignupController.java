@@ -47,9 +47,8 @@ public class MemberSignupController extends HttpServlet {
 		int result = new MemberService().insertMember(m);
 		
 		if(result > 0) {
-			HttpSession session = request.getSession();
-			// session.setAttribute("alerMsg", "성공적을 회원가입 되었습니다. 환영합니다!");	
-			response.sendRedirect(request.getContextPath() + "/signupComplete.me");
+			request.setAttribute("nickname", nickname);
+			request.getRequestDispatcher("/views/mypage/memberSignupComplete.jsp").forward(request, response);
 		
 		}else {
 			request.setAttribute("errorMsg", "회원가입에 실패했습니다. 다시 입력해주세요.");
