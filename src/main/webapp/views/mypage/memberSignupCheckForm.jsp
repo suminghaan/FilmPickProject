@@ -33,6 +33,12 @@
     	margin: auto;
 		display: block;
     }
+    
+	#checkAllBtn, #termsOfUseBtn, #privacyPolicyBtn{
+		accent-color: RGB(247, 39, 140);
+		width:15px;
+		height:15px;
+    }
 </style>
 </head>
 <body>
@@ -46,11 +52,11 @@
 			<div class="signup_content" id="signup_content">
 			<div>
 			<div class="termCheckAll">
-				<input type='checkbox' class='checkAll' name='checkAll' id="checkAll" value='checkAll'onclick='selectAll(this)'> <b>전체 동의하기</b>
+				<input type='checkbox' class='checkAll' name='checkAll' id="checkAllBtn" value='checkAllBtn'onclick='selectAll(this)'> <b>전체 동의하기</b>
 			</div>
 			<hr>
 			<div class="inputCheck">
-			<input type='checkbox' class='agreement' name='agreement' id='termsOfUse' value='termsOfUse'> [필수] FILM PICK 이용약관
+			<input type='checkbox' class='agreement' name='agreement' id='termsOfUseBtn' value='termsOfUseBtn'> [필수] FILM PICK 이용약관
 			<textarea name="termsOfUse" id="termsOfUse" cols="70" rows="5" style="background-color:transparent; color: black; width:540px">
 환영합니다!
 필름픽 서비스 및 제품(이하 '서비스')를 이용해 주셔서 감사합니다. 본 약관은 다양한 필름픽의 이용과 관련하여 필름픽 서비스를 제공하는 필름픽과 이를 이용하는 필름픽 서비스 회원(이하 '회원') 또는 비회원과의 관계를 설명하며, 아울러 여러분
@@ -62,7 +68,7 @@
 			</div>
 			<br>
 			<div class="inputCheck">
-			<input type='checkbox' class='agreement' name='agreement' id='privacyPolicy' value='privacyPolicy'> [필수] 개인정보 수집 및 이용 동의
+			<input type='checkbox' class='agreement' name='agreement' id='privacyPolicyBtn' value='privacyPolicyBtn'> [필수] 개인정보 수집 및 이용 동의
 			<textarea name="privacyPolicy" id="privacyPolicy" cols="70" rows="5" style="background-color:transparent; color: black; width:540px">
 개인정보보호법에 따라 필름픽에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 1. 수집하는 개인정보
@@ -97,8 +103,8 @@
 		$(document).ready(function(){
 
 			// 전체 동의하기 체크박스 클릭 시, 나머지 체크박스도 선택되게 
-			$("#checkAll").click(function(){
-			var checkAll=$("#checkAll").prop("checked");
+			$("#checkAllBtn").click(function(){
+			var checkAll=$("#checkAllBtn").prop("checked");
 
 				if(checkAll){
 					$(".agreement").prop("checked",true);
@@ -132,9 +138,9 @@
 			    
 			    // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
 			    if(agreement == checkedAgreement){
-			    	$("#checkAll").prop("checked",true);
+			    	$("#checkAllBtn").prop("checked",true);
 			    }else{
-			    	$("#checkAll").prop("checked",false);
+			    	$("#checkAllBtn").prop("checked",false);
 			    }
 			    
 				});
