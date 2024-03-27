@@ -144,14 +144,14 @@
     	height: auto;
     }
     
-    #previews1{
+    #previews3{
     	max-width : 300px;
     	max-height : 200px;
     	width: auto;
     	height: auto;
     }
 
-	#previews2{
+	#previews4{
     	max-width : 300px;
     	max-height : 200px;
     	width: auto;
@@ -159,14 +159,14 @@
     }
 	
 	
-	#previews3{
+	#previews5{
     	max-width : 300px;
     	max-height : 200px;
     	width: auto;
     	height: auto;
     }
 	
-	#previewVideo1{
+	#previews6{
     	max-width : 300px;
     	max-height : 200px;
     	width: auto;

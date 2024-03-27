@@ -175,6 +175,60 @@
    	  width : 500px;
    	  flex-wrap:wrap
    	}
+   	
+   	
+   	/*미리보기 사이즈*/
+
+    #preview {
+        max-width: 300px; /* 원하는 최대 너비 */
+        max-height: 200px; /* 원하는 최대 높이 */
+        width: auto; /* 너비 자동 조정 */
+        height: auto; /* 높이 자동 조정 */
+    }
+    
+    #previewVideo{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
+    #previews{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
+    #previews3{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+
+	#previews4{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+	
+	
+	#previews5{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+	
+	#previews6{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
+    
 </style>
 	
 </head>
@@ -302,18 +356,20 @@
  
                 <label>영화포스터</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="mposter" > 
+                	<input type="hidden" name="originPoster" value="<%=m.getMvPoster()%>" >
+                    <input type="file" class="custom-file-input" id="customFile1" name="mposter"> 
                     <label class="custom-file-label" for="customFile1">파일추가</label>
-                    <img src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
+                    <img id="preview" src="<%=contextPath + "/" + m.getMvPoster() %>" alt="미리보기이미지">
                 </div>
 
                 <br><br><br>
 
                 <label>예고편영상</label>
                 <div class="custom-file">
+                	<input type="hidden" name="originPreview" value=" <%= m.getMvPreview() %> ">
                     <input type="file" class="custom-file-input" id="customFile2" name="mpreview" >
                     <label class="custom-file-label" for="customFile2">파일추가</label>
-                    <video src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
+                    <video id="previewVideo" src="<%=contextPath + "/" + m.getMvPreview() %>" controls alt="예고편영상미리보기"></video>
                 </div>
                 
                 <br><br>
@@ -322,14 +378,15 @@
                 <label>기타 추가 희망 이미지 또는 동영상</label>
                 
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile3" name="upfile">
-                        <label class="custom-file-label" for="customFile3">파일추가</label>
-                        <% if(!alist.isEmpty()){ %>
-                        	<% for(Attachment a : alist){ %>                   	
+                    	<% if(!alist.isEmpty()){ %>
+                        	<% for(Attachment a : alist){ %>   
+		                        <input type="file" class="custom-file-input" id="customFile3" name="upfile" value="">
+		                        <label class="custom-file-label" for="customFile3">파일추가</label>
+                 	
 		                        <% if(Integer.parseInt(a.getRefType()) == 1){ %>
-		                        <img src="<%=contextPath + "/" + a.getFilePath() %>" alt="미리보기이미지">
+		                        	<img id="previews" src="<%=contextPath + "/" + a.getFilePath() %>" alt="미리보기이미지">
 		                        <%}else if(Integer.parseInt(a.getRefType()) == 2){ %>
-								<video src="<%=contextPath + "/" + a.getFilePath()%>"></video>
+									<video id="previewsv" src="<%=contextPath + "/" + a.getFilePath()%>"></video>
 								<%} %>							
                         	<%} %>
                         <%} %>
@@ -338,7 +395,7 @@
                 </div>
 
 
-                <br>
+                <br><br><br><br><br><br>
 
                 <div class="form-group">
                     <label>현재 상영여부 : </label>
@@ -418,6 +475,64 @@
             </div>
         </div>
     </div>
+    
+    <script>
+	// 이미지 미리보기
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('preview');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	// 동영상 미리보기
+	function previewVideo(event) {
+        var input = event.target;
+        var preview = document.getElementById('previewVideo');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	// 그외 첨부파일 미리보기
+	function previewImages3(event) {
+        var input = event.target;
+        var preview = document.getElementById('previews');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }
+	
+	function previewImages4(event) {
+        var input = event.target;
+        var preview = document.getElementById('previewsv');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]); // 파일을 읽어서 데이터 URL로 변환
+        }
+    }	
+	
+	</script>
     
     
 	<script>
@@ -532,6 +647,8 @@
             
         });
     });  
+	
+	
 	
 	console.log($(".castingList").val());
 	// 제출 시 카테고리 체크 여부 검사

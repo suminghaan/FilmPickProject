@@ -862,12 +862,13 @@ public class MovieDao {
 		try {
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(6, attachment.getRefType());
-			pstmt.setInt(1, attachment.getFileType());
-			pstmt.setInt(2, attachment.getFileLevel());
-			pstmt.setString(3, attachment.getOriginName());
-			pstmt.setString(4, attachment.getChangeName());
-			pstmt.setString(5, attachment.getFilePath());
+			pstmt.setString(1, attachment.getRefType());
+			pstmt.setInt(2, attachment.getFileType());
+			pstmt.setInt(3, attachment.getFileLevel());
+			pstmt.setString(4, attachment.getOriginName());
+			pstmt.setString(5, attachment.getChangeName());
+			pstmt.setString(6, attachment.getFilePath());
+			pstmt.setInt(7, attachment.getRefNo());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
