@@ -517,7 +517,7 @@
 		event.preventDefault();
 		
 		$(".category").each(function(index, el) {
-			if($(el).is("checked")) {
+			if($(el).is(":checked")) {
 				categoryChecked = true;
 			}
 		})	
