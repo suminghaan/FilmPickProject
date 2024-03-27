@@ -92,7 +92,6 @@
 
         .movie_mainPoster {
             width: 35%;
-            padding: 0px 50px;
             /* background-color: white; */
             height: 100%;
         }
@@ -108,7 +107,8 @@
 
         .mainPoster {
             border-radius: 10px;
-            height: 100%;
+            height: 90%;
+    		padding: 20px;
         }
 
         .mainPreview {
@@ -116,7 +116,7 @@
         }
 
         .poster_info {
-            margin-top: 20px;
+            /*-margin-top: 20px;*/
         }
 
         .movie_preview_etc {
@@ -456,6 +456,7 @@
             align-items: center;
             margin-left: 10px;
             border: 2px solid #F72798;
+            cursor: pointer;
         }
 
         .user_info {
@@ -658,28 +659,7 @@
                 </div>
                 <div class="movie_poster_preview">
                     <div class="movie_mainPoster">
-                        <div id="carouselPoster" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="mainPoster" src="<%= movie.getMvPoster() %>" alt="">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="mainPoster" src="../../resources/img/다크나이트2.jpeg" alt="">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPoster"
-                                data-bs-slide="prev">
-                                <span><i class="fa-solid fa-arrow-left fa-2x"
-                                        style="color: RGB(247, 39, 152);"></i></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselPoster"
-                                data-bs-slide="next">
-                                <span><i class="fa-solid fa-arrow-right fa-2x"
-                                        style="color: RGB(247, 39, 152);"></i></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                      	<img class="mainPoster" src="<%= movie.getMvPoster() %>" alt="">
                         <div class="poster_info">
                             <span><%= movie.getMvName() %></span><br>
                             <span>평균 별점 :  <%= movie.getStarRatingAvg() != null ? movie.getStarRatingAvg() : "-" %></span><br>
@@ -828,7 +808,7 @@
                             	<% } %>
                             </div>
                              <% if(movie.getMvStory().length() > 200) {%>
-                            <div class="long_summary">
+                            <div class="long_summary" style="border-radius: 15px;">
                             	<%= movie.getMvStory() %>
                                 <a class="short_summary_btn">접기</a>
                              </div>
@@ -851,7 +831,6 @@
                                     <div class="people_tooltip">
                                         <span>생년월일 : <%= personList.get(i).getpBD() %></span><br>
                                         <span>국적 : <%= personList.get(i).getpNation() %></span><br>
-                                        <span>대표작 : (2~3개만)</span>
                                     </div>
                                 </div>
                             <% if(i % 3 == 2 || i == (personList.size() - 1)) { %>
