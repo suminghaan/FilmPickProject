@@ -193,8 +193,17 @@
             cursor: pointer;
         }
         
-       .starRating_img {
+       	.starRating_img {
             height: 25px;
+        }
+        
+        #carouselReview {
+        	width: 100%;
+        }
+        
+        .movie_list {
+        	display: flex;
+        	flex-wrap: wrap;
         }
         
     </style>
@@ -217,106 +226,121 @@
                     <h5><span>검색결과</span> 리뷰</h5>
                 </div>
                 <div class="reviews_wrap">
-                <% if(reviewList != null) { %>
-                    	<% for(int i = 0; i < reviewList.size(); i++) { %>
-                    	<!-- reviewContent가 있는 리뷰만 조회 -->
-                    	<% if(reviewList.get(i).getReviewContent() != null) {%>
-                        <div class="movie_review_el">
-                            <div class="movie_review_part">
-                                <div class="thumb_btn">
-                                    <div class="thumb_up">
-                                        <div class="ag_disag_wrap">
-                                            <div class="ag">
-                                                <div class="ag_filled filled_wrap">
-                                                    <button type="button" class="ag_disag_btn ag_filled_btn" id="filled_agree<%= reviewList.get(i).getMvReviewNo() %>" onclick="agreeDelete(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
-                                                            class="ag_filled_img ag_disag_img"
-                                                            src="<%= contextPath %>/resources/img/좋아요.png" alt=""></button>
-                                                </div>
-                                                <div class="ag_empty empty_wrap">
-                                                    <button type="button" class="ag_disag_btn ag_empty_btn" id="empty_agree<%= reviewList.get(i).getMvReviewNo() %>" onclick="agreeInsert(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
-                                                            class="ag_empty_img ag_disag_img"
-                                                            src="<%= contextPath %>/resources/img/빈좋아요.png" alt=""></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb_count">
-                                        <span style="font-size: 8px; padding-left: 0px;">공감 : <%= reviewList.get(i).getAgreeCount() %></span>
-                                    </div>
-                                    <div class="thumb_down">
-                                        <div class="ag_disag_wrap">
-                                            <div class="disag">
-                                                <div class="disag_filled filled_wrap">
-                                                    <button type="button" class="ag_disag_btn disag_filled_btn" id="filled_disagree<%= reviewList.get(i).getMvReviewNo() %>" onclick="disagreeDelete(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
-                                                            class="ag_filled_img ag_disag_img"
-                                                            src="<%= contextPath %>/resources/img/싫어요.png" alt=""></button>
-                                                </div>
-                                                <div class="disag_empty empty_wrap">
-                                                    <button type="button" class="ag_disag_btn disag_empty_btn" id="empty_disagree<%= reviewList.get(i).getMvReviewNo() %>" onclick="disagreeInsert(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
-                                                            class="ag_empty_img ag_disag_img"
-                                                            src="<%= contextPath %>/resources/img/빈싫어요.png" alt=""></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="thumb_count">
-                                        <span style="font-size: 8px; padding-left: 0px;">비공감 : <%= reviewList.get(i).getDisagreeCount() %></span>
-                                    </div>
-                                </div>
-                                <div class="user_img_info">
-                                <% if(reviewList.get(i).getMemImgPath() == null) { %>
-                                    <div class="user_img" style="border: 2px solid <%= reviewList.get(i).getMemColor() %>" onclick="otherUser(<%= reviewList.get(i).getMemNo() %>)"><i class="fa-solid fa-user" style="color: <%= reviewList.get(i).getMemColor() %>;"></i>
-                                    </div>
-                                <% } %>
-                                    <div class="user_info">
-                                        <span>LV. <%= reviewList.get(i).getMemLevel() %></span>
-                                        <span style="margin-left: 10px;"><%= reviewList.get(i).getNickname() %></span>
-                                    </div>
-                                </div>
-                                <div class="user_review_info">
-                                    <div class="user_review_star">
-                                        <div class="star-wrap">
-                                        <% for(int j = 0; j < 5; j++) {%>
-                                        <% if (j < (int)Double.parseDouble(reviewList.get(i).getLikePoint())) { %>
-                                            <img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
-                                        <% } else if(j < Math.ceil((Double.parseDouble(reviewList.get(i).getLikePoint()))) ) {%>
-                                        	<img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
-                                        <% } else { %>
-                                        	<img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
-                                        <% } %>
-                                        <% } %>
-                                        </div>
-
-                                    </div>
-                                    <div class="user_review_date">
-                                        <span><%= reviewList.get(i).getReviewDate().substring(0, 10) %></span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
-                                    <%= reviewList.get(i).getReviewContent().substring(0, 300) + "..." %>
-                                    <div class="more_info">
-                                        <a class="more_info_btn">더보기</a>
-                                    </div>
-                                <% } else {%>
-                                    <%= reviewList.get(i).getReviewContent() %>
-                                <% } %>
-                                </div>
-                                <div class="review_content_long">
-                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
-                                    <%= reviewList.get(i).getReviewContent() %>
-                                    <div class="more_info_long">
-                                        <a class="more_info_btn_long">접기</a>
-                                    </div>
-                                <% } %>    
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                        <% } %> 
-                    <% } else {%>
-                    	조회된 리뷰가 없습니다.
-                    <% } %>                  
+                    <div id="carouselReview" class="carousel slide" style="height: 85%;">
+	            <div class="carousel-inner">
+	                <% for(int i = 0; i < reviewList.size(); i++) { %>
+		                <% if(i % 8 == 0) {%>
+		                	<div class="carousel-item <%= i == 0 ? "active" : ""%>">
+		                	<div class="movie_list">
+		                <% } %>
+	                    	<% if(reviewList.get(i).getReviewContent() != null) {%>
+	                        <div class="movie_review_el">
+	                            <div class="movie_review_part">
+	                                <div class="thumb_btn">
+	                                    <div class="thumb_up">
+	                                        <div class="ag_disag_wrap">
+	                                            <div class="ag">
+	                                                <div class="ag_filled filled_wrap">
+	                                                    <button type="button" class="ag_disag_btn ag_filled_btn" id="filled_agree<%= reviewList.get(i).getMvReviewNo() %>" onclick="agreeDelete(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
+	                                                            class="ag_filled_img ag_disag_img"
+	                                                            src="<%= contextPath %>/resources/img/좋아요.png" alt=""></button>
+	                                                </div>
+	                                                <div class="ag_empty empty_wrap">
+	                                                    <button type="button" class="ag_disag_btn ag_empty_btn" id="empty_agree<%= reviewList.get(i).getMvReviewNo() %>" onclick="agreeInsert(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
+	                                                            class="ag_empty_img ag_disag_img"
+	                                                            src="<%= contextPath %>/resources/img/빈좋아요.png" alt=""></button>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    <div class="thumb_count">
+	                                        <span style="font-size: 8px; padding-left: 0px;">공감 : <%= reviewList.get(i).getAgreeCount() %></span>
+	                                    </div>
+	                                    <div class="thumb_down">
+	                                        <div class="ag_disag_wrap">
+	                                            <div class="disag">
+	                                                <div class="disag_filled filled_wrap">
+	                                                    <button type="button" class="ag_disag_btn disag_filled_btn" id="filled_disagree<%= reviewList.get(i).getMvReviewNo() %>" onclick="disagreeDelete(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
+	                                                            class="ag_filled_img ag_disag_img"
+	                                                            src="<%= contextPath %>/resources/img/싫어요.png" alt=""></button>
+	                                                </div>
+	                                                <div class="disag_empty empty_wrap">
+	                                                    <button type="button" class="ag_disag_btn disag_empty_btn" id="empty_disagree<%= reviewList.get(i).getMvReviewNo() %>" onclick="disagreeInsert(<%= reviewList.get(i).getMvReviewNo() %>, this);"><img
+	                                                            class="ag_empty_img ag_disag_img"
+	                                                            src="<%= contextPath %>/resources/img/빈싫어요.png" alt=""></button>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    <div class="thumb_count">
+	                                        <span style="font-size: 8px; padding-left: 0px;">비공감 : <%= reviewList.get(i).getDisagreeCount() %></span>
+	                                    </div>
+	                                </div>
+	                                <div class="user_img_info">
+	                                <% if(reviewList.get(i).getMemImgPath() == null) { %>
+	                                    <div class="user_img" style="border: 2px solid <%= reviewList.get(i).getMemColor() %>" onclick="otherUser(<%= reviewList.get(i).getMemNo() %>)"><i class="fa-solid fa-user" style="color: <%= reviewList.get(i).getMemColor() %>;"></i>
+	                                    </div>
+	                                <% } %>
+	                                    <div class="user_info">
+	                                        <span>LV. <%= reviewList.get(i).getMemLevel() %></span>
+	                                        <span style="margin-left: 10px;"><%= reviewList.get(i).getNickname() %></span>
+	                                    </div>
+	                                </div>
+	                                <div class="user_review_info">
+	                                    <div class="user_review_star">
+	                                        <div class="star-wrap">
+	                                        <% for(int j = 0; j < 5; j++) {%>
+	                                        <% if (j < (int)Double.parseDouble(reviewList.get(i).getLikePoint())) { %>
+	                                            <img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰별.png" alt="">
+	                                        <% } else if(j < Math.ceil((Double.parseDouble(reviewList.get(i).getLikePoint()))) ) {%>
+	                                        	<img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰반별.png" alt="">
+	                                        <% } else { %>
+	                                        	<img class="starRating_img" src="<%= contextPath %>/resources/img/리뷰빈별.png" alt="">
+	                                        <% } %>
+	                                        <% } %>
+	                                        </div>
+	
+	                                    </div>
+	                                    <div class="user_review_date">
+	                                        <span><%= reviewList.get(i).getReviewDate().substring(0, 10) %></span>
+	                                    </div>
+	                                </div>
+	                                <div class="review_content">
+	                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
+	                                    <%= reviewList.get(i).getReviewContent().substring(0, 300) + "..." %>
+	                                    <div class="more_info">
+	                                        <a class="more_info_btn">더보기</a>
+	                                    </div>
+	                                <% } else {%>
+	                                    <%= reviewList.get(i).getReviewContent() %>
+	                                <% } %>
+	                                </div>
+	                                <div class="review_content_long">
+	                                <% if(reviewList.get(i).getReviewContent().length() > 300) { %>
+	                                    <%= reviewList.get(i).getReviewContent() %>
+	                                    <div class="more_info_long">
+	                                        <a class="more_info_btn_long">접기</a>
+	                                    </div>
+	                                <% } %>    
+	                                </div>
+	                            </div>
+	                        </div>
+	   						<% if(i % 8 == 7 || i == (reviewList.size() - 1)) {%>
+	                  </div>
+	                  </div>
+	                  <% } %>
+	                <% } %>
+				<% } %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselReview" data-bs-slide="prev">
+              <span><i class="fa-solid fa-arrow-left fa-2x" style="color: RGB(247, 39, 152);"></i></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselReview" data-bs-slide="next">
+              <span><i class="fa-solid fa-arrow-right fa-2x" style="color: RGB(247, 39, 152);"></i></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>               
                 </div>
             </div>
         </div>

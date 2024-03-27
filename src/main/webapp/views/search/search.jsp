@@ -170,7 +170,7 @@
                     <a href="<%= contextPath %>/movieDetail.fp?movieNo=<%= movieList.get(i).getMvNo() %>"><img class="thumbnail_img" src="<%= posterList.get(i).getFilePath() %>" alt=""></a>
                     <div class="thumbnail_title"">
                       <span><%= movieList.get(i).getMvName() %></span><br>
-                      <span>평균 별점 : <%= movieList.get(i).getStarRatingAvg() != null ? movieList.get(i).getStarRatingAvg() : "정보없음"%></span><br>
+                      <span>평균 별점 : <%= movieList.get(i).getStarRatingAvg() != null ? movieList.get(i).getStarRatingAvg() : "-"%></span><br>
                       <span><%= movieList.get(i).getMvOpenDate() %></span>
                     </div>
                   </div>
