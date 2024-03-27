@@ -89,6 +89,7 @@ public class BoardSearchChatMovieController extends HttpServlet {
 		request.setAttribute("chatList", chatList);
 		request.setAttribute("mList", mList);
 		request.setAttribute("allMovie", allMovie);
+		request.setAttribute("keyword", keyword);
 		
 		// 리퀘스트객체와 리스폰스 객체를 응답페이지 jsp에 전달하기
 		request.getRequestDispatcher("/views/community/searchChatMovieList.jsp").forward(request, response);

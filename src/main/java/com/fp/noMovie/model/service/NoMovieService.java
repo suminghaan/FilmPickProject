@@ -133,4 +133,15 @@ public class NoMovieService {
 		return cList;
 	}
 	
+	/**
+	 * @param 호용
+	 * @return 사용자가 신청한 없는영화 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int selectListCount(int memNo) {
+		Connection conn = getConnection();
+		int listCount = nMDao.selectListCount(conn, memNo);
+		close(conn);
+		return listCount;
+	}
+	
 }

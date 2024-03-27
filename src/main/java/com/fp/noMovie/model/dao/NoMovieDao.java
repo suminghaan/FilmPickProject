@@ -487,4 +487,31 @@ public class NoMovieDao {
 		return cList;
 	}
 	
+	/**
+	 * @param 호용
+	 * @return 사용자가 신청한 없는영화 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int selectListCount(Connection conn, int memNo) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("dao에서의 리스트카운트 : " + listCount);
+		return listCount;
+
+	}
+	
 }

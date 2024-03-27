@@ -81,4 +81,26 @@ public class InquiryService {
 		return at;
 	}
 	
+	/**
+	 * @author 호용
+	 * 총 키워드에 맞는 내 문의사항 글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectListCount(String keyword) {
+		Connection conn = getConnection();
+		int listCount = iDao.keywordSelectListCount(conn, keyword);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @author 호용
+	 * 키워드에 맞는 문의사항 페이지에 담을 값을 구하기위한 메소드
+	 */
+	public List<Inquiry> selectKeywordList(PageInfo pi, String keyword){
+		Connection conn = getConnection();
+		List<Inquiry> list = iDao.selectKeywordList(conn, pi, keyword);
+		close(conn);
+		return list;
+	}
+	
 }

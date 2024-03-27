@@ -20,6 +20,23 @@ public class Inquiry {
 	public Inquiry() {}
 
 	
+	
+	/**
+	 * 고객센터 검색기능 구현을 위한 매개변수 생성자
+	 * @param inqryNo
+	 * @param inqryTitle
+	 * @param inqryDate
+	 */
+	public Inquiry(int inqryNo, String inqryTitle, String inqryDate) {
+		super();
+		this.inqryNo = inqryNo;
+		this.inqryTitle = inqryTitle;
+		this.inqryDate = inqryDate;
+	}
+
+
+
+
 	/**
 	 * @author 김지우
 	 * @param inqryNo 문의사항번호

@@ -95,12 +95,14 @@
     .content{
         /* border: 1px solid white; */
         display: flex;
+        /*float:left;*/
     }
+
 
     /*두번째 테이블 시작*/
     .table_second{
         /* border: 1px solid white; */
-        color: white;
+        color: white; 
         margin-left: 100px;
     }
     .table_second *{
@@ -153,7 +155,6 @@
             	<a href="<%= contextPath %>/views/community/postWrite.jsp" class="btn btn-secondary" style="margin-left: 810px;">글쓰기</a>
             <%} %>
             <br><br>
-
             <div class="content">
 
                 <table class="table_first">
@@ -184,6 +185,7 @@
                     </tbody>
                 </table>
                 
+
                 <!-- 우측 인기영화 탭 -->
                 <table class="table_second">
                     <thead class="public_movie">
@@ -192,16 +194,14 @@
                         </tr>
                     </thead>
                     <tbody class="movie_name">
-                    <%for(Movie all : allMovie){ %>
-                        <tr>
-                            <td onclick="movie_go(<%= all.getMvNo()%>);"><%= all.getMvName() %></td>
-                        </tr>
-                    <%} %>
+	                    <%for(Movie all : allMovie){ %>
+	                        <tr>
+	                            <td onclick="movie_go(<%= all.getMvNo()%>);"><%= all.getMvName() %></td>
+	                        </tr>
+	                    <%} %>
                     </tbody>
                 </table>
-
             </div>
-
             <br><br><br>
             <!-- 영화탭 일반게시글 -->
             <table class="table_first">

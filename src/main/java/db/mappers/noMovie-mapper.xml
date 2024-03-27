@@ -366,6 +366,12 @@
 	     WHERE CATEGORY_STATUS = 'Y'
 	</entry>
 	
+	<!-- 사용자가 신청한 없는영화 갯수를 구하기 위한 sql문, 페이징바에 활용됨 BY 호용 -->
+	<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM NO_MOVIE_ENROLL
+		 WHERE MEM_NO = ?
+	</entry>
 </properties>
 
 

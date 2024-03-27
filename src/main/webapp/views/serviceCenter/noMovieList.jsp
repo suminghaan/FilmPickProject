@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.fp.common.model.vo.PageInfo" %>
 <%@ page import="com.fp.noMovie.model.vo.NoMovie" %>
 <%@ page import="java.util.List" %>
 <%
 	List<NoMovie> list = (List<NoMovie>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 %>
 <!DOCTYPE html>
 <html>
@@ -191,6 +193,29 @@
                 <br>
                 <!-- 추후 수정 -->
                 <a href="<%=contextPath%>/enrollForm.noMv" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
+
+            <ul class="pagination justify-content-center" style="margin-top: 10px;">
+            	<% if(pi.getCurrentPage() == 1){ %>
+            		<!-- 현재 내가 보고있는 페이지가 1페이지와 일치할경우 클릭불가능 -->
+                	<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <% }else{ %>
+                	<!-- 클릭시 내가 보고있는 페이지의 이전페이지로 이동하기위한 구문 -->
+                	<li class="page-item"><a class="page-link" href="<%= contextPath %>/list.noMv?page=<%= pi.getCurrentPage() - 1%>">Previous</a></li>
+                <% } %>
+                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++){ %>
+               		<%if(p == pi.getCurrentPage()){ %>
+               		<li class="page-item active"><a class="page-link" href="#"><%= p %></a></li>
+               		<%}else{ %>
+               		<li class="page-item"><a class="page-link" href="<%= contextPath %>/list.noMv?page=<%= p %>"><%= p %></a></li>
+               		<% } %>
+                <% } %>
+                <%if(pi.getCurrentPage() == pi.getMaxPage()){ %>
+                <!-- 현재 내가 보고있는 페이지가 마지막페이지와 일치할 경우 클릭 불가능 -->
+                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+ 				<%}else{ %>
+                <li class="page-item"><a class="page-link" href="<%= contextPath%>/list.noMv?page=<%=pi.getCurrentPage()+1%>">Next</a></li>
+ 				<%} %>
+            </ul>
 
             </div> <br><br>
         </section>
