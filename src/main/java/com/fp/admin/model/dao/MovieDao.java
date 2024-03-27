@@ -440,8 +440,7 @@ public class MovieDao {
 			pstmt.setString(5, p.getpFile());
 
 			result = pstmt.executeUpdate();
-			
-			result = pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
