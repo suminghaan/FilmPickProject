@@ -139,7 +139,7 @@ h1{
                     <%} %>
                     <td>
                         <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting" onclick="update(<%=p.getpNo()%>);">수정</button>
-                        <a href="<%=contextPath %>/deletePerson.admo?pno=<%=p.getpNo() %>" class="btn btn-outline-danger" onclick="deleted();">삭제</a>
+                        <a href="<%=contextPath %>/deletePerson.admo?pno=<%=p.getpNo() %>" class="btn btn-outline-danger" onclick="return deleted();">삭제</a>
                     </td>
                 </tr>
 					<%} %>
@@ -283,6 +283,10 @@ h1{
     								+ "<td>" + list[i].pBD + "</td>"
     								+ "<td>" + list[i].pNation + "</td>"
     								+ "<td>" + (list[i].pFile != null ? "Y" : "N")+ "</td>"
+    								+ "<td>"
+    		                        + "<button type='button' class='btn btn-outline-secondary' data-toggle='modal' data-target='#changeCasting' onclick='update(" + list[i].pNo + ");'>수정</button>"
+    		                        + "<a href='<%=contextPath %>/deletePerson.admo?pno=" + list[i].pNo + "' class='btn btn-outline-danger' onclick='return deleted();'>삭제</a>"
+    		                        + "</td>"
     		                        +"</tr>";
     					}
     				}else{
@@ -367,13 +371,14 @@ h1{
 	
 
     // 삭제할 경우 
-    	function deleted(){
+    	function deleted(e){
     		let d = prompt("등록된 인물을 삭제하시겠습니까? \n 삭제를 희망하시면 삭제라고 입력해주세요");
-    		
+
     		if(d=="삭제"){
                 alert("해당인물을 삭제하겠습니다.")
             }else{
                 alert("잘못입력하셨습니다. 다시 확인해주세요")
+                return false;
             }
     	}
     
