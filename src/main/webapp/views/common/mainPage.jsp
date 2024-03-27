@@ -528,7 +528,7 @@
 							<img class="poster_img" src="<%= plist1.get(i).getMvPoster() %>">
 								<div class="box_context">
 									<div class="post_context"><%= plist1.get(i).getMvName() %></div>
-									<div class="post_context">평균 별점 : <%= plist1.get(i).getStarRatingAvg() %></div>
+									<div class="post_context">평균 별점 : <%= (plist1.get(i).getStarRatingAvg() != null) ? plist1.get(i).getStarRatingAvg() : "-" %></div>
 									<div class="post_context"><%= plist1.get(i).getMvOpenDate() %></div>
 								</div>
 						</a> 
@@ -546,7 +546,7 @@
 							<img class="poster_img" src="<%= plist2.get(i).getMvPoster() %>">
 								<div class="box_context">
 									<div class="post_context"><%= plist2.get(i).getMvName() %></div>
-									<div class="post_context">평균 별점 : <%= plist2.get(i).getStarRatingAvg() %></div>
+									<div class="post_context">평균 별점 : <%= (plist2.get(i).getStarRatingAvg() != null) ? plist2.get(i).getStarRatingAvg() : "-" %></div>
 									<div class="post_context"><%= plist2.get(i).getMvOpenDate() %></div>
 								</div>
 						</a> 
@@ -715,7 +715,7 @@
 							<img class="poster_img" src="<%=plist3.get(i).getMvPoster()%>">
 								<div class="box_context">
 									<div class="post_context"><%=plist3.get(i).getMvName()%></div>
-									<div class="post_context">평균 별점 : <%=plist3.get(i).getStarRatingAvg()%></div>
+									<div class="post_context">평균 별점 : <%= (plist3.get(i).getStarRatingAvg() != null) ? plist3.get(i).getStarRatingAvg() : "-" %></div>
 									<div class="post_context"><%=plist3.get(i).getMvOpenDate()%></div>
 								</div>
 						</a> 
