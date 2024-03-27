@@ -608,7 +608,8 @@ public class MovieDao {
 			pstmt.setString(2, p.getpJob());
 			pstmt.setString(3, p.getpBD());
 			pstmt.setString(4, p.getpNation());
-			pstmt.setInt(5, p.getpNo());
+			pstmt.setString(5, p.getpFile());
+			pstmt.setInt(6, p.getpNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

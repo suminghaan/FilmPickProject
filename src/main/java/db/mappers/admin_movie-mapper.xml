@@ -338,6 +338,7 @@
 				, P_JOB = ?
 				, P_BD = ?
 				, P_NATION = ?
+				, P_FILE =?
 			WHERE P_NO = ?
 				
 		</entry>
