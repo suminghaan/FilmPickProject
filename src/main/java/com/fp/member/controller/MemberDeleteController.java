@@ -33,8 +33,9 @@ public class MemberDeleteController extends HttpServlet {
 		
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		
-		int result = new MemberService().deleteMember(memId, memPwd);
+		int result = new MemberService().deleteMember(memId, memPwd, memNo);
 		HttpSession session = request.getSession();
 		
 		if(result > 0){

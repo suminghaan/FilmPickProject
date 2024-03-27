@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
-import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.dao.MemberDao;
 import com.fp.member.model.vo.Member;
@@ -62,21 +61,22 @@ public class MemberService {
 		return count;
 	}
 	
-	// 회원탈퇴
-	public int deleteMember(String memId, String memPwd) {
+	// 회원탈퇴s
+	public int deleteMember(String memId, String memPwd, int memNo) {
 		Connection conn = getConnection();
-		int result = mDao.deleteMember(conn, memId, memPwd);
+		int result1 = mDao.deleteMember(conn, memId, memPwd);
+		int result2 = mDao.deleteMemberInsert(conn, memNo);
 		
-		if(result > 0) {
+		if(result1*result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		close(conn);
 		
-		return result;
+		return result1*result2;
 	}
-	
+
 	// 회원정보 변경
 	public Member updateMember(Member m) {
 		Connection conn = getConnection();

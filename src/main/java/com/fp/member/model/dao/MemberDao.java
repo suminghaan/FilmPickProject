@@ -12,7 +12,6 @@ import java.util.Properties;
 
 import com.fp.board.model.vo.Board;
 import com.fp.board.model.vo.Reply;
-import com.fp.common.model.vo.Approval;
 import com.fp.common.model.vo.PageInfo;
 import com.fp.member.model.vo.Member;
 import com.fp.movie.model.vo.Movie;
@@ -198,6 +197,24 @@ public class MemberDao {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memPwd);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteMemberInsert(Connection conn, int memNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteMemberInsert");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
 			
 			result = pstmt.executeUpdate();
 			
