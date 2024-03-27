@@ -185,8 +185,9 @@
     	$.ajax({
     		url:"<%=contextPath%>/good.bo",
     		data:{
-    			bNo:<%=b.getbNo()%>,
-    			memNo:<%=loginMember.getMemNo()%>	
+	    			bNo:<%=b.getbNo()%>,
+	    			memNo:<%=loginMember != null ? loginMember.getMemNo() : null%>
+
     		},
     		success:function(result){
     			if(result > 0){

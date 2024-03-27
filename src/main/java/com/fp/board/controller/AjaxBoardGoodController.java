@@ -31,12 +31,12 @@ public class AjaxBoardGoodController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int boardNo = Integer.parseInt(request.getParameter("bNo"));
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		int result = new BoardService().good(boardNo, memNo);
 		response.getWriter().print(result);
-		//response.setContentType("application/json; charset=utf-8");
-		//new Gson().toJson(result, response.getWriter());
+
 	}
 
 	/**
