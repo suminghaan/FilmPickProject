@@ -86,6 +86,48 @@
             color: black;
     }
     
+    /* 인물 검색 관련 스타일*/
+    .person-table{
+      border: 1px solid black;
+      margin: 5px;
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-table *{
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-div{
+      display: flex;
+      /* border: 1px solid red; */
+      width: 1300px;
+      flex-wrap:wrap
+    }
+
+    .person-div img{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
+   	}
+    
     /*미리보기 사이즈*/
 
     #preview {
@@ -347,12 +389,22 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <input type="text" name="inputPerson" class="form-control inputPerson">
-                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson" onclick="searchPerson();">검색</button>
+                    <button type="button" class="btn btn-secondary btn-sm psModal btnPerson">검색</button>
                     <hr>
                     <div class="viewPerson">
                         
                     </div>
                 </div>
+                
+                <script>
+       				$(".inputPerson").on("input", function(){       					
+       					if ($(this).val().trim() === "") {
+       						$(".viewPerson").html("");
+       					} else {
+       						searchPerson();
+       					}       					
+       				})
+           		</script>
         
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -429,7 +481,7 @@
                      +     "<td style='color:black;'>" + pName + "</td>" // 인물 이름임
                      +   "</tr>"
                      +   "<tr>"
-                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required></td>'
+                     +     '<td><input type="text" placeholder="영화배역 입력" name="movieJob" required><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>'
                      +   "</tr>"
                      +   '<input type="hidden" name="personNo" value="' + pNo + '">' // 인물 번호(고유)
                      + "</table>"
@@ -443,8 +495,15 @@
 	
 	// 인물 삭제 
 	$("#personRemoveBtn").click(function(){
-           $(".person-div").find("table").last().remove();            
+           $(".person-div").find("table").last().remove();          
          });
+	
+	$(document).ready(function() {
+        $(document).on('click', '#personRemoveBtnBtn', function() {
+            $(this).closest('table.person-table').remove(); // 클릭된 버튼의 가장 가까운 부모 테이블을 제거
+            count--;
+        });
+    });   	
 	</script>
 	
 	<script>
