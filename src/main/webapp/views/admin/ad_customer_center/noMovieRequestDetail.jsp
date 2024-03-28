@@ -258,7 +258,48 @@ img{
 .inputUser{
       display:flex;
 }
+/* 인물검색 모달 및 추가관련 스타일*/
+	.person-table{
+      border: 1px solid black;
+      margin: 5px;
+      border-collapse: separate;
+      border-radius: 10px;
+    }
 
+    .person-table *{
+      border-collapse: separate;
+      border-radius: 10px;
+    }
+
+    .person-div{
+      display: flex;
+      /* border: 1px solid red; */
+      width: 1300px;
+      flex-wrap:wrap
+    }
+
+    .person-div img{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .personImg{
+      width: 80px;
+      height: 80px;
+    }
+    
+    .check{
+   	  width:150px;
+   	  border:1px solid gray;
+   	  border-radius: 10px;
+   	  padding:5px
+   	}
+   	.viewPerson{
+   	  display: flex;
+   	  width : 500px;
+   	  flex-wrap:wrap
+   	}
+   	
 /*미리보기 사이즈*/
 
     #preview {
@@ -290,7 +331,8 @@ img{
             <hr>
         </div>
         
-        <form action="<%=contextPath %>/insertMovie.admo" method="post" enctype="multipart/form-data">
+        <form action="<%=contextPath %>/insertMovie.admo
+        " method="post" enctype="multipart/form-data">
             <div class="all">                
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
