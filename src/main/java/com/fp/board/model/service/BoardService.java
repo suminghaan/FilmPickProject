@@ -401,6 +401,14 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
+	// 게시글 추천중복을 막기위한 메소드 [호용]
+	public int selectCount(int boardNo, int memNo) {
+		Connection conn = getConnection();
+		int result = bDao.selectCount(conn, boardNo, memNo);
+		close(conn);
+		return result;
+	}
 
 }
 

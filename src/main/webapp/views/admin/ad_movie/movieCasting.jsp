@@ -270,54 +270,56 @@ h1{
     			data:{
     				keyword:$("#searchInput").val()
     			},
-    			success:function(list){
-    				
+    			success:function(jArr){
+					console.log(jArr);	
+    				console.log(jArr[1].length);
+    				console.log(jArr[1][0]);
+    				console.log(jArr[1][0].pFile);
     				let value = "";
     				let pageInfo = "";
     				
-    				if(list.length > 0){
-    					for(let i=0; i<list.length; i++){
+    				if(jArr[1].length > 0){
+    					for(let i=0; i<jArr[1].length; i++){
     						value += "<tr>"
-    								+ "<td>" + list[i].pNo + "</td>"
-    								+ "<td>" + list[i].pName + "</td>"
-    								+ "<td>" + list[i].pJob + "</td>"
-    								+ "<td>" + list[i].pBD + "</td>"
-    								+ "<td>" + list[i].pNation + "</td>"
-    								+ "<td>" + (list[i].pFile != null ? "Y" : "N")+ "</td>"
+    								+ "<td>" + jArr[1][i].pNo + "</td>"
+    								+ "<td>" + jArr[1][i].pName + "</td>"
+    								+ "<td>" + jArr[1][i].pJob + "</td>"
+    								+ "<td>" + jArr[1][i].pBD + "</td>"
+    								+ "<td>" + jArr[1][i].pNation + "</td>"
+    								+ "<td>" + (jArr[1][i].pFile != null ? "Y" : "N")+ "</td>"
     								+ "<td>"
-    		                        + "<button type='button' class='btn btn-outline-secondary' data-toggle='modal' data-target='#changeCasting' onclick='update(" + list[i].pNo + ");'>수정</button>"
-    		                        + "<a href='<%=contextPath %>/deletePerson.admo?pno=" + list[i].pNo + "' class='btn btn-outline-danger' onclick='return deleted();'>삭제</a>"
+    		                        + "<button type='button' class='btn btn-outline-secondary' data-toggle='modal' data-target='#changeCasting' onclick='update(" + jArr[1][i].pNo + ");'>수정</button>"
+    		                        + "<a href='<%=contextPath %>/deletePerson.admo?pno=" + jArr[1][i].pNo + "' class='btn btn-outline-danger' onclick='return deleted();'>삭제</a>"
     		                        + "</td>"
     		                        +"</tr>";
     					}
-    					pageInfo +=
-    						<% if(pi.getCurrentPage() == 1) { %>
-    		                "<li class='page-item disabled'>"
+    						if(jArr[0].currentPage == 1) {
+    						pageInfo += "<li class='page-item disabled'>"
     		                + "<a class='page-link' href='#' aria-label='Previous'>"
     		                +   "<span aria-hidden='true'>&laquo;</span>"
     		                + "</a>"
     		                + "</li>"
-    		                <% }else { %>
-    		                + "<li class='page-item'><a class='page-link' href='<%=contextPath%>/castingSearch.admo?page=<%=pi.getCurrentPage() -1%>'>Previous</a></li>"
-    		                <% } %>
+    		                }else {
+    		                pageInfo += "<li class='page-item'><a class='page-link' href='<%=contextPath%>/movieCastingList.admo&&page=" + jArr[0].currentPage + "?keyword=" +  $("#searchInput").val()  + "'>Previous</a></li>"
+    		                }
     		                
-    		                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
-    		                	<% if(p == pi.getCurrentPage()) { %>
-    		                +	"<li class='page-item active'><a class='page-link' href='#'><%= p %></a></li>"
-    		                	<%}else { %>
-    		                +	"<li class='page-item'><a class='page-link' href='<%=contextPath%>/castingSearch.admo?page=<%=p%>'><%= p %></a></li>"
-    		                	<% } %>
-    		                <% } %>
+    		                for(let p = jArr[0].starPage; p<=jArr[0].endPage; p++) {
+    		                	if(p == jArr[0].currentPage) {
+   		                	pageInfo +=	"<li class='page-item active'><a class='page-link' href='#'>" + p + "</a></li>"
+    		                	}else { 
+   		                	pageInfo +=	"<li class='page-item'><a class='page-link' href='<%=contextPath%>/movieCastingList.admo?page=" + p + "&&keyword=" + $("#searchInput").val() + "'>" + p + "</a></li>"
+    		                	}
+    		                }
     		                
-    		                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
-    		                + "<li class='page-item disabled'><a class='page-link' href='#'>Next</a></li>"
-    		                <% }else { %>
-    		                + "<li class='page-item'>"
-    		                + "<a class='page-link' href='<%=contextPath %>/castingSearch.admo?page=<%=pi.getCurrentPage() +1 %>' aria-label='Next'>"
+    		                if(jArr[0].currentPage == jArr[0].maxPage) {
+    		                pageInfo += "<li class='page-item disabled'><a class='page-link' href='#'>Next</a></li>"
+    		                }else {
+    		                pageInfo += "<li class='page-item'>"
+    		                + "<a class='page-link' href='<%=contextPath %>/movieCastingList.admo?page=" + (jArr[0].currentPage +1) + "&&keyword=" + $("#searchInput").val() + "' aria-label='Next'>"
     		                +   "<span aria-hidden='true'>&raquo;</span>"
     		                + "</a>"
     		                + "</li>"
-    		                <% } %>
+    		                }
     				}else{
     					value += "<tr><td colspan='5'>해당하는 공지사항이 없습니다,</td></tr>";
     				}

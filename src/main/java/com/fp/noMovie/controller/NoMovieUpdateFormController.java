@@ -35,7 +35,7 @@ public class NoMovieUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int noMovieNo = Integer.parseInt(request.getParameter("no"));
-		
+		int p = Integer.parseInt(request.getParameter("p"));
 		
 		List<Category> cMyList = new NoMovieService().selectNoMovieCategory(noMovieNo);
 //		System.out.println("업데이트폼컨트롤러에서의 noMovieNo는 영화번호임 : " + noMovieNo);
@@ -58,6 +58,7 @@ public class NoMovieUpdateFormController extends HttpServlet {
 		request.setAttribute("pList", pList);
 		request.setAttribute("cList", cList);
 		request.setAttribute("at", at);
+		request.setAttribute("p", p);
 		request.getRequestDispatcher("/views/serviceCenter/noMovieUpdateForm.jsp").forward(request, response);
 		
 	}
