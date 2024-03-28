@@ -55,7 +55,7 @@ SELECT
   CASE WHEN MOD(ROWNUM, 2) = 0 THEN 'Y' ELSE 'N' END, -- 랜덤한 회원상태 생성
   SYSDATE - DBMS_RANDOM.VALUE(1, 365), -- 랜덤한 회원정보수정일 생성
   MOD(ROWNUM, 5) + 1, -- 회원등급을 1, 2, 3 중에서 랜덤하게 생성
-  '#FFFFFF', -- 기본 회원정보색깔
+  '#EB2A83', -- 기본 회원정보색깔
   NULL, -- 기본 회원정보 이미지 경로
   NULL, -- NULL 값으로 MEM_FILE 생성
   MOD(ROWNUM, 5) + 1,
@@ -307,7 +307,7 @@ VALUES (SEQ_MOVIE_NO.NEXTVAL, '소울', '2021-01-20', '2', '107분'
 
 -------------------------------------- 이용훈 --------------------------------
 
-INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '닥터 두리틀', '2020-01-08', '2', '101분', '동물들과 소통하는 특별한 능력을 지닌 닥터 두리틀(로버트 다우니 주니어)은 사랑하는 사람을 잃고 세상과 단절한 채 동물들과 친구가 되어 살아간다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240314153026_17162.jpeg', 'resources/upfiles/20240314153026_55362.mp4', 'Y', SYSDATE);
+INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '닥터 두리틀', '2020-01-08', '2', '101분', '동물들과 소통하는 특별한 능력을 지닌 닥터 두리틀(로버트 다우니 주니어)은 사랑하는 사람을 잃고 세상과 단절한 채 동물들과 친구가 되어 살아간다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240314153026_17162.webp', 'resources/upfiles/20240314153026_55362.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '나쁜 녀석들 : 포에버', '2020-01-15', '2', '124분', '마이애미 강력반의 베테랑 형사 ‘마이크’[윌 스미스]는 여전히 범죄자를 소탕하는 데 열성적이지만, 그의 파트너 ‘마커스’[마틴 로렌스]는 이제 일선에서 물러나 가족과 함께 시간을 보내고 싶어한다.', 'N', '청소년 관람불가', 'N', 'N', 'resources/upfiles/20240314143028_55362.jpeg', 'resources/upfiles/20240314143038_56342.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '스파이 지니어스', '2020-01-22', '2', '102분', '전 세계를 위협하는 불법 무기 거래 첩보를 입수한 스파이 에이전트는 천상천하 유아독존 슈퍼 스파이 ‘랜스’(윌 스미스)를 파견한다. 하지만, 최첨단 장비로 무장한 정체불명의 빌런 ‘킬리언’(벤 맨델슨)은 ‘랜스’로 위장해 무기를 훔치고 그를 함정에 빠트린다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240315113026_57552.jpeg', 'resources/upfiles/20240315136027_55552.mp4', 'Y', SYSDATE);
 INSERT INTO MOVIE(MV_NO, MV_NAME, MV_OPENDATE, MV_NATION, MV_RTIME, MV_STORY, FPAGE_EXPOSED, VIEW_RATING, CURRENT_SCREENING, MPAGE_EXPOSED, MV_POSTER, MV_PREVIEW, MV_STATUS, MV_DATE) VALUES(SEQ_MOVIE_NO.NEXTVAL, '작은 아씨들', '2020-02-12', '2', '135분', '배우가 되고 싶은 첫째 메그(엠마 왓슨) 작가가 되고 싶은 둘째 조(시얼샤 로넌) 음악가가 되고 싶은 셋째 베스(엘리자 스캔런) 화가가 되고 싶은 막내 에이미(플로렌스 퓨) 이웃집 소년 로리(티모시 샬라메)는 네 자매를 우연히 알게되고 각기 다른 개성의 네 자매들과 인연을 쌓아간다.', 'N', '전체관람가', 'N', 'N', 'resources/upfiles/20240315115026_51552.jpeg', 'resources/upfiles/20240315135027_55852.mp4', 'Y', SYSDATE);
@@ -668,8 +668,8 @@ INSERT INTO ATTACHMENT
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
-    '닥터 두리틀_31.jpeg',
-    '20240314153026_17162.jpeg',
+    '닥터 두리틀_31.webp',
+    '20240314153026_17162.webp',
     SYSDATE,
     1,
     'resources/upfiles/',
@@ -1533,6 +1533,48 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
+    '닥터두리틀 추가사진1.jpg',
+    '19892309120523_88621.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    16
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '닥터두리틀 추가사진2.jpg',
+    '19892309120523_88622.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    16
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '닥터두리틀 추가사진3.jpg',
+    '19892309120523_88623.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    16
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
     '스티븐스필버그.webp',
     '20080321154832_77889.webp',
     SYSDATE,
@@ -1768,7 +1810,7 @@ SELECT SEQ_REVIEW_NO.NEXTVAL,
        MEM.MEM_NO,
        MOV.MV_NO
 FROM (SELECT LEVEL AS MEM_NO FROM dual CONNECT BY LEVEL <= 30) MEM,
-     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 82) MOV
+     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 82 AND LEVEL != 28) MOV
 WHERE NOT EXISTS (
     SELECT 1
     FROM REVIEW
@@ -4903,10 +4945,63 @@ VALUES (
 INSERT INTO REVIEW
 VALUES (
     SEQ_REVIEW_NO.NEXTVAL
-    , '겜돌이로서 아주 만족스러운 영화'
+    , '레디 플레이어 원은 마치 팝컬처의 아이디어 공장에서 나온 것 같아! 게임과 영화의 세계가 어우러진 멋진 이야기가 너를 미쳐버리게 할 거야!'
     , SYSDATE
-    , 3.5
-    , 32
+    , 5
+    , 9
+    , 28
+    , DEFAULT
+);
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , ' 볼만한 킬링타임용 오락영화. 화면이 다이나믹해서 3d로 봤으면 더 잼있었을듯..내용보단 영상이 판타지스러운게 좋았음.'
+    , SYSDATE
+    , 4
+    , 11
+    , 28
+    , DEFAULT
+);
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , '영상미 쩔고 재밌었지만 스필버그는 역시나 좀 유치하고 올드하다. 중요한 부분들을 지나치게 얼렁뚱땅 넘겨버리거나 가끔 너무 진부한 연출 장면들이 등장한다. 그런 부분들이 몰입을 상당히 헤쳐서 아쉬움.'
+    , SYSDATE
+    , 4.5
+    , 13
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , '역시 스티븐스필버그네요.중간중간에 흘러나오는 올드팝송도 좋았고내용, 구성도 탄탄하여 몰입감도 좋았어요.'
+    , SYSDATE
+    , 4.5
+    , 15
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , '애니매이션에 게임 보는거다'
+    , SYSDATE
+    , 1
+    , 17
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , '개노잼 너무유치 평점왜케높죠?'
+    , SYSDATE
+    , 1
+    , 19
     , 28
     , DEFAULT
 );
