@@ -36,13 +36,13 @@ table{
             <h1 id="select-user-title">회원 조회</h1>
         </div>
         <hr>
-         <div class="d-flex justify-content-center container">
+         <%-- <div class="d-flex justify-content-center container">
             <span>아이디</span>&nbsp;&nbsp;&nbsp;
             <input type="text" placeholder="아이디를 입력해주세요" id="searchUserId" name="userId">
             <button type="button" id="btnSearch" onclick="">
                 <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_search.png">
             </button>          
-        </div> 
+        </div>  --%>
         <div class="d-flex justify-content-end container" style="margin: 20px;">
             <img src="<%=contextPath%>/views/admin/ad_resources/img/icon_filter.png" style="margin-right: 10px;">
             <div class="custom-control custom-switch">
