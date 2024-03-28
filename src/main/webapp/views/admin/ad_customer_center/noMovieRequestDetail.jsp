@@ -337,7 +337,7 @@ img{
                 <div class="form-group">
                 <!-- 없는 영화를 영화 테이블에 등록하기 위한 전달값 -->
                 <input type="hidden" name="noMovieInsert" value="1"> 
-                <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
+                <input type="hidden" name="noMovieNo" class="nmNo" value="<%=nm.getNmEnrollNo()%>">
                     <label for="exampleFormControlInput1">영화제목</label> <br>
                     <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=nm.getNmTitle()%>" style="width: 500px;">
                 </div>
@@ -754,8 +754,7 @@ img{
     
     <script>
     	function btnRefuse(){
-    		alert('거절 처리가 완료되었습니다.');
-    		location.href = '<%=contextPath%>/list.nm?page=1';
+    		location.href='<%=contextPath%>/refuse.nm?no=' + $('.nmNo').val();
     	};
     </script>
 </body>

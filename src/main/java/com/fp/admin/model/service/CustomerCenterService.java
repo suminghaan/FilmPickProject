@@ -137,6 +137,19 @@ public class CustomerCenterService {
 		return result;
 	}
 
+	public int noMovieRequestRefuse(String nmNo) {
+		Connection conn = getConnection();
+		
+		int result = cDao.noMovieRequestRefuse(conn, nmNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 	
 
 
