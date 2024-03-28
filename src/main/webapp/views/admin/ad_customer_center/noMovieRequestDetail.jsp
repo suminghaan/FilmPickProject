@@ -550,9 +550,9 @@ img{
         
     </div>
         <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
-        <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
+        <!-- <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button> -->    
         <button type="submit" class="btn btn-secondary btn-sm" style="margin-right: 10px;">승인</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
+        <!-- <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button> -->   
        </div>
        </form>
        </section>
