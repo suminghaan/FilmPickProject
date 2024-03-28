@@ -124,7 +124,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 				</tr>
 				<tr>
 					<td>
-						<select name="genre" id="prefGenre" required>
+						<select name="prefGenre" id="prefGenre" required>
 							<option value="">* 선호장르</option>
 							<%for(int i=0; i<prefGenre.size(); i++){ %>
 							<option value="<%=prefGenre.get(i)%>"><%=prefGenre.get(i)%></option>
