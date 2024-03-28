@@ -477,6 +477,19 @@ public class MemberService {
 		return result;
 	}
 
-
+	/**
+	 * @author 호용
+	 * 이용제한회원 이용 풀어주는 메소드
+	 */
+	public int changeMemStatus(int memNo) {
+		Connection conn = getConnection();
+		int result = rDao.changeMemStatus(conn, memNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
+	}
 
 }
