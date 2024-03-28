@@ -58,6 +58,13 @@
         text-align: left !important;
     }
 	
+	    .reportContent {
+        text-align: center; /* 텍스트를 가운데로 정렬 */
+    }
+
+    .reportDetail {
+        margin: 0 auto; /* 가운데 정렬을 위해 좌우 마진을 자동으로 설정 */
+    }
 </style>
 
 
@@ -96,73 +103,71 @@
                 </tr>
             </thead>
             
-            <tbody>
-
-                <!-- case1. 조회된 게시글 없을 경우 -->
-                <% if(list.isEmpty()){ %>
-                     <tr>
-                         <td colspan="7" style="text-align: center;">존재하는 댓글이 없습니다.</td>
-                     </tr>
-				<% }else { %>
-
-                <!-- case2. 조회된 게시글 있을 경우  -->
-                <% for(Reply re: list) { %>
-                <tr class="reportList">
-                    <td><%=re.getReplyNo() %></td>
-                    <td><%=re.getEnrollDate() %></td>
-                    <td><%=re.getReMemNo() %></td>
-                    <td><%=re.getReplyContent() %></td>
-                    <td><%=re.getReport() %></td>
-                    <td><%=re.getbStatus() %></td>
-                    <td><button type="button" class="btn btn-outline-warning" onclick="reportBoard();">신고회원관리</button></td>
-                </tr>
-
-                <!-- 글(.reportList)를 누르면 나오는 세부 내용  -->
-                <tr class="reportContent">
-                    <td colspan="2"></td>
-                    <td colspan="4">
-                    	<div>
-	                        <table class="reportDetail">
-	                            <tr>
-	                                <th>댓글 내용</th>
-	                                <td colspan="3">
-	                                    <p style="min-height: 200px;">
-	                                        <%=re.getReplyContent() %>
-	                                    </p>
-	                                </td>
-	                            </tr>
-	                            <% for(Report r : rlist) { %>
-	                            <% if(re.getReplyNo() == r.getReportBoardNo()) { %>
-	                            <tr>
-	                                <th>신고 내용</th>
-	                                <td colspan="3">                            
-	                                    <div>
-	                                        <p>신고자 아이디 : <%=r.getReportMemNo() %></p>
-	                                        <p>신고 내용 : <%=r.getReportContent() %></p>
-	        
-	                                    </div>                                
-	                                </td>
-	                            </tr>
-	                            	<% } %>
-	                            <% } %>
-	                            
+           <tbody>
+    <!-- case1. 조회된 게시글 없을 경우 -->
+    <% if(list.isEmpty()){ %>
+        <tr>
+            <td colspan="7" style="text-align: center;">존재하는 댓글이 없습니다.</td>
+        </tr>
+    <% }else { %>
+        <!-- case2. 조회된 게시글 있을 경우  -->
+        <% for(Reply re: list) { %>
+            <tr class="reportList">
+                <td><%=re.getReplyNo() %></td>
+                <td><%=re.getEnrollDate() %></td>
+                <td><%=re.getReMemNo() %></td>
+                <td><%=re.getReplyContent() %></td>
+                <td><%=re.getReport() %></td>
+                <td><%=re.getbStatus() %></td>
+                <td><button type="button" class="btn btn-outline-warning" onclick="reportBoard();">신고회원관리</button></td>
+            </tr>
+            
+            <!-- 글(.reportList)를 누르면 나오는 세부 내용  -->
+            <tr class="reportContent">
+                <td colspan="7">
+                    <div>
+                        <table class="reportDetail">
+                            <tr>
+                                <th>댓글 내용</th>
+                                <td colspan="3">
+                                    <p style="min-height: 200px;">
+                                        <%=re.getReplyContent() %>
+                                    </p>
+                                </td>
+                            </tr>
+                            <% for(Report r : rlist) { %>
+                                <% if(re.getReplyNo() == r.getReportBoardNo()) { %>
+                                    <tr>
+                                        <th>신고 내용</th>
+                                        <td colspan="3">                            
+                                            <div>
+                                                <p>신고자 아이디 : <%=r.getReportMemNo() %></p>
+                                                <p>신고 내용 : <%=r.getReportContent() %></p>
+                                            </div>                                
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
                             <tr>
                                 <td colspan="3"></td>
                                 <td>
-                                <% if((re.getbStatus()).equals("N")) {%>
-                                    <a href="<%=contextPath %>/reportCommentBlind.co?rno=<%=re.getReplyNo() %>" class="btn btn-outline-danger btn-sm" onclick="alert('해당 게시글을 블라인드 처리합니다.')">블라인드처리</a>
-                                <%}else{ %>
-                                	<button class="btn btn-outline-danger btn-sm" disabled>블라인드처리</button>
-                                <%} %>	
+                                    <% if((re.getbStatus()).equals("N")) { %>
+                                        <a href="<%=contextPath %>/reportCommentBlind.co?rno=<%=re.getReplyNo() %>" class="btn btn-outline-danger btn-sm" onclick="alert('해당 게시글을 블라인드 처리합니다.')">블라인드처리</a>
+                                    <% } else { %>
+                                        <button class="btn btn-outline-danger btn-sm" disabled>블라인드처리</button>
+                                    <% } %>	
                                 </td>
                             </tr>
-                          </table>
-                        </div>
-            		</tbody>
-
-        		</table>
-        		<%} %>
-	          <%} %>
+                        </table>
+                    </div>
+                </td>
+            	</tr>
+        	<% } %>
+    	<% } %>
+	</tbody>
+	</table>
+        		
+	          
     
     <!-- section end -->
     
