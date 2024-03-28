@@ -3691,7 +3691,7 @@ VALUES (
     , '감독'
     , '1971-02-24'
     , '한국'
-    , 'resources/upfiles/20080321154838_71589.webp'
+    , 'resources/upfiles/20080321154838_71589.png'
     , DEFAULT
 );
 
@@ -3702,7 +3702,7 @@ VALUES (
     , '배우'
     , '1986-09-25'
     , '한국'
-    , 'resources/upfiles/20180322154818_11889.webp'
+    , 'resources/upfiles/20180322154818_11889.png'
     , DEFAULT
 );
 
@@ -3713,7 +3713,7 @@ VALUES (
     , '배우'
     , '1990-04-24'
     , '한국'
-    , 'resources/upfiles/20210322154818_21831.webp'
+    , 'resources/upfiles/20210322154818_21831.png'
     , DEFAULT
 );
 
@@ -3724,7 +3724,7 @@ VALUES (
     , '배우'
     , '1989-07-16'
     , '한국'
-    , 'resources/upfiles/20110412154818_21811.webp'
+    , 'resources/upfiles/20110412154818_21811.png'
     , DEFAULT
 );
 
@@ -3735,7 +3735,7 @@ VALUES (
     , '배우'
     , '1983-03-02'
     , '한국'
-    , 'resources/upfiles/20170412154818_21261.webp'
+    , 'resources/upfiles/20170412154818_21261.png'
     , DEFAULT
 );
 
