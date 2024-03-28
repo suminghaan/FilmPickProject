@@ -36,9 +36,6 @@
       box-sizing: border-box;
       display: none;
     }
-    .container{
-    
-    }
 </style>
 </head>
 <body>
@@ -53,25 +50,34 @@
 
         <div class="search-pwd" style="background-color: white; color: black;">
           <div class="container">
-           <br><br>
+           <br>
             <form action="">
-            <h6>비밀번호 찾기</h6>
+            <h4 style="text-align: center;">비밀번호 찾기</h4>
             <br>
-            <input type="text" name="memId" placeholder="* 아이디" style="width: 300px; border: 1px solid lightgray;"><br>
-            <input type="text" name="memName" placeholder="* 이름" style="width: 300px; border: 1px solid lightgray;"><br>
-            <input type="text" name="memPhone" placeholder="* 휴대전화번호(-제외)" style="width: 300px; border: 1px solid lightgray;"><br>
-            <br><br>
-            <!-- 클래스명 다시 생각해보기 -->
-            <button type="submit" href="" class="btn btn-outline-light" style="width: 300px;
+            <input type="text" class="form-control" name="memId" placeholder="* 아이디" style="width: 400px; margin: auto;">
+            <input type="text" class="form-control" name="memName" placeholder="* 이름" style="width: 400px; margin: auto;">
+            <input type="text" class="form-control" name="memPhone" placeholder="* 휴대전화번호 (- 제외)" style="width: 400px; margin: auto;">
+            <br>
+            <div class="buttonArea" style="text-align: center;"> 
+            <a href="<%=contextPath %>/loginForm.me" class="btn btn-outline-light" style="width: 198px;
+                                                                             --bs-btn-border-color: RGB(247, 39, 140);
+                                                                             --bs-btn-color:RGB(247, 39, 140);
+                                                                             --bs-btn-hover-color: #ffffff;
+                                                                             --bs-btn-hover-bg: RGB(247, 39, 140);
+                                                                             --bs-btn-hover-border-color: #ffffff;">뒤로가기</a>
+                                                                             
+            <button type="submit" href="" class="btn btn-outline-light" style="width: 198px;
                                                                              --bs-btn-border-color: RGB(247, 39, 140);
                                                                              --bs-btn-color:RGB(247, 39, 140);
                                                                              --bs-btn-hover-color: #ffffff;
                                                                              --bs-btn-hover-bg: RGB(247, 39, 140);
                                                                              --bs-btn-hover-border-color: #ffffff;">확인</button>
+            </div>
             </form>
             
             <div>
-            <%= m.getMemPwd() != null ? m.getMemPwd() : " " %>
+            <br>
+            <input type="text" class="form-control" name="" value="비밀번호 : <%= m.getMemPwd() != null ? m.getMemPwd() : " " %>" style="width: 400px; margin: auto;">
             </div>
             <br>
             <br>
