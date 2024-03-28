@@ -23,8 +23,9 @@
 
 	.btn-search-pass, .btn-search-id,.btn-join {
 		background-color: white;
-		width: 150px;
+		width: 130px;
 		height: 38px;
+		display :inline-block;
     }
     
     #id, #pwd{
@@ -49,15 +50,15 @@
 				<img src="<%= contextPath %>/resources/img/logo.png" width="150px" height="50px" id="logo">
 				<br><br>			
 				<div class="form-group">
-					<input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요" name="memId" style="background-color:white;">
+					<input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요" name="memId" style="width: 400px; background-color:white; margin: auto;">
 				</div>
 				
 				<div class="form-group">
-					<input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="memPwd" style="background-color:white;">
+					<input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="memPwd" style="width: 400px; background-color:white; margin: auto;">
 				</div>
 				<div class="form-group form-check" style="float: right;"></div>
 				<br>
-				<button type="submit" class="btn btn-outline-light" id="btn-login" style="width: 300px;
+				<button type="submit" class="btn btn-outline-light" id="btn-login" style="width: 300px; margin: auto;
 																						--bs-btn-border-color: RGB(247, 39, 140);
 																						--bs-btn-color:RGB(247, 39, 140);
 																						--bs-btn-hover-color: #ffffff;
@@ -65,10 +66,11 @@
 																						--bs-btn-hover-border-color: #ffffff;">로그인</button>
 					              
 				<br>
-				              
+				<div class="buttonArea" style="text-align: center;">    
 				<button type="button" class="btn btn-search-pass" onclick="location.href='<%=contextPath%>/findPwd.me'">비밀번호찾기</button>|
 				<button type="button" class="btn btn-search-id" onclick="location.href='<%= contextPath%>/findId.me'">아이디찾기</button>|
-				<button type="button" class="btn btn-join" onclick="location.href='<%= contextPath%>/signupCheckForm.me'">회원가입</button>
+				<button type="button" class="btn btn-join" onclick="location.href='<%= contextPath%>/signupCheckForm.me'">회원가입</button> 
+				</div> 
 				<br>
 				<br>
 				<br>
