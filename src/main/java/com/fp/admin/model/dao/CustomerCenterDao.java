@@ -259,6 +259,33 @@ public class CustomerCenterDao {
 	}
 
 
+	public int approvalNoMovieRequest(Connection conn, String movieName, String viewGrade, String mContent,
+			String openDate, String runningTime, String nation, String upfile1, String upfile2) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("approvalNoMovieRequest");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, movieName);
+			pstmt.setString(2, openDate);
+			pstmt.setString(3, nation);
+			pstmt.setString(4, runningTime);
+			pstmt.setString(5, mContent);
+			pstmt.setString(6, viewGrade);
+			pstmt.setString(7, upfile1);
+			pstmt.setString(8, upfile2);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
 
 	
 
