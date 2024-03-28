@@ -188,7 +188,15 @@
 		<!-- 관리자 인물 조회 페이징처리 [수민]-->
 		<entry key="selectCastingListCount">
 			SELECT COUNT(*) COUNT
-			  FROM PERSON
+			FROM PERSON
+		</entry>
+		
+		<!-- 검색한 인물 조회 페이징처리 -->
+		<entry key="searchCastingListCount">
+			SELECT COUNT(*) COUNT
+			FROM PERSON
+			WHERE P_NAME LIKE '%' || ? || '%'
+	        AND P_STATUS = 'Y'
 		</entry>
 		
 		<!-- 관리자 인물 조회 [수민] -->
@@ -213,16 +221,28 @@
 		
 		<!-- 관리자 인물조회_검색기능 [수민] -->
 		<entry key="searchCasting">
-			SELECT
-				  P_NO
-				, P_NAME
-				, P_JOB
-				, P_BD
-				, P_NATION
-				, P_FILE
-			FROM PERSON
-			WHERE P_NAME LIKE '%' || ? || '%'
-			AND P_STATUS = 'Y'
+			SELECT 
+			          P_NO
+			        , P_NAME
+			        , P_JOB
+			        , P_BD
+			        , P_NATION
+			        , P_FILE
+			
+			FROM (
+			    SELECT
+			              P_NO
+			            , P_NAME
+			            , P_JOB
+			            , P_BD
+			            , P_NATION
+			            , P_FILE
+			            , ROWNUM AS "RNUM"
+			        FROM PERSON
+			        WHERE P_NAME LIKE '%' || ? || '%'
+			        AND P_STATUS = 'Y'
+			)
+			WHERE RNUM BETWEEN ? AND ?
 		</entry>
 		
 		<!-- 관리자 인물관리_등록 [수민]-->
