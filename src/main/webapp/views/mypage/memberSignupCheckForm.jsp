@@ -36,8 +36,9 @@
     
 	#checkAllBtn, #termsOfUseBtn, #privacyPolicyBtn{
 		accent-color: RGB(247, 39, 140);
-		width:15px;
-		height:15px;
+		width:18px;
+		height:18px;
+		margin-left:30px;
     }
 </style>
 </head>
@@ -51,8 +52,9 @@
 		<div class="content">
 			<div class="signup_content" id="signup_content">
 			<div>
+			<br>
 			<div class="termCheckAll">
-				<input type='checkbox' class='checkAll' name='checkAll' id="checkAllBtn" value='checkAllBtn'onclick='selectAll(this)'> <b>전체 동의하기</b>
+				<input type='checkbox' class='checkAll' name='checkAll' id="checkAllBtn" value='checkAllBtn'onclick='selectAll(this)'> 전체 동의하기
 			</div>
 			<hr>
 			<div class="inputCheck">
@@ -80,21 +82,20 @@
 1. 수집하는 개인정보
 			</textarea>
 			</div>
-			<br>
 			</div>
 			<div class="buttonArea">
 			<form action="">
-			<button type="button" class="btn btn-outline-light" id="signupCheckFormSubmit" onclick="location.href='<%=contextPath%>/signupForm.me'" disabled
-					style="width: 300px;
-						 --bs-btn-border-color: RGB(247, 39, 140);
-						 --bs-btn-color:RGB(247, 39, 140);
-						 --bs-btn-hover-color: #ffffff;
-						 --bs-btn-hover-bg: RGB(247, 39, 140);
-						 --bs-btn-hover-border-color: #ffffff;
-						 
-						 --bs-btn-disabled-color: RGB(247, 39, 140);
-						 --bs-btn-disabled-bg: #ffffff;
-						 --bs-btn-disabled-border-color: RGB(247, 39, 140);">확인</button>
+				<button type="button" class="btn btn-outline-light" id="signupCheckFormSubmit" onclick="location.href='<%=contextPath%>/signupForm.me'" disabled
+						style="width: 300px; margin-top:15px;
+							 --bs-btn-border-color: RGB(247, 39, 140);
+							 --bs-btn-color:RGB(247, 39, 140);
+							 --bs-btn-hover-color: #ffffff;
+							 --bs-btn-hover-bg: RGB(247, 39, 140);
+							 --bs-btn-hover-border-color: #ffffff;
+							 
+							 --bs-btn-disabled-color: RGB(247, 39, 140);
+							 --bs-btn-disabled-bg: #ffffff;
+							 --bs-btn-disabled-border-color: RGB(247, 39, 140);">확인</button>
 			</form>
 			</div>
 		</div>

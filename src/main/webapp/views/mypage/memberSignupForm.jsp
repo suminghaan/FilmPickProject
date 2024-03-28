@@ -13,11 +13,13 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 	.signup_content{
 		border: 1px solid lightgray;
 		background-color: white;
+		color: black;
 		width: 580px;
+		height: 700px;
 		margin: auto;
 		margin-top: 50px;
 		margin-bottom: 50px;
-		min-height: 400px;
+		
 		padding: 5px;
 		border-radius: 0.7em;
 	}
@@ -26,6 +28,15 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
     }
     .form-control{
 		width: 400px;
+    }
+    .signUpForm{
+	    margin-left: 20px;
+	    margin-right: 20px;
+	    padding-left: 10px;
+	    padding-right: 10px;
+    }
+    .button-container{
+    	text-align: center;
     }
 </style>
 </head>
@@ -39,110 +50,113 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 		<div class="content">
 			<section class="main_content">
 			<div class="signup_content">
-			<h2>회원가입</h2>
+			<br>
+			<h4 style="text-align: center;">회원가입</h4>
+			<br>
 			<form action="<%= contextPath %>/insert.me" method="post" class="signUpForm">
-			<table class="table">
-				<tr>
-					<td>
-						<input type="text" class="form-control" name="memId" id="memId" placeholder="* 아이디" required>
-					</td>
-					<td>
-						<button type="button" class="btn btn-outline-light" onclick="idCheck();"
-								style="width: 130px; 
-									 --bs-btn-border-color: RGB(247, 39, 140);
-									 --bs-btn-color:RGB(247, 39, 140);
-									 --bs-btn-hover-color: #ffffff;
-									 --bs-btn-hover-bg: RGB(247, 39, 140);
-									 --bs-btn-hover-border-color: #ffffff;">중복확인</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="password" class="form-control" name="memPwd" id="memPwd" placeholder="* 비밀번호(영문, 숫자, 특수문자 포함 8~15글자)" style="font-size: smaller;" required>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="password" class="form-control" name="checkPwd" id="checkPwd" placeholder="* 비밀번호 확인(영문, 숫자, 특수문자 포함 8~15글자)" required>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="email" class="form-control" name="memEmail" placeholder="* 이메일주소" required>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" class="form-control" name="nickname" placeholder="* 닉네임" required>
-					</td>
-					<td>
-						<button type="button" class="btn btn-outline-light" onclick="nicknameCheck();" 
-								style="width: 130px;
-									 --bs-btn-border-color: RGB(247, 39, 140);
-									 --bs-btn-color:RGB(247, 39, 140);
-									 --bs-btn-hover-color: #ffffff;
-									 --bs-btn-hover-bg: RGB(247, 39, 140);
-									 --bs-btn-hover-border-color: #ffffff;">중복확인</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" class="form-control" name="memName" placeholder="* 이름" required>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" class="form-control" name="memBirth" id="memBirth" placeholder="* 생년월일 (ex. 010101)" required>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;
-						<input type="radio" name="memGender" id="memGenderM" value="M" required>
-						<label for="radioM">&nbsp;남자</label>
-						<input type="radio" name="memGender" id="memGenderF" value="F" required>
-						<label for="radioF">&nbsp;여자</label>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" class="form-control" name="memPhone" id="memPhone" placeholder="* 휴대전화번호(-제외)" required>
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<select name="prefGenre" id="prefGenre" required>
-							<option value="">* 선호장르</option>
-							<%for(int i=0; i<prefGenre.size(); i++){ %>
-							<option value="<%=prefGenre.get(i)%>"><%=prefGenre.get(i)%></option>
-							<%} %>
-						</select>
-					</td>
-					<td>
-					</td>
-				</tr>
-			</table>
-                  
-				<button type="submit" class="btn btn-outline-light" id="signupButton"
-						style="width: 350px;
-							 --bs-btn-border-color: RGB(247, 39, 140);
-							 --bs-btn-color:RGB(247, 39, 140);
-							 --bs-btn-hover-color: #ffffff;
-							 --bs-btn-hover-bg: RGB(247, 39, 140);
-							 --bs-btn-hover-border-color: #ffffff;" disabled>가입하기</button>
+				<table class="table">
+					<tr>
+						<td>
+							<input type="text" class="form-control" name="memId" id="memId" placeholder="* 아이디" required>
+						</td>
+						<td>
+							<button type="button" class="btn btn-outline-light" onclick="idCheck();"
+									style="width: 100px; 
+										 --bs-btn-border-color: RGB(247, 39, 140);
+										 --bs-btn-color:RGB(247, 39, 140);
+										 --bs-btn-hover-color: #ffffff;
+										 --bs-btn-hover-bg: RGB(247, 39, 140);
+										 --bs-btn-hover-border-color: #ffffff;">중복확인</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="password" class="form-control" name="memPwd" id="memPwd" placeholder="* 비밀번호(영문, 숫자, 특수문자 포함 8~15글자)" style="font-size: smaller;" required>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="password" class="form-control" name="checkPwd" id="checkPwd" placeholder="* 비밀번호 확인" required>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="email" class="form-control" name="memEmail" placeholder="* 이메일주소" required>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" class="form-control" name="nickname" placeholder="* 닉네임" required>
+						</td>
+						<td>
+							<button type="button" class="btn btn-outline-light" onclick="nicknameCheck();" 
+									style="width: 100px;
+										 --bs-btn-border-color: RGB(247, 39, 140);
+										 --bs-btn-color:RGB(247, 39, 140);
+										 --bs-btn-hover-color: #ffffff;
+										 --bs-btn-hover-bg: RGB(247, 39, 140);
+										 --bs-btn-hover-border-color: #ffffff;">중복확인</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" class="form-control" name="memName" placeholder="* 이름" required>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" class="form-control" name="memBirth" id="memBirth" placeholder="* 생년월일 (ex. 010101)" required>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;
+							<input type="radio" name="memGender" id="memGenderM" value="M" required>
+							<label for="radioM">&nbsp;남자</label>
+							<input type="radio" name="memGender" id="memGenderF" value="F" required>
+							<label for="radioF">&nbsp;여자</label>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" class="form-control" name="memPhone" id="memPhone" placeholder="* 휴대전화번호(-제외)" required>
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select name="prefGenre" id="prefGenre" class="form-control" required>
+								<option value="">* 선호장르를 선택하세요</option>
+								<%for(int i=0; i<prefGenre.size(); i++){ %>
+								<option value="<%=prefGenre.get(i)%>"><%=prefGenre.get(i)%></option>
+								<%} %>
+							</select>
+						</td>
+						<td>
+						</td>
+					</tr>
+				</table>
+				<div class="button-container">  
+					<button type="submit" class="btn btn-outline-light" id="signupButton"
+							style="width: 350px;
+								 --bs-btn-border-color: RGB(247, 39, 140);
+								 --bs-btn-color:RGB(247, 39, 140);
+								 --bs-btn-hover-color: #ffffff;
+								 --bs-btn-hover-bg: RGB(247, 39, 140);
+								 --bs-btn-hover-border-color: #ffffff;" disabled>가입하기</button>
+				</div>		
 			</form>    
               
 
