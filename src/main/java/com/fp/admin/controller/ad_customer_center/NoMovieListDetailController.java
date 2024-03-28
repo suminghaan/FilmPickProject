@@ -37,9 +37,9 @@ public class NoMovieListDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("없는영화 신청 상세 페이지 서블릿 실행");
+		//System.out.println("없는영화 신청 상세 페이지 서블릿 실행");
 		int noMovieNo = Integer.parseInt(request.getParameter("no"));
-		System.out.println(noMovieNo);
+		//System.out.println(noMovieNo);
 		
 		List<Category> cMyList = new NoMovieService().selectNoMovieCategory(noMovieNo);
 //		System.out.println("업데이트폼컨트롤러에서의 noMovieNo는 영화번호임 : " + noMovieNo);
@@ -54,7 +54,7 @@ public class NoMovieListDetailController extends HttpServlet {
 		Attachment at = new NoMovieService().selectAttachment(noMovieNo);
 //		System.out.println("nm 값 : " + nm);
 //		System.out.println("pList 값 : " + pList);
-		System.out.println("cList 값 : " + cList);
+//		System.out.println("nm 값 : " + nm);
 //		System.out.println("at 값 : " + at);
 		
 		request.setAttribute("cMyList", cMyList);

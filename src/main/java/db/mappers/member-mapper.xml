@@ -347,7 +347,7 @@
 				(
 				?
 				, NULL
-				, SYSDATE
+				, TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 				)
 	</entry>
 	

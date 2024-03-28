@@ -286,6 +286,25 @@ public class CustomerCenterDao {
 	}
 
 
+	public int approvalNoMovieRequest(Connection conn, String noMovieNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("approvalNoMovieRequest");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, noMovieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
 
 	
 

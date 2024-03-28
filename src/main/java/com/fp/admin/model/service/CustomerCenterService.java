@@ -124,6 +124,19 @@ public class CustomerCenterService {
 		return result;
 	}
 
+	public int updateNoMovieApproval(String noMovieNo) {
+		Connection conn = getConnection();
+		
+		int result = cDao.approvalNoMovieRequest(conn, noMovieNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 	
 
 

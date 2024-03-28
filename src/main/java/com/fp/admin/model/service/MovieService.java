@@ -297,6 +297,15 @@ public class MovieService {
 		return result;
 	}
 
+	public int updateNoMovieStatus(String noMovieNo) {
+		Connection conn = getConnection();
+		
+		int result = mDao.updateNoMovieStatus(conn, noMovieNo);
+		
+		close(conn);
+		return result;
+	}
+
 	
 	
 	

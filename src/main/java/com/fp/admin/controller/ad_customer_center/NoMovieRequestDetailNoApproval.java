@@ -35,7 +35,7 @@ public class NoMovieRequestDetailNoApproval extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "거절 처리 완료되었습니다.");
-			response.sendRedirect(request.getContextPath() + )
+			response.sendRedirect(request.getContextPath() + "/list.nm?page=1");
 		}
 	}
 

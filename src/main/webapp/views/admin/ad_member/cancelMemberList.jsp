@@ -106,7 +106,14 @@ table{
 							<%for (CancelMember cm : pageList) {%>
 								<tr>
 									<td><%=cm.getMemNo()%></td>
-									<td><%=cm.getAdminNo()%></td>
+									<%
+									    String adminNo = cm.getAdminNo(); // cm.getAdminNo()는 String 또는 null을 반환한다고 가정합니다.
+									    if (adminNo == null || adminNo.equals("")) {
+									        out.println("<td>자진탈퇴</td>");
+									    } else {
+									        out.println("<td>" + adminNo + "</td>");
+									    }
+									%>
 									<td><%=cm.getCancelDate()%></td>
 								</tr>
 							<%}%>
@@ -171,6 +178,7 @@ table{
 	                		console.log(cml);
 		                	value += "<tr>"
 		                        + "<td>" + cml[i].memNo + "</td>"
+		                        "<td>" + typeof cml[i].getAdminNo() === 'undefined' ? "자진탈퇴" : cm.getAdminNo() + "</td>"
 		                        + "<td>" + cml[i].adminNo + "</td>"
 		                        + "<td>" + cml[i].cancelDate + "</td>"
 		                    + "</tr>";

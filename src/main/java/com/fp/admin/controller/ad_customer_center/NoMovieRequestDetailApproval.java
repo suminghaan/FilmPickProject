@@ -54,11 +54,14 @@ public class NoMovieRequestDetailApproval extends HttpServlet {
 			String nation = request.getParameter("nation");
 			String upfile1 = request.getParameter("upfile1");
 			String upfile2 = request.getParameter("upfile2");
+			
+			String noMovieNo = request.getParameter("noMovieNo");
 
-			int result = new CustomerCenterService().approvalNoMovieRequest(movieName, viewGrade, mContent, openDate,
+			int result1 = new CustomerCenterService().approvalNoMovieRequest(movieName, viewGrade, mContent, openDate,
 					runningTime, nation, upfile1, upfile2);
 
-			if (result > 0) {
+			int result2 = new CustomerCenterService().updateNoMovieApproval(noMovieNo);
+			if (result1 * result2 > 0) {
 				request.getSession().setAttribute("alertMsg", "등록이 완료되었습니다.");
 				response.sendRedirect(request.getContextPath() + "/list.nm?page=1");
 			}

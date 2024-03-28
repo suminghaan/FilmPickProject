@@ -911,10 +911,24 @@ public class MovieDao {
 		
 		return result;
 	}
-	
 
-	
-
-	
+	public int updateNoMovieStatus(Connection conn, String noMovieNo) {
+		String query = prop.getProperty("approvalNoMovieStatus");
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, noMovieNo);
+			
+			result = pstmt.executeUpdate();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 }

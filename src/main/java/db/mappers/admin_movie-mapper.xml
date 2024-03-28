@@ -591,4 +591,10 @@
 				)
 				
 		</entry>
+		<!-- 없는 영화 신청을 위한 쿠러ㅣ -->
+		<entry key="approvalNoMovieStatus">
+			UPDATE NO_MOVIE_ENROLL
+			SET NM_APPROVAL = 'Y'
+			WHERE NM_ENROLL_NO = ?
+		</entry>
 </properties>

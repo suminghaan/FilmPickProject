@@ -24,7 +24,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 100; 
 }
 
 .content_wrap {
@@ -92,7 +92,6 @@
 
 .nav-scroller {
   position: relative;
-  z-index: 2;
   height: 2.75rem;
   overflow-y: hidden;
 }
@@ -102,7 +101,7 @@
   flex-wrap: nowrap;
   padding-bottom: 1rem;
   margin-top: -1px;
-  overflow-x: auto;
+  overflow-x: auto; 
   text-align: center;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
@@ -126,7 +125,7 @@
 }
 
 .bd-mode-toggle {
-  z-index: 1500;
+  z-index: 1500; 
 }
 
 .bd-mode-toggle .dropdown-menu .active .bi {
@@ -293,6 +292,8 @@ img{
         <form action="<%=contextPath %>/insertMovie.admo" method="post" enctype="multipart/form-data">
             <div class="all">                
                 <div class="form-group">
+                <!-- 없는 영화를 영화 테이블에 등록하기 위한 전달값 -->
+                <input type="hidden" name="noMovieInsert" value="1"> 
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
                     <label for="exampleFormControlInput1">영화제목</label> <br>
                     <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=nm.getNmTitle()%>" style="width: 500px;">
@@ -362,13 +363,13 @@ img{
 							<div class="person">
 	                		<input type="hidden" name="personNo" value="<%=p.getpNo()%>">
 		                    <img src="<%=p.getpFile() %>"> <%=p.getpName() %> <br>
-		                    <input type="text" name="movieJob" class="casting" value="<%=p.getCasting()%>">
+		                    <input type="text" name="movieJob" class="casting" value="<%=p.getpJob()%>">
 		                    </div>		                  
 						<%} %>					
                 	</div>
                  <%} %>
-                 <!-- 
-                    <div class="person-div">
+                 
+                    <%--<div class="person-div">
                       <%for(Person p : pList){ %>
                            <%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
                               <table class='person-table'>
@@ -385,8 +386,8 @@ img{
                               </table>
                            <%} %>
                         <%} %>
-                      </div>
-                    -->
+                      </div>--%>
+                    
                 
                 <br>
 
@@ -398,8 +399,8 @@ img{
 
                   <%for(Category c : cList){ %>
                   	  
-                        <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
-                        <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
+                        <input class="" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
+                        <label class="" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
                   	  
                   <%} %>
                 </div>
@@ -424,16 +425,17 @@ img{
                 <br>
                 
                 <div class="form-check form-check-inline">
-                    <input type="radio" id="radio1" name="nation" value="1" style="margin-top: 10px;"> 
+                    <input type="radio" id="radio1" class="nation" name="nation" value="1" style="margin-top: 10px;"> 
                     <label for="radio1">국내</label>
 
-                    <input type="radio" id="radio2" name="nation" value="2">
+                    <input type="radio" id="radio2" class="nation" name="nation" value="2">
                     <label for="radio2">해외</label>
                 </div>
+               
                 
                  <script>
                         $(function(){
-                           $("#nations input").each(function(){
+                           $(".nation").each(function(){
                               if($(this).val() == "<%= nm.getNmNation() %>"){
                                  $(this).attr("checked", true);
                               }
@@ -446,7 +448,7 @@ img{
                 <label>영화포스터</label>
                 <div class="custom-file updateSrc" style="color:black;">
                 	 <input type="hidden" name="originPoster" value="<%=nm.getNmPoster()%>" >        	
-                     <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nm.getNmPoster()%>" onchange="previewImage(event)">
+                     <input type="file" class="custom-file-input" id="customFile1" name="mposter" value="<%=nm.getNmPoster()%>" onchange="previewImage(event)">
                      <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>     
                  	 <img id="preview" src="<%=contextPath + "/" + nm.getNmPoster() %>" alt="미리보기이미지">
                  </div>
@@ -456,7 +458,7 @@ img{
                  <p style="color:black;">예고편영상(필수)</p>
                     <div class="custom-file updateSrc" style="color:black;">
                     	<input type="hidden" name="originPreview" value=" <%= nm.getNmPreview() %> ">                   	
-                        <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nm.getNmPreview()%>" onchange="previewVideo(event)">
+                        <input type="file" class="custom-file-input" id="customFile2" name="mpreview" value="<%=nm.getNmPreview()%>" onchange="previewVideo(event)">
                         <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
                         <video id="previewVideo" src="<%=contextPath + "/" + nm.getNmPreview() %>" controls alt="예고편영상미리보기"></video>
                     </div>
@@ -584,7 +586,7 @@ img{
                                           +               "<input name='personNo' class='personNo' type='hidden' value='" + person[i].pNo + "'>"
                                           +           "</tr>"
                                           +           "<tr>"
-                                          +               "<td>" + person[i].pJob + "</td>"
+                                          +               "<td class='personJob'>" + person[i].pJob + "</td>"
                                           +           "</tr>"
                                           +       "<input class='checkboxbox' type='checkbox' id='boxbox" + i + "'>"
                                           +       "</table>"
@@ -618,6 +620,7 @@ img{
                   let pNo = $(this).closest('.check').find('.personNo').val(); // 체크된 인물의 pNo 값 가져오기
                   let pFile = $(this).closest('.check').find('.personImg').attr('src'); // 체크된 인물의 이미지 경로 가져오기
                   let pName = $(this).closest('.check').find('.personName').text(); // 체크된 인물의 이름 가져오기
+                  let pJob = $(this).closest('.check').find('.personJob').text();
                   result += "<table class='person-table'>"
                            +   "<tr>"
                            +     "<td><img src='" + pFile + "'></td>" // 이미지 소스에 pFile는 이미지 저장경로

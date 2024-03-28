@@ -42,7 +42,8 @@ public class MovieInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if(ServletFileUpload.isMultipartContent(request)) {
+		if(ServletFileUpload.isMultipartContent(request)) {			
+			
 			int maxSize = 100 * 1024 * 1024;
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles");
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
@@ -57,6 +58,7 @@ public class MovieInsertController extends HttpServlet {
 			String mNation = multiRequest.getParameter("nation"); // 국내(1)/해외(2)
 			String currentScreening = multiRequest.getParameter("currentScreening"); // 현재상영여부(N/Y)
 			
+			
 			m.setMvName(mTitle);
 			m.setViewRating(mGrade);
 			m.setMvStory(mContent);
@@ -64,16 +66,36 @@ public class MovieInsertController extends HttpServlet {
 			m.setMvRTime(runTime);
 			m.setMvNation(mNation);
 			m.setCurrentScreening(currentScreening);
+						
+			int noMovieInsert = 0;
 			
-			// 영화 메인포스터 경로
-			String changeName1 = multiRequest.getFilesystemName("mposter");
-			String mPoster = "resources/upfiles/" + changeName1;
-			m.setMvPoster(mPoster);
+			String changeName1 = null;
+			String mPoster = null;
+			String changeName2 = null;
+			String mPreview = null;
 			
-			// 영화 메인예고편 경로
-			String changeName2 = multiRequest.getFilesystemName("mpreview");
-			String mPreview = "resources/upfiles/" + changeName2;
-			m.setMvPreview(mPreview);
+			if(multiRequest.getParameter("noMovieInsert") != null) {
+				noMovieInsert = Integer.parseInt(multiRequest.getParameter("noMovieInsert"));
+				
+				changeName1 = multiRequest.getParameter("originPoster");
+				m.setMvPoster(changeName1);
+				
+				// 영화 메인예고편 경로
+				changeName2 = multiRequest.getParameter("originPreview");
+				m.setMvPreview(changeName2);
+				
+			} else { 
+				// 영화 메인포스터 경로
+				changeName1 = multiRequest.getFilesystemName("mposter");
+				mPoster = "resources/upfiles/" + changeName1;
+				m.setMvPoster(mPoster);
+				
+				// 영화 메인예고편 경로
+				changeName2 = multiRequest.getFilesystemName("mpreview");
+				mPreview = "resources/upfiles/" + changeName2;
+				m.setMvPreview(mPreview);
+			}
+			
 			
 			HttpSession session = request.getSession();
 			
@@ -107,8 +129,7 @@ public class MovieInsertController extends HttpServlet {
 			/*-----------------------------------------------------*/
 			// ATTACHEMNT 테이블에 데이터 기록
 			List<Attachment> atList = new ArrayList<>();
-
-			
+		
 			if(multiRequest.getOriginalFileName("mposter") != null) {
 				Attachment at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("mposter"));
@@ -153,6 +174,12 @@ public class MovieInsertController extends HttpServlet {
 			}
 			/*-----------------------------------------------------*/
 			int result = new MovieService().insertMovie(m, pList, cList, atList);
+			
+			int resultNoMovieInsert = 0;
+			
+			if(noMovieInsert == 1) {
+				resultNoMovieInsert = new MovieService().updateNoMovieStatus(multiRequest.getParameter("noMovieNo"));
+			}
 			
 			if(result > 0) {
 				session.setAttribute("alertMsg", "영화가 성공적으로 등록되었습니다.");
