@@ -429,7 +429,7 @@ public class MovieDao {
 				}else if(no.equals("2")) {
 					sql += " ORDER BY LIKECOUNT DESC";
 				}else if(no.equals("3")) {
-					sql += " ORDER BY LIKE_POINT";
+					sql += " ORDER BY LIKE_POINT DESC";
 				}
 				sql = "SELECT P.* FROM (" + sql + ") P WHERE ROWNUM <= 10";
 		try {
