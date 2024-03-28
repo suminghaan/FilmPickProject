@@ -305,6 +305,25 @@ public class CustomerCenterDao {
 	}
 
 
+	public int noMovieRequestRefuse(Connection conn, String nmNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("noMovieRequestRefuse");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nmNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
 
 	
 

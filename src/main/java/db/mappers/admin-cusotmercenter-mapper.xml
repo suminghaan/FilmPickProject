@@ -81,6 +81,12 @@
 		SELECT COUNT(*) COUNT
 		FROM INQUIRY
 	</entry>
+	
+	<entry key="noMovieRequestRefuse">
+		UPDATE NO_MOVIE_ENROLL
+		SET NM_APPROVAL = 'N'
+		WHERE NM_ENROLL_NO = ?
+	</entry>
 <!--===================================================== 김지우 : 절취선 끝 ===================================================================================================== -->
 
 	<!-- 없는영화 신청을 위한 sql문 [호용]-->
