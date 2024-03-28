@@ -222,7 +222,10 @@
 	    								+ "<td>" + list[i].bReadCount + "</td>"
 	    								+ "<td>" + list[i].ReplyCount + "</td>"
 	    								+ "<td>" + list[i].bCategory + "</td>"
-	    		                        +"</tr>";
+	    								+ "<td>"
+	    								+ "<a href='<%=contextPath %>/removeBlind.co?b_No=" + list[i].bNo + "' class='btn btn-outline-warning' onclick='removeBlind();'>블라인드해제</a>"
+	    		                        + "</td>"
+	    								+"</tr>";
 	    					}
 	    				}else{
 	    					value += "<tr><td colspan='7'>해당하는 블라인드 게시글이 없습니다.</td></tr>";
