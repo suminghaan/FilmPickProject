@@ -120,30 +120,32 @@
                 <!-- 글(.reportList)를 누르면 나오는 세부 내용  -->
                 <tr class="reportContent">
                     <td colspan="2"></td>
-                    <td colspan="4"><div>
-                        <table class="reportDetail">
-                            <tr>
-                                <th>댓글 내용</th>
-                                <td colspan="3">
-                                    <p style="min-height: 200px;">
-                                        <%=re.getReplyContent() %>
-                                    </p>
-                                </td>
-                            </tr>
-                            <% for(Report r : rlist) { %>
-                            <% if(re.getReplyNo() == r.getReportBoardNo()) { %>
-                            <tr>
-                                <th>신고 내용</th>
-                                <td colspan="3">                            
-                                    <div>
-                                        <p>신고자 아이디 : <%=r.getReportMemNo() %></p>
-                                        <p>신고 내용 : <%=r.getReportContent() %></p>
-        
-                                    </div>                                
-                                </td>
-                            </tr>
-                            	<% } %>
-                            <% } %>
+                    <td colspan="4">
+                    	<div>
+	                        <table class="reportDetail">
+	                            <tr>
+	                                <th>댓글 내용</th>
+	                                <td colspan="3">
+	                                    <p style="min-height: 200px;">
+	                                        <%=re.getReplyContent() %>
+	                                    </p>
+	                                </td>
+	                            </tr>
+	                            <% for(Report r : rlist) { %>
+	                            <% if(re.getReplyNo() == r.getReportBoardNo()) { %>
+	                            <tr>
+	                                <th>신고 내용</th>
+	                                <td colspan="3">                            
+	                                    <div>
+	                                        <p>신고자 아이디 : <%=r.getReportMemNo() %></p>
+	                                        <p>신고 내용 : <%=r.getReportContent() %></p>
+	        
+	                                    </div>                                
+	                                </td>
+	                            </tr>
+	                            	<% } %>
+	                            <% } %>
+	                            
                             <tr>
                                 <td colspan="3"></td>
                                 <td>
@@ -154,6 +156,8 @@
                                 <%} %>	
                                 </td>
                             </tr>
+                          </table>
+                        </div>
             		</tbody>
 
         		</table>
@@ -231,10 +235,13 @@
     								+ "<td>" + list[i].replyContent + "</td>"
     								+ "<td>" + list[i].report + "</td>"
     								+ "<td>" + list[i].boCategory + "</td>"
+    								+ "<td>" 
+    								+ "<button type='button' class='btn btn-outline-warning' onclick='reportBoard();'>신고회원관리</button>"
+    		                        + "</td>"
     		                        +"</tr>";
     					}
     				}else{
-    					value += "<tr><td colspan='6'>신고된 게시글이 없습니다.</td></tr>";
+    					value += "<tr><td colspan='7'>신고된 게시글이 없습니다.</td></tr>";
     				}
     				
     				
