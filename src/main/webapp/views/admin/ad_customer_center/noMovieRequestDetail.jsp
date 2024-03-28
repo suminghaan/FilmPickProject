@@ -479,18 +479,17 @@ img{
 
                 <br>
 
+			
              <div class="form-group" style="color:black;">
-                   <h4>사용자 요청사항(선택)</h4>
+                   <h4>사용자 요청사항</h4>
                    <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest() != null ? nm.getNmUserRequest() : ""%></textarea>
                </div>
                 <br>
                 
                 <!-- 사용자가 등록한 영화일 경우 -->
                 <div class="form-group inputUser">
-                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
                     <div class="userInfo">
-                        <p><label>등록한 사용자 ID : </label>user01</p>
-                        <p><label>등록한 영화 갯수 : </label>13번</p>
+                        <p><label>등록한 사용자 회원번호 : </label><%=nm.getMemNo() %>번</p>
                     </div>
                 </div>
             </div>
