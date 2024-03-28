@@ -79,10 +79,12 @@ select>option {
 	padding: 5px;
 	cursor: pointer;
 	position: relative;
+	
 }
 
 .poster:hover>img {
 	filter: brightness(1.03);
+	
 }
 
 .poster:hover>div {
@@ -92,6 +94,7 @@ select>option {
 .poster_img {
 	width: 215px;
 	height: 305px;
+	border-radius: 10px;
 }
 
 .box_context {
