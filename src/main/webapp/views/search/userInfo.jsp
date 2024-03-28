@@ -620,11 +620,11 @@
                         <% if (!bothInterestMovieList.isEmpty()) {%>
                         	<% for (int i = 0; i < (bothInterestMovieList.size() > 3 ? 3 : bothInterestMovieList.size()); i++) {%>
                             <div class="thumbnail">
-                                <img class="thumbnail_img" src="<%= bothInterestMovieList.get(0).getMvPoster() %>" alt="">
+                                <img class="thumbnail_img" src="<%= bothInterestMovieList.get(i).getMvPoster() %>" alt="">
                                 <div class="thumbnail_title">
-                                    <span><%= bothInterestMovieList.get(0).getMvName() %></span><br>
-                                    <span><%= bothInterestMovieList.get(0).getStarRatingAvg() %></span><br>
-                                    <span><%= bothInterestMovieList.get(0).getMvOpenDate() %></span>
+                                    <span><%= bothInterestMovieList.get(i).getMvName() %></span><br>
+                                    <span> 평균 별점 : <%= bothInterestMovieList.get(i).getStarRatingAvg() != null ? bothInterestMovieList.get(i).getStarRatingAvg() : "-" %></span><br>
+                                    <span><%= bothInterestMovieList.get(i).getMvOpenDate() %></span>
                                 </div>
                             </div>
                         	<% } %>

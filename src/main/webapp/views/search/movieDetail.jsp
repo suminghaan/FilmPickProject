@@ -45,10 +45,11 @@
         }
 
         .movie_info {
-            height: 3%;
+            height: 4%;
             margin-top: 1%;
-            font-size: 13px;
-            padding-left: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            padding-left: 40px;
             border-radius: 10px;
         }
 
@@ -80,7 +81,7 @@
         }
 
         .movie_relate {
-            height: 24%;
+            height: 23%;
             background-color: rgb(20, 20, 20);
             border-radius: 10px;
             display: flex;
@@ -116,7 +117,9 @@
         }
 
         .poster_info {
-            /*-margin-top: 20px;*/
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: 300;
         }
 
         .movie_preview_etc {
@@ -167,10 +170,11 @@
         }
 
         .movie_btn_wrap {
-            height: 10%;
+            height: 20%;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+            align-items: center;
         }
 
         .like_review_btn_wrap {
@@ -210,7 +214,7 @@
         /* ==================출연/제작 스타일=================== */
 
         .movie_people {
-            width: 60%;
+            width: 63%;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -292,7 +296,7 @@
 
         .people_info_wrap {
             margin-left: 20px;
-            font-size: 10px;
+            font-size: 13px;
         }
 
         .people_tooltip {
@@ -307,7 +311,7 @@
             color: #fff;
             text-align: left;
             padding-top: 15px;
-            font-size: 10px;
+            font-size: 15px;
             display: none;
             z-index: 10;
         }
@@ -458,6 +462,11 @@
             border: 2px solid #F72798;
             cursor: pointer;
         }
+
+        .user_img:hover {
+        	transform: scale(1.2);
+        }
+
 
         .user_info {
             display: flex;
@@ -710,8 +719,8 @@
                     <div class="movie_like">
                         <div class="movie_btn_wrap">
                             <div class="star-rating_info">
-                                <span class="star-rating_avg"><%= movie.getMvName() %> 평균 별점 : <%= movie.getStarRatingAvg() != null ? movie.getStarRatingAvg() : "-" %></span><br>
-                                <span class="star-rating_count" style="font-size: 10px; padding-left: 10px;">별점 매긴 사람 수 : <%= movie.getNumberOfStarRating() != null ? movie.getNumberOfStarRating() : "-" %></span>
+                                <span class="star-rating_avg" style="font-size:"><%= movie.getMvName() %> 평균 별점 : <%= movie.getStarRatingAvg() != null ? movie.getStarRatingAvg() : "-" %></span><br>
+                                <span class="star-rating_count" style="font-size: 15px; padding-left: 10px;">별점 매긴 사람 수 : <%= movie.getNumberOfStarRating() != null ? movie.getNumberOfStarRating() : "-" %></span>
                             </div>
                             <div class="star-wrap">
                                 <div class="rating">

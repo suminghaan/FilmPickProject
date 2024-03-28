@@ -149,6 +149,11 @@
             align-items: center;
             margin-left: 10px;
             border: 2px solid #F72798;
+            cursor:pointer;
+        }
+        
+        .user_img:hover {
+        	transform: scale(1.2);
         }
 
         .user_info {
@@ -205,6 +210,7 @@
         	display: flex;
         	flex-wrap: wrap;
         	justify-content: center;
+        	height: 1000px;
         }
         
     </style>
