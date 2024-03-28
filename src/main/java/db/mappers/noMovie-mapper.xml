@@ -372,6 +372,37 @@
 		  FROM NO_MOVIE_ENROLL
 		 WHERE MEM_NO = ?
 	</entry>
+	
+	<!-- 키워드에 맞는 신청한 없는영화 신청글 갯수를 구하기 위한 sql문, 페이징바에 활용됨[호용] -->
+	<entry key="keywordSelectListCount">
+		SELECT COUNT(*) COUNT
+		  FROM NO_MOVIE_ENROLL
+		 WHERE MEM_NO = ?
+		   AND NM_TITLE LIKE ?
+	</entry>
+	
+	<!-- 키워드에 맞는 없는영화신청 현황 페이지에 띄울 값들을 출력 및 페이징바 적용을 위한 sql문 by호용 -->
+	<entry key="selectKeywordList">
+	 SELECT *
+	   FROM (
+		    SELECT ROWNUM RNUM, A.*
+			  FROM (
+					SELECT
+					       NM_ENROLL_NO <!-- 없는영화 번호 -->
+					     , NM_TITLE <!-- 없는영화 제목 -->
+					     , TO_CHAR(NM_ENROLL_DATE, 'YY-MM-DD') NM_ENROLL_DATE <!-- 작성일 -->
+					     , NM_APPROVAL
+					     , NM_REFUSE_REASON
+					     , MEM_NO
+					  FROM NO_MOVIE_ENROLL
+					 WHERE MEM_NO = ?
+					   AND NM_TITLE LIKE ?
+					 ORDER
+					    BY NM_ENROLL_NO DESC
+					) A
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>	
 </properties>
 
 

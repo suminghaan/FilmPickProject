@@ -152,7 +152,7 @@
         }
         
         function nomv(memNo){
-            location.href="<%=contextPath%>/list.noMv?memNo=" + memNo;
+            location.href="<%=contextPath%>/list.noMv?memNo=" + memNo + "&page=" + 1;
         }
 
         function mantoman(){

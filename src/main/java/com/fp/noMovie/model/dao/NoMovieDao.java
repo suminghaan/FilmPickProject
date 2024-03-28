@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.fp.common.model.vo.Attachment;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Category;
 import com.fp.noMovie.model.vo.NoMovie;
 import com.fp.person.model.vo.Person;
@@ -512,6 +513,70 @@ public class NoMovieDao {
 		System.out.println("dao에서의 리스트카운트 : " + listCount);
 		return listCount;
 
+	}
+	
+	/**
+	 * @author 호용
+	 * 총 키워드에 맞는 없는영화신청 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectListCount(Connection conn, String keyword, int memNo) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		keyword = '%' + keyword + '%';
+		String sql = prop.getProperty("keywordSelectListCount");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setString(2, keyword);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				listCount = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	/**
+	 * @author 호용
+	 * 키워드에 맞는 없는영화 신청현황에 담을 값을 구하기위한 메소드
+	 */
+	public List<NoMovie> selectKeywordList(Connection conn, PageInfo pi, String keyword, int memNo){
+		List<NoMovie> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		keyword = '%' + keyword + '%';
+		String sql = prop.getProperty("selectKeywordList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			pstmt.setInt(1, memNo);
+			pstmt.setString(2, keyword);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new NoMovie(rset.getInt("NM_ENROLL_NO")
+						           , rset.getString("NM_TITLE")
+						           , rset.getString("NM_APPROVAL")
+						           , rset.getString("NM_ENROLL_DATE")
+						           , rset.getString("NM_REFUSE_REASON")
+						           , rset.getInt("MEM_NO")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+		
 	}
 	
 }

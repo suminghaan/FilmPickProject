@@ -25,6 +25,25 @@ public class NoMovie {
 		
 	}
 
+	
+	/**
+	 * 없는영화 신청현황을 담은 매개변수 생성자 (검색기능시) 호용
+	 * @param nmEnrollNo 없는영화번호
+	 * @param nmTitle 제목
+	 * @param nmApproval 승인여부
+	 * @param nmEnrollDate 작성일(신청일)
+	 */
+	public NoMovie(int nmEnrollNo, String nmTitle, String nmApproval, String nmEnrollDate, String nmRefuseReason) {
+		super();
+		this.nmEnrollNo = nmEnrollNo;
+		this.nmTitle = nmTitle;
+		this.nmApproval = nmApproval;
+		this.nmEnrollDate = nmEnrollDate;
+		this.nmRefuseReason = nmRefuseReason;
+	}
+
+
+
 	public NoMovie(String nmTitle, String nmPoster, String nmEnrollDate, String nmApproval, String nmStory, int memNo,
 			String memNickname, int nmEnrollNo) { // (관리자 : 김지우) 없는영화 신청 목록 조회 페이지에서 쓰일 매개변수 생성자
 		super();
@@ -83,6 +102,8 @@ public class NoMovie {
 		this.nmRefuseReason = nmRefuseReason;
 		this.memNo = memNo;
 	}
+	
+	
 	
 	public String getCategoryNames() {
 		return categoryNames;
