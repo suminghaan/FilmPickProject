@@ -178,16 +178,20 @@ h1{
     		                        + "</td>"
     								+"</tr>";
     					}
+    					
+    					
     				}else{
     					value += "<tr><td colspan='6'>해당하는 영화가 없습니다,</td></tr>";
     				}
+    				
+    				
     				
     				$("#movieList tbody").html(value);
     			},
     			error:function(){
     				console.log("목록 조회 ajax 실패");
-    			}
-    		})
+    			}	
+            })
     	}
 
     	// 영화 삭제 알람창

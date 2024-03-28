@@ -58,6 +58,15 @@
         text-align: left !important;
     }
 	
+    .reportContent {
+        text-align: center; /* 텍스트를 가운데로 정렬 */
+    }
+
+    .reportDetail {
+        margin: 0 auto; /* 가운데 정렬을 위해 좌우 마진을 자동으로 설정 */
+    }
+
+	
 </style>
 
 

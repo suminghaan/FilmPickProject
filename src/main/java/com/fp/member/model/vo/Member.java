@@ -130,7 +130,13 @@ public class Member {
 		this.prefGenre = prefGenre;
 		this.memColor = memColor;
 	}
+	
+	
+	public Member(String memId) {// 아이디 찾기(은정)
+		super();
+		this.memId = memId;
 
+	}
 
 	public Member() {
 

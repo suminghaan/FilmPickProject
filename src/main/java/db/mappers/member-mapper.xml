@@ -483,5 +483,21 @@
 		SELECT CATEGORY_NAME
 		  FROM CATEGORY
 	</entry>
-
+	
+	<!-- 아이디찾기 -->
+	<entry key="selectFindId">
+		SELECT MEM_ID
+		  FROM MEMBER
+		 WHERE MEM_NAME = ?
+		   AND MEM_PHONE = ?
+	</entry>
+	
+	<!-- 비밀번호찾기 -->
+	<entry key="selectFindPwd">
+		SELECT MEM_PWD
+		  FROM MEMBER
+		 WHERE MEM_ID = ?
+		   AND MEM_NAME = ?
+		   AND MEM_PHONE = ?
+	</entry>
 </properties>
