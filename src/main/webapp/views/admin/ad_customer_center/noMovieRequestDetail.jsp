@@ -321,7 +321,6 @@ img{
 <body>
 <%@ include file="/views/admin/common/header.jsp" %>
 
-       <div class="content">
 
         
         <section class="content_wrap" style="padding-top: 0px;">
@@ -558,7 +557,6 @@ img{
        </div>
        </form>
        </section>
-  </div>
     
 
     <!-- 인물검색 Modal -->
