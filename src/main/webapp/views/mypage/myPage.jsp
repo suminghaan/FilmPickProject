@@ -11,53 +11,53 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 <title>Insert title here</title>
 <style>
 	.mypage{
-      border: 1px solid lightgray;
-      background-color: white;
-      color: black;
-      width: 800px;
-      height:800px;
-      margin: auto;
-      margin-top: 50px;
-      margin-bottom: 50px;
-      min-height: 400px;
-      padding: 50px; 
-      border-radius: 0.7em;
+		border: 1px solid lightgray;
+		background-color: white;
+		color: black;
+		width: 800px;
+		height:800px;
+		margin: auto;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		min-height: 400px;
+		padding: 50px; 
+		border-radius: 0.7em;
     }
     .mypage_header{
-      height: 200px;
-      display: flex;
+		height: 200px;
+		display: flex;
     }
     .mypage_header1, .mypage_header4{
-      width: 20%;
+		width: 20%;
     }
     .mypage_header2, .mypage_header3{
       width: 30%;
       margin: auto;
     }
     .mypage_profile_pic{
-      width: 150px;
-      height: 150px;
-      border: 2px solid;
-      border-radius: 10.0em;
-      overflow: hidden;
-      margin: auto;
+		width: 150px;
+		height: 150px;
+		border: 2px solid;
+		border-radius: 10.0em;
+		overflow: hidden;
+		margin: auto;
     }
     .profile_thumbnail{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
     }
     
     .mypage_content{
-      height: 500px;
+		height: 500px;
     }
     .mypage_footer{
-      height: 100px;
+		height: 100px;
     }
     .btn{
-      height: 30px;
-      width: 130px;
-      margin-top: 15px; 
+		height: 30px;
+		width: 130px;
+		margin-top: 15px; 
     }
 </style>
 </head>
@@ -121,7 +121,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 						</tr>
 						<tr>
 							<th>* 비밀번호</th>
-							<td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" name="memPwd" value="<%=loginMember.getMemPwd()%>" required></td>
+							<td><input type="password" class="form-control" placeholder="특수문자 포함 8~15자리 비밀번호를 입력하세요" name="memPwd" value="<%=loginMember.getMemPwd()%>" readonly></td>
 						</tr> 
 						<tr>
 							<th>* 휴대전화번호</th>
@@ -156,8 +156,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 					<script>
 					function deleteMember() {
 						location.href="<%=contextPath%>/deleteForm.me";
-					}
-			                
+					}       
 					</script>
 			</div>	
 			</div>
@@ -167,12 +166,12 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 		<!-- 비밀번호 변경용 모달창 -->
 		<div class="modal" id="changePwdModal">
 	  	<div class="modal-dialog">
-	  	<div class="modal-content">
+	  	<div class="modal-content" style="color:black">
 	  	
 			<!-- Modal Header -->
 	  		<div class="modal-header">
-	  		<h4 class="modal-title">비밀번호 변경</h4>
-	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h5 class="modal-title">비밀번호 변경</h5>
+	  		<button type="button" class="close" data-dismiss="modal" style="background-color:white; border:none;">&times;</button>
 	  		</div>
 	  		
 	  		<!-- Modal Body -->
@@ -194,7 +193,12 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 	  					</tr>
 	  					<tr>
 	  						<td colspan="3" style="text-align:center; padding-top: 10px;">
-								<button type="submit" class="btn btn-outline-warning btn-sm" style="width: 150px;" id="newPwdCheck" >비밀번호 변경</button>
+	  							<button type="submit" class="btn btn-outline-light" id="newPwdCheck" style="width: 150px; height: 40px; margin: auto;
+																						--bs-btn-border-color: RGB(247, 39, 140);
+																						--bs-btn-color:RGB(247, 39, 140);
+																						--bs-btn-hover-color: RGB(247, 39, 140);
+																						--bs-btn-hover-bg: #ffffff;
+																						--bs-btn-hover-border-color: RGB(247, 39, 140);">비밀번호 변경</button>
 	  						</td>
 						</tr>
 					</table>
