@@ -13,6 +13,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#plist_btn{
+		background-color:RGB(247, 39, 140);
+		border:none;
+		color : white;
+	}
+	#clist_btn{
+		background-color:RGB(240, 240, 240);
+		border:none;
+		color : black;
+	}
+
+</style>
 </head>
 <body>
 
