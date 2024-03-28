@@ -275,7 +275,7 @@ img{
             <hr>
         </div>
         
-        <form action="" method="">
+        <form action="approval.nm" method="post">
             <div class="all">                
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
@@ -460,13 +460,12 @@ img{
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
         <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
         <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
+        <button type="submit" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
     	</div>
+        </form>
   </div>
     
 
@@ -635,7 +634,7 @@ img{
         </div>
     </div>
 
-    <div class="modal fade" id="recognizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="recognizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -656,6 +655,6 @@ img{
             </div>
         </div>
         </div>
-    </div>
+    </div> -->
 </body>
 </html>
