@@ -248,7 +248,10 @@
 	    								+ "<td>" + list[i].bReadCount + "</td>"
 	    								+ "<td>" + list[i].ReportCount + "</td>"
 	    								+ "<td>" + list[i].bCategory + "</td>"
-	    		                        +"</tr>";
+	    								+ "<td>" 
+	    								+ "<button type='button' class='btn btn-outline-warning' onclick='reportBoard();'>신고회원관리</button>"
+	    		                        + "</td>"
+	    								+"</tr>";
 	    					}
 	    				}else{
 	    					value += "<tr><td colspan='7'>신고된 게시글이 없습니다.</td></tr>";

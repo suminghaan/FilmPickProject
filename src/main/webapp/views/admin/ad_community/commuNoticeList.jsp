@@ -245,6 +245,10 @@
     								+ "<td>" + list[i].noticeWriter + "</td>"
     								+ "<td>" + list[i].noticeTitle + "</td>"
     								+ "<td>" + list[i].noticeFix + "</td>"
+    								+ "<td>"
+    								+ "<button type='button' class='btn btn-outline-secondary' data-toggle='modal' data-target='#changeNotice' onclick='update(" + list[i].noticeNo + ");'>수정</button>"
+    		                        + "<a href='<%=contextPath %>/delete.co?noticeNo=" + list[i].noticeNo + "' class='btn btn-outline-danger' onclick='return deleted();'>삭제</a>"
+    		                        + "</td>"
     		                        +"</tr>";
     					}
     				}else{

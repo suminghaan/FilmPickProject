@@ -172,7 +172,11 @@ h1{
     								+ "<td>" + list[i].mvName + "</td>"
     								+ "<td>" + list[i].mvOpenDate + "</td>"
     								+ "<td>" + list[i].categoryNames + "</td>"
-    		                        +"</tr>";
+    								+ "<td>"
+    								+ "<button type='button' class='btn btn-outline-secondary' onclick='movieListDetail(" + list[i].mvNo +");'>관리</button>"
+    								+ "<a href='<%=contextPath%>/delete.admo?mvNo=" + list[i].mvNo + "' class='btn btn-outline-danger' onclick='return deleted();'>삭제</a>"
+    		                        + "</td>"
+    								+"</tr>";
     					}
     				}else{
     					value += "<tr><td colspan='6'>해당하는 영화가 없습니다,</td></tr>";

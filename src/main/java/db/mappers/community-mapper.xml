@@ -292,21 +292,35 @@
 		
 		<!-- 관리자 신고된게시글 검색기능 [수민] -->
 		<entry key="searchReportBoard">
-			SELECT  
-				B_NO
+			SELECT
+		        B_NO
 		      , B_REGIST_DATE
 		      , MEM_ID
 		      , B_TITLE
 		      , B_READ_COUNT
 		      , (SELECT COUNT(*) 
 		         FROM REPORT R 
-		         WHERE REPORT_REF_NO = B_NO
-		           AND BOARD_NO_TYPE = 1) REPORT
+		         WHERE BOARD_NO_TYPE=1
+		           AND REPORT_REF_NO = B_NO) REPORT
 		      , B_CATEGORY
-			FROM BOARD
-			JOIN MEMBER USING (MEM_NO)
-			JOIN REPORT ON REPORT_REF_NO = B_NO
-			WHERE B_TITLE LIKE '%' || ? || '%'
+		      , B_CONTENT
+		      , B_B_STATUS
+		      , ORIGIN_NAME
+	  	      , CHANGE_NAME 
+	  	      , FILE_PATH
+		    FROM BOARD B
+		    JOIN MEMBER USING (MEM_NO)
+		    LEFT JOIN ATTACHMENT A ON B_NO = REF_NO
+				AND A.REF_TYPE = 3
+            WHERE B_NO  IN (
+                                    SELECT REPORT_REF_NO
+                                    FROM REPORT
+                                    WHERE BOARD_NO_TYPE = 1
+                         )
+            AND B_TITLE LIKE '%' || ? || '%'
+			ORDER
+			   BY B_NO DESC
+			
 		</entry>
 		
 		<!-- 관리자 신고게시글 신고내역 조회 [수민] -->

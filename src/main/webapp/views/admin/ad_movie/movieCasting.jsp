@@ -135,7 +135,7 @@ h1{
                     <% if(p.getpFile() != null){ %>
                     <td>Y</td>
                     <%} else{ %>
-                    <td>Y</td>
+                    <td>N</td>
                     <%} %>
                     <td>
                         <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#changeCasting" onclick="update(<%=p.getpNo()%>);">수정</button>
