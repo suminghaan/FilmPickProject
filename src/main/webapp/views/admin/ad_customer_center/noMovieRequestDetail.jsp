@@ -297,13 +297,13 @@ img{
                 
                 <script>
 	       			$(function(){
-	       				$("#exampleFormControlSelect1 option").each(function(){
-         					if($(this).val() == "<%= nm.getNmViewGrade() %>"){
-         						$(this).attr("selected", true);
-	      					};
-	      				});
-	      			});
-                </script>
+	     				$("#exampleFormControlSelect1 option").each(function(){
+	     					if($(this).val() == "<%= nm.getNmViewGrade() %>"){
+	     						$(this).attr("selected", true);
+	     					}
+	     				})
+	     			})
+	           </script>
                     
                 <br>
 
