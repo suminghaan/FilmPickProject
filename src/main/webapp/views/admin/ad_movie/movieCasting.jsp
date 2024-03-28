@@ -76,7 +76,7 @@ h1{
     <div class="d-flex justify-content-center container">
         <span>검색</span>&nbsp;&nbsp;&nbsp;
         <input type="text" id="searchInput" class="input" placeholder="이름으로 검색어를 입력해주세요" name="keyword">
-        <button type="button" onclick="search();">
+        <button type="button" onclick="search(1);">
             <img src="<%=contextPath %>/views/admin/img/icon_search.png">
         </button>
     </div>
@@ -263,16 +263,17 @@ h1{
     <script>
     
     // 검색기능
-    function search(){
+    function search(pageNo){
     		$.ajax({
     			type:'post',
-    			url : "<%=contextPath%>/castingSearch.admo",
+    			url : "<%=contextPath%>/castingSearch.admo?page=" + pageNo,
     			data:{
     				keyword:$("#searchInput").val()
     			},
     			success:function(list){
     				
-    				let value = ""
+    				let value = "";
+    				let pageInfo = "";
     				
     				if(list.length > 0){
     					for(let i=0; i<list.length; i++){
@@ -289,11 +290,40 @@ h1{
     		                        + "</td>"
     		                        +"</tr>";
     					}
+    					pageInfo +=
+    						<% if(pi.getCurrentPage() == 1) { %>
+    		                "<li class='page-item disabled'>"
+    		                + "<a class='page-link' href='#' aria-label='Previous'>"
+    		                +   "<span aria-hidden='true'>&laquo;</span>"
+    		                + "</a>"
+    		                + "</li>"
+    		                <% }else { %>
+    		                + "<li class='page-item'><a class='page-link' href='<%=contextPath%>/castingSearch.admo?page=<%=pi.getCurrentPage() -1%>'>Previous</a></li>"
+    		                <% } %>
+    		                
+    		                <% for(int p=pi.getStartPage(); p<=pi.getEndPage(); p++) { %>
+    		                	<% if(p == pi.getCurrentPage()) { %>
+    		                +	"<li class='page-item active'><a class='page-link' href='#'><%= p %></a></li>"
+    		                	<%}else { %>
+    		                +	"<li class='page-item'><a class='page-link' href='<%=contextPath%>/castingSearch.admo?page=<%=p%>'><%= p %></a></li>"
+    		                	<% } %>
+    		                <% } %>
+    		                
+    		                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
+    		                + "<li class='page-item disabled'><a class='page-link' href='#'>Next</a></li>"
+    		                <% }else { %>
+    		                + "<li class='page-item'>"
+    		                + "<a class='page-link' href='<%=contextPath %>/castingSearch.admo?page=<%=pi.getCurrentPage() +1 %>' aria-label='Next'>"
+    		                +   "<span aria-hidden='true'>&raquo;</span>"
+    		                + "</a>"
+    		                + "</li>"
+    		                <% } %>
     				}else{
     					value += "<tr><td colspan='5'>해당하는 공지사항이 없습니다,</td></tr>";
     				}
     				
     				$("#casting tbody").html(value);
+    				$(".pagination").html(pageInfo);
     			},
     			error:function(){
     				console.log("목록 조회 ajax 실패");
