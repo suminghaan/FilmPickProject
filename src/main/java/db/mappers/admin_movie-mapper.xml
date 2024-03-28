@@ -214,6 +214,7 @@
 							, P_FILE
 						FROM PERSON
 						WHERE P_STATUS = 'Y'
+						ORDER BY P_NO DESC
 						)A
 					)
 			WHERE RNUM BETWEEN ? AND ?

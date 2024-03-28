@@ -119,10 +119,23 @@
 <!-- ======================== 용훈 =========================================== -->
 
 <!-- ======================== 호용 =========================================== -->
-	<!-- 이용제한회원 이용제한일 변경을 위한 메소드 -->
+	<!-- 이용제한회원 이용제한일 변경을 위한 메소드 [호용]-->
 	<entry key="changeDate">
 		UPDATE REPORTED_MEM
 		   SET END_DATE = TO_CHAR((TO_DATE(START_DATE) + ?), 'YYYY-MM-DD')
 		 WHERE MEM_NO = ?
+	</entry>
+	
+	<!-- 이용제한회원 이용제한 풀어주는 메소드 [호용]-->
+	<entry key="changeMemStatus1">
+		DELETE FROM REPORTED_MEM
+		WHERE MEM_NO = ?
+	</entry>
+	
+	<!-- 이용제한회원 이용제한 풀어주는 메소드 [호용]-->
+	<entry key="changeMemStatus2">
+		UPDATE MEMBER
+		SET MEM_STATUS = 'Y'
+		WHERE MEM_NO = ?
 	</entry>
 </properties>

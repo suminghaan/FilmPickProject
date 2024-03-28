@@ -179,5 +179,21 @@ public class MemberService {
 		close(conn);
 		return prefGenre;
 	}
+	
+	// 아이디찾기
+	public Member selectFindId(String memName, String memPhone) {
+		Connection conn = getConnection();
+		Member m = mDao.selectFindId(conn, memName, memPhone);
+		close(conn);
+		return m;
+	}
+	
+	// 비밀번호찾기
+	public Member selectFindPwd(String memId,String memName, String memPhone) {
+		Connection conn = getConnection();
+		Member m = mDao.selectFindPwd(conn, memId, memName, memPhone);
+		close(conn);
+		return m;
+	}	
 
 }

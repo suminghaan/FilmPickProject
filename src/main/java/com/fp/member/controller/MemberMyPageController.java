@@ -33,7 +33,7 @@ public class MemberMyPageController extends HttpServlet {
 		
 		ArrayList<String> prefGenre = new MemberService().selectPrefGenre();
 		request.setAttribute("prefGenre",prefGenre);
-		
+//		System.out.println(prefGenre);
 		// 응답페이지 : /views/mypage/myPage.jsp
 		// 응답데이터 : 현재 로그인한 회원의 정보
 		

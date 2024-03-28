@@ -175,13 +175,13 @@ h1{
 	                <% } %>
 	                
 	                <% if(pi.getCurrentPage() == pi.getMaxPage()) { %>
-	                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	                	<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
 	                <% }else { %>
-	                <li class="page-item">
-	                <a class="page-link" href="<%=contextPath %>/movieCastingList.admo?page=<%=pi.getCurrentPage() +1 %>" aria-label="Next">
-	                    <span aria-hidden="true">&raquo;</span>
-	                </a>
-	                </li>
+		                <li class="page-item">
+			                <a class="page-link" href="<%=contextPath %>/movieCastingList.admo?page=<%=pi.getCurrentPage() +1 %>" aria-label="Next">
+			                    <span aria-hidden="true">&raquo;</span>
+			                </a>
+		                </li>
 	                <% } %>
 	            </ul>
 	        </nav>
@@ -293,37 +293,36 @@ h1{
     		                        + "</td>"
     		                        +"</tr>";
     					}
-    						if(jArr[0].currentPage == 1) {
-    						pageInfo += "<li class='page-item disabled'>"
-    		                + "<a class='page-link' href='#' aria-label='Previous'>"
-    		                +   "<span aria-hidden='true'>&laquo;</span>"
-    		                + "</a>"
-    		                + "</li>"
-    		                }else {
-    		                pageInfo += "<li class='page-item'><a class='page-link' href='<%=contextPath%>/movieCastingList.admo&&page=" + jArr[0].currentPage + "?keyword=" +  $("#searchInput").val()  + "'>Previous</a></li>"
-    		                }
-    		                
-    		                for(let p = jArr[0].starPage; p<=jArr[0].endPage; p++) {
-    		                	if(p == jArr[0].currentPage) {
-   		                	pageInfo +=	"<li class='page-item active'><a class='page-link' href='#'>" + p + "</a></li>"
-    		                	}else { 
-   		                	pageInfo +=	"<li class='page-item'><a class='page-link' href='<%=contextPath%>/movieCastingList.admo?page=" + p + "&&keyword=" + $("#searchInput").val() + "'>" + p + "</a></li>"
-    		                	}
-    		                }
-    		                
-    		                if(jArr[0].currentPage == jArr[0].maxPage) {
-    		                pageInfo += "<li class='page-item disabled'><a class='page-link' href='#'>Next</a></li>"
-    		                }else {
-    		                pageInfo += "<li class='page-item'>"
-    		                + "<a class='page-link' href='<%=contextPath %>/movieCastingList.admo?page=" + (jArr[0].currentPage +1) + "&&keyword=" + $("#searchInput").val() + "' aria-label='Next'>"
-    		                +   "<span aria-hidden='true'>&raquo;</span>"
-    		                + "</a>"
-    		                + "</li>"
-    		                }
+   						if(jArr[0].currentPage == 1) {
+	   						pageInfo += "<li class='page-item disabled'>"
+	   		                + "<a class='page-link' href='#' aria-label='Previous'>"
+	   		                +   "<span aria-hidden='true'>&laquo;</span>"
+	   		                + "</a>"
+	   		                + "</li>"
+   		                }else {
+   		                	pageInfo += "<li class='page-item'><a class='page-link' href='<%=contextPath%>/movieCastingList.admo&&page=" + jArr[0].currentPage + "?keyword=" +  $("#searchInput").val()  + "'>Previous</a></li>"
+   		                }
+   		                
+   		                for(let p = jArr[0].starPage; p<=jArr[0].endPage; p++) {
+   		                	if(p == jArr[0].currentPage) {
+  		                		pageInfo +=	"<li class='page-item active'><a class='page-link' href='#'>" + p + "</a></li>"
+   		                	}else { 
+  		                		pageInfo +=	"<li class='page-item'><a class='page-link' href='<%=contextPath%>/movieCastingList.admo?page=" + p + "&&keyword=" + $("#searchInput").val() + "'>" + p + "</a></li>"
+   		                	}
+   		                }
+   		                
+   		                if(jArr[0].currentPage == jArr[0].maxPage) {
+   		                	pageInfo += "<li class='page-item disabled'><a class='page-link' href='#'>Next</a></li>"
+   		                }else {
+	   		                pageInfo += "<li class='page-item'>"
+	   		                + "<a class='page-link' href='<%=contextPath %>/movieCastingList.admo?page=" + (jArr[0].currentPage +1) + "&&keyword=" + $("#searchInput").val() + "' aria-label='Next'>"
+	   		                +   "<span aria-hidden='true'>&raquo;</span>"
+	   		                + "</a>"
+	   		                + "</li>"
+   		                }
     				}else{
     					value += "<tr><td colspan='5'>해당하는 공지사항이 없습니다,</td></tr>";
     				}
-    				
     				$("#casting tbody").html(value);
     				$(".pagination").html(pageInfo);
     			},

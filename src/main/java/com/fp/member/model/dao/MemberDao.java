@@ -128,6 +128,7 @@ public class MemberDao {
 							 , rset.getString("pref_genre")
 							 , rset.getString("signin_date")
 							 , rset.getString("mem_status")
+							 , rset.getString("mem_color")
 						);
 			}
 			
@@ -240,10 +241,11 @@ public class MemberDao {
 			pstmt.setString(4,m.getMemPhone());
 			pstmt.setString(5,m.getMemEmail());
 			pstmt.setString(6,m.getPrefGenre());
-			pstmt.setString(7,m.getMemId());
+			pstmt.setString(7,m.getMemColor());
+			pstmt.setString(8,m.getMemId());
 			
 			result = pstmt.executeUpdate();
-			
+			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -547,5 +549,61 @@ public class MemberDao {
 		}
 		return prefGenre;
 	}
-
+	
+	// 아이디 찾기
+	public Member selectFindId(Connection conn, String memName, String memPhone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		Member m = new Member();
+		String sql =prop.getProperty("selectFindId");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,memName);
+			pstmt.setString(2,memPhone);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				m = new Member(rset.getString("mem_id"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
+	// 비밀번호 찾기
+	
+	public Member selectFindPwd(Connection conn, String memId, String memName, String memPhone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = new Member();
+		
+		String sql = prop.getProperty("selectFindPwd");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,memId);
+			pstmt.setString(2,memName);
+			pstmt.setString(3,memPhone);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				m = new Member();
+				m.setMemPwd(rset.getString("MEM_PWD"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
 }

@@ -379,4 +379,35 @@ public class ReportMemberDao {
 		System.out.println("Dao단에서의 changeDate : " + changeDate);
 		return result;
 	}
+	
+	/**
+	 * @author 호용
+	 * 이용제한회원 이용제한 풀어주는 메소드
+	 */
+	public int changeMemStatus(Connection conn, int memNo) {
+		int result = 0;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		String sql1 = prop.getProperty("changeMemStatus1");
+		try {
+			pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, memNo);
+			pstmt1.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt1);
+		}
+		String sql2 = prop.getProperty("changeMemStatus2");
+		try {
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, memNo);
+			result = pstmt2.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt2);
+		}
+		return result;
+	}
 }

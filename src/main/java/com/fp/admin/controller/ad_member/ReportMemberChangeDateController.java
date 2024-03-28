@@ -33,7 +33,15 @@ public class ReportMemberChangeDateController extends HttpServlet {
 		String changeDate = request.getParameter("opValue");
 		System.out.println("서블릿단에서의 memNo : " + memNo);
 		System.out.println("서블릿단에서의 changeDate : " + changeDate);
-		int result = new MemberService().changeDate(memNo, changeDate);
+		
+		int result = 0;
+		
+		if(changeDate.equals("0")) {
+			result = new MemberService().changeMemStatus(memNo);
+		}else {
+			result = new MemberService().changeDate(memNo, changeDate); // 회원 이용제한일 수정
+		}
+		
 		if(result > 0) {
 			response.getWriter().print(result);
 		}

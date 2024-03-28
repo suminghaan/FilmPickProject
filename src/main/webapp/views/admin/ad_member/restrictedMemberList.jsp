@@ -202,12 +202,15 @@ table{
 		        	},
 		        	success:function(result){
 		        		if(result > 0){
-		 					alert('변경이 완료되었습니다.');	
+		 					alert('변경이 완료되었습니다.');
 		        		}
+		 				
 		        	},error:function(){
 		        		console.log("회원 활동중지기간 변경 ajax 실패")
 		        	}
 		        })
+		        
+		       location.href="<%=contextPath%>/rslist.me?page=1"
 		 		
 		 	}
 		 	
