@@ -252,6 +252,7 @@
         JOIN MOVIE MV
         ON MV.MV_NO = R.MV_NO
         WHERE M.MEM_NO = ?
+        ORDER BY LIKE_POINT DESC
 	</entry>
 	
 	<!-- 둘 다 재밌게 본 작품 조회하는 쿼리 -->
