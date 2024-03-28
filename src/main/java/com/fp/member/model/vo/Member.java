@@ -102,7 +102,7 @@ public class Member {
 	}
 
 	public Member(int memNo, String memId, String memName, String nickname, String memPwd, String memPhone, String memEmail, 
-			String prefGenre, String signInDate, String memStatus) { // 마이페이지 - 회원정보(은정)
+			String prefGenre, String signInDate, String memStatus, String memColor) { // 마이페이지 - 회원정보(은정)
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -114,7 +114,23 @@ public class Member {
 		this.prefGenre = prefGenre;
 		this.signInDate = signInDate;
 		this.memStatus = memStatus;
+		this.memColor = memColor;
 	}
+
+	
+	public Member(String memId, String memName,String nickname, String memPwd, String memPhone, String memEmail, String prefGenre,
+			String memColor) {  // 회원정보변경(은정)
+		super();
+		this.memId = memId;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.memPwd = memPwd;
+		this.memPhone = memPhone;
+		this.memEmail = memEmail;
+		this.prefGenre = prefGenre;
+		this.memColor = memColor;
+	}
+
 
 	public Member() {
 

@@ -128,6 +128,7 @@ public class MemberDao {
 							 , rset.getString("pref_genre")
 							 , rset.getString("signin_date")
 							 , rset.getString("mem_status")
+							 , rset.getString("mem_color")
 						);
 			}
 			
@@ -240,10 +241,11 @@ public class MemberDao {
 			pstmt.setString(4,m.getMemPhone());
 			pstmt.setString(5,m.getMemEmail());
 			pstmt.setString(6,m.getPrefGenre());
-			pstmt.setString(7,m.getMemId());
+			pstmt.setString(7,m.getMemColor());
+			pstmt.setString(8,m.getMemId());
 			
 			result = pstmt.executeUpdate();
-			
+			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

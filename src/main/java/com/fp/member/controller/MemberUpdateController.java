@@ -39,8 +39,9 @@ public class MemberUpdateController extends HttpServlet {
 		String memPhone = request.getParameter("memPhone");
 		String memEmail = request.getParameter("memEmail");
 		String prefGenre = request.getParameter("prefGenre");
+		String memColor = request.getParameter("memColor");
 		
-		Member m = new Member(memId, memName, nickname, memPwd, memPhone, memEmail, prefGenre);
+		Member m = new Member(memId, memName, nickname, memPwd, memPhone, memEmail, prefGenre, memColor);
 		
 		Member updateMem = new MemberService().updateMember(m);
 		
@@ -53,6 +54,7 @@ public class MemberUpdateController extends HttpServlet {
 			// 마이페이지 / 알람문구("성공적으로 회원정보 변경되었습니다.")
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "성공적으로 회원정보 변경되었습니다.");
+			System.out.println(updateMem);
 			session.setAttribute("loginUser", updateMem);
 			
 			response.sendRedirect(request.getContextPath() + "/myPage.me");

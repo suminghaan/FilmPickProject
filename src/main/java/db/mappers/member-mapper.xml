@@ -305,6 +305,7 @@
 		    , PREF_GENRE
 		    , SIGNIN_DATE
 		    , MEM_STATUS
+		    , MEM_COLOR
 		 FROM MEMBER
 		WHERE MEM_ID = ?
 	</entry>
@@ -361,6 +362,7 @@
 		   	 , MEM_PHONE = ?
 		   	 , MEM_EMAIL = ?
 		   	 , PREF_GENRE = ?
+		   	 , MEM_COLOR = ?
 		 WHERE MEM_ID = ?   	 
 	</entry>		
 	
@@ -481,5 +483,5 @@
 		SELECT CATEGORY_NAME
 		  FROM CATEGORY
 	</entry>
-	
+
 </properties>
