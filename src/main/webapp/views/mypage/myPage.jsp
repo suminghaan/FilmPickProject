@@ -54,11 +54,11 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
     .mypage_footer{
 		height: 100px;
     }
-    .btn{
+    .btn btn-outline-light{
 		height: 30px;
 		width: 130px;
-		margin-top: 15px; 
-    }
+		margin: auto;
+	}						
 </style>
 </head>
 <body>
@@ -75,7 +75,7 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
   			<div class="mypage_content">
 			<!-- 회원정보 -->
 			<form action="<%= contextPath %>/update.me" method="post" >
-			<!-- 프로필사진, 닉네임, 등급, 프로필사진 수정 -->
+			<!-- 닉네임, 등급, 프로필사진 수정 -->
 			<div class="mypage_header">
 				<div class="mypage_header1"></div>     
 				<div class="mypage_header2" id="mypage_header2">
@@ -147,10 +147,40 @@ ArrayList<String> prefGenre = (ArrayList<String>)request.getAttribute("prefGenre
 			  
 			  
 					<div class="mypage_footer" style="display: flex; justify-content: center;">
-						<button type="submit" class="btn" style="background-color:RGB(235, 235, 235); color: black; border:none;">정보변경</button>
-						<button type="button" class="btn" style="background-color:RGB(235, 235, 235); color: black; border:none;" data-toggle="modal"data-target="#changePwdModal">비밀번호 변경</button>
-						<button type="reset" class="btn"  style="background-color:RGB(235, 235, 235); color: black; border:none;">초기화</button>
-						<button type="button" class="btn" style="background-color:RGB(235, 235, 235); color: black; border:none;" onclick="deleteMember()" >회원탈퇴</button>
+
+						<button type="submit" class="btn btn-outline-light" style="width: 130px; height: 30px; margin: auto;
+																						--bs-btn-border-color: RGB(247, 39, 140);
+																						--bs-btn-color:RGB(247, 39, 140);
+																						--bs-btn-hover-color: RGB(247, 39, 140);
+																						--bs-btn-hover-bg: #ffffff;
+																						--bs-btn-hover-border-color: RGB(247, 39, 140);">정보변경</button>
+																						
+																						
+						<button type="button" class="btn btn-outline-light" data-toggle="modal"data-target="#changePwdModal"
+																						  style="width: 130px; height: 30px; margin: auto;
+																						--bs-btn-border-color: RGB(247, 39, 140);
+																						--bs-btn-color:RGB(247, 39, 140);
+																						--bs-btn-hover-color: RGB(247, 39, 140);
+																						--bs-btn-hover-bg: #ffffff;
+																						--bs-btn-hover-border-color: RGB(247, 39, 140);">비밀번호 변경</button>																
+						
+						
+						
+						<button type="reset" class="btn btn-outline-light" style="width: 130px; height: 30px; margin: auto;
+																						--bs-btn-border-color: RGB(247, 39, 140);
+																						--bs-btn-color:RGB(247, 39, 140);
+																						--bs-btn-hover-color: RGB(247, 39, 140);
+																						--bs-btn-hover-bg: #ffffff;
+																						--bs-btn-hover-border-color: RGB(247, 39, 140);">초기화</button>
+						
+						<button type="button" class="btn btn-outline-light" id="newPwdCheck" onclick="deleteMember()"
+																						  style="width: 130px; height: 30px; margin: auto;
+																						--bs-btn-border-color: RGB(247, 39, 140);
+																						--bs-btn-color:RGB(247, 39, 140);
+																						--bs-btn-hover-color: RGB(247, 39, 140);
+																						--bs-btn-hover-bg: #ffffff;
+																						--bs-btn-hover-border-color: RGB(247, 39, 140);">회원탈퇴</button>
+						
 					</div>
 				</form>	
 					<script>
