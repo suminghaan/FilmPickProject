@@ -36,6 +36,7 @@ public class NoMovieListDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		System.out.println("없는영화 신청 상세 페이지 서블릿 실행");
 		int noMovieNo = Integer.parseInt(request.getParameter("no"));
 		System.out.println(noMovieNo);

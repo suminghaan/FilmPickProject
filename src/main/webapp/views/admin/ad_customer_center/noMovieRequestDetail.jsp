@@ -6,11 +6,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	NoMovie nm = (NoMovie)request.getAttribute("nm");
-	List<Person> pList = (List<Person>)request.getAttribute("pList");
-	List<Category> cList = (List<Category>)request.getAttribute("cList");
-	Attachment at = (Attachment)request.getAttribute("at");
-	List<Category> cMyList = (List<Category>)request.getAttribute("cMyList");
+   NoMovie nm = (NoMovie)request.getAttribute("nm");
+   List<Person> pList = (List<Person>)request.getAttribute("pList");
+   List<Category> cList = (List<Category>)request.getAttribute("cList");
+   Attachment at = (Attachment)request.getAttribute("at");
+   List<Category> cMyList = (List<Category>)request.getAttribute("cMyList");
 %>
 <!DOCTYPE html>
 <html>
@@ -207,11 +207,11 @@ h1{
 }
 
 .dr{
-	display: flex;
+   display: flex;
 }
 
 .dr *{
-	margin-right : 20px;
+   margin-right : 20px;
 }
 
 .modal-text{
@@ -220,11 +220,11 @@ h1{
 }
 
 label{
-	margin-right: 15px;
+   margin-right: 15px;
 }
 
 input[type="radio"]{
-	margin-right: 5px;
+   margin-right: 5px;
 }
 
 label
@@ -236,35 +236,50 @@ label
   /*모달 스타일*/
   
 .modal-header{
-		color: black;
-		font-weight: bold !important;
+      color: black;
+      font-weight: bold !important;
 }
 
 .castingList{
-		display:flex;
-		width:400px;
+      display:flex;
+      width:400px;
 }
 
 .person{
-		display:flex;
-		flex-direction:column;
+      display:flex;
+      flex-direction:column;
 }
 
 img{
-		width:80px;
-		height:80px;
+      width:80px;
+      height:80px;
 }
 
 .inputUser{
-		display:flex;
+      display:flex;
 }
 
+/*미리보기 사이즈*/
+
+    #preview {
+        max-width: 300px; /* 원하는 최대 너비 */
+        max-height: 200px; /* 원하는 최대 높이 */
+        width: auto; /* 너비 자동 조정 */
+        height: auto; /* 높이 자동 조정 */
+    }
+    
+    #previewVideo{
+    	max-width : 300px;
+    	max-height : 200px;
+    	width: auto;
+    	height: auto;
+    }
 </style>
 </head>
 <body>
 <%@ include file="/views/admin/common/header.jsp" %>
-    <div class="container-fluid">
-    	<div class="content">
+
+       <div class="content">
 
         
         <section class="content_wrap" style="padding-top: 0px;">
@@ -275,19 +290,19 @@ img{
             <hr>
         </div>
         
-        <form action="" method="">
+        <form action="<%=contextPath %>/insertMovie.admo" method="post" enctype="multipart/form-data">
             <div class="all">                
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
                     <label for="exampleFormControlInput1">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="movieName" value="<%=nm.getNmTitle()%>" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=nm.getNmTitle()%>" style="width: 500px;">
                 </div>
 
                 <br>
 
                  <div class="form-group">
                      <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
-                     <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
+                     <select class="form-control" id="exampleFormControlSelect1" name="mGrade" style="width: 600px;" required>
                          <option value="전체관람가">전체관람가</option>
                          <option value="12세 관람가">12세 관람가</option>
                          <option value="15세 관람가">15세 관람가</option>
@@ -296,21 +311,21 @@ img{
                  </div>
                 
                 <script>
-	       			$(function(){
-	     				$("#exampleFormControlSelect1 option").each(function(){
-	     					if($(this).val() == "<%= nm.getNmViewGrade() %>"){
-	     						$(this).attr("selected", true);
-	     					}
-	     				})
-	     			})
-	           </script>
+                   $(function(){
+                    $("#exampleFormControlSelect1 option").each(function(){
+                       if($(this).val() == "<%= nm.getNmViewGrade() %>"){
+                          $(this).attr("selected", true);
+                       }
+                    })
+                 })
+              </script>
                     
                 <br>
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">
-                    	<%=nm.getNmStory() %>
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;">
+                       <%=nm.getNmStory() %>
                     </textarea>                
                 </div>
                 
@@ -319,14 +334,14 @@ img{
 
                 <div class="form-group dr">
                 
-                	<div>
-                    	<label>개봉일</label>
-                    	<input type="date" name="dateIn" class="form-control" style="width: 300px;" value="<%=nm.getNmReleaseDate()%>">
+                   <div>
+                       <label>개봉일</label>
+                       <input type="date" name="openDate" class="form-control" style="width: 300px;" value="<%=nm.getNmReleaseDate()%>">
                     </div>
                     <div>
-                    	<label>러닝타임</label>
-                    	<input type="text" name="runningTime" class="form-control" style="width: 300px;" value="<%=nm.getNmRunTime()%>">
-                	</div>
+                       <label>러닝타임</label>
+                       <input type="text" name="runTime" class="form-control" style="width: 300px;" value="<%=nm.getNmRunTime()%>">
+                   </div>
                 </div>
                 <br>
 
@@ -335,55 +350,72 @@ img{
 
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
-                    <input type="text"  class="form-control" style="width: 600px;">
-                         <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
-                     </div><br>
-
-                	 <div class="person-div">
-                		<%for(Person p : pList){ %>
-									<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
-										<table class='person-table'>
-											<tr>
-												<td><img src="<%=p.getpFile()%>"></td>
-											</tr>
-											<tr>
-												<td style="color:black;"><%=p.getpName()%></td>
-											</tr>
-											<tr>
-												<td><input type="text" placeholder="영화배역 입력" name="movieJob" required value="<%=p.getpJob()%>"><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>
-											</tr>
-											<input type="hidden" name=personNo value="<%=p.getpNo()%>">
-										</table>
-									<%} %>
-								<%} %>
-                              </div>
-                	
+                    <input type="text" name="casting" class="form-control casting" style="width: 300px;">
+                    <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
                 </div>
                 <br>
 
 
+				<%for(Person p : pList){ %>
+               		<div class="castingList">
+						<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
+							<div class="person">
+	                		<input type="hidden" name="personNo" value="<%=p.getpNo()%>">
+		                    <img src="<%=p.getpFile() %>"> <%=p.getpName() %> <br>
+		                    <input type="text" name="movieJob" class="casting" value="<%=p.getCasting()%>">
+		                    </div>		                  
+						<%} %>					
+                	</div>
+                 <%} %>
+                 <!-- 
+                    <div class="person-div">
+                      <%for(Person p : pList){ %>
+                           <%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
+                              <table class='person-table'>
+                                 <tr>
+                                    <td><img src="<%=p.getpFile()%>"></td>
+                                 </tr>
+                                 <tr>
+                                    <td style="color:black;"><%=p.getpName()%></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input type="text" placeholder="영화배역 입력" name="movieJob" required value="<%=p.getpJob()%>"><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>
+                                 </tr>
+                                 <input type="hidden" name=personNo value="<%=p.getpNo()%>">
+                              </table>
+                           <%} %>
+                        <%} %>
+                      </div>
+                    -->
+                
+                <br>
+
+
+				
                 <div class="form-group form-category" style="color:black;" id="catecate">
                     <label>영화 장르 선택</label>
                     <br>
 
                   <%for(Category c : cList){ %>
-                                      <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
-                                      <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
-									<%} %>
-                    </div>
+                  	  
+                        <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
+                        <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
+                  	  
+                  <%} %>
+                </div>
                     
                     <script>
-	                   			$(function(){
-	                   				$("#catecate input").each(function(){
-	                                      <% for(int i=0; i<cMyList.size(); i++) { %>
-	                                          if ($(this).val() == "<%= cMyList.get(i).getNoMovieCNo() %>") {
-	                                              $(this).prop("checked", true);
-	                                          }
-	                 				<%}%>
-	                 				})
-	                 			})
-                              </script>
-                </div>
+                            $(function(){
+                               $("#catecate input").each(function(){
+                                      <% for(int i=0; i<cMyList.size(); i++) { %>
+                                          if ($(this).val() == "<%= cMyList.get(i).getNoMovieCNo() %>") {
+                                              $(this).prop("checked", true);
+                                          }
+                             <%}%>
+                             })
+                          })
+                    </script>
+                
                 <br>
                 
 
@@ -392,7 +424,7 @@ img{
                 <br>
                 
                 <div class="form-check form-check-inline">
-                    <input type="radio" id="radio1" name="nations" value="1" checked style="margin-top: 10px;"> 
+                    <input type="radio" id="radio1" name="nation" value="1" style="margin-top: 10px;"> 
                     <label for="radio1">국내</label>
 
                     <input type="radio" id="radio2" name="nation" value="2">
@@ -400,30 +432,33 @@ img{
                 </div>
                 
                  <script>
-               			$(function(){
-               				$("#nations input").each(function(){
-               					if($(this).val() == "<%= nm.getNmNation() %>"){
-               						$(this).attr("checked", true);
-               					}
-               				})
-               			})
+                        $(function(){
+                           $("#nations input").each(function(){
+                              if($(this).val() == "<%= nm.getNmNation() %>"){
+                                 $(this).attr("checked", true);
+                              }
+                           })
+                        })
                  </script>
-                     		
+                           
                 <br><br>
  
                 <label>영화포스터</label>
-               <div class="custom-file updateSrc" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nm.getNmPoster()%>">
-                                  <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>     
+                <div class="custom-file updateSrc" style="color:black;">
+                	 <input type="hidden" name="originPoster" value="<%=nm.getNmPoster()%>" >        	
+                     <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nm.getNmPoster()%>" onchange="previewImage(event)">
+                     <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>     
+                 	 <img id="preview" src="<%=contextPath + "/" + nm.getNmPoster() %>" alt="미리보기이미지">
                  </div>
 
-                <br><br>
+                <br><br><br><br>
 
                  <p style="color:black;">예고편영상(필수)</p>
                     <div class="custom-file updateSrc" style="color:black;">
-                                  <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nm.getNmPreview()%>">
-                                  <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
-                        
+                    	<input type="hidden" name="originPreview" value=" <%= nm.getNmPreview() %> ">                   	
+                        <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nm.getNmPreview()%>" onchange="previewVideo(event)">
+                        <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
+                        <video id="previewVideo" src="<%=contextPath + "/" + nm.getNmPreview() %>" controls alt="예고편영상미리보기"></video>
                     </div>
                 
                 <br><br>
@@ -431,42 +466,52 @@ img{
                 <div class="form-group">
                 <label>기타 추가 희망 이미지 또는 동영상</label>
                      <div class="custom-file">
-		                <%if(at != null){ %>
-		                <%= at.getOriginName() %>
-		                <input type="file" class="custom-file-input" id="customFile3" name="upfile3" value="<%= at.getFileNo()%>">
-		                <%} %>
-		                <input type="file" class="custom-file-input" id="customFile3" name="upfile3">
-		                <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
-		                <img src="" alt="미리보기이미지">
-		            </div>
-                    </div>
+                      <%if(at != null){ %>
+                      <%= at.getOriginName() %>
+                      <input type="file" class="custom-file-input" id="customFile3" name="upfile3" value="<%= at.getFileNo()%>">
+                      <%} %>
+                      <input type="file" class="custom-file-input" id="customFile3" name="upfile3">
+                      <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
+                      <img src="" alt="미리보기이미지">
+                  </div>
                 </div>
 
 
                 <br>
 
-		       <div class="form-group" style="color:black;">
-                   <h4>사용자 요청사항(선택)</h4>
+			 <div class="form-group">
+                    <label>현재 상영여부 : </label>
+                    <br>
+                    <input type="radio" id="radioX" name="currentScreening" value="N" checked> 
+                    <label for="radioX">현재 미상영</label>
+
+                    <input type="radio" id="radioM" name="currentScreening" value="Y">
+                    <label for="radioM">상영중</label>
+                	
+                </div>
+			
+             <div class="form-group" style="color:black;">
+                   <h4>사용자 요청사항</h4>
                    <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest() != null ? nm.getNmUserRequest() : ""%></textarea>
                </div>
                 <br>
                 
                 <!-- 사용자가 등록한 영화일 경우 -->
                 <div class="form-group inputUser">
-                    <label><img src="../img/profile_person.png" alt="사용자 프로필"></label>
                     <div class="userInfo">
-                        <p><label>등록한 사용자 ID : </label>user01</p>
-                        <p><label>등록한 영화 갯수 : </label>13번</p>
+                        <p><label>등록한 사용자 회원번호 : </label><%=nm.getMemNo() %>번</p>
                     </div>
                 </div>
             </div>
-        </form>
+        
     </div>
         <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
         <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
+        <button type="submit" class="btn btn-secondary btn-sm" style="margin-right: 10px;">승인</button>
         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
-    	</div>
+       </div>
+       </form>
+       </section>
   </div>
     
 
@@ -492,16 +537,16 @@ img{
                           </div>
                           <!-- onclick="searchPerson();" -->
                         <script>
-                				$(".inputPerson").on("input", function(){
-                					
-                					if ($(this).val().trim() === "") {
-                						$(".viewPerson").html("");
-                					} else {
-                						searchPerson();
-                					}
-                					
-                				})
-                  		</script>
+                            $(".inputPerson").on("input", function(){
+                               
+                               if ($(this).val().trim() === "") {
+                                  $(".viewPerson").html("");
+                               } else {
+                                  searchPerson();
+                               }
+                               
+                            })
+                        </script>
                   
                           <!-- Modal footer -->
                           <div class="modal-footer">
@@ -518,15 +563,15 @@ img{
               
               <script>
               function searchPerson(){
-              	
-              	$(".viewPerson").html("");
+                 
+                 $(".viewPerson").html("");
                   let result = "";
                   $.ajax({
                       url:"<%=contextPath%>/search.pe",
                       data:{name:$(".inputPerson").val()},
                       type:"post",
                       success:function(person){ // 인물번호, 인물이미지경로, 인물이름, 인물직업 조회
-                      	console.log(person.length);
+                         console.log(person.length);
                           if(person.length != 0){ // 받아온 person에 값이 담겨있을 때
                               for(let i=0; i<person.length; i++){
                                   result =  "<div class='check'>"
@@ -548,12 +593,12 @@ img{
                               }
                           } else if (person.length == 0){ // 받아온 person이 비어있을 때
                               result = " ";
-                          	console.log("length는 0");
+                             console.log("length는 0");
                               $(".viewPerson").html("검색된 인물이 없습니다.");
                           }
                       },
                       error:function() {
-                      	console.log("AJAX 통신 실패");
+                         console.log("AJAX 통신 실패");
                       }
                       
                   });
@@ -562,18 +607,18 @@ img{
                var count = 0; //최대 8명만 추가할 수 있는 조건
                // 없는영화 출연진 추가하는 스크립트
                $("#personBtn").click(function(){
-              	
-             		var inputChecked = $(".viewPerson input:checked");
-             		console.log(inputChecked);
-              	 
+                 
+                   var inputChecked = $(".viewPerson input:checked");
+                   console.log(inputChecked);
+                  
                  if(count < 8){
 
                  let result = "";
                  inputChecked.each(function(){
-              	 let pNo = $(this).closest('.check').find('.personNo').val(); // 체크된 인물의 pNo 값 가져오기
-              	 let pFile = $(this).closest('.check').find('.personImg').attr('src'); // 체크된 인물의 이미지 경로 가져오기
-              	 let pName = $(this).closest('.check').find('.personName').text(); // 체크된 인물의 이름 가져오기
-              	 result += "<table class='person-table'>"
+                  let pNo = $(this).closest('.check').find('.personNo').val(); // 체크된 인물의 pNo 값 가져오기
+                  let pFile = $(this).closest('.check').find('.personImg').attr('src'); // 체크된 인물의 이미지 경로 가져오기
+                  let pName = $(this).closest('.check').find('.personName').text(); // 체크된 인물의 이름 가져오기
+                  result += "<table class='person-table'>"
                            +   "<tr>"
                            +     "<td><img src='" + pFile + "'></td>" // 이미지 소스에 pFile는 이미지 저장경로
                            +   "</tr>"
@@ -595,14 +640,14 @@ img{
                    alert("8명이상 추가할 수 없습니다.");
                  }
                });
-      		//인물 빼는 스크립트
+            //인물 빼는 스크립트
                $("#personRemoveBtn").click(function(){
                  $(".person-div").find("table").last().remove();
                    if(count > 0){
                      count--;
                    }
                });
-      		
+            
                $(document).ready(function() {
                    $(document).on('click', '#personRemoveBtnBtn', function() {
                        $(this).closest('table.person-table').remove(); // 클릭된 버튼의 가장 가까운 부모 테이블을 제거
