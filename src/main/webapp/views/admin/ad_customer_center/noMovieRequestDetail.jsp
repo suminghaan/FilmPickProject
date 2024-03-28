@@ -275,7 +275,7 @@ img{
             <hr>
         </div>
         
-        <form action="<%=contextPath %>/apporval.nm" method="post" enctype="multipart/form-data">
+        <form action="<%=contextPath %>/insertMovie.admo" method="post" enctype="multipart/form-data">
             <div class="all">                
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
@@ -309,7 +309,7 @@ img{
 
                 <div class="form-group">
                     <label for="mContent">영화줄거리</label> <br>
-                    <textarea class="form-control" id="mContent" rows="5" name="" style="width: 500px;">
+                    <textarea class="form-control" id="mContent" rows="5" name="mContent" style="width: 500px;">
                        <%=nm.getNmStory() %>
                     </textarea>                
                 </div>
@@ -392,7 +392,7 @@ img{
                 <br>
                 
                 <div class="form-check form-check-inline">
-                    <input type="radio" id="radio1" name="nations" value="1" checked style="margin-top: 10px;"> 
+                    <input type="radio" id="radio1" name="nation" value="1" style="margin-top: 10px;"> 
                     <label for="radio1">국내</label>
 
                     <input type="radio" id="radio2" name="nation" value="2">
@@ -463,7 +463,7 @@ img{
     </div>
         <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
         <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
-        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
+        <button type="submit" class="btn btn-secondary btn-sm" style="margin-right: 10px;">승인</button>
         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
        </div>
        </form>
