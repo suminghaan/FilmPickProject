@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+
 import com.fp.admin.model.service.CommunityService;
 import com.fp.admin.model.service.MovieService;
 import com.fp.admin.model.vo.Notice;
@@ -61,8 +63,12 @@ public class AjaxSearchCastingController extends HttpServlet {
 		
 		List<Person> list = new MovieService().searchCasting(keyword, pi);
 		
+		JSONArray jArr = new JSONArray();
+		jArr.add(pi);
+		jArr.add(list);
+		
 		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		new Gson().toJson(jArr, response.getWriter());
 		
 	}
 

@@ -41,7 +41,14 @@ public class MovieCastingListController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new MovieService().selectCastingListCount();
+		String keyword = null;
+		if(request.getParameter("keyword") == null) {
+			listCount = new MovieService().selectCastingListCount();
+		} else {
+			keyword = request.getParameter("keyword");
+			listCount = new MovieService().searchCastingListCount(keyword);
+		}
+		
 		currentPage = Integer.parseInt(request.getParameter("page"));
 		pageLimit = 5;
 		noticeLimit = 10;
@@ -54,11 +61,19 @@ public class MovieCastingListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, noticeLimit, maxPage, startPage, endPage);
 		
-		List<Person> list = new MovieService().selectPersonList(pi);
 		
-		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/admin/ad_movie/movieCasting.jsp").forward(request, response);
+		if(request.getParameter("keyword") == null) {
+			List<Person> list = new MovieService().selectPersonList(pi);
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/views/admin/ad_movie/movieCasting.jsp").forward(request, response);
+		} else {
+			List<Person> list = new MovieService().searchCasting(keyword, pi);
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/views/admin/ad_movie/movieCasting.jsp").forward(request, response);
+		}
+		
 				
 	}
 
