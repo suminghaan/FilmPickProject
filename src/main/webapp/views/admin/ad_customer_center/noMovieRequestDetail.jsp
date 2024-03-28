@@ -275,7 +275,7 @@ img{
             <hr>
         </div>
         
-        <form action="apporval.nm" method="post">
+        <form action="<%=contextPath %>/apporval.nm" method="post" enctype="multipart/form-data">
             <div class="all">                
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
