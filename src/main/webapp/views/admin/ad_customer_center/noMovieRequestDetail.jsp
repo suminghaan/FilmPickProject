@@ -10,6 +10,7 @@
 	List<Person> pList = (List<Person>)request.getAttribute("pList");
 	List<Category> cList = (List<Category>)request.getAttribute("cList");
 	Attachment at = (Attachment)request.getAttribute("at");
+	List<Category> cMyList = (List<Category>)request.getAttribute("cMyList");
 %>
 <!DOCTYPE html>
 <html>
@@ -278,31 +279,31 @@ img{
             <div class="all">                
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
-                    <label for="movieTitle">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="" value="<%=nm.getNmTitle()%>" style="width: 500px;">
+                    <label for="exampleFormControlInput1">영화제목</label> <br>
+                    <input type="text" class="form-control" id="mTitle" name="movieName" value="<%=nm.getNmTitle()%>" style="width: 500px;">
                 </div>
 
                 <br>
 
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1 option">영화관람등급</label>
-                    <select class="form-control" id="mGrade" name="" style="width: 400px;">
-                        <option value="1">전체관람</option>
-                        <option value="2" selected>12세 관람가</option>
-                        <option value="3">15세 관람가</option>
-                        <option value="4">청소년관람불가</option>
-                    </select>
-                </div>
+                 <div class="form-group">
+                     <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
+                     <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
+                         <option value="전체관람가">전체관람가</option>
+                         <option value="12세 관람가">12세 관람가</option>
+                         <option value="15세 관람가">15세 관람가</option>
+                         <option value="청소년 관람불가">청소년 관람불가</option>
+                     </select>
+                 </div>
                 
                 <script>
 	       			$(function(){
-	      				$("#exampleFormControlSelect1 option").each(function(){
-	      					if($(this).val() == "<%= nm.getNmViewGrade() %>"){
-	      						$(this).attr("selected", true);
-	      					};
-	      				});
-	      			});
-                </script>
+	     				$("#exampleFormControlSelect1 option").each(function(){
+	     					if($(this).val() == "<%= nm.getNmViewGrade() %>"){
+	     						$(this).attr("selected", true);
+	     					}
+	     				})
+	     			})
+	           </script>
                     
                 <br>
 
@@ -334,10 +335,11 @@ img{
 
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
-                    <input type="text" name="casting" class="form-control" style="width: 300px;">
-                    <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal">검색</button>
-                
-                	<div class="castingList">
+                    <input type="text"  class="form-control" style="width: 600px;">
+                         <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
+                     </div><br>
+
+                	 <div class="person-div">
                 		<%for(Person p : pList){ %>
 									<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
 										<table class='person-table'>
@@ -354,7 +356,7 @@ img{
 										</table>
 									<%} %>
 								<%} %>
-					</div>
+                              </div>
                 	
                 </div>
                 <br>
@@ -364,46 +366,19 @@ img{
                     <label>영화 장르 선택</label>
                     <br>
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbox1" name="category" value="SF" checked>
-                        <label class="form-check-label" for="cbox1">SF</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox2" name="category" value="스릴러">
-                        <label class="form-check-label" for="cbox2">스릴러</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox3" name="category" value="로맨스">
-                        <label class="form-check-label" for="cbox3">로맨스</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox4" name="category" value="액션" checked>
-                        <label class="form-check-label" for="cbox4">액션</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox5" name="category" value="판타지">
-                        <label class="form-check-label" for="cbox5">판타지</label>
-
-        
-                        <input class="form-check-input" type="checkbox" id="cbox6" name="category" value="코미디">
-                        <label class="form-check-label" for="cbox6">코미디</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox7" name="category" value="에로">
-                        <label class="form-check-label" for="cbox7">에로</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox8" name="category" value="범죄">
-                        <label class="form-check-label" for="cbox8">범죄</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox9" name="category" value="애니메이션">
-                        <label class="form-check-label" for="cbox9">애니메이션</label>
-
-                        <input class="form-check-input" type="checkbox" id="cbox10" name="category" value="느와르">
-                        <label class="form-check-label" for="cbox10">느와르</label>
+                  <%for(Category c : cList){ %>
+                                      <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
+                                      <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
+									<%} %>
                     </div>
                     
                     <script>
 	                   			$(function(){
-	                 				$("#catecate input").each(function(){
-	                 				<%for(int i=0; i<cList.size(); i++){%>
-	                 					if($(this).val() == "<%= cList.get(i).getCategoryNo() %>"){
-	                 						$(this).attr("checked", true);
-	                 					}
+	                   				$("#catecate input").each(function(){
+	                                      <% for(int i=0; i<cMyList.size(); i++) { %>
+	                                          if ($(this).val() == "<%= cMyList.get(i).getNoMovieCNo() %>") {
+	                                              $(this).prop("checked", true);
+	                                          }
 	                 				<%}%>
 	                 				})
 	                 			})
@@ -437,43 +412,43 @@ img{
                 <br><br>
  
                 <label>영화포스터</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile1" name="">
-                    <label class="custom-file-label" for="customFile1">파일추가</label>
-                    <img src="<%=contextPath + "/" + nm.getNmPoster()%>" alt="미리보기이미지">
-                </div>
+               <div class="custom-file updateSrc" style="color:black;">
+                                  <input type="file" class="custom-file-input" id="customFile1" name="upfile1" required value="<%=nm.getNmPoster()%>">
+                                  <label class="custom-file-label" for="customFile1" style="color:black;">파일추가</label>     
+                 </div>
 
                 <br><br>
 
-                <label>예고편영상</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile2" name="">
-                    <label class="custom-file-label" for="customFile2">파일추가</label>
-                    <img src="<%=contextPath + "/" + nm.getNmPreview()%>" alt="미리보기이미지">
-                </div>
+                 <p style="color:black;">예고편영상(필수)</p>
+                    <div class="custom-file updateSrc" style="color:black;">
+                                  <input type="file" class="custom-file-input" id="customFile2" name="upfile2" required value="<%=nm.getNmPreview()%>">
+                                  <label class="custom-file-label" for="customFile2" style="color:black;">파일추가</label>
+                        
+                    </div>
                 
                 <br><br>
 
                 <div class="form-group">
                 <label>기타 추가 희망 이미지 또는 동영상</label>
-                    <div class="custom-file">
-                                      <%if(at != null){ %>
-                                      <%= at.getOriginName() %>
-                                      <input type="file" class="custom-file-input" id="customFile3" name="upfile3" value="<%= at.getFileNo()%>">
-                                      <%} %>
-                                      <input type="file" class="custom-file-input" id="customFile3" name="upfile3">
-                                      <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
-                                      <img src="" alt="미리보기이미지">
+                     <div class="custom-file">
+		                <%if(at != null){ %>
+		                <%= at.getOriginName() %>
+		                <input type="file" class="custom-file-input" id="customFile3" name="upfile3" value="<%= at.getFileNo()%>">
+		                <%} %>
+		                <input type="file" class="custom-file-input" id="customFile3" name="upfile3">
+		                <label class="custom-file-label" for="customFile3" style="color:black;">파일추가</label>
+		                <img src="" alt="미리보기이미지">
+		            </div>
                     </div>
                 </div>
 
 
                 <br>
 
-		      <div class="form-group" style="color:black;">
-                  <h4>사용자 요청사항(선택)</h4>
-                  <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest() != null ? nm.getNmUserRequest() : ""%></textarea>
-              </div>
+		       <div class="form-group" style="color:black;">
+                   <h4>사용자 요청사항(선택)</h4>
+                   <textarea name="userRequest" cols="70" rows="8" placeholder=" 추가적인 요청사항이 있을시 작성해주세요."><%=nm.getNmUserRequest() != null ? nm.getNmUserRequest() : ""%></textarea>
+               </div>
                 <br>
                 
                 <!-- 사용자가 등록한 영화일 경우 -->
@@ -538,6 +513,8 @@ img{
                       </div>
                   </div>
               </div>
+                  
+                         
               
               <script>
               function searchPerson(){
@@ -632,6 +609,7 @@ img{
                        count--;
                    });
                });   
+
               </script>
     
 

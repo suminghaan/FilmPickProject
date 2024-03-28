@@ -37,20 +37,32 @@ public class NoMovieListDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("없는영화 신청 상세 페이지 서블릿 실행");
-		int no = Integer.parseInt(request.getParameter("no"));
-		System.out.println(no);
+		int noMovieNo = Integer.parseInt(request.getParameter("no"));
+		System.out.println(noMovieNo);
 		
-		NoMovie nm = new NoMovieService().selectNoMovieAll(no);
-		System.out.println(nm);
-		nm = new NoMovieService().selectNoMovieAll(no);
-		List<Person> pList = new NoMovieService().selectNoMoviePerson(no);
-		List<Category> cList = new NoMovieService().selectNoMovieCategory(no);
-		Attachment at = new NoMovieService().selectAttachment(no);
+		List<Category> cMyList = new NoMovieService().selectNoMovieCategory(noMovieNo);
+//		System.out.println("업데이트폼컨트롤러에서의 noMovieNo는 영화번호임 : " + noMovieNo);
+		NoMovie nm = new NoMovie();
+		// 없는영화 테이블에 값들 가져오는 구문
+		nm = new NoMovieService().selectNoMovieAll(noMovieNo);
+		// 없는영화에서 출연진 테이블에 값들 가져오는 구문
+		List<Person> pList = new NoMovieService().selectNoMoviePerson(noMovieNo);
+		// 없는영화에서 카테고리 테이블에 값들 가져오는 구문
+		List<Category> cList = new NoMovieService().selectCategory();
+		// 없는영화에서 추가적인 첨부파일 테이블에 값들 가져오는 구문
+		Attachment at = new NoMovieService().selectAttachment(noMovieNo);
+//		System.out.println("nm 값 : " + nm);
+//		System.out.println("pList 값 : " + pList);
+		System.out.println("cList 값 : " + cList);
+//		System.out.println("at 값 : " + at);
 		
+		request.setAttribute("cMyList", cMyList);
 		request.setAttribute("nm", nm);
 		request.setAttribute("pList", pList);
 		request.setAttribute("cList", cList);
 		request.setAttribute("at", at);
+		
+		
 		request.getRequestDispatcher("/views/admin/ad_customer_center/noMovieRequestDetail.jsp").forward(request, response);
 		
 		

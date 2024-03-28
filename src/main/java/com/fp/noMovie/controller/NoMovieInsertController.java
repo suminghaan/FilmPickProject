@@ -142,7 +142,7 @@ public class NoMovieInsertController extends HttpServlet {
 			
 			if(result > 0) {
 				session.setAttribute("alertMsg", "성공적으로 게시글이 등록되었습니다.");
-				response.sendRedirect(request.getContextPath() + "/list.noMv?memNo=" + nm.getMemNo());
+				response.sendRedirect(request.getContextPath() + "/list.noMv?memNo=" + nm.getMemNo() + "&page=" + 1);
 			}
 			
 		}

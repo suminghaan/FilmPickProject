@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.fp.common.model.vo.Attachment;
+import com.fp.common.model.vo.PageInfo;
 import com.fp.movie.model.vo.Category;
 import com.fp.noMovie.model.dao.NoMovieDao;
 import com.fp.noMovie.model.vo.NoMovie;
@@ -142,6 +143,28 @@ public class NoMovieService {
 		int listCount = nMDao.selectListCount(conn, memNo);
 		close(conn);
 		return listCount;
+	}
+	
+	/**
+	 * @author 호용
+	 * 총 키워드에 맞는 없는영화신청 게시글 갯수를 구하기 위한 메소드, 페이징바에 활용됨
+	 */
+	public int keywordSelectListCount(String keyword, int memNo) {
+		Connection conn = getConnection();
+		int listCount = nMDao.keywordSelectListCount(conn, keyword, memNo);
+		close(conn);
+		return listCount;
+	}
+	
+	/**
+	 * @author 호용
+	 * 키워드에 맞는 없는영화 신청현황에 담을 값을 구하기위한 메소드
+	 */
+	public List<NoMovie> selectKeywordList(PageInfo pi, String keyword, int memNo){
+		Connection conn = getConnection();
+		List<NoMovie> list = nMDao.selectKeywordList(conn, pi, keyword, memNo);
+		close(conn);
+		return list;
 	}
 	
 }

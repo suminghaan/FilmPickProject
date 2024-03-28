@@ -292,21 +292,35 @@
 		
 		<!-- 관리자 신고된게시글 검색기능 [수민] -->
 		<entry key="searchReportBoard">
-			SELECT  
-				B_NO
+			SELECT
+		        B_NO
 		      , B_REGIST_DATE
 		      , MEM_ID
 		      , B_TITLE
 		      , B_READ_COUNT
 		      , (SELECT COUNT(*) 
 		         FROM REPORT R 
-		         WHERE REPORT_REF_NO = B_NO
-		           AND BOARD_NO_TYPE = 1) REPORT
+		         WHERE BOARD_NO_TYPE=1
+		           AND REPORT_REF_NO = B_NO) REPORT
 		      , B_CATEGORY
-			FROM BOARD
-			JOIN MEMBER USING (MEM_NO)
-			JOIN REPORT ON REPORT_REF_NO = B_NO
-			WHERE B_TITLE LIKE '%' || ? || '%'
+		      , B_CONTENT
+		      , B_B_STATUS
+		      , ORIGIN_NAME
+	  	      , CHANGE_NAME 
+	  	      , FILE_PATH
+		    FROM BOARD B
+		    JOIN MEMBER USING (MEM_NO)
+		    LEFT JOIN ATTACHMENT A ON B_NO = REF_NO
+				AND A.REF_TYPE = 3
+            WHERE B_NO  IN (
+                                    SELECT REPORT_REF_NO
+                                    FROM REPORT
+                                    WHERE BOARD_NO_TYPE = 1
+                         )
+            AND B_TITLE LIKE '%' || ? || '%'
+			ORDER
+			   BY B_NO DESC
+			
 		</entry>
 		
 		<!-- 관리자 신고게시글 신고내역 조회 [수민] -->
@@ -421,22 +435,34 @@
 		
 		<!-- 관리자 신고된 댓글 검색기능 [수민] -->
 		<entry key="searchReportComment">
-			SELECT  
-				REPLY_NO
-		      , ENROLL_DATE
-		      , REPLY_CONTENT
-		      , MEM_ID
-		      , (SELECT COUNT(*) 
-		         FROM REPORT R 
-		         WHERE REPORT_REF_NO = REPLY_NO
-		           AND BOARD_NO_TYPE = 2) REPORT
-		      , B_CATEGORY
-		      , BOARD_NO
-			FROM REPLY
-			JOIN MEMBER USING (MEM_NO)
-			JOIN BOARD ON B_NO = RP.BOARD_NO
-			JOIN REPORT ON REPORT_REF_NO = REPLY_NO
-			WHERE B_TITLE LIKE '%' || ? || '%'
+			SELECT
+			    RP.REPLY_NO,
+			    RP.ENROLL_DATE,
+			    M.MEM_ID,
+			    RP.REPLY_CONTENT,
+			    (SELECT COUNT(*) 
+			     FROM REPORT
+			     WHERE BOARD_NO_TYPE= 2
+			       AND REPORT_REF_NO = RP.REPLY_NO) AS REPORT,
+			    B.B_CATEGORY,
+			    RP.REPLY_B_STATUS,
+			    RP.BOARD_NO
+			FROM 
+			    REPLY RP
+			JOIN 
+			    MEMBER M ON M.MEM_NO = RP.MEM_NO
+			JOIN 
+			    BOARD B ON B.B_NO = RP.BOARD_NO
+			WHERE 
+			    RP.REPLY_NO IN(
+			                SELECT REPORT_REF_NO
+			                FROM REPORT
+			                WHERE BOARD_NO_TYPE = 2
+			                ) 
+			AND REPLY_CONTENT LIKE '%' || ? || '%'
+			ORDER BY 
+			    B.B_NO DESC
+			
 		</entry>
 
 </properties>

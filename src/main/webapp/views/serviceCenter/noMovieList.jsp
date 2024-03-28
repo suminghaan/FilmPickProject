@@ -68,6 +68,11 @@
         font-weight: bold;
         text-align: left;
     }
+    .notice_search{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
 </style>
 </head>
 <body>
@@ -216,6 +221,13 @@
                 <li class="page-item"><a class="page-link" href="<%= contextPath%>/list.noMv?page=<%=pi.getCurrentPage()+1%>">Next</a></li>
  				<%} %>
             </ul>
+            
+            <div class="notice_search">
+                <form action="<%=contextPath%>/searchNoMovie.noMv?page=1&memNo=<%=loginMember.getMemNo()%>" method="post">
+                    <input type="text" class="notice_search_input" style="width: 400px; height: 40px;  margin-bottom: 50px;" name="searchKeyword">
+                    <button type="image" class="notice_search_btn" alt="검색">검색</button>
+                </form>
+            </div>
 
             </div> <br><br>
         </section>
@@ -235,7 +247,7 @@
             }
             
             function nomv(memNo){
-                location.href="<%=contextPath%>/list.noMv?memNo=" + memNo;
+                location.href="<%=contextPath%>/list.noMv?memNo=" + memNo + "&page=" + 1;
             }
 
             function mantoman(){
