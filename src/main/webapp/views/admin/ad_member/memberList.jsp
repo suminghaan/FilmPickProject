@@ -36,7 +36,7 @@ table{
             <h1 id="select-user-title">회원 조회</h1>
         </div>
         <hr>
-        <div class="d-flex justify-content-center container">
+         <div class="d-flex justify-content-center container">
             <span>아이디</span>&nbsp;&nbsp;&nbsp;
             <input type="text" placeholder="아이디를 입력해주세요" id="searchUserId">
             <button type="button" id="btnSearch">

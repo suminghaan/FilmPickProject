@@ -12,6 +12,7 @@
 	// 글번호,카테고리명,제목,내용,작성자아이디
 	Attachment at = (Attachment)request.getAttribute("at");
 	List<Category> cMyList = (List<Category>)request.getAttribute("cMyList");
+	int p = (int)request.getAttribute("p");
 	
 %>
 <!DOCTYPE html>
@@ -196,19 +197,19 @@
 
                               <div class="person-div">
                                 <!--테이블이 생성될 공간-->
-								<%for(Person p : pList){ %>
-									<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
+								<%for(Person per : pList){ %>
+									<%if(nm.getNmEnrollNo() == per.getNoMovieNo()){ %>
 										<table class='person-table'>
 											<tr>
-												<td><img src="<%=p.getpFile()%>"></td>
+												<td><img src="<%=per.getpFile()%>"></td>
 											</tr>
 											<tr>
-												<td style="color:black;"><%=p.getpName()%></td>
+												<td style="color:black;"><%=per.getpName()%></td>
 											</tr>
 											<tr>
-												<td><input type="text" placeholder="영화배역 입력" name="movieJob" required value="<%=p.getpJob()%>"><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>
+												<td><input type="text" placeholder="영화배역 입력" name="movieJob" required value="<%=per.getpJob()%>"><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>
 											</tr>
-											<input type="hidden" name=personNo value="<%=p.getpNo()%>">
+											<input type="hidden" name=personNo value="<%=per.getpNo()%>">
 										</table>
 									<%} %>
 								<%} %>
@@ -353,9 +354,15 @@
                       </div>
 
                   </div>
-                  <button type="button" class="btn btn-secondary backbtn" onclick="history.back();">뒤로가기</button> <br>
+                  <button type="button" class="btn btn-secondary backbtn" onclick="back('<%=loginMember.getMemNo()%>', '<%=p%>');">뒤로가기</button> <br>
               </div> 
               
+            <script>
+				function back(memNo, p){
+					location.href="<%=contextPath%>/list.noMv?memNo=" + memNo + "&page=" + p;
+				}
+			</script>
+			
               <br><br>
           <!-- /.container-fluid -->
 

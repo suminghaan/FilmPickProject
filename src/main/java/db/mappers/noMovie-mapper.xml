@@ -44,6 +44,24 @@
         ORDER BY NM.NM_ENROLL_NO DESC
 	</entry>
 	
+	<entry key="approvalNoMovieRequest">
+		INSERT INTO MOVIE VALUES( 
+				    SEQ_MOVIE_NO.NEXTVAL
+				    , ?
+				    , ?
+				    , ?
+				    , ?
+				    , ?
+				    , DEFAULT
+				    , ?
+				    , DEFAULT
+				    , DEFAULT
+				    , ?
+				    , ?
+				    , DEFAULT
+				    , SYSDATE
+				)
+	</entry>
 <!--===================================================== 김지우 : 절취선 끝 ===================================================================================================== -->
 
 	<!-- 없는영화 신청을 위한 sql문 [호용]-->
@@ -403,6 +421,8 @@
 			)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>	
+	
+	
 </properties>
 
 

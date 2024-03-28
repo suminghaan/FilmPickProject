@@ -104,9 +104,11 @@
                             <a href="<%= contextPath %>/updateForm.bo?no=<%= b.getbNo() %>" class="btn btn-outline-secondary btn-sm">수정하기</a>
                             <a href="<%=contextPath%>/delete.bo?no=<%=b.getbNo()%>" class="btn btn-outline-danger btn-sm" onclick="return deleteBo();">삭제하기</a>
                             <%} %>
-                            <%if(loginMember != null){ %>																					
-                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#boardReport" onclick="boardHidden('<%=b.getbNo()%>', '<%=loginMember.getMemNo()%>', '<%=b.getMemberNo()%>', '1');">신고하기</button>
-                            <button type="button" class="btn btn-outline-warning btn-sm" onclick="good();">추천가기</button>
+                            <%if(loginMember != null){ %>
+	                            <%if(loginMember.getMemNo() != b.getMemberNo()){ %>																					
+	                            	<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#boardReport" onclick="boardHidden('<%=b.getbNo()%>', '<%=loginMember.getMemNo()%>', '<%=b.getMemberNo()%>', '1');">신고하기</button>
+	                            <%} %>
+	                            	<button type="button" class="btn btn-outline-warning btn-sm" onclick="good();">추천하기</button>
                             <%} %>
                             <!-- ---------------------------------------------------------------- -->
                             <button type="button" class="btn btn-outline-warning btn-sm" onclick="history.back();">뒤로가기</button>
@@ -192,6 +194,8 @@
     		success:function(result){
     			if(result > 0){
     				alert("게시글을 추천하였습니다.");
+    			}else{
+    				alert("이미 추천하신 게시글입니다.");
     			}
     		},error:function(){
     			console.log("게시글 추천용 ajax실패")
@@ -214,8 +218,10 @@
     				           +  "<td>" + list[i].enrollDate + "</td>"
     				           +  "<td></td>"
     				           	  <%if(loginMember != null){%>
+    				           	  if(list[i].reMemberNo != <%=loginMember.getMemNo()%>){
     				           +  "<td><img id='img1' class='img' data-toggle='modal' data-target='#replyReport' onclick='replyHidden(" + list[i].replyNo + ", <%=loginMember.getMemNo()%>, " + list[i].reMemberNo + ", 2);' src='<%=contextPath%>/resources/img/신고버튼.png'></td>"
-    				           	   	 if(list[i].reMemberNo == <%=loginMember.getMemNo()%>){
+    				           	  }
+    				           		if(list[i].reMemberNo == <%=loginMember.getMemNo()%>){
     				           			value +=  "<td><img class='img' src='<%=contextPath%>/resources/img/삭제버튼.png' onclick='return deleteReply(" + list[i].replyNo + ");'></td>"
     				           	  	 }
     				           	  <%}%>

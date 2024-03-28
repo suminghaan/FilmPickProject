@@ -1,28 +1,25 @@
-package com.fp.noMovie.controller;
+package com.fp.admin.controller.ad_customer_center;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.movie.model.vo.Category;
-import com.fp.noMovie.model.service.NoMovieService;
+import com.fp.admin.model.service.CustomerCenterService;
 
 /**
- * Servlet implementation class NoMovieEnrollFormController
+ * Servlet implementation class NoMovieRequestDetailNoApproval
  */
-@WebServlet("/enrollForm.noMv")
-public class NoMovieEnrollFormController extends HttpServlet {
+@WebServlet("/noapproval.nm")
+public class NoMovieRequestDetailNoApproval extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoMovieEnrollFormController() {
+    public NoMovieRequestDetailNoApproval() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +28,15 @@ public class NoMovieEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int p = Integer.parseInt(request.getParameter("p"));
-		List<Category> cList = new NoMovieService().selectCategory();
-		request.setAttribute("cList", cList);
-		request.setAttribute("p", p);
-		request.getRequestDispatcher("/views/serviceCenter/noMovieContent.jsp").forward(request, response);
+		System.out.println("거절 서블릿 실행");
+		String refuseReason = request.getParameter("refuseReason");
+		
+		int result = new CustomerCenterService().insertRefuseReason(refuseReason);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "거절 처리 완료되었습니다.");
+			response.sendRedirect(request.getContextPath() + )
+		}
 	}
 
 	/**

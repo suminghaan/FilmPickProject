@@ -709,15 +709,19 @@ img{
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
+            <form method="<%=contextPath%>/noapproval.nm" action="post">
             <div class="modal-body">
+            <!-- 없는영화신청번호 -->
                 <div class="container" style="margin-top: 10px; margin-bottom: 20px;">
                     <span class="modal-text">거절사유</span>
-                    <span><textarea rows="5" style="resize:none;" placeholder="내용을 입력해주세요" class="form-control"></textarea></span>
+                    <span><textarea rows="5" style="resize:none;" name="refuseReason" placeholder="내용을 입력해주세요" class="form-control"></textarea></span>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center ">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="alert('거절사유 작성이 완료되었습니다.')">작성</button>
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal" onclick="alert('거절사유 작성이 완료되었습니다.')">작성</button>
+            
             </div>
+            </form>
         </div>
         </div>
     </div>

@@ -459,6 +459,23 @@ public class MemberService {
 
 		return result;
 	}
+	
+	/**
+	 * @author 호용
+	 * 이용제한회원 이용제한일 변경을 위한 메소드
+	 */
+	public int changeDate(int memNo, String changeDate) {
+		Connection conn = getConnection();
+		int result = rDao.changeDate(conn, memNo, changeDate);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		System.out.println("서비스단에서의 memNo : " + memNo);
+		System.out.println("서비스단에서의 changeDate : " + changeDate);
+		return result;
+	}
 
 
 

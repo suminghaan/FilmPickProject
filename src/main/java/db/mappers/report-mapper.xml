@@ -69,6 +69,8 @@
 		                           END AS SUSPEND_DATE
                                  , DECODE(R.REPORT_TYPE, 1, '욕설', 2, '도배', 3, '선정', '기타') AS REPORT_CONTENT 
                                  , (NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '0')) AS ACTIVTIY_STATUS
+                                 , M.NICKNAME AS NICKNAME
+                                 , ADMIN_NO
 		                         FROM MEMBER M
                                  JOIN REPORT R ON (M.MEM_NO = R.REPORTED_MEM_NO)
 		                         JOIN REPORTED_MEM RM USING (MEM_NO)
@@ -115,4 +117,12 @@
 		JOIN MEMBER M USING (MEM_NO)
 	</entry>
 <!-- ======================== 용훈 =========================================== -->
+
+<!-- ======================== 호용 =========================================== -->
+	<!-- 이용제한회원 이용제한일 변경을 위한 메소드 -->
+	<entry key="changeDate">
+		UPDATE REPORTED_MEM
+		   SET END_DATE = TO_CHAR((TO_DATE(START_DATE) + ?), 'YYYY-MM-DD')
+		 WHERE MEM_NO = ?
+	</entry>
 </properties>

@@ -34,7 +34,16 @@ public class AjaxBoardGoodController extends HttpServlet {
 		
 		int boardNo = Integer.parseInt(request.getParameter("bNo"));
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
-		int result = new BoardService().good(boardNo, memNo);
+		int resultCount = 0; // 추천했는지 검사하는 변수
+		int result = 0; 
+		
+		resultCount = new BoardService().selectCount(boardNo, memNo);
+		System.out.println(resultCount);
+		
+		if(resultCount == 0) {
+			result = new BoardService().good(boardNo, memNo);
+		}
+
 		response.getWriter().print(result);
 
 	}

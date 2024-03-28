@@ -5,6 +5,7 @@
 <%@ page import="java.util.List" %>
 <%
 	List<Category> cList = (List<Category>)request.getAttribute("cList");
+	int p = (int)request.getAttribute("p");
 %>
 <!DOCTYPE html>
 <html>
@@ -277,9 +278,13 @@
                       </div>
 
                   </div>
-                  <button type="button" class="btn btn-secondary backbtn" onclick="history.back();">뒤로가기</button> <br>
+                  <button type="button" class="btn btn-secondary backbtn" onclick="back('<%=loginMember.getMemNo()%>', '<%=p%>');">뒤로가기</button> <br>
               </div> 
-              
+			<script>
+				function back(memNo, p){
+					location.href="<%=contextPath%>/list.noMv?memNo=" + memNo + "&page=" + p;
+				}
+			</script>
               <br><br>
           <!-- /.container-fluid -->
 

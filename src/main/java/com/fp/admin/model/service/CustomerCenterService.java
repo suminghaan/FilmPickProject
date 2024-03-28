@@ -111,6 +111,19 @@ public class CustomerCenterService {
 		return result;
 	}
 
+	public int approvalNoMovieRequest(String movieName, String viewGrade, String mContent, String openDate, String runningTime, String nation, String upfile1, String upfile2) {
+		Connection conn = getConnection();
+		
+		int result = cDao.approvalNoMovieRequest(conn, movieName, viewGrade, mContent, openDate, runningTime, nation, upfile1, upfile2);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 	
 
 
