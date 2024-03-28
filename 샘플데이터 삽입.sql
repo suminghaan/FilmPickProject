@@ -4691,4 +4691,83 @@ SET B_RECOMMEND_COUNT = B_RECOMMEND_COUNT + 1
 WHERE B_NO = FLOOR(DBMS_RANDOM.VALUE(1, 601)) -- 1부터 600까지의 랜덤한 숫자를 생성합니다.
 AND B_D_STATUS = 'N';
 
+----------------- 리뷰 데이터 생성
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , '가상현실의 세계를 어떻게 영화화할 수 있을까에 대한 해답을 제시한 선구자인 작품.제임스 카메론의 아바타와 함께 영화사에 기술적 진보로 영원히 기억되어야 할 클래식.'
+    , SYSDATE
+    , 5
+    , 10
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , '중간에 살짝 지루해서 0.5점 4.5점 드립니다. cg진짜 실제같아서 놀램. 건담 개멋짐.'
+    , SYSDATE
+    , 4.5
+    , 12
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , ' IOI의 규모치고는 이스터 에그가 너무 쉬웠다. 내가 한국인이라 그런가?'
+    , SYSDATE
+    , 4
+    , 14
+    , 28
+    , DEFAULT
+);
+
+
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , '진짜 개미친 영화. 트랜스포머1을 처음 봤을 때의 그 알수앖는 감동과 전율을 다시 느낀듯하다. 엄청난 영화. 영화 퀄리티에 더해 유머까지 있어 정말 즐기면서 볼수있었다. 매우 짧은 두시간이었다. 강력추천 ㄹㅇ'
+    , SYSDATE
+    , 4
+    , 16
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , '차를 뒤로 주행할 때부터 이건 명작이란걸 느꼈다.'
+    , SYSDATE
+    , 5
+    , 18
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , '주제로만4점을 먹고 들어감. 초반30분은 센세이션..그러나 뒤로 갈수록 유치해져서 매우 아쉬움'
+    , SYSDATE
+    , 4.5
+    , 20
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO MV_REVIEW_NO
+VALUES (
+    SEQ_MV_REVIEW_NO.NEXTVAL
+    , '실제 온라인게임 해본사람들은 스토리가 왜 말이안되는지 암.. 겜을 아무리어렵게 만들어도 유저들 다깬다 이스터에그 이런것두 못찾는게 없음.. 아예 노가다컨텐츠로 만드는방법바께 없음 ㅋ 그래두 영화가 던지는 메세지, 시각효과랑 콜라보캐릭들 나올땐 잼있엏다'
+    , SYSDATE
+    , 4
+    , 22
+    , 28
+    , DEFAULT
+);
+
 commit;
