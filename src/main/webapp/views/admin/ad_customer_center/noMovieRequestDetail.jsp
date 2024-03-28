@@ -336,29 +336,23 @@ img{
                 <div class="form-group psButton-body">
                     <label>출연/제작</label>
                     <input type="text"  class="form-control" style="width: 600px;">
-                         <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
-                     </div><br>
+                    <button type="button" class="btn btn-secondary btn-sm psButton" data-toggle="modal" data-target="#searchModal" style="margin-right: 715px;">검색</button>
+                </div><br>
 
-                	 <div class="person-div">
-                		<%for(Person p : pList){ %>
-									<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
-										<table class='person-table'>
-											<tr>
-												<td><img src="<%=p.getpFile()%>"></td>
-											</tr>
-											<tr>
-												<td style="color:black;"><%=p.getpName()%></td>
-											</tr>
-											<tr>
-												<td><input type="text" placeholder="영화배역 입력" name="movieJob" required value="<%=p.getpJob()%>"><button type="button" class="btn btn-outline-secondary" style="float: right;" id="personRemoveBtnBtn">제거</button></td>
-											</tr>
-											<input type="hidden" name=personNo value="<%=p.getpNo()%>">
-										</table>
-									<%} %>
-								<%} %>
-                              </div>
+                
+               	<%for(Person p : pList){ %>
+               		<div class="castingList">
+						<%if(nm.getNmEnrollNo() == p.getNoMovieNo()){ %>
+							<div class="person">
+	                		<input type="hidden" name="personNo" value="<%=p.getpNo()%>">
+		                    <img src="<%=p.getpFile() %>"> <%=p.getpName() %> <br>
+		                    <input type="text" name="movieJob" class="casting" value="<%=p.getCasting()%>">
+		                    </div>		                  
+						<%} %>					
+                	</div>
+                 <%} %>
                 	
-                </div>
+                
                 <br>
 
 
@@ -367,23 +361,25 @@ img{
                     <br>
 
                   <%for(Category c : cList){ %>
-                                      <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
-                                      <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
-									<%} %>
-                    </div>
+                    	<% if(c.getCategoryStatus().equals("Y")){ %>                 
+                            <input class="form-check-input" type="checkbox" id="<%=c.getCategoryNo()%>" value="<%=c.getCategoryNo()%>" name="category">
+                            <label class="form-check-label" for="<%=c.getCategoryNo()%>"><%=c.getCategoryName() %></label>
+						<%} %>
+				<%} %>
+                </div>
                     
                     <script>
-	                   			$(function(){
-	                   				$("#catecate input").each(function(){
-	                                      <% for(int i=0; i<cMyList.size(); i++) { %>
-	                                          if ($(this).val() == "<%= cMyList.get(i).getNoMovieCNo() %>") {
-	                                              $(this).prop("checked", true);
-	                                          }
-	                 				<%}%>
-	                 				})
-	                 			})
-                              </script>
-                </div>
+             			$(function(){
+             				$("#catecate input").each(function(){
+                                <% for(int i=0; i<cMyList.size(); i++) { %>
+                                    if ($(this).val() == "<%= cMyList.get(i).getNoMovieCNo() %>") {
+                                        $(this).prop("checked", true);
+                                    }
+           				<%}%>
+           				})
+           			})
+                    </script>
+                
                 <br>
                 
 
@@ -459,15 +455,17 @@ img{
                         <p><label>등록한 영화 갯수 : </label>13번</p>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            
+        
+    
         <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
         <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button>    
         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#recognizeModal" style="margin-right: 10px;">승인</button>
         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button>   
     	</div>
-  </div>
+  	</div>
+  </form>
+ 
     
 
     <!-- 인물검색 Modal -->
