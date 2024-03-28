@@ -52,32 +52,47 @@
 	
 	<!-- 이용제한회원 조회, 페이징용 쿼리 -->
 	<entry key="selectRestrictedMemberList">
-		SELECT *
-		    FROM(
-		        SELECT ROWNUM RNUM, A.*
-		        FROM (
-		                  SELECT DISTINCT MEM_NO
-		                         , MEM_ID
-		                         , LIMIT_REASON
-		                         , CASE
-		                               WHEN ACTIVITY_STATUS = 'B' THEN '강제탈퇴'
-		                               WHEN ACTIVITY_STATUS = 'S' THEN '활동중지 ' || NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '-') || '일'
-		                           END AS ACTIVITY_STATUS
-		                         , CASE
-		                               WHEN ACTIVITY_STATUS = 'B' THEN '-'
-		                               ELSE START_DATE || ' - ' || END_DATE
-		                           END AS SUSPEND_DATE
-                                 , DECODE(R.REPORT_TYPE, 1, '욕설', 2, '도배', 3, '선정', '기타') AS REPORT_CONTENT 
-                                 , (NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '0')) AS ACTIVTIY_STATUS
-                                 , M.NICKNAME AS NICKNAME
-                                 , ADMIN_NO
-		                         FROM MEMBER M
-                                 JOIN REPORT R ON (M.MEM_NO = R.REPORTED_MEM_NO)
-		                         JOIN REPORTED_MEM RM USING (MEM_NO)
-		                         ORDER BY MEM_NO DESC
-		        ) A
-		)
-		WHERE RNUM BETWEEN ? AND ?
+		SELECT ORS.*
+           FROM (
+                 WITH ORDER_RS AS (
+                    SELECT
+                        ROW_NUMBER() OVER (PARTITION BY MEM_NO ORDER BY MEM_NO DESC) AS RNUM,
+                        MEM_NO
+                     , MEM_ID
+                     , LIMIT_REASON
+                     , CASE
+                           WHEN ACTIVITY_STATUS = 'B' THEN '강제탈퇴'
+                           WHEN ACTIVITY_STATUS = 'S' THEN '활동중지 ' || NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '-') || '일'
+                       END AS ACTIVITY_STATUS
+                     , CASE
+                           WHEN ACTIVITY_STATUS = 'B' THEN '-'
+                           ELSE START_DATE || ' - ' || END_DATE
+                       END AS SUSPEND_DATE
+                     , DECODE(R.REPORT_TYPE, 1, '욕설', 2, '도배', 3, '선정', '기타') AS REPORT_CONTENT 
+                     , (NVL(TO_CHAR(TO_DATE(END_DATE) - TO_DATE(START_DATE) + 1), '0')) AS ACTIVTIY_STATUS
+                     , M.NICKNAME AS NICKNAME
+                     , ADMIN_NO
+                     FROM MEMBER M
+                     JOIN REPORT R ON (M.MEM_NO = R.REPORTED_MEM_NO)
+                     JOIN REPORTED_MEM RM USING (MEM_NO)
+                )
+                SELECT
+                    RNUM,
+                    MEM_NO,
+                    MEM_ID,
+                    LIMIT_REASON,
+                    ACTIVITY_STATUS,
+                    SUSPEND_DATE,
+                    REPORT_CONTENT,
+                    ACTIVTIY_STATUS,
+                    NICKNAME,
+                    ADMIN_NO
+                FROM
+                    ORDER_RS
+                WHERE
+                    RNUM = 1
+                 )ORS
+          WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="insertReportedMem">
