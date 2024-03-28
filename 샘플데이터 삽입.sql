@@ -1575,6 +1575,90 @@ VALUES (
 INSERT INTO ATTACHMENT 
 VALUES (
     SEQ_ATTACHMENT_NO.NEXTVAL,
+    '엔드게임 추가사진3.jpg',
+    '19892309120523_88624.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    23
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '엔드게임 추가사진1.jpg',
+    '19892309120523_88625.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    23
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '엔드게임 추가사진2.jpg',
+    '19892309120523_88626.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    23
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '비키퍼 추가사진1.jpg',
+    '19892309120523_88627.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    45
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '비키퍼 추가사진2.jpg',
+    '19892309120523_88628.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    45
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
+    '비키퍼 추가사진3.jpg',
+    '19892309120523_88629.jpg',
+    SYSDATE,
+    1,
+    'resources/upfiles/',
+    2,
+    'Y',
+    '1',
+    45
+);
+
+INSERT INTO ATTACHMENT 
+VALUES (
+    SEQ_ATTACHMENT_NO.NEXTVAL,
     '스티븐스필버그.webp',
     '20080321154832_77889.webp',
     SYSDATE,
@@ -1810,7 +1894,7 @@ SELECT SEQ_REVIEW_NO.NEXTVAL,
        MEM.MEM_NO,
        MOV.MV_NO
 FROM (SELECT LEVEL AS MEM_NO FROM dual CONNECT BY LEVEL <= 30) MEM,
-     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 82 AND LEVEL != 28) MOV
+     (SELECT LEVEL AS MV_NO FROM dual CONNECT BY LEVEL <= 82 AND LEVEL != 28 AND LEVEL != 44 AND LEVEL != 45 AND LEVEL != 46 AND LEVEL != 47 AND LEVEL != 42 AND LEVEL != 43) MOV
 WHERE NOT EXISTS (
     SELECT 1
     FROM REVIEW
@@ -1845,32 +1929,6 @@ AND ROWNUM <= 400;  -- 400개의 샘플 데이터 생성
 --    )
 --)
 --WHERE ROWNUM <= 2000;  -- 최종 2500개의 샘플 데이터 생성
-
--- 공감/비공감을 표시하는 샘플 데이터 생성
-INSERT INTO APPROVAL (APPROVAL_NO, APPROVAL_TYPE, MEM_NO, MV_REVIEW_NO)
-SELECT SEQ_APPROVAL_NO.NEXTVAL,
-       CASE WHEN dbms_random.value(0, 1) < 0.5 THEN 1 ELSE 2 END, -- 50% 확률로 공감(1) 또는 비공감(2) 지정
-       MEM_NO,
-       MV_REVIEW_NO
-FROM (
-    SELECT MEM_NO,
-           MV_NO AS MV_REVIEW_NO
-    FROM (
-        SELECT LEVEL AS MEM_NO
-        FROM dual
-        CONNECT BY LEVEL <= 30
-    ) m,
-    (
-        SELECT LEVEL AS MV_NO
-        FROM dual
-        CONNECT BY LEVEL <= 400
-    ) r
-)
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM APPROVAL a
-    WHERE a.MEM_NO = MEM_NO AND a.MV_REVIEW_NO = MV_REVIEW_NO
-) AND ROWNUM <= 2000;  -- 2000개의 샘플 데이터 생성
 
 INSERT INTO MOVIE_CATEGORY
 VALUES (
@@ -2213,12 +2271,6 @@ VALUES (
     SEQ_MOVIE_CATEGORY_NO.NEXTVAL
     , 27
     , 8
-);
-INSERT INTO MOVIE_CATEGORY
-VALUES (
-    SEQ_MOVIE_CATEGORY_NO.NEXTVAL
-    , 28
-    , 6
 );
 INSERT INTO MOVIE_CATEGORY
 VALUES (
@@ -4565,6 +4617,7 @@ VALUES (
     , 85
 );
 
+
 -- 없는영화신청 테이블에 샘플데이터 삽입 (김지우)
 INSERT INTO NO_MOVIE_ENROLL
 VALUES (
@@ -4987,6 +5040,17 @@ VALUES (
 INSERT INTO REVIEW
 VALUES (
     SEQ_REVIEW_NO.NEXTVAL
+    , '일단 눈이 너무 즐겁다. 각종 영화, 게임 등에 나온 캐릭터들이 많이 나와서 나올 때마다 반가운 마음. 노래도 좋고 진짜 최고!'
+    , SYSDATE
+    , 5
+    , 23
+    , 28
+    , DEFAULT
+);
+
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
     , '애니매이션에 게임 보는거다'
     , SYSDATE
     , 1
@@ -5006,6 +5070,54 @@ VALUES (
     , DEFAULT
 );
 
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , ' 공성전 액션 ㄹㅇ 대박임 할리웃 액션 영화 안부러움 액션으로 막 빠르게 나가다가도 배우들 깨알 케미 웃음포인트가 있어서 중간중간 쉬어가는 타임도 있고 완급조절이 잘 된 듯'
+    , SYSDATE
+    , 5
+    , 23
+    , 27
+    , DEFAULT
+);
+
+INSERT INTO REVIEW
+VALUES (
+    SEQ_REVIEW_NO.NEXTVAL
+    , '다수의 관객들이 "나는 박사장의 계층도, 기택의 반지하 계층에도 들지는 않는다"고 안도할 수 있을까요? 우리는 모두 나보다 낮은 계층의 사람들을 향해 냄새가 난다고 속으로 깔보는 두 얼굴을 가진 건 아닐까요? ... 영화 정말 훌륭합니다.'
+    , SYSDATE
+    , 5
+    , 23
+    , 21
+    , DEFAULT
+);
+
+-- 공감/비공감을 표시하는 샘플 데이터 생성
+INSERT INTO APPROVAL (APPROVAL_NO, APPROVAL_TYPE, MEM_NO, MV_REVIEW_NO)
+SELECT SEQ_APPROVAL_NO.NEXTVAL,
+       CASE WHEN dbms_random.value(0, 1) < 0.5 THEN 1 ELSE 2 END, -- 50% 확률로 공감(1) 또는 비공감(2) 지정
+       MEM_NO,
+       MV_REVIEW_NO
+FROM (
+    SELECT MEM_NO,
+           MV_NO AS MV_REVIEW_NO
+    FROM (
+        SELECT LEVEL AS MEM_NO
+        FROM dual
+        CONNECT BY LEVEL <= 30
+    ) m,
+    (
+        SELECT LEVEL AS MV_NO
+        FROM dual
+        CONNECT BY LEVEL <= 416
+    ) r
+)
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM APPROVAL a
+    WHERE a.MEM_NO = MEM_NO AND a.MV_REVIEW_NO = MV_REVIEW_NO
+) AND ROWNUM <= 2000;  -- 2000개의 샘플 데이터 생성
+
 UPDATE CANCELED_MEM
 SET CANCEL_DATE = '2024-03-01'
 WHERE MEM_NO = 1 OR MEM_NO = 3;
@@ -5024,3 +5136,99 @@ WHERE MEM_NO = 11;
 
 SELECT * FROM CANCELED_MEM;
 commit;
+
+-------------------비키퍼 인물추가
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '데이비드 에이어'
+    , '감독'
+    , '1968-01-18'
+    , '미국'
+    , 'resources/upfiles/19301111155232_77189.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '제이슨 스타뎀'
+    , '배우, 프로듀서'
+    , '1967-07-26'
+    , '영국'
+    , 'resources/upfiles/19301111155232_77190.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '제레미 아이언스'
+    , '배우, 모델'
+    , '1948-09-19'
+    , '영국'
+    , 'resources/upfiles/19301111155232_77191.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '조시 허처슨'
+    , '배우'
+    , '1992-10-12'
+    , '미국'
+    , 'resources/upfiles/19301111155232_77192.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '에미 레이버램프먼'
+    , '배우'
+    , '1988-09-5'
+    , '미국'
+    , 'resources/upfiles/19301111155232_77193.jpg'
+    , DEFAULT
+);
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '감독'
+    , 45
+    , 91
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '애덤 클레이'
+    , 45
+    , 92
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '킬모어'
+    , 45
+    , 93
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '데릭'
+    , 45
+    , 94
+);
+
+INSERT INTO CASTING
+VALUES (
+    SEQ_CASTING_NO.NEXTVAL
+    , '에이미'
+    , 45
+    , 95
+);
+---------------비키퍼 인물 추가 끝
