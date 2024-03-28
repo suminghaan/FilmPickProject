@@ -18,6 +18,8 @@
 <meta charset="UTF-8">
 <title>없는영화 신청 확인 </title>
 <style>
+
+
 #header {
   height: 100px;
   position: fixed;
@@ -552,7 +554,7 @@ img{
         <div class="container d-flex justify-content-end" style="margin-top: 30px; margin-bottom: 30px;">
         <!-- <button type="button" class="btn btn-secondary btn-sm" onclick="alert('수정이 완료되었습니다.');" style="margin-right: 10px;">수정</button> -->    
         <button type="submit" class="btn btn-secondary btn-sm" style="margin-right: 10px;">승인</button>
-        <!-- <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#refuseModal">거절</button> -->   
+        <button type="button" class="btn btn-secondary btn-sm" onclick="btnRefuse();">거절</button>    
        </div>
        </form>
        </section>
@@ -751,5 +753,12 @@ img{
         </div>
         </div>
     </div>
+    
+    <script>
+    	function btnRefuse(){
+    		alert('거절 처리가 완료되었습니다.');
+    		location.href = '<%=contextPath%>/list.nm?page=1';
+    	};
+    </script>
 </body>
 </html>

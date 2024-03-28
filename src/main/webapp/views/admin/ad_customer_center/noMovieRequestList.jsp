@@ -13,6 +13,11 @@
 <meta charset="UTF-8">
 <title>없는영화 신청 목록</title>
 <style>
+
+.story{
+	overflow: auto;
+}
+
 #select-user-title{
     margin-top: 50px;
 }
