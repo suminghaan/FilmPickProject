@@ -3683,6 +3683,65 @@ VALUES (
     , DEFAULT
 );
 
+------------수밍 시연 준비 인물데이터 추가----------
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '최동훈'
+    , '감독'
+    , '1971-02-24'
+    , '한국'
+    , 'resources/upfiles/20080321154838_71589.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '류준열'
+    , '배우'
+    , '1986-09-25'
+    , '한국'
+    , 'resources/upfiles/20180322154818_11889.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김태리'
+    , '배우'
+    , '1990-04-24'
+    , '한국'
+    , 'resources/upfiles/20210322154818_21831.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '김우빈'
+    , '배우'
+    , '1989-07-16'
+    , '한국'
+    , 'resources/upfiles/20110412154818_21811.webp'
+    , DEFAULT
+);
+
+INSERT INTO PERSON
+VALUES (
+    SEQ_PERSON_NO.NEXTVAL
+    , '이하늬'
+    , '배우'
+    , '1983-03-02'
+    , '한국'
+    , 'resources/upfiles/20170412154818_21261.webp'
+    , DEFAULT
+);
+
+
+
+
 ------------------ CASTING 데이터 추가
 INSERT INTO CASTING
 VALUES (
