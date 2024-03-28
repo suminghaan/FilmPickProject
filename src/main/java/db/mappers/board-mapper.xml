@@ -643,4 +643,12 @@
    		 WHERE REPLY_NO = ? 
    </entry>
    
+   <!-- 사용자의 추천하기 정보를 조회하는 sql[호용] -->
+   <entry key="selectCount">
+   		SELECT COUNT(*) COUNT
+   		  FROM RECOMMEND
+   		 WHERE B_NO = ? <!-- 게시글번호 -->
+   		   AND MEM_NO = ? <!-- 회원번호 -->
+   </entry>
+   
 </properties>

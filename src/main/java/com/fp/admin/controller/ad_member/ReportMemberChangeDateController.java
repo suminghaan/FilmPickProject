@@ -1,7 +1,6 @@
-package com.fp.noMovie.controller;
+package com.fp.admin.controller.ad_member;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fp.movie.model.vo.Category;
-import com.fp.noMovie.model.service.NoMovieService;
+import com.fp.admin.model.service.MemberService;
 
 /**
- * Servlet implementation class NoMovieEnrollFormController
+ * Servlet implementation class ReportMemberChangeDateController
  */
-@WebServlet("/enrollForm.noMv")
-public class NoMovieEnrollFormController extends HttpServlet {
+@WebServlet("/changeDate.re")
+public class ReportMemberChangeDateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoMovieEnrollFormController() {
+    public ReportMemberChangeDateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +29,14 @@ public class NoMovieEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int p = Integer.parseInt(request.getParameter("p"));
-		List<Category> cList = new NoMovieService().selectCategory();
-		request.setAttribute("cList", cList);
-		request.setAttribute("p", p);
-		request.getRequestDispatcher("/views/serviceCenter/noMovieContent.jsp").forward(request, response);
+		int memNo = Integer.parseInt(request.getParameter("memNo"));
+		String changeDate = request.getParameter("opValue");
+		System.out.println("서블릿단에서의 memNo : " + memNo);
+		System.out.println("서블릿단에서의 changeDate : " + changeDate);
+		int result = new MemberService().changeDate(memNo, changeDate);
+		if(result > 0) {
+			response.getWriter().print(result);
+		}
 	}
 
 	/**

@@ -189,7 +189,7 @@
                                 <%}else{ %>
                                 <textarea class="form-control comment" rows="6" readonly>처리중입니다.</textarea> <br><br>
                                 <%} %>
-                                <a href="<%=contextPath%>/updateForm.noMo?no=<%=nm.getNmEnrollNo()%>" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
+                                <a href="<%=contextPath%>/updateForm.noMo?no=<%=nm.getNmEnrollNo()%>&p=<%=pi.getCurrentPage()%>" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
                             </td>
                         </tr>
                         <%} %>
@@ -198,7 +198,7 @@
                 </table>
                 <br>
                 <!-- 추후 수정 -->
-                <a href="<%=contextPath%>/enrollForm.noMv" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
+                <a href="<%=contextPath%>/enrollForm.noMv?p=<%=pi.getCurrentPage()%>" class="btn btn-secondary" style="margin-left: 1150px;">신청하기</a>
 
             <ul class="pagination justify-content-center" style="margin-top: 10px;">
             	<% if(pi.getCurrentPage() == 1){ %>

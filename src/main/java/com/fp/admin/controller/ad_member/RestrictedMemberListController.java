@@ -61,6 +61,7 @@ public class RestrictedMemberListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		List<ReportedMember> pageList = new MemberService().selectRestrictedMemberList(pi);
+		System.out.println(pageList);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("pageList", pageList);

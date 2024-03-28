@@ -156,7 +156,8 @@ public class ReportMemberDao {
 			while (rset.next()) {
 				list.add(new ReportedMember(rset.getInt("MEM_NO"), rset.getString("MEM_ID"),
 						rset.getString("LIMIT_REASON"), rset.getString("ACTIVITY_STATUS"),
-						rset.getString("SUSPEND_DATE")));
+						rset.getString("SUSPEND_DATE"), rset.getString("NICKNAME"),
+						rset.getInt("ADMIN_NO")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -357,6 +358,25 @@ public class ReportMemberDao {
 			close(pstmt);
 		}
 
+		return result;
+	}
+	
+	public int changeDate(Connection conn, int memNo, String changeDate) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("changeDate");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, changeDate);
+			pstmt.setInt(2, memNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("Dao단에서의 memNo : " + memNo);
+		System.out.println("Dao단에서의 changeDate : " + changeDate);
 		return result;
 	}
 }

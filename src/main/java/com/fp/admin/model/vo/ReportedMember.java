@@ -10,6 +10,7 @@ public class ReportedMember { // reported_mem 테이블
 	private String memId; // 회원 아이디
 	private String suspendDate; // 이용제한 회원 조회 페이지에서 표시할 활동중지 기간
 	private int endDateNum; // 신고회원관리 활동중지에 사용할 필드
+	private String memNickName; // 신고당한 회원 닉네임[호용]
 	
 	public ReportedMember() {}
 
@@ -21,6 +22,17 @@ public class ReportedMember { // reported_mem 테이블
 		this.limitReason = limitReason;
 		this.activityStatus = activityStatus;
 		this.suspendDate = suspendDate;
+	}
+	
+	public ReportedMember(int memNo, String memId, String limitReason, String activityStatus, String suspendDate, String memNickName, int adminNo) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.limitReason = limitReason;
+		this.activityStatus = activityStatus;
+		this.suspendDate = suspendDate;
+		this.memNickName = memNickName;
+		this.adminNo = adminNo;
 	}
 
 	public ReportedMember(int memNo, int adminNo, String limitReason, String startDate, String endDate,
@@ -37,6 +49,14 @@ public class ReportedMember { // reported_mem 테이블
 		this.endDateNum = endDateNum;
 	}
 
+	public String getMemNickName() {
+		return memNickName;
+	}
+	
+	public void setMemNickName(String memNickName) {
+		this.memNickName = memNickName;
+	}
+	
 	public int getMemNo() {
 		return memNo;
 	}
