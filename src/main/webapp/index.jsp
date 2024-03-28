@@ -34,6 +34,7 @@
     .content_img{
     	width: 400px;
     	height: 570px;
+    	border-radius: 10px;
     }
     .logo{
         margin: 30px;
