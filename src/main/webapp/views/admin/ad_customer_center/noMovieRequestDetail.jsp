@@ -295,14 +295,14 @@ img{
                 <div class="form-group">
                 <input type="hidden" name="noMovieNo" value="<%=nm.getNmEnrollNo()%>">
                     <label for="exampleFormControlInput1">영화제목</label> <br>
-                    <input type="text" class="form-control" id="mTitle" name="movieName" value="<%=nm.getNmTitle()%>" style="width: 500px;">
+                    <input type="text" class="form-control" id="mTitle" name="mTitle" value="<%=nm.getNmTitle()%>" style="width: 500px;">
                 </div>
 
                 <br>
 
                  <div class="form-group">
                      <label for="exampleFormControlSelect1" style="color:black;">영화관람등급(필수)</label>
-                     <select class="form-control" id="exampleFormControlSelect1" name="viewGrade" style="width: 600px;" required>
+                     <select class="form-control" id="exampleFormControlSelect1" name="mGrade" style="width: 600px;" required>
                          <option value="전체관람가">전체관람가</option>
                          <option value="12세 관람가">12세 관람가</option>
                          <option value="15세 관람가">15세 관람가</option>
@@ -336,11 +336,11 @@ img{
                 
                    <div>
                        <label>개봉일</label>
-                       <input type="date" name="dateIn" class="form-control" style="width: 300px;" value="<%=nm.getNmReleaseDate()%>">
+                       <input type="date" name="openDate" class="form-control" style="width: 300px;" value="<%=nm.getNmReleaseDate()%>">
                     </div>
                     <div>
                        <label>러닝타임</label>
-                       <input type="text" name="runningTime" class="form-control" style="width: 300px;" value="<%=nm.getNmRunTime()%>">
+                       <input type="text" name="runTime" class="form-control" style="width: 300px;" value="<%=nm.getNmRunTime()%>">
                    </div>
                 </div>
                 <br>
@@ -479,6 +479,16 @@ img{
 
                 <br>
 
+			 <div class="form-group">
+                    <label>현재 상영여부 : </label>
+                    <br>
+                    <input type="radio" id="radioX" name="currentScreening" value="N" checked> 
+                    <label for="radioX">현재 미상영</label>
+
+                    <input type="radio" id="radioM" name="currentScreening" value="Y">
+                    <label for="radioM">상영중</label>
+                	
+                </div>
 			
              <div class="form-group" style="color:black;">
                    <h4>사용자 요청사항</h4>
