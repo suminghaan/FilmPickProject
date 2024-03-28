@@ -178,8 +178,7 @@ table{
 	                		console.log(cml);
 		                	value += "<tr>"
 		                        + "<td>" + cml[i].memNo + "</td>"
-		                        + "<td>" + (cml[i].getAdminNo() == '' ? "자진탈퇴" : cml.getAdminNo()) + "</td>"
-		                        + "<td>" + cml[i].adminNo + "</td>"
+		                        + "<td>" + (cml[i].adminNo == null ? "자진탈퇴" : cml[i].adminNo) + "</td>"
 		                        + "<td>" + cml[i].cancelDate + "</td>"
 		                    + "</tr>";
 	                    }
