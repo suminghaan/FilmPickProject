@@ -134,9 +134,9 @@ public class MovieService {
 	}
 
 	// 영화 인물 관리 목록 조회 페이징
-		public int selectCastingListCount() {
-			Connection conn = JDBCTemplate.getConnection();
-			int listCount = mDao.selectCastingListCount(conn);
+		public int searchCastingListCount(String keyword) {
+			Connection conn = getConnection();
+			int listCount = mDao.searchCastingListCount(conn, keyword);
 			close(conn);
 			return listCount;
 		}
@@ -150,9 +150,9 @@ public class MovieService {
 	}
 
 	// 인물관리_검색
-	public List<Person> searchCasting(String keyword) {
+	public List<Person> searchCasting(String keyword, PageInfo pi) {
 		Connection conn = getConnection();
-		List<Person> list = mDao.searchCasting(conn, keyword);
+		List<Person> list = mDao.searchCasting(conn, keyword, pi);
 		close(conn);
 		return list;
 	}
@@ -287,6 +287,13 @@ public class MovieService {
 		}
 		
 		int result = result1 * result2 * result3 + result4;
+		return result;
+	}
+//	전체 인물 조회하는 메소드
+	public int selectCastingListCount() {
+		Connection conn = getConnection();
+		int result = mDao.selectCastingListCount(conn);
+		close(conn);
 		return result;
 	}
 

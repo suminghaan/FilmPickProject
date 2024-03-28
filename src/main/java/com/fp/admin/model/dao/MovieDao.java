@@ -335,15 +335,16 @@ public class MovieDao {
 	}
 	
 	// 인물 조회 리스트 페이징
-		public int selectCastingListCount(Connection conn) {
+		public int searchCastingListCount(Connection conn, String keyword) {
 			int listCount = 0;
 			
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
-			String sql = prop.getProperty("selectCastingListCount");
+			String sql = prop.getProperty("searchCastingListCount");
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
 				rset = pstmt.executeQuery();
 				
 				if(rset.next()) {
@@ -395,7 +396,7 @@ public class MovieDao {
 	}
 
 	// 인물관리_검색
-	public List<Person> searchCasting(Connection conn, String keyword) {
+	public List<Person> searchCasting(Connection conn, String keyword, PageInfo pi) {
 		List<Person> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -404,6 +405,12 @@ public class MovieDao {
 		try {
 			pstmt = conn.prepareStatement(sql);	
 			pstmt.setString(1, keyword);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 
 			
 			rset = pstmt.executeQuery();
@@ -877,6 +884,31 @@ public class MovieDao {
 		} finally {
 			close(pstmt);
 		}
+		return result;
+	}
+
+	// 전체 인물이 몇 명인지 조회하는 메소드
+	public int selectCastingListCount(Connection conn) {
+		String query = prop.getProperty("selectCastingListCount");
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
 		return result;
 	}
 	
