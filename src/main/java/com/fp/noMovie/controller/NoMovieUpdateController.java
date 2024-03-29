@@ -131,7 +131,7 @@ public class NoMovieUpdateController extends HttpServlet {
 		
 			if(result > 0) {
 				session.setAttribute("alertMsg", "신청하신 없는영화 내용을 수정하였습니다.");
-				response.sendRedirect(request.getContextPath() + "/list.noMv?memNo=" + nm.getMemNo());
+				response.sendRedirect(request.getContextPath() + "/list.noMv?memNo=" + nm.getMemNo() + "&page=1");
 			}
 		}
 	}
