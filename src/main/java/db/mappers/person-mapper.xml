@@ -33,6 +33,7 @@
 			 , P_FILE
 		  FROM PERSON
 		 WHERE P_NAME LIKE ?
+		 AND   P_STATUS = 'Y'
 	</entry>
 	
 </properties>
