@@ -182,12 +182,14 @@
                                 <textarea class="form-control comment" rows="1" readonly><%=nm.getNmTitle()%></textarea> <br>
                                 <p class="ans_name">승인여부</p>
                                 <textarea class="form-control comment" rows="1" readonly><%=nm.getNmApproval()%></textarea> <br>
+                                <!-- 
                                 <p class="ans_name">반려사유</p>
                                 <%if(nm.getNmRefuseReason() != null){ %>
                                 <textarea class="form-control comment" rows="6" readonly><%=nm.getNmRefuseReason()%></textarea> <br><br>
                                 <%}else{ %>
                                 <textarea class="form-control comment" rows="6" readonly>처리중입니다.</textarea> <br><br>
                                 <%} %>
+                                 -->
                                 <a href="<%=contextPath%>/updateForm.noMo?no=<%=nm.getNmEnrollNo()%>&p=<%=pi.getCurrentPage()%>" class="btn btn-outline-secondary btn-sm">수정하기</a> <br><br>
                             </td>
                         </tr>

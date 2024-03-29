@@ -4860,7 +4860,7 @@ INSERT INTO MOVIE_LIKE (LIKE_MOVIE_NO, MV_NO, MEM_NO)
 VALUES (SEQ_MOVIE_LIKE_NO.NEXTVAL, FLOOR(DBMS_RANDOM.VALUE(1, 80)), FLOOR(DBMS_RANDOM.VALUE(1, 25)));
 
 INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
-VALUES(SEQ_BOARD_NO.NEXTVAL, '파묘 재밌게 봤어요', '파묘 기대하고 봤는데 기대치보다 더 재밌더라구요~', 10, 20, '1', 5);
+VALUES(SEQ_BOARD_NO.NEXTVAL, '파묘 재밌게 봤어요', '파묘 기대하고 봤는데 기대치보다 더 재밌더라구요~', 10, 20, '1', 4);
 
 INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
 VALUES(SEQ_BOARD_NO.NEXTVAL, '범죄도시4 기대돼요', '범죄도시4 언제 나올지 기다리는중이예요 1 2 3 전부 다 재밌게 봐서 ㅋㅋㅋ', 45, 17, '1', 2);
@@ -4875,13 +4875,19 @@ INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_C
 VALUES(SEQ_BOARD_NO.NEXTVAL, '기생충 오랜만에 다시봤는데도 재밌네요', '본지 꽤 오래돼서 다시 봤는데 시간 잘가네요', 11, 27, '1', 26);
 
 INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
-VALUES(SEQ_BOARD_NO.NEXTVAL, '마블영화 처음보는데 보는 순서좀 알려주세요', '마블영화 보는 순서좀... ㅠㅠ', 31, 17, '1', 11);
+VALUES(SEQ_BOARD_NO.NEXTVAL, '마블영화 처음보는데 보는 순서좀 알려주세요', '마블영화 보는 순서좀... ㅠㅠ', 31, 17, '1', 10);
 
 INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
-VALUES(SEQ_BOARD_NO.NEXTVAL, '오멘 개봉하기만 기다리는중', '개봉하면 바로 조조로 보러가야지', 11, 13, '1', 15);
+VALUES(SEQ_BOARD_NO.NEXTVAL, '오멘 개봉하기만 기다리는중', '개봉하면 바로 조조로 보러가야지', 11, 13, '1', 12);
 
 INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
 VALUES(SEQ_BOARD_NO.NEXTVAL, '인어공주 재밌음??', '재밋으면 볼생각인데 어때요 ? ', 21, 17, '1', 16);
+
+INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
+VALUES(SEQ_BOARD_NO.NEXTVAL, '다들 요즘 영화관 자주 가시나요??', '저는 요즘 ott로 많이 보는거같아요 ㅋㅋㅋ', 10, 2, '1', 14);
+
+INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
+VALUES(SEQ_BOARD_NO.NEXTVAL, '요즘 볼만한 영화가 없네요', '다들 ott 많이 보니까 그런지 모르겠는데 볼만한 영화가 없는듯..', 17, 5, '1', 24);
 
 ----------------- 리뷰 데이터 생성
 INSERT INTO REVIEW

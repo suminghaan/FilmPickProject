@@ -169,10 +169,10 @@ table{
                             <span>
                                 <select>
                                     <option value="0" selected>없음</option>
-                                    <option value="3">3일</option>
-                                    <option value="7">7일</option>
-                                    <option value="15">15일</option>
-                                    <option value="30">30일</option>
+                                    <option value="2">3일</option>
+                                    <option value="6">7일</option>
+                                    <option value="14">15일</option>
+                                    <option value="29">30일</option>
                                 </select>
                             </span>
                         </div>
