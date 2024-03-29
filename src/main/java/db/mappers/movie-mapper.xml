@@ -274,6 +274,7 @@
 	        WHERE MEM_NO = ?
 	        AND LIKE_POINT >= 4
         )
+    ORDER BY LIKE_POINT
 	</entry>
 	<!-- 평가가 엇갈린 작품을 위한 쿼리 [기웅] -->
 	<!-- 사용자가 남긴 별점 정보와 해당 영화의 정보 -->

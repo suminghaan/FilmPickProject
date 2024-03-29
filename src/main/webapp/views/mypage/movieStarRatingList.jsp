@@ -211,7 +211,7 @@
 
   </main>
   <script src="<%= contextPath %>/resources/assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="<%= contextPath %>/resources/assets/js/reviewBtnHover.js""></script>
+  <script src="<%= contextPath %>/resources/assets/js/reviewBtnHover.js"></script>
 
     
 	
