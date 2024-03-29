@@ -4883,6 +4883,15 @@ VALUES(SEQ_BOARD_NO.NEXTVAL, '오멘 개봉하기만 기다리는중', '개봉�
 INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
 VALUES(SEQ_BOARD_NO.NEXTVAL, '인어공주 재밌음??', '재밋으면 볼생각인데 어때요 ? ', 21, 17, '1', 16);
 
+INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
+VALUES(SEQ_BOARD_NO.NEXTVAL, '다들 요즘 영화관 자주 가시나요??', '저는 요즘 ott로 많이 보는거같아요 ㅋㅋㅋ', 10, 2, '1', 15);
+
+INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
+VALUES(SEQ_BOARD_NO.NEXTVAL, '요즘 볼만한 영화가 없네요', '다들 ott 많이 보니까 그런지 모르겠는데 볼만한 영화가 없는듯..', 17, 5, '1', 25);
+
+INSERT INTO BOARD(B_NO, B_TITLE, B_CONTENT, B_READ_COUNT, B_RECOMMEND_COUNT, B_CATEGORY, MEM_NO)
+VALUES(SEQ_BOARD_NO.NEXTVAL, '요즘 볼만한 영화가 없네요', '다들 ott 많이 보니까 그런지 모르겠는데 볼만한 영화가 없는듯..', 17, 5, '1', 5);
+
 ----------------- 리뷰 데이터 생성
 INSERT INTO REVIEW
 VALUES (
