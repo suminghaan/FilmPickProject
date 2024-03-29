@@ -414,45 +414,55 @@
 
         <script>
  
-        function searchPerson(){
-        	
-        	$(".viewPerson").html("");
+        function searchPerson() {
+            $(".viewPerson").html(""); // 이전 결과 초기화
             let result = "";
             $.ajax({
-                url:"<%=contextPath%>/search.pe",
-                data:{name:$(".inputPerson").val()},
-                type:"post",
-                success:function(person){ // 인물번호, 인물이미지경로, 인물이름, 인물직업 조회
-                	console.log(person.length);
-                    if(person.length != 0){ // 받아온 person에 값이 담겨있을 때
-                        for(let i=0; i<person.length; i++){
-                            result =  "<div class='check'>"
-                                    +       "<table>"
-                                    +           "<tr>"
-                                    +               "<td><label for='boxbox" + i + "'><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></label></td>"
-                                    +           "</tr>"
-                                    +           "<tr>"
-                                    +               "<td class='personName'>" + person[i].pName + "</td>"
-                                    +               "<input name='personNo' class='personNo' type='hidden' value='" + person[i].pNo + "'>"
-                                    +           "</tr>"
-                                    +           "<tr>"
-                                    +               "<td>" + person[i].pJob + "</td>"
-                                    +           "</tr>"
-                                    +       "<input class='checkboxbox' type='checkbox' id='boxbox" + i + "'>"
-                                    +       "</table>"
-                                    +   "</div>";
-                            $(".viewPerson").append(result);
+                url: "<%=contextPath%>/search.pe",
+                data: { name: $(".inputPerson").val() },
+                type: "post",
+                success: function (person) {
+                    console.log(person.length);
+                    if (person.length != 0) {
+                        // 이미 표시된 인물 이름을 저장할 배열
+                        let displayedNames = [];
+                        
+                        // 이미 표시된 인물 이름들을 배열에 저장
+                        $(".viewPerson .personName").each(function() {
+                            displayedNames.push($(this).text().trim());
+                        });
+
+                        // 새로운 결과 받아오기
+                        for (let i = 0; i < person.length; i++) {
+                            // 이미 표시된 인물인지 확인
+                            if (!displayedNames.includes(person[i].pName)) {
+                                result = "<div class='check'>" +
+                                    "<table>" +
+                                    "<tr>" +
+                                    "<td><label for='boxbox" + i + "'><img class='personImg' src='<%=contextPath%>/" + person[i].pFile + "'></label></td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                    "<td class='personName'>" + person[i].pName + "</td>" +
+                                    "<input name='personNo' class='personNo' type='hidden' value='" + person[i].pNo + "'>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                    "<td>" + person[i].pJob + "</td>" +
+                                    "</tr>" +
+                                    "<input class='checkboxbox' type='checkbox' id='boxbox" + i + "'>" +
+                                    "</table>" +
+                                    "</div>";
+                                $(".viewPerson").append(result);
+                            }
                         }
-                    } else if (person.length == 0){ // 받아온 person이 비어있을 때
+                    } else if (person.length == 0) {
                         result = " ";
-                    	console.log("length는 0");
+                        console.log("length는 0");
                         $(".viewPerson").html("검색된 인물이 없습니다.");
                     }
                 },
-                error:function() {
-                	console.log("AJAX 통신 실패");
+                error: function () {
+                    console.log("AJAX 통신 실패");
                 }
-                
             });
         }
         
