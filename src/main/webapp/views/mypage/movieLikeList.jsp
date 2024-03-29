@@ -118,7 +118,7 @@
       text-align: left;
       /* 위치를 이동시킬 요소에 absolute. top. left, right 등으로 위치 조절 */
       position: absolute;
-      bottom: 50px;
+      bottom: 10px;
       /* 요소가 겹쳐있을 때 무엇을 더 위에 표현할지. z-index 값이 클수록 위에 옴 */
       z-index: 10;
       display: none;
