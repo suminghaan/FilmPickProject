@@ -108,7 +108,7 @@
 	<entry key="keywordSelectListCount">
 		SELECT COUNT(*) COUNT
 		  FROM INQUIRY
-		   AND INQRY_TITLE LIKE ?
+		  WHERE INQRY_TITLE LIKE ?
 	</entry>
 
 	<!-- 키워드에 맞는 문의사항 메인 페이지에 띄울 값들을 출력 및 페이징바 적용을 위한 sql문 by호용 -->
@@ -122,7 +122,7 @@
 					     , INQRY_TITLE <!-- 문의사항 제목 -->
 					     , TO_CHAR(INQRY_DATE, 'YY/MM/DD') INQRY_DATE <!-- 작성일 -->
 					  FROM INQUIRY
-					 WHERE NOTICE_TITLE LIKE ?
+					 WHERE INQRY_TITLE LIKE ?
 					 ORDER
 					    BY INQRY_NO DESC
 					) A
